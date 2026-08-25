@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul PPT 8 - Mencetak dan Export Presentasi</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+.header .icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+    opacity:.95;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1000px;
+    margin:35px auto;
+    padding:0 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#b71c1c;
+    margin-bottom:15px;
+    font-size:25px;
+}
+
+.card h3{
+    color:#d32f2f;
+    margin-top:22px;
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:12px;
+}
+
+/* =========================
+   TUJUAN
+========================= */
+
+.objective{
+    background:#ffebee;
+    border-left:6px solid #e53935;
+    padding:20px;
+    border-radius:10px;
+}
+
+.objective ul{
+    margin-left:22px;
+}
+
+/* =========================
+   TOPIC
+========================= */
+
+.topic{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:20px;
+    margin:18px 0;
+}
+
+.topic-title{
+    font-weight:bold;
+    color:#b71c1c;
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+/* =========================
+   LIST
+========================= */
+
+ul,
+ol{
+    margin-left:25px;
+    margin-bottom:15px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+/* =========================
+   COMMAND
+========================= */
+
+.command{
+    display:inline-block;
+    background:#263238;
+    color:white;
+    padding:4px 9px;
+    border-radius:5px;
+    font-size:14px;
+    font-family:Consolas,monospace;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th{
+    background:#b71c1c;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:11px;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+/* =========================
+   NOTE
+========================= */
+
+.note{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:7px;
+    margin:15px 0;
+}
+
+.success{
+    background:#e8f5e9;
+    border-left:5px solid #43a047;
+    padding:15px;
+    border-radius:7px;
+    margin:15px 0;
+}
+
+/* =========================
+   STEP
+========================= */
+
+.step{
+    display:flex;
+    gap:15px;
+    margin:15px 0;
+    align-items:flex-start;
+}
+
+.step-number{
+    min-width:35px;
+    height:35px;
+    background:#e53935;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.step-content{
+    flex:1;
+}
+
+/* =========================
+   PRAKTIK
+========================= */
+
+.practice{
+    background:linear-gradient(135deg,#fff5f5,#ffffff);
+    border:2px solid #ef9a9a;
+    border-radius:12px;
+    padding:25px;
+}
+
+.practice h2{
+    margin-top:0;
+}
+
+/* =========================
+   FORMAT CARD
+========================= */
+
+.format-card{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:15px;
+    align-items:center;
+    padding:15px;
+    margin:10px 0;
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+}
+
+.format-icon{
+    background:#b71c1c;
+    color:white;
+    padding:12px 8px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+    font-family:Consolas,monospace;
+}
+
+.format-card strong{
+    color:#b71c1c;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:30px;
+}
+
+.nav-button{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 20px;
+    border-radius:8px;
+    background:#e53935;
+    color:white;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.nav-button:hover{
+    background:#b71c1c;
+    transform:translateY(-2px);
+}
+
+.nav-button.secondary{
+    background:#455a64;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .header{
+        padding:35px 15px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .header p{
+        font-size:15px;
+    }
+
+    .container{
+        padding:0 12px;
+        margin-top:20px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h2{
+        font-size:22px;
+    }
+
+    .step{
+        gap:10px;
+    }
+
+    .format-card{
+        grid-template-columns:80px 1fr;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-button{
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="icon">
+        🖨️
+    </div>
+
+    <h1>
+        MODUL 8
+    </h1>
+
+    <p>
+        Mencetak dan Export Presentasi
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- =========================
+     PENDAHULUAN
+========================= -->
+
+<section class="card">
+
+    <h2>📚 Tentang Modul</h2>
+
+    <p>
+        Modul 8 merupakan modul terakhir dalam pembelajaran
+        Microsoft PowerPoint 2016. Pada modul ini peserta
+        akan mempelajari tahap akhir pengolahan presentasi,
+        yaitu mencetak, menyimpan, dan melakukan export
+        presentasi ke berbagai format.
+    </p>
+
+    <div class="objective">
+
+        <strong>🎯 Tujuan Pembelajaran</strong>
+
+        <ul>
+
+            <li>
+                Peserta mampu mencetak presentasi
+                dengan pengaturan yang tepat.
+            </li>
+
+            <li>
+                Peserta mampu membuat handout
+                presentasi.
+            </li>
+
+            <li>
+                Peserta mampu memilih ukuran dan
+                orientasi kertas.
+            </li>
+
+            <li>
+                Peserta mampu menyimpan presentasi
+                dalam berbagai format.
+            </li>
+
+            <li>
+                Peserta mampu melakukan export
+                presentasi menjadi PDF.
+            </li>
+
+            <li>
+                Peserta mampu membuat video dari
+                presentasi.
+            </li>
+
+            <li>
+                Peserta mampu menyimpan slide
+                sebagai gambar.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 1
+========================= -->
+
+<section class="card">
+
+    <h2>1️⃣ Mencetak Presentasi</h2>
+
+    <p>
+        Fitur <strong>Print</strong> digunakan untuk
+        mencetak slide presentasi ke dalam bentuk
+        dokumen fisik.
+    </p>
+
+    <p>
+        Menu pencetakan dapat dibuka melalui:
+    </p>
+
+    <p>
+        <span class="command">
+            File → Print
+        </span>
+    </p>
+
+
+    <h3>Langkah Mencetak Presentasi</h3>
+
+    <div class="step">
+
+        <div class="step-number">1</div>
+
+        <div class="step-content">
+            Klik menu <strong>File</strong>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">2</div>
+
+        <div class="step-content">
+            Pilih <span class="command">Print</span>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">3</div>
+
+        <div class="step-content">
+            Pilih printer yang akan digunakan.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">4</div>
+
+        <div class="step-content">
+            Tentukan jumlah salinan pada bagian
+            <span class="command">Copies</span>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">5</div>
+
+        <div class="step-content">
+            Tentukan slide yang ingin dicetak.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">6</div>
+
+        <div class="step-content">
+            Periksa hasil melalui
+            <strong>Print Preview</strong>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">7</div>
+
+        <div class="step-content">
+            Klik <span class="command">Print</span>.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 2
+========================= -->
+
+<section class="card">
+
+    <h2>2️⃣ Pilihan Slide yang Dicetak</h2>
+
+    <p>
+        PowerPoint 2016 menyediakan beberapa pilihan
+        slide yang akan dicetak.
+    </p>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Pilihan
+                </th>
+
+                <th>
+                    Fungsi
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Print All Slides
+                </td>
+
+                <td>
+                    Mencetak seluruh slide dalam presentasi.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Print Selection
+                </td>
+
+                <td>
+                    Mencetak bagian slide yang dipilih.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Print Current Slide
+                </td>
+
+                <td>
+                    Mencetak slide yang sedang aktif.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Custom Range
+                </td>
+
+                <td>
+                    Mencetak slide berdasarkan nomor atau
+                    rentang tertentu.
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 3
+========================= -->
+
+<section class="card">
+
+    <h2>3️⃣ Print Layout</h2>
+
+    <p>
+        PowerPoint menyediakan beberapa pilihan layout
+        ketika presentasi akan dicetak.
+    </p>
+
+
+    <h3>Full Page Slides</h3>
+
+    <p>
+        Setiap slide dicetak dalam satu halaman penuh.
+        Pilihan ini cocok ketika slide ingin dicetak
+        sebagai dokumen presentasi.
+    </p>
+
+
+    <h3>Notes Pages</h3>
+
+    <p>
+        Notes Pages mencetak slide beserta catatan
+        presenter yang terdapat pada slide tersebut.
+    </p>
+
+
+    <h3>Outline</h3>
+
+    <p>
+        Outline mencetak struktur teks utama dari
+        presentasi.
+    </p>
+
+
+    <h3>Handouts</h3>
+
+    <p>
+        Handouts digunakan untuk mencetak beberapa
+        slide dalam satu halaman sehingga lebih hemat
+        kertas dan cocok dibagikan kepada peserta.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 4
+========================= -->
+
+<section class="card">
+
+    <h2>4️⃣ Mencetak Handout</h2>
+
+    <p>
+        Handout merupakan versi cetak presentasi yang
+        dirancang agar dapat dibagikan kepada audiens
+        sebagai bahan referensi.
+    </p>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Pilihan
+                </th>
+
+                <th>
+                    Keterangan
+                </th>
+
+            </tr>
+
+            <tr>
+                <td>1 Slide</td>
+                <td>Satu slide dalam satu halaman.</td>
+            </tr>
+
+            <tr>
+                <td>2 Slides</td>
+                <td>Dua slide dalam satu halaman.</td>
+            </tr>
+
+            <tr>
+                <td>3 Slides</td>
+                <td>
+                    Tiga slide dengan area catatan.
+                </td>
+            </tr>
+
+            <tr>
+                <td>4 Slides</td>
+                <td>Empat slide dalam satu halaman.</td>
+            </tr>
+
+            <tr>
+                <td>6 Slides</td>
+                <td>Enam slide dalam satu halaman.</td>
+            </tr>
+
+            <tr>
+                <td>9 Slides</td>
+                <td>Sembilan slide dalam satu halaman.</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <div class="note">
+
+        💡 <strong>Tips:</strong>
+        Untuk bahan pelatihan, pilihan
+        <strong>3 Slides</strong> sering berguna karena
+        menyediakan ruang bagi peserta untuk membuat
+        catatan.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 5
+========================= -->
+
+<section class="card">
+
+    <h2>5️⃣ Pengaturan Warna dan Kertas</h2>
+
+    <h3>Color</h3>
+
+    <p>
+        Mencetak presentasi menggunakan warna asli
+        dari slide.
+    </p>
+
+
+    <h3>Grayscale</h3>
+
+    <p>
+        Mencetak presentasi dalam bentuk abu-abu.
+        Pilihan ini dapat menghemat tinta warna.
+    </p>
+
+
+    <h3>Pure Black and White</h3>
+
+    <p>
+        Mencetak menggunakan warna hitam dan putih
+        secara sederhana.
+    </p>
+
+
+    <h3>Ukuran dan Orientasi Kertas</h3>
+
+    <p>
+        Sebelum mencetak, periksa ukuran kertas dan
+        orientasinya agar hasil cetak sesuai kebutuhan.
+    </p>
+
+    <ul>
+
+        <li>
+            Portrait
+        </li>
+
+        <li>
+            Landscape
+        </li>
+
+        <li>
+            Ukuran kertas sesuai printer
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 6
+========================= -->
+
+<section class="card">
+
+    <h2>6️⃣ Menyimpan Presentasi</h2>
+
+    <p>
+        PowerPoint dapat menyimpan presentasi dalam
+        berbagai format sesuai kebutuhan.
+    </p>
+
+
+    <div class="format-card">
+
+        <div class="format-icon">
+            PPTX
+        </div>
+
+        <div>
+
+            <strong>.pptx</strong>
+
+            <p>
+                Format standar Microsoft PowerPoint.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="format-card">
+
+        <div class="format-icon">
+            PPT
+        </div>
+
+        <div>
+
+            <strong>.ppt</strong>
+
+            <p>
+                Format kompatibilitas untuk PowerPoint
+                versi lama.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="format-card">
+
+        <div class="format-icon">
+            PDF
+        </div>
+
+        <div>
+
+            <strong>.pdf</strong>
+
+            <p>
+                Cocok untuk dibagikan dan dicetak.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="format-card">
+
+        <div class="format-icon">
+            PPSX
+        </div>
+
+        <div>
+
+            <strong>.ppsx</strong>
+
+            <p>
+                File yang dapat langsung dibuka
+                dalam mode Slide Show.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="format-card">
+
+        <div class="format-icon">
+            POTX
+        </div>
+
+        <div>
+
+            <strong>.potx</strong>
+
+            <p>
+                Format template PowerPoint.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 7
+========================= -->
+
+<section class="card">
+
+    <h2>7️⃣ Export Presentasi</h2>
+
+    <p>
+        Fitur Export digunakan untuk mengubah presentasi
+        menjadi format lain sesuai kebutuhan.
+    </p>
+
+    <p>
+        Menu Export dapat dibuka melalui:
+    </p>
+
+    <p>
+        <span class="command">
+            File → Export
+        </span>
+    </p>
+
+
+    <p>
+        Beberapa pilihan export yang tersedia antara lain:
+    </p>
+
+    <ul>
+
+        <li>
+            Create PDF/XPS
+        </li>
+
+        <li>
+            Create a Video
+        </li>
+
+        <li>
+            Package Presentation for CD
+        </li>
+
+        <li>
+            Create Handouts
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 8
+========================= -->
+
+<section class="card">
+
+    <h2>8️⃣ Export ke PDF</h2>
+
+    <p>
+        PDF merupakan salah satu format paling praktis
+        untuk membagikan presentasi karena tampilan
+        dokumen relatif tetap ketika dibuka pada perangkat
+        yang berbeda.
+    </p>
+
+
+    <h3>Langkah Export PDF</h3>
+
+    <div class="step">
+
+        <div class="step-number">1</div>
+
+        <div class="step-content">
+            Klik <strong>File</strong>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">2</div>
+
+        <div class="step-content">
+            Pilih <strong>Export</strong>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">3</div>
+
+        <div class="step-content">
+            Pilih <strong>Create PDF/XPS</strong>.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">4</div>
+
+        <div class="step-content">
+            Tentukan nama dan lokasi file.
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">5</div>
+
+        <div class="step-content">
+            Klik <strong>Publish</strong>.
+        </div>
+
+    </div>
+
+
+    <div class="success">
+
+        ✅ PDF dapat digunakan untuk membagikan materi,
+        mengarsipkan presentasi, maupun mencetak dokumen.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 9
+========================= -->
+
+<section class="card">
+
+    <h2>9️⃣ Membuat Video dari Presentasi</h2>
+
+    <p>
+        PowerPoint 2016 dapat digunakan untuk membuat
+        video berdasarkan isi presentasi.
+    </p>
+
+
+    <p>
+        Menu yang digunakan:
+    </p>
+
+    <p>
+        <span class="command">
+            File → Export → Create a Video
+        </span>
+    </p>
+
+
+    <h3>Pengaturan Video</h3>
+
+    <ul>
+
+        <li>
+            Menentukan kualitas video.
+        </li>
+
+        <li>
+            Menggunakan recorded timings and narrations.
+        </li>
+
+        <li>
+            Mengatur durasi setiap slide.
+        </li>
+
+        <li>
+            Menyimpan hasil sebagai file video.
+        </li>
+
+    </ul>
+
+
+    <div class="note">
+
+        💡 Jika presentasi memiliki narasi atau timing,
+        pastikan semuanya sudah diuji terlebih dahulu
+        sebelum membuat video.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 10
+========================= -->
+
+<section class="card">
+
+    <h2>🔟 Menyimpan Slide sebagai Gambar</h2>
+
+    <p>
+        Setiap slide PowerPoint juga dapat disimpan
+        sebagai file gambar.
+    </p>
+
+
+    <p>
+        Format gambar yang dapat digunakan antara lain:
+    </p>
+
+    <ul>
+
+        <li>
+            JPEG
+        </li>
+
+        <li>
+            PNG
+        </li>
+
+        <li>
+            GIF
+        </li>
+
+        <li>
+            TIFF
+        </li>
+
+        <li>
+            BMP
+        </li>
+
+    </ul>
+
+
+    <h3>Current Slide</h3>
+
+    <p>
+        Hanya slide yang sedang dipilih yang akan
+        disimpan sebagai gambar.
+    </p>
+
+
+    <h3>Every Slide</h3>
+
+    <p>
+        Seluruh slide dalam presentasi akan disimpan
+        sebagai gambar secara terpisah.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 11
+========================= -->
+
+<section class="card">
+
+    <h2>1️⃣1️⃣ Package Presentation for CD</h2>
+
+    <p>
+        Fitur <strong>Package Presentation for CD</strong>
+        digunakan untuk mengumpulkan presentasi beserta
+        file pendukung yang dibutuhkan.
+    </p>
+
+    <p>
+        Fitur ini berguna ketika presentasi akan dipindahkan
+        ke komputer lain sehingga file pendukung lebih
+        mudah dikumpulkan.
+    </p>
+
+    <div class="success">
+
+        📦 Tujuan utama fitur ini adalah membantu
+        mempersiapkan presentasi agar lebih mudah
+        dipindahkan atau didistribusikan.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 12
+========================= -->
+
+<section class="card">
+
+    <h2>1️⃣2️⃣ Memilih Format Sesuai Kebutuhan</h2>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Kebutuhan
+                </th>
+
+                <th>
+                    Format
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Mengedit kembali presentasi
+                </td>
+
+                <td>
+                    <strong>.pptx</strong>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Dibagikan dan dicetak
+                </td>
+
+                <td>
+                    <strong>.pdf</strong>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Langsung menjalankan Slide Show
+                </td>
+
+                <td>
+                    <strong>.ppsx</strong>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Membuat template
+                </td>
+
+                <td>
+                    <strong>.potx</strong>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Membuat video
+                </td>
+
+                <td>
+                    <strong>Video</strong>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Menyimpan slide sebagai gambar
+                </td>
+
+                <td>
+                    <strong>.jpg / .png</strong>
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CHECKLIST
+========================= -->
+
+<section class="card">
+
+    <h2>📋 Checklist Sebelum Mencetak dan Export</h2>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Pemeriksaan
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+            </tr>
+
+            <tr>
+                <td>Isi slide sudah diperiksa</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Ejaan sudah diperiksa</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Gambar tidak terpotong</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Grafik terlihat jelas</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Font mudah dibaca</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Nomor slide sudah benar</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Audio dan video sudah diuji</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Preview cetak sudah diperiksa</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>File PPTX sudah disimpan sebagai backup</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Format export sudah sesuai kebutuhan</td>
+                <td>☐</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRAKTIK
+========================= -->
+
+<section class="card practice">
+
+    <h2>🛠️ Praktik Modul 8</h2>
+
+    <p>
+        Gunakan presentasi yang telah dibuat pada
+        modul sebelumnya kemudian lakukan praktik
+        berikut:
+    </p>
+
+    <ol>
+
+        <li>
+            Cetak satu slide dalam satu halaman.
+        </li>
+
+        <li>
+            Cetak presentasi menggunakan pilihan
+            3 Slides Handouts.
+        </li>
+
+        <li>
+            Coba mencetak menggunakan mode Grayscale.
+        </li>
+
+        <li>
+            Simpan presentasi dalam format
+            <strong>.pptx</strong>.
+        </li>
+
+        <li>
+            Export presentasi menjadi
+            <strong>PDF</strong>.
+        </li>
+
+        <li>
+            Simpan salah satu slide menjadi
+            <strong>PNG atau JPG</strong>.
+        </li>
+
+        <li>
+            Coba buat presentasi menjadi
+            <strong>video</strong>.
+        </li>
+
+        <li>
+            Bandingkan hasil setiap format.
+        </li>
+
+    </ol>
+
+
+    <div class="success">
+
+        🎯 <strong>Target Praktik:</strong>
+
+        Peserta mampu memilih metode pencetakan dan
+        format export yang sesuai dengan kebutuhan
+        penggunaan presentasi.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RANGKUMAN
+========================= -->
+
+<section class="card">
+
+    <h2>📌 Rangkuman Modul 8</h2>
+
+    <ul>
+
+        <li>
+            Menu <strong>File → Print</strong> digunakan
+            untuk mencetak presentasi.
+        </li>
+
+        <li>
+            Presentasi dapat dicetak sebagai Full Page,
+            Notes Pages, Outline, maupun Handouts.
+        </li>
+
+        <li>
+            Handouts dapat digunakan sebagai bahan
+            yang dibagikan kepada peserta.
+        </li>
+
+        <li>
+            Presentasi dapat disimpan dalam berbagai
+            format seperti PPTX, PPT, PDF, PPSX dan POTX.
+        </li>
+
+        <li>
+            Menu <strong>File → Export</strong> digunakan
+            untuk mengubah presentasi ke format lain.
+        </li>
+
+        <li>
+            Presentasi dapat di-export menjadi PDF.
+        </li>
+
+        <li>
+            Presentasi dapat dibuat menjadi video.
+        </li>
+
+        <li>
+            Slide dapat disimpan sebagai file gambar.
+        </li>
+
+        <li>
+            Format output harus dipilih sesuai kebutuhan.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     KOMPETENSI AKHIR
+========================= -->
+
+<section class="card">
+
+    <h2>🏆 Kompetensi Akhir Microsoft PowerPoint 2016</h2>
+
+    <p>
+        Setelah menyelesaikan Modul 1 sampai Modul 8,
+        peserta diharapkan mampu membuat presentasi
+        menggunakan Microsoft PowerPoint 2016 mulai dari
+        tahap pembuatan hingga menghasilkan file yang
+        siap digunakan, dicetak, maupun didistribusikan.
+    </p>
+
+
+    <div class="objective">
+
+        <strong>
+            Peserta mampu:
+        </strong>
+
+        <ul>
+
+            <li>
+                Membuat dan mengelola slide.
+            </li>
+
+            <li>
+                Mengatur desain presentasi.
+            </li>
+
+            <li>
+                Menyisipkan berbagai objek.
+            </li>
+
+            <li>
+                Membuat diagram dan grafik.
+            </li>
+
+            <li>
+                Menggunakan audio, video dan animasi.
+            </li>
+
+            <li>
+                Menggunakan transition dan Slide Show.
+            </li>
+
+            <li>
+                Melakukan review presentasi.
+            </li>
+
+            <li>
+                Mencetak dan melakukan export presentasi.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NAVIGASI
+========================= -->
+
+<div class="navigation">
+
+    <a
+        href="modul-ppt-7.html"
+        class="nav-button secondary"
+    >
+        ← Modul 7
+    </a>
+
+
+    <a
+        href="kuis-ppt-8.html"
+        class="nav-button"
+    >
+        📝 Kuis Modul 8 →
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Modul 8 — Mencetak dan Export Presentasi
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

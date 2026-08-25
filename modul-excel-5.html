@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 5 - Fungsi Matematika dan Trigonometri</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+    opacity:.95;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 15px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    margin-bottom:22px;
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.card h3{
+    color:#185c37;
+    margin-top:22px;
+    margin-bottom:10px;
+}
+
+/* INTRO */
+.intro{
+    background:#eaf7ef;
+    border-left:5px solid #107c41;
+    padding:18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+/* WARNING */
+.warning{
+    background:#fff5e6;
+    border-left:5px solid #f39c12;
+    padding:18px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+/* CODE */
+.formula{
+    background:#1e1e1e;
+    color:#d4d4d4;
+    padding:16px 20px;
+    border-radius:8px;
+    margin:12px 0;
+    font-family:Consolas,"Courier New",monospace;
+    font-size:15px;
+    overflow-x:auto;
+}
+
+.formula .green{
+    color:#6a9955;
+}
+
+/* TABLE */
+.table-wrapper{
+    overflow-x:auto;
+    margin:15px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+
+th{
+    background:#107c41;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:11px 12px;
+    border:1px solid #dce3e7;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+/* EXAMPLE */
+.example{
+    background:#f7faf8;
+    border:1px solid #dce7df;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+.example-title{
+    color:#107c41;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    background:#e6f4ea;
+    color:#107c41;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* LIST */
+ul,ol{
+    margin-left:25px;
+    margin-top:8px;
+}
+
+li{
+    margin-bottom:6px;
+}
+
+/* NAV */
+.nav-box{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    color:white;
+    background:#107c41;
+    transition:.2s;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn-blue{
+    background:#2878d4;
+}
+
+.btn-blue:hover{
+    background:#185ca8;
+}
+
+.btn-gray{
+    background:#607d8b;
+}
+
+.btn-gray:hover{
+    background:#455a64;
+}
+
+/* OBJECTIVE */
+.objective{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:15px;
+}
+
+.objective-item{
+    background:#f7faf8;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #dce7df;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    padding:30px 15px;
+    color:#607d8b;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:20px 16px;
+    }
+
+    .objective{
+        grid-template-columns:1fr;
+    }
+
+    .nav-box{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <h1>📊 MODUL 5</h1>
+
+    <p>
+        Fungsi Matematika dan Trigonometri
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ==================================================
+     INFORMASI MODUL
+================================================== -->
+
+<section class="card">
+
+    <span class="badge">
+        MICROSOFT EXCEL
+    </span>
+
+    <h2>
+        📘 Fungsi Matematika dan Trigonometri
+    </h2>
+
+    <div class="intro">
+
+        <strong>Deskripsi Modul</strong>
+
+        <p>
+            Fungsi matematika dan trigonometri merupakan salah satu
+            kelompok fungsi Excel yang banyak digunakan untuk melakukan
+            perhitungan angka, pembulatan, pembagian, perkalian,
+            perhitungan nilai absolut, hingga perhitungan trigonometri.
+        </p>
+
+    </div>
+
+
+    <h3>🎯 Tujuan Pembelajaran</h3>
+
+    <div class="objective">
+
+        <div class="objective-item">
+            <strong>01.</strong><br>
+            Memahami fungsi matematika dalam Excel.
+        </div>
+
+        <div class="objective-item">
+            <strong>02.</strong><br>
+            Menggunakan fungsi SUM dan SUMIF.
+        </div>
+
+        <div class="objective-item">
+            <strong>03.</strong><br>
+            Menggunakan fungsi pembulatan angka.
+        </div>
+
+        <div class="objective-item">
+            <strong>04.</strong><br>
+            Menggunakan fungsi matematika lainnya.
+        </div>
+
+        <div class="objective-item">
+            <strong>05.</strong><br>
+            Memahami fungsi trigonometri dasar.
+        </div>
+
+        <div class="objective-item">
+            <strong>06.</strong><br>
+            Menerapkan fungsi dalam kasus pekerjaan.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     1. PENGENALAN
+================================================== -->
+
+<section class="card">
+
+<h2>1. 📚 Mengenal Fungsi Matematika dan Trigonometri</h2>
+
+<p>
+Fungsi matematika dan trigonometri digunakan untuk melakukan
+berbagai operasi terhadap angka di dalam Excel.
+</p>
+
+<p>
+Dengan menggunakan fungsi, pekerjaan perhitungan yang kompleks
+dapat dilakukan lebih cepat, konsisten, dan mengurangi kesalahan
+perhitungan manual.
+</p>
+
+
+<h3>Sintaks Dasar Fungsi</h3>
+
+<p>
+Sebagian besar fungsi Excel memiliki pola:
+</p>
+
+<div class="formula">
+=NAMA_FUNGSI(argument1, argument2, ...)
+</div>
+
+<p>
+Contoh:
+</p>
+
+<div class="formula">
+=SUM(B2:B10)
+</div>
+
+<p>
+Pada contoh tersebut:
+</p>
+
+<ul>
+<li><strong>SUM</strong> = nama fungsi</li>
+<li><strong>B2:B10</strong> = range yang akan dijumlahkan</li>
+</ul>
+
+</section>
+
+
+<!-- ==================================================
+     2. SUM
+================================================== -->
+
+<section class="card">
+
+<h2>2. ➕ Fungsi SUM</h2>
+
+<p>
+Fungsi <strong>SUM</strong> digunakan untuk menjumlahkan
+angka atau nilai dalam beberapa cell.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=SUM(number1, number2, ...)
+</div>
+
+<h3>Contoh 1</h3>
+
+<div class="formula">
+=SUM(B2:B10)
+</div>
+
+<p>
+Formula tersebut menjumlahkan seluruh nilai dari B2 sampai B10.
+</p>
+
+
+<h3>Contoh 2</h3>
+
+<div class="formula">
+=SUM(B2:B10,D2:D10)
+</div>
+
+<p>
+Formula dapat menjumlahkan lebih dari satu range.
+</p>
+
+
+<div class="example">
+
+<div class="example-title">
+💡 Contoh Kasus
+</div>
+
+<p>
+Sebuah tabel memiliki data penjualan pada cell B2 sampai B11.
+Untuk mendapatkan total penjualan:
+</p>
+
+<div class="formula">
+=SUM(B2:B11)
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     3. SUMIF
+================================================== -->
+
+<section class="card">
+
+<h2>3. 🔎 Fungsi SUMIF</h2>
+
+<p>
+Fungsi <strong>SUMIF</strong> digunakan untuk menjumlahkan
+nilai berdasarkan satu kriteria tertentu.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=SUMIF(range, criteria, sum_range)
+</div>
+
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Argument</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td>range</td>
+<td>Range yang diperiksa kriterianya.</td>
+</tr>
+
+<tr>
+<td>criteria</td>
+<td>Syarat atau kriteria yang digunakan.</td>
+</tr>
+
+<tr>
+<td>sum_range</td>
+<td>Range angka yang akan dijumlahkan.</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<h3>Contoh</h3>
+
+<p>
+Misalnya terdapat data:
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Produk</th>
+<th>Penjualan</th>
+</tr>
+
+<tr>
+<td>Laptop</td>
+<td>5.000.000</td>
+</tr>
+
+<tr>
+<td>Printer</td>
+<td>3.000.000</td>
+</tr>
+
+<tr>
+<td>Laptop</td>
+<td>4.000.000</td>
+</tr>
+
+</table>
+
+</div>
+
+<p>
+Untuk menjumlahkan penjualan khusus produk Laptop:
+</p>
+
+<div class="formula">
+=SUMIF(A2:A4,"Laptop",B2:B4)
+</div>
+
+<p>
+Hasilnya adalah:
+</p>
+
+<div class="formula">
+9.000.000
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     4. PRODUCT
+================================================== -->
+
+<section class="card">
+
+<h2>4. ✖️ Fungsi PRODUCT</h2>
+
+<p>
+Fungsi <strong>PRODUCT</strong> digunakan untuk mengalikan
+beberapa angka sekaligus.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=PRODUCT(number1, number2, ...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=PRODUCT(B2:B5)
+</div>
+
+<p>
+Formula tersebut mengalikan semua angka pada B2 sampai B5.
+</p>
+
+<div class="example">
+
+<div class="example-title">
+💡 Contoh sederhana
+</div>
+
+<p>
+Jika B2 = 2, B3 = 3, dan B4 = 4:
+</p>
+
+<div class="formula">
+=PRODUCT(B2:B4)
+</div>
+
+<p>
+Hasil = <strong>24</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     5. QUOTIENT
+================================================== -->
+
+<section class="card">
+
+<h2>5. ➗ Fungsi QUOTIENT</h2>
+
+<p>
+Fungsi <strong>QUOTIENT</strong> digunakan untuk mendapatkan
+hasil pembagian bilangan bulat dengan mengabaikan sisa pembagian.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=QUOTIENT(numerator, denominator)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=QUOTIENT(17,5)
+</div>
+
+<p>
+17 dibagi 5 menghasilkan 3 dengan sisa 2.
+QUOTIENT mengambil bagian bilangan bulatnya, yaitu:
+</p>
+
+<div class="formula">
+3
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     6. ROUND
+================================================== -->
+
+<section class="card">
+
+<h2>6. 🔢 Fungsi ROUND</h2>
+
+<p>
+Fungsi <strong>ROUND</strong> digunakan untuk membulatkan angka
+berdasarkan jumlah digit yang ditentukan.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=ROUND(number, num_digits)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=ROUND(125.678,2)
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+125.68
+</div>
+
+
+<div class="warning">
+
+<strong>Perhatikan:</strong>
+
+<p>
+Angka 5 atau lebih akan dibulatkan ke atas,
+sedangkan angka kurang dari 5 dibulatkan ke bawah.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     7. INT
+================================================== -->
+
+<section class="card">
+
+<h2>7. 🔽 Fungsi INT</h2>
+
+<p>
+Fungsi <strong>INT</strong> digunakan untuk membulatkan angka
+ke bawah menjadi bilangan bulat.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=INT(number)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=INT(125.9)
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+125
+</div>
+
+
+<div class="warning">
+
+<p>
+Untuk bilangan negatif, INT membulatkan menuju bilangan
+bulat yang lebih kecil.
+</p>
+
+<p>
+Contoh:
+</p>
+
+<div class="formula">
+=INT(-125.9)
+</div>
+
+<p>
+Hasil = <strong>-126</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     8. TRUNC
+================================================== -->
+
+<section class="card">
+
+<h2>8. ✂️ Fungsi TRUNC</h2>
+
+<p>
+Fungsi <strong>TRUNC</strong> digunakan untuk memotong bagian
+desimal tanpa melakukan pembulatan.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=TRUNC(number, num_digits)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=TRUNC(125.987,2)
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+125.98
+</div>
+
+<p>
+Angka berikutnya tidak digunakan untuk pembulatan.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+     9. ABS
+================================================== -->
+
+<section class="card">
+
+<h2>9. |x| Fungsi ABS</h2>
+
+<p>
+Fungsi <strong>ABS</strong> digunakan untuk menghasilkan
+nilai absolut atau nilai mutlak dari suatu angka.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=ABS(number)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=ABS(-250)
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+250
+</div>
+
+<div class="example">
+
+<div class="example-title">
+💡 Contoh penggunaan
+</div>
+
+<p>
+ABS dapat digunakan untuk menghitung selisih tanpa memperhatikan
+apakah hasil pengurangan bernilai positif atau negatif.
+</p>
+
+<div class="formula">
+=ABS(A2-B2)
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     10. FUNGSI PEMBULATAN
+================================================== -->
+
+<section class="card">
+
+<h2>10. 🔄 Fungsi Pembulatan Lainnya</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+<th>Contoh</th>
+</tr>
+
+<tr>
+<td>ROUND</td>
+<td>Membulatkan sesuai aturan pembulatan.</td>
+<td>=ROUND(12.56,1)</td>
+</tr>
+
+<tr>
+<td>ROUNDUP</td>
+<td>Selalu membulatkan ke atas.</td>
+<td>=ROUNDUP(12.51,1)</td>
+</tr>
+
+<tr>
+<td>ROUNDDOWN</td>
+<td>Selalu membulatkan ke bawah.</td>
+<td>=ROUNDDOWN(12.59,1)</td>
+</tr>
+
+<tr>
+<td>INT</td>
+<td>Menghasilkan bilangan bulat ke bawah.</td>
+<td>=INT(12.9)</td>
+</tr>
+
+<tr>
+<td>TRUNC</td>
+<td>Memotong angka desimal tanpa pembulatan.</td>
+<td>=TRUNC(12.99,1)</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<h3>Perbedaan ROUND, ROUNDUP dan ROUNDDOWN</h3>
+
+<div class="example">
+
+<div class="formula">
+=ROUND(12.56,1)
+</div>
+
+<p>
+Hasil: <strong>12.6</strong>
+</p>
+
+<div class="formula">
+=ROUNDUP(12.51,1)
+</div>
+
+<p>
+Hasil: <strong>12.6</strong>
+</p>
+
+<div class="formula">
+=ROUNDDOWN(12.59,1)
+</div>
+
+<p>
+Hasil: <strong>12.5</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     11. MOD
+================================================== -->
+
+<section class="card">
+
+<h2>11. 🔢 Fungsi MOD</h2>
+
+<p>
+Fungsi <strong>MOD</strong> digunakan untuk mendapatkan
+sisa hasil pembagian.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=MOD(number, divisor)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=MOD(17,5)
+</div>
+
+<p>
+17 dibagi 5 menghasilkan 3 dengan sisa:
+</p>
+
+<div class="formula">
+2
+</div>
+
+<div class="example">
+
+<div class="example-title">
+💡 Contoh penggunaan
+</div>
+
+<p>
+MOD dapat digunakan untuk mengetahui apakah suatu angka
+merupakan bilangan genap atau ganjil.
+</p>
+
+<div class="formula">
+=MOD(A2,2)
+</div>
+
+<p>
+Jika hasilnya 0 berarti genap. Jika hasilnya 1 berarti ganjil
+untuk bilangan bulat positif.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     12. POWER
+================================================== -->
+
+<section class="card">
+
+<h2>12. ⚡ Fungsi POWER</h2>
+
+<p>
+Fungsi <strong>POWER</strong> digunakan untuk menghitung
+perpangkatan.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=POWER(number, power)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=POWER(5,2)
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+25
+</div>
+
+<p>
+Selain POWER, perpangkatan juga dapat menggunakan operator:
+</p>
+
+<div class="formula">
+=5^2
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     13. SQRT
+================================================== -->
+
+<section class="card">
+
+<h2>13. √ Fungsi SQRT</h2>
+
+<p>
+Fungsi <strong>SQRT</strong> digunakan untuk mencari akar kuadrat
+dari suatu angka.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=SQRT(number)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=SQRT(144)
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+12
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     14. SIGN
+================================================== -->
+
+<section class="card">
+
+<h2>14. ➕➖ Fungsi SIGN</h2>
+
+<p>
+Fungsi <strong>SIGN</strong> digunakan untuk mengetahui tanda
+suatu angka.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Nilai</th>
+<th>Hasil SIGN</th>
+</tr>
+
+<tr>
+<td>Angka positif</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>Angka nol</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Angka negatif</td>
+<td>-1</td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=SIGN(-25)
+</div>
+
+<p>
+Hasil:
+<strong>-1</strong>
+</p>
+
+</section>
+
+
+<!-- ==================================================
+     15. SUMPRODUCT
+================================================== -->
+
+<section class="card">
+
+<h2>15. 🧮 Fungsi SUMPRODUCT</h2>
+
+<p>
+<strong>SUMPRODUCT</strong> digunakan untuk mengalikan nilai
+dari beberapa range kemudian menjumlahkan hasil perkaliannya.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Misalnya terdapat:
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Produk</th>
+<th>Jumlah</th>
+<th>Harga</th>
+</tr>
+
+<tr>
+<td>A</td>
+<td>2</td>
+<td>10.000</td>
+</tr>
+
+<tr>
+<td>B</td>
+<td>3</td>
+<td>20.000</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>4</td>
+<td>15.000</td>
+</tr>
+
+</table>
+
+</div>
+
+<p>
+Formula:
+</p>
+
+<div class="formula">
+=SUMPRODUCT(B2:B4,C2:C4)
+</div>
+
+<p>
+Formula tersebut menghitung jumlah × harga pada setiap baris
+kemudian menjumlahkan seluruh hasilnya.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+     16. TRIGONOMETRI
+================================================== -->
+
+<section class="card">
+
+<h2>16. 📐 Fungsi Trigonometri</h2>
+
+<p>
+Excel juga menyediakan fungsi trigonometri yang dapat digunakan
+untuk berbagai perhitungan sudut dan geometri.
+</p>
+
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>SIN</td>
+<td>Menghasilkan nilai sinus.</td>
+</tr>
+
+<tr>
+<td>COS</td>
+<td>Menghasilkan nilai cosinus.</td>
+</tr>
+
+<tr>
+<td>TAN</td>
+<td>Menghasilkan nilai tangen.</td>
+</tr>
+
+<tr>
+<td>ASIN</td>
+<td>Menghasilkan inverse sinus.</td>
+</tr>
+
+<tr>
+<td>ACOS</td>
+<td>Menghasilkan inverse cosinus.</td>
+</tr>
+
+<tr>
+<td>ATAN</td>
+<td>Menghasilkan inverse tangen.</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     17. SIN
+================================================== -->
+
+<section class="card">
+
+<h2>17. 📐 Fungsi SIN</h2>
+
+<p>
+Fungsi <strong>SIN</strong> digunakan untuk menghitung
+nilai sinus suatu sudut.
+</p>
+
+<div class="warning">
+
+<strong>Penting:</strong>
+
+<p>
+Fungsi trigonometri Excel menggunakan satuan <strong>radian</strong>.
+Jika sudut dinyatakan dalam derajat, lakukan konversi terlebih dahulu.
+</p>
+
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=SIN(RADIANS(30))
+</div>
+
+<p>
+Hasilnya mendekati:
+</p>
+
+<div class="formula">
+0,5
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     18. COS
+================================================== -->
+
+<section class="card">
+
+<h2>18. 📐 Fungsi COS</h2>
+
+<p>
+Fungsi <strong>COS</strong> digunakan untuk menghitung
+nilai cosinus suatu sudut.
+</p>
+
+<div class="formula">
+=COS(RADIANS(60))
+</div>
+
+<p>
+Hasilnya mendekati:
+</p>
+
+<div class="formula">
+0,5
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     19. TAN
+================================================== -->
+
+<section class="card">
+
+<h2>19. 📐 Fungsi TAN</h2>
+
+<p>
+Fungsi <strong>TAN</strong> digunakan untuk menghitung
+nilai tangen suatu sudut.
+</p>
+
+<div class="formula">
+=TAN(RADIANS(45))
+</div>
+
+<p>
+Hasilnya mendekati:
+</p>
+
+<div class="formula">
+1
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     20. RADIANS DAN DEGREES
+================================================== -->
+
+<section class="card">
+
+<h2>20. 🔄 Fungsi RADIANS dan DEGREES</h2>
+
+<h3>RADIANS</h3>
+
+<p>
+Mengubah sudut dari derajat menjadi radian.
+</p>
+
+<div class="formula">
+=RADIANS(180)
+</div>
+
+<p>
+Hasilnya adalah π atau sekitar:
+</p>
+
+<div class="formula">
+3,141592654
+</div>
+
+
+<h3>DEGREES</h3>
+
+<p>
+Mengubah sudut dari radian menjadi derajat.
+</p>
+
+<div class="formula">
+=DEGREES(PI())
+</div>
+
+<p>
+Hasil:
+</p>
+
+<div class="formula">
+180
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     21. RINGKASAN FUNGSI
+================================================== -->
+
+<section class="card">
+
+<h2>21. 📋 Ringkasan Fungsi</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+<th>Contoh</th>
+</tr>
+
+<tr>
+<td>SUM</td>
+<td>Menjumlahkan nilai.</td>
+<td>=SUM(A1:A10)</td>
+</tr>
+
+<tr>
+<td>SUMIF</td>
+<td>Menjumlahkan berdasarkan kriteria.</td>
+<td>=SUMIF(A:A,"Lulus",B:B)</td>
+</tr>
+
+<tr>
+<td>PRODUCT</td>
+<td>Mengalikan beberapa nilai.</td>
+<td>=PRODUCT(A1:A5)</td>
+</tr>
+
+<tr>
+<td>QUOTIENT</td>
+<td>Mengambil hasil pembagian bulat.</td>
+<td>=QUOTIENT(17,5)</td>
+</tr>
+
+<tr>
+<td>ROUND</td>
+<td>Membulatkan angka.</td>
+<td>=ROUND(12.56,1)</td>
+</tr>
+
+<tr>
+<td>ROUNDUP</td>
+<td>Membulatkan ke atas.</td>
+<td>=ROUNDUP(12.51,1)</td>
+</tr>
+
+<tr>
+<td>ROUNDDOWN</td>
+<td>Membulatkan ke bawah.</td>
+<td>=ROUNDDOWN(12.59,1)</td>
+</tr>
+
+<tr>
+<td>INT</td>
+<td>Membulatkan ke bawah menjadi integer.</td>
+<td>=INT(12.9)</td>
+</tr>
+
+<tr>
+<td>TRUNC</td>
+<td>Memotong desimal.</td>
+<td>=TRUNC(12.99,1)</td>
+</tr>
+
+<tr>
+<td>ABS</td>
+<td>Menghasilkan nilai absolut.</td>
+<td>=ABS(-100)</td>
+</tr>
+
+<tr>
+<td>MOD</td>
+<td>Mencari sisa pembagian.</td>
+<td>=MOD(17,5)</td>
+</tr>
+
+<tr>
+<td>POWER</td>
+<td>Perpangkatan.</td>
+<td>=POWER(5,2)</td>
+</tr>
+
+<tr>
+<td>SQRT</td>
+<td>Akar kuadrat.</td>
+<td>=SQRT(144)</td>
+</tr>
+
+<tr>
+<td>SIGN</td>
+<td>Menentukan tanda angka.</td>
+<td>=SIGN(-25)</td>
+</tr>
+
+<tr>
+<td>SUMPRODUCT</td>
+<td>Perkalian array lalu penjumlahan.</td>
+<td>=SUMPRODUCT(B2:B5,C2:C5)</td>
+</tr>
+
+<tr>
+<td>SIN</td>
+<td>Nilai sinus.</td>
+<td>=SIN(RADIANS(30))</td>
+</tr>
+
+<tr>
+<td>COS</td>
+<td>Nilai cosinus.</td>
+<td>=COS(RADIANS(60))</td>
+</tr>
+
+<tr>
+<td>TAN</td>
+<td>Nilai tangen.</td>
+<td>=TAN(RADIANS(45))</td>
+</tr>
+
+<tr>
+<td>RADIANS</td>
+<td>Derajat menjadi radian.</td>
+<td>=RADIANS(180)</td>
+</tr>
+
+<tr>
+<td>DEGREES</td>
+<td>Radian menjadi derajat.</td>
+<td>=DEGREES(PI())</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     22. LATIHAN
+================================================== -->
+
+<section class="card">
+
+<h2>22. 📝 Latihan Praktik</h2>
+
+<p>
+Buatlah tabel sederhana seperti berikut di Excel:
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Produk</th>
+<th>Jumlah</th>
+<th>Harga</th>
+<th>Total</th>
+</tr>
+
+<tr>
+<td>Laptop</td>
+<td>3</td>
+<td>7.500.000</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Printer</td>
+<td>5</td>
+<td>2.000.000</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Monitor</td>
+<td>4</td>
+<td>2.500.000</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Laptop</td>
+<td>2</td>
+<td>7.500.000</td>
+<td>?</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<h3>Tugas 1</h3>
+
+<p>
+Gunakan fungsi <strong>PRODUCT</strong> untuk menghitung
+total setiap produk.
+</p>
+
+
+<h3>Tugas 2</h3>
+
+<p>
+Gunakan <strong>SUM</strong> untuk menghitung seluruh total penjualan.
+</p>
+
+
+<h3>Tugas 3</h3>
+
+<p>
+Gunakan <strong>SUMIF</strong> untuk menghitung total penjualan
+khusus produk Laptop.
+</p>
+
+
+<h3>Tugas 4</h3>
+
+<p>
+Gunakan <strong>ROUND</strong> untuk membulatkan hasil perhitungan
+desimal menjadi dua angka di belakang koma.
+</p>
+
+
+<h3>Tugas 5</h3>
+
+<p>
+Coba gunakan <strong>ABS</strong>, <strong>MOD</strong>,
+<strong>QUOTIENT</strong>, dan <strong>TRUNC</strong>
+pada data angka lainnya.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+     23. TIPS
+================================================== -->
+
+<section class="card">
+
+<h2>23. 💡 Tips Penting</h2>
+
+<ul>
+
+<li>
+Gunakan <strong>SUM</strong> untuk penjumlahan umum.
+</li>
+
+<li>
+Gunakan <strong>SUMIF</strong> jika penjumlahan membutuhkan kriteria.
+</li>
+
+<li>
+Gunakan <strong>PRODUCT</strong> untuk perkalian beberapa nilai.
+</li>
+
+<li>
+Gunakan <strong>QUOTIENT</strong> jika hanya membutuhkan hasil
+pembagian bilangan bulat.
+</li>
+
+<li>
+Gunakan <strong>MOD</strong> jika membutuhkan sisa pembagian.
+</li>
+
+<li>
+Gunakan <strong>ROUND</strong> jika ingin pembulatan normal.
+</li>
+
+<li>
+Gunakan <strong>ROUNDUP</strong> jika harus selalu membulatkan ke atas.
+</li>
+
+<li>
+Gunakan <strong>ROUNDDOWN</strong> jika harus selalu membulatkan ke bawah.
+</li>
+
+<li>
+Gunakan <strong>INT</strong> untuk mendapatkan bilangan bulat ke bawah.
+</li>
+
+<li>
+Gunakan <strong>TRUNC</strong> jika ingin memotong desimal tanpa pembulatan.
+</li>
+
+<li>
+Gunakan <strong>ABS</strong> jika ingin menghilangkan tanda negatif.
+</li>
+
+<li>
+Untuk fungsi trigonometri, perhatikan bahwa Excel menggunakan
+<strong>radian</strong>.
+</li>
+
+</ul>
+
+</section>
+
+
+<!-- ==================================================
+     KESIMPULAN
+================================================== -->
+
+<section class="card">
+
+<h2>🎓 Kesimpulan</h2>
+
+<p>
+Fungsi matematika dan trigonometri membantu pengguna Excel
+melakukan berbagai perhitungan dengan lebih cepat dan akurat.
+</p>
+
+<p>
+Fungsi yang perlu dikuasai antara lain:
+</p>
+
+<div class="intro">
+
+<strong>
+SUM • SUMIF • PRODUCT • QUOTIENT • ROUND • INT • TRUNC • ABS
+• MOD • POWER • SQRT • SUMPRODUCT • SIN • COS • TAN
+</strong>
+
+</div>
+
+<p>
+Pemilihan fungsi yang tepat akan membuat pekerjaan pengolahan
+data menjadi lebih efisien dan profesional.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+     NAVIGASI
+================================================== -->
+
+<section class="card">
+
+<div class="nav-box">
+
+<a
+href="modul-excel-4.html"
+class="btn btn-gray">
+← Modul 4
+</a>
+
+<a
+href="kuis-excel-5.html"
+class="btn btn-blue">
+📝 Mulai Kuis Modul 5 →
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<footer class="footer">
+
+<p>
+<strong>Pelatihan Microsoft Excel</strong>
+</p>
+
+<p>
+Modul 5 — Fungsi Matematika dan Trigonometri
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+</body>
+</html>

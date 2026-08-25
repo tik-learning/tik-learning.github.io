@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis PPT Modul 7 - Transisi, Slide Show dan Review</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+header .icon{
+    font-size:50px;
+    margin-bottom:8px;
+}
+
+header h1{
+    font-size:27px;
+    margin-bottom:5px;
+}
+
+header p{
+    font-size:15px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:850px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:28px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#b71c1c;
+    margin-bottom:15px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.form-group input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+}
+
+.form-group input:focus{
+    border-color:#e53935;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    padding:13px 22px;
+    font-size:16px;
+    font-weight:bold;
+    background:#e53935;
+    color:white;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
+}
+
+.btn-start{
+    width:100%;
+}
+
+.btn-submit{
+    width:100%;
+    background:#2e7d32;
+    margin-top:20px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    background:#ffebee;
+    border-left:5px solid #e53935;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.info ul{
+    padding-left:20px;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer-box{
+    position:sticky;
+    top:10px;
+    z-index:100;
+    background:#263238;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    margin-bottom:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.timer-label{
+    font-size:13px;
+}
+
+#timer{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:2px;
+}
+
+.timer-warning{
+    background:#b71c1c;
+}
+
+/* =========================
+   SOAL
+========================= */
+
+.question{
+    border:1px solid #e0e0e0;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:18px;
+    background:#fff;
+}
+
+.question-number{
+    color:#b71c1c;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.question-text{
+    font-weight:bold;
+    margin-bottom:13px;
+}
+
+.option{
+    display:block;
+    padding:10px 12px;
+    margin:7px 0;
+    border:1px solid #e0e0e0;
+    border-radius:7px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#ffebee;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+/* =========================
+   HASIL
+========================= */
+
+.result{
+    display:none;
+    text-align:center;
+}
+
+.result-icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.result h2{
+    color:#2e7d32;
+}
+
+.score{
+    font-size:50px;
+    font-weight:bold;
+    color:#b71c1c;
+    margin:15px 0;
+}
+
+.result-box{
+    background:#f5f5f5;
+    border-radius:10px;
+    padding:20px;
+    margin:20px 0;
+}
+
+.status{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.lulus{
+    color:#2e7d32;
+}
+
+.tidak-lulus{
+    color:#c62828;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:4px;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:23px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .question{
+        padding:16px;
+    }
+
+    #timer{
+        font-size:26px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="icon">
+        🎬
+    </div>
+
+    <h1>
+        KUIS MODUL 7
+    </h1>
+
+    <p>
+        Efek Transisi, Slide Show dan Review Presentasi
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- =========================
+     PASSWORD
+========================= -->
+
+<div id="passwordSection" class="card">
+
+    <h2>
+        🔐 Akses Kuis
+    </h2>
+
+    <div class="info">
+
+        <strong>
+            Petunjuk:
+        </strong>
+
+        <p>
+            Masukkan password yang diberikan oleh
+            instruktur untuk mengakses kuis.
+        </p>
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan password"
+        >
+
+    </div>
+
+    <button
+        type="button"
+        class="btn-start"
+        onclick="cekPassword()"
+    >
+        Masuk ke Kuis
+    </button>
+
+</div>
+
+
+<!-- =========================
+     IDENTITAS PESERTA
+========================= -->
+
+<div
+    id="nameSection"
+    class="card hidden"
+>
+
+    <h2>
+        👤 Data Peserta
+    </h2>
+
+    <div class="info">
+
+        <strong>
+            Sebelum memulai:
+        </strong>
+
+        <p>
+            Silakan masukkan nama lengkap Anda.
+            Nama akan ditampilkan pada hasil kuis.
+        </p>
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="namaPeserta">
+            Nama Peserta
+        </label>
+
+        <input
+            type="text"
+            id="namaPeserta"
+            placeholder="Masukkan nama lengkap"
+        >
+
+    </div>
+
+    <button
+        type="button"
+        class="btn-start"
+        onclick="mulaiKuis()"
+    >
+        🚀 Mulai Kuis
+    </button>
+
+</div>
+
+
+<!-- =========================
+     KUIS
+========================= -->
+
+<div
+    id="quizSection"
+    class="hidden"
+>
+
+    <div class="timer-box" id="timerBox">
+
+        <div class="timer-label">
+            ⏱️ Sisa Waktu
+        </div>
+
+        <div id="timer">
+            10:00
+        </div>
+
+    </div>
+
+
+    <form id="quizForm">
+
+
+        <!-- SOAL 1 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 1
+            </div>
+
+            <div class="question-text">
+                Apa fungsi utama Transition pada
+                Microsoft PowerPoint?
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q1" value="A">
+                A. Memberikan efek pada teks
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="B">
+                B. Memberikan efek pada perpindahan antar-slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="C">
+                C. Mengubah warna font
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="D">
+                D. Menambahkan gambar
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 2 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 2
+            </div>
+
+            <div class="question-text">
+                Tab yang digunakan untuk memberikan
+                efek transisi pada slide adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q2" value="A">
+                A. Home
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="B">
+                B. Insert
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="C">
+                C. Transitions
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="D">
+                D. Review
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 3 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 3
+            </div>
+
+            <div class="question-text">
+                Fungsi Duration pada Transition adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q3" value="A">
+                A. Mengatur ukuran slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="B">
+                B. Mengatur lama berlangsungnya efek transisi
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="C">
+                C. Mengatur warna background
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="D">
+                D. Mengatur ukuran font
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 4 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 4
+            </div>
+
+            <div class="question-text">
+                Jika ingin memberikan efek transisi
+                yang sama pada seluruh slide, digunakan ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q4" value="A">
+                A. Apply To All
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="B">
+                B. Copy All
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="C">
+                C. Repeat All
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="D">
+                D. Format All
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 5 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 5
+            </div>
+
+            <div class="question-text">
+                Pengaturan yang membuat slide berpindah
+                ketika mouse diklik adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q5" value="A">
+                A. After
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="B">
+                B. On Mouse Click
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="C">
+                C. Automatically
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="D">
+                D. Duration
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 6 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 6
+            </div>
+
+            <div class="question-text">
+                Untuk menjalankan presentasi mulai
+                dari slide pertama digunakan ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q6" value="A">
+                A. From Current Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="B">
+                B. From Beginning
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="C">
+                C. Start Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="D">
+                D. First Slide
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 7 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 7
+            </div>
+
+            <div class="question-text">
+                From Current Slide digunakan untuk ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q7" value="A">
+                A. Memulai presentasi dari slide pertama
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="B">
+                B. Memulai presentasi dari slide yang sedang aktif
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="C">
+                C. Menghapus slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="D">
+                D. Mengganti tema
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 8 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 8
+            </div>
+
+            <div class="question-text">
+                Fitur yang membantu presenter melihat
+                catatan dan slide berikutnya ketika
+                presentasi adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q8" value="A">
+                A. Normal View
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="B">
+                B. Slide Sorter
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="C">
+                C. Presenter View
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="D">
+                D. Reading View
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 9 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 9
+            </div>
+
+            <div class="question-text">
+                Fungsi Rehearse Timings adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q9" value="A">
+                A. Menghapus timing
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="B">
+                B. Berlatih dan merekam waktu presentasi
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="C">
+                C. Mengubah warna slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="D">
+                D. Menambahkan gambar
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 10 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 10
+            </div>
+
+            <div class="question-text">
+                Tombol keyboard yang digunakan untuk
+                mengakhiri Slide Show adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q10" value="A">
+                A. Enter
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="B">
+                B. Space
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="C">
+                C. Esc
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="D">
+                D. Ctrl
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 11 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 11
+            </div>
+
+            <div class="question-text">
+                Fitur untuk memeriksa kesalahan ejaan
+                pada presentasi adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q11" value="A">
+                A. Spelling
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="B">
+                B. Translate
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="C">
+                C. Language
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="D">
+                D. Thesaurus
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 12 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 12
+            </div>
+
+            <div class="question-text">
+                Fungsi Thesaurus adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q12" value="A">
+                A. Menerjemahkan bahasa
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="B">
+                B. Mencari kata yang memiliki makna serupa
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="C">
+                C. Memeriksa gambar
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="D">
+                D. Mengatur slide
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 13 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 13
+            </div>
+
+            <div class="question-text">
+                Fitur yang digunakan untuk menambahkan
+                catatan atau masukan pada presentasi adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q13" value="A">
+                A. Comment
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="B">
+                B. Note
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="C">
+                C. Text Box
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="D">
+                D. Caption
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 14 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 14
+            </div>
+
+            <div class="question-text">
+                Fitur Record Slide Show dapat digunakan
+                untuk ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q14" value="A">
+                A. Merekam jalannya presentasi
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="B">
+                B. Menghapus presentasi
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="C">
+                C. Mengubah ukuran slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="D">
+                D. Membuat tabel
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 15 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 15
+            </div>
+
+            <div class="question-text">
+                Manakah yang paling tepat dilakukan
+                sebelum presentasi sebenarnya?
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q15" value="A">
+                A. Langsung menjalankan presentasi tanpa pemeriksaan
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="B">
+                B. Menghapus semua transition
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="C">
+                C. Melakukan review dan simulasi Slide Show
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="D">
+                D. Mengganti semua font
+            </label>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-submit"
+            onclick="selesaiKuis(false)"
+        >
+            ✅ Selesai & Lihat Nilai
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =========================
+     HASIL
+========================= -->
+
+<div
+    id="resultSection"
+    class="card result"
+>
+
+    <div class="result-icon">
+        🏆
+    </div>
+
+    <h2>
+        Kuis Selesai
+    </h2>
+
+    <div class="result-box">
+
+        <p>
+            <strong>Nama Peserta</strong>
+        </p>
+
+        <p id="hasilNama">
+            -
+        </p>
+
+        <div
+            class="score"
+            id="hasilNilai"
+        >
+            0
+        </div>
+
+        <p>
+            Nilai Akhir
+        </p>
+
+        <div
+            class="status"
+            id="hasilStatus"
+        >
+            -
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <p>
+            Jumlah soal:
+            <strong>15 soal</strong>
+        </p>
+
+        <p>
+            Nilai dihitung berdasarkan jumlah
+            jawaban yang benar.
+        </p>
+
+    </div>
+
+    <button
+        type="button"
+        onclick="location.reload()"
+    >
+        🔄 Ulangi Kuis
+    </button>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Kuis Modul 7 — Transisi, Slide Show dan Review
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   KONFIGURASI
+========================================= */
+
+const PASSWORD_KUIS = "ppt7";
+
+const DURASI_KUIS = 10 * 60;
+
+let waktu = DURASI_KUIS;
+
+let intervalTimer;
+
+
+/* =========================================
+   KUNCI JAWABAN
+========================================= */
+
+const jawabanBenar = {
+
+    q1: "B",
+    q2: "C",
+    q3: "B",
+    q4: "A",
+    q5: "B",
+    q6: "B",
+    q7: "B",
+    q8: "C",
+    q9: "B",
+    q10: "C",
+    q11: "A",
+    q12: "B",
+    q13: "A",
+    q14: "A",
+    q15: "C"
+
+};
+
+
+/* =========================================
+   CEK PASSWORD
+========================================= */
+
+function cekPassword(){
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    if(password === ""){
+
+        alert("Silakan masukkan password.");
+
+        return;
+
+    }
+
+    if(password !== PASSWORD_KUIS){
+
+        alert("Password salah. Silakan coba lagi.");
+
+        document
+        .getElementById("password")
+        .value = "";
+
+        return;
+
+    }
+
+    document
+    .getElementById("passwordSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("nameSection")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================================
+   MULAI KUIS
+========================================= */
+
+function mulaiKuis(){
+
+    const nama =
+        document
+        .getElementById("namaPeserta")
+        .value
+        .trim();
+
+    if(nama === ""){
+
+        alert("Silakan masukkan nama peserta.");
+
+        return;
+
+    }
+
+    document
+    .getElementById("nameSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("quizSection")
+    .classList.remove("hidden");
+
+    mulaiTimer();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+function mulaiTimer(){
+
+    waktu = DURASI_KUIS;
+
+    tampilkanTimer();
+
+    intervalTimer =
+        setInterval(function(){
+
+            waktu--;
+
+            tampilkanTimer();
+
+            if(waktu <= 0){
+
+                clearInterval(intervalTimer);
+
+                alert(
+                    "Waktu kuis telah habis. Jawaban akan diperiksa otomatis."
+                );
+
+                selesaiKuis(true);
+
+            }
+
+        },1000);
+
+}
+
+
+/* =========================================
+   TAMPIL TIMER
+========================================= */
+
+function tampilkanTimer(){
+
+    let menit =
+        Math.floor(waktu / 60);
+
+    let detik =
+        waktu % 60;
+
+    menit =
+        menit
+        .toString()
+        .padStart(2,"0");
+
+    detik =
+        detik
+        .toString()
+        .padStart(2,"0");
+
+    document
+    .getElementById("timer")
+    .textContent =
+        menit + ":" + detik;
+
+
+    if(waktu <= 60){
+
+        document
+        .getElementById("timerBox")
+        .classList
+        .add("timer-warning");
+
+    }
+
+}
+
+
+/* =========================================
+   SELESAI KUIS
+========================================= */
+
+function selesaiKuis(otomatis){
+
+    clearInterval(intervalTimer);
+
+    let benar = 0;
+
+
+    for(let i = 1; i <= 15; i++){
+
+        const jawaban =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+        if(
+            jawaban &&
+            jawaban.value ===
+            jawabanBenar["q" + i]
+        ){
+
+            benar++;
+
+        }
+
+    }
+
+
+    const nilai =
+        Math.round(
+            (benar / 15) * 100
+        );
+
+
+    const nama =
+        document
+        .getElementById("namaPeserta")
+        .value
+        .trim();
+
+
+    document
+    .getElementById("quizSection")
+    .classList
+    .add("hidden");
+
+
+    document
+    .getElementById("resultSection")
+    .style
+    .display = "block";
+
+
+    document
+    .getElementById("hasilNama")
+    .textContent = nama;
+
+
+    document
+    .getElementById("hasilNilai")
+    .textContent = nilai;
+
+
+    const status =
+        document
+        .getElementById("hasilStatus");
+
+
+    if(nilai >= 70){
+
+        status.textContent =
+            "LULUS";
+
+        status.className =
+            "status lulus";
+
+    }
+    else{
+
+        status.textContent =
+            "BELUM LULUS";
+
+        status.className =
+            "status tidak-lulus";
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>

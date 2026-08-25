@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis PPT Modul 8 - Mencetak dan Export Presentasi</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+header .icon{
+    font-size:50px;
+    margin-bottom:8px;
+}
+
+header h1{
+    font-size:27px;
+    margin-bottom:5px;
+}
+
+header p{
+    font-size:15px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:850px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:28px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#b71c1c;
+    margin-bottom:15px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.form-group input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+}
+
+.form-group input:focus{
+    border-color:#e53935;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    padding:13px 22px;
+    font-size:16px;
+    font-weight:bold;
+    background:#e53935;
+    color:white;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
+}
+
+.btn-start{
+    width:100%;
+}
+
+.btn-submit{
+    width:100%;
+    background:#2e7d32;
+    margin-top:20px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    background:#ffebee;
+    border-left:5px solid #e53935;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.info ul{
+    padding-left:20px;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer-box{
+    position:sticky;
+    top:10px;
+    z-index:100;
+    background:#263238;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    margin-bottom:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.timer-label{
+    font-size:13px;
+}
+
+#timer{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:2px;
+}
+
+.timer-warning{
+    background:#b71c1c;
+}
+
+/* =========================
+   SOAL
+========================= */
+
+.question{
+    border:1px solid #e0e0e0;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:18px;
+    background:#fff;
+}
+
+.question-number{
+    color:#b71c1c;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.question-text{
+    font-weight:bold;
+    margin-bottom:13px;
+}
+
+.option{
+    display:block;
+    padding:10px 12px;
+    margin:7px 0;
+    border:1px solid #e0e0e0;
+    border-radius:7px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#ffebee;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+/* =========================
+   HASIL
+========================= */
+
+.result{
+    display:none;
+    text-align:center;
+}
+
+.result-icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.result h2{
+    color:#2e7d32;
+}
+
+.score{
+    font-size:50px;
+    font-weight:bold;
+    color:#b71c1c;
+    margin:15px 0;
+}
+
+.result-box{
+    background:#f5f5f5;
+    border-radius:10px;
+    padding:20px;
+    margin:20px 0;
+}
+
+.status{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.lulus{
+    color:#2e7d32;
+}
+
+.tidak-lulus{
+    color:#c62828;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:4px;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:23px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .question{
+        padding:16px;
+    }
+
+    #timer{
+        font-size:26px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="icon">
+        🖨️
+    </div>
+
+    <h1>
+        KUIS MODUL 8
+    </h1>
+
+    <p>
+        Mencetak dan Export Presentasi
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- =========================
+     PASSWORD
+========================= -->
+
+<div id="passwordSection" class="card">
+
+    <h2>
+        🔐 Akses Kuis
+    </h2>
+
+    <div class="info">
+
+        <strong>
+            Petunjuk:
+        </strong>
+
+        <p>
+            Masukkan password yang diberikan oleh
+            instruktur untuk mengakses kuis.
+        </p>
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan password"
+            autocomplete="off"
+        >
+
+    </div>
+
+    <button
+        type="button"
+        class="btn-start"
+        onclick="cekPassword()"
+    >
+        Masuk ke Kuis
+    </button>
+
+</div>
+
+
+<!-- =========================
+     IDENTITAS PESERTA
+========================= -->
+
+<div
+    id="nameSection"
+    class="card hidden"
+>
+
+    <h2>
+        👤 Data Peserta
+    </h2>
+
+    <div class="info">
+
+        <strong>
+            Sebelum memulai:
+        </strong>
+
+        <p>
+            Silakan masukkan nama lengkap Anda.
+            Nama akan ditampilkan pada hasil kuis.
+        </p>
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="namaPeserta">
+            Nama Peserta
+        </label>
+
+        <input
+            type="text"
+            id="namaPeserta"
+            placeholder="Masukkan nama lengkap"
+            autocomplete="name"
+        >
+
+    </div>
+
+    <button
+        type="button"
+        class="btn-start"
+        onclick="mulaiKuis()"
+    >
+        🚀 Mulai Kuis
+    </button>
+
+</div>
+
+
+<!-- =========================
+     KUIS
+========================= -->
+
+<div
+    id="quizSection"
+    class="hidden"
+>
+
+    <div class="timer-box" id="timerBox">
+
+        <div class="timer-label">
+            ⏱️ Sisa Waktu
+        </div>
+
+        <div id="timer">
+            10:00
+        </div>
+
+    </div>
+
+
+    <form id="quizForm">
+
+
+        <!-- SOAL 1 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 1
+            </div>
+
+            <div class="question-text">
+                Menu yang digunakan untuk mencetak
+                presentasi pada Microsoft PowerPoint 2016
+                adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q1" value="A">
+                A. File → Print
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="B">
+                B. Home → Print
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="C">
+                C. Insert → Print
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="D">
+                D. Review → Print
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 2 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 2
+            </div>
+
+            <div class="question-text">
+                Fungsi Print All Slides adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q2" value="A">
+                A. Mencetak slide yang sedang aktif
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="B">
+                B. Mencetak seluruh slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="C">
+                C. Mencetak satu halaman saja
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="D">
+                D. Mencetak catatan saja
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 3 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 3
+            </div>
+
+            <div class="question-text">
+                Jika hanya ingin mencetak slide yang
+                sedang aktif, pilihan yang digunakan adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q3" value="A">
+                A. Print All Slides
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="B">
+                B. Print Current Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="C">
+                C. Print Selection
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="D">
+                D. Print Outline
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 4 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 4
+            </div>
+
+            <div class="question-text">
+                Layout yang digunakan untuk mencetak
+                beberapa slide dalam satu halaman disebut ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q4" value="A">
+                A. Notes
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="B">
+                B. Outline
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="C">
+                C. Handouts
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="D">
+                D. Full Page
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 5 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 5
+            </div>
+
+            <div class="question-text">
+                Pilihan Handout yang menyediakan tiga slide
+                sekaligus ruang untuk catatan adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q5" value="A">
+                A. 2 Slides
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="B">
+                B. 3 Slides
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="C">
+                C. 6 Slides
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="D">
+                D. 9 Slides
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 6 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 6
+            </div>
+
+            <div class="question-text">
+                Pengaturan Color, Grayscale, dan Pure Black
+                and White terdapat pada pengaturan ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q6" value="A">
+                A. Warna cetakan
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="B">
+                B. Ukuran font
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="C">
+                C. Ukuran slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="D">
+                D. Animasi
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 7 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 7
+            </div>
+
+            <div class="question-text">
+                Format standar untuk menyimpan presentasi
+                PowerPoint 2016 adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q7" value="A">
+                A. .docx
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="B">
+                B. .xlsx
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="C">
+                C. .pptx
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="D">
+                D. .txt
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 8 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 8
+            </div>
+
+            <div class="question-text">
+                Format yang cocok digunakan agar presentasi
+                mudah dibagikan dan dicetak adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q8" value="A">
+                A. .pptx
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="B">
+                B. .pdf
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="C">
+                C. .exe
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="D">
+                D. .html
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 9 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 9
+            </div>
+
+            <div class="question-text">
+                Menu untuk melakukan export presentasi
+                adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q9" value="A">
+                A. File → Export
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="B">
+                B. Home → Export
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="C">
+                C. Insert → Export
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="D">
+                D. Review → Export
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 10 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 10
+            </div>
+
+            <div class="question-text">
+                Untuk membuat file PDF dari presentasi,
+                pilihan yang digunakan adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q10" value="A">
+                A. Create a Video
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="B">
+                B. Create PDF/XPS
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="C">
+                C. Package Presentation
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="D">
+                D. Create Handouts
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 11 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 11
+            </div>
+
+            <div class="question-text">
+                Tombol yang digunakan untuk menghasilkan
+                file PDF setelah menentukan lokasi dan
+                nama file adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q11" value="A">
+                A. Save
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="B">
+                B. Export
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="C">
+                C. Publish
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="D">
+                D. Print
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 12 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 12
+            </div>
+
+            <div class="question-text">
+                Fitur yang digunakan untuk membuat
+                presentasi menjadi video adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q12" value="A">
+                A. Create a Video
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="B">
+                B. Create PDF
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="C">
+                C. Create Handouts
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="D">
+                D. Package CD
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 13 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 13
+            </div>
+
+            <div class="question-text">
+                Format yang digunakan untuk menyimpan
+                slide sebagai gambar adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q13" value="A">
+                A. JPG atau PNG
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="B">
+                B. DOCX
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="C">
+                C. XLSX
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="D">
+                D. TXT
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 14 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 14
+            </div>
+
+            <div class="question-text">
+                Jika hanya ingin menyimpan slide yang
+                sedang dipilih sebagai gambar, pilih ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q14" value="A">
+                A. Every Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="B">
+                B. Current Slide Only
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="C">
+                C. All Slides
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="D">
+                D. Full Presentation
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 15 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 15
+            </div>
+
+            <div class="question-text">
+                Format yang paling tepat jika presentasi
+                masih akan diedit kembali di PowerPoint
+                adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q15" value="A">
+                A. .pdf
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="B">
+                B. .jpg
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="C">
+                C. .pptx
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="D">
+                D. .png
+            </label>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-submit"
+            onclick="selesaiKuis(false)"
+        >
+            ✅ Selesai & Lihat Nilai
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =========================
+     HASIL
+========================= -->
+
+<div
+    id="resultSection"
+    class="card result"
+>
+
+    <div class="result-icon">
+        🏆
+    </div>
+
+    <h2>
+        Kuis Selesai
+    </h2>
+
+    <div class="result-box">
+
+        <p>
+            <strong>Nama Peserta</strong>
+        </p>
+
+        <p id="hasilNama">
+            -
+        </p>
+
+        <div
+            class="score"
+            id="hasilNilai"
+        >
+            0
+        </div>
+
+        <p>
+            Nilai Akhir
+        </p>
+
+        <div
+            class="status"
+            id="hasilStatus"
+        >
+            -
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <p>
+            Jumlah soal:
+            <strong>15 soal</strong>
+        </p>
+
+        <p>
+            Nilai dihitung berdasarkan jumlah
+            jawaban yang benar.
+        </p>
+
+    </div>
+
+    <button
+        type="button"
+        onclick="location.reload()"
+    >
+        🔄 Ulangi Kuis
+    </button>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Kuis Modul 8 — Mencetak dan Export Presentasi
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   KONFIGURASI
+========================================= */
+
+const PASSWORD_KUIS = "ppt8";
+
+const DURASI_KUIS = 10 * 60;
+
+let waktu = DURASI_KUIS;
+
+let intervalTimer;
+
+
+/* =========================================
+   KUNCI JAWABAN
+========================================= */
+
+const jawabanBenar = {
+
+    q1: "A",
+    q2: "B",
+    q3: "B",
+    q4: "C",
+    q5: "B",
+    q6: "A",
+    q7: "C",
+    q8: "B",
+    q9: "A",
+    q10: "B",
+    q11: "C",
+    q12: "A",
+    q13: "A",
+    q14: "B",
+    q15: "C"
+
+};
+
+
+/* =========================================
+   CEK PASSWORD
+========================================= */
+
+function cekPassword(){
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    if(password === ""){
+
+        alert(
+            "Silakan masukkan password."
+        );
+
+        return;
+
+    }
+
+    if(password !== PASSWORD_KUIS){
+
+        alert(
+            "Password salah. Silakan coba lagi."
+        );
+
+        document
+        .getElementById("password")
+        .value = "";
+
+        return;
+
+    }
+
+    document
+    .getElementById("passwordSection")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("nameSection")
+    .classList
+    .remove("hidden");
+
+}
+
+
+/* =========================================
+   MULAI KUIS
+========================================= */
+
+function mulaiKuis(){
+
+    const nama =
+        document
+        .getElementById("namaPeserta")
+        .value
+        .trim();
+
+    if(nama === ""){
+
+        alert(
+            "Silakan masukkan nama peserta."
+        );
+
+        return;
+
+    }
+
+    document
+    .getElementById("nameSection")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("quizSection")
+    .classList
+    .remove("hidden");
+
+    mulaiTimer();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+function mulaiTimer(){
+
+    waktu = DURASI_KUIS;
+
+    tampilkanTimer();
+
+    intervalTimer =
+        setInterval(function(){
+
+            waktu--;
+
+            tampilkanTimer();
+
+            if(waktu <= 0){
+
+                clearInterval(
+                    intervalTimer
+                );
+
+                alert(
+                    "Waktu kuis telah habis. Jawaban akan diperiksa otomatis."
+                );
+
+                selesaiKuis(true);
+
+            }
+
+        },1000);
+
+}
+
+
+/* =========================================
+   TAMPIL TIMER
+========================================= */
+
+function tampilkanTimer(){
+
+    let menit =
+        Math.floor(
+            waktu / 60
+        );
+
+    let detik =
+        waktu % 60;
+
+    menit =
+        menit
+        .toString()
+        .padStart(2,"0");
+
+    detik =
+        detik
+        .toString()
+        .padStart(2,"0");
+
+    document
+    .getElementById("timer")
+    .textContent =
+        menit + ":" + detik;
+
+
+    if(waktu <= 60){
+
+        document
+        .getElementById("timerBox")
+        .classList
+        .add("timer-warning");
+
+    }
+
+}
+
+
+/* =========================================
+   SELESAI KUIS
+========================================= */
+
+function selesaiKuis(otomatis){
+
+    clearInterval(
+        intervalTimer
+    );
+
+    let benar = 0;
+
+
+    for(
+        let i = 1;
+        i <= 15;
+        i++
+    ){
+
+        const jawaban =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+        if(
+            jawaban &&
+            jawaban.value ===
+            jawabanBenar["q" + i]
+        ){
+
+            benar++;
+
+        }
+
+    }
+
+
+    const nilai =
+        Math.round(
+            (benar / 15) * 100
+        );
+
+
+    const nama =
+        document
+        .getElementById("namaPeserta")
+        .value
+        .trim();
+
+
+    document
+    .getElementById("quizSection")
+    .classList
+    .add("hidden");
+
+
+    document
+    .getElementById("resultSection")
+    .style
+    .display = "block";
+
+
+    document
+    .getElementById("hasilNama")
+    .textContent = nama;
+
+
+    document
+    .getElementById("hasilNilai")
+    .textContent = nilai;
+
+
+    const status =
+        document
+        .getElementById("hasilStatus");
+
+
+    if(nilai >= 70){
+
+        status.textContent =
+            "LULUS";
+
+        status.className =
+            "status lulus";
+
+    }
+    else{
+
+        status.textContent =
+            "BELUM LULUS";
+
+        status.className =
+            "status tidak-lulus";
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>

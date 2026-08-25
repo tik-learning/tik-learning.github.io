@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kuis PPT Modul 5 - Membuat Diagram dan Grafik</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #263238;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #b71c1c, #e53935);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header .icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: #b71c1c;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #ffebee;
+            border-left: 5px solid #e53935;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #e53935;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #c62828;
+        }
+
+        .btn-secondary {
+            background: #455a64;
+            color: white;
+        }
+
+        .error {
+            color: #c62828;
+            background: #ffebee;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        /* QUIZ */
+
+        #quizArea {
+            display: none;
+        }
+
+        .quiz-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,.1);
+            margin-bottom: 20px;
+        }
+
+        .participant {
+            font-weight: bold;
+            color: #b71c1c;
+            margin-bottom: 10px;
+        }
+
+        .timer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .timer.warning {
+            background: #e65100;
+        }
+
+        .timer.danger {
+            background: #b71c1c;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: .6;
+            }
+        }
+
+        .progress-container {
+            background: #eeeeee;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #e53935;
+            width: 0%;
+            transition: .3s;
+        }
+
+        .question {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,.07);
+        }
+
+        .question h3 {
+            color: #263238;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .option {
+            display: block;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 9px 0;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .option:hover {
+            background: #ffebee;
+            border-color: #e53935;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .submit-area {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .submit-btn {
+            background: #2e7d32;
+            color: white;
+            padding: 15px 30px;
+        }
+
+        .submit-btn:hover {
+            background: #1b5e20;
+        }
+
+        /* RESULT */
+
+        #resultArea {
+            display: none;
+        }
+
+        .result-card {
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 65px;
+            margin-bottom: 10px;
+        }
+
+        .result-card h2 {
+            font-size: 28px;
+        }
+
+        .participant-result {
+            font-size: 20px;
+            margin: 10px 0 20px;
+        }
+
+        .score {
+            font-size: 60px;
+            font-weight: bold;
+            color: #b71c1c;
+            margin: 15px 0;
+        }
+
+        .result-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .pass {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .fail {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .result-detail {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .detail-box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .detail-box strong {
+            display: block;
+            font-size: 22px;
+            color: #b71c1c;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: white;
+            background: #455a64;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .navigation a.green {
+            background: #2e7d32;
+        }
+
+        footer {
+            text-align: center;
+            background: #263238;
+            color: white;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 600px) {
+
+            header h1 {
+                font-size: 23px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .result-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .timer {
+                font-size: 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="icon">📊</div>
+
+    <h1>KUIS MODUL 5</h1>
+
+    <p>
+        Membuat Diagram dan Grafik
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<main class="container">
+
+    <!-- ==============================
+         LOGIN
+    =============================== -->
+
+    <section class="card" id="loginArea">
+
+        <h2>🔐 Akses Kuis</h2>
+
+        <div class="info-box">
+
+            <strong>Petunjuk:</strong>
+
+            <ul style="padding-left:20px; margin-top:8px;">
+
+                <li>
+                    Masukkan password kuis.
+                </li>
+
+                <li>
+                    Masukkan nama lengkap peserta.
+                </li>
+
+                <li>
+                    Waktu pengerjaan adalah
+                    <strong>10 menit</strong>.
+                </li>
+
+                <li>
+                    Kuis terdiri dari
+                    <strong>15 soal pilihan ganda</strong>.
+                </li>
+
+                <li>
+                    Pastikan semua jawaban telah diperiksa
+                    sebelum mengirimkan kuis.
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div id="loginError" class="error">
+            Password atau nama peserta belum benar.
+        </div>
+
+        <label for="password">
+            Password Kuis
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan password"
+        >
+
+        <label for="participantName">
+            Nama Peserta
+        </label>
+
+        <input
+            type="text"
+            id="participantName"
+            placeholder="Masukkan nama lengkap"
+        >
+
+        <button
+            class="btn-primary"
+            onclick="startQuiz()"
+        >
+            🚀 Mulai Kuis
+        </button>
+
+    </section>
+
+
+    <!-- ==============================
+         QUIZ
+    =============================== -->
+
+    <section id="quizArea">
+
+        <div class="quiz-header">
+
+            <div class="participant">
+                👤 Peserta:
+                <span id="displayName"></span>
+            </div>
+
+            <div class="timer" id="timer">
+                10:00
+            </div>
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <form id="quizForm">
+
+            <!-- SOAL 1 -->
+
+            <div class="question">
+
+                <h3>
+                    1. Fitur PowerPoint yang digunakan untuk membuat diagram visual adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="A">
+                    A. WordArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="B">
+                    B. SmartArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="C">
+                    C. Header
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="D">
+                    D. Screenshot
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 2 -->
+
+            <div class="question">
+
+                <h3>
+                    2. Untuk memasukkan SmartArt, menu yang digunakan adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="A">
+                    A. Home → SmartArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="B">
+                    B. Design → SmartArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="C">
+                    C. Insert → SmartArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="D">
+                    D. View → SmartArt
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 3 -->
+
+            <div class="question">
+
+                <h3>
+                    3. SmartArt kategori yang paling sesuai untuk menunjukkan tahapan suatu proses adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="A">
+                    A. Process
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="B">
+                    B. Picture
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="C">
+                    C. Matrix
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="D">
+                    D. Equation
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 4 -->
+
+            <div class="question">
+
+                <h3>
+                    4. Untuk mengubah SmartArt menjadi Shape digunakan perintah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="A">
+                    A. Convert to Shapes
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="B">
+                    B. Change Shape
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="C">
+                    C. Format Shape
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="D">
+                    D. Group Shape
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 5 -->
+
+            <div class="question">
+
+                <h3>
+                    5. Apa yang terjadi setelah SmartArt dikonversi menjadi Shape?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="A">
+                    A. SmartArt otomatis menjadi Chart
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="B">
+                    B. Objek tidak lagi berfungsi sebagai SmartArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="C">
+                    C. Semua objek terhapus
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="D">
+                    D. Slide otomatis terhapus
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 6 -->
+
+            <div class="question">
+
+                <h3>
+                    6. Fitur yang digunakan untuk menyajikan data angka dalam bentuk grafik adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="A">
+                    A. Chart
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="B">
+                    B. WordArt
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="C">
+                    C. Section
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="D">
+                    D. Theme
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 7 -->
+
+            <div class="question">
+
+                <h3>
+                    7. Langkah awal untuk membuat Chart adalah memilih menu...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="A">
+                    A. Home → Chart
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="B">
+                    B. Design → Chart
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="C">
+                    C. Insert → Chart
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="D">
+                    D. View → Chart
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 8 -->
+
+            <div class="question">
+
+                <h3>
+                    8. Jenis grafik yang paling tepat untuk menunjukkan perkembangan jumlah peserta dari bulan ke bulan adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="A">
+                    A. Pie
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="B">
+                    B. Line
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="C">
+                    C. Doughnut
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="D">
+                    D. Radar
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 9 -->
+
+            <div class="question">
+
+                <h3>
+                    9. Grafik yang cocok untuk menunjukkan persentase atau bagian dari keseluruhan adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q9" value="A">
+                    A. Pie
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q9" value="B">
+                    B. Line
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q9" value="C">
+                    C. Scatter
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q9" value="D">
+                    D. Area
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 10 -->
+
+            <div class="question">
+
+                <h3>
+                    10. Grafik Column paling tepat digunakan untuk...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q10" value="A">
+                    A. Membandingkan nilai antar kategori
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q10" value="B">
+                    B. Menampilkan hubungan dua variabel
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q10" value="C">
+                    C. Menampilkan struktur organisasi
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q10" value="D">
+                    D. Membuat daftar bullet
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 11 -->
+
+            <div class="question">
+
+                <h3>
+                    11. Untuk mengubah data yang terdapat pada Chart digunakan perintah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q11" value="A">
+                    A. Edit Picture
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q11" value="B">
+                    B. Edit Data
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q11" value="C">
+                    C. Edit Shape
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q11" value="D">
+                    D. Edit Text
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 12 -->
+
+            <div class="question">
+
+                <h3>
+                    12. Setelah memilih Edit Data pada Chart, data biasanya diedit menggunakan...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q12" value="A">
+                    A. Microsoft Word
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q12" value="B">
+                    B. Microsoft Excel
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q12" value="C">
+                    C. Paint
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q12" value="D">
+                    D. Notepad
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 13 -->
+
+            <div class="question">
+
+                <h3>
+                    13. Grafik yang digunakan untuk melihat hubungan antara dua variabel adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q13" value="A">
+                    A. Pie
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q13" value="B">
+                    B. Column
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q13" value="C">
+                    C. Scatter
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q13" value="D">
+                    D. Bar
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 14 -->
+
+            <div class="question">
+
+                <h3>
+                    14. Manakah yang merupakan contoh penggunaan SmartArt yang tepat?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q14" value="A">
+                    A. Menampilkan perkembangan penjualan bulanan
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q14" value="B">
+                    B. Menampilkan proses Pendaftaran → Seleksi → Pelatihan
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q14" value="C">
+                    C. Menghitung jumlah peserta
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q14" value="D">
+                    D. Membuat rumus matematika
+                </label>
+
+            </div>
+
+
+            <!-- SOAL 15 -->
+
+            <div class="question">
+
+                <h3>
+                    15. Salah satu prinsip membuat grafik yang profesional adalah...
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q15" value="A">
+                    A. Menggunakan sebanyak mungkin warna
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q15" value="B">
+                    B. Menggunakan efek 3D sebanyak mungkin
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q15" value="C">
+                    C. Memasukkan semua data ke dalam satu grafik
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q15" value="D">
+                    D. Menggunakan jenis grafik sesuai tujuan data
+                </label>
+
+            </div>
+
+
+            <div class="submit-area">
+
+                <button
+                    type="button"
+                    class="submit-btn"
+                    onclick="submitQuiz()"
+                >
+                    ✅ Selesai & Lihat Nilai
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- ==============================
+         HASIL
+    =============================== -->
+
+    <section class="card result-card" id="resultArea">
+
+        <div class="result-icon" id="resultIcon">
+            🎉
+        </div>
+
+        <h2>
+            Hasil Kuis Modul 5
+        </h2>
+
+        <div class="participant-result">
+
+            Nama Peserta:
+            <strong id="resultName"></strong>
+
+        </div>
+
+        <div class="score">
+
+            <span id="score">0</span>
+
+        </div>
+
+        <div
+            class="result-message"
+            id="resultMessage"
+        >
+        </div>
+
+        <div class="result-detail">
+
+            <div class="detail-box">
+
+                <strong id="correctCount">
+                    0
+                </strong>
+
+                Jawaban Benar
+
+            </div>
+
+            <div class="detail-box">
+
+                <strong id="wrongCount">
+                    0
+                </strong>
+
+                Jawaban Salah
+
+            </div>
+
+            <div class="detail-box">
+
+                <strong>
+                    15
+                </strong>
+
+                Jumlah Soal
+
+            </div>
+
+        </div>
+
+        <div class="navigation">
+
+            <a
+                href="modul-ppt-5.html"
+            >
+                📖 Kembali ke Modul
+            </a>
+
+            <a
+                href="modul-ppt-6.html"
+                class="green"
+            >
+                Modul Berikutnya →
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Kuis Modul 5 — Membuat Diagram dan Grafik
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       PENGATURAN
+    ========================================= */
+
+    const QUIZ_PASSWORD = "ppt5";
+
+    const TOTAL_QUESTIONS = 15;
+
+    const QUIZ_TIME = 10 * 60;
+
+    let timeLeft = QUIZ_TIME;
+
+    let timerInterval;
+
+    let participantName = "";
+
+    let quizFinished = false;
+
+
+    /* =========================================
+       JAWABAN BENAR
+    ========================================= */
+
+    const answers = {
+
+        q1: "B",
+
+        q2: "C",
+
+        q3: "A",
+
+        q4: "A",
+
+        q5: "B",
+
+        q6: "A",
+
+        q7: "C",
+
+        q8: "B",
+
+        q9: "A",
+
+        q10: "A",
+
+        q11: "B",
+
+        q12: "B",
+
+        q13: "C",
+
+        q14: "B",
+
+        q15: "D"
+
+    };
+
+
+    /* =========================================
+       MULAI KUIS
+    ========================================= */
+
+    function startQuiz() {
+
+        const password =
+            document.getElementById("password").value.trim();
+
+        const name =
+            document.getElementById("participantName").value.trim();
+
+        const error =
+            document.getElementById("loginError");
+
+
+        if (password !== QUIZ_PASSWORD) {
+
+            error.style.display = "block";
+
+            error.textContent =
+                "❌ Password kuis salah.";
+
+            return;
+
+        }
+
+
+        if (name === "") {
+
+            error.style.display = "block";
+
+            error.textContent =
+                "❌ Silakan masukkan nama peserta.";
+
+            return;
+
+        }
+
+
+        participantName = name;
+
+
+        document.getElementById("displayName").textContent =
+            participantName;
+
+
+        document.getElementById("loginArea").style.display =
+            "none";
+
+
+        document.getElementById("quizArea").style.display =
+            "block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        startTimer();
+
+        updateProgress();
+
+    }
+
+
+    /* =========================================
+       TIMER
+    ========================================= */
+
+    function startTimer() {
+
+        updateTimerDisplay();
+
+
+        timerInterval = setInterval(function() {
+
+            timeLeft--;
+
+            updateTimerDisplay();
+
+
+            if (timeLeft <= 60) {
+
+                document
+                    .getElementById("timer")
+                    .classList.add("danger");
+
+            }
+
+            else if (timeLeft <= 180) {
+
+                document
+                    .getElementById("timer")
+                    .classList.add("warning");
+
+            }
+
+
+            if (timeLeft <= 0) {
+
+                clearInterval(timerInterval);
+
+                alert(
+                    "⏰ Waktu kuis telah habis. Jawaban akan dikumpulkan otomatis."
+                );
+
+                finishQuiz();
+
+            }
+
+        }, 1000);
+
+    }
+
+
+    function updateTimerDisplay() {
+
+        const minutes =
+            Math.floor(timeLeft / 60);
+
+        const seconds =
+            timeLeft % 60;
+
+
+        document.getElementById("timer").textContent =
+
+            String(minutes).padStart(2, "0")
+            + ":"
+            +
+            String(seconds).padStart(2, "0");
+
+    }
+
+
+    /* =========================================
+       PROGRESS
+    ========================================= */
+
+    function updateProgress() {
+
+        let answered = 0;
+
+
+        for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+
+            const selected =
+                document.querySelector(
+                    `input[name="q${i}"]:checked`
+                );
+
+            if (selected) {
+
+                answered++;
+
+            }
+
+        }
+
+
+        const percent =
+            (answered / TOTAL_QUESTIONS) * 100;
+
+
+        document.getElementById("progressBar").style.width =
+            percent + "%";
+
+    }
+
+
+    document.addEventListener(
+        "change",
+        function(event) {
+
+            if (
+                event.target.matches(
+                    'input[type="radio"]'
+                )
+            ) {
+
+                updateProgress();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       SUBMIT QUIZ
+    ========================================= */
+
+    function submitQuiz() {
+
+        let unanswered = 0;
+
+
+        for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+
+            const selected =
+                document.querySelector(
+                    `input[name="q${i}"]:checked`
+                );
+
+            if (!selected) {
+
+                unanswered++;
+
+            }
+
+        }
+
+
+        if (unanswered > 0) {
+
+            const confirmSubmit = confirm(
+
+                "Masih ada " +
+                unanswered +
+                " soal yang belum dijawab.\n\n" +
+                "Apakah Anda tetap ingin mengakhiri kuis?"
+
+            );
+
+
+            if (!confirmSubmit) {
+
+                return;
+
+            }
+
+        }
+
+
+        const confirmFinish = confirm(
+
+            "Apakah Anda yakin ingin mengakhiri kuis?"
+
+        );
+
+
+        if (!confirmFinish) {
+
+            return;
+
+        }
+
+
+        finishQuiz();
+
+    }
+
+
+    /* =========================================
+       HITUNG NILAI
+    ========================================= */
+
+    function finishQuiz() {
+
+        if (quizFinished) {
+
+            return;
+
+        }
+
+
+        quizFinished = true;
+
+
+        clearInterval(timerInterval);
+
+
+        let correct = 0;
+
+
+        for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+
+            const selected =
+                document.querySelector(
+                    `input[name="q${i}"]:checked`
+                );
+
+
+            if (
+                selected &&
+                selected.value === answers["q" + i]
+            ) {
+
+                correct++;
+
+            }
+
+        }
+
+
+        const wrong =
+            TOTAL_QUESTIONS - correct;
+
+
+        const score =
+            Math.round(
+                (correct / TOTAL_QUESTIONS) * 100
+            );
+
+
+        showResult(
+            score,
+            correct,
+            wrong
+        );
+
+    }
+
+
+    /* =========================================
+       TAMPILKAN HASIL
+    ========================================= */
+
+    function showResult(
+        score,
+        correct,
+        wrong
+    ) {
+
+        document.getElementById("quizArea")
+            .style.display = "none";
+
+
+        document.getElementById("resultArea")
+            .style.display = "block";
+
+
+        document.getElementById("resultName")
+            .textContent = participantName;
+
+
+        document.getElementById("score")
+            .textContent = score;
+
+
+        document.getElementById("correctCount")
+            .textContent = correct;
+
+
+        document.getElementById("wrongCount")
+            .textContent = wrong;
+
+
+        const message =
+            document.getElementById("resultMessage");
+
+
+        const icon =
+            document.getElementById("resultIcon");
+
+
+        if (score >= 80) {
+
+            message.className =
+                "result-message pass";
+
+            message.innerHTML =
+                "<strong>🎉 SELAMAT!</strong><br>" +
+                "Anda dinyatakan <strong>LULUS</strong> " +
+                "Kuis Modul 5.";
+
+            icon.textContent = "🏆";
+
+        }
+
+        else {
+
+            message.className =
+                "result-message fail";
+
+            message.innerHTML =
+                "<strong>📚 BELUM LULUS</strong><br>" +
+                "Silakan pelajari kembali Modul 5 " +
+                "dan tingkatkan hasil Anda.";
+
+            icon.textContent = "📖";
+
+        }
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+</script>
+
+</body>
+
+</html>

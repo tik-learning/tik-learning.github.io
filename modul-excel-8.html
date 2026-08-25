@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 8 - Fungsi Text</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+}
+
+.container{
+    max-width:1000px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:18px 0 10px;
+}
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.formula{
+    background:#263238;
+    color:#e8f5e9;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:12px 0;
+    font-family:Consolas,monospace;
+    overflow-x:auto;
+}
+
+.example{
+    background:#f7faf8;
+    border:1px solid #dce5df;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th,td{
+    border:1px solid #d8e0dc;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#107c41;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+.tip{
+    background:#e3f2fd;
+    border-left:5px solid #1976d2;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:8px;
+    background:#107c41;
+    color:white;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+}
+
+@media(max-width:650px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+    }
+
+    table{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>📚 MODUL 8</h1>
+
+<p>Fungsi Text pada Microsoft Excel 2016</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- TUJUAN PEMBELAJARAN -->
+
+<section class="card">
+
+<h2>🎯 Tujuan Pembelajaran</h2>
+
+<p>
+Setelah mempelajari modul ini, peserta diharapkan mampu:
+</p>
+
+<ul>
+<li>Memahami konsep fungsi Text pada Microsoft Excel.</li>
+<li>Mengambil karakter dari sebuah teks menggunakan LEFT, RIGHT, dan MID.</li>
+<li>Menghitung jumlah karakter menggunakan LEN.</li>
+<li>Membersihkan spasi berlebih menggunakan TRIM.</li>
+<li>Mengubah format huruf menggunakan UPPER, LOWER, dan PROPER.</li>
+<li>Menggabungkan teks menggunakan CONCATENATE.</li>
+<li>Mencari posisi teks menggunakan FIND dan SEARCH.</li>
+<li>Mengganti teks menggunakan REPLACE dan SUBSTITUTE.</li>
+<li>Mengubah nilai menjadi teks atau teks menjadi angka.</li>
+</ul>
+
+</section>
+
+
+<!-- PENGENALAN -->
+
+<section class="card">
+
+<h2>1. Pengenalan Fungsi Text</h2>
+
+<p>
+Fungsi Text digunakan untuk mengolah data yang berbentuk teks.
+Fungsi ini sangat berguna ketika kita bekerja dengan nama,
+kode barang, nomor peserta, alamat, identitas, dan data administrasi.
+</p>
+
+<div class="info">
+
+<strong>Contoh data:</strong>
+
+<br>
+
+Nama: <strong>ADE SUHENDAR</strong><br>
+Kode Peserta: <strong>PVN20260025</strong><br>
+Alamat: <strong>SUBANG JAWA BARAT</strong>
+
+</div>
+
+<p>
+Dengan fungsi Text, kita dapat mengambil sebagian karakter,
+menggabungkan beberapa teks, membersihkan spasi,
+mengubah huruf besar-kecil, mencari teks tertentu,
+hingga mengganti bagian tertentu dari sebuah teks.
+</p>
+
+</section>
+
+
+<!-- LEFT -->
+
+<section class="card">
+
+<h2>2. Fungsi LEFT</h2>
+
+<p>
+<strong>LEFT</strong> digunakan untuk mengambil sejumlah karakter
+dari sebelah kiri sebuah teks.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=LEFT(text,[num_chars])
+</div>
+
+<h3>Contoh</h3>
+
+<div class="example">
+
+<p>
+Jika A2 berisi:
+</p>
+
+<strong>SUBANG2026</strong>
+
+<div class="formula">
+=LEFT(A2,6)
+</div>
+
+<p>
+Hasil:
+<strong>SUBANG</strong>
+</p>
+
+</div>
+
+<p>
+Angka <strong>6</strong> menunjukkan jumlah karakter yang diambil
+dari sebelah kiri.
+</p>
+
+</section>
+
+
+<!-- RIGHT -->
+
+<section class="card">
+
+<h2>3. Fungsi RIGHT</h2>
+
+<p>
+<strong>RIGHT</strong> digunakan untuk mengambil karakter
+dari sebelah kanan teks.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=RIGHT(text,[num_chars])
+</div>
+
+<h3>Contoh</h3>
+
+<div class="example">
+
+<p>
+A2:
+</p>
+
+<strong>SUBANG2026</strong>
+
+<div class="formula">
+=RIGHT(A2,4)
+</div>
+
+<p>
+Hasil:
+<strong>2026</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- MID -->
+
+<section class="card">
+
+<h2>4. Fungsi MID</h2>
+
+<p>
+<strong>MID</strong> digunakan untuk mengambil karakter yang berada
+di tengah teks berdasarkan posisi awal dan jumlah karakter.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=MID(text,start_num,num_chars)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="example">
+
+<p>
+A2 berisi:
+</p>
+
+<strong>SUBANG2026</strong>
+
+<div class="formula">
+=MID(A2,7,4)
+</div>
+
+<p>
+Hasil:
+<strong>2026</strong>
+</p>
+
+</div>
+
+<p>
+Angka <strong>7</strong> adalah posisi awal karakter,
+sedangkan <strong>4</strong> adalah jumlah karakter yang diambil.
+</p>
+
+</section>
+
+
+<!-- LEN -->
+
+<section class="card">
+
+<h2>5. Fungsi LEN</h2>
+
+<p>
+<strong>LEN</strong> digunakan untuk menghitung jumlah karakter
+dalam sebuah teks, termasuk spasi.
+</p>
+
+<div class="formula">
+=LEN(text)
+</div>
+
+<div class="example">
+
+<p>
+Jika A2 berisi:</p>
+
+<strong>EXCEL</strong>
+
+<div class="formula">
+=LEN(A2)
+</div>
+
+<p>
+Hasil: <strong>5</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- TRIM -->
+
+<section class="card">
+
+<h2>6. Fungsi TRIM</h2>
+
+<p>
+<strong>TRIM</strong> digunakan untuk menghilangkan spasi yang
+tidak diperlukan dari sebuah teks.
+</p>
+
+<div class="formula">
+=TRIM(text)
+</div>
+
+<div class="example">
+
+<p>
+Misalnya A2 berisi:</p>
+
+<strong>  ADE    SUHENDAR  </strong>
+
+<div class="formula">
+=TRIM(A2)
+</div>
+
+<p>
+Hasil:</p>
+
+<strong>ADE SUHENDAR</strong>
+
+</div>
+
+<div class="tip">
+
+<strong>💡 Tips:</strong>
+TRIM sangat berguna ketika data diperoleh dari sumber lain
+dan terdapat spasi berlebihan yang dapat mengganggu pencarian
+atau pengolahan data.
+
+</div>
+
+</section>
+
+
+<!-- UPPER LOWER PROPER -->
+
+<section class="card">
+
+<h2>7. Fungsi UPPER, LOWER dan PROPER</h2>
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+<th>Contoh</th>
+</tr>
+
+<tr>
+<td>UPPER</td>
+<td>Mengubah teks menjadi huruf kapital</td>
+<td>=UPPER(A2)</td>
+</tr>
+
+<tr>
+<td>LOWER</td>
+<td>Mengubah teks menjadi huruf kecil</td>
+<td>=LOWER(A2)</td>
+</tr>
+
+<tr>
+<td>PROPER</td>
+<td>Membuat huruf awal setiap kata menjadi kapital</td>
+<td>=PROPER(A2)</td>
+</tr>
+
+</table>
+
+<div class="example">
+
+<p>
+Jika A2 berisi:</p>
+
+<strong>ade suhendar</strong>
+
+<br><br>
+
+UPPER:
+
+<div class="formula">
+=UPPER(A2)
+</div>
+
+Hasil: <strong>ADE SUHENDAR</strong>
+
+<br><br>
+
+LOWER:
+
+<div class="formula">
+=LOWER(A2)
+</div>
+
+Hasil: <strong>ade suhendar</strong>
+
+<br><br>
+
+PROPER:
+
+<div class="formula">
+=PROPER(A2)
+</div>
+
+Hasil: <strong>Ade Suhendar</strong>
+
+</div>
+
+</section>
+
+
+<!-- CONCATENATE -->
+
+<section class="card">
+
+<h2>8. Fungsi CONCATENATE</h2>
+
+<p>
+<strong>CONCATENATE</strong> digunakan untuk menggabungkan
+beberapa teks menjadi satu.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=CONCATENATE(text1,text2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<p>
+A2 = <strong>Ade</strong><br>
+B2 = <strong>Suhendar</strong>
+</p>
+
+<div class="formula">
+=CONCATENATE(A2," ",B2)
+</div>
+
+<p>
+Hasil:
+<strong>Ade Suhendar</strong>
+</p>
+
+<div class="warning">
+
+<strong>Catatan Excel 2016:</strong>
+CONCATENATE dapat digunakan pada Excel 2016 untuk menggabungkan
+beberapa nilai teks.
+
+</div>
+
+</section>
+
+
+<!-- FIND -->
+
+<section class="card">
+
+<h2>9. Fungsi FIND</h2>
+
+<p>
+<strong>FIND</strong> digunakan untuk mencari posisi suatu teks
+di dalam teks lainnya.
+</p>
+
+<div class="formula">
+=FIND(find_text,within_text,[start_num])
+</div>
+
+<div class="example">
+
+<p>
+A2 berisi:</p>
+
+<strong>SUBANG JAWA BARAT</strong>
+
+<div class="formula">
+=FIND("JAWA",A2)
+</div>
+
+<p>
+Hasilnya adalah posisi awal kata <strong>JAWA</strong>.
+</p>
+
+</div>
+
+<div class="warning">
+
+<strong>Perhatian:</strong>
+FIND membedakan huruf besar dan huruf kecil
+(case-sensitive).
+
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section class="card">
+
+<h2>10. Fungsi SEARCH</h2>
+
+<p>
+<strong>SEARCH</strong> juga digunakan untuk mencari posisi
+sebuah teks.
+</p>
+
+<div class="formula">
+=SEARCH(find_text,within_text,[start_num])
+</div>
+
+<div class="example">
+
+<div class="formula">
+=SEARCH("jawa","SUBANG JAWA BARAT")
+</div>
+
+<p>
+SEARCH tidak membedakan huruf besar dan huruf kecil.
+</p>
+
+</div>
+
+<h3>Perbedaan FIND dan SEARCH</h3>
+
+<table>
+
+<tr>
+<th>FIND</th>
+<th>SEARCH</th>
+</tr>
+
+<tr>
+<td>Case-sensitive</td>
+<td>Tidak case-sensitive</td>
+</tr>
+
+<tr>
+<td>Mencari teks secara lebih ketat</td>
+<td>Mendukung wildcard tertentu</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- REPLACE -->
+
+<section class="card">
+
+<h2>11. Fungsi REPLACE</h2>
+
+<p>
+<strong>REPLACE</strong> digunakan untuk mengganti sejumlah
+karakter berdasarkan posisi karakter.
+</p>
+
+<div class="formula">
+=REPLACE(old_text,start_num,num_chars,new_text)
+</div>
+
+<div class="example">
+
+<p>
+A2:</p>
+
+<strong>SUBANG2026</strong>
+
+<div class="formula">
+=REPLACE(A2,7,4,"2027")
+</div>
+
+<p>
+Hasil:</p>
+
+<strong>SUBANG2027</strong>
+
+</div>
+
+</section>
+
+
+<!-- SUBSTITUTE -->
+
+<section class="card">
+
+<h2>12. Fungsi SUBSTITUTE</h2>
+
+<p>
+<strong>SUBSTITUTE</strong> digunakan untuk mengganti teks tertentu
+dengan teks yang baru.
+</p>
+
+<div class="formula">
+=SUBSTITUTE(text,old_text,new_text,[instance_num])
+</div>
+
+<div class="example">
+
+<p>
+A2:</p>
+
+<strong>JAWA BARAT</strong>
+
+<div class="formula">
+=SUBSTITUTE(A2,"BARAT","TENGAH")
+</div>
+
+<p>
+Hasil:</p>
+
+<strong>JAWA TENGAH</strong>
+
+</div>
+
+<h3>REPLACE vs SUBSTITUTE</h3>
+
+<table>
+
+<tr>
+<th>REPLACE</th>
+<th>SUBSTITUTE</th>
+</tr>
+
+<tr>
+<td>Berdasarkan posisi karakter</td>
+<td>Berdasarkan teks yang dicari</td>
+</tr>
+
+<tr>
+<td>Menentukan start_num</td>
+<td>Menentukan old_text</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- TEXT -->
+
+<section class="card">
+
+<h2>13. Fungsi TEXT</h2>
+
+<p>
+Fungsi <strong>TEXT</strong> digunakan untuk menampilkan angka
+atau tanggal dalam format tertentu sebagai teks.
+</p>
+
+<div class="formula">
+=TEXT(value,format_text)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=TEXT(1500000,"#,##0")
+</div>
+
+<p>
+Hasil tampilan:
+<strong>1,500,000</strong>
+</p>
+
+<div class="example">
+
+Contoh lainnya:
+
+<div class="formula">
+=TEXT(A2,"dd/mm/yyyy")
+</div>
+
+<p>
+Digunakan untuk menampilkan tanggal dengan format tertentu.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- VALUE -->
+
+<section class="card">
+
+<h2>14. Fungsi VALUE</h2>
+
+<p>
+<strong>VALUE</strong> digunakan untuk mengubah teks yang
+merepresentasikan angka menjadi nilai numerik.
+</p>
+
+<div class="formula">
+=VALUE(text)
+</div>
+
+<div class="example">
+
+<p>
+Jika A2 berisi teks angka:</p>
+
+<strong>"12500"</strong>
+
+<div class="formula">
+=VALUE(A2)
+</div>
+
+<p>
+Nilai tersebut dapat digunakan dalam operasi matematika.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FUNGSI LAIN -->
+
+<section class="card">
+
+<h2>15. Fungsi Text Lain yang Berguna</h2>
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>CHAR</td>
+<td>Menghasilkan karakter berdasarkan kode angka.</td>
+</tr>
+
+<tr>
+<td>CODE</td>
+<td>Menghasilkan kode numerik karakter pertama.</td>
+</tr>
+
+<tr>
+<td>EXACT</td>
+<td>Membandingkan dua teks secara case-sensitive.</td>
+</tr>
+
+<tr>
+<td>REPT</td>
+<td>Mengulang teks beberapa kali.</td>
+</tr>
+
+<tr>
+<td>UNICHAR</td>
+<td>Menghasilkan karakter Unicode tertentu.</td>
+</tr>
+
+<tr>
+<td>UNICODE</td>
+<td>Menghasilkan kode Unicode karakter pertama.</td>
+</tr>
+
+<tr>
+<td>T</td>
+<td>Mengembalikan teks dari sebuah nilai.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- RANGKUMAN -->
+
+<section class="card">
+
+<h2>📌 16. Ringkasan Fungsi Text</h2>
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Fungsi Utama</th>
+</tr>
+
+<tr>
+<td>LEFT</td>
+<td>Mengambil karakter dari kiri</td>
+</tr>
+
+<tr>
+<td>RIGHT</td>
+<td>Mengambil karakter dari kanan</td>
+</tr>
+
+<tr>
+<td>MID</td>
+<td>Mengambil karakter dari posisi tertentu</td>
+</tr>
+
+<tr>
+<td>LEN</td>
+<td>Menghitung jumlah karakter</td>
+</tr>
+
+<tr>
+<td>TRIM</td>
+<td>Menghilangkan spasi berlebih</td>
+</tr>
+
+<tr>
+<td>UPPER</td>
+<td>Mengubah menjadi huruf kapital</td>
+</tr>
+
+<tr>
+<td>LOWER</td>
+<td>Mengubah menjadi huruf kecil</td>
+</tr>
+
+<tr>
+<td>PROPER</td>
+<td>Membuat huruf awal setiap kata menjadi kapital</td>
+</tr>
+
+<tr>
+<td>CONCATENATE</td>
+<td>Menggabungkan teks</td>
+</tr>
+
+<tr>
+<td>FIND</td>
+<td>Mencari posisi teks secara case-sensitive</td>
+</tr>
+
+<tr>
+<td>SEARCH</td>
+<td>Mencari posisi teks</td>
+</tr>
+
+<tr>
+<td>REPLACE</td>
+<td>Mengganti karakter berdasarkan posisi</td>
+</tr>
+
+<tr>
+<td>SUBSTITUTE</td>
+<td>Mengganti teks tertentu</td>
+</tr>
+
+<tr>
+<td>TEXT</td>
+<td>Mengubah tampilan nilai menjadi teks dengan format tertentu</td>
+</tr>
+
+<tr>
+<td>VALUE</td>
+<td>Mengubah teks angka menjadi angka</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- LATIHAN -->
+
+<section class="card">
+
+<h2>📝 17. Latihan Praktik</h2>
+
+<p>
+Buat tabel berikut di Excel:
+</p>
+
+<table>
+
+<tr>
+<th>Nama</th>
+<th>Kode Peserta</th>
+<th>Alamat</th>
+</tr>
+
+<tr>
+<td>Ade Suhendar</td>
+<td>PVN20260025</td>
+<td>Subang Jawa Barat</td>
+</tr>
+
+<tr>
+<td>Budi Santoso</td>
+<td>PVN20260026</td>
+<td>Subang Jawa Barat</td>
+</tr>
+
+<tr>
+<td>Citra Lestari</td>
+<td>PVN20260027</td>
+<td>Subang Jawa Barat</td>
+</tr>
+
+</table>
+
+<p>
+Kemudian lakukan latihan berikut:
+</p>
+
+<ol>
+<li>Ambil 3 karakter pertama dari Kode Peserta.</li>
+<li>Ambil 4 karakter terakhir dari Kode Peserta.</li>
+<li>Ambil tahun dari Kode Peserta.</li>
+<li>Hitung jumlah karakter nama peserta.</li>
+<li>Ubah nama menjadi huruf kapital.</li>
+<li>Ubah nama menjadi huruf kecil.</li>
+<li>Ubah nama menjadi format Proper Case.</li>
+<li>Gabungkan Nama dan Kode Peserta.</li>
+<li>Cari posisi kata "Jawa" pada kolom alamat.</li>
+<li>Hilangkan spasi berlebih menggunakan TRIM.</li>
+</ol>
+
+<div class="tip">
+
+<strong>🎯 Tantangan:</strong>
+
+Buat satu kolom baru bernama
+<strong>"Informasi Peserta"</strong>
+yang menghasilkan teks:
+
+<br><br>
+
+<strong>
+Ade Suhendar - PVN20260025
+</strong>
+
+<p>
+Gunakan fungsi CONCATENATE atau operator <strong>&amp;</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- PENUTUP -->
+
+<section class="card">
+
+<h2>🎓 Kesimpulan</h2>
+
+<p>
+Fungsi Text merupakan bagian penting dalam pengolahan data Excel.
+Dengan memahami LEFT, RIGHT, MID, LEN, TRIM, UPPER, LOWER,
+PROPER, CONCATENATE, FIND, SEARCH, REPLACE, SUBSTITUTE,
+TEXT dan VALUE, peserta dapat melakukan pengolahan data teks
+secara lebih cepat dan terstruktur.
+</p>
+
+<p>
+Penguasaan fungsi Text akan sangat membantu dalam pekerjaan
+administrasi, pengolahan data peserta, pembuatan laporan,
+pengelolaan kode, serta proses pembersihan data.
+</p>
+
+<div class="info">
+
+<strong>📚 Setelah selesai mempelajari modul:</strong>
+
+<p>
+Silakan lanjutkan ke
+<strong>Kuis Excel Modul 8</strong>
+untuk menguji pemahaman Anda.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- NAVIGASI -->
+
+<div class="navigation">
+
+<a href="kuis-excel-7.html" class="btn">
+⬅️ Kembali ke Kuis Modul 7
+</a>
+
+<a href="kuis-excel-8.html" class="btn">
+📝 Mulai Kuis Modul 8 ➡️
+</a>
+
+</div>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Modul 8 — Fungsi Text
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+</body>
+</html>

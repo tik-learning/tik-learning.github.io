@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul 7 - Fungsi Logika Microsoft Excel 2016</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.header p{
+    font-size:17px;
+}
+
+
+/* CONTAINER */
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 15px;
+}
+
+
+/* CARD */
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+    border-bottom:2px solid #e7efea;
+    padding-bottom:10px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:20px 0 10px;
+}
+
+
+/* INFO */
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.tip{
+    background:#e3f2fd;
+    border-left:5px solid #2196f3;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+
+/* FORMULA */
+
+.formula{
+    background:#1e1e1e;
+    color:#d4d4d4;
+    padding:14px 17px;
+    border-radius:8px;
+    font-family:Consolas,"Courier New",monospace;
+    margin:12px 0;
+    overflow-x:auto;
+    font-size:15px;
+}
+
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+    margin:15px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+th{
+    background:#107c41;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    border:1px solid #dce3e6;
+    padding:11px;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+
+/* EXAMPLE */
+
+.example{
+    border:1px solid #dce5df;
+    border-radius:10px;
+    padding:18px;
+    margin:18px 0;
+    background:#fcfefd;
+}
+
+.example-title{
+    font-weight:bold;
+    color:#107c41;
+    margin-bottom:10px;
+}
+
+
+/* BADGE */
+
+.badge{
+    display:inline-block;
+    background:#107c41;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+
+/* LIST */
+
+ul,ol{
+    padding-left:25px;
+    margin:10px 0;
+}
+
+li{
+    margin-bottom:6px;
+}
+
+
+/* BUTTON */
+
+.navigation{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    border:none;
+    background:#107c41;
+    color:white;
+    padding:13px 22px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:16px;
+    transition:.2s;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn-blue{
+    background:#2878d4;
+}
+
+.btn-blue:hover{
+    background:#185ca8;
+}
+
+
+/* PROGRESS */
+
+.progress-box{
+    background:white;
+    padding:15px 20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.progress-text{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.progress{
+    height:10px;
+    background:#e0e0e0;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:70%;
+    background:#107c41;
+}
+
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:35px 15px;
+    font-size:14px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .header{
+        padding:35px 15px;
+    }
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+HEADER
+================================================== -->
+
+<header class="header">
+
+<h1>🧠 MODUL 7</h1>
+
+<p>
+Fungsi Logika Microsoft Excel 2016
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ==================================================
+PROGRESS
+================================================== -->
+
+<div class="progress-box">
+
+<div class="progress-text">
+
+<span>
+<strong>Progress Pembelajaran</strong>
+</span>
+
+<span>
+Modul 7
+</span>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+</div>
+
+
+<!-- ==================================================
+PENDAHULUAN
+================================================== -->
+
+<section class="card">
+
+<h2>1. Pengenalan Fungsi Logika</h2>
+
+<p>
+Fungsi logika digunakan untuk membuat Excel melakukan
+pengujian terhadap suatu kondisi dan menghasilkan keputusan
+berdasarkan kondisi tersebut.
+</p>
+
+<p>
+Dengan fungsi logika, Excel dapat digunakan untuk membuat
+keputusan otomatis seperti:
+</p>
+
+<ul>
+
+<li>Menentukan peserta <strong>Lulus</strong> atau
+<strong>Belum Lulus</strong>.</li>
+
+<li>Menentukan apakah target tercapai.</li>
+
+<li>Memberikan keterangan berdasarkan nilai.</li>
+
+<li>Memeriksa apakah data memenuhi syarat tertentu.</li>
+
+<li>Menangani data kosong atau error.</li>
+
+<li>Membuat keputusan berdasarkan beberapa kondisi.</li>
+
+</ul>
+
+<div class="info">
+
+<strong>💡 Contoh sederhana:</strong>
+
+<p>
+Jika nilai peserta minimal 75 maka dinyatakan Lulus,
+jika kurang dari 75 maka Belum Lulus.
+</p>
+
+<div class="formula">
+=IF(B2>=75,"Lulus","Belum Lulus")
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+KONSEP TRUE FALSE
+================================================== -->
+
+<section class="card">
+
+<h2>2. TRUE dan FALSE</h2>
+
+<p>
+Fungsi logika bekerja dengan konsep nilai logika:
+<strong>TRUE</strong> dan <strong>FALSE</strong>.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Nilai</th>
+<th>Arti</th>
+</tr>
+
+<tr>
+<td><strong>TRUE</strong></td>
+<td>Kondisi benar</td>
+</tr>
+
+<tr>
+<td><strong>FALSE</strong></td>
+<td>Kondisi salah</td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=80>=75
+</div>
+
+<p>
+Hasilnya:
+<strong>TRUE</strong>
+</p>
+
+<div class="formula">
+=60>=75
+</div>
+
+<p>
+Hasilnya:
+<strong>FALSE</strong>
+</p>
+
+</section>
+
+
+<!-- ==================================================
+OPERATOR LOGIKA ALJABAR
+================================================== -->
+
+<section class="card">
+
+<h2>3. Operator Logika / Perbandingan</h2>
+
+<p>
+Sebelum menggunakan fungsi logika, kita perlu memahami
+operator perbandingan yang digunakan Excel.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Operator</th>
+<th>Arti</th>
+<th>Contoh</th>
+</tr>
+
+<tr>
+<td>=</td>
+<td>Sama dengan</td>
+<td>A1=100</td>
+</tr>
+
+<tr>
+<td>&gt;</td>
+<td>Lebih besar dari</td>
+<td>A1&gt;100</td>
+</tr>
+
+<tr>
+<td>&lt;</td>
+<td>Lebih kecil dari</td>
+<td>A1&lt;100</td>
+</tr>
+
+<tr>
+<td>&gt;=</td>
+<td>Lebih besar atau sama dengan</td>
+<td>A1&gt;=100</td>
+</tr>
+
+<tr>
+<td>&lt;=</td>
+<td>Lebih kecil atau sama dengan</td>
+<td>A1&lt;=100</td>
+</tr>
+
+<tr>
+<td>&lt;&gt;</td>
+<td>Tidak sama dengan</td>
+<td>A1&lt;&gt;100</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="tip">
+
+<strong>💡 Ingat:</strong>
+
+<p>
+Operator <strong>&lt;&gt;</strong> berarti
+<strong>tidak sama dengan</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+AND
+================================================== -->
+
+<section class="card">
+
+<h2>4. Fungsi AND</h2>
+
+<p>
+<strong>AND</strong> digunakan untuk menguji beberapa kondisi
+sekaligus.
+</p>
+
+<p>
+Hasil AND adalah <strong>TRUE</strong> jika
+<strong>semua kondisi bernilai TRUE</strong>.
+Jika ada satu kondisi saja yang FALSE, hasilnya FALSE.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=AND(logical1,logical2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=AND(A1>=75,B1="Hadir")
+</div>
+
+<p>
+Artinya:
+</p>
+
+<ul>
+
+<li>Nilai minimal 75.</li>
+<li>Status kehadiran harus "Hadir".</li>
+
+</ul>
+
+<p>
+Kedua syarat harus terpenuhi.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Kondisi 1</th>
+<th>Kondisi 2</th>
+<th>Hasil AND</th>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>TRUE</td>
+<td>FALSE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+OR
+================================================== -->
+
+<section class="card">
+
+<h2>5. Fungsi OR</h2>
+
+<p>
+<strong>OR</strong> digunakan untuk menguji beberapa kondisi
+dan menghasilkan TRUE apabila <strong>minimal satu kondisi
+bernilai TRUE</strong>.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=OR(logical1,logical2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=OR(A1="Lulus",B1="Lulus")
+</div>
+
+<p>
+Jika salah satu kondisi benar, hasilnya TRUE.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Kondisi 1</th>
+<th>Kondisi 2</th>
+<th>Hasil OR</th>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+XOR
+================================================== -->
+
+<section class="card">
+
+<h2>6. Fungsi XOR</h2>
+
+<p>
+<strong>XOR</strong> merupakan fungsi logika yang menghasilkan
+TRUE jika <strong>jumlah kondisi TRUE adalah ganjil</strong>.
+Untuk dua kondisi, secara sederhana XOR menghasilkan TRUE
+jika <strong>hanya salah satu</strong> kondisi yang TRUE.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=XOR(logical1,logical2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=XOR(A1="Ya",B1="Ya")
+</div>
+
+<p>
+Jika hanya salah satu A1 atau B1 bernilai "Ya", hasilnya TRUE.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Kondisi 1</th>
+<th>Kondisi 2</th>
+<th>Hasil XOR</th>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>TRUE</td>
+<td>FALSE</td>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+NOT
+================================================== -->
+
+<section class="card">
+
+<h2>7. Fungsi NOT</h2>
+
+<p>
+<strong>NOT</strong> digunakan untuk membalik nilai logika.
+</p>
+
+<p>
+TRUE menjadi FALSE dan FALSE menjadi TRUE.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=NOT(logical)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=NOT(A1="Lulus")
+</div>
+
+<p>
+Jika A1 berisi "Lulus", maka hasil NOT adalah FALSE.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Kondisi</th>
+<th>NOT</th>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>FALSE</td>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+IF
+================================================== -->
+
+<section class="card">
+
+<h2>8. Fungsi IF</h2>
+
+<p>
+<strong>IF</strong> adalah salah satu fungsi logika yang
+paling sering digunakan dalam Excel.
+</p>
+
+<p>
+IF digunakan untuk menghasilkan satu nilai jika kondisi
+benar dan nilai lain jika kondisi salah.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=IF(logical_test,value_if_true,value_if_false)
+</div>
+
+<h3>Contoh 1 — Status Kelulusan</h3>
+
+<div class="formula">
+=IF(B2>=75,"Lulus","Belum Lulus")
+</div>
+
+<h3>Contoh 2 — Target Penjualan</h3>
+
+<div class="formula">
+=IF(C2>=10000000,"Target Tercapai","Belum Tercapai")
+</div>
+
+<h3>Contoh 3 — Status Kehadiran</h3>
+
+<div class="formula">
+=IF(D2>=80%,"Memenuhi","Tidak Memenuhi")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+IF BERTINGKAT
+================================================== -->
+
+<section class="card">
+
+<h2>9. IF Bertingkat</h2>
+
+<p>
+IF dapat digunakan secara bertingkat untuk menghasilkan
+beberapa kategori.
+</p>
+
+<h3>Contoh Kategori Nilai</h3>
+
+<div class="formula">
+=IF(B2>=90,"A",IF(B2>=80,"B",IF(B2>=70,"C",IF(B2>=60,"D","E"))))
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Nilai</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>90–100</td>
+<td>A</td>
+</tr>
+
+<tr>
+<td>80–89</td>
+<td>B</td>
+</tr>
+
+<tr>
+<td>70–79</td>
+<td>C</td>
+</tr>
+
+<tr>
+<td>60–69</td>
+<td>D</td>
+</tr>
+
+<tr>
+<td>&lt; 60</td>
+<td>E</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="warning">
+
+<strong>⚠️ Catatan Excel 2016:</strong>
+
+<p>
+IF bertingkat dapat menjadi panjang dan sulit dibaca jika
+kondisinya terlalu banyak. Pada Excel 2016, untuk kondisi
+yang banyak, kita dapat menggunakan kombinasi IF dengan
+fungsi lain seperti AND, OR, atau menggunakan tabel referensi
+dan VLOOKUP.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+AND + IF
+================================================== -->
+
+<section class="card">
+
+<h2>10. Kombinasi IF dan AND</h2>
+
+<p>
+IF dapat dikombinasikan dengan AND apabila keputusan
+memerlukan beberapa syarat sekaligus.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Peserta dinyatakan lulus apabila nilai minimal 75 dan
+kehadiran minimal 80%.
+</p>
+
+<div class="formula">
+=IF(AND(B2>=75,C2>=80%),"Lulus","Belum Lulus")
+</div>
+
+<p>
+Kedua kondisi harus terpenuhi.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+OR + IF
+================================================== -->
+
+<section class="card">
+
+<h2>11. Kombinasi IF dan OR</h2>
+
+<p>
+IF + OR digunakan apabila cukup salah satu dari beberapa
+syarat yang terpenuhi.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Peserta dapat memperoleh status "Prioritas" jika nilai
+minimal 90 atau kehadirannya 100%.
+</p>
+
+<div class="formula">
+=IF(OR(B2>=90,C2=100%),"Prioritas","Reguler")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+NOT + IF
+================================================== -->
+
+<section class="card">
+
+<h2>12. Kombinasi IF dan NOT</h2>
+
+<p>
+NOT dapat digunakan untuk membalik suatu kondisi.
+</p>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=IF(NOT(B2="Lulus"),"Perlu Evaluasi","Selesai")
+</div>
+
+<p>
+Jika B2 bukan "Lulus", hasilnya "Perlu Evaluasi".
+</p>
+
+</section>
+
+
+<!-- ==================================================
+FUNGSI IS
+================================================== -->
+
+<section class="card">
+
+<h2>13. Fungsi IS</h2>
+
+<p>
+Kelompok fungsi <strong>IS</strong> digunakan untuk
+memeriksa jenis atau kondisi suatu nilai dalam cell.
+</p>
+
+<p>
+Fungsi IS biasanya menghasilkan nilai <strong>TRUE</strong>
+atau <strong>FALSE</strong>.
+</p>
+
+<h3>Fungsi IS yang umum pada Excel 2016</h3>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>ISBLANK</td>
+<td>Memeriksa apakah cell kosong</td>
+</tr>
+
+<tr>
+<td>ISNUMBER</td>
+<td>Memeriksa apakah data berupa angka</td>
+</tr>
+
+<tr>
+<td>ISTEXT</td>
+<td>Memeriksa apakah data berupa teks</td>
+</tr>
+
+<tr>
+<td>ISNONTEXT</td>
+<td>Memeriksa apakah data bukan teks</td>
+</tr>
+
+<tr>
+<td>ISLOGICAL</td>
+<td>Memeriksa apakah data berupa TRUE/FALSE</td>
+</tr>
+
+<tr>
+<td>ISERROR</td>
+<td>Memeriksa apakah hasil berupa error</td>
+</tr>
+
+<tr>
+<td>ISERR</td>
+<td>Memeriksa error selain #N/A</td>
+</tr>
+
+<tr>
+<td>ISNA</td>
+<td>Memeriksa apakah hasilnya #N/A</td>
+</tr>
+
+<tr>
+<td>ISEVEN</td>
+<td>Memeriksa apakah angka genap</td>
+</tr>
+
+<tr>
+<td>ISODD</td>
+<td>Memeriksa apakah angka ganjil</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+ISBLANK
+================================================== -->
+
+<section class="card">
+
+<h2>14. ISBLANK</h2>
+
+<p>
+<strong>ISBLANK</strong> digunakan untuk memeriksa apakah
+sebuah cell benar-benar kosong.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=ISBLANK(A1)
+</div>
+
+<h3>Contoh dengan IF</h3>
+
+<div class="formula">
+=IF(ISBLANK(A1),"Belum Diisi","Sudah Diisi")
+</div>
+
+<p>
+Formula ini berguna untuk membuat pemeriksaan kelengkapan
+formulir atau data administrasi.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+ISNUMBER
+================================================== -->
+
+<section class="card">
+
+<h2>15. ISNUMBER</h2>
+
+<p>
+<strong>ISNUMBER</strong> digunakan untuk memeriksa apakah
+suatu nilai merupakan angka.
+</p>
+
+<div class="formula">
+=ISNUMBER(A1)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=IF(ISNUMBER(A1),"Data Angka","Bukan Angka")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+ISTEXT
+================================================== -->
+
+<section class="card">
+
+<h2>16. ISTEXT</h2>
+
+<p>
+<strong>ISTEXT</strong> digunakan untuk memeriksa apakah
+suatu nilai berupa teks.
+</p>
+
+<div class="formula">
+=ISTEXT(A1)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=IF(ISTEXT(A1),"Teks","Bukan Teks")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+ISEVEN ISODD
+================================================== -->
+
+<section class="card">
+
+<h2>17. ISEVEN dan ISODD</h2>
+
+<p>
+Kedua fungsi ini digunakan untuk memeriksa apakah sebuah
+angka merupakan bilangan genap atau ganjil.
+</p>
+
+<h3>ISEVEN</h3>
+
+<div class="formula">
+=ISEVEN(A1)
+</div>
+
+<p>
+Menghasilkan TRUE jika angka merupakan bilangan genap.
+</p>
+
+<h3>ISODD</h3>
+
+<div class="formula">
+=ISODD(A1)
+</div>
+
+<p>
+Menghasilkan TRUE jika angka merupakan bilangan ganjil.
+</p>
+
+<h3>Contoh dengan IF</h3>
+
+<div class="formula">
+=IF(ISEVEN(A1),"Genap","Ganjil")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+ISERROR
+================================================== -->
+
+<section class="card">
+
+<h2>18. ISERROR</h2>
+
+<p>
+<strong>ISERROR</strong> digunakan untuk memeriksa apakah
+sebuah hasil formula menghasilkan error.
+</p>
+
+<div class="formula">
+=ISERROR(A1/B1)
+</div>
+
+<p>
+Jika A1/B1 menghasilkan error, hasil ISERROR adalah TRUE.
+</p>
+
+<h3>Contoh dengan IF</h3>
+
+<div class="formula">
+=IF(ISERROR(A1/B1),"Tidak dapat dihitung",A1/B1)
+</div>
+
+</section>
+
+
+<!-- ==================================================
+IFERROR
+================================================== -->
+
+<section class="card">
+
+<h2>19. IFERROR</h2>
+
+<p>
+<strong>IFERROR</strong> digunakan untuk memberikan hasil
+alternatif apabila sebuah formula menghasilkan error.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=IFERROR(value,value_if_error)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=IFERROR(A2/B2,0)
+</div>
+
+<p>
+Jika A2/B2 menghasilkan error, Excel akan menampilkan
+<strong>0</strong>.
+</p>
+
+<h3>Contoh lain</h3>
+
+<div class="formula">
+=IFERROR(A2/B2,"Tidak dapat dihitung")
+</div>
+
+<p>
+Jika terjadi error, Excel akan menampilkan
+<strong>"Tidak dapat dihitung"</strong>.
+</p>
+
+<div class="tip">
+
+<strong>💡 IFERROR sangat berguna</strong>
+
+<p>
+IFERROR banyak digunakan untuk membuat laporan terlihat
+lebih rapi sehingga pesan error tidak muncul kepada pengguna.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+ISERROR vs IFERROR
+================================================== -->
+
+<section class="card">
+
+<h2>20. Perbedaan ISERROR dan IFERROR</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>ISERROR</td>
+<td>Memeriksa apakah hasil merupakan error</td>
+</tr>
+
+<tr>
+<td>IFERROR</td>
+<td>Mengganti hasil error dengan nilai yang kita tentukan</td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>ISERROR</h3>
+
+<div class="formula">
+=IF(ISERROR(A2/B2),"Error","OK")
+</div>
+
+<h3>IFERROR</h3>
+
+<div class="formula">
+=IFERROR(A2/B2,"Error")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+IFS
+================================================== -->
+
+<section class="card">
+
+<h2>21. Fungsi IFS</h2>
+
+<p>
+<strong>IFS</strong> digunakan untuk menguji beberapa kondisi
+tanpa harus membuat IF bertingkat yang panjang.
+</p>
+
+<div class="warning">
+
+<strong>⚠️ Penting untuk Excel 2016:</strong>
+
+<p>
+Fungsi <strong>IFS tidak tersedia pada Excel 2016 standar</strong>.
+IFS diperkenalkan pada versi Excel yang lebih baru.
+Karena modul ini ditujukan untuk Excel 2016, peserta
+sebaiknya menggunakan <strong>IF bertingkat</strong> sebagai
+pengganti IFS.
+</p>
+
+</div>
+
+<h3>Contoh IFS pada Excel versi yang mendukung</h3>
+
+<div class="formula">
+=IFS(B2>=90,"A",B2>=80,"B",B2>=70,"C",B2>=60,"D",B2<60,"E")
+</div>
+
+<h3>Alternatif Excel 2016</h3>
+
+<div class="formula">
+=IF(B2>=90,"A",IF(B2>=80,"B",IF(B2>=70,"C",IF(B2>=60,"D","E"))))
+</div>
+
+</section>
+
+
+<!-- ==================================================
+FUNGSI LAIN
+================================================== -->
+
+<section class="card">
+
+<h2>22. Fungsi Logika Lain yang Sejenis</h2>
+
+<p>
+Selain fungsi utama di atas, beberapa fungsi lain yang
+berkaitan dengan logika dan pemeriksaan data pada Excel 2016
+antara lain:
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>TRUE()</td>
+<td>Menghasilkan nilai TRUE</td>
+</tr>
+
+<tr>
+<td>FALSE()</td>
+<td>Menghasilkan nilai FALSE</td>
+</tr>
+
+<tr>
+<td>ISERROR</td>
+<td>Memeriksa semua jenis error</td>
+</tr>
+
+<tr>
+<td>ISERR</td>
+<td>Memeriksa error selain #N/A</td>
+</tr>
+
+<tr>
+<td>ISNA</td>
+<td>Memeriksa error #N/A</td>
+</tr>
+
+<tr>
+<td>ISBLANK</td>
+<td>Memeriksa cell kosong</td>
+</tr>
+
+<tr>
+<td>ISNUMBER</td>
+<td>Memeriksa data angka</td>
+</tr>
+
+<tr>
+<td>ISTEXT</td>
+<td>Memeriksa data teks</td>
+</tr>
+
+<tr>
+<td>ISNONTEXT</td>
+<td>Memeriksa data bukan teks</td>
+</tr>
+
+<tr>
+<td>ISLOGICAL</td>
+<td>Memeriksa TRUE atau FALSE</td>
+</tr>
+
+<tr>
+<td>ISEVEN</td>
+<td>Memeriksa angka genap</td>
+</tr>
+
+<tr>
+<td>ISODD</td>
+<td>Memeriksa angka ganjil</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+CONTOH PRAKTIK
+================================================== -->
+
+<section class="card">
+
+<h2>23. Contoh Praktik: Menentukan Status Peserta</h2>
+
+<p>
+Misalkan terdapat data berikut:
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Nama</th>
+<th>Nilai</th>
+<th>Kehadiran</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Andi</td>
+<td>85</td>
+<td>90%</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Budi</td>
+<td>70</td>
+<td>95%</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Citra</td>
+<td>90</td>
+<td>75%</td>
+<td>?</td>
+</tr>
+
+</table>
+
+</div>
+
+<p>
+Syarat lulus:
+</p>
+
+<ul>
+
+<li>Nilai minimal 75.</li>
+
+<li>Kehadiran minimal 80%.</li>
+
+</ul>
+
+<p>
+Gunakan kombinasi IF dan AND:
+</p>
+
+<div class="formula">
+=IF(AND(B2>=75,C2>=80%),"Lulus","Belum Lulus")
+</div>
+
+<p>
+Formula dapat disalin ke baris berikutnya menggunakan
+<strong>Fill Handle</strong>.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+CONTOH OR
+================================================== -->
+
+<section class="card">
+
+<h2>24. Contoh Praktik: Menentukan Peserta Prioritas</h2>
+
+<p>
+Peserta dianggap prioritas jika memenuhi salah satu kondisi:
+</p>
+
+<ul>
+
+<li>Nilai minimal 90, atau</li>
+
+<li>Kehadiran 100%.</li>
+
+</ul>
+
+<div class="formula">
+=IF(OR(B2>=90,C2=100%),"Prioritas","Reguler")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+CONTOH ERROR
+================================================== -->
+
+<section class="card">
+
+<h2>25. Contoh Praktik: Menghindari Error Pembagian</h2>
+
+<p>
+Misalnya jumlah penjualan berada pada B2 dan jumlah barang
+berada pada C2.
+</p>
+
+<p>
+Formula biasa:</p>
+
+<div class="formula">
+=B2/C2
+</div>
+
+<p>
+Jika C2 bernilai 0, Excel akan menghasilkan
+<strong>#DIV/0!</strong>.
+</p>
+
+<p>
+Untuk membuat laporan lebih rapi, gunakan:
+</p>
+
+<div class="formula">
+=IFERROR(B2/C2,0)
+</div>
+
+<p>
+Jika terjadi error, hasil akan menjadi 0.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+RINGKASAN
+================================================== -->
+
+<section class="card">
+
+<h2>26. Ringkasan Fungsi Logika Excel 2016</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>IF</td>
+<td>Membuat keputusan berdasarkan kondisi</td>
+</tr>
+
+<tr>
+<td>AND</td>
+<td>TRUE jika semua kondisi benar</td>
+</tr>
+
+<tr>
+<td>OR</td>
+<td>TRUE jika minimal satu kondisi benar</td>
+</tr>
+
+<tr>
+<td>XOR</td>
+<td>TRUE jika jumlah kondisi TRUE ganjil</td>
+</tr>
+
+<tr>
+<td>NOT</td>
+<td>Membalik TRUE menjadi FALSE atau sebaliknya</td>
+</tr>
+
+<tr>
+<td>ISBLANK</td>
+<td>Memeriksa cell kosong</td>
+</tr>
+
+<tr>
+<td>ISNUMBER</td>
+<td>Memeriksa data angka</td>
+</tr>
+
+<tr>
+<td>ISTEXT</td>
+<td>Memeriksa data teks</td>
+</tr>
+
+<tr>
+<td>ISERROR</td>
+<td>Memeriksa apakah hasil merupakan error</td>
+</tr>
+
+<tr>
+<td>IFERROR</td>
+<td>Mengganti hasil error dengan nilai alternatif</td>
+</tr>
+
+<tr>
+<td>ISEVEN</td>
+<td>Memeriksa bilangan genap</td>
+</tr>
+
+<tr>
+<td>ISODD</td>
+<td>Memeriksa bilangan ganjil</td>
+</tr>
+
+<tr>
+<td>ISNA</td>
+<td>Memeriksa error #N/A</td>
+</tr>
+
+<tr>
+<td>ISERR</td>
+<td>Memeriksa error selain #N/A</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+CATATAN EXCEL 2016
+================================================== -->
+
+<section class="card">
+
+<h2>27. Catatan Penting untuk Excel 2016</h2>
+
+<div class="warning">
+
+<strong>⚠️ Perhatikan versi Excel</strong>
+
+<p>
+Dalam modul ini kita menggunakan pendekatan yang kompatibel
+dengan Microsoft Excel 2016.
+</p>
+
+<p>
+Fungsi <strong>IFS</strong> yang sering digunakan pada Excel
+versi baru <strong>tidak tersedia pada Excel 2016 standar</strong>.
+Oleh karena itu, peserta Excel 2016 perlu menguasai
+<strong>IF bertingkat</strong>.
+</p>
+
+</div>
+
+<div class="tip">
+
+<strong>🎯 Prioritas belajar:</strong>
+
+<ol>
+
+<li>Operator perbandingan</li>
+
+<li>IF</li>
+
+<li>AND</li>
+
+<li>OR</li>
+
+<li>NOT</li>
+
+<li>IF + AND</li>
+
+<li>IF + OR</li>
+
+<li>ISBLANK</li>
+
+<li>ISNUMBER</li>
+
+<li>ISTEXT</li>
+
+<li>ISERROR</li>
+
+<li>IFERROR</li>
+
+<li>IF bertingkat</li>
+
+</ol>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+LATIHAN
+================================================== -->
+
+<section class="card">
+
+<h2>28. Latihan Mandiri</h2>
+
+<p>
+Cobalah membuat formula untuk menyelesaikan kasus berikut:
+</p>
+
+<ol>
+
+<li>
+Jika nilai minimal 75, tampilkan "Lulus", jika tidak
+tampilkan "Belum Lulus".
+</li>
+
+<li>
+Jika nilai minimal 75 dan kehadiran minimal 80%, tampilkan
+"Lulus".
+</li>
+
+<li>
+Jika nilai minimal 90 atau kehadiran 100%, tampilkan
+"Prioritas".
+</li>
+
+<li>
+Periksa apakah sebuah cell kosong menggunakan ISBLANK.
+</li>
+
+<li>
+Periksa apakah sebuah cell berisi angka menggunakan
+ISNUMBER.
+</li>
+
+<li>
+Periksa apakah sebuah cell berisi teks menggunakan ISTEXT.
+</li>
+
+<li>
+Buat formula yang menampilkan "Genap" atau "Ganjil"
+menggunakan ISEVEN.
+</li>
+
+<li>
+Buat formula yang mengganti error pembagian dengan angka 0
+menggunakan IFERROR.
+</li>
+
+<li>
+Buat kategori nilai A sampai E menggunakan IF bertingkat.
+</li>
+
+</ol>
+
+</section>
+
+
+<!-- ==================================================
+KESIMPULAN
+================================================== -->
+
+<section class="card">
+
+<h2>29. Kesimpulan</h2>
+
+<p>
+Fungsi logika merupakan salah satu kemampuan penting dalam
+Microsoft Excel karena memungkinkan Excel melakukan
+pengambilan keputusan secara otomatis.
+</p>
+
+<p>
+Dengan menguasai <strong>IF, AND, OR, XOR, NOT, fungsi IS,
+IFERROR</strong> dan IF bertingkat, peserta dapat membuat
+lembar kerja yang lebih otomatis, informatif, dan profesional.
+</p>
+
+<div class="info">
+
+<strong>📌 Ingat konsep dasarnya:</strong>
+
+<ul>
+
+<li><strong>AND</strong> → semua syarat harus benar.</li>
+
+<li><strong>OR</strong> → minimal satu syarat benar.</li>
+
+<li><strong>XOR</strong> → jumlah kondisi TRUE harus ganjil.</li>
+
+<li><strong>NOT</strong> → membalik kondisi.</li>
+
+<li><strong>IF</strong> → jika kondisi benar/salah.</li>
+
+<li><strong>IS</strong> → memeriksa jenis atau kondisi data.</li>
+
+<li><strong>IFERROR</strong> → mengganti hasil error.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+NAVIGASI
+================================================== -->
+
+<section class="card">
+
+<h2>🚀 Lanjut Pembelajaran</h2>
+
+<p>
+Setelah mempelajari Fungsi Logika, silakan kerjakan
+kuis untuk mengukur pemahaman Anda.
+</p>
+
+<div class="navigation">
+
+<a
+href="kuis-excel-7.html"
+class="btn btn-blue">
+
+📝 Mulai Kuis Modul 7
+
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- ==================================================
+FOOTER
+================================================== -->
+
+<footer class="footer">
+
+<p>
+<strong>Pelatihan Microsoft Excel</strong>
+</p>
+
+<p>
+Modul 7 — Fungsi Logika
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+</body>
+</html>

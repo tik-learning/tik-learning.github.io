@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 10 - PivotTable</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:42px 20px;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+}
+
+.container{
+    max-width:1050px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:20px 0 10px;
+}
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.tip{
+    background:#e3f2fd;
+    border-left:5px solid #1976d2;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.example{
+    background:#f7faf8;
+    border:1px solid #dce5df;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+.step{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:15px;
+    margin:10px 0;
+}
+
+.badge{
+    display:inline-block;
+    background:#107c41;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.formula{
+    background:#263238;
+    color:#e8f5e9;
+    padding:15px;
+    border-radius:8px;
+    margin:12px 0;
+    font-family:Consolas,monospace;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th,td{
+    border:1px solid #d8e0dc;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#107c41;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin:25px 0 40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:8px;
+    background:#107c41;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+}
+
+ul,ol{
+    padding-left:25px;
+}
+
+@media(max-width:650px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    table{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<header class="header">
+
+<h1>📊 MODUL 10</h1>
+
+<p>
+PivotTable — Mengolah dan Menganalisis Data dengan Cepat
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- TUJUAN -->
+
+<section class="card">
+
+<h2>🎯 Tujuan Pembelajaran</h2>
+
+<p>
+Setelah mempelajari modul ini, peserta diharapkan mampu:
+</p>
+
+<ul>
+
+<li>Memahami pengertian PivotTable.</li>
+
+<li>Mengetahui fungsi dan manfaat PivotTable.</li>
+
+<li>Menyiapkan data yang akan digunakan sebagai sumber PivotTable.</li>
+
+<li>Membuat PivotTable pada Microsoft Excel 2016.</li>
+
+<li>Memahami area Rows, Columns, Values dan Filters.</li>
+
+<li>Mengubah jenis perhitungan pada Values.</li>
+
+<li>Melakukan filter dan sorting pada PivotTable.</li>
+
+<li>Mengelompokkan data pada PivotTable.</li>
+
+<li>Membuat PivotChart.</li>
+
+<li>Melakukan Refresh PivotTable.</li>
+
+<li>Membuat laporan sederhana menggunakan PivotTable.</li>
+
+</ul>
+
+</section>
+
+
+<!-- PENGANTAR -->
+
+<section class="card">
+
+<h2>1. Apa Itu PivotTable?</h2>
+
+<p>
+<strong>PivotTable</strong> adalah salah satu fitur Microsoft Excel
+yang digunakan untuk merangkum, menganalisis, mengeksplorasi,
+dan menyajikan data dalam bentuk laporan yang lebih mudah dibaca.
+</p>
+
+<p>
+Dengan PivotTable, kita dapat mengolah data dalam jumlah besar
+tanpa harus membuat banyak formula secara manual.
+</p>
+
+<div class="info">
+
+<strong>Contoh:</strong>
+
+<p>
+Kita mempunyai data 1.000 peserta pelatihan yang terdiri dari
+nama peserta, program pelatihan, jenis kelamin, nilai,
+tanggal pendaftaran, dan status kelulusan.
+</p>
+
+<p>
+Dengan PivotTable kita dapat dengan cepat mengetahui:
+</p>
+
+<ul>
+
+<li>Jumlah peserta setiap program.</li>
+
+<li>Jumlah peserta laki-laki dan perempuan.</li>
+
+<li>Rata-rata nilai setiap program.</li>
+
+<li>Jumlah peserta yang lulus.</li>
+
+<li>Jumlah peserta berdasarkan bulan.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<!-- MANFAAT -->
+
+<section class="card">
+
+<h2>2. Manfaat PivotTable</h2>
+
+<table>
+
+<tr>
+<th>Manfaat</th>
+<th>Penjelasan</th>
+</tr>
+
+<tr>
+<td>Merangkum data</td>
+<td>Mengubah data mentah menjadi laporan ringkas.</td>
+</tr>
+
+<tr>
+<td>Analisis data</td>
+<td>Membantu melihat pola dan perbandingan data.</td>
+</tr>
+
+<tr>
+<td>Perhitungan otomatis</td>
+<td>Dapat menghitung SUM, COUNT, AVERAGE, MAX, MIN dan lainnya.</td>
+</tr>
+
+<tr>
+<td>Filter data</td>
+<td>Menampilkan hanya data yang dibutuhkan.</td>
+</tr>
+
+<tr>
+<td>Pengelompokan</td>
+<td>Dapat mengelompokkan data tanggal atau angka.</td>
+</tr>
+
+<tr>
+<td>Visualisasi</td>
+<td>Dapat digunakan untuk membuat PivotChart.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- DATA SUMBER -->
+
+<section class="card">
+
+<h2>3. Data Sumber PivotTable</h2>
+
+<p>
+Sebelum membuat PivotTable, data sumber harus disiapkan dengan baik.
+</p>
+
+<h3>Contoh Data</h3>
+
+<table>
+
+<tr>
+<th>Tanggal</th>
+<th>Nama</th>
+<th>Program</th>
+<th>Gender</th>
+<th>Nilai</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>01/08/2026</td>
+<td>Andi</td>
+<td>Teknik Las</td>
+<td>L</td>
+<td>85</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>02/08/2026</td>
+<td>Budi</td>
+<td>Garmen</td>
+<td>L</td>
+<td>78</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>03/08/2026</td>
+<td>Citra</td>
+<td>Bisnis Manajemen</td>
+<td>P</td>
+<td>90</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>04/08/2026</td>
+<td>Dewi</td>
+<td>Teknik Las</td>
+<td>P</td>
+<td>68</td>
+<td>Tidak Lulus</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- SYARAT -->
+
+<section class="card">
+
+<h2>4. Syarat Data untuk PivotTable</h2>
+
+<p>
+Data sumber sebaiknya memenuhi beberapa ketentuan.
+</p>
+
+<div class="step">
+
+<span class="badge">1</span>
+
+<strong>Memiliki Header</strong>
+
+<p>
+Setiap kolom harus memiliki nama/header yang jelas.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">2</span>
+
+<strong>Tidak ada baris kosong di tengah data</strong>
+
+<p>
+Baris kosong dapat menyebabkan area data tidak terbaca dengan baik.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">3</span>
+
+<strong>Tidak ada kolom kosong di tengah tabel</strong>
+
+<p>
+Setiap kolom harus memiliki informasi yang jelas.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">4</span>
+
+<strong>Data konsisten</strong>
+
+<p>
+Misalnya status harus konsisten menggunakan "Lulus"
+dan jangan sebagian menggunakan "lulus".
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">5</span>
+
+<strong>Satu baris = satu record</strong>
+
+<p>
+Setiap baris sebaiknya mewakili satu data transaksi atau peserta.
+</p>
+
+</div>
+
+<div class="warning">
+
+<strong>⚠️ Hindari:</strong>
+
+Menggabungkan beberapa cell pada tabel sumber,
+karena dapat mengganggu proses PivotTable.
+
+</div>
+
+</section>
+
+
+<!-- MEMBUAT PIVOT -->
+
+<section class="card">
+
+<h2>5. Cara Membuat PivotTable</h2>
+
+<p>
+Langkah berikut berlaku untuk Microsoft Excel 2016.
+</p>
+
+<div class="step">
+
+<span class="badge">Langkah 1</span>
+
+<p>
+Klik salah satu cell di dalam data sumber.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">Langkah 2</span>
+
+<p>
+Klik tab <strong>Insert</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">Langkah 3</span>
+
+<p>
+Klik <strong>PivotTable</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">Langkah 4</span>
+
+<p>
+Pastikan range data sudah benar.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">Langkah 5</span>
+
+<p>
+Pilih lokasi PivotTable:
+</p>
+
+<ul>
+
+<li>New Worksheet</li>
+
+<li>Existing Worksheet</li>
+
+</ul>
+
+</div>
+
+<div class="step">
+
+<span class="badge">Langkah 6</span>
+
+<p>
+Klik <strong>OK</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FIELD PIVOT -->
+
+<section class="card">
+
+<h2>6. Mengenal Area PivotTable</h2>
+
+<p>
+Setelah PivotTable dibuat, Excel akan menampilkan
+<strong>PivotTable Fields</strong>.
+</p>
+
+<p>
+Ada empat area utama:
+</p>
+
+<table>
+
+<tr>
+<th>Area</th>
+<th>Fungsi</th>
+</tr>
+
+<tr>
+<td>Filters</td>
+<td>Menyaring laporan berdasarkan field tertentu.</td>
+</tr>
+
+<tr>
+<td>Columns</td>
+<td>Menampilkan kategori secara horizontal.</td>
+</tr>
+
+<tr>
+<td>Rows</td>
+<td>Menampilkan kategori secara vertikal.</td>
+</tr>
+
+<tr>
+<td>Values</td>
+<td>Melakukan perhitungan terhadap data.</td>
+</tr>
+
+</table>
+
+<div class="info">
+
+<strong>💡 Ingat 4 area PivotTable:</strong>
+
+<br><br>
+
+<strong>FILTERS → COLUMNS → ROWS → VALUES</strong>
+
+</div>
+
+</section>
+
+
+<!-- ROWS -->
+
+<section class="card">
+
+<h2>7. Area Rows</h2>
+
+<p>
+Area <strong>Rows</strong> digunakan untuk menentukan kategori
+yang ditampilkan secara vertikal.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Masukkan field <strong>Program</strong> ke area Rows.
+</p>
+
+<p>
+Hasilnya dapat berupa:
+</p>
+
+<table>
+
+<tr>
+<th>Program</th>
+</tr>
+
+<tr>
+<td>Bisnis Manajemen</td>
+</tr>
+
+<tr>
+<td>Garmen</td>
+</tr>
+
+<tr>
+<td>Teknik Las</td>
+</tr>
+
+</table>
+
+<p>
+PivotTable akan mengelompokkan data berdasarkan program.
+</p>
+
+</section>
+
+
+<!-- VALUES -->
+
+<section class="card">
+
+<h2>8. Area Values</h2>
+
+<p>
+Area <strong>Values</strong> digunakan untuk melakukan perhitungan.
+</p>
+
+<p>
+Misalnya kita memasukkan field <strong>Nilai</strong>.
+Excel dapat menghitung:
+</p>
+
+<ul>
+
+<li>Sum</li>
+<li>Count</li>
+<li>Average</li>
+<li>Max</li>
+<li>Min</li>
+
+</ul>
+
+<h3>Contoh</h3>
+
+<p>
+Rows = Program
+</p>
+
+<p>
+Values = Nilai
+</p>
+
+<p>
+Jika Values menggunakan Average, hasilnya akan menampilkan
+rata-rata nilai setiap program.
+</p>
+
+</section>
+
+
+<!-- COLUMNS -->
+
+<section class="card">
+
+<h2>9. Area Columns</h2>
+
+<p>
+Area <strong>Columns</strong> digunakan untuk menampilkan kategori
+secara horizontal.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Rows = Program
+</p>
+
+<p>
+Columns = Gender
+</p>
+
+<p>
+Values = Count of Nama
+</p>
+
+<p>
+Hasilnya dapat menunjukkan jumlah peserta laki-laki dan perempuan
+untuk setiap program.
+</p>
+
+</section>
+
+
+<!-- FILTERS -->
+
+<section class="card">
+
+<h2>10. Area Filters</h2>
+
+<p>
+Area Filters digunakan untuk menyaring seluruh laporan
+berdasarkan field tertentu.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Jika field <strong>Status</strong> dimasukkan ke Filters,
+kita dapat memilih:
+</p>
+
+<ul>
+
+<li>Semua status</li>
+
+<li>Lulus</li>
+
+<li>Tidak Lulus</li>
+
+</ul>
+
+<div class="tip">
+
+<strong>💡 Contoh penggunaan:</strong>
+
+<p>
+Gunakan Filters untuk membuat laporan yang hanya menampilkan
+peserta dari program tertentu atau status tertentu.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTOH LAPORAN -->
+
+<section class="card">
+
+<h2>11. Membuat Laporan Jumlah Peserta per Program</h2>
+
+<p>
+Misalnya ingin mengetahui jumlah peserta setiap program.
+</p>
+
+<h3>Susunan Field</h3>
+
+<table>
+
+<tr>
+<th>Area</th>
+<th>Field</th>
+</tr>
+
+<tr>
+<td>Rows</td>
+<td>Program</td>
+</tr>
+
+<tr>
+<td>Values</td>
+<td>Nama</td>
+</tr>
+
+</table>
+
+<p>
+Jika field Nama berupa teks, Excel biasanya menggunakan
+<strong>Count of Nama</strong>.
+</p>
+
+<h3>Contoh hasil</h3>
+
+<table>
+
+<tr>
+<th>Program</th>
+<th>Jumlah Peserta</th>
+</tr>
+
+<tr>
+<td>Bisnis Manajemen</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>Garmen</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>Teknik Las</td>
+<td>35</td>
+</tr>
+
+<tr>
+<th>Total</th>
+<th>90</th>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- VALUE FIELD SETTINGS -->
+
+<section class="card">
+
+<h2>12. Mengubah Jenis Perhitungan</h2>
+
+<p>
+Pada area Values, Excel memungkinkan kita mengubah
+jenis perhitungan.
+</p>
+
+<div class="step">
+
+<strong>Caranya:</strong>
+
+<ol>
+
+<li>Klik dropdown field pada area Values.</li>
+
+<li>Pilih <strong>Value Field Settings</strong>.</li>
+
+<li>Pilih jenis perhitungan.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+</div>
+
+<table>
+
+<tr>
+<th>Calculation</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>Sum</td>
+<td>Menjumlahkan data.</td>
+</tr>
+
+<tr>
+<td>Count</td>
+<td>Menghitung jumlah data.</td>
+</tr>
+
+<tr>
+<td>Average</td>
+<td>Menghitung rata-rata.</td>
+</tr>
+
+<tr>
+<td>Max</td>
+<td>Mencari nilai terbesar.</td>
+</tr>
+
+<tr>
+<td>Min</td>
+<td>Mencari nilai terkecil.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- SORTING -->
+
+<section class="card">
+
+<h2>13. Sorting pada PivotTable</h2>
+
+<p>
+Data PivotTable dapat diurutkan berdasarkan nama kategori
+atau nilai.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Kita dapat mengurutkan program berdasarkan jumlah peserta:
+</p>
+
+<ul>
+
+<li>Terbesar ke terkecil</li>
+
+<li>Terkecil ke terbesar</li>
+
+</ul>
+
+<div class="tip">
+
+<strong>💡 Manfaat:</strong>
+
+<p>
+Sorting memudahkan kita menemukan program dengan jumlah peserta
+terbanyak atau paling sedikit.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FILTER -->
+
+<section class="card">
+
+<h2>14. Filtering pada PivotTable</h2>
+
+<p>
+Filter dapat digunakan untuk menampilkan sebagian data saja.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Jika ingin melihat hanya peserta yang berstatus
+<strong>Lulus</strong>:
+</p>
+
+<ol>
+
+<li>Masukkan Status ke Filters.</li>
+
+<li>Klik dropdown filter.</li>
+
+<li>Pilih Lulus.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+<p>
+PivotTable akan menampilkan data sesuai filter tersebut.
+</p>
+
+</section>
+
+
+<!-- GROUPING -->
+
+<section class="card">
+
+<h2>15. Grouping Data</h2>
+
+<p>
+PivotTable dapat digunakan untuk mengelompokkan data tertentu.
+Salah satu penggunaan yang paling umum adalah
+<strong>Grouping tanggal</strong>.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Data pendaftaran peserta terdiri dari tanggal:
+</p>
+
+<ul>
+
+<li>01/08/2026</li>
+<li>05/08/2026</li>
+<li>12/08/2026</li>
+<li>20/08/2026</li>
+</ul>
+
+<p>
+Tanggal tersebut dapat dikelompokkan berdasarkan:
+</p>
+
+<ul>
+
+<li>Years</li>
+<li>Quarters</li>
+<li>Months</li>
+<li>Days</li>
+
+</ul>
+
+<h3>Cara Grouping</h3>
+
+<ol>
+
+<li>Klik salah satu tanggal pada PivotTable.</li>
+
+<li>Klik kanan.</li>
+
+<li>Pilih <strong>Group</strong>.</li>
+
+<li>Pilih periode yang diinginkan.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+</section>
+
+
+<!-- PIVOTCHART -->
+
+<section class="card">
+
+<h2>16. PivotChart</h2>
+
+<p>
+<strong>PivotChart</strong> adalah grafik yang terhubung dengan
+PivotTable.
+</p>
+
+<p>
+PivotChart memudahkan kita menyajikan hasil analisis
+dalam bentuk visual.
+</p>
+
+<h3>Cara Membuat PivotChart</h3>
+
+<ol>
+
+<li>Klik salah satu cell pada PivotTable.</li>
+
+<li>Klik tab <strong>Analyze</strong>.</li>
+
+<li>Klik <strong>PivotChart</strong>.</li>
+
+<li>Pilih jenis grafik.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+<h3>Jenis grafik yang dapat digunakan</h3>
+
+<ul>
+
+<li>Column Chart</li>
+
+<li>Bar Chart</li>
+
+<li>Line Chart</li>
+
+<li>Pie Chart</li>
+
+<li>Area Chart</li>
+
+</ul>
+
+<div class="tip">
+
+<strong>💡 Rekomendasi:</strong>
+
+<p>
+Gunakan Column Chart atau Bar Chart untuk membandingkan
+jumlah peserta antarprogram.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- REFRESH -->
+
+<section class="card">
+
+<h2>17. Refresh PivotTable</h2>
+
+<p>
+Jika data sumber berubah atau bertambah,
+PivotTable tidak selalu memperbarui hasil secara otomatis.
+Kita perlu melakukan <strong>Refresh</strong>.
+</p>
+
+<h3>Cara Refresh</h3>
+
+<ol>
+
+<li>Klik PivotTable.</li>
+
+<li>Klik kanan.</li>
+
+<li>Pilih <strong>Refresh</strong>.</li>
+
+</ol>
+
+<p>
+Atau gunakan:
+</p>
+
+<p>
+<strong>PivotTable Tools → Analyze → Refresh</strong>
+</p>
+
+<div class="warning">
+
+<strong>⚠️ Penting:</strong>
+
+Jika data baru berada di luar range sumber PivotTable,
+Refresh saja mungkin tidak cukup.
+Pastikan sumber data PivotTable sudah mencakup data baru.
+
+</div>
+
+</section>
+
+
+<!-- UBAH SUMBER -->
+
+<section class="card">
+
+<h2>18. Mengubah Sumber Data PivotTable</h2>
+
+<p>
+Jika range data sumber berubah, kita dapat mengubah sumber
+PivotTable.
+</p>
+
+<ol>
+
+<li>Klik PivotTable.</li>
+
+<li>Klik tab <strong>Analyze</strong>.</li>
+
+<li>Pilih <strong>Change Data Source</strong>.</li>
+
+<li>Tentukan range baru.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+</section>
+
+
+<!-- TABLE SUMBER -->
+
+<section class="card">
+
+<h2>19. Menggunakan Format Table sebagai Sumber</h2>
+
+<p>
+Salah satu cara yang baik untuk mengelola data sumber adalah
+mengubah data menjadi Excel Table.
+</p>
+
+<h3>Caranya</h3>
+
+<ol>
+
+<li>Blok data.</li>
+
+<li>Tekan <strong>Ctrl + T</strong>.</li>
+
+<li>Pastikan opsi <strong>My table has headers</strong> aktif.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+<p>
+Setelah menjadi Table, data lebih mudah dikelola dan
+dapat digunakan sebagai sumber PivotTable.
+</p>
+
+<div class="info">
+
+<strong>💡 Keuntungan:</strong>
+
+<p>
+Ketika data baru ditambahkan ke Table, range tabel dapat
+meluas secara otomatis. Namun PivotTable tetap perlu
+di-Refresh agar hasil analisis diperbarui.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTOH PRAKTIK -->
+
+<section class="card">
+
+<h2>20. Praktik Membuat Laporan Pelatihan</h2>
+
+<p>
+Gunakan data peserta pelatihan dengan kolom:
+</p>
+
+<table>
+
+<tr>
+<th>Tanggal</th>
+<th>Nama</th>
+<th>Program</th>
+<th>Gender</th>
+<th>Nilai</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>01/08/2026</td>
+<td>Andi</td>
+<td>Teknik Las</td>
+<td>L</td>
+<td>85</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>02/08/2026</td>
+<td>Budi</td>
+<td>Garmen</td>
+<td>L</td>
+<td>78</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>03/08/2026</td>
+<td>Citra</td>
+<td>Bisnis Manajemen</td>
+<td>P</td>
+<td>90</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>04/08/2026</td>
+<td>Dewi</td>
+<td>Teknik Las</td>
+<td>P</td>
+<td>68</td>
+<td>Tidak Lulus</td>
+</tr>
+
+</table>
+
+<h3>Latihan 1 — Jumlah Peserta</h3>
+
+<p>
+Buat PivotTable untuk mengetahui jumlah peserta
+berdasarkan program.
+</p>
+
+<div class="formula">
+Rows → Program
+<br>
+Values → Nama
+</div>
+
+<h3>Latihan 2 — Jumlah Peserta Berdasarkan Gender</h3>
+
+<div class="formula">
+Rows → Program
+<br>
+Columns → Gender
+<br>
+Values → Nama
+</div>
+
+<h3>Latihan 3 — Rata-rata Nilai</h3>
+
+<div class="formula">
+Rows → Program
+<br>
+Values → Nilai → Average
+</div>
+
+<h3>Latihan 4 — Peserta Lulus</h3>
+
+<div class="formula">
+Rows → Program
+<br>
+Values → Nama
+<br>
+Filters → Status
+</div>
+
+<p>
+Kemudian pilih filter <strong>Lulus</strong>.
+</p>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="card">
+
+<h2>21. PivotTable untuk Laporan Profesional</h2>
+
+<p>
+PivotTable sangat berguna untuk membuat laporan manajemen.
+</p>
+
+<p>
+Contoh laporan yang dapat dibuat:
+</p>
+
+<ul>
+
+<li>Jumlah peserta per program.</li>
+
+<li>Jumlah peserta berdasarkan jenis kelamin.</li>
+
+<li>Jumlah peserta lulus dan tidak lulus.</li>
+
+<li>Rata-rata nilai setiap program.</li>
+
+<li>Jumlah peserta berdasarkan bulan.</li>
+
+<li>Program dengan peserta terbanyak.</li>
+
+<li>Program dengan rata-rata nilai tertinggi.</li>
+
+</ul>
+
+<div class="info">
+
+<strong>Konsep laporan:</strong>
+
+<p>
+<strong>Data Mentah → PivotTable → Analisis → PivotChart → Laporan</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- TIPS -->
+
+<section class="card">
+
+<h2>💡 22. Tips Menggunakan PivotTable</h2>
+
+<div class="step">
+
+<strong>1. Rapikan data terlebih dahulu</strong>
+
+<p>
+Data yang rapi akan menghasilkan PivotTable yang lebih baik.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>2. Gunakan nama header yang jelas</strong>
+
+<p>
+Hindari header kosong atau nama kolom yang membingungkan.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>3. Gunakan Table</strong>
+
+<p>
+Ctrl + T dapat membantu mengelola sumber data.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>4. Refresh setelah data berubah</strong>
+
+<p>
+Biasakan melakukan Refresh setelah menambah atau mengubah data.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>5. Gunakan PivotChart untuk presentasi</strong>
+
+<p>
+Visualisasi membuat laporan lebih mudah dipahami.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- KESALAHAN -->
+
+<section class="card">
+
+<h2>⚠️ 23. Kesalahan yang Sering Terjadi</h2>
+
+<table>
+
+<tr>
+<th>Masalah</th>
+<th>Penyebab</th>
+<th>Solusi</th>
+</tr>
+
+<tr>
+<td>Field tidak muncul</td>
+<td>Header kosong atau data tidak terbaca.</td>
+<td>Periksa header dan range data.</td>
+</tr>
+
+<tr>
+<td>Jumlah data tidak sesuai</td>
+<td>Range sumber tidak mencakup semua data.</td>
+<td>Periksa Change Data Source.</td>
+</tr>
+
+<tr>
+<td>Data lama masih muncul</td>
+<td>PivotTable belum di-refresh.</td>
+<td>Klik Refresh.</td>
+</tr>
+
+<tr>
+<td>Nilai menggunakan Count</td>
+<td>Field berisi teks atau Excel mendeteksinya bukan angka.</td>
+<td>Periksa tipe data sumber.</td>
+</tr>
+
+<tr>
+<td>Tanggal tidak bisa dikelompokkan</td>
+<td>Data tanggal tersimpan sebagai teks.</td>
+<td>Konversi menjadi tanggal Excel yang valid.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- RANGKUMAN -->
+
+<section class="card">
+
+<h2>📌 24. Ringkasan Modul 10</h2>
+
+<table>
+
+<tr>
+<th>Materi</th>
+<th>Inti Pembelajaran</th>
+</tr>
+
+<tr>
+<td>PivotTable</td>
+<td>Fitur untuk merangkum dan menganalisis data.</td>
+</tr>
+
+<tr>
+<td>Rows</td>
+<td>Menampilkan kategori secara vertikal.</td>
+</tr>
+
+<tr>
+<td>Columns</td>
+<td>Menampilkan kategori secara horizontal.</td>
+</tr>
+
+<tr>
+<td>Values</td>
+<td>Melakukan perhitungan data.</td>
+</tr>
+
+<tr>
+<td>Filters</td>
+<td>Menyaring laporan.</td>
+</tr>
+
+<tr>
+<td>Grouping</td>
+<td>Mengelompokkan data, terutama tanggal.</td>
+</tr>
+
+<tr>
+<td>PivotChart</td>
+<td>Menyajikan PivotTable dalam bentuk grafik.</td>
+</tr>
+
+<tr>
+<td>Refresh</td>
+<td>Memperbarui hasil PivotTable.</td>
+</tr>
+
+<tr>
+<td>Change Data Source</td>
+<td>Mengubah range sumber PivotTable.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- KESIMPULAN -->
+
+<section class="card">
+
+<h2>🎓 Kesimpulan</h2>
+
+<p>
+PivotTable merupakan salah satu fitur penting Microsoft Excel
+untuk melakukan analisis data secara cepat dan fleksibel.
+</p>
+
+<p>
+Dengan memahami Rows, Columns, Values, dan Filters,
+peserta dapat mengubah data mentah menjadi laporan yang
+lebih informatif tanpa harus membuat banyak formula.
+</p>
+
+<div class="info">
+
+<strong>🎯 Kompetensi akhir:</strong>
+
+<p>
+Peserta mampu membuat PivotTable sederhana,
+melakukan filter, sorting, grouping, mengubah perhitungan,
+melakukan refresh, serta membuat PivotChart untuk kebutuhan
+laporan.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- NAVIGASI -->
+
+<div class="navigation">
+
+<a href="kuis-excel-9.html" class="btn">
+⬅️ Kembali ke Kuis Modul 9
+</a>
+
+<a href="kuis-excel-10.html" class="btn">
+📝 Lanjut ke Kuis Modul 10 ➡️
+</a>
+
+</div>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Modul 10 — PivotTable
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+</body>
+</html>

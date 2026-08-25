@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perkembangan Pembelajaran - TIK Learning</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:#f4f7fb;color:#17324d}
+.nav{background:#fff;box-shadow:0 2px 8px #0001;padding:0 7%}.navin{min-height:58px;display:flex;align-items:center;gap:25px;flex-wrap:wrap}
+.nav a{text-decoration:none;color:#0069a6;font-weight:600;font-size:14px;padding:18px 0}
+.container{max-width:880px;margin:30px auto;padding:0 15px}.card{background:#fff;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 5px 15px #00000014}
+h1{margin:0 0 8px;color:#0069a6;font-size:25px}h2{color:#17324d}p{line-height:1.6;color:#607d8b}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}.summary{background:#f8fbfd;border:1px solid #e4edf3;border-radius:11px;padding:17px}
+.num{font-size:27px;font-weight:700;color:#0069a6;margin:6px 0}small{color:#78909c}
+.progress{height:16px;background:#e5e9ed;border-radius:20px;overflow:hidden}.progress span,.bar span{display:block;height:100%;background:#0788c9;border-radius:20px;width:0}
+.info{display:flex;justify-content:space-between;font-size:13px;color:#607d8b;margin-top:8px}
+.module{padding:15px 0;border-bottom:1px solid #edf1f3}.head{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#0069a6}
+.bar{height:8px;background:#edf0f2;border-radius:20px;overflow:hidden;margin:9px 0}.status{font-size:12px;padding:6px 11px;border-radius:20px;background:#eceff1;color:#607d8b;white-space:nowrap}
+.done{background:#e8f5e9;color:#2e7d32}.warn{background:#fff8e1;color:#ef6c00}
+.note{background:#eaf5fb;border-left:5px solid #0788c9;padding:14px;border-radius:8px;line-height:1.6;font-size:13px}
+.btn{display:inline-block;text-decoration:none;background:#0788c9;color:white;padding:10px 16px;border-radius:7px;font-weight:700;font-size:13px}
+.footer{background:#101a2e;color:#fff;text-align:center;padding:28px 15px;margin-top:35px;font-size:13px}
+@media(max-width:750px){.grid{grid-template-columns:repeat(2,1fr)}.nav{padding:0 20px}}@media(max-width:480px){.head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="navin">
+<a href="index.html">Beranda</a><a href="autobiografi.html">Autobiografi</a><a href="materi.html">Materi</a>
+<a href="tugas.html">Tugas</a><a href="kelas-saya.html">Kelas Saya</a><a href="ruang-bertanya.html">Ruang Bertanya</a>
+</div></nav>
+<main class="container">
+<section class="card">
+<h1>🏆 Perkembangan Pembelajaran</h1>
+<p>Pantau perkembangan dan pencapaian pembelajaran Anda selama mengikuti pelatihan Kejuruan TIK.</p>
+<div class="grid">
+<div class="summary">📚<div class="num" id="done">0</div><small>Modul Selesai</small></div>
+<div class="summary">📝<div class="num" id="quiz">0</div><small>Kuis Selesai</small></div>
+<div class="summary">⭐<div class="num" id="avg">0</div><small>Nilai Rata-rata</small></div>
+<div class="summary">🎯<div class="num" id="pct">0%</div><small>Progress</small></div>
+</div>
+</section>
+<section class="card">
+<h2>📈 Progress Pembelajaran</h2>
+<div class="progress"><span id="totalbar"></span></div>
+<div class="info"><span>Progress keseluruhan</span><strong id="totaltext">0%</strong></div>
+<br><div class="note"><strong>Informasi:</strong> Dashboard ini siap dihubungkan dengan hasil kuis setiap modul. Nilai dapat disimpan melalui localStorage agar progress diperbarui otomatis.</div>
+</section>
+<section class="card"><h2>📚 Perkembangan Modul</h2>
+    <div class="module">
+      <div class="head"><strong>Modul 1 — Pengenalan Ms. Excel</strong><span id="s1" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b1"></span></div>
+      <small id="d1">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 2 — Excel Dasar</strong><span id="s2" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b2"></span></div>
+      <small id="d2">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 3 — Format Cell</strong><span id="s3" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b3"></span></div>
+      <small id="d3">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 4 — Formula Dasar</strong><span id="s4" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b4"></span></div>
+      <small id="d4">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 5 — Fungsi Matematika dan Trigonometri</strong><span id="s5" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b5"></span></div>
+      <small id="d5">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 6 — Fungsi Statistik</strong><span id="s6" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b6"></span></div>
+      <small id="d6">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 7 — Fungsi Logika</strong><span id="s7" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b7"></span></div>
+      <small id="d7">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 8 — Fungsi Text</strong><span id="s8" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b8"></span></div>
+      <small id="d8">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 9 — IF Bertingkat, HLOOKUP, VLOOKUP</strong><span id="s9" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b9"></span></div>
+      <small id="d9">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 10 — Pivot Table</strong><span id="s10" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b10"></span></div>
+      <small id="d10">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 11 — Macro dan Otomasi Tingkat Lanjut</strong><span id="s11" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b11"></span></div>
+      <small id="d11">Belum ada hasil kuis.</small>
+    </div>
+    <div class="module">
+      <div class="head"><strong>Modul 12 — Modul 12</strong><span id="s12" class="status">Belum dimulai</span></div>
+      <div class="bar"><span id="b12"></span></div>
+      <small id="d12">Belum ada hasil kuis.</small>
+    </div></section>
+<section class="card"><h2>🎯 Target Pembelajaran</h2>
+<div class="note"><strong>Target peserta:</strong> menyelesaikan seluruh modul, mengerjakan kuis, memahami materi, dan mencapai nilai minimal kelulusan.</div><br>
+<a href="materi.html" class="btn">📖 Lanjut Belajar</a>
+</section>
+</main>
+<footer class="footer"><strong>© 2026 TIK Learning - UPTD BLK Kabupaten Subang</strong></footer>
+<script>
+const N=12;let done=0,total=0,count=0;
+for(let i=1;i<=N;i++){
+ let d=null;
+ try{d=JSON.parse(localStorage.getItem("kuisExcel"+i)||"null")}catch(e){}
+ if(d && (d.selesai===true||d.completed===true||Number(d.nilai)>0)){
+   let n=Number(d.nilai||d.score||0);done++;count++;total+=n;
+   document.getElementById("s"+i).textContent=n>=75?"Selesai":"Perlu Perbaikan";
+   document.getElementById("s"+i).className="status "+(n>=75?"done":"warn");
+   document.getElementById("b"+i).style.width="100%";
+   document.getElementById("d"+i).textContent="Nilai kuis: "+n;
+ }
+}
+let p=Math.round(done/N*100),a=count?Math.round(total/count):0;
+document.getElementById("done").textContent=done;
+document.getElementById("quiz").textContent=count;
+document.getElementById("avg").textContent=a;
+document.getElementById("pct").textContent=p+"%";
+document.getElementById("totalbar").style.width=p+"%";
+document.getElementById("totaltext").textContent=p+"%";
+</script>
+</body>
+</html>

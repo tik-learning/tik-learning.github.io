@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Excel Modul 11 - Macro & Otomasi Tingkat Lanjut</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f1f5f3;
+    color:#263238;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:30px;
+}
+
+.header p{
+    margin:0;
+    font-size:16px;
+}
+
+.container{
+    max-width:950px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:28px;
+    margin-bottom:20px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+h2{
+    color:#107c41;
+    margin-top:0;
+}
+
+h3{
+    color:#185c37;
+}
+
+input[type="text"],
+input[type="password"]{
+    width:100%;
+    padding:13px;
+    border:1px solid #cfd8d3;
+    border-radius:8px;
+    font-size:16px;
+    margin-top:8px;
+}
+
+button{
+    border:0;
+    border-radius:8px;
+    padding:13px 22px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:#107c41;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#0b5c30;
+}
+
+.btn-secondary{
+    background:#607d8b;
+    color:white;
+}
+
+.btn-danger{
+    background:#c62828;
+    color:white;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.error{
+    background:#ffebee;
+    color:#c62828;
+    border-left:5px solid #c62828;
+    padding:12px;
+    border-radius:7px;
+    margin-top:15px;
+}
+
+.success{
+    background:#e8f5e9;
+    color:#2e7d32;
+    border-left:5px solid #2e7d32;
+    padding:12px;
+    border-radius:7px;
+    margin-top:15px;
+}
+
+.info{
+    background:#e3f2fd;
+    border-left:5px solid #1976d2;
+    padding:14px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:14px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.timer{
+    position:sticky;
+    top:10px;
+    z-index:100;
+    background:#263238;
+    color:white;
+    padding:15px;
+    text-align:center;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.timer.warning-time{
+    background:#e65100;
+}
+
+.timer.danger-time{
+    background:#c62828;
+}
+
+.progress-box{
+    margin-bottom:20px;
+}
+
+.progress-bar{
+    width:100%;
+    height:12px;
+    background:#e0e0e0;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:#107c41;
+    transition:.3s;
+}
+
+.question{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:18px;
+}
+
+.question-number{
+    display:inline-block;
+    background:#107c41;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question-text{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:10px 12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin:8px 0;
+    cursor:pointer;
+    background:white;
+}
+
+.option:hover{
+    background:#f1f8f4;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.result{
+    text-align:center;
+}
+
+.score{
+    font-size:48px;
+    font-weight:bold;
+    color:#107c41;
+    margin:10px 0;
+}
+
+.status{
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:25px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.lulus{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.belum{
+    background:#ffebee;
+    color:#c62828;
+}
+
+.review{
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+.correct{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+.incorrect{
+    color:#c62828;
+    font-weight:bold;
+}
+
+.unanswered{
+    color:#ef6c00;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    padding:30px;
+    color:#607d8b;
+}
+
+.navigation{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+@media(max-width:650px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .timer{
+        font-size:19px;
+    }
+
+    .question-text{
+        font-size:16px;
+    }
+
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>📝 KUIS EXCEL MODUL 11</h1>
+
+<p>Macro & Otomasi Tingkat Lanjut</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ================= PASSWORD ================= -->
+
+<section id="passwordSection" class="card">
+
+<h2>🔐 Akses Kuis</h2>
+
+<p>
+Masukkan password untuk membuka Kuis Excel Modul 11.
+</p>
+
+<div class="info">
+<strong>Petunjuk:</strong>
+<p>
+Pastikan Anda telah mempelajari materi
+<strong>Macro & Otomasi Tingkat Lanjut</strong>
+sebelum mengerjakan kuis.
+</p>
+</div>
+
+<label>
+<strong>Password Kuis</strong>
+</label>
+
+<input
+type="password"
+id="passwordInput"
+placeholder="Masukkan password">
+
+<br><br>
+
+<button
+class="btn-primary"
+onclick="cekPassword()">
+🔓 Buka Kuis
+</button>
+
+<div id="passwordError" class="error hidden">
+Password salah. Silakan coba kembali.
+</div>
+
+</section>
+
+
+<!-- ================= NAMA ================= -->
+
+<section id="nameSection" class="card hidden">
+
+<h2>👤 Data Peserta</h2>
+
+<p>
+Silakan masukkan nama lengkap Anda sebelum memulai kuis.
+</p>
+
+<label>
+<strong>Nama Peserta</strong>
+</label>
+
+<input
+type="text"
+id="namaPeserta"
+placeholder="Masukkan nama lengkap">
+
+<br><br>
+
+<button
+class="btn-primary"
+onclick="mulaiPersiapan()">
+➡️ Lanjut
+</button>
+
+<div id="nameError" class="error hidden">
+Nama peserta wajib diisi.
+</div>
+
+</section>
+
+
+<!-- ================= MULAI ================= -->
+
+<section id="startSection" class="card hidden">
+
+<h2>🚀 Siap Memulai Kuis?</h2>
+
+<div class="info">
+
+<p><strong>Peserta:</strong>
+<span id="displayName"></span>
+</p>
+
+<p><strong>Materi:</strong>
+Macro & Otomasi Tingkat Lanjut
+</p>
+
+<p><strong>Jumlah soal:</strong>
+20 soal
+</p>
+
+<p><strong>Waktu:</strong>
+15 menit
+</p>
+
+<p><strong>Nilai minimum lulus:</strong>
+75
+</p>
+
+</div>
+
+<div class="warning">
+
+<strong>⚠️ Perhatian</strong>
+
+<ul>
+<li>Timer akan berjalan setelah kuis dimulai.</li>
+<li>Jangan menutup halaman selama mengerjakan.</li>
+<li>Jika waktu habis, jawaban akan otomatis dikumpulkan.</li>
+<li>Pastikan semua jawaban sudah diperiksa sebelum Submit.</li>
+</ul>
+
+</div>
+
+<button
+class="btn-primary"
+onclick="mulaiKuis()">
+▶️ Mulai Kuis
+</button>
+
+</section>
+
+
+<!-- ================= KUIS ================= -->
+
+<section id="quizSection" class="hidden">
+
+<div id="timerBox" class="timer">
+⏱️ Waktu tersisa:
+<span id="timer">15:00</span>
+</div>
+
+<div class="card">
+
+<div class="progress-box">
+
+<strong>
+Progress Jawaban:
+<span id="answeredCount">0</span>/20
+</strong>
+
+<div class="progress-bar">
+<div id="progressBar" class="progress"></div>
+</div>
+
+</div>
+
+<p>
+<strong>Peserta:</strong>
+<span id="quizName"></span>
+</p>
+
+</div>
+
+
+<form id="quizForm">
+
+
+<!-- 1 -->
+
+<div class="question">
+
+<span class="question-number">Soal 1</span>
+
+<div class="question-text">
+Apa yang dimaksud dengan Macro pada Microsoft Excel?
+</div>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+A. Format file Excel
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+B. Sekumpulan instruksi untuk mengotomatisasi pekerjaan
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+C. Jenis grafik Excel
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+D. Jenis formula statistik
+</label>
+
+</div>
+
+
+<!-- 2 -->
+
+<div class="question">
+
+<span class="question-number">Soal 2</span>
+
+<div class="question-text">
+Bahasa pemrograman yang digunakan untuk membuat Macro pada Excel adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+A. HTML
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+B. CSS
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+C. VBA
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+D. SQL
+</label>
+
+</div>
+
+
+<!-- 3 -->
+
+<div class="question">
+
+<span class="question-number">Soal 3</span>
+
+<div class="question-text">
+Tab Excel yang digunakan untuk mengakses fitur Macro adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+A. Home
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+B. Insert
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+C. Developer
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+D. Review
+</label>
+
+</div>
+
+
+<!-- 4 -->
+
+<div class="question">
+
+<span class="question-number">Soal 4</span>
+
+<div class="question-text">
+Shortcut untuk membuka Visual Basic Editor adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+A. Ctrl + F
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+B. Alt + F11
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+C. Ctrl + F11
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+D. Shift + F11
+</label>
+
+</div>
+
+
+<!-- 5 -->
+
+<div class="question">
+
+<span class="question-number">Soal 5</span>
+
+<div class="question-text">
+Format file Excel yang tepat untuk menyimpan Macro VBA adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+A. .xlsx
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+B. .txt
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+C. .xlsm
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D">
+D. .csv
+</label>
+
+</div>
+
+
+<!-- 6 -->
+
+<div class="question">
+
+<span class="question-number">Soal 6</span>
+
+<div class="question-text">
+Fungsi Record Macro adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q6" value="A">
+A. Menghapus semua Macro
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B">
+B. Merekam tindakan pengguna menjadi kode VBA
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C">
+C. Mengubah Excel menjadi Word
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D">
+D. Membuat PivotTable
+</label>
+
+</div>
+
+
+<!-- 7 -->
+
+<div class="question">
+
+<span class="question-number">Soal 7</span>
+
+<div class="question-text">
+Fitur "Use Relative References" pada Record Macro digunakan untuk...
+</div>
+
+<label class="option">
+<input type="radio" name="q7" value="A">
+A. Mengunci password
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B">
+B. Merekam posisi berdasarkan referensi relatif
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C">
+C. Menghapus worksheet
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D">
+D. Membuat grafik
+</label>
+
+</div>
+
+
+<!-- 8 -->
+
+<div class="question">
+
+<span class="question-number">Soal 8</span>
+
+<div class="question-text">
+Struktur dasar prosedur Macro VBA adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q8" value="A">
+A. IF...ELSE
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B">
+B. FOR...NEXT
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C">
+C. SUB...END SUB
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D">
+D. BEGIN...END
+</label>
+
+</div>
+
+
+<!-- 9 -->
+
+<div class="question">
+
+<span class="question-number">Soal 9</span>
+
+<div class="question-text">
+Perintah VBA berikut digunakan untuk apa?<br>
+<code>Range("A1").Value = "Excel"</code>
+</div>
+
+<label class="option">
+<input type="radio" name="q9" value="A">
+A. Menghapus A1
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B">
+B. Mengisi A1 dengan teks Excel
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C">
+C. Membuat worksheet baru
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D">
+D. Mengunci A1
+</label>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="question">
+
+<span class="question-number">Soal 10</span>
+
+<div class="question-text">
+Dalam VBA, Range merupakan...
+</div>
+
+<label class="option">
+<input type="radio" name="q10" value="A">
+A. Objek yang mewakili satu atau beberapa cell
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B">
+B. Nama file
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C">
+C. Nama Macro
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D">
+D. Jenis error
+</label>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="question">
+
+<span class="question-number">Soal 11</span>
+
+<div class="question-text">
+Apa fungsi <code>MsgBox</code> dalam VBA?
+</div>
+
+<label class="option">
+<input type="radio" name="q11" value="A">
+A. Membuat worksheet
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="B">
+B. Menampilkan pesan kepada pengguna
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="C">
+C. Menghapus data
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="D">
+D. Mengurutkan data
+</label>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="question">
+
+<span class="question-number">Soal 12</span>
+
+<div class="question-text">
+Perintah VBA yang tepat untuk mengisi cell A1 menggunakan objek Cells adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q12" value="A">
+A. Cells(1,1).Value = "Nama"
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="B">
+B. Cell(A1) = "Nama"
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="C">
+C. Cells(A1).Text = "Nama"
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="D">
+D. Cell(1,1) = "Nama"
+</label>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="question">
+
+<span class="question-number">Soal 13</span>
+
+<div class="question-text">
+Pernyataan VBA yang digunakan untuk membuat keputusan berdasarkan kondisi adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q13" value="A">
+A. IF...THEN
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="B">
+B. SELECT...PRINT
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="C">
+C. LOOP...END
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="D">
+D. RANGE...CELL
+</label>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="question">
+
+<span class="question-number">Soal 14</span>
+
+<div class="question-text">
+Perintah VBA yang digunakan untuk melakukan perulangan adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q14" value="A">
+A. IF...THEN
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="B">
+B. FOR...NEXT
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="C">
+C. WITH...END
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="D">
+D. MSG...BOX
+</label>
+
+</div>
+
+
+<!-- 15 -->
+
+<div class="question">
+
+<span class="question-number">Soal 15</span>
+
+<div class="question-text">
+Apa hasil dari kode berikut?<br>
+<code>Range("A1").ClearContents</code>
+</div>
+
+<label class="option">
+<input type="radio" name="q15" value="A">
+A. Menghapus isi A1 tanpa menghapus formatnya
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="B">
+B. Menghapus worksheet
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C">
+C. Menghapus workbook
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D">
+D. Mengunci A1
+</label>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="question">
+
+<span class="question-number">Soal 16</span>
+
+<div class="question-text">
+Apa fungsi variabel dalam VBA?
+</div>
+
+<label class="option">
+<input type="radio" name="q16" value="A">
+A. Menyimpan nilai sementara
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="B">
+B. Membuat password Excel
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="C">
+C. Membuat grafik otomatis
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="D">
+D. Menghapus Macro
+</label>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="question">
+
+<span class="question-number">Soal 17</span>
+
+<div class="question-text">
+Apa kegunaan tombol Form Control Button pada worksheet?
+</div>
+
+<label class="option">
+<input type="radio" name="q17" value="A">
+A. Mengubah format file
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="B">
+B. Menjalankan Macro melalui tombol
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="C">
+C. Menghapus formula
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="D">
+D. Membuka internet
+</label>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="question">
+
+<span class="question-number">Soal 18</span>
+
+<div class="question-text">
+Apa tujuan utama penggunaan Macro dalam pekerjaan Excel?
+</div>
+
+<label class="option">
+<input type="radio" name="q18" value="A">
+A. Membuat pekerjaan lebih lambat
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="B">
+B. Mengurangi ukuran monitor
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="C">
+C. Mengotomatisasi pekerjaan yang berulang
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="D">
+D. Menghapus semua formula
+</label>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="question">
+
+<span class="question-number">Soal 19</span>
+
+<div class="question-text">
+Perhatikan kode berikut:<br><br>
+
+<code>
+For i = 1 To 10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cells(i,1).Value = i<br>
+Next i
+</code>
+
+<br><br>
+
+Apa hasil dari Macro tersebut?
+</div>
+
+<label class="option">
+<input type="radio" name="q19" value="A">
+A. Mengisi angka 1–10 pada A1:A10
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="B">
+B. Mengisi angka 1–10 pada B1:B10
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="C">
+C. Menghapus A1:A10
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="D">
+D. Mengisi semua cell dengan angka 10
+</label>
+
+</div>
+
+
+<!-- 20 -->
+
+<div class="question">
+
+<span class="question-number">Soal 20</span>
+
+<div class="question-text">
+Seorang petugas harus setiap hari memformat laporan, mengecek nilai peserta, menentukan status lulus, dan menyesuaikan lebar kolom. Solusi yang paling tepat adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q20" value="A">
+A. Melakukan semuanya secara manual
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="B">
+B. Menggunakan Macro/VBA untuk mengotomatisasinya
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="C">
+B. Menghapus workbook setiap hari
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="D">
+D. Mengubah file menjadi PDF terlebih dahulu
+</label>
+
+</div>
+
+
+<div class="card">
+
+<div class="warning">
+
+<strong>⚠️ Periksa kembali jawaban Anda.</strong>
+
+<p>
+Setelah menekan tombol Submit, jawaban tidak dapat diubah.
+</p>
+
+</div>
+
+<button
+type="button"
+class="btn-primary"
+onclick="submitKuis()">
+📤 Submit Kuis
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+
+<!-- ================= HASIL ================= -->
+
+<section id="resultSection" class="card hidden">
+
+<div class="result">
+
+<h2>🎉 Hasil Kuis</h2>
+
+<p>
+<strong>Nama Peserta</strong>
+</p>
+
+<h3 id="resultName"></h3>
+
+<p>Nilai Anda:</p>
+
+<div class="score" id="score"></div>
+
+<div id="status"></div>
+
+<p id="resultDetail"></p>
+
+</div>
+
+<div id="reviewSection">
+
+<h2>📚 Pembahasan</h2>
+
+<div id="reviewContainer"></div>
+
+</div>
+
+<div class="navigation">
+
+<button
+class="btn-secondary"
+onclick="window.location.href='modul-excel-11.html'">
+📖 Kembali ke Modul 11
+</button>
+
+<button
+id="nextModuleBtn"
+class="btn-primary"
+onclick="window.location.href='modul-excel-12.html'">
+➡️ Lanjut Modul 12
+</button>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Kuis Modul 11 — Macro & Otomasi Tingkat Lanjut
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   PENGATURAN KUIS
+===================================================== */
+
+const PASSWORD_KUIS = "BLKEXCEL11";
+
+const DURASI_KUIS = 15 * 60;
+
+const NILAI_LULUS = 75;
+
+let waktuTersisa = DURASI_KUIS;
+
+let timerInterval = null;
+
+let namaPeserta = "";
+
+let kuisSudahSubmit = false;
+
+
+/* =====================================================
+   KUNCI JAWABAN
+===================================================== */
+
+const kunciJawaban = {
+
+q1:"B",
+q2:"C",
+q3:"C",
+q4:"B",
+q5:"C",
+q6:"B",
+q7:"B",
+q8:"C",
+q9:"B",
+q10:"A",
+q11:"B",
+q12:"A",
+q13:"A",
+q14:"B",
+q15:"A",
+q16:"A",
+q17:"B",
+q18:"C",
+q19:"A",
+q20:"B"
+
+};
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+const pembahasan = {
+
+q1:"Macro adalah sekumpulan instruksi yang digunakan untuk mengotomatisasi pekerjaan berulang di Excel.",
+
+q2:"VBA atau Visual Basic for Applications adalah bahasa pemrograman yang digunakan untuk membuat dan mengembangkan Macro di Microsoft Excel.",
+
+q3:"Tab Developer menyediakan berbagai fitur untuk Macro, VBA, Form Control, dan pengembangan otomatisasi.",
+
+q4:"Shortcut Alt + F11 digunakan untuk membuka Visual Basic Editor.",
+
+q5:"Format .xlsm adalah Excel Macro-Enabled Workbook yang dapat menyimpan kode VBA.",
+
+q6:"Record Macro merekam tindakan pengguna dan mengubahnya menjadi kode VBA.",
+
+q7:"Use Relative References digunakan agar referensi yang direkam mengikuti posisi relatif terhadap cell aktif.",
+
+q8:"Prosedur Macro VBA menggunakan struktur Sub...End Sub.",
+
+q9:"Range(\"A1\").Value = \"Excel\" akan mengisi cell A1 dengan teks Excel.",
+
+q10:"Range merupakan objek VBA yang digunakan untuk mewakili satu atau beberapa cell.",
+
+q11:"MsgBox digunakan untuk menampilkan pesan kepada pengguna.",
+
+q12:"Cells(1,1) menunjuk baris 1 kolom 1, yaitu cell A1.",
+
+q13:"IF...THEN digunakan untuk menjalankan perintah berdasarkan kondisi tertentu.",
+
+q14:"For...Next digunakan untuk melakukan perulangan pada VBA.",
+
+q15:"ClearContents menghapus isi cell/range tetapi tidak menghapus format cell.",
+
+q16:"Variabel digunakan untuk menyimpan nilai sementara yang digunakan selama Macro berjalan.",
+
+q17:"Button Form Control dapat dihubungkan dengan Macro sehingga pengguna dapat menjalankan Macro melalui tombol.",
+
+q18:"Tujuan utama Macro adalah mengotomatisasi pekerjaan yang berulang sehingga pekerjaan menjadi lebih cepat dan efisien.",
+
+q19:"Cells(i,1) berarti baris i dan kolom 1. Dengan i dari 1 sampai 10, angka 1–10 akan ditulis pada A1:A10.",
+
+q20:"Pekerjaan berulang seperti memformat laporan, mengecek nilai, menentukan status, dan mengatur kolom dapat diotomatisasi menggunakan Macro/VBA."
+
+};
+
+
+/* =====================================================
+   CEK PASSWORD
+===================================================== */
+
+function cekPassword(){
+
+    const password =
+        document.getElementById("passwordInput").value;
+
+    const error =
+        document.getElementById("passwordError");
+
+    if(password === PASSWORD_KUIS){
+
+        document
+        .getElementById("passwordSection")
+        .classList.add("hidden");
+
+        document
+        .getElementById("nameSection")
+        .classList.remove("hidden");
+
+        error.classList.add("hidden");
+
+    }else{
+
+        error.classList.remove("hidden");
+
+    }
+
+}
+
+
+/* =====================================================
+   ENTER PASSWORD
+===================================================== */
+
+document
+.getElementById("passwordInput")
+.addEventListener("keypress",function(e){
+
+    if(e.key === "Enter"){
+
+        cekPassword();
+
+    }
+
+});
+
+
+/* =====================================================
+   PERSIAPAN NAMA
+===================================================== */
+
+function mulaiPersiapan(){
+
+    const input =
+        document.getElementById("namaPeserta");
+
+    namaPeserta =
+        input.value.trim();
+
+    const error =
+        document.getElementById("nameError");
+
+    if(namaPeserta === ""){
+
+        error.classList.remove("hidden");
+
+        return;
+
+    }
+
+    error.classList.add("hidden");
+
+    document
+    .getElementById("nameSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("startSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("displayName")
+    .textContent = namaPeserta;
+
+}
+
+
+/* =====================================================
+   MULAI KUIS
+===================================================== */
+
+function mulaiKuis(){
+
+    document
+    .getElementById("startSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("quizSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("quizName")
+    .textContent = namaPeserta;
+
+    waktuTersisa = DURASI_KUIS;
+
+    tampilkanTimer();
+
+    timerInterval =
+        setInterval(hitungTimer,1000);
+
+    updateProgress();
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function hitungTimer(){
+
+    waktuTersisa--;
+
+    tampilkanTimer();
+
+    if(waktuTersisa <= 60){
+
+        document
+        .getElementById("timerBox")
+        .classList.add("danger-time");
+
+    }else if(waktuTersisa <= 300){
+
+        document
+        .getElementById("timerBox")
+        .classList.add("warning-time");
+
+    }
+
+    if(waktuTersisa <= 0){
+
+        clearInterval(timerInterval);
+
+        alert(
+            "⏰ Waktu kuis telah habis. Jawaban akan otomatis dikumpulkan."
+        );
+
+        submitKuis(true);
+
+    }
+
+}
+
+
+/* =====================================================
+   TAMPILKAN TIMER
+===================================================== */
+
+function tampilkanTimer(){
+
+    const menit =
+        Math.floor(waktuTersisa / 60);
+
+    const detik =
+        waktuTersisa % 60;
+
+    document
+    .getElementById("timer")
+    .textContent =
+        String(menit).padStart(2,"0")
+        + ":" +
+        String(detik).padStart(2,"0");
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(){
+
+    let jumlahTerjawab = 0;
+
+    for(let i=1;i<=20;i++){
+
+        const jawaban =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(jawaban){
+
+            jumlahTerjawab++;
+
+        }
+
+    }
+
+    document
+    .getElementById("answeredCount")
+    .textContent = jumlahTerjawab;
+
+    const persen =
+        (jumlahTerjawab / 20) * 100;
+
+    document
+    .getElementById("progressBar")
+    .style.width = persen + "%";
+
+}
+
+
+/* =====================================================
+   UPDATE PROGRESS SETIAP JAWABAN
+===================================================== */
+
+document
+.getElementById("quizForm")
+.addEventListener("change",function(){
+
+    updateProgress();
+
+});
+
+
+/* =====================================================
+   SUBMIT KUIS
+===================================================== */
+
+function submitKuis(autoSubmit=false){
+
+    if(kuisSudahSubmit){
+
+        return;
+
+    }
+
+    let jumlahTerjawab = 0;
+
+    for(let i=1;i<=20;i++){
+
+        const jawaban =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(jawaban){
+
+            jumlahTerjawab++;
+
+        }
+
+    }
+
+
+    if(!autoSubmit && jumlahTerjawab < 20){
+
+        const yakin =
+            confirm(
+                "Anda baru menjawab "
+                + jumlahTerjawab
+                + " dari 20 soal.\n\n"
+                + "Apakah Anda yakin ingin mengirimkan kuis?"
+            );
+
+        if(!yakin){
+
+            return;
+
+        }
+
+    }
+
+
+    kuisSudahSubmit = true;
+
+    clearInterval(timerInterval);
+
+    let benar = 0;
+
+    let kosong = 0;
+
+    const jawabanPeserta = {};
+
+
+    for(let i=1;i<=20;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(selected){
+
+            jawabanPeserta["q"+i] =
+                selected.value;
+
+            if(
+                selected.value ===
+                kunciJawaban["q"+i]
+            ){
+
+                benar++;
+
+            }
+
+        }else{
+
+            kosong++;
+
+            jawabanPeserta["q"+i] = "";
+
+        }
+
+    }
+
+
+    const salah =
+        20 - benar - kosong;
+
+    const nilai =
+        Math.round((benar / 20) * 100);
+
+    tampilkanHasil(
+        nilai,
+        benar,
+        salah,
+        kosong,
+        jawabanPeserta
+    );
+
+}
+
+
+/* =====================================================
+   TAMPILKAN HASIL
+===================================================== */
+
+function tampilkanHasil(
+    nilai,
+    benar,
+    salah,
+    kosong,
+    jawabanPeserta
+){
+    // Simpan hasil kuis ke localStorage
+localStorage.setItem("kuisExcel11", JSON.stringify({
+    nama: namaPeserta,
+    nilai: nilai,
+    benar: benar,
+    salah: salah,
+    kosong: kosong,
+    selesai: true,
+    tanggal: new Date().toLocaleString("id-ID")
+}));
+
+    document
+    .getElementById("quizSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("resultSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("resultName")
+    .textContent = namaPeserta;
+
+    document
+    .getElementById("score")
+    .textContent = nilai;
+
+
+    const status =
+        document.getElementById("status");
+
+    if(nilai >= NILAI_LULUS){
+
+        status.textContent =
+            "✅ LULUS";
+
+        status.className =
+            "status lulus";
+
+    }else{
+
+        status.textContent =
+            "❌ BELUM LULUS";
+
+        status.className =
+            "status belum";
+
+    }
+
+
+    document
+    .getElementById("resultDetail")
+    .innerHTML =
+        "Benar: <strong>"+benar+"</strong> soal | " +
+        "Salah: <strong>"+salah+"</strong> soal | " +
+        "Tidak dijawab: <strong>"+kosong+"</strong> soal";
+
+
+    buatPembahasan(jawabanPeserta);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+function buatPembahasan(jawabanPeserta){
+
+    const container =
+        document.getElementById("reviewContainer");
+
+    container.innerHTML = "";
+
+    for(let i=1;i<=20;i++){
+
+        const nomor = i;
+
+        const key = "q"+i;
+
+        const jawaban =
+            jawabanPeserta[key];
+
+        const benar =
+            kunciJawaban[key];
+
+        let statusHTML = "";
+
+        if(jawaban === ""){
+
+            statusHTML =
+                '<div class="unanswered">⚠️ Tidak dijawab</div>';
+
+        }else if(jawaban === benar){
+
+            statusHTML =
+                '<div class="correct">✅ Jawaban Anda benar</div>';
+
+        }else{
+
+            statusHTML =
+                '<div class="incorrect">❌ Jawaban Anda salah</div>';
+
+        }
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "review";
+
+        div.innerHTML = `
+
+            <strong>Soal ${nomor}</strong>
+
+            ${statusHTML}
+
+            <p>
+            Jawaban Anda:
+            <strong>
+            ${jawaban || "-"}
+            </strong>
+            </p>
+
+            <p>
+            Jawaban benar:
+            <strong class="correct">
+            ${benar}
+            </strong>
+            </p>
+
+            <p>
+            <strong>📖 Pembahasan:</strong><br>
+            ${pembahasan[key]}
+            </p>
+
+        `;
+
+        container.appendChild(div);
+
+    }
+
+}
+
+
+/* =====================================================
+   CEGAH REFRESH TIDAK DISENGAJA
+===================================================== */
+
+window.addEventListener("beforeunload",function(e){
+
+    if(
+        !kuisSudahSubmit &&
+        !document
+        .getElementById("quizSection")
+        .classList
+        .contains("hidden")
+    ){
+
+        e.preventDefault();
+
+        e.returnValue = "";
+
+    }
+
+});
+
+</script>
+<script src="progress-sync.js"></script>
+</body>
+</html>

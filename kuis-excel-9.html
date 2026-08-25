@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Excel Modul 9</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.6;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+.header h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:16px;
+}
+
+.container{
+    max-width:950px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+input[type="text"],
+input[type="password"]{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd6d2;
+    border-radius:8px;
+    font-size:16px;
+    margin-top:7px;
+}
+
+.btn{
+    border:none;
+    padding:13px 24px;
+    border-radius:8px;
+    background:#107c41;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn-blue{
+    background:#2878d4;
+}
+
+.btn-blue:hover{
+    background:#185ca8;
+}
+
+.btn-red{
+    background:#d32f2f;
+}
+
+.btn-red:hover{
+    background:#a51f1f;
+}
+
+.center{
+    text-align:center;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.timer{
+    position:sticky;
+    top:10px;
+    z-index:100;
+    background:#fff;
+    border:2px solid #107c41;
+    border-radius:12px;
+    padding:12px 18px;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    color:#107c41;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+.timer.warning-time{
+    color:#e65100;
+    border-color:#e65100;
+}
+
+.timer.danger{
+    color:#c62828;
+    border-color:#c62828;
+}
+
+.question{
+    background:#fff;
+    border:1px solid #dce5df;
+    border-radius:12px;
+    padding:22px;
+    margin-bottom:18px;
+}
+
+.question h3{
+    color:#185c37;
+    margin-bottom:12px;
+}
+
+.option{
+    display:block;
+    padding:11px 13px;
+    margin:8px 0;
+    background:#f7faf8;
+    border:1px solid #dce5df;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#edf7f0;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+.result{
+    text-align:center;
+    padding:25px;
+    border-radius:12px;
+    background:#f7faf8;
+}
+
+.score{
+    font-size:48px;
+    font-weight:bold;
+    color:#107c41;
+}
+
+.status{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:20px;
+    color:white;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+.lulus{
+    background:#2e7d32;
+}
+
+.tidak-lulus{
+    background:#c62828;
+}
+
+.review{
+    border:1px solid #dce5df;
+    border-radius:12px;
+    padding:20px;
+    margin:15px 0;
+}
+
+.correct{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+.incorrect{
+    color:#c62828;
+    font-weight:bold;
+}
+
+.answer-box{
+    background:#f1f8f3;
+    border-left:5px solid #107c41;
+    padding:12px;
+    margin-top:10px;
+}
+
+.explanation{
+    background:#f8f9fa;
+    padding:12px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+}
+
+.formula{
+    background:#263238;
+    color:#e8f5e9;
+    padding:10px 14px;
+    border-radius:6px;
+    font-family:Consolas,monospace;
+    margin:8px 0;
+    overflow-x:auto;
+}
+
+@media(max-width:600px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>📝 KUIS EXCEL MODUL 9</h1>
+
+<p>
+IF Bertingkat, HLOOKUP, VLOOKUP & Kombinasi Fungsi
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- PASSWORD -->
+
+<section id="passwordSection" class="card">
+
+<h2>🔐 Verifikasi Kuis</h2>
+
+<p>
+Masukkan password yang diberikan oleh instruktur
+untuk melanjutkan ke Kuis Modul 9.
+</p>
+
+<div class="info">
+
+<strong>Materi:</strong>
+IF Bertingkat, VLOOKUP, HLOOKUP & Kombinasi Fungsi
+<br>
+
+<strong>Jumlah soal:</strong> 20 soal
+<br>
+
+<strong>Waktu:</strong> 15 menit
+<br>
+
+<strong>Nilai minimum:</strong> 75
+
+</div>
+
+<label>
+<strong>Password Kuis</strong>
+</label>
+
+<input
+type="password"
+id="password"
+placeholder="Masukkan password"
+>
+
+<button
+class="btn"
+onclick="checkPassword()">
+
+🔓 Lanjut
+
+</button>
+
+<p
+id="passwordError"
+style="color:#c62828;margin-top:10px;">
+</p>
+
+</section>
+
+
+<!-- NAMA -->
+
+<section id="nameSection" class="card hidden">
+
+<h2>👤 Nama Peserta</h2>
+
+<p>
+Masukkan nama lengkap peserta sebelum memulai kuis.
+</p>
+
+<label>
+<strong>Nama Peserta</strong>
+</label>
+
+<input
+type="text"
+id="participantName"
+placeholder="Masukkan nama lengkap"
+>
+
+<button
+class="btn"
+onclick="startQuiz()">
+
+▶️ Mulai Kuis
+
+</button>
+
+<p
+id="nameError"
+style="color:#c62828;margin-top:10px;">
+</p>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quizSection" class="hidden">
+
+<div class="timer" id="timer">
+⏱️ Waktu: 15:00
+</div>
+
+
+<div class="card">
+
+<h2>📝 Kuis Modul 9</h2>
+
+<p>
+Pilih satu jawaban yang paling tepat.
+</p>
+
+<div class="info">
+
+<strong>Nama Peserta:</strong>
+<span id="displayName"></span>
+
+</div>
+
+</div>
+
+
+<form id="quizForm">
+
+
+<!-- SOAL 1 -->
+
+<div class="question">
+
+<h3>
+1. Apa yang dimaksud dengan IF bertingkat?
+</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+A. Menggunakan fungsi IF lebih dari satu dalam satu formula
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+B. Menggunakan fungsi SUM berulang kali
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+C. Menggunakan beberapa worksheet
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+D. Menggunakan beberapa workbook
+</label>
+
+</div>
+
+
+<!-- SOAL 2 -->
+
+<div class="question">
+
+<h3>
+2. Formula yang tepat untuk kategori nilai 90 ke atas = "Sangat Baik", 80 ke atas = "Baik", 70 ke atas = "Cukup", selain itu = "Kurang" adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+A. =IF(B2>=90,"Sangat Baik",IF(B2>=80,"Baik",IF(B2>=70,"Cukup","Kurang")))
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+B. =IF(B2>=70,"Sangat Baik","Kurang")
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+C. =IF(B2=90,"Sangat Baik","Kurang")
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+D. =IF(B2>=80,"Cukup","Kurang")
+</label>
+
+</div>
+
+
+<!-- SOAL 3 -->
+
+<div class="question">
+
+<h3>
+3. Huruf V pada VLOOKUP berarti...
+</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+A. Value
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+B. Vertical
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+C. Variable
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+D. Validation
+</label>
+
+</div>
+
+
+<!-- SOAL 4 -->
+
+<div class="question">
+
+<h3>
+4. Fungsi VLOOKUP digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+A. Mencari data secara vertikal
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+B. Mencari data secara horizontal
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+C. Menghapus data
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+D. Mengurutkan data
+</label>
+
+</div>
+
+
+<!-- SOAL 5 -->
+
+<div class="question">
+
+<h3>
+5. Pada formula =VLOOKUP(E2,A2:C10,2,FALSE), angka 2 menunjukkan...
+</h3>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+A. Nomor baris
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+B. Jumlah data
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+C. Nomor kolom yang akan diambil
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D">
+D. Nomor worksheet
+</label>
+
+</div>
+
+
+<!-- SOAL 6 -->
+
+<div class="question">
+
+<h3>
+6. Apa fungsi FALSE pada VLOOKUP?
+</h3>
+
+<label class="option">
+<input type="radio" name="q6" value="A">
+A. Mencari kecocokan tepat
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B">
+B. Mencari kecocokan mendekati
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C">
+C. Menghapus error
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D">
+D. Mengubah data menjadi teks
+</label>
+
+</div>
+
+
+<!-- SOAL 7 -->
+
+<div class="question">
+
+<h3>
+7. Untuk mencari kategori nilai berdasarkan rentang dengan VLOOKUP, argumen yang biasanya digunakan adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q7" value="A">
+A. FALSE
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B">
+B. TRUE
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C">
+C. EXACT
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D">
+D. MATCH
+</label>
+
+</div>
+
+
+<!-- SOAL 8 -->
+
+<div class="question">
+
+<h3>
+8. Jika menggunakan VLOOKUP dengan TRUE, kolom pertama tabel sebaiknya...
+</h3>
+
+<label class="option">
+<input type="radio" name="q8" value="A">
+A. Disusun secara acak
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B">
+B. Disusun menurun
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C">
+C. Disusun menaik
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D">
+D. Tidak perlu diisi
+</label>
+
+</div>
+
+
+<!-- SOAL 9 -->
+
+<div class="question">
+
+<h3>
+9. Huruf H pada HLOOKUP berarti...
+</h3>
+
+<label class="option">
+<input type="radio" name="q9" value="A">
+A. Horizontal
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B">
+B. Header
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C">
+C. Height
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D">
+D. Hyperlink
+</label>
+
+</div>
+
+
+<!-- SOAL 10 -->
+
+<div class="question">
+
+<h3>
+10. Perbedaan utama VLOOKUP dan HLOOKUP adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q10" value="A">
+A. VLOOKUP mencari vertikal, HLOOKUP mencari horizontal
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B">
+B. VLOOKUP hanya untuk angka
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C">
+C. HLOOKUP hanya untuk teks
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D">
+D. Tidak ada perbedaan
+</label>
+
+</div>
+
+
+<!-- SOAL 11 -->
+
+<div class="question">
+
+<h3>
+11. Pada HLOOKUP, angka row_index_num digunakan untuk menentukan...
+</h3>
+
+<label class="option">
+<input type="radio" name="q11" value="A">
+A. Nomor kolom
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="B">
+B. Nomor baris yang akan diambil
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="C">
+C. Jumlah worksheet
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="D">
+D. Jumlah karakter
+</label>
+
+</div>
+
+
+<!-- SOAL 12 -->
+
+<div class="question">
+
+<h3>
+12. Formula berikut digunakan untuk apa?
+</h3>
+
+<div class="formula">
+=IF(AND(B2>=75,C2>=80%),"Lulus","Tidak Lulus")
+</div>
+
+<label class="option">
+<input type="radio" name="q12" value="A">
+A. Lulus jika nilai dan kehadiran memenuhi syarat
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="B">
+B. Lulus jika salah satu syarat terpenuhi
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="C">
+C. Menghitung rata-rata
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="D">
+D. Mencari data secara vertikal
+</label>
+
+</div>
+
+
+<!-- SOAL 13 -->
+
+<div class="question">
+
+<h3>
+13. Fungsi OR yang dikombinasikan dengan IF digunakan ketika...
+</h3>
+
+<label class="option">
+<input type="radio" name="q13" value="A">
+A. Semua kondisi harus benar
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="B">
+B. Cukup salah satu kondisi terpenuhi
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="C">
+C. Tidak ada kondisi
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="D">
+D. Hanya ada data teks
+</label>
+
+</div>
+
+
+<!-- SOAL 14 -->
+
+<div class="question">
+
+<h3>
+14. Apa fungsi IFERROR?
+</h3>
+
+<label class="option">
+<input type="radio" name="q14" value="A">
+A. Menghapus semua formula
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="B">
+B. Menangani hasil error dengan memberikan hasil alternatif
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="C">
+C. Mengurutkan data
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="D">
+D. Mengubah angka menjadi teks
+</label>
+
+</div>
+
+
+<!-- SOAL 15 -->
+
+<div class="question">
+
+<h3>
+15. Formula yang tepat untuk menampilkan "Kode Tidak Ditemukan" jika VLOOKUP menghasilkan error adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q15" value="A">
+A. =IFERROR(VLOOKUP(E2,A2:C10,2,FALSE),"Kode Tidak Ditemukan")
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="B">
+B. =IF(VLOOKUP(E2,A2:C10,2,FALSE))
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C">
+C. =ERROR(VLOOKUP(E2,A2:C10,2,FALSE))
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D">
+D. =IFERROR(E2)
+</label>
+
+</div>
+
+
+<!-- SOAL 16 -->
+
+<div class="question">
+
+<h3>
+16. Jika kode peserta "TK20260025" berada di A2, formula untuk mengambil "TK" adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q16" value="A">
+A. =RIGHT(A2,2)
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="B">
+B. =MID(A2,2,2)
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="C">
+C. =LEFT(A2,2)
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="D">
+D. =VLOOKUP(A2)
+</label>
+
+</div>
+
+
+<!-- SOAL 17 -->
+
+<div class="question">
+
+<h3>
+17. Formula berikut digunakan untuk apa?
+</h3>
+
+<div class="formula">
+=VLOOKUP(LEFT(A2,2),$H$2:$I$4,2,FALSE)
+</div>
+
+<label class="option">
+<input type="radio" name="q17" value="A">
+A. Mengambil dua karakter terakhir lalu mencari data
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="B">
+B. Mengambil dua karakter pertama kemudian mencarinya pada tabel referensi
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="C">
+C. Menghitung dua kolom
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="D">
+D. Mengubah data menjadi angka
+</label>
+
+</div>
+
+
+<!-- SOAL 18 -->
+
+<div class="question">
+
+<h3>
+18. Mengapa $H$2:$I$4 digunakan pada formula VLOOKUP?
+</h3>
+
+<label class="option">
+<input type="radio" name="q18" value="A">
+A. Agar tabel referensi menjadi warna hijau
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="B">
+B. Agar tabel referensi menjadi referensi absolut
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="C">
+C. Agar formula berubah otomatis
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="D">
+D. Agar data terhapus
+</label>
+
+</div>
+
+
+<!-- SOAL 19 -->
+
+<div class="question">
+
+<h3>
+19. Jika ingin menentukan "Peserta Terbaik" apabila nilai ≥ 90 ATAU kehadiran ≥ 95%, formula yang tepat adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q19" value="A">
+A. =IF(AND(B2>=90,C2>=95%),"Peserta Terbaik","Reguler")
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="B">
+B. =IF(OR(B2>=90,C2>=95%),"Peserta Terbaik","Reguler")
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="C">
+B. =IF(B2>=90,C2>=95%)
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="D">
+D. =OR(B2>=90,C2>=95%)
+</label>
+
+</div>
+
+
+<!-- SOAL 20 -->
+
+<div class="question">
+
+<h3>
+20. Manakah formula yang paling tepat untuk menentukan bidang peserta berdasarkan dua karakter pertama kode peserta?
+</h3>
+
+<label class="option">
+<input type="radio" name="q20" value="A">
+A. =VLOOKUP(A2,H2:I4,2,FALSE)
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="B">
+B. =VLOOKUP(LEFT(A2,2),H2:I4,2,FALSE)
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="C">
+C. =LEFT(VLOOKUP(A2,H2:I4,2,FALSE),2)
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="D">
+D. =IF(A2,H2:I4)
+</label>
+
+</div>
+
+
+<div class="card center">
+
+<button
+type="button"
+class="btn btn-red"
+onclick="submitQuiz()">
+
+📤 Submit Kuis
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+
+<!-- HASIL -->
+
+<section id="resultSection" class="card hidden">
+
+<div class="result">
+
+<h2>🎓 Hasil Kuis</h2>
+
+<p>
+<strong>Nama Peserta:</strong>
+<span id="resultName"></span>
+</p>
+
+<div class="score">
+<span id="score">0</span>/100
+</div>
+
+<p>
+Jawaban benar:
+<strong>
+<span id="correctCount">0</span>/20
+</strong>
+</p>
+
+<div id="status"></div>
+
+<p id="resultMessage"></p>
+
+</div>
+
+<div class="navigation">
+
+<button
+class="btn btn-blue"
+onclick="showReview()">
+
+📖 Lihat Pembahasan
+
+</button>
+
+<a
+href="modul-excel-10.html"
+class="btn">
+
+➡️ Lanjut Modul 10
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- PEMBAHASAN -->
+
+<section id="reviewSection" class="card hidden">
+
+<h2>📖 Pembahasan Jawaban</h2>
+
+<div id="reviewContent"></div>
+
+<div class="navigation">
+
+<a
+href="modul-excel-10.html"
+class="btn">
+
+➡️ Lanjut ke Modul 10
+
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Kuis Modul 9 — IF Bertingkat, HLOOKUP, VLOOKUP & Kombinasi Fungsi
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   KONFIGURASI
+===================================================== */
+
+const PASSWORD = "BLKEXCEL9";
+
+const TIME_LIMIT = 15 * 60;
+
+let timeLeft = TIME_LIMIT;
+
+let timerInterval;
+
+let quizStarted = false;
+
+let submitted = false;
+
+
+/* =====================================================
+   KUNCI JAWABAN
+===================================================== */
+
+const answers = {
+
+q1:"A",
+q2:"A",
+q3:"B",
+q4:"A",
+q5:"C",
+q6:"A",
+q7:"B",
+q8:"C",
+q9:"A",
+q10:"A",
+q11:"B",
+q12:"A",
+q13:"B",
+q14:"B",
+q15:"A",
+q16:"C",
+q17:"B",
+q18:"B",
+q19:"B",
+q20:"B"
+
+};
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+const explanations = {
+
+q1:
+"IF bertingkat adalah penggunaan fungsi IF lebih dari satu dalam satu formula untuk menguji beberapa kondisi.",
+
+q2:
+"Formula tersebut memeriksa nilai dari kategori tertinggi kemudian turun ke kategori berikutnya.",
+
+q3:
+"V pada VLOOKUP berarti Vertical karena pencarian dilakukan secara vertikal.",
+
+q4:
+"VLOOKUP digunakan untuk mencari nilai pada kolom pertama tabel kemudian mengambil data dari kolom lain pada baris yang sama.",
+
+q5:
+"Angka 2 merupakan col_index_num, yaitu nomor kolom pada tabel yang datanya akan dikembalikan.",
+
+q6:
+"FALSE digunakan untuk exact match atau pencarian yang harus sama persis.",
+
+q7:
+"TRUE digunakan untuk approximate match dan dapat digunakan untuk mencari kategori berdasarkan rentang nilai.",
+
+q8:
+"Untuk approximate match menggunakan TRUE, kolom pertama tabel referensi harus disusun secara menaik.",
+
+q9:
+"H pada HLOOKUP berarti Horizontal.",
+
+q10:
+"VLOOKUP melakukan pencarian secara vertikal, sedangkan HLOOKUP melakukan pencarian secara horizontal.",
+
+q11:
+"Pada HLOOKUP, row_index_num menentukan nomor baris yang akan dikembalikan.",
+
+q12:
+"AND mensyaratkan seluruh kondisi terpenuhi. Jadi nilai minimal 75 dan kehadiran minimal 80% harus terpenuhi.",
+
+q13:
+"OR menghasilkan TRUE jika setidaknya salah satu kondisi terpenuhi.",
+
+q14:
+"IFERROR digunakan untuk memberikan hasil alternatif apabila sebuah formula menghasilkan error.",
+
+q15:
+"IFERROR dapat membungkus VLOOKUP sehingga ketika pencarian menghasilkan error, Excel menampilkan teks alternatif.",
+
+q16:
+"LEFT(A2,2) mengambil dua karakter pertama dari kode peserta.",
+
+q17:
+"LEFT mengambil dua karakter pertama, kemudian hasilnya digunakan sebagai lookup_value pada VLOOKUP.",
+
+q18:
+"Tanda $ membuat referensi H2:I4 menjadi absolut sehingga area tabel tidak berubah ketika formula disalin.",
+
+q19:
+"Karena cukup salah satu kondisi terpenuhi, fungsi yang tepat adalah OR yang dikombinasikan dengan IF.",
+
+q20:
+"LEFT(A2,2) mengambil kode bidang, kemudian VLOOKUP mencari kode tersebut pada tabel referensi."
+
+};
+
+
+/* =====================================================
+   CHECK PASSWORD
+===================================================== */
+
+function checkPassword(){
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("passwordError");
+
+    if(password === PASSWORD){
+
+        document
+        .getElementById("passwordSection")
+        .classList.add("hidden");
+
+        document
+        .getElementById("nameSection")
+        .classList.remove("hidden");
+
+        error.textContent = "";
+
+    }else{
+
+        error.textContent =
+        "❌ Password salah. Silakan coba kembali.";
+
+    }
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+function startQuiz(){
+
+    const name =
+        document
+        .getElementById("participantName")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("nameError");
+
+    if(name === ""){
+
+        error.textContent =
+        "❌ Nama peserta wajib diisi.";
+
+        return;
+
+    }
+
+    document
+    .getElementById("nameSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("quizSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("displayName")
+    .textContent = name;
+
+    quizStarted = true;
+
+    startTimer();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer(){
+
+    updateTimer();
+
+    timerInterval =
+    setInterval(function(){
+
+        timeLeft--;
+
+        updateTimer();
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "⏰ Waktu kuis telah habis. Jawaban akan otomatis dikumpulkan."
+            );
+
+            submitQuiz(true);
+
+        }
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   UPDATE TIMER
+===================================================== */
+
+function updateTimer(){
+
+    const timer =
+        document.getElementById("timer");
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+    const seconds =
+        timeLeft % 60;
+
+    timer.textContent =
+        "⏱️ Waktu: " +
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    timer.classList.remove(
+        "warning-time",
+        "danger"
+    );
+
+    if(timeLeft <= 300 && timeLeft > 60){
+
+        timer.classList.add("warning-time");
+
+    }
+
+    if(timeLeft <= 60){
+
+        timer.classList.add("danger");
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBMIT QUIZ
+===================================================== */
+
+function submitQuiz(autoSubmit=false){
+
+    if(submitted){
+        return;
+    }
+
+    const confirmSubmit =
+        autoSubmit ||
+        confirm(
+            "Apakah Anda yakin ingin mengumpulkan jawaban?"
+        );
+
+    if(!confirmSubmit){
+        return;
+    }
+
+    clearInterval(timerInterval);
+
+    submitted = true;
+
+    let correct = 0;
+
+    for(let i=1;i<=20;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(
+            selected &&
+            selected.value === answers["q"+i]
+        ){
+
+            correct++;
+
+        }
+
+    }
+
+    const score =
+        correct * 5;
+
+    const name =
+        document
+        .getElementById("participantName")
+        .value
+        .trim();
+
+    document
+    .getElementById("quizSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("resultSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("resultName")
+    .textContent = name;
+
+    document
+    .getElementById("score")
+    .textContent = score;
+
+    document
+    .getElementById("correctCount")
+    .textContent = correct;
+
+    const status =
+        document.getElementById("status");
+
+    const message =
+        document.getElementById("resultMessage");
+
+    if(score >= 75){
+
+        status.className =
+        "status lulus";
+
+        status.textContent =
+        "✅ LULUS";
+
+        message.textContent =
+        "Selamat! Anda telah memenuhi nilai minimum kelulusan.";
+
+    }else{
+
+        status.className =
+        "status tidak-lulus";
+
+        status.textContent =
+        "❌ BELUM LULUS";
+
+        message.textContent =
+        "Nilai Anda belum mencapai batas kelulusan. Silakan pelajari kembali Modul 9.";
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+function showReview(){
+
+    const review =
+        document.getElementById("reviewContent");
+
+    review.innerHTML = "";
+
+    for(let i=1;i<=20;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        const userAnswer =
+            selected ?
+            selected.value :
+            "Tidak dijawab";
+
+        const correctAnswer =
+            answers["q"+i];
+
+        const isCorrect =
+            userAnswer === correctAnswer;
+
+        const box =
+            document.createElement("div");
+
+        box.className = "review";
+
+        box.innerHTML = `
+
+            <h3>Soal ${i}</h3>
+
+            <p>
+                Jawaban Anda:
+                <strong class="${
+                    isCorrect
+                    ? "correct"
+                    : "incorrect"
+                }">
+                    ${userAnswer}
+                </strong>
+            </p>
+
+            <div class="answer-box">
+
+                Jawaban benar:
+                <strong>${correctAnswer}</strong>
+
+            </div>
+
+            <div class="explanation">
+
+                <strong>💡 Pembahasan:</strong><br>
+
+                ${explanations["q"+i]}
+
+            </div>
+
+        `;
+
+        review.appendChild(box);
+
+    }
+
+    document
+    .getElementById("reviewSection")
+    .classList.remove("hidden");
+
+    window.scrollTo({
+        top:
+        document
+        .getElementById("reviewSection")
+        .offsetTop - 20,
+
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   BLOK REFRESH / MENUTUP HALAMAN
+===================================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(e){
+
+        if(quizStarted && !submitted){
+
+            e.preventDefault();
+
+            e.returnValue =
+            "Kuis sedang berlangsung.";
+
+        }
+
+    }
+);
+
+</script>
+<script src="progress-sync.js"></script>
+</body>
+</html>

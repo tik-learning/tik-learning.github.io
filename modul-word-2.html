@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 2 - Membuat dan Mengelola Dokumen</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .modul-header {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .modul-header h2 {
+            margin-top: 0;
+        }
+
+        .materi-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .materi-section h2 {
+            margin-top: 0;
+        }
+
+        .materi-section h3 {
+            margin-top: 25px;
+        }
+
+        .materi-section p {
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .materi-section ol,
+        .materi-section ul {
+            line-height: 1.8;
+        }
+
+        .topik-card {
+            background: #f8fafc;
+            border-left: 4px solid #0077b6;
+            padding: 18px 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .topik-card h3 {
+            margin-top: 0;
+        }
+
+        .info-box {
+            background: #f1f7fb;
+            border-left: 5px solid #0077b6;
+            padding: 18px 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .shortcut-box {
+            background: #f8fafc;
+            border: 1px solid #ddd;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .shortcut-box strong {
+            font-size: 18px;
+        }
+
+        .table-shortcut {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .table-shortcut th,
+        .table-shortcut td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table-shortcut th {
+            background: #f1f7fb;
+        }
+
+        .practice-box {
+            background: #f8fafc;
+            border-left: 5px solid #0077b6;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            margin-bottom: 10px;
+        }
+
+        .btn-kembali {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 18px;
+            background: #0077b6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn-kembali:hover {
+            opacity: 0.9;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- NAVIGASI -->
+
+    <nav>
+
+        <a href="index.html">Beranda</a>
+
+        <a href="autobiografi.html">Autobiografi</a>
+
+        <a href="materi.html">Materi</a>
+
+        <a href="tugas.html">Tugas</a>
+
+        <a href="kelas.html">Kelas Saya</a>
+
+        <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+    </nav>
+
+
+    <!-- KONTEN -->
+
+    <main class="container">
+
+
+        <a href="materi.html" class="btn-kembali">
+            ← Kembali ke Materi
+        </a>
+
+
+        <!-- JUDUL MODUL -->
+
+        <section class="modul-header">
+
+            <h2>📘 Modul 2 — Membuat dan Mengelola Dokumen</h2>
+
+            <p>
+                Microsoft Word 2016
+            </p>
+
+            <p>
+                Pada modul ini peserta mempelajari berbagai
+                keterampilan dasar untuk membuat, mengedit,
+                menyimpan, membuka, dan mengelola dokumen.
+            </p>
+
+        </section>
+
+
+        <!-- TUJUAN -->
+
+        <section class="materi-section">
+
+            <h2>🎯 Tujuan Pembelajaran</h2>
+
+            <p>
+                Setelah menyelesaikan modul ini, peserta diharapkan
+                mampu:
+            </p>
+
+            <ul>
+
+                <li>Membuat dokumen baru di Microsoft Word 2016.</li>
+
+                <li>Membuka dokumen yang sudah tersimpan.</li>
+
+                <li>Mengetik dan mengedit teks.</li>
+
+                <li>Menyimpan dokumen dengan benar.</li>
+
+                <li>Memahami perbedaan Save dan Save As.</li>
+
+                <li>Membuka kembali dokumen yang terakhir digunakan.</li>
+
+                <li>Memilih teks menggunakan mouse dan keyboard.</li>
+
+                <li>Menggunakan Copy, Cut, dan Paste.</li>
+
+                <li>Menggunakan Undo dan Redo.</li>
+
+                <li>Menggunakan Find & Replace.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- 1 MEMBUAT DOKUMEN -->
+
+        <section class="materi-section">
+
+            <h2>1. 📄 Membuat Dokumen Baru</h2>
+
+            <p>
+                Dokumen baru digunakan ketika kita ingin membuat
+                file Word dari awal.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>📌 Cara 1 — Melalui Start Screen</h3>
+
+                <ol>
+
+                    <li>
+                        Buka <strong>Microsoft Word 2016</strong>.
+                    </li>
+
+                    <li>
+                        Pada Start Screen, pilih
+                        <strong>Blank Document</strong>.
+                    </li>
+
+                    <li>
+                        Word akan membuka lembar dokumen kosong.
+                    </li>
+
+                    <li>
+                        Dokumen siap digunakan untuk mengetik.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>⌨️ Cara 2 — Menggunakan Keyboard</h3>
+
+                <div class="shortcut-box">
+
+                    Tekan:
+
+                    <br><br>
+
+                    <strong>Ctrl + N</strong>
+
+                    <p>
+                        Shortcut tersebut akan membuat dokumen
+                        Word baru.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Tips:</strong>
+
+                <br>
+
+                Sebelum mulai mengetik, biasakan menentukan
+                terlebih dahulu tujuan dan isi dokumen yang
+                akan dibuat.
+
+            </div>
+
+        </section>
+
+
+        <!-- 2 MEMBUKA DOKUMEN -->
+
+        <section class="materi-section">
+
+            <h2>2. 📂 Membuka Dokumen yang Sudah Ada</h2>
+
+            <p>
+                Dokumen yang sebelumnya sudah disimpan dapat
+                dibuka kembali untuk dibaca atau diedit.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>Langkah-langkah</h3>
+
+                <ol>
+
+                    <li>
+                        Buka Microsoft Word.
+                    </li>
+
+                    <li>
+                        Pilih <strong>File</strong>.
+                    </li>
+
+                    <li>
+                        Pilih <strong>Open</strong>.
+                    </li>
+
+                    <li>
+                        Pilih lokasi penyimpanan dokumen.
+                    </li>
+
+                    <li>
+                        Cari file Word yang ingin dibuka.
+                    </li>
+
+                    <li>
+                        Pilih dokumen.
+                    </li>
+
+                    <li>
+                        Klik <strong>Open</strong>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="shortcut-box">
+
+                ⌨️ Shortcut:
+
+                <br><br>
+
+                <strong>Ctrl + O</strong>
+
+                <p>
+                    Digunakan untuk membuka dokumen.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Tips:</strong>
+
+                <br>
+
+                Perhatikan lokasi penyimpanan file.
+                Dokumen dapat berada di Documents, Desktop,
+                flashdisk, OneDrive, atau folder lainnya.
+
+            </div>
+
+        </section>
+
+
+        <!-- 3 MENGETIK -->
+
+        <section class="materi-section">
+
+            <h2>3. ⌨️ Mengetik dan Mengedit Teks</h2>
+
+            <p>
+                Setelah dokumen terbuka, kita dapat mulai
+                mengetik teks.
+            </p>
+
+            <p>
+                Klik pada area dokumen, kemudian mulai
+                memasukkan teks menggunakan keyboard.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>Contoh Teks</h3>
+
+                <p>
+                    UPTD BLK Kabupaten Subang menyelenggarakan
+                    pelatihan berbasis kompetensi untuk meningkatkan
+                    keterampilan peserta agar siap memasuki dunia
+                    kerja maupun mengembangkan usaha mandiri.
+                </p>
+
+            </div>
+
+
+            <h3>✏️ Mengedit Teks</h3>
+
+            <p>
+                Mengedit berarti melakukan perubahan terhadap
+                teks yang sudah diketik.
+            </p>
+
+            <ul>
+
+                <li>Menambahkan kata.</li>
+
+                <li>Menghapus kata.</li>
+
+                <li>Mengubah kalimat.</li>
+
+                <li>Memperbaiki kesalahan pengetikan.</li>
+
+                <li>Memindahkan teks.</li>
+
+            </ul>
+
+
+            <div class="topik-card">
+
+                <h3>⌨️ Tombol yang Sering Digunakan</h3>
+
+                <ul>
+
+                    <li>
+                        <strong>Backspace</strong> —
+                        menghapus karakter di sebelah kiri kursor.
+                    </li>
+
+                    <li>
+                        <strong>Delete</strong> —
+                        menghapus karakter di sebelah kanan kursor.
+                    </li>
+
+                    <li>
+                        <strong>Enter</strong> —
+                        membuat paragraf atau baris baru.
+                    </li>
+
+                    <li>
+                        <strong>Spacebar</strong> —
+                        memberikan jarak antar kata.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Tips:</strong>
+
+                <br>
+
+                Jangan menggunakan Spacebar berkali-kali
+                untuk membuat jarak atau posisi teks.
+                Gunakan fitur Paragraph, Alignment, Tab,
+                atau Table sesuai kebutuhan.
+
+            </div>
+
+        </section>
+
+
+        <!-- 4 MENYIMPAN -->
+
+        <section class="materi-section">
+
+            <h2>4. 💾 Menyimpan Dokumen</h2>
+
+            <p>
+                Menyimpan dokumen sangat penting agar pekerjaan
+                tidak hilang.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>Langkah-langkah</h3>
+
+                <ol>
+
+                    <li>
+                        Klik <strong>File</strong>.
+                    </li>
+
+                    <li>
+                        Pilih <strong>Save</strong>.
+                    </li>
+
+                    <li>
+                        Tentukan lokasi penyimpanan.
+                    </li>
+
+                    <li>
+                        Masukkan nama file.
+                    </li>
+
+                    <li>
+                        Klik <strong>Save</strong>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="shortcut-box">
+
+                ⌨️ Shortcut:
+
+                <br><br>
+
+                <strong>Ctrl + S</strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Kebiasaan yang baik:</strong>
+
+                <br>
+
+                Biasakan menekan <strong>Ctrl + S</strong>
+                secara berkala, terutama setelah melakukan
+                perubahan penting.
+
+            </div>
+
+        </section>
+
+
+        <!-- 5 SAVE SAVE AS -->
+
+        <section class="materi-section">
+
+            <h2>5. 💾 Save dan Save As</h2>
+
+            <p>
+                Kedua fitur ini sering dianggap sama,
+                padahal memiliki fungsi yang berbeda.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>💾 Save</h3>
+
+                <p>
+                    Save digunakan untuk menyimpan perubahan
+                    pada file yang sedang dikerjakan.
+                </p>
+
+                <p>
+                    Contoh: Anda memiliki file
+                    <strong>Laporan_Pelatihan.docx</strong>.
+                    Setelah melakukan perubahan, tekan
+                    <strong>Ctrl + S</strong>.
+                </p>
+
+                <p>
+                    Perubahan akan disimpan pada file yang sama.
+                </p>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>📑 Save As</h3>
+
+                <p>
+                    Save As digunakan untuk menyimpan dokumen
+                    sebagai file baru dengan nama atau lokasi
+                    yang berbeda.
+                </p>
+
+                <p>
+                    Contoh:
+                </p>
+
+                <p>
+                    <strong>Laporan_Pelatihan.docx</strong>
+                    →
+                    <strong>Laporan_Pelatihan_Final.docx</strong>
+                </p>
+
+                <p>
+                    Gunakan:
+                </p>
+
+                <p>
+                    <strong>File → Save As</strong>
+                </p>
+
+            </div>
+
+
+            <table class="table-shortcut">
+
+                <tr>
+
+                    <th>Fitur</th>
+
+                    <th>Fungsi</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Save</td>
+
+                    <td>
+                        Menyimpan perubahan pada dokumen yang sama.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Save As</td>
+
+                    <td>
+                        Membuat salinan atau versi baru dari dokumen.
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- 6 RECENT -->
+
+        <section class="materi-section">
+
+            <h2>6. 🕘 Membuka Dokumen Terakhir</h2>
+
+            <p>
+                Microsoft Word menyediakan daftar dokumen
+                yang baru saja digunakan.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>Langkah-langkah</h3>
+
+                <ol>
+
+                    <li>
+                        Buka Microsoft Word.
+                    </li>
+
+                    <li>
+                        Pilih <strong>File</strong>.
+                    </li>
+
+                    <li>
+                        Pilih <strong>Open</strong>.
+                    </li>
+
+                    <li>
+                        Lihat bagian <strong>Recent</strong>.
+                    </li>
+
+                    <li>
+                        Pilih dokumen yang ingin dibuka.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Tips:</strong>
+
+                <br>
+
+                Daftar Recent dapat mempercepat proses membuka
+                dokumen yang sering digunakan.
+
+            </div>
+
+        </section>
+
+
+        <!-- 7 MENUTUP -->
+
+        <section class="materi-section">
+
+            <h2>7. ❌ Menutup Dokumen</h2>
+
+            <p>
+                Setelah selesai bekerja, dokumen dapat ditutup
+                tanpa harus menutup aplikasi Microsoft Word.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>Langkah-langkah</h3>
+
+                <ol>
+
+                    <li>
+                        Klik <strong>File</strong>.
+                    </li>
+
+                    <li>
+                        Pilih <strong>Close</strong>.
+                    </li>
+
+                </ol>
+
+                <p>
+                    Anda juga dapat menggunakan tombol
+                    <strong>X</strong> pada jendela aplikasi.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                ⚠️ <strong>Perhatian:</strong>
+
+                <br>
+
+                Pastikan dokumen sudah disimpan sebelum ditutup,
+                terutama jika terdapat perubahan yang belum disimpan.
+
+            </div>
+
+        </section>
+
+
+        <!-- 8 MEMILIH TEKS -->
+
+        <section class="materi-section">
+
+            <h2>8. 🖱️ Memilih Teks</h2>
+
+            <p>
+                Sebelum melakukan tindakan seperti Copy, Cut,
+                Delete, atau mengubah format, teks harus dipilih
+                terlebih dahulu.
+            </p>
+
+
+            <div class="topik-card">
+
+                <h3>Memilih dengan Mouse</h3>
+
+                <p>
+                    Klik dan tahan tombol mouse, kemudian geser
+                    melewati teks yang ingin dipilih.
+                </p>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>Memilih Satu Kata</h3>
+
+                <p>
+                    Klik dua kali pada kata tersebut.
+                </p>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>Memilih Seluruh Dokumen</h3>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + A</strong>
+
+                    <p>
+                        Digunakan untuk memilih seluruh isi dokumen.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Tips:</strong>
+
+                <br>
+
+                Pastikan bagian teks yang dipilih sudah benar
+                sebelum melakukan tindakan seperti Delete atau Cut.
+
+            </div>
+
+        </section>
+
+
+        <!-- 9 COPY CUT PASTE -->
+
+        <section class="materi-section">
+
+            <h2>9. ✂️ Copy, Cut, dan Paste</h2>
+
+
+            <div class="topik-card">
+
+                <h3>📋 Copy</h3>
+
+                <p>
+                    Copy digunakan untuk membuat salinan teks
+                    tanpa menghilangkan teks asli.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + C</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>✂️ Cut</h3>
+
+                <p>
+                    Cut digunakan untuk memindahkan teks dari
+                    satu tempat ke tempat lain.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + X</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>📌 Paste</h3>
+
+                <p>
+                    Paste digunakan untuk menempelkan hasil
+                    Copy atau Cut.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + V</strong>
+
+                </div>
+
+            </div>
+
+
+            <h3>📊 Ringkasan Shortcut</h3>
+
+
+            <table class="table-shortcut">
+
+                <tr>
+
+                    <th>Perintah</th>
+
+                    <th>Shortcut</th>
+
+                    <th>Fungsi</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Copy</td>
+
+                    <td><strong>Ctrl + C</strong></td>
+
+                    <td>Menyalin teks</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Cut</td>
+
+                    <td><strong>Ctrl + X</strong></td>
+
+                    <td>Memindahkan teks</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Paste</td>
+
+                    <td><strong>Ctrl + V</strong></td>
+
+                    <td>Menempelkan teks</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- 10 UNDO REDO -->
+
+        <section class="materi-section">
+
+            <h2>10. ↩️ Undo dan Redo</h2>
+
+
+            <div class="topik-card">
+
+                <h3>↩️ Undo</h3>
+
+                <p>
+                    Undo digunakan untuk membatalkan tindakan
+                    sebelumnya.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + Z</strong>
+
+                </div>
+
+                <p>
+                    Contoh: jika Anda tidak sengaja menghapus
+                    sebuah paragraf, gunakan Ctrl + Z untuk
+                    membatalkan tindakan tersebut.
+                </p>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>↪️ Redo</h3>
+
+                <p>
+                    Redo digunakan untuk mengulangi kembali
+                    tindakan yang sebelumnya dibatalkan.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + Y</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                💡 <strong>Tips:</strong>
+
+                <br>
+
+                Jangan panik ketika melakukan kesalahan saat
+                mengedit dokumen. Periksa apakah tindakan tersebut
+                dapat dibatalkan menggunakan <strong>Ctrl + Z</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- 11 FIND REPLACE -->
+
+        <section class="materi-section">
+
+            <h2>11. 🔎 Mencari dan Mengganti Teks</h2>
+
+
+            <div class="topik-card">
+
+                <h3>🔎 Find</h3>
+
+                <p>
+                    Find digunakan untuk mencari teks tertentu
+                    di dalam dokumen.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + F</strong>
+
+                </div>
+
+                <p>
+                    Masukkan kata yang ingin dicari pada
+                    kotak pencarian.
+                </p>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>🔄 Replace</h3>
+
+                <p>
+                    Replace digunakan untuk mengganti kata
+                    tertentu dengan kata lain.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <strong>Ctrl + H</strong>
+
+                </div>
+
+                <p>
+                    Contoh:
+                </p>
+
+                <p>
+                    <strong>Find what:</strong>
+                    BLK Subang
+                </p>
+
+                <p>
+                    <strong>Replace with:</strong>
+                    UPTD BLK Kabupaten Subang
+                </p>
+
+            </div>
+
+
+            <div class="topik-card">
+
+                <h3>⚠️ Replace All</h3>
+
+                <p>
+                    Replace All digunakan untuk mengganti semua
+                    teks yang ditemukan sekaligus.
+                </p>
+
+                <p>
+                    Gunakan fitur ini dengan hati-hati dan pastikan
+                    kata yang dicari memang ingin diganti seluruhnya.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LATIHAN -->
+
+        <section class="materi-section">
+
+            <h2>11. 📝 Latihan Praktik Modul 2</h2>
+
+
+            <div class="practice-box">
+
+                <h3>Praktik 1 — Membuat Dokumen</h3>
+
+                <p>
+                    Buat dokumen baru di Microsoft Word 2016.
+                </p>
+
+                <p>
+                    Ketik teks berikut:
+                </p>
+
+                <p>
+                    <strong>
+                        PROFIL UPTD BLK KABUPATEN SUBANG
+                    </strong>
+                </p>
+
+                <p>
+                    UPTD BLK Kabupaten Subang merupakan tempat
+                    pelatihan keterampilan yang bertujuan meningkatkan
+                    kompetensi peserta agar siap memasuki dunia kerja
+                    maupun mengembangkan usaha mandiri.
+                </p>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <h3>Praktik 2 — Mengedit Teks</h3>
+
+                <p>
+                    Tambahkan kalimat berikut:
+                </p>
+
+                <p>
+                    <strong>
+                        Pelatihan dilaksanakan berdasarkan kebutuhan
+                        kompetensi dan perkembangan teknologi.
+                    </strong>
+                </p>
+
+                <p>
+                    Kemudian periksa kembali apakah terdapat
+                    kesalahan pengetikan.
+                </p>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <h3>Praktik 3 — Copy dan Paste</h3>
+
+                <ol>
+
+                    <li>
+                        Pilih kalimat yang baru saja ditambahkan.
+                    </li>
+
+                    <li>
+                        Tekan <strong>Ctrl + C</strong>.
+                    </li>
+
+                    <li>
+                        Pindahkan kursor ke tempat lain.
+                    </li>
+
+                    <li>
+                        Tekan <strong>Ctrl + V</strong>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <h3>Praktik 4 — Cut dan Paste</h3>
+
+                <ol>
+
+                    <li>
+                        Pilih salah satu paragraf.
+                    </li>
+
+                    <li>
+                        Tekan <strong>Ctrl + X</strong>.
+                    </li>
+
+                    <li>
+                        Pindahkan kursor ke posisi lain.
+                    </li>
+
+                    <li>
+                        Tekan <strong>Ctrl + V</strong>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <h3>Praktik 5 — Find & Replace</h3>
+
+                <p>
+                    Gunakan <strong>Ctrl + H</strong>.
+                </p>
+
+                <p>
+                    Cari:
+                    <strong>BLK Kabupaten Subang</strong>
+                </p>
+
+                <p>
+                    Ganti menjadi:
+                    <strong>UPTD BLK Kabupaten Subang</strong>
+                </p>
+
+                <p>
+                    Periksa kembali hasil penggantian.
+                </p>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <h3>Praktik 6 — Save As</h3>
+
+                <p>
+                    Simpan dokumen menggunakan:
+                </p>
+
+                <p>
+                    <strong>File → Save As</strong>
+                </p>
+
+                <p>
+                    Gunakan nama file:
+                </p>
+
+                <p>
+                    <strong>
+                        Latihan_Modul_2_NamaPeserta.docx
+                    </strong>
+                </p>
+
+                <p>
+                    Contoh:
+                </p>
+
+                <p>
+                    <strong>
+                        Latihan_Modul_2_AdeSuhendar.docx
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHECKLIST -->
+
+        <section class="materi-section">
+
+            <h2>✅ Checklist Kompetensi</h2>
+
+            <p>
+                Sebelum menyelesaikan Modul 2, pastikan Anda
+                sudah dapat melakukan:
+            </p>
+
+            <ul class="checklist">
+
+                <li>☐ Membuat dokumen baru</li>
+
+                <li>☐ Membuka dokumen</li>
+
+                <li>☐ Mengetik teks</li>
+
+                <li>☐ Mengedit teks</li>
+
+                <li>☐ Menyimpan dokumen</li>
+
+                <li>☐ Menggunakan Save</li>
+
+                <li>☐ Menggunakan Save As</li>
+
+                <li>☐ Membuka dokumen dari Recent</li>
+
+                <li>☐ Menutup dokumen</li>
+
+                <li>☐ Memilih teks</li>
+
+                <li>☐ Copy</li>
+
+                <li>☐ Cut</li>
+
+                <li>☐ Paste</li>
+
+                <li>☐ Undo</li>
+
+                <li>☐ Redo</li>
+
+                <li>☐ Find</li>
+
+                <li>☐ Replace</li>
+
+                <li>☐ Melakukan latihan praktik</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- KESIMPULAN -->
+
+        <section class="materi-section">
+
+            <h2>🎯 Kesimpulan</h2>
+
+            <p>
+                Pada Modul 2, peserta telah mempelajari proses dasar
+                membuat dan mengelola dokumen Microsoft Word 2016,
+                mulai dari membuat dokumen baru, mengetik dan mengedit
+                teks, menyimpan serta membuka dokumen, sampai
+                menggunakan fitur pengeditan seperti Copy, Cut, Paste,
+                Undo, Redo, dan Find & Replace.
+            </p>
+
+        </section>
+
+
+        <!-- KEMBALI -->
+
+        <section class="materi-section">
+
+            <a href="materi.html" class="btn-kembali">
+                ← Kembali ke Daftar Materi
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

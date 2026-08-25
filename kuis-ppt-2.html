@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Modul 2 - PowerPoint 2016</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.6;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.header .icon{
+    font-size:48px;
+}
+
+.header h1{
+    font-size:28px;
+    margin-top:5px;
+}
+
+.header p{
+    font-size:15px;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:850px;
+    margin:30px auto;
+    padding:0 15px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    padding:28px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.card h2{
+    color:#c62828;
+    margin-bottom:15px;
+}
+
+/* LOGIN */
+
+.login-box{
+    text-align:center;
+}
+
+.login-box h2{
+    font-size:25px;
+}
+
+.input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin:8px 0 15px;
+    font-size:16px;
+}
+
+.btn{
+    border:none;
+    padding:13px 25px;
+    border-radius:8px;
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.2);
+}
+
+.btn-secondary{
+    background:#455a64;
+}
+
+/* INFO */
+
+.info{
+    background:#fff3f3;
+    border-left:5px solid #e53935;
+    padding:18px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.info ul{
+    margin-left:20px;
+}
+
+/* TIMER */
+
+.timer-box{
+    position:sticky;
+    top:10px;
+    z-index:100;
+    background:#263238;
+    color:white;
+    padding:14px;
+    text-align:center;
+    border-radius:10px;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.timer{
+    font-size:28px;
+    font-weight:bold;
+    color:#ffeb3b;
+}
+
+/* QUESTION */
+
+.question{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.question-number{
+    color:#c62828;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.question-text{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:12px 15px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#fff3f3;
+    border-color:#e53935;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+/* SUBMIT */
+
+.submit-area{
+    text-align:center;
+    padding:20px;
+}
+
+/* RESULT */
+
+.result{
+    display:none;
+    text-align:center;
+}
+
+.result-icon{
+    font-size:65px;
+    margin-bottom:10px;
+}
+
+.result h2{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.result-name{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:55px;
+    font-weight:bold;
+    color:#c62828;
+}
+
+.result-detail{
+    background:#f5f5f5;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.lulus{
+    color:#2e7d32;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.tidak-lulus{
+    color:#c62828;
+    font-weight:bold;
+    font-size:22px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+/* HIDDEN */
+
+.hidden{
+    display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .question{
+        padding:18px;
+    }
+
+    .timer{
+        font-size:24px;
+    }
+
+    .score{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="icon">📝</div>
+
+    <h1>Kuis Modul 2</h1>
+
+    <p>Mengelola Slide dan Memformat Teks</p>
+
+</header>
+
+
+<div class="container">
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="loginSection" class="card login-box">
+
+    <h2>🔐 Akses Kuis</h2>
+
+    <p style="margin-bottom:20px;">
+        Silakan masukkan password dan nama peserta
+        sebelum memulai kuis.
+    </p>
+
+    <label>
+        <strong>Password</strong>
+    </label>
+
+    <input
+        type="password"
+        id="password"
+        class="input"
+        placeholder="Masukkan password"
+    >
+
+    <label>
+        <strong>Nama Peserta</strong>
+    </label>
+
+    <input
+        type="text"
+        id="namaPeserta"
+        class="input"
+        placeholder="Masukkan nama lengkap"
+    >
+
+    <button
+        class="btn"
+        onclick="mulaiKuis()">
+        🚀 Mulai Kuis
+    </button>
+
+    <p
+        id="loginError"
+        style="
+        color:#c62828;
+        margin-top:15px;
+        display:none;
+        font-weight:bold;">
+    </p>
+
+</div>
+
+
+<!-- =========================
+     QUIZ SECTION
+========================= -->
+
+<div id="quizSection" class="hidden">
+
+    <div class="card">
+
+        <h2>📋 Petunjuk Kuis</h2>
+
+        <div class="info">
+
+            <ul>
+
+                <li>Jumlah soal: <strong>15 soal</strong></li>
+
+                <li>Waktu pengerjaan: <strong>10 menit</strong></li>
+
+                <li>Setiap soal memiliki satu jawaban yang benar.</li>
+
+                <li>Nilai minimum kelulusan adalah <strong>70</strong>.</li>
+
+                <li>Pastikan semua jawaban telah dipilih sebelum mengirim.</li>
+
+            </ul>
+
+        </div>
+
+        <p>
+            <strong>Peserta:</strong>
+            <span id="namaTampil"></span>
+        </p>
+
+    </div>
+
+
+    <!-- TIMER -->
+
+    <div class="timer-box">
+
+        ⏱️ Sisa Waktu
+
+        <div id="timer" class="timer">
+            10:00
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         QUESTIONS
+    ========================= -->
+
+    <form id="quizForm">
+
+
+        <!-- SOAL 1 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 1 dari 15
+            </div>
+
+            <div class="question-text">
+                Shortcut keyboard yang digunakan untuk membuat slide baru
+                pada Microsoft PowerPoint 2016 adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q1" value="A">
+                A. Ctrl + N
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="B">
+                B. Ctrl + M
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="C">
+                C. Ctrl + S
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="D">
+                D. Ctrl + D
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 2 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 2 dari 15
+            </div>
+
+            <div class="question-text">
+                Perintah yang digunakan untuk menghapus slide adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q2" value="A">
+                A. Delete Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="B">
+                B. New Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="C">
+                C. Duplicate Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="D">
+                D. Rename Slide
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 3 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 3 dari 15
+            </div>
+
+            <div class="question-text">
+                Fitur yang digunakan untuk menggandakan slide adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q3" value="A">
+                A. Delete Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="B">
+                B. Duplicate Slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="C">
+                C. Slide Size
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="D">
+                D. Section Header
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 4 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 4 dari 15
+            </div>
+
+            <div class="question-text">
+                Cara paling sederhana untuk memindahkan posisi slide adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q4" value="A">
+                A. Menekan Ctrl + S
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="B">
+                B. Menekan Ctrl + P
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="C">
+                C. Drag and drop slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="D">
+                D. Mengubah ukuran slide
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 5 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 5 dari 15
+            </div>
+
+            <div class="question-text">
+                Menu yang digunakan untuk mengubah layout slide adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q5" value="A">
+                A. Home → Layout
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="B">
+                B. Insert → Layout
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="C">
+                C. Review → Layout
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="D">
+                D. View → Layout
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 6 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 6 dari 15
+            </div>
+
+            <div class="question-text">
+                Fungsi utama Section pada PowerPoint adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q6" value="A">
+                A. Menghapus semua slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="B">
+                B. Mengelompokkan slide berdasarkan bagian tertentu
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="C">
+                C. Mengubah warna monitor
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="D">
+                D. Mengubah jenis printer
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 7 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 7 dari 15
+            </div>
+
+            <div class="question-text">
+                Ukuran slide yang memiliki perbandingan 16:9 adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q7" value="A">
+                A. Standard
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="B">
+                B. Portrait
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="C">
+                C. Widescreen
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="D">
+                D. Custom
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 8 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 8 dari 15
+            </div>
+
+            <div class="question-text">
+                Untuk membuat Text Box, menu yang digunakan adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q8" value="A">
+                A. Home → Text Box
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="B">
+                B. Insert → Text Box
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="C">
+                C. Design → Text Box
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="D">
+                D. Review → Text Box
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 9 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 9 dari 15
+            </div>
+
+            <div class="question-text">
+                Shortcut untuk membuat teks menjadi tebal adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q9" value="A">
+                A. Ctrl + B
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="B">
+                B. Ctrl + I
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="C">
+                C. Ctrl + U
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="D">
+                D. Ctrl + T
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 10 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 10 dari 15
+            </div>
+
+            <div class="question-text">
+                Shortcut Ctrl + I digunakan untuk ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q10" value="A">
+                A. Membuat teks tebal
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="B">
+                B. Membuat teks miring
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="C">
+                C. Membuat garis bawah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="D">
+                D. Menghapus teks
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 11 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 11 dari 15
+            </div>
+
+            <div class="question-text">
+                Fitur yang digunakan untuk membuat teks dengan gaya dekoratif
+                adalah ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q11" value="A">
+                A. WordArt
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="B">
+                B. Section
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="C">
+                C. Layout
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="D">
+                D. Slide Sorter
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 12 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 12 dari 15
+            </div>
+
+            <div class="question-text">
+                Bullet paling tepat digunakan untuk ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q12" value="A">
+                A. Daftar yang tidak membutuhkan urutan
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="B">
+                B. Mengatur ukuran slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="C">
+                C. Menghapus slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="D">
+                D. Membuat Section
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 13 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 13 dari 15
+            </div>
+
+            <div class="question-text">
+                Numbering paling tepat digunakan untuk ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q13" value="A">
+                A. Daftar tanpa urutan
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="B">
+                B. Langkah-langkah yang memiliki urutan
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="C">
+                C. Mengubah warna teks
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="D">
+                D. Mengubah ukuran slide
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 14 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 14 dari 15
+            </div>
+
+            <div class="question-text">
+                Line Spacing digunakan untuk mengatur ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q14" value="A">
+                A. Jarak antarbaris teks
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="B">
+                B. Ukuran slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="C">
+                C. Warna slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="D">
+                D. Urutan slide
+            </label>
+
+        </div>
+
+
+        <!-- SOAL 15 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                Soal 15 dari 15
+            </div>
+
+            <div class="question-text">
+                Indent digunakan untuk ...
+            </div>
+
+            <label class="option">
+                <input type="radio" name="q15" value="A">
+                A. Mengatur posisi teks atau paragraf dari batas kiri
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="B">
+                B. Menghapus slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="C">
+                C. Mengubah ukuran slide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="D">
+                D. Membuat presentasi baru
+            </label>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <div class="submit-area">
+
+            <button
+                type="button"
+                class="btn"
+                onclick="selesaiKuis()">
+
+                ✅ Selesai & Lihat Nilai
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div id="resultSection" class="card result">
+
+    <div class="result-icon" id="resultIcon">
+        🎉
+    </div>
+
+    <h2>Hasil Kuis</h2>
+
+    <div class="result-name">
+        Nama Peserta:
+        <span id="hasilNama"></span>
+    </div>
+
+    <div class="score">
+        <span id="nilai"></span>
+    </div>
+
+    <p>
+        Nilai Anda
+    </p>
+
+    <div class="result-detail">
+
+        <p>
+            Jawaban Benar:
+            <strong>
+                <span id="jumlahBenar"></span>
+                / 15
+            </strong>
+        </p>
+
+        <p>
+            Jawaban Salah:
+            <strong>
+                <span id="jumlahSalah"></span>
+            </strong>
+        </p>
+
+        <p>
+            Nilai Minimum:
+            <strong>70</strong>
+        </p>
+
+    </div>
+
+    <div id="status"></div>
+
+    <div style="margin-top:25px;">
+
+        <button
+            class="btn btn-secondary"
+            onclick="location.href='modul-ppt-2.html'">
+
+            ← Kembali ke Modul
+
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        <strong>Pelatihan Microsoft PowerPoint 2016</strong>
+    </p>
+
+    <p>
+        Kuis Modul 2 — Mengelola Slide dan Memformat Teks
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   PASSWORD
+========================================== */
+
+const PASSWORD_KUIS = "ppt2026";
+
+
+/* ==========================================
+   VARIABEL TIMER
+========================================== */
+
+let waktu = 600;
+
+let timerInterval;
+
+
+/* ==========================================
+   JAWABAN BENAR
+========================================== */
+
+const jawabanBenar = {
+
+    q1: "B",
+
+    q2: "A",
+
+    q3: "B",
+
+    q4: "C",
+
+    q5: "A",
+
+    q6: "B",
+
+    q7: "C",
+
+    q8: "B",
+
+    q9: "A",
+
+    q10: "B",
+
+    q11: "A",
+
+    q12: "A",
+
+    q13: "B",
+
+    q14: "A",
+
+    q15: "A"
+
+};
+
+
+/* ==========================================
+   MULAI KUIS
+========================================== */
+
+function mulaiKuis(){
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    const nama =
+        document.getElementById("namaPeserta").value.trim();
+
+    const error =
+        document.getElementById("loginError");
+
+
+    if(password !== PASSWORD_KUIS){
+
+        error.style.display = "block";
+
+        error.innerText =
+            "❌ Password yang Anda masukkan salah.";
+
+        return;
+    }
+
+
+    if(nama === ""){
+
+        error.style.display = "block";
+
+        error.innerText =
+            "❌ Silakan masukkan nama peserta.";
+
+        return;
+    }
+
+
+    error.style.display = "none";
+
+
+    document.getElementById("loginSection")
+        .classList.add("hidden");
+
+
+    document.getElementById("quizSection")
+        .classList.remove("hidden");
+
+
+    document.getElementById("namaTampil")
+        .innerText = nama;
+
+
+    mulaiTimer();
+
+}
+
+
+/* ==========================================
+   TIMER
+========================================== */
+
+function mulaiTimer(){
+
+    timerInterval = setInterval(function(){
+
+        waktu--;
+
+        tampilkanTimer();
+
+
+        if(waktu <= 0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "⏰ Waktu habis! Jawaban akan otomatis dikumpulkan."
+            );
+
+            selesaiKuis();
+
+        }
+
+    },1000);
+
+}
+
+
+/* ==========================================
+   TAMPILKAN TIMER
+========================================== */
+
+function tampilkanTimer(){
+
+    let menit =
+        Math.floor(waktu / 60);
+
+    let detik =
+        waktu % 60;
+
+
+    menit =
+        menit.toString().padStart(2,"0");
+
+    detik =
+        detik.toString().padStart(2,"0");
+
+
+    const timer =
+        document.getElementById("timer");
+
+    timer.innerText =
+        menit + ":" + detik;
+
+
+    if(waktu <= 60){
+
+        timer.style.color = "#ff5252";
+
+    }
+
+}
+
+
+/* ==========================================
+   SELESAI KUIS
+========================================== */
+
+function selesaiKuis(){
+
+    clearInterval(timerInterval);
+
+
+    let benar = 0;
+
+    let total = 15;
+
+
+    for(let i = 1; i <= total; i++){
+
+        const jawaban =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+        if(jawaban &&
+           jawaban.value === jawabanBenar["q" + i]){
+
+            benar++;
+
+        }
+
+    }
+
+
+    const salah =
+        total - benar;
+
+
+    const nilai =
+        Math.round((benar / total) * 100);
+
+
+    const nama =
+        document.getElementById("namaPeserta")
+        .value;
+
+
+    document.getElementById("quizSection")
+        .classList.add("hidden");
+
+
+    document.getElementById("resultSection")
+        .style.display = "block";
+
+
+    document.getElementById("hasilNama")
+        .innerText = nama;
+
+
+    document.getElementById("nilai")
+        .innerText = nilai;
+
+
+    document.getElementById("jumlahBenar")
+        .innerText = benar;
+
+
+    document.getElementById("jumlahSalah")
+        .innerText = salah;
+
+
+    const status =
+        document.getElementById("status");
+
+    const icon =
+        document.getElementById("resultIcon");
+
+
+    if(nilai >= 70){
+
+        status.innerHTML =
+            '<div class="lulus">✅ LULUS</div>' +
+            '<p style="margin-top:8px;">' +
+            'Selamat! Anda telah mencapai nilai minimum kelulusan.' +
+            '</p>';
+
+        icon.innerText = "🎉";
+
+    }else{
+
+        status.innerHTML =
+            '<div class="tidak-lulus">❌ BELUM LULUS</div>' +
+            '<p style="margin-top:8px;">' +
+            'Silakan pelajari kembali Modul 2 dan lakukan latihan.' +
+            '</p>';
+
+        icon.innerText = "📚";
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>

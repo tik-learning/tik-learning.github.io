@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kelas Microsoft Excel 2016 - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           HEADER KELAS
+        ========================= */
+
+        .kelas-header {
+
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+        }
+
+        .kelas-header h2 {
+
+            color: #0077b6;
+            margin-top: 0;
+            margin-bottom: 15px;
+
+        }
+
+        .kelas-header p {
+
+            line-height: 1.7;
+            color: #444;
+
+        }
+
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress-card {
+
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+        }
+
+        .progress-title {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+
+        }
+
+        .progress-title h2 {
+
+            margin: 0;
+            color: #0077b6;
+            font-size: 20px;
+
+        }
+
+        .progress-percent {
+
+            font-size: 20px;
+            font-weight: bold;
+            color: #0077b6;
+
+        }
+
+        .progress-bar {
+
+            width: 100%;
+            height: 16px;
+            background: #e9ecef;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 12px;
+
+        }
+
+        .progress-fill {
+
+            width: 0%;
+            height: 100%;
+            background: #0077b6;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+
+        }
+
+        .progress-info {
+
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           JUDUL DAFTAR MODUL
+        ========================= */
+
+        .judul-modul {
+
+            color: #0077b6;
+            margin: 25px 0 15px;
+
+        }
+
+
+        /* =========================
+           GRID MODUL
+        ========================= */
+
+        .modul-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        /* =========================
+           CARD MODUL
+        ========================= */
+
+        .modul-card {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.08);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+
+            display: flex;
+
+            flex-direction: column;
+
+            min-height: 190px;
+
+        }
+
+        .modul-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 6px 16px rgba(0,0,0,0.12);
+
+        }
+
+
+        /* =========================
+           NOMOR MODUL
+        ========================= */
+
+        .nomor-modul {
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            color: #0077b6;
+
+            text-transform: uppercase;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        /* =========================
+           JUDUL MODUL
+        ========================= */
+
+        .modul-card h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 16px;
+
+            line-height: 1.4;
+
+            color: #222;
+
+        }
+
+
+        /* =========================
+           DESKRIPSI
+        ========================= */
+
+        .modul-card p {
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            color: #666;
+
+            margin: 0 0 15px;
+
+        }
+
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        .btn-modul {
+
+            display: inline-block;
+
+            margin-top: auto;
+
+            width: fit-content;
+
+            padding: 9px 16px;
+
+            background: #0077b6;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+
+        }
+
+        .btn-modul:hover {
+
+            background: #005f8f;
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status-belum {
+
+            font-size: 12px;
+
+            color: #777;
+
+            margin-bottom: 12px;
+
+        }
+
+        .status-selesai {
+
+            font-size: 12px;
+
+            color: #198754;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .modul-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .modul-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .kelas-header {
+
+                padding: 22px;
+
+            }
+
+            .progress-card {
+
+                padding: 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER WEBSITE
+    ========================= -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGASI
+    ========================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Beranda
+        </a>
+
+        <a href="autobiografi.html">
+            Autobiografi
+        </a>
+
+        <a href="materi.html">
+            Materi
+        </a>
+
+        <a href="tugas.html">
+            Tugas
+        </a>
+
+        <a href="kelas.html">
+            Kelas Saya
+        </a>
+
+        <a href="ruang-bertanya.html">
+            Ruang Bertanya
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         KONTEN UTAMA
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             INFORMASI KELAS
+        ========================= -->
+
+        <section class="kelas-header">
+
+            <h2>
+                📊 Kelas Microsoft Excel 2016
+            </h2>
+
+            <p>
+                <strong>
+                    Kejuruan Teknologi Informasi dan Komunikasi
+                </strong>
+            </p>
+
+            <p>
+                Kelas TIK — UPTD BLK Kabupaten Subang
+            </p>
+
+            <p>
+                Program pembelajaran berbasis kompetensi
+                Microsoft Excel 2016 dari tingkat dasar
+                hingga pengolahan data dan otomatisasi.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             PROGRESS PEMBELAJARAN
+        ========================= -->
+
+        <section class="progress-card">
+
+            <div class="progress-title">
+
+                <h2>
+                    📊 Progress Pembelajaran
+                </h2>
+
+                <span
+                    id="progressPercent"
+                    class="progress-percent">
+
+                    0%
+
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="progressInfo"
+                class="progress-info">
+
+                Anda sudah menyelesaikan
+                0 dari 11 modul.
+
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             DAFTAR MODUL
+        ========================= -->
+
+        <h2 class="judul-modul">
+
+            📚 Daftar Modul Microsoft Excel 2016
+
+        </h2>
+
+
+        <section class="modul-grid">
+
+
+            <!-- MODUL 1 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 1
+                </div>
+
+                <h3>
+                    Pengenalan Microsoft Excel
+                </h3>
+
+                <p>
+                    Mengenal Microsoft Excel,
+                    workbook, worksheet, ribbon,
+                    cell, row, column, dan lingkungan kerja Excel.
+                </p>
+
+                <div
+                    id="status1"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-1.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 2 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 2
+                </div>
+
+                <h3>
+                    Excel Dasar
+                </h3>
+
+                <p>
+                    Mempelajari cell, range,
+                    fill handle, flash fill,
+                    dan panduan dasar tab worksheet.
+                </p>
+
+                <div
+                    id="status2"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-2.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 3 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 3
+                </div>
+
+                <h3>
+                    Format Cell
+                </h3>
+
+                <p>
+                    Mengatur format angka,
+                    font, alignment, border,
+                    fill, dan tampilan data.
+                </p>
+
+                <div
+                    id="status3"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-3.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 4 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 4
+                </div>
+
+                <h3>
+                    Formula Dasar
+                </h3>
+
+                <p>
+                    Formula, fungsi, error,
+                    alamat cell, referensi,
+                    absolute reference, Named Range,
+                    dan operator.
+                </p>
+
+                <div
+                    id="status4"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-4.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 5 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 5
+                </div>
+
+                <h3>
+                    Fungsi Matematika dan Trigonometri
+                </h3>
+
+                <p>
+                    Mempelajari fungsi pembulatan
+                    dan berbagai operasi matematika
+                    dasar pada Excel.
+                </p>
+
+                <div
+                    id="status5"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-5.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 6 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 6
+                </div>
+
+                <h3>
+                    Fungsi Statistik
+                </h3>
+
+                <p>
+                    Menggunakan fungsi statistik
+                    untuk menghitung dan menganalisis
+                    data pada worksheet.
+                </p>
+
+                <div
+                    id="status6"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-6.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 7 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 7
+                </div>
+
+                <h3>
+                    Fungsi Logika
+                </h3>
+
+                <p>
+                    Mempelajari fungsi logika
+                    untuk membuat keputusan dan
+                    pengolahan data berdasarkan kondisi.
+                </p>
+
+                <div
+                    id="status7"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-7.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 8 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 8
+                </div>
+
+                <h3>
+                    Fungsi Text
+                </h3>
+
+                <p>
+                    Mengolah data teks menggunakan
+                    berbagai fungsi text pada Microsoft Excel.
+                </p>
+
+                <div
+                    id="status8"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-8.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 9 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 9
+                </div>
+
+                <h3>
+                    IF Bertingkat, HLOOKUP, VLOOKUP
+                </h3>
+
+                <p>
+                    Mempelajari IF bertingkat,
+                    HLOOKUP, dan VLOOKUP untuk
+                    pengolahan serta pencarian data.
+                </p>
+
+                <div
+                    id="status9"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-9.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 10 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 10
+                </div>
+
+                <h3>
+                    Pivot Table
+                </h3>
+
+                <p>
+                    Membuat dan menggunakan Pivot Table
+                    untuk menganalisis, meringkas,
+                    dan menyajikan data.
+                </p>
+
+                <div
+                    id="status10"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-10.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+            <!-- MODUL 11 -->
+
+            <article class="modul-card">
+
+                <div class="nomor-modul">
+                    Modul 11
+                </div>
+
+                <h3>
+                    Macro dan Otomasi Tingkat Lanjut
+                </h3>
+
+                <p>
+                    Mempelajari Macro, perekaman Macro,
+                    VBA dasar, dan otomatisasi pekerjaan
+                    menggunakan Microsoft Excel.
+                </p>
+
+                <div
+                    id="status11"
+                    class="status-belum">
+
+                    ⏳ Belum dipelajari
+
+                </div>
+
+                <a
+                    href="modul-excel-11.html"
+                    class="btn-modul">
+
+                    Buka Materi
+
+                </a>
+
+            </article>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning -
+            UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =====================================================
+           JUMLAH MODUL
+        ===================================================== */
+
+        const totalModul = 11;
+
+
+        /* =====================================================
+           CEK MODUL YANG SUDAH SELESAI
+           
+           Status disimpan menggunakan localStorage.
+           
+           Format:
+           excel_modul_1
+           excel_modul_2
+           ...
+           excel_modul_11
+        ===================================================== */
+
+        function cekProgress() {
+
+            let selesai = 0;
+
+
+            for (let i = 1; i <= totalModul; i++) {
+
+                const sudahSelesai =
+                    localStorage.getItem(
+                        "excel_modul_" + i
+                    );
+
+
+                const status =
+                    document.getElementById(
+                        "status" + i
+                    );
+
+
+                if (sudahSelesai === "selesai") {
+
+                    selesai++;
+
+
+                    if (status) {
+
+                        status.innerHTML =
+                            "✅ Sudah dipelajari";
+
+                        status.className =
+                            "status-selesai";
+
+                    }
+
+                }
+
+                else {
+
+                    if (status) {
+
+                        status.innerHTML =
+                            "⏳ Belum dipelajari";
+
+                        status.className =
+                            "status-belum";
+
+                    }
+
+                }
+
+            }
+
+
+            /* =========================
+               HITUNG PERSENTASE
+            ========================= */
+
+            const persen =
+                Math.round(
+                    (selesai / totalModul) * 100
+                );
+
+
+            document.getElementById(
+                "progressPercent"
+            ).textContent =
+                persen + "%";
+
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                persen + "%";
+
+
+            document.getElementById(
+                "progressInfo"
+            ).textContent =
+                "Anda sudah menyelesaikan " +
+                selesai +
+                " dari " +
+                totalModul +
+                " modul.";
+
+        }
+
+
+        /* =====================================================
+           JALANKAN SAAT HALAMAN DIBUKA
+        ===================================================== */
+
+        cekProgress();
+
+
+        /* =====================================================
+           UPDATE SAAT KEMBALI KE TAB
+        ===================================================== */
+
+        window.addEventListener(
+            "focus",
+            cekProgress
+        );
+
+
+        /* =====================================================
+           UPDATE SAAT STORAGE BERUBAH
+        ===================================================== */
+
+        window.addEventListener(
+            "storage",
+            cekProgress
+        );
+
+    </script>
+
+
+</body>
+
+</html>

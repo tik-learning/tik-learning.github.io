@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ruang Bertanya - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .questions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .refresh-button {
+            border: none;
+            background: #007bff;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .refresh-button:hover {
+            background: #0056b3;
+        }
+
+        .question-card {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .question-card h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .question-card p {
+            line-height: 1.6;
+        }
+
+        .answer-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #eef7ff;
+            border-left: 4px solid #0088cc;
+            border-radius: 5px;
+        }
+
+        .waiting-answer {
+            margin-top: 15px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1>TIK LEARNING</h1>
+        <p>UPTD BLK Kabupaten Subang</p>
+    </div>
+</header>
+
+<nav>
+    <a href="index.html">Beranda</a>
+    <a href="autobiografi.html">Autobiografi</a>
+    <a href="materi.html">Materi</a>
+    <a href="tugas.html">Tugas</a>
+    <a href="kelas.html">Kelas Saya</a>
+    <a href="galeri.html">Galeri</a>
+    <a href="perpustakaan.html">Perpustakaan</a>
+    <a href="ruang-bertanya.html">Ruang Bertanya</a>
+</nav>
+
+<main class="container">
+
+    <section class="welcome">
+
+        <h2>💬 Ruang Bertanya</h2>
+
+        <p>
+            Gunakan halaman ini untuk menyampaikan pertanyaan
+            seputar materi pembelajaran Kejuruan TIK.
+        </p>
+
+        <p>
+            Silakan isi formulir di bawah ini dengan lengkap.
+        </p>
+
+    </section>
+
+
+    <!-- FORM PERTANYAAN -->
+
+    <h2>📝 Ajukan Pertanyaan</h2>
+
+    <section class="card">
+
+        <form id="formPertanyaan">
+
+            <label for="nama">
+                Nama Peserta
+            </label>
+
+            <input
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Masukkan nama Anda"
+                required
+            >
+
+
+            <label for="materi">
+                Materi
+            </label>
+
+            <select
+                id="materi"
+                name="materi"
+                required
+            >
+
+                <option value="">
+                    -- Pilih Materi --
+                </option>
+
+                <option value="Microsoft Word">
+                    Microsoft Word
+                </option>
+
+                <option value="Microsoft Excel">
+                    Microsoft Excel
+                </option>
+
+                <option value="Microsoft PowerPoint">
+                    Microsoft PowerPoint
+                </option>
+
+                <option value="Internet">
+                    Internet
+                </option>
+
+                <option value="Desain Grafis">
+                    Desain Grafis
+                </option>
+
+                <option value="Lainnya">
+                    Lainnya
+                </option>
+
+            </select>
+
+
+            <label for="pertanyaan">
+                Pertanyaan
+            </label>
+
+            <textarea
+                id="pertanyaan"
+                name="pertanyaan"
+                rows="6"
+                placeholder="Tuliskan pertanyaan Anda di sini..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="button"
+                id="btnKirim"
+            >
+                📤 Kirim Pertanyaan
+            </button>
+
+        </form>
+
+
+        <div
+            id="successMessage"
+            class="success-message"
+        >
+            ✅ Pertanyaan berhasil dikirim.
+            Silakan tunggu jawaban dari instruktur.
+        </div>
+
+    </section>
+
+
+    <!-- DAFTAR PERTANYAAN -->
+
+    <div class="questions-header">
+
+        <h2>💬 Pertanyaan Peserta</h2>
+
+        <button
+            type="button"
+            id="btnRefresh"
+            class="refresh-button"
+        >
+            🔄 Muat Pertanyaan Terbaru
+        </button>
+
+    </div>
+
+
+    <section id="daftar-pertanyaan">
+
+        <div class="loading">
+            ⏳ Memuat pertanyaan...
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+
+/* =====================================================
+   KIRIM PERTANYAAN
+===================================================== */
+
+document
+.getElementById("formPertanyaan")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const nama =
+        document.getElementById("nama")
+        .value
+        .trim();
+
+    const materi =
+        document.getElementById("materi")
+        .value;
+
+    const pertanyaan =
+        document.getElementById("pertanyaan")
+        .value
+        .trim();
+
+    const btnKirim =
+        document.getElementById("btnKirim");
+
+
+    if (!nama || !materi || !pertanyaan) {
+
+        alert(
+            "Mohon lengkapi semua data terlebih dahulu."
+        );
+
+        return;
+    }
+
+
+    const data = {
+
+        nama: nama,
+
+        materi: materi,
+
+        pertanyaan: pertanyaan
+
+    };
+
+
+    btnKirim.disabled = true;
+
+    btnKirim.innerHTML =
+        "⏳ Mengirim...";
+
+
+    fetch(
+        SCRIPT_URL,
+        {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+
+                "Content-Type":
+                "text/plain;charset=utf-8"
+
+            },
+
+            body:
+            JSON.stringify(data)
+
+        }
+    )
+    .then(function() {
+
+        document
+        .getElementById("formPertanyaan")
+        .reset();
+
+
+        document
+        .getElementById("successMessage")
+        .style.display = "block";
+
+
+        btnKirim.disabled = false;
+
+        btnKirim.innerHTML =
+            "📤 Kirim Pertanyaan";
+
+
+        setTimeout(function() {
+
+            document
+            .getElementById("successMessage")
+            .style.display = "none";
+
+        }, 5000);
+
+
+        setTimeout(function() {
+
+            ambilPertanyaan();
+
+        }, 1000);
+
+    })
+    .catch(function(error) {
+
+        console.error(error);
+
+        alert(
+            "Terjadi kesalahan saat mengirim pertanyaan."
+        );
+
+        btnKirim.disabled = false;
+
+        btnKirim.innerHTML =
+            "📤 Kirim Pertanyaan";
+
+    });
+
+});
+
+
+/* =====================================================
+   MENAMPILKAN PERTANYAAN
+===================================================== */
+
+function tampilkanPertanyaan(data) {
+
+    const container =
+        document.getElementById(
+            "daftar-pertanyaan"
+        );
+
+
+    if (!data || data.length === 0) {
+
+        container.innerHTML = `
+            <div class="loading">
+                📭 Belum ada pertanyaan.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data
+    .slice()
+    .reverse()
+    .forEach(function(item) {
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "question-card";
+
+
+        let isiJawaban = "";
+
+
+        if (
+            item.jawaban &&
+            String(item.jawaban).trim() !== ""
+        ) {
+
+            isiJawaban = `
+
+                <div class="answer-box">
+
+                    <strong>
+                        👨‍🏫 Jawaban Instruktur
+                    </strong>
+
+                    <p>
+                        ${escapeHTML(item.jawaban)}
+                    </p>
+
+                </div>
+
+            `;
+
+        } else {
+
+            isiJawaban = `
+
+                <div class="waiting-answer">
+
+                    ⏳ Menunggu jawaban instruktur...
+
+                </div>
+
+            `;
+
+        }
+
+
+        card.innerHTML = `
+
+            <h3>
+                📚 ${escapeHTML(item.materi || "")}
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    👤 ${escapeHTML(item.nama || "")}
+                </strong>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Pertanyaan:
+                </strong>
+
+                <br>
+
+                ${escapeHTML(item.pertanyaan || "")}
+
+            </p>
+
+
+            ${isiJawaban}
+
+
+            <div class="status">
+
+                Status:
+                ${escapeHTML(item.status || "Belum dijawab")}
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   AMBIL DATA DARI GOOGLE SHEETS
+   MENGGUNAKAN JSONP
+===================================================== */
+
+function ambilPertanyaan() {
+
+    const container =
+        document.getElementById(
+            "daftar-pertanyaan"
+        );
+
+
+    container.innerHTML = `
+
+        <div class="loading">
+
+            ⏳ Memuat pertanyaan...
+
+        </div>
+
+    `;
+
+
+    const script =
+        document.createElement("script");
+
+
+    const callbackName =
+        "callbackPertanyaan_" +
+        Date.now();
+
+
+    window[callbackName] =
+        function(data) {
+
+            try {
+
+                tampilkanPertanyaan(data);
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML = `
+
+                    <div class="loading">
+
+                        ❌ Data tidak dapat ditampilkan.
+
+                    </div>
+
+                `;
+
+            }
+
+
+            delete window[callbackName];
+
+            if (script.parentNode) {
+
+                script.parentNode
+                .removeChild(script);
+
+            }
+
+        };
+
+
+    script.onerror =
+        function() {
+
+            container.innerHTML = `
+
+                <div class="loading">
+
+                    ❌ Gagal mengambil data
+                    dari Google Sheets.
+
+                    <br><br>
+
+                    Silakan periksa koneksi
+                    atau deployment Apps Script.
+
+                </div>
+
+            `;
+
+
+            delete window[callbackName];
+
+            if (script.parentNode) {
+
+                script.parentNode
+                .removeChild(script);
+
+            }
+
+        };
+
+
+    script.src =
+        SCRIPT_URL +
+        "?callback=" +
+        callbackName +
+        "&t=" +
+        Date.now();
+
+
+    document.body.appendChild(script);
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        value == null ? "" : value;
+
+    return div.innerHTML;
+
+}
+
+
+/* =====================================================
+   TOMBOL REFRESH
+===================================================== */
+
+document
+.getElementById("btnRefresh")
+.addEventListener(
+    "click",
+    function() {
+
+        ambilPertanyaan();
+
+    }
+);
+
+
+/* =====================================================
+   JALANKAN SAAT HALAMAN DIBUKA
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        ambilPertanyaan();
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>

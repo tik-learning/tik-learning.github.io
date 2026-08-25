@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galeri - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           GALERI CONTAINER
+        ========================= */
+
+        .galeri-container {
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+
+        /* =========================
+           HEADER GALERI
+        ========================= */
+
+        .galeri-header {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .galeri-header h2 {
+            color: #0077b6;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .galeri-header p {
+            line-height: 1.7;
+            color: #444;
+        }
+
+
+        /* =========================
+           FILTER KATEGORI
+        ========================= */
+
+        .galeri-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .filter-btn {
+            border: none;
+            background: white;
+            color: #0077b6;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #0077b6;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: #0077b6;
+            color: white;
+        }
+
+
+        /* =========================
+           GRID GALERI
+        ========================= */
+
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+
+        /* =========================
+           KARTU FOTO
+        ========================= */
+
+        .galeri-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.25s;
+        }
+
+        .galeri-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+        }
+
+        .galeri-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+        }
+
+        .galeri-info {
+            padding: 15px;
+        }
+
+        .galeri-info h3 {
+            margin: 0 0 8px 0;
+            color: #0077b6;
+            font-size: 17px;
+        }
+
+        .galeri-info p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .galeri-tanggal {
+            margin-top: 8px;
+            color: #888;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MODAL FOTO
+        ========================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.4);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .galeri-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .galeri-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .galeri-container {
+                margin: 20px 10px;
+            }
+
+            .galeri-header {
+                padding: 22px;
+            }
+
+            .galeri-card img {
+                height: 220px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGASI
+    ========================= -->
+
+    <nav>
+
+    <a href="index.html">Beranda</a>
+
+    <a href="autobiografi.html">Autobiografi</a>
+
+    <a href="materi.html">Materi</a>
+
+    <a href="tugas.html">Tugas</a>
+
+    <a href="kelas.html">Kelas Saya</a>
+
+    <a href="galeri.html">Galeri</a>
+
+    <a href="perpustakaan.html">Perpustakaan</a>
+
+    <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+</nav>
+
+
+    <!-- =========================
+         KONTEN
+    ========================= -->
+
+    <main class="container">
+
+        <div class="galeri-container">
+
+
+            <!-- HEADER GALERI -->
+
+            <section class="galeri-header">
+
+                <h2>
+                    📸 Galeri Pelatihan
+                </h2>
+
+                <p>
+                    Dokumentasi kegiatan pembelajaran dan pelatihan
+                    di UPTD BLK Kabupaten Subang.
+                </p>
+
+                <p>
+                    Pilih kategori untuk melihat dokumentasi
+                    kegiatan pelatihan.
+                </p>
+
+            </section>
+
+
+            <!-- =========================
+                 FILTER
+            ========================= -->
+
+            <div class="galeri-filter">
+
+                <button
+                    class="filter-btn active"
+                    onclick="filterGaleri('semua')">
+
+                    Semua
+
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterGaleri('word')">
+
+                    Word 2016
+
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterGaleri('excel')">
+
+                    Excel 2016
+
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterGaleri('powerpoint')">
+
+                    PowerPoint 2016
+
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterGaleri('kegiatan')">
+
+                    Kegiatan BLK
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 GALERI
+            ========================= -->
+
+            <section class="galeri-grid">
+                
+
+
+                <!-- FOTO 1 -->
+<!-- FOTO PELATIHAN WORD 24 JULI 2026 -->
+
+<div class="galeri-card" data-kategori="word">
+
+    <img
+        src="galeri/pelatihan-word-24-juli-2026.jpeg"
+        alt="Pelatihan Microsoft Word 2016 - 24 Juli 2026"
+        onclick="bukaFoto(this)">
+
+    <div class="galeri-info">
+
+        <h3>
+            Pelatihan Microsoft Word 2016
+        </h3>
+
+        <p>
+            Kegiatan pelatihan Microsoft Word 2016
+            bersama peserta pelatihan di UPTD BLK Kabupaten Subang.
+        </p>
+
+        <div class="galeri-tanggal">
+            📅 24 Juli 2026
+        </div>
+
+    </div>
+
+</div>
+                <!-- FOTO PELATIHAN EXCEL 03 AGUSTUS 2026 -->
+
+            <div class="galeri-card" data-kategori="excel">
+
+                <img
+                    src="galeri/pelatihan-excel-03-agustus-2026.jpeg"
+                    alt="Pelatihan Microsoft Excel 2016 - 3 Agustus 2026"
+                    onclick="bukaFoto(this)">
+
+                <div class="galeri-info">
+
+                    <h3>
+                        Pelatihan Microsoft Excel 2016
+                    </h3>
+
+                    <p>
+                        Kegiatan pembelajaran Microsoft Excel 2016
+                        bersama peserta pelatihan di UPTD BLK Kabupaten Subang.
+                    </p>
+
+                    <div class="galeri-tanggal">
+                        📅 3 Agustus 2026
+                    </div>
+
+                </div>
+
+            </div>
+
+
+                <!-- FOTO 2 -->
+
+                <!-- FOTO PELATIHAN POWERPOINT 10 AGUSTUS 2026 -->
+
+<div class="galeri-card" data-kategori="powerpoint">
+
+    <img
+        src="galeri/pelatihan-powerpoint-10-agustus-2026.jpeg"
+        alt="Pelatihan Microsoft PowerPoint 2016 - 10 Agustus 2026"
+        onclick="bukaFoto(this)">
+
+    <div class="galeri-info">
+
+        <h3>
+            Pelatihan Microsoft PowerPoint 2016
+        </h3>
+
+        <p>
+            Kegiatan pelatihan Microsoft PowerPoint 2016
+            bersama peserta pelatihan di UPTD BLK Kabupaten Subang.
+        </p>
+
+        <div class="galeri-tanggal">
+            📅 10 Agustus 2026
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+                <!-- FOTO 4 -->
+
+                <div class="galeri-card" data-kategori="kegiatan">
+
+                    <img
+                        src="galeri/kegiatan-1.jpg"
+                        alt="Kegiatan UPTD BLK Kabupaten Subang"
+                        onclick="bukaFoto(this)">
+
+                    <div class="galeri-info">
+
+                        <h3>
+                            Kegiatan Pelatihan
+                        </h3>
+
+                        <p>
+                            Dokumentasi kegiatan pelatihan
+                            UPTD BLK Kabupaten Subang.
+                        </p>
+
+                        <div class="galeri-tanggal">
+                            📅 Dokumentasi Kegiatan
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 5 -->
+
+                <div class="galeri-card" data-kategori="kegiatan">
+
+                    <img
+                        src="galeri/kegiatan-2.jpg"
+                        alt="Kegiatan Peserta Pelatihan"
+                        onclick="bukaFoto(this)">
+
+                    <div class="galeri-info">
+
+                        <h3>
+                            Kegiatan Peserta
+                        </h3>
+
+                        <p>
+                            Aktivitas peserta selama mengikuti
+                            kegiatan pelatihan.
+                        </p>
+
+                        <div class="galeri-tanggal">
+                            📅 Dokumentasi Kegiatan
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+              
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         MODAL FOTO
+    ========================= -->
+
+    <div
+        id="modalFoto"
+        class="modal"
+        onclick="tutupFoto()">
+
+        <span
+            class="modal-close"
+            onclick="tutupFoto()">
+
+            &times;
+
+        </span>
+
+        <img
+            id="fotoBesar"
+            src=""
+            alt="Foto Galeri">
+
+        <div
+            id="captionFoto"
+            class="modal-caption">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning -
+            UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function filterGaleri(kategori) {
+
+            const cards =
+                document.querySelectorAll(".galeri-card");
+
+            const buttons =
+                document.querySelectorAll(".filter-btn");
+
+
+            buttons.forEach(function(button) {
+
+                button.classList.remove("active");
+
+            });
+
+
+            event.target.classList.add("active");
+
+
+            cards.forEach(function(card) {
+
+                if (
+                    kategori === "semua" ||
+                    card.dataset.kategori === kategori
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        function bukaFoto(element) {
+
+            const modal =
+                document.getElementById("modalFoto");
+
+            const fotoBesar =
+                document.getElementById("fotoBesar");
+
+            const caption =
+                document.getElementById("captionFoto");
+
+
+            modal.style.display = "flex";
+
+            fotoBesar.src = element.src;
+
+            caption.textContent = element.alt;
+
+        }
+
+
+        function tutupFoto() {
+
+            document.getElementById("modalFoto")
+                .style.display = "none";
+
+        }
+
+
+        /* Tutup modal dengan tombol ESC */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    tutupFoto();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

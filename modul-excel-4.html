@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 4 - Formula Dasar</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f4f7fb;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:45px 20px 65px;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:7px 20px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.header h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.header p{
+    max-width:780px;
+    margin:auto;
+    opacity:.92;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:950px;
+    margin:-30px auto 50px;
+    padding:0 18px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    padding:30px;
+    margin-bottom:22px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:16px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:22px 0 10px;
+}
+
+.card p{
+    margin-bottom:12px;
+}
+
+.card ul,
+.card ol{
+    margin-left:25px;
+    margin-bottom:15px;
+}
+
+/* INFO */
+
+.info{
+    background:#eaf7ef;
+    border-left:5px solid #107c41;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.tip{
+    background:#eef6ff;
+    border-left:5px solid #2878d4;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff7e6;
+    border-left:5px solid #f39c12;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+/* CODE */
+
+.example{
+    background:#263238;
+    color:#f5f5f5;
+    padding:18px;
+    border-radius:9px;
+    margin:15px 0;
+    overflow-x:auto;
+}
+
+.example code{
+    font-family:Consolas,monospace;
+    font-size:15px;
+}
+
+.green-code{
+    color:#7ee2a8;
+    font-weight:bold;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0;
+}
+
+th{
+    background:#107c41;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:11px;
+    border:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#f7f9fa;
+}
+
+/* FORMULA */
+
+.formula{
+    background:#f1f8f4;
+    border:1px solid #b9dec8;
+    padding:16px;
+    border-radius:10px;
+    margin:15px 0;
+    font-family:Consolas,monospace;
+    font-weight:bold;
+    color:#185c37;
+    overflow-x:auto;
+}
+
+/* ERROR */
+
+.error-box{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    border:1px solid #ddd;
+    border-radius:8px;
+    overflow:hidden;
+    margin:12px 0;
+}
+
+.error-code{
+    background:#ffebee;
+    color:#c62828;
+    padding:13px;
+    font-weight:bold;
+}
+
+.error-desc{
+    padding:13px;
+}
+
+/* STEP */
+
+.step{
+    display:flex;
+    gap:15px;
+    margin:15px 0;
+    align-items:flex-start;
+}
+
+.step-number{
+    min-width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#107c41;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* DEMO */
+
+.demo-box{
+    border:1px solid #dce3e7;
+    border-radius:12px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.demo-title{
+    background:#f0f4f6;
+    padding:12px 15px;
+    font-weight:bold;
+}
+
+.demo-content{
+    padding:18px;
+}
+
+.demo-input{
+    width:100%;
+    padding:12px;
+    border:1px solid #cfd8dc;
+    border-radius:7px;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+.demo-result{
+    background:#eaf7ef;
+    padding:15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* EXERCISE */
+
+.exercise{
+    background:#f7f9fa;
+    border:1px dashed #107c41;
+    padding:20px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+/* NAVIGATION */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    border:none;
+    padding:13px 22px;
+    border-radius:9px;
+    color:white;
+    background:#107c41;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn.secondary{
+    background:#607d8b;
+}
+
+.btn.blue{
+    background:#2878d4;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#17202a;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.footer strong{
+    color:#6fcf97;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:650px){
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .card{
+        padding:22px 17px;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    th,
+    td{
+        padding:8px;
+    }
+
+    .error-box{
+        grid-template-columns:1fr;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .navigation .btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="header">
+
+    <div class="badge">
+        MODUL 4 • MICROSOFT EXCEL
+    </div>
+
+    <h1>Formula Dasar Excel</h1>
+
+    <p>
+        Memahami Formula, Fungsi, Referensi Cell,
+        Operator, Error Formula, dan Perhitungan Persen
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ==================================================
+     TUJUAN
+================================================== -->
+
+<section class="card">
+
+    <h2>🎯 Tujuan Pembelajaran</h2>
+
+    <p>
+        Setelah mempelajari Modul 4, peserta diharapkan
+        mampu memahami konsep dasar formula Microsoft Excel
+        dan menggunakannya untuk melakukan perhitungan.
+    </p>
+
+    <div class="info">
+
+        <strong>Kompetensi yang dipelajari:</strong>
+
+        <ul>
+
+            <li>
+                Memahami sintaks formula dan fungsi Excel.
+            </li>
+
+            <li>
+                Membedakan istilah formula, rumus, dan fungsi.
+            </li>
+
+            <li>
+                Mengenali jenis-jenis error pada formula.
+            </li>
+
+            <li>
+                Memahami alamat dan referensi cell.
+            </li>
+
+            <li>
+                Menggunakan absolute reference.
+            </li>
+
+            <li>
+                Memahami Named Range.
+            </li>
+
+            <li>
+                Menggunakan operator matematika dan perbandingan.
+            </li>
+
+            <li>
+                Memahami prioritas operator.
+            </li>
+
+            <li>
+                Menghitung persentase dengan benar.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     1 ISTILAH
+================================================== -->
+
+<section class="card">
+
+    <h2>1. Formula, Rumus, dan Fungsi</h2>
+
+    <h3>Apa itu Formula?</h3>
+
+    <p>
+        <strong>Formula</strong> adalah instruksi yang ditulis
+        di dalam cell Excel untuk melakukan perhitungan atau
+        pengolahan data.
+    </p>
+
+    <div class="formula">
+        =A1+B1
+    </div>
+
+    <p>
+        Formula selalu diawali dengan tanda
+        <strong>=</strong>.
+    </p>
+
+    <h3>Apa itu Rumus?</h3>
+
+    <p>
+        Dalam penggunaan sehari-hari, istilah
+        <strong>rumus Excel</strong> sering digunakan untuk
+        menyebut formula yang digunakan untuk melakukan
+        perhitungan.
+    </p>
+
+    <h3>Apa itu Fungsi?</h3>
+
+    <p>
+        <strong>Fungsi</strong> adalah formula yang sudah
+        disediakan oleh Excel untuk melakukan pekerjaan tertentu.
+    </p>
+
+    <div class="formula">
+        =SUM(A1:A10)
+    </div>
+
+    <p>
+        SUM adalah fungsi Excel untuk menjumlahkan nilai.
+    </p>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Istilah</th>
+                <th>Pengertian</th>
+                <th>Contoh</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Formula</td>
+                <td>Instruksi/perhitungan yang ditulis di cell.</td>
+                <td>=A1+B1</td>
+            </tr>
+
+            <tr>
+                <td>Rumus</td>
+                <td>Istilah umum untuk perhitungan Excel.</td>
+                <td>=A1*B1</td>
+            </tr>
+
+            <tr>
+                <td>Fungsi</td>
+                <td>Formula bawaan Excel.</td>
+                <td>=SUM(A1:A10)</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+<!-- ==================================================
+     2 SINTAKS
+================================================== -->
+
+<section class="card">
+
+    <h2>2. Dasar Sintaks Fungsi Excel</h2>
+
+    <p>
+        Fungsi Excel memiliki pola atau sintaks tertentu.
+        Secara umum bentuknya adalah:
+    </p>
+
+    <div class="formula">
+        =NAMA_FUNGSI(argumen1,argumen2,...)
+    </div>
+
+    <h3>Contoh</h3>
+
+    <div class="formula">
+        =SUM(A1:A10)
+    </div>
+
+    <p>
+
+        Pada contoh tersebut:
+
+    </p>
+
+    <ul>
+
+        <li>
+            <strong>=</strong> → menandakan formula.
+        </li>
+
+        <li>
+            <strong>SUM</strong> → nama fungsi.
+        </li>
+
+        <li>
+            <strong>A1:A10</strong> → argument/range yang diproses.
+        </li>
+
+    </ul>
+
+    <div class="tip">
+
+        💡 <strong>Catatan regional:</strong>
+        Pada beberapa pengaturan regional Excel,
+        pemisah argumen fungsi dapat menggunakan
+        tanda titik koma <strong>;</strong> bukan koma
+        <strong>,</strong>.
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     3 ERROR
+================================================== -->
+
+<section class="card">
+
+    <h2>3. Jenis-Jenis Error pada Formula</h2>
+
+    <p>
+        Ketika formula Excel tidak dapat diproses dengan benar,
+        Excel dapat menampilkan kode error.
+    </p>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #DIV/0!
+        </div>
+
+        <div class="error-desc">
+            Terjadi ketika angka dibagi dengan nol atau cell kosong.
+        </div>
+
+    </div>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #VALUE!
+        </div>
+
+        <div class="error-desc">
+            Jenis data yang digunakan tidak sesuai dengan operasi.
+        </div>
+
+    </div>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #REF!
+        </div>
+
+        <div class="error-desc">
+            Referensi cell tidak valid, biasanya karena cell yang dirujuk dihapus.
+        </div>
+
+    </div>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #NAME?
+        </div>
+
+        <div class="error-desc">
+            Excel tidak mengenali nama fungsi atau teks tertentu dalam formula.
+        </div>
+
+    </div>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #N/A
+        </div>
+
+        <div class="error-desc">
+            Data yang dicari tidak tersedia atau tidak ditemukan.
+        </div>
+
+    </div>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #NUM!
+        </div>
+
+        <div class="error-desc">
+            Formula menghasilkan angka yang tidak valid.
+        </div>
+
+    </div>
+
+    <div class="error-box">
+
+        <div class="error-code">
+            #NULL!
+        </div>
+
+        <div class="error-desc">
+            Terjadi karena penggunaan operator range/intersection yang tidak tepat.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     4 NOTASI ALAMAT CELL
+================================================== -->
+
+<section class="card">
+
+    <h2>4. Notasi Alamat Cell</h2>
+
+    <p>
+        Setiap cell pada Excel memiliki alamat yang terdiri
+        dari kombinasi <strong>kolom</strong> dan
+        <strong>baris</strong>.
+    </p>
+
+    <div class="example">
+
+        Kolom = Huruf
+
+        <br>
+
+        Baris = Angka
+
+        <br><br>
+
+        Contoh:
+
+        <br>
+
+        <span class="green-code">
+        A1
+        </span>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Alamat</th>
+                <th>Kolom</th>
+                <th>Baris</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>A1</td>
+                <td>A</td>
+                <td>1</td>
+            </tr>
+
+            <tr>
+                <td>B5</td>
+                <td>B</td>
+                <td>5</td>
+            </tr>
+
+            <tr>
+                <td>C10</td>
+                <td>C</td>
+                <td>10</td>
+            </tr>
+
+            <tr>
+                <td>D25</td>
+                <td>D</td>
+                <td>25</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+<!-- ==================================================
+     5 REFERENSI CELL
+================================================== -->
+
+<section class="card">
+
+    <h2>5. Referensi Cell</h2>
+
+    <p>
+        Referensi cell adalah cara formula menunjuk atau
+        merujuk kepada cell tertentu.
+    </p>
+
+    <h3>Relative Reference</h3>
+
+    <p>
+        Contoh:
+    </p>
+
+    <div class="formula">
+        =A1+B1
+    </div>
+
+    <p>
+        Ketika formula disalin ke baris berikutnya,
+        referensinya dapat berubah menjadi:
+    </p>
+
+    <div class="formula">
+        =A2+B2
+    </div>
+
+    <h3>Range</h3>
+
+    <p>
+        Range adalah kumpulan beberapa cell.
+    </p>
+
+    <div class="formula">
+        A1:A10
+    </div>
+
+    <p>
+        Artinya cell dari A1 sampai A10.
+    </p>
+
+    <h3>Referensi Beberapa Cell</h3>
+
+    <div class="formula">
+        =SUM(A1:A10)
+    </div>
+
+    <p>
+        Formula tersebut menjumlahkan seluruh nilai
+        dari A1 sampai A10.
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     6 ABSOLUTE
+================================================== -->
+
+<section class="card">
+
+    <h2>6. Alamat Cell Absolute</h2>
+
+    <p>
+        <strong>Absolute Reference</strong> digunakan ketika
+        kita ingin referensi cell tetap atau tidak berubah
+        ketika formula disalin.
+    </p>
+
+    <div class="formula">
+        =$A$1
+    </div>
+
+    <p>
+        Tanda <strong>$</strong> digunakan untuk mengunci
+        kolom dan baris.
+    </p>
+
+    <h3>Jenis Referensi</h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Referensi</th>
+                <th>Jenis</th>
+                <th>Keterangan</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>A1</td>
+                <td>Relative</td>
+                <td>Kolom dan baris dapat berubah.</td>
+            </tr>
+
+            <tr>
+                <td>$A$1</td>
+                <td>Absolute</td>
+                <td>Kolom dan baris dikunci.</td>
+            </tr>
+
+            <tr>
+                <td>$A1</td>
+                <td>Mixed</td>
+                <td>Kolom dikunci, baris dapat berubah.</td>
+            </tr>
+
+            <tr>
+                <td>A$1</td>
+                <td>Mixed</td>
+                <td>Baris dikunci, kolom dapat berubah.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="tip">
+
+        💡 Shortcut untuk mengubah jenis referensi
+        ketika mengetik formula adalah tombol
+        <strong>F4</strong>.
+
+    </div>
+
+    <h3>Contoh Penggunaan</h3>
+
+    <p>
+        Misalnya tarif pajak berada di cell B1 dan ingin
+        digunakan untuk seluruh transaksi.
+    </p>
+
+    <div class="formula">
+        =A2*$B$1
+    </div>
+
+    <p>
+        Ketika formula disalin ke bawah, A2 akan berubah
+        menjadi A3, A4, dan seterusnya, sedangkan
+        <strong>$B$1</strong> tetap.
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     7 NAMED RANGE
+================================================== -->
+
+<section class="card">
+
+    <h2>7. Named Range</h2>
+
+    <p>
+        <strong>Named Range</strong> adalah pemberian nama
+        kepada cell atau range tertentu sehingga dapat
+        digunakan dalam formula.
+    </p>
+
+    <h3>Contoh</h3>
+
+    <p>
+        Misalnya cell B1 berisi:
+    </p>
+
+    <div class="formula">
+        11%
+    </div>
+
+    <p>
+        Kita dapat memberi nama range tersebut:
+    </p>
+
+    <div class="formula">
+        Pajak
+    </div>
+
+    <p>
+        Formula dapat ditulis:
+    </p>
+
+    <div class="formula">
+        =A2*Pajak
+    </div>
+
+    <h3>Kelebihan Named Range</h3>
+
+    <ul>
+
+        <li>Formula lebih mudah dibaca.</li>
+
+        <li>Mengurangi kesalahan referensi.</li>
+
+        <li>Mudah digunakan kembali.</li>
+
+        <li>Cocok untuk workbook dengan banyak formula.</li>
+
+    </ul>
+
+    <div class="warning">
+
+        ⚠️ Nama Named Range tidak boleh menggunakan
+        spasi. Gunakan misalnya
+        <strong>HargaJual</strong>,
+        <strong>TarifPajak</strong>, atau
+        <strong>NilaiKurs</strong>.
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     8 OPERATOR MATEMATIKA
+================================================== -->
+
+<section class="card">
+
+    <h2>8. Operator Matematika</h2>
+
+    <p>
+        Operator matematika digunakan untuk melakukan
+        perhitungan dalam formula Excel.
+    </p>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Operator</th>
+                <th>Arti</th>
+                <th>Contoh</th>
+                <th>Hasil</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>+</td>
+                <td>Penjumlahan</td>
+                <td>=10+5</td>
+                <td>15</td>
+            </tr>
+
+            <tr>
+                <td>-</td>
+                <td>Pengurangan</td>
+                <td>=10-5</td>
+                <td>5</td>
+            </tr>
+
+            <tr>
+                <td>*</td>
+                <td>Perkalian</td>
+                <td>=10*5</td>
+                <td>50</td>
+            </tr>
+
+            <tr>
+                <td>/</td>
+                <td>Pembagian</td>
+                <td>=10/5</td>
+                <td>2</td>
+            </tr>
+
+            <tr>
+                <td>^</td>
+                <td>Pangkat</td>
+                <td>=2^3</td>
+                <td>8</td>
+            </tr>
+
+            <tr>
+                <td>%</td>
+                <td>Persen</td>
+                <td>=10%</td>
+                <td>0,1</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+<!-- ==================================================
+     9 OPERATOR PERBANDINGAN
+================================================== -->
+
+<section class="card">
+
+    <h2>9. Operator Perbandingan</h2>
+
+    <p>
+        Operator perbandingan digunakan untuk membandingkan
+        dua nilai.
+    </p>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Operator</th>
+                <th>Arti</th>
+                <th>Contoh</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>=</td>
+                <td>Sama dengan</td>
+                <td>=A1=100</td>
+            </tr>
+
+            <tr>
+                <td>&gt;</td>
+                <td>Lebih besar</td>
+                <td>=A1&gt;100</td>
+            </tr>
+
+            <tr>
+                <td>&lt;</td>
+                <td>Lebih kecil</td>
+                <td>=A1&lt;100</td>
+            </tr>
+
+            <tr>
+                <td>&gt;=</td>
+                <td>Lebih besar atau sama dengan</td>
+                <td>=A1&gt;=75</td>
+            </tr>
+
+            <tr>
+                <td>&lt;=</td>
+                <td>Lebih kecil atau sama dengan</td>
+                <td>=A1&lt;=75</td>
+            </tr>
+
+            <tr>
+                <td>&lt;&gt;</td>
+                <td>Tidak sama dengan</td>
+                <td>=A1&lt;&gt;100</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="info">
+
+        Hasil operator perbandingan biasanya berupa:
+
+        <br><br>
+
+        <strong>TRUE</strong> = kondisi benar
+
+        <br>
+
+        <strong>FALSE</strong> = kondisi salah
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     10 PRIORITAS
+================================================== -->
+
+<section class="card">
+
+    <h2>10. Prioritas Operator</h2>
+
+    <p>
+        Excel tidak selalu menghitung formula dari kiri
+        ke kanan. Excel mengikuti aturan prioritas operator.
+    </p>
+
+    <h3>Urutan Dasar</h3>
+
+    <ol>
+
+        <li>
+            Tanda kurung <strong>( )</strong>
+        </li>
+
+        <li>
+            Pangkat <strong>^</strong>
+        </li>
+
+        <li>
+            Perkalian dan pembagian
+            <strong>* /</strong>
+        </li>
+
+        <li>
+            Penjumlahan dan pengurangan
+            <strong>+ -</strong>
+        </li>
+
+        <li>
+            Operator perbandingan
+        </li>
+
+    </ol>
+
+    <h3>Contoh</h3>
+
+    <div class="formula">
+        =10+5*2
+    </div>
+
+    <p>
+        Excel menghitung perkalian terlebih dahulu:
+    </p>
+
+    <div class="formula">
+        5*2 = 10
+        <br>
+        10+10 = 20
+    </div>
+
+    <p>
+        Jadi hasilnya adalah:
+        <strong>20</strong>.
+    </p>
+
+    <h3>Menggunakan Kurung</h3>
+
+    <div class="formula">
+        =(10+5)*2
+    </div>
+
+    <p>
+        Karena berada dalam kurung:
+    </p>
+
+    <div class="formula">
+        10+5 = 15
+        <br>
+        15*2 = 30
+    </div>
+
+    <p>
+        Hasilnya menjadi:
+        <strong>30</strong>.
+    </p>
+
+    <div class="tip">
+
+        💡 Gunakan tanda kurung jika ingin memastikan
+        Excel menghitung bagian tertentu terlebih dahulu.
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     11 PERSEN
+================================================== -->
+
+<section class="card">
+
+    <h2>11. Cara Menghitung Persen</h2>
+
+    <p>
+        Persentase sangat sering digunakan dalam pekerjaan
+        administrasi, laporan, penjualan, nilai peserta,
+        dan berbagai perhitungan lainnya.
+    </p>
+
+    <h3>Rumus Dasar Persentase</h3>
+
+    <div class="formula">
+        Persentase = Bagian ÷ Total
+    </div>
+
+    <h3>Contoh 1 – Persentase Kehadiran</h3>
+
+    <p>
+        Seorang peserta hadir 18 hari dari total 20 hari.
+    </p>
+
+    <div class="formula">
+        =18/20
+    </div>
+
+    <p>
+        Hasilnya adalah 0,9.
+    </p>
+
+    <p>
+        Jika cell diformat sebagai Percentage:
+    </p>
+
+    <div class="formula">
+        90%
+    </div>
+
+    <h3>Contoh 2 – Menghitung Persentase Nilai</h3>
+
+    <p>
+        Nilai peserta adalah 80 dari nilai maksimal 100.
+    </p>
+
+    <div class="formula">
+        =80/100
+    </div>
+
+    <p>
+        Hasil:
+        <strong>80%</strong>
+    </p>
+
+    <h3>Contoh 3 – Menghitung Nilai Setelah Diskon</h3>
+
+    <p>
+        Harga barang Rp200.000 mendapatkan diskon 10%.
+    </p>
+
+    <div class="formula">
+        =200000*10%
+    </div>
+
+    <p>
+        Nilai diskon:
+        <strong>Rp20.000</strong>
+    </p>
+
+    <p>
+        Harga setelah diskon:
+    </p>
+
+    <div class="formula">
+        =200000-(200000*10%)
+    </div>
+
+    <p>
+        Hasil:
+        <strong>Rp180.000</strong>
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     12 KENAIKAN / PENURUNAN
+================================================== -->
+
+<section class="card">
+
+    <h2>12. Menghitung Persentase Kenaikan dan Penurunan</h2>
+
+    <h3>Persentase Kenaikan</h3>
+
+    <p>
+        Misalnya harga awal Rp100.000 menjadi Rp120.000.
+    </p>
+
+    <div class="formula">
+        =(120000-100000)/100000
+    </div>
+
+    <p>
+        Hasil:
+        <strong>20%</strong>
+    </p>
+
+    <h3>Persentase Penurunan</h3>
+
+    <p>
+        Misalnya stok turun dari 100 unit menjadi 80 unit.
+    </p>
+
+    <div class="formula">
+        =(100-80)/100
+    </div>
+
+    <p>
+        Hasil:
+        <strong>20%</strong>
+    </p>
+
+    <div class="info">
+
+        <strong>Rumus umum:</strong>
+
+        <br><br>
+
+        Kenaikan/Penurunan % =
+        (Nilai Baru − Nilai Lama) ÷ Nilai Lama
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     13 CONTOH TERPADU
+================================================== -->
+
+<section class="card">
+
+    <h2>13. Contoh Formula Terpadu</h2>
+
+    <p>
+        Perhatikan tabel berikut.
+    </p>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Nama</th>
+                <th>Nilai</th>
+                <th>Status</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Andi</td>
+                <td>85</td>
+                <td>Lulus</td>
+            </tr>
+
+            <tr>
+                <td>Budi</td>
+                <td>70</td>
+                <td>Belum Lulus</td>
+            </tr>
+
+            <tr>
+                <td>Citra</td>
+                <td>90</td>
+                <td>Lulus</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <p>
+        Jika nilai berada di cell B2, kita dapat membuat
+        perbandingan:
+    </p>
+
+    <div class="formula">
+        =B2&gt;=75
+    </div>
+
+    <p>
+        Jika B2 berisi 85, hasilnya:
+    </p>
+
+    <div class="formula">
+        TRUE
+    </div>
+
+    <p>
+        Artinya nilai 85 memenuhi kondisi minimal 75.
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     14 PRAKTIK
+================================================== -->
+
+<section class="card">
+
+    <h2>💻 Praktik Mandiri</h2>
+
+    <p>
+        Buat tabel berikut di Microsoft Excel.
+    </p>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Nilai</th>
+                <th>Total</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>1</td>
+                <td>Andi</td>
+                <td>80</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Budi</td>
+                <td>75</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Citra</td>
+                <td>90</td>
+                <td>100</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="exercise">
+
+        <strong>🎯 Tugas Praktik:</strong>
+
+        <ol>
+
+            <li>
+                Hitung persentase nilai setiap peserta.
+            </li>
+
+            <li>
+                Gunakan operator perbandingan untuk mengecek
+                apakah nilai peserta minimal 75.
+            </li>
+
+            <li>
+                Buat satu cell berisi angka 10% sebagai
+                tarif tertentu.
+            </li>
+
+            <li>
+                Gunakan absolute reference untuk mengunci
+                cell tarif tersebut.
+            </li>
+
+            <li>
+                Salin formula ke baris berikutnya dan amati
+                referensi cell.
+            </li>
+
+            <li>
+                Coba ubah salah satu referensi menjadi
+                <strong>$A$1</strong>.
+            </li>
+
+            <li>
+                Coba gunakan tanda kurung untuk mengubah
+                prioritas perhitungan.
+            </li>
+
+        </ol>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     15 RANGKUMAN
+================================================== -->
+
+<section class="card">
+
+    <h2>📌 Rangkuman Modul 4</h2>
+
+    <ul>
+
+        <li>
+            Formula Excel umumnya diawali dengan tanda
+            <strong>=</strong>.
+        </li>
+
+        <li>
+            Fungsi adalah formula bawaan Excel untuk
+            melakukan pekerjaan tertentu.
+        </li>
+
+        <li>
+            Setiap cell memiliki alamat seperti A1, B2,
+            C10, dan seterusnya.
+        </li>
+
+        <li>
+            Relative reference dapat berubah ketika formula
+            disalin.
+        </li>
+
+        <li>
+            Absolute reference menggunakan tanda
+            <strong>$</strong> untuk mengunci referensi.
+        </li>
+
+        <li>
+            Named Range memberikan nama pada cell atau range.
+        </li>
+
+        <li>
+            Operator matematika meliputi +, -, *, /, dan ^.
+        </li>
+
+        <li>
+            Operator perbandingan menghasilkan TRUE atau FALSE.
+        </li>
+
+        <li>
+            Excel mengikuti prioritas operator ketika
+            menghitung formula.
+        </li>
+
+        <li>
+            Persentase dasar dihitung dengan
+            <strong>Bagian ÷ Total</strong>.
+        </li>
+
+    </ul>
+
+    <div class="info">
+
+        <strong>💡 Kunci pembelajaran:</strong>
+
+        <br>
+
+        Kuasai alamat cell, referensi cell, operator,
+        dan tanda kurung terlebih dahulu sebelum mempelajari
+        fungsi Excel yang lebih kompleks.
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     NAVIGASI
+================================================== -->
+
+<section class="card">
+
+    <div class="navigation">
+
+        <a
+            href="kuis-excel-3.html"
+            class="btn secondary"
+        >
+            ← Kuis Modul 3
+        </a>
+
+        <a
+            href="kuis-excel-4.html"
+            class="btn blue"
+        >
+            📝 Mulai Kuis Modul 4 →
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+    <p>
+        <strong>Pelatihan Microsoft Excel</strong>
+    </p>
+
+    <p>
+        Modul 4 • Formula Dasar
+    </p>
+
+    <p style="margin-top:8px;font-size:13px;opacity:.7;">
+        © 2026 • Materi Pelatihan
+    </p>
+
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul 4 - Mengatur Desain Presentasi | Microsoft PowerPoint 2016</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.header-icon{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    font-size:30px;
+    margin-bottom:7px;
+}
+
+.header p{
+    font-size:16px;
+    opacity:.95;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1050px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:#fff;
+    padding:28px;
+    margin-bottom:22px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#c62828;
+    margin-bottom:16px;
+    font-size:24px;
+}
+
+.card h3{
+    color:#b71c1c;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+/* =========================
+   TUJUAN
+========================= */
+
+.objective{
+    background:#fff;
+    border-left:5px solid #e53935;
+}
+
+.objective ol{
+    margin-left:22px;
+}
+
+.objective li{
+    margin-bottom:6px;
+}
+
+/* =========================
+   BOX
+========================= */
+
+.info-box{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:17px;
+    margin:18px 0;
+    border-radius:8px;
+}
+
+.tip-box{
+    background:#e8f5e9;
+    border-left:5px solid #43a047;
+    padding:17px;
+    margin:18px 0;
+    border-radius:8px;
+}
+
+.warning-box{
+    background:#ffebee;
+    border-left:5px solid #e53935;
+    padding:17px;
+    margin:18px 0;
+    border-radius:8px;
+}
+
+/* =========================
+   LIST
+========================= */
+
+ul,ol{
+    margin-left:24px;
+}
+
+li{
+    margin-bottom:6px;
+}
+
+/* =========================
+   MENU PATH
+========================= */
+
+.menu-path{
+    display:inline-block;
+    background:#263238;
+    color:white;
+    padding:8px 13px;
+    border-radius:6px;
+    font-family:Consolas,monospace;
+    margin:8px 0;
+}
+
+/* =========================
+   STEP
+========================= */
+
+.step{
+    background:#f8f9fa;
+    border:1px solid #e0e0e0;
+    padding:15px;
+    border-radius:9px;
+    margin:12px 0;
+}
+
+.step-number{
+    display:inline-block;
+    background:#e53935;
+    color:white;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+    font-weight:bold;
+    margin-right:8px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+th{
+    background:#c62828;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:11px;
+    vertical-align:top;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+/* =========================
+   MERGE SHAPES
+========================= */
+
+.merge-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+.merge-item{
+    padding:18px 10px;
+    text-align:center;
+    border-radius:10px;
+    background:#f5f5f5;
+    border:1px solid #ddd;
+}
+
+.merge-item strong{
+    display:block;
+    color:#c62828;
+    margin-bottom:5px;
+}
+
+/* =========================
+   LATIHAN
+========================= */
+
+.practice{
+    background:linear-gradient(
+        135deg,
+        #fff,
+        #ffebee
+    );
+    border:2px solid #ef9a9a;
+}
+
+.practice ol{
+    margin-left:24px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.button-area{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        #b71c1c,
+        #e53935
+    );
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.2);
+}
+
+.btn-secondary{
+    background:#455a64;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container{
+    background:#ddd;
+    border-radius:20px;
+    height:12px;
+    overflow:hidden;
+    margin:10px 0 25px;
+}
+
+.progress{
+    height:100%;
+    width:100%;
+    background:#e53935;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:4px 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .header-icon{
+        font-size:45px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h2{
+        font-size:21px;
+    }
+
+    .merge-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .container{
+        padding:0 12px;
+    }
+
+    .merge-grid{
+        grid-template-columns:1fr;
+    }
+
+    .button-area{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="header-icon">
+        🎨
+    </div>
+
+    <h1>
+        MODUL 4
+    </h1>
+
+    <p>
+        Mengatur Desain Presentasi
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================
+     INFORMASI MODUL
+========================= -->
+
+<section class="card">
+
+    <h2>📚 Informasi Modul</h2>
+
+    <p>
+        Pada modul ini peserta akan mempelajari cara
+        mengatur desain dan tampilan presentasi agar
+        terlihat lebih menarik, konsisten, rapi,
+        dan profesional menggunakan Microsoft
+        PowerPoint 2016.
+    </p>
+
+    <div class="info-box">
+
+        <strong>Materi Modul 4:</strong>
+
+        <ul>
+            <li>Themes</li>
+            <li>Variants</li>
+            <li>Background</li>
+            <li>Format Background</li>
+            <li>Slide Master</li>
+            <li>Theme Colors</li>
+            <li>Theme Fonts</li>
+            <li>Crop</li>
+            <li>Remove Background</li>
+            <li>Compress Pictures</li>
+            <li>Rotate</li>
+            <li>Align</li>
+            <li>Group dan Ungroup</li>
+            <li>Bring Forward dan Send Backward</li>
+            <li>Merge Shapes</li>
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TUJUAN PEMBELAJARAN
+========================= -->
+
+<section class="card objective">
+
+    <h2>🎯 Tujuan Pembelajaran</h2>
+
+    <p>
+        Setelah menyelesaikan Modul 4, peserta diharapkan
+        mampu:
+    </p>
+
+    <ol>
+
+        <li>
+            Menggunakan Themes untuk mengatur tampilan
+            presentasi.
+        </li>
+
+        <li>
+            Menggunakan Variants untuk memodifikasi
+            desain tema.
+        </li>
+
+        <li>
+            Mengatur Background dan Format Background.
+        </li>
+
+        <li>
+            Menggunakan Slide Master.
+        </li>
+
+        <li>
+            Mengatur Theme Colors dan Theme Fonts.
+        </li>
+
+        <li>
+            Melakukan pengolahan gambar menggunakan
+            Crop, Remove Background, dan Compress Pictures.
+        </li>
+
+        <li>
+            Mengatur objek menggunakan Rotate dan Align.
+        </li>
+
+        <li>
+            Menggunakan Group dan Ungroup.
+        </li>
+
+        <li>
+            Mengatur urutan objek dengan Bring Forward
+            dan Send Backward.
+        </li>
+
+        <li>
+            Menggunakan Merge Shapes untuk membuat
+            bentuk baru.
+        </li>
+
+    </ol>
+
+</section>
+
+
+<!-- =========================
+     MATERI 1
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣ Themes
+    </h2>
+
+    <p>
+        <strong>Themes</strong> adalah kumpulan desain
+        yang telah disediakan oleh PowerPoint untuk
+        memberikan tampilan yang konsisten pada
+        seluruh presentasi.
+    </p>
+
+    <p>
+        Themes dapat mengatur:
+    </p>
+
+    <ul>
+
+        <li>Warna</li>
+        <li>Jenis huruf</li>
+        <li>Efek</li>
+        <li>Gaya objek</li>
+        <li>Tampilan keseluruhan slide</li>
+
+    </ul>
+
+    <h3>
+        Cara Menggunakan Themes
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Buka tab <strong>Design</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Perhatikan bagian <strong>Themes</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Pilih tema yang diinginkan.
+    </div>
+
+    <div class="step">
+        <span class="step-number">4</span>
+        Klik tema untuk menerapkannya.
+    </div>
+
+    <div class="tip-box">
+
+        💡 <strong>Tips:</strong>
+        Pilih tema yang sesuai dengan tujuan
+        presentasi dan gunakan secara konsisten.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 2
+========================= -->
+
+<section class="card">
+
+    <h2>
+        2️⃣ Variants
+    </h2>
+
+    <p>
+        <strong>Variants</strong> digunakan untuk
+        mengubah variasi tampilan dari Theme yang
+        sudah dipilih.
+    </p>
+
+    <p>
+        Variants dapat mengubah:
+    </p>
+
+    <ul>
+
+        <li>Colors</li>
+        <li>Fonts</li>
+        <li>Effects</li>
+        <li>Background Styles</li>
+
+    </ul>
+
+    <h3>
+        Cara Menggunakan Variants
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Pilih tab <strong>Design</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Pilih sebuah <strong>Theme</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Pada bagian <strong>Variants</strong>,
+        pilih variasi yang tersedia.
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 3
+========================= -->
+
+<section class="card">
+
+    <h2>
+        3️⃣ Background
+    </h2>
+
+    <p>
+        <strong>Background</strong> adalah latar belakang
+        slide yang dapat digunakan untuk memperkuat
+        tampilan presentasi.
+    </p>
+
+    <p>
+        Pengaturan background dapat ditemukan melalui:
+    </p>
+
+    <div class="menu-path">
+        Design → Variants → Background Styles
+    </div>
+
+    <p>
+        Background dapat menggunakan:
+    </p>
+
+    <ul>
+
+        <li>Warna terang</li>
+        <li>Warna gelap</li>
+        <li>Warna solid</li>
+        <li>Gaya background tertentu</li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     MATERI 4
+========================= -->
+
+<section class="card">
+
+    <h2>
+        4️⃣ Format Background
+    </h2>
+
+    <p>
+        <strong>Format Background</strong> digunakan
+        untuk mengatur latar belakang secara lebih
+        detail.
+    </p>
+
+    <h3>
+        Cara Membuka Format Background
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Klik tab <strong>Design</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Klik <strong>Format Background</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Panel Format Background akan muncul.
+    </div>
+
+    <h3>
+        Jenis Background
+    </h3>
+
+    <ul>
+
+        <li>
+            <strong>Solid Fill</strong> —
+            menggunakan satu warna.
+        </li>
+
+        <li>
+            <strong>Gradient Fill</strong> —
+            menggunakan perpaduan warna.
+        </li>
+
+        <li>
+            <strong>Picture or Texture Fill</strong> —
+            menggunakan gambar atau tekstur.
+        </li>
+
+        <li>
+            <strong>Pattern Fill</strong> —
+            menggunakan pola tertentu.
+        </li>
+
+    </ul>
+
+    <div class="info-box">
+
+        <strong>Apply to All</strong>
+
+        <p>
+            Digunakan apabila background yang dibuat
+            ingin diterapkan pada seluruh slide.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 5
+========================= -->
+
+<section class="card">
+
+    <h2>
+        5️⃣ Slide Master
+    </h2>
+
+    <p>
+        <strong>Slide Master</strong> digunakan untuk
+        mengatur desain presentasi secara terpusat.
+        Perubahan yang dilakukan pada Slide Master
+        dapat diterapkan pada banyak slide sekaligus.
+    </p>
+
+    <h3>
+        Slide Master Dapat Mengatur
+    </h3>
+
+    <ul>
+
+        <li>Logo</li>
+        <li>Font</li>
+        <li>Warna</li>
+        <li>Placeholder</li>
+        <li>Background</li>
+        <li>Footer</li>
+        <li>Nomor slide</li>
+
+    </ul>
+
+    <h3>
+        Cara Membuka Slide Master
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Klik tab <strong>View</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Pilih <strong>Slide Master</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Lakukan perubahan desain.
+    </div>
+
+    <div class="step">
+        <span class="step-number">4</span>
+        Klik <strong>Close Master View</strong>.
+    </div>
+
+    <div class="tip-box">
+
+        💡 <strong>Manfaat:</strong>
+        Slide Master sangat berguna ketika membuat
+        presentasi dengan banyak slide karena desain
+        dapat diatur secara konsisten.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 6
+========================= -->
+
+<section class="card">
+
+    <h2>
+        6️⃣ Theme Colors
+    </h2>
+
+    <p>
+        <strong>Theme Colors</strong> digunakan untuk
+        menentukan kumpulan warna yang digunakan
+        dalam presentasi.
+    </p>
+
+    <p>
+        Pengaturan dapat dilakukan melalui:
+    </p>
+
+    <div class="menu-path">
+        Design → Variants → Colors
+    </div>
+
+    <p>
+        Theme Colors dapat memengaruhi:
+    </p>
+
+    <ul>
+
+        <li>Judul</li>
+        <li>Teks</li>
+        <li>Shapes</li>
+        <li>Chart</li>
+        <li>Tabel</li>
+        <li>Background</li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     MATERI 7
+========================= -->
+
+<section class="card">
+
+    <h2>
+        7️⃣ Theme Fonts
+    </h2>
+
+    <p>
+        <strong>Theme Fonts</strong> digunakan untuk
+        menentukan jenis huruf yang digunakan dalam
+        presentasi.
+    </p>
+
+    <div class="menu-path">
+        Design → Variants → Fonts
+    </div>
+
+    <p>
+        Theme Fonts biasanya terdiri dari:
+    </p>
+
+    <ul>
+
+        <li>
+            <strong>Heading Font</strong>
+        </li>
+
+        <li>
+            <strong>Body Font</strong>
+        </li>
+
+    </ul>
+
+    <div class="tip-box">
+
+        💡 Gunakan jenis huruf yang mudah dibaca
+        dan konsisten dari awal sampai akhir
+        presentasi.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 8
+========================= -->
+
+<section class="card">
+
+    <h2>
+        8️⃣ Crop
+    </h2>
+
+    <p>
+        <strong>Crop</strong> digunakan untuk memotong
+        bagian gambar yang tidak diperlukan.
+    </p>
+
+    <h3>
+        Cara Menggunakan Crop
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Klik gambar.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Pilih tab <strong>Picture Tools → Format</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Klik <strong>Crop</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">4</span>
+        Tarik bagian tepi gambar.
+    </div>
+
+    <div class="step">
+        <span class="step-number">5</span>
+        Klik di luar gambar.
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 9
+========================= -->
+
+<section class="card">
+
+    <h2>
+        9️⃣ Remove Background
+    </h2>
+
+    <p>
+        <strong>Remove Background</strong> digunakan
+        untuk menghapus latar belakang sebuah gambar.
+    </p>
+
+    <h3>
+        Langkah Penggunaan
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Klik gambar.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Pilih <strong>Picture Tools → Format</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Klik <strong>Remove Background</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">4</span>
+        Gunakan <strong>Mark Areas to Keep</strong>
+        untuk mempertahankan bagian gambar.
+    </div>
+
+    <div class="step">
+        <span class="step-number">5</span>
+        Gunakan <strong>Mark Areas to Remove</strong>
+        untuk menandai bagian yang akan dihapus.
+    </div>
+
+    <div class="step">
+        <span class="step-number">6</span>
+        Klik <strong>Keep Changes</strong>.
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 10
+========================= -->
+
+<section class="card">
+
+    <h2>
+        🔟 Compress Pictures
+    </h2>
+
+    <p>
+        <strong>Compress Pictures</strong> digunakan
+        untuk mengurangi ukuran file gambar sehingga
+        ukuran file PowerPoint dapat menjadi lebih kecil.
+    </p>
+
+    <h3>
+        Cara Menggunakan
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Klik salah satu gambar.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Pilih <strong>Picture Tools → Format</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Klik <strong>Compress Pictures</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">4</span>
+        Pilih resolusi yang sesuai.
+    </div>
+
+    <div class="step">
+        <span class="step-number">5</span>
+        Klik <strong>OK</strong>.
+    </div>
+
+    <div class="tip-box">
+
+        💡 Compress Pictures berguna untuk:
+        <ul>
+            <li>Mengurangi ukuran file.</li>
+            <li>Menghemat penyimpanan.</li>
+            <li>Memudahkan pengiriman file.</li>
+            <li>Membuat presentasi lebih ringan.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 11
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣1️⃣ Rotate
+    </h2>
+
+    <p>
+        <strong>Rotate</strong> digunakan untuk
+        memutar objek.
+    </p>
+
+    <div class="menu-path">
+        Format → Rotate
+    </div>
+
+    <p>
+        Pilihan yang tersedia antara lain:
+    </p>
+
+    <ul>
+
+        <li>Rotate Right 90°</li>
+        <li>Rotate Left 90°</li>
+        <li>Flip Vertical</li>
+        <li>Flip Horizontal</li>
+
+    </ul>
+
+    <div class="info-box">
+
+        Objek juga dapat diputar secara manual
+        menggunakan <strong>Rotation Handle</strong>
+        yang muncul pada bagian atas objek.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 12
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣2️⃣ Align
+    </h2>
+
+    <p>
+        <strong>Align</strong> digunakan untuk
+        merapikan posisi beberapa objek agar sejajar.
+    </p>
+
+    <p>
+        Pilihan Align antara lain:
+    </p>
+
+    <ul>
+
+        <li>Align Left</li>
+        <li>Align Center</li>
+        <li>Align Right</li>
+        <li>Align Top</li>
+        <li>Align Middle</li>
+        <li>Align Bottom</li>
+
+    </ul>
+
+    <h3>
+        Contoh
+    </h3>
+
+    <p>
+        Jika terdapat tiga kotak yang posisinya
+        tidak sejajar:
+    </p>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Pilih semua kotak.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Pilih <strong>Format → Align</strong>.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Pilih <strong>Align Middle</strong>.
+    </div>
+
+    <p>
+        Semua objek akan menjadi sejajar secara otomatis.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     MATERI 13
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣3️⃣ Group
+    </h2>
+
+    <p>
+        <strong>Group</strong> digunakan untuk
+        menggabungkan beberapa objek menjadi satu
+        kesatuan.
+    </p>
+
+    <h3>
+        Cara Menggunakan Group
+    </h3>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        Pilih beberapa objek.
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        Klik kanan.
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        Pilih <strong>Group → Group</strong>.
+    </div>
+
+    <div class="tip-box">
+
+        Setelah di-group, objek dapat dipindahkan
+        atau diubah ukurannya secara bersamaan.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 14
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣4️⃣ Ungroup
+    </h2>
+
+    <p>
+        <strong>Ungroup</strong> digunakan untuk
+        memisahkan kembali objek yang telah
+        digabungkan.
+    </p>
+
+    <div class="menu-path">
+        Format → Group → Ungroup
+    </div>
+
+    <p>
+        Setelah Ungroup, setiap objek dapat diedit
+        secara terpisah.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     MATERI 15
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣5️⃣ Bring Forward
+    </h2>
+
+    <p>
+        <strong>Bring Forward</strong> digunakan untuk
+        memindahkan objek ke posisi yang lebih depan
+        dibandingkan objek lainnya.
+    </p>
+
+    <h3>
+        Pilihan
+    </h3>
+
+    <ul>
+
+        <li>
+            <strong>Bring Forward</strong> —
+            memajukan objek satu tingkat.
+        </li>
+
+        <li>
+            <strong>Bring to Front</strong> —
+            membawa objek ke posisi paling depan.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     MATERI 16
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣6️⃣ Send Backward
+    </h2>
+
+    <p>
+        <strong>Send Backward</strong> digunakan untuk
+        memindahkan objek ke posisi yang lebih belakang.
+    </p>
+
+    <h3>
+        Pilihan
+    </h3>
+
+    <ul>
+
+        <li>
+            <strong>Send Backward</strong> —
+            mengirim objek satu tingkat ke belakang.
+        </li>
+
+        <li>
+            <strong>Send to Back</strong> —
+            mengirim objek ke posisi paling belakang.
+        </li>
+
+    </ul>
+
+    <div class="info-box">
+
+        Contoh susunan objek:
+
+        <br><br>
+
+        <strong>
+            Background → Shape → Text
+        </strong>
+
+        <br><br>
+
+        Pengaturan Bring Forward dan Send Backward
+        membantu menentukan objek mana yang berada
+        di depan atau belakang.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MATERI 17
+========================= -->
+
+<section class="card">
+
+    <h2>
+        1️⃣7️⃣ Merge Shapes
+    </h2>
+
+    <p>
+        <strong>Merge Shapes</strong> digunakan untuk
+        menggabungkan, memotong, atau membentuk
+        beberapa Shapes menjadi bentuk baru.
+    </p>
+
+    <p>
+        Fitur ini sangat berguna untuk membuat desain
+        grafis yang lebih kreatif tanpa menggunakan
+        aplikasi desain tambahan.
+    </p>
+
+    <div class="merge-grid">
+
+        <div class="merge-item">
+
+            <strong>Union</strong>
+
+            Menggabungkan beberapa Shape
+            menjadi satu.
+
+        </div>
+
+        <div class="merge-item">
+
+            <strong>Combine</strong>
+
+            Menggabungkan Shape dan
+            membuat bagian tertentu kosong.
+
+        </div>
+
+        <div class="merge-item">
+
+            <strong>Fragment</strong>
+
+            Memecah objek menjadi beberapa
+            bagian.
+
+        </div>
+
+        <div class="merge-item">
+
+            <strong>Intersect</strong>
+
+            Mengambil bagian Shape yang
+            saling bertumpuk.
+
+        </div>
+
+        <div class="merge-item">
+
+            <strong>Subtract</strong>
+
+            Memotong satu Shape menggunakan
+            Shape lainnya.
+
+        </div>
+
+    </div>
+
+    <h3>
+        Contoh Penggunaan
+    </h3>
+
+    <p>
+        Misalnya terdapat sebuah lingkaran dan
+        persegi yang saling bertumpuk.
+    </p>
+
+    <p>
+        Dengan memilih:
+    </p>
+
+    <div class="menu-path">
+        Shape Format → Merge Shapes → Subtract
+    </div>
+
+    <p>
+        Bagian Shape yang tertutup oleh Shape kedua
+        dapat dipotong sehingga menghasilkan
+        bentuk baru.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     RANGKUMAN
+========================= -->
+
+<section class="card">
+
+    <h2>
+        📋 Rangkuman Modul 4
+    </h2>
+
+    <p>
+        Berikut rangkuman materi yang telah dipelajari:
+    </p>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Materi</th>
+                    <th>Fungsi</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Themes</td>
+                    <td>Mengatur desain keseluruhan presentasi.</td>
+                </tr>
+
+                <tr>
+                    <td>Variants</td>
+                    <td>Mengubah variasi tampilan tema.</td>
+                </tr>
+
+                <tr>
+                    <td>Background</td>
+                    <td>Mengatur latar belakang slide.</td>
+                </tr>
+
+                <tr>
+                    <td>Format Background</td>
+                    <td>Mengatur background secara lebih detail.</td>
+                </tr>
+
+                <tr>
+                    <td>Slide Master</td>
+                    <td>Mengatur desain secara terpusat.</td>
+                </tr>
+
+                <tr>
+                    <td>Theme Colors</td>
+                    <td>Mengatur warna tema.</td>
+                </tr>
+
+                <tr>
+                    <td>Theme Fonts</td>
+                    <td>Mengatur jenis font tema.</td>
+                </tr>
+
+                <tr>
+                    <td>Crop</td>
+                    <td>Memotong bagian gambar.</td>
+                </tr>
+
+                <tr>
+                    <td>Remove Background</td>
+                    <td>Menghapus latar belakang gambar.</td>
+                </tr>
+
+                <tr>
+                    <td>Compress Pictures</td>
+                    <td>Mengurangi ukuran file gambar.</td>
+                </tr>
+
+                <tr>
+                    <td>Rotate</td>
+                    <td>Memutar objek.</td>
+                </tr>
+
+                <tr>
+                    <td>Align</td>
+                    <td>Merapikan posisi objek.</td>
+                </tr>
+
+                <tr>
+                    <td>Group</td>
+                    <td>Menggabungkan beberapa objek.</td>
+                </tr>
+
+                <tr>
+                    <td>Ungroup</td>
+                    <td>Memisahkan objek yang telah di-group.</td>
+                </tr>
+
+                <tr>
+                    <td>Bring Forward</td>
+                    <td>Membawa objek ke depan.</td>
+                </tr>
+
+                <tr>
+                    <td>Send Backward</td>
+                    <td>Mengirim objek ke belakang.</td>
+                </tr>
+
+                <tr>
+                    <td>Merge Shapes</td>
+                    <td>Membuat bentuk baru dari beberapa Shape.</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LATIHAN
+========================= -->
+
+<section class="card practice">
+
+    <h2>
+        🛠️ Latihan Praktik Modul 4
+    </h2>
+
+    <p>
+        Buatlah sebuah slide presentasi dengan
+        judul:
+    </p>
+
+    <h3>
+        "Profil UPTD BLK Kabupaten Subang"
+    </h3>
+
+    <p>
+        Kemudian lakukan tugas berikut:
+    </p>
+
+    <ol>
+
+        <li>
+            Pilih salah satu <strong>Theme</strong>.
+        </li>
+
+        <li>
+            Atur <strong>Variants</strong>.
+        </li>
+
+        <li>
+            Buat background yang sesuai.
+        </li>
+
+        <li>
+            Masukkan sebuah gambar.
+        </li>
+
+        <li>
+            Lakukan <strong>Crop</strong>.
+        </li>
+
+        <li>
+            Gunakan <strong>Remove Background</strong>.
+        </li>
+
+        <li>
+            Duplikat gambar dan lakukan
+            <strong>Rotate</strong>.
+        </li>
+
+        <li>
+            Buat minimal tiga Shapes.
+        </li>
+
+        <li>
+            Gunakan <strong>Align</strong>.
+        </li>
+
+        <li>
+            Gunakan <strong>Group</strong>.
+        </li>
+
+        <li>
+            Lakukan <strong>Ungroup</strong>.
+        </li>
+
+        <li>
+            Atur objek menggunakan
+            <strong>Bring Forward</strong> dan
+            <strong>Send Backward</strong>.
+        </li>
+
+        <li>
+            Buat bentuk baru menggunakan
+            <strong>Merge Shapes</strong>.
+        </li>
+
+        <li>
+            Atur <strong>Theme Colors</strong>.
+        </li>
+
+        <li>
+            Atur <strong>Theme Fonts</strong>.
+        </li>
+
+        <li>
+            Simpan file dengan nama:
+            <strong>Latihan_Modul_4_NamaPeserta.pptx</strong>
+        </li>
+
+    </ol>
+
+</section>
+
+
+<!-- =========================
+     KESIMPULAN
+========================= -->
+
+<section class="card">
+
+    <h2>
+        🎓 Kesimpulan
+    </h2>
+
+    <p>
+        Pengaturan desain merupakan salah satu bagian
+        penting dalam membuat presentasi yang profesional.
+        Dengan memanfaatkan Themes, Variants, Slide Master,
+        pengaturan gambar, Align, Group, pengaturan urutan
+        objek, dan Merge Shapes, peserta dapat membuat
+        presentasi yang lebih rapi, konsisten, dan menarik.
+    </p>
+
+    <div class="tip-box">
+
+        <strong>💡 Ingat:</strong>
+
+        <p>
+            Presentasi yang baik bukan hanya berisi
+            informasi yang benar, tetapi juga harus
+            memiliki tampilan yang rapi, mudah dibaca,
+            konsisten, dan sesuai dengan tujuan presentasi.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NAVIGASI
+========================= -->
+
+<div class="button-area">
+
+    <a
+        href="modul-ppt-3.html"
+        class="btn btn-secondary">
+
+        ← Modul 3
+
+    </a>
+
+    <a
+        href="kuis-ppt-4.html"
+        class="btn">
+
+        📝 Kerjakan Kuis Modul 4 →
+
+    </a>
+
+</div>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Modul 4 — Mengatur Desain Presentasi
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================
+   SCROLL PROGRESS
+===================================== */
+
+window.addEventListener("scroll",function(){
+
+    const scrollTop =
+        window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress =
+        (scrollTop / documentHeight) * 100;
+
+    /* progress indicator hanya digunakan
+       jika elemen tersedia */
+
+    const bar =
+        document.getElementById("progressBar");
+
+    if(bar){
+        bar.style.width =
+            progress + "%";
+    }
+
+});
+
+</script>
+
+</body>
+</html>

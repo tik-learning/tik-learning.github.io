@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 4 - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           HEADER MODUL
+        ========================= */
+
+        .module-header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .module-header h2 {
+            margin-top: 0;
+            color: #0077b6;
+        }
+
+        .module-badge {
+            display: inline-block;
+            background: #0077b6;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           TUJUAN PEMBELAJARAN
+        ========================= */
+
+        .learning-objective {
+            background: #f1f7fb;
+            padding: 25px;
+            border-left: 5px solid #0077b6;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .learning-objective h3 {
+            margin-top: 0;
+        }
+
+        .learning-objective li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           MATERI
+        ========================= */
+
+        .materi-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .materi-section h3 {
+            color: #0077b6;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .materi-section h4 {
+            margin-top: 25px;
+            color: #333;
+        }
+
+        .materi-section p {
+            line-height: 1.8;
+        }
+
+        .materi-section li {
+            line-height: 1.8;
+            margin-bottom: 6px;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #f8fafc;
+            border-left: 5px solid #0077b6;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .tips-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .important-box {
+            background: #fff3cd;
+            border-left: 5px solid #dc3545;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+
+        /* =========================
+           CONTOH TABEL
+        ========================= */
+
+        .contoh-tabel {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .contoh-tabel th,
+        .contoh-tabel td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .contoh-tabel th {
+            background: #0077b6;
+            color: white;
+        }
+
+
+        /* =========================
+           PRAKTIK
+        ========================= */
+
+        .praktik-section {
+            background: #eef8f1;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 5px solid #198754;
+        }
+
+        .praktik-section h3 {
+            color: #198754;
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           TUGAS
+        ========================= */
+
+        .tugas-section {
+            background: #f8f1ff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 5px solid #6f42c1;
+        }
+
+        .tugas-section h3 {
+            color: #6f42c1;
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           KOMPETENSI
+        ========================= */
+
+        .kompetensi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .kompetensi-table th,
+        .kompetensi-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        .kompetensi-table th {
+            background: #0077b6;
+            color: white;
+        }
+
+        .kompetensi-table td:last-child {
+            text-align: center;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           NAVIGASI MODUL
+        ========================= */
+
+        .module-navigation {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .module-button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-kuis {
+            background: #0077b6;
+            color: white;
+        }
+
+        .btn-kembali {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .btn-kuis:hover,
+        .btn-kembali:hover {
+            opacity: 0.9;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .materi-section,
+            .praktik-section,
+            .tugas-section,
+            .module-header {
+                padding: 20px;
+            }
+
+            .contoh-tabel,
+            .kompetensi-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- NAVIGASI -->
+
+    <nav>
+
+        <a href="index.html">Beranda</a>
+
+        <a href="autobiografi.html">Autobiografi</a>
+
+        <a href="materi.html">Materi</a>
+
+        <a href="tugas.html">Tugas</a>
+
+        <a href="kelas.html">Kelas Saya</a>
+
+        <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+    </nav>
+
+
+    <!-- KONTEN -->
+
+    <main class="container">
+
+
+        <!-- HEADER MODUL -->
+
+        <section class="module-header">
+
+            <span class="module-badge">
+                MODUL 4 — TINGKAT MENENGAH
+            </span>
+
+            <h2>
+                📄 Menambahkan dan Mengelola Elemen Dokumen
+            </h2>
+
+            <p>
+                <strong>Microsoft Word 2016</strong>
+            </p>
+
+            <p>
+                Pada modul ini peserta mulai mempelajari cara
+                membuat dokumen yang lebih lengkap, rapi, dan
+                profesional dengan memanfaatkan berbagai elemen
+                dalam Microsoft Word.
+            </p>
+
+        </section>
+
+
+        <!-- TUJUAN -->
+
+        <section class="learning-objective">
+
+            <h3>🎯 Tujuan Pembelajaran</h3>
+
+            <p>
+                Setelah menyelesaikan Modul 4, peserta diharapkan
+                mampu:
+            </p>
+
+            <ol>
+
+                <li>
+                    Membuat dan mengatur tabel dalam dokumen.
+                </li>
+
+                <li>
+                    Menyisipkan dan mengatur gambar.
+                </li>
+
+                <li>
+                    Menggunakan Text Wrapping.
+                </li>
+
+                <li>
+                    Membuat dan mengatur Shapes.
+                </li>
+
+                <li>
+                    Membuat Text Box dan WordArt.
+                </li>
+
+                <li>
+                    Membuat Header dan Footer.
+                </li>
+
+                <li>
+                    Menambahkan nomor halaman.
+                </li>
+
+                <li>
+                    Menyisipkan simbol dan karakter khusus.
+                </li>
+
+                <li>
+                    Mengatur posisi dan susunan objek.
+                </li>
+
+                <li>
+                    Menggabungkan berbagai elemen untuk
+                    menghasilkan dokumen profesional.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- MATERI 1 -->
+
+        <section class="materi-section">
+
+            <h3>1. Membuat Tabel</h3>
+
+            <p>
+                Tabel digunakan untuk menyajikan informasi
+                dalam bentuk baris dan kolom sehingga data
+                menjadi lebih mudah dibaca dan dipahami.
+            </p>
+
+            <p>
+                Tabel banyak digunakan dalam dokumen administrasi,
+                seperti:
+            </p>
+
+            <ul>
+
+                <li>Daftar peserta pelatihan</li>
+
+                <li>Jadwal pelatihan</li>
+
+                <li>Daftar nilai</li>
+
+                <li>Daftar inventaris</li>
+
+                <li>Daftar harga</li>
+
+                <li>Rekap kehadiran</li>
+
+            </ul>
+
+
+            <h4>Cara Membuat Tabel</h4>
+
+            <ol>
+
+                <li>
+                    Buka Microsoft Word.
+                </li>
+
+                <li>
+                    Pilih tab <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Table</strong>.
+                </li>
+
+                <li>
+                    Pilih jumlah baris dan kolom.
+                </li>
+
+            </ol>
+
+
+            <h4>Contoh Tabel</h4>
+
+            <table class="contoh-tabel">
+
+                <tr>
+
+                    <th>No</th>
+
+                    <th>Nama Peserta</th>
+
+                    <th>Kejuruan</th>
+
+                    <th>Nilai</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>1</td>
+
+                    <td>Andi</td>
+
+                    <td>TIK</td>
+
+                    <td>85</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>2</td>
+
+                    <td>Budi</td>
+
+                    <td>TIK</td>
+
+                    <td>90</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>3</td>
+
+                    <td>Siti</td>
+
+                    <td>TIK</td>
+
+                    <td>88</td>
+
+                </tr>
+
+            </table>
+
+
+            <div class="tips-box">
+
+                💡 <strong>Tips:</strong>
+
+                Gunakan tabel untuk data yang memiliki
+                hubungan antarbaris dan kolom agar informasi
+                lebih mudah dibaca.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 2 -->
+
+        <section class="materi-section">
+
+            <h3>2. Mengatur Tampilan Tabel</h3>
+
+            <p>
+                Setelah membuat tabel, tampilannya dapat
+                disesuaikan agar lebih rapi dan profesional.
+            </p>
+
+            <p>
+                Klik tabel kemudian gunakan:
+            </p>
+
+            <p>
+                <strong>Table Tools → Design</strong>
+            </p>
+
+            <p>Beberapa fitur yang dapat digunakan:</p>
+
+            <ul>
+
+                <li>Table Styles</li>
+
+                <li>Shading</li>
+
+                <li>Borders</li>
+
+                <li>Border Color</li>
+
+                <li>Border Style</li>
+
+                <li>Border Width</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 3 -->
+
+        <section class="materi-section">
+
+            <h3>3. Menyisipkan Gambar</h3>
+
+            <p>
+                Gambar dapat digunakan untuk memperjelas
+                informasi dalam dokumen.
+            </p>
+
+            <p>Contohnya:</p>
+
+            <ul>
+
+                <li>Logo instansi</li>
+
+                <li>Foto kegiatan</li>
+
+                <li>Foto produk</li>
+
+                <li>Ilustrasi</li>
+
+                <li>Diagram</li>
+
+                <li>Dokumentasi kegiatan</li>
+
+            </ul>
+
+
+            <h4>Cara Menyisipkan Gambar</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Pictures</strong>.
+                </li>
+
+                <li>
+                    Pilih gambar dari komputer.
+                </li>
+
+                <li>
+                    Klik <strong>Insert</strong>.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- MATERI 4 -->
+
+        <section class="materi-section">
+
+            <h3>4. Mengubah Ukuran Gambar</h3>
+
+            <p>
+                Ukuran gambar dapat disesuaikan agar tidak
+                terlalu besar atau terlalu kecil.
+            </p>
+
+            <p>
+                Klik gambar kemudian pilih:
+            </p>
+
+            <p>
+                <strong>Picture Tools → Format → Size</strong>
+            </p>
+
+            <p>
+                Peserta dapat mengatur:
+            </p>
+
+            <ul>
+
+                <li>Height</li>
+
+                <li>Width</li>
+
+            </ul>
+
+
+            <div class="tips-box">
+
+                💡 <strong>Tips:</strong>
+
+                Gunakan bagian sudut gambar ketika
+                memperbesar atau memperkecil gambar agar
+                proporsinya tetap terjaga.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 5 -->
+
+        <section class="materi-section">
+
+            <h3>5. Mengatur Posisi Gambar dengan Text Wrapping</h3>
+
+            <p>
+                Text Wrapping digunakan untuk mengatur hubungan
+                antara gambar dengan teks di sekitarnya.
+            </p>
+
+            <p>
+                Pilih gambar kemudian:
+            </p>
+
+            <p>
+                <strong>Picture Tools → Format → Wrap Text</strong>
+            </p>
+
+            <h4>Jenis Text Wrapping</h4>
+
+            <ul>
+
+                <li>
+                    <strong>In Line with Text</strong> —
+                    gambar dianggap seperti karakter teks.
+                </li>
+
+                <li>
+                    <strong>Square</strong> —
+                    teks mengelilingi gambar.
+                </li>
+
+                <li>
+                    <strong>Tight</strong> —
+                    teks mengikuti bentuk objek.
+                </li>
+
+                <li>
+                    <strong>Behind Text</strong> —
+                    gambar berada di belakang teks.
+                </li>
+
+                <li>
+                    <strong>In Front of Text</strong> —
+                    gambar berada di depan teks.
+                </li>
+
+                <li>
+                    <strong>Top and Bottom</strong> —
+                    teks berada di atas dan bawah gambar.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 6 -->
+
+        <section class="materi-section">
+
+            <h3>6. Membuat Shapes</h3>
+
+            <p>
+                Shapes digunakan untuk membuat berbagai
+                bentuk grafis sederhana.
+            </p>
+
+            <p>Contohnya:</p>
+
+            <ul>
+
+                <li>Kotak</li>
+
+                <li>Lingkaran</li>
+
+                <li>Panah</li>
+
+                <li>Garis</li>
+
+                <li>Flowchart</li>
+
+                <li>Callout</li>
+
+            </ul>
+
+
+            <h4>Cara Membuat Shapes</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Shapes</strong>.
+                </li>
+
+                <li>
+                    Pilih bentuk yang diinginkan.
+                </li>
+
+                <li>
+                    Klik dan tarik pada halaman.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- MATERI 7 -->
+
+        <section class="materi-section">
+
+            <h3>7. Menambahkan Teks pada Shapes</h3>
+
+            <p>
+                Shapes dapat digunakan sebagai tempat
+                menampilkan teks.
+            </p>
+
+            <h4>Caranya:</h4>
+
+            <ol>
+
+                <li>
+                    Klik kanan pada Shape.
+                </li>
+
+                <li>
+                    Pilih <strong>Add Text</strong>.
+                </li>
+
+                <li>
+                    Ketik teks.
+                </li>
+
+            </ol>
+
+
+            <div class="info-box">
+
+                Contoh:
+
+                <br><br>
+
+                <strong>PENDAFTARAN PELATIHAN</strong>
+
+                <br><br>
+
+                atau
+
+                <br><br>
+
+                <strong>INFORMASI PENTING</strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 8 -->
+
+        <section class="materi-section">
+
+            <h3>8. Membuat Text Box</h3>
+
+            <p>
+                Text Box merupakan kotak khusus yang digunakan
+                untuk menempatkan teks pada posisi tertentu
+                dalam dokumen.
+            </p>
+
+            <h4>Cara Membuat Text Box</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Text Box</strong>.
+                </li>
+
+                <li>
+                    Pilih desain.
+                </li>
+
+                <li>
+                    Ketik teks.
+                </li>
+
+            </ol>
+
+            <p>Text Box dapat digunakan untuk:</p>
+
+            <ul>
+
+                <li>Catatan penting</li>
+
+                <li>Informasi tambahan</li>
+
+                <li>Kutipan</li>
+
+                <li>Keterangan gambar</li>
+
+                <li>Informasi kontak</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 9 -->
+
+        <section class="materi-section">
+
+            <h3>9. Menggunakan WordArt</h3>
+
+            <p>
+                WordArt digunakan untuk membuat teks dengan
+                tampilan dekoratif.
+            </p>
+
+            <h4>Cara menggunakan WordArt</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>WordArt</strong>.
+                </li>
+
+                <li>
+                    Pilih gaya.
+                </li>
+
+                <li>
+                    Ketik teks.
+                </li>
+
+            </ol>
+
+
+            <div class="tips-box">
+
+                💡 Gunakan WordArt secara terbatas pada
+                dokumen resmi agar tampilan tetap profesional.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 10 -->
+
+        <section class="materi-section">
+
+            <h3>10. Membuat Header</h3>
+
+            <p>
+                Header adalah area pada bagian atas halaman
+                yang dapat digunakan untuk menampilkan informasi
+                yang berulang pada setiap halaman.
+            </p>
+
+            <p>Contohnya:</p>
+
+            <div class="info-box">
+
+                <strong>
+                    UPTD BLK KABUPATEN SUBANG
+                </strong>
+
+                <br>
+
+                PROGRAM PELATIHAN VOKASI NASIONAL
+
+            </div>
+
+
+            <h4>Cara Membuat Header</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Header</strong>.
+                </li>
+
+                <li>
+                    Pilih desain.
+                </li>
+
+                <li>
+                    Masukkan informasi.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- MATERI 11 -->
+
+        <section class="materi-section">
+
+            <h3>11. Membuat Footer</h3>
+
+            <p>
+                Footer berada di bagian bawah halaman.
+            </p>
+
+            <p>
+                Footer dapat digunakan untuk menampilkan:
+            </p>
+
+            <ul>
+
+                <li>Nama instansi</li>
+
+                <li>Nama dokumen</li>
+
+                <li>Tahun</li>
+
+                <li>Nomor dokumen</li>
+
+                <li>Nomor halaman</li>
+
+            </ul>
+
+
+            <h4>Cara Membuat Footer</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Footer</strong>.
+                </li>
+
+                <li>
+                    Pilih desain.
+                </li>
+
+                <li>
+                    Masukkan informasi.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- MATERI 12 -->
+
+        <section class="materi-section">
+
+            <h3>12. Menambahkan Nomor Halaman</h3>
+
+            <p>
+                Nomor halaman sangat penting terutama pada
+                dokumen yang terdiri dari banyak halaman.
+            </p>
+
+            <h4>Cara Membuat Nomor Halaman</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Page Number</strong>.
+                </li>
+
+                <li>
+                    Pilih lokasi nomor halaman.
+                </li>
+
+                <li>
+                    Pilih format yang diinginkan.
+                </li>
+
+            </ol>
+
+
+            <p>
+                Nomor halaman dapat ditempatkan pada:
+            </p>
+
+            <ul>
+
+                <li>Top of Page</li>
+
+                <li>Bottom of Page</li>
+
+                <li>Page Margins</li>
+
+                <li>Current Position</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 13 -->
+
+        <section class="materi-section">
+
+            <h3>13. Menyisipkan Simbol</h3>
+
+            <p>
+                Microsoft Word menyediakan berbagai simbol
+                yang tidak tersedia secara langsung pada keyboard.
+            </p>
+
+            <div class="info-box">
+
+                Contoh simbol:
+
+                <br><br>
+
+                © &nbsp;&nbsp;
+                ® &nbsp;&nbsp;
+                ™ &nbsp;&nbsp;
+                ± &nbsp;&nbsp;
+                ≤ &nbsp;&nbsp;
+                ≥ &nbsp;&nbsp;
+                °
+
+            </div>
+
+
+            <h4>Cara Menyisipkan Simbol</h4>
+
+            <ol>
+
+                <li>
+                    Pilih <strong>Insert</strong>.
+                </li>
+
+                <li>
+                    Klik <strong>Symbol</strong>.
+                </li>
+
+                <li>
+                    Pilih simbol.
+                </li>
+
+                <li>
+                    Klik <strong>Insert</strong>.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- MATERI 14 -->
+
+        <section class="materi-section">
+
+            <h3>14. Mengatur Posisi dan Susunan Objek</h3>
+
+            <p>
+                Ketika sebuah dokumen memiliki banyak objek,
+                posisi dan susunan objek harus diatur agar
+                dokumen tetap rapi.
+            </p>
+
+            <p>
+                Gunakan menu:
+            </p>
+
+            <p>
+                <strong>Format → Arrange</strong>
+            </p>
+
+            <p>Beberapa fitur penting:</p>
+
+            <ul>
+
+                <li>Bring Forward</li>
+
+                <li>Send Backward</li>
+
+                <li>Bring to Front</li>
+
+                <li>Send to Back</li>
+
+                <li>Align</li>
+
+                <li>Group</li>
+
+                <li>Rotate</li>
+
+            </ul>
+
+
+            <h4>Group</h4>
+
+            <p>
+                Fitur Group digunakan untuk menggabungkan
+                beberapa objek menjadi satu kelompok.
+            </p>
+
+            <p>
+                Misalnya sebuah desain memiliki:
+            </p>
+
+            <ul>
+
+                <li>Logo</li>
+
+                <li>Text Box</li>
+
+                <li>Shape</li>
+
+            </ul>
+
+            <p>
+                Ketiga objek tersebut dapat di-Group sehingga
+                dapat dipindahkan secara bersamaan.
+            </p>
+
+        </section>
+
+
+        <!-- MATERI 15 -->
+
+        <section class="materi-section">
+
+            <h3>15. Membuat Dokumen Profesional</h3>
+
+            <p>
+                Setelah memahami berbagai elemen di atas,
+                peserta mulai dapat menggabungkan beberapa
+                fitur untuk menghasilkan dokumen yang lebih
+                profesional.
+            </p>
+
+            <p>
+                Contohnya adalah membuat
+                <strong>Lembar Informasi Kegiatan Pelatihan</strong>
+                yang terdiri dari:
+            </p>
+
+            <ul>
+
+                <li>Logo instansi</li>
+
+                <li>Judul</li>
+
+                <li>Gambar</li>
+
+                <li>Tabel jadwal</li>
+
+                <li>Text Box informasi</li>
+
+                <li>Header</li>
+
+                <li>Footer</li>
+
+                <li>Nomor halaman</li>
+
+            </ul>
+
+
+            <div class="important-box">
+
+                ⚠️ <strong>Penting:</strong>
+
+                Tujuan utama Modul 4 bukan hanya mengetahui
+                fungsi setiap fitur, tetapi mampu menggabungkan
+                fitur tersebut untuk membuat dokumen nyata
+                yang rapi dan profesional.
+
+            </div>
+
+        </section>
+
+
+        <!-- PRAKTIK -->
+
+        <section class="praktik-section">
+
+            <h3>👨‍💻 Latihan Praktik Modul 4</h3>
+
+            <h4>
+                Praktik: Membuat Jadwal Pelatihan Profesional
+            </h4>
+
+            <p>
+                Buat sebuah dokumen Microsoft Word dengan
+                ketentuan berikut.
+            </p>
+
+
+            <h4>A. Header</h4>
+
+            <p>
+                Tuliskan:
+            </p>
+
+            <p>
+                <strong>UPTD BLK KABUPATEN SUBANG</strong>
+            </p>
+
+            <p>
+                PROGRAM PELATIHAN VOKASI NASIONAL
+            </p>
+
+
+            <h4>B. Judul</h4>
+
+            <p>
+                Buat judul:
+            </p>
+
+            <div class="info-box">
+
+                <strong>
+                    JADWAL PELATIHAN KEJURUAN TIK
+                </strong>
+
+            </div>
+
+            <p>
+                Format:
+            </p>
+
+            <ul>
+
+                <li>Bold</li>
+
+                <li>Ukuran 18 pt</li>
+
+                <li>Rata tengah</li>
+
+            </ul>
+
+
+            <h4>C. Tabel</h4>
+
+            <p>
+                Buat tabel dengan 5 kolom:
+            </p>
+
+            <table class="contoh-tabel">
+
+                <tr>
+
+                    <th>No</th>
+
+                    <th>Hari/Tanggal</th>
+
+                    <th>Materi</th>
+
+                    <th>Waktu</th>
+
+                    <th>Instruktur</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>1</td>
+
+                    <td>Senin</td>
+
+                    <td>Microsoft Word</td>
+
+                    <td>08.00–16.00</td>
+
+                    <td>Instruktur TIK</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>2</td>
+
+                    <td>Selasa</td>
+
+                    <td>Microsoft Word</td>
+
+                    <td>08.00–16.00</td>
+
+                    <td>Instruktur TIK</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>3</td>
+
+                    <td>Rabu</td>
+
+                    <td>Microsoft Excel</td>
+
+                    <td>08.00–16.00</td>
+
+                    <td>Instruktur TIK</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>4</td>
+
+                    <td>Kamis</td>
+
+                    <td>Microsoft Excel</td>
+
+                    <td>08.00–16.00</td>
+
+                    <td>Instruktur TIK</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>5</td>
+
+                    <td>Jumat</td>
+
+                    <td>Praktik</td>
+
+                    <td>08.00–16.00</td>
+
+                    <td>Instruktur TIK</td>
+
+                </tr>
+
+            </table>
+
+
+            <h4>D. Gambar</h4>
+
+            <p>
+                Tambahkan logo atau gambar kegiatan pelatihan.
+            </p>
+
+            <p>
+                Atur:
+            </p>
+
+            <strong>
+                Wrap Text → Square
+            </strong>
+
+
+            <h4>E. Text Box</h4>
+
+            <p>
+                Buat Text Box dengan tulisan:
+            </p>
+
+            <div class="info-box">
+
+                <strong>INFORMASI PENTING</strong>
+
+                <br><br>
+
+                Peserta wajib mengikuti seluruh kegiatan
+                pelatihan sesuai jadwal yang telah ditentukan.
+
+            </div>
+
+
+            <h4>F. Footer</h4>
+
+            <p>
+                Tambahkan:
+            </p>
+
+            <p>
+                <strong>
+                    TIK Learning – UPTD BLK Kabupaten Subang
+                </strong>
+            </p>
+
+            <p>
+                Kemudian tambahkan nomor halaman.
+            </p>
+
+        </section>
+
+
+        <!-- TUGAS -->
+
+        <section class="tugas-section">
+
+            <h3>🏆 Tugas Praktik Modul 4</h3>
+
+            <h4>
+                Membuat "Lembar Informasi Pelatihan TIK"
+            </h4>
+
+            <p>
+                Buat dokumen secara mandiri dengan
+                menggabungkan berbagai fitur yang telah
+                dipelajari pada Modul 4.
+            </p>
+
+
+            <p>
+                Dokumen minimal harus memiliki:
+            </p>
+
+            <ul>
+
+                <li>✅ Judul</li>
+
+                <li>✅ Logo atau gambar</li>
+
+                <li>✅ Tabel</li>
+
+                <li>✅ Shapes</li>
+
+                <li>✅ Text Box</li>
+
+                <li>✅ Header</li>
+
+                <li>✅ Footer</li>
+
+                <li>✅ Nomor halaman</li>
+
+                <li>✅ Format teks yang konsisten</li>
+
+                <li>✅ Tata letak yang rapi</li>
+
+            </ul>
+
+
+            <h4>📊 Kompetensi yang Dinilai</h4>
+
+            <table class="kompetensi-table">
+
+                <tr>
+
+                    <th>Kompetensi</th>
+
+                    <th>Bobot</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Penggunaan tabel</td>
+
+                    <td>20%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Penggunaan gambar</td>
+
+                    <td>15%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Header & Footer</td>
+
+                    <td>15%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Nomor halaman</td>
+
+                    <td>10%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Shapes & Text Box</td>
+
+                    <td>15%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Kerapian format</td>
+
+                    <td>15%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Kreativitas & profesionalitas</td>
+
+                    <td>10%</td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Total</th>
+
+                    <th>100%</th>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- RANGKUMAN -->
+
+        <section class="materi-section">
+
+            <h3>📌 Rangkuman Modul 4</h3>
+
+            <p>
+                Pada Modul 4 peserta telah mempelajari berbagai
+                elemen yang dapat digunakan untuk meningkatkan
+                kualitas dokumen Microsoft Word.
+            </p>
+
+            <ul>
+
+                <li>Membuat dan memformat tabel.</li>
+
+                <li>Menyisipkan dan mengatur gambar.</li>
+
+                <li>Menggunakan Text Wrapping.</li>
+
+                <li>Membuat Shapes.</li>
+
+                <li>Membuat Text Box.</li>
+
+                <li>Menggunakan WordArt.</li>
+
+                <li>Membuat Header dan Footer.</li>
+
+                <li>Menambahkan nomor halaman.</li>
+
+                <li>Menyisipkan simbol.</li>
+
+                <li>Mengatur posisi dan susunan objek.</li>
+
+            </ul>
+
+            <p>
+                Kompetensi ini menjadi dasar penting sebelum
+                peserta mempelajari pengelolaan dokumen yang
+                lebih kompleks pada modul berikutnya.
+            </p>
+
+        </section>
+
+
+        <!-- NAVIGASI -->
+
+        <section class="module-navigation">
+
+            <a
+                href="materi.html"
+                class="module-button btn-kembali">
+
+                ← Kembali ke Materi
+
+            </a>
+
+
+            <a
+                href="kuis-modul-4.html"
+                class="module-button btn-kuis">
+
+                📝 Mulai Kuis Modul 4
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

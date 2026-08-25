@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul PPT 7 - Transisi, Slide Show dan Review</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+.header .icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+    opacity:.95;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1000px;
+    margin:35px auto;
+    padding:0 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#b71c1c;
+    margin-bottom:15px;
+    font-size:25px;
+}
+
+.card h3{
+    color:#d32f2f;
+    margin-top:22px;
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:12px;
+}
+
+/* =========================
+   TUJUAN PEMBELAJARAN
+========================= */
+
+.objective{
+    background:#ffebee;
+    border-left:6px solid #e53935;
+    padding:20px;
+    border-radius:10px;
+}
+
+.objective ul{
+    margin-left:22px;
+}
+
+/* =========================
+   TOPIC BOX
+========================= */
+
+.topic{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:20px;
+    margin:18px 0;
+}
+
+.topic-title{
+    font-weight:bold;
+    color:#b71c1c;
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+/* =========================
+   LIST
+========================= */
+
+ul,ol{
+    margin-left:25px;
+    margin-bottom:15px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+/* =========================
+   COMMAND
+========================= */
+
+.command{
+    display:inline-block;
+    background:#263238;
+    color:white;
+    padding:4px 9px;
+    border-radius:5px;
+    font-size:14px;
+    font-family:Consolas,monospace;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th{
+    background:#b71c1c;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:11px;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+/* =========================
+   NOTE
+========================= */
+
+.note{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:7px;
+    margin:15px 0;
+}
+
+.success{
+    background:#e8f5e9;
+    border-left:5px solid #43a047;
+    padding:15px;
+    border-radius:7px;
+    margin:15px 0;
+}
+
+/* =========================
+   STEP
+========================= */
+
+.step{
+    display:flex;
+    gap:15px;
+    margin:15px 0;
+    align-items:flex-start;
+}
+
+.step-number{
+    min-width:35px;
+    height:35px;
+    background:#e53935;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.step-content{
+    flex:1;
+}
+
+/* =========================
+   PRAKTIK
+========================= */
+
+.practice{
+    background:linear-gradient(135deg,#fff5f5,#ffffff);
+    border:2px solid #ef9a9a;
+    border-radius:12px;
+    padding:25px;
+}
+
+.practice h2{
+    margin-top:0;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:30px;
+}
+
+.nav-button{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 20px;
+    border-radius:8px;
+    background:#e53935;
+    color:white;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.nav-button:hover{
+    background:#b71c1c;
+    transform:translateY(-2px);
+}
+
+.nav-button.secondary{
+    background:#455a64;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .header{
+        padding:35px 15px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .header p{
+        font-size:15px;
+    }
+
+    .container{
+        padding:0 12px;
+        margin-top:20px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h2{
+        font-size:22px;
+    }
+
+    .step{
+        gap:10px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-button{
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="icon">
+        🎬
+    </div>
+
+    <h1>
+        MODUL 7
+    </h1>
+
+    <p>
+        Efek Transisi, Slide Show, dan Review Presentasi
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- =========================
+     PENDAHULUAN
+========================= -->
+
+<section class="card">
+
+    <h2>📚 Tentang Modul</h2>
+
+    <p>
+        Pada modul ini peserta akan mempelajari cara
+        memberikan efek transisi pada slide, menjalankan
+        presentasi menggunakan Slide Show, serta melakukan
+        pemeriksaan dan review terhadap presentasi sebelum
+        digunakan untuk presentasi sebenarnya.
+    </p>
+
+    <div class="objective">
+
+        <strong>🎯 Tujuan Pembelajaran</strong>
+
+        <ul>
+
+            <li>
+                Peserta mampu menggunakan efek transisi
+                pada slide.
+            </li>
+
+            <li>
+                Peserta mampu mengatur durasi dan perpindahan
+                slide.
+            </li>
+
+            <li>
+                Peserta mampu menjalankan Slide Show.
+            </li>
+
+            <li>
+                Peserta mampu menggunakan Presenter View.
+            </li>
+
+            <li>
+                Peserta mampu melakukan review presentasi.
+            </li>
+
+            <li>
+                Peserta mampu mempersiapkan presentasi
+                agar lebih profesional.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 1
+========================= -->
+
+<section class="card">
+
+    <h2>1️⃣ Efek Transisi</h2>
+
+    <p>
+        <strong>Transition</strong> adalah efek visual yang
+        terjadi ketika berpindah dari satu slide ke slide
+        berikutnya.
+    </p>
+
+    <p>
+        Transition berbeda dengan Animation. Transition
+        diterapkan pada perpindahan antar-slide, sedangkan
+        Animation diterapkan pada objek yang terdapat
+        di dalam slide.
+    </p>
+
+
+    <div class="topic">
+
+        <div class="topic-title">
+            Fungsi Transition
+        </div>
+
+        <ul>
+
+            <li>Membuat perpindahan slide lebih menarik.</li>
+
+            <li>Membantu memberikan kesan profesional.</li>
+
+            <li>Mengatur cara slide berpindah.</li>
+
+            <li>Mengatur kecepatan perpindahan slide.</li>
+
+        </ul>
+
+    </div>
+
+
+    <h3>Cara Menambahkan Transition</h3>
+
+    <div class="step">
+
+        <div class="step-number">1</div>
+
+        <div class="step-content">
+            Pilih slide yang ingin diberikan efek transisi.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">2</div>
+
+        <div class="step-content">
+            Klik tab <span class="command">Transitions</span>.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">3</div>
+
+        <div class="step-content">
+            Pilih salah satu efek transisi.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">4</div>
+
+        <div class="step-content">
+            Klik <span class="command">Preview</span>
+            untuk melihat hasilnya.
+        </div>
+
+    </div>
+
+
+    <h3>Effect Options</h3>
+
+    <p>
+        <span class="command">Effect Options</span>
+        digunakan untuk mengatur variasi dari efek
+        transition yang dipilih.
+    </p>
+
+
+    <h3>Duration</h3>
+
+    <p>
+        <span class="command">Duration</span> digunakan
+        untuk menentukan berapa lama efek transisi
+        berlangsung.
+    </p>
+
+    <div class="note">
+
+        💡 <strong>Tips:</strong>
+        Gunakan durasi yang tidak terlalu lama agar
+        perpindahan slide tetap nyaman dilihat.
+
+    </div>
+
+
+    <h3>Sound</h3>
+
+    <p>
+        PowerPoint 2016 menyediakan pilihan suara yang
+        dapat ditambahkan ketika slide berpindah.
+    </p>
+
+    <p>
+        Fitur ini terdapat pada bagian
+        <span class="command">Sound</span>.
+    </p>
+
+
+    <h3>Apply To All</h3>
+
+    <p>
+        Jika ingin menggunakan efek transisi yang sama
+        untuk seluruh slide, klik
+        <span class="command">Apply To All</span>.
+    </p>
+
+
+    <h3>Mengatur Perpindahan Slide</h3>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+                <th>Pengaturan</th>
+                <th>Fungsi</th>
+            </tr>
+
+            <tr>
+                <td>On Mouse Click</td>
+                <td>
+                    Slide berpindah ketika pengguna
+                    mengklik mouse.
+                </td>
+            </tr>
+
+            <tr>
+                <td>After</td>
+                <td>
+                    Slide berpindah otomatis setelah
+                    waktu tertentu.
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 2
+========================= -->
+
+<section class="card">
+
+    <h2>2️⃣ Slide Show</h2>
+
+    <p>
+        <strong>Slide Show</strong> digunakan untuk
+        menampilkan presentasi dalam mode layar penuh
+        seperti ketika melakukan presentasi di depan
+        peserta.
+    </p>
+
+
+    <h3>Menjalankan Slide Show</h3>
+
+    <div class="step">
+
+        <div class="step-number">1</div>
+
+        <div class="step-content">
+
+            Buka tab
+            <span class="command">Slide Show</span>.
+
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">2</div>
+
+        <div class="step-content">
+
+            Pilih
+            <span class="command">From Beginning</span>
+            untuk memulai dari slide pertama.
+
+        </div>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">3</div>
+
+        <div class="step-content">
+
+            Pilih
+            <span class="command">From Current Slide</span>
+            untuk memulai dari slide yang sedang aktif.
+
+        </div>
+
+    </div>
+
+
+    <h3>Presenter View</h3>
+
+    <p>
+        <strong>Presenter View</strong> membantu presenter
+        melihat informasi tambahan ketika melakukan
+        presentasi.
+    </p>
+
+    <p>
+        Presenter dapat melihat slide yang sedang
+        ditampilkan, slide berikutnya, serta catatan
+        presenter tanpa harus menampilkannya kepada
+        audiens.
+    </p>
+
+
+    <h3>Set Up Slide Show</h3>
+
+    <p>
+        Fitur
+        <span class="command">Set Up Slide Show</span>
+        digunakan untuk mengatur bagaimana presentasi
+        dijalankan.
+    </p>
+
+    <ul>
+
+        <li>
+            Menentukan jenis tampilan Slide Show.
+        </li>
+
+        <li>
+            Menentukan slide yang akan ditampilkan.
+        </li>
+
+        <li>
+            Mengatur cara perpindahan slide.
+        </li>
+
+        <li>
+            Mengatur penggunaan waktu atau timing.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 3
+========================= -->
+
+<section class="card">
+
+    <h2>3️⃣ Rehearse Timings</h2>
+
+    <p>
+        <strong>Rehearse Timings</strong> digunakan untuk
+        berlatih presentasi sekaligus merekam waktu yang
+        dibutuhkan untuk setiap slide.
+    </p>
+
+    <h3>Langkah Menggunakan Rehearse Timings</h3>
+
+    <ol>
+
+        <li>
+            Buka tab
+            <span class="command">Slide Show</span>.
+        </li>
+
+        <li>
+            Klik
+            <span class="command">Rehearse Timings</span>.
+        </li>
+
+        <li>
+            Presentasikan setiap slide seperti
+            presentasi sebenarnya.
+        </li>
+
+        <li>
+            PowerPoint akan merekam waktu setiap slide.
+        </li>
+
+        <li>
+            Setelah selesai, PowerPoint akan menawarkan
+            untuk menyimpan timing tersebut.
+        </li>
+
+    </ol>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 4
+========================= -->
+
+<section class="card">
+
+    <h2>4️⃣ Record Slide Show</h2>
+
+    <p>
+        <strong>Record Slide Show</strong> digunakan untuk
+        merekam jalannya presentasi, termasuk timing,
+        narasi, dan tindakan tertentu selama presentasi.
+    </p>
+
+    <p>
+        Fitur ini berguna ketika presentasi ingin
+        dipersiapkan agar dapat berjalan secara otomatis
+        atau digunakan sebagai materi pembelajaran.
+    </p>
+
+
+    <div class="success">
+
+        ✅ <strong>Tips:</strong>
+        Sebelum merekam, pastikan microphone, audio,
+        dan isi slide sudah siap.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 5
+========================= -->
+
+<section class="card">
+
+    <h2>5️⃣ Navigasi Saat Slide Show</h2>
+
+    <p>
+        Saat menjalankan Slide Show, presenter dapat
+        menggunakan beberapa tombol navigasi.
+    </p>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Tombol
+                </th>
+
+                <th>
+                    Fungsi
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Klik Mouse
+                </td>
+
+                <td>
+                    Berpindah ke slide berikutnya.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    ←
+                </td>
+
+                <td>
+                    Kembali ke slide sebelumnya.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    →
+                </td>
+
+                <td>
+                    Berpindah ke slide berikutnya.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Esc
+                </td>
+
+                <td>
+                    Mengakhiri Slide Show.
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <h3>Pointer dan Pen</h3>
+
+    <p>
+        Pada saat Slide Show, PowerPoint menyediakan
+        alat bantu seperti:
+    </p>
+
+    <ul>
+
+        <li>Pen</li>
+
+        <li>Highlighter</li>
+
+        <li>Laser Pointer</li>
+
+        <li>Eraser</li>
+
+    </ul>
+
+    <p>
+        Alat tersebut dapat digunakan untuk memberikan
+        penekanan pada bagian tertentu dari slide.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 6
+========================= -->
+
+<section class="card">
+
+    <h2>6️⃣ Review Presentasi</h2>
+
+    <p>
+        Review merupakan proses pemeriksaan presentasi
+        sebelum digunakan untuk presentasi sebenarnya.
+    </p>
+
+    <p>
+        Tujuannya adalah memastikan tidak terdapat
+        kesalahan pada teks, desain, urutan slide,
+        gambar, audio, video, maupun animasi.
+    </p>
+
+
+    <h3>Spelling & Grammar</h3>
+
+    <p>
+        Fitur
+        <span class="command">Spelling</span>
+        digunakan untuk membantu memeriksa kesalahan
+        ejaan dalam presentasi.
+    </p>
+
+
+    <h3>Thesaurus</h3>
+
+    <p>
+        <span class="command">Thesaurus</span>
+        digunakan untuk mencari kata lain yang memiliki
+        makna serupa.
+    </p>
+
+
+    <h3>Translate</h3>
+
+    <p>
+        Fitur
+        <span class="command">Translate</span>
+        dapat membantu menerjemahkan teks ke bahasa
+        lain.
+    </p>
+
+
+    <h3>Language</h3>
+
+    <p>
+        Pengaturan
+        <span class="command">Language</span>
+        digunakan untuk menentukan bahasa yang digunakan
+        dalam pemeriksaan ejaan.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 7
+========================= -->
+
+<section class="card">
+
+    <h2>7️⃣ Comment</h2>
+
+    <p>
+        <strong>Comment</strong> digunakan untuk memberikan
+        catatan atau masukan terhadap isi presentasi.
+    </p>
+
+
+    <h3>Menambahkan Comment</h3>
+
+    <ol>
+
+        <li>
+            Pilih teks atau objek yang ingin diberi
+            komentar.
+        </li>
+
+        <li>
+            Buka tab
+            <span class="command">Review</span>.
+        </li>
+
+        <li>
+            Klik
+            <span class="command">New Comment</span>.
+        </li>
+
+        <li>
+            Ketik komentar atau catatan.
+        </li>
+
+    </ol>
+
+
+    <h3>Menghapus Comment</h3>
+
+    <p>
+        Comment dapat dihapus melalui menu
+        <span class="command">Review → Delete</span>.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 8
+========================= -->
+
+<section class="card">
+
+    <h2>8️⃣ Checklist Review Presentasi</h2>
+
+    <p>
+        Sebelum presentasi digunakan, lakukan pemeriksaan
+        menggunakan checklist berikut:
+    </p>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Pemeriksaan
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+            </tr>
+
+            <tr>
+                <td>Judul dan isi presentasi sudah benar</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Ejaan dan tata bahasa sudah diperiksa</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Urutan slide sudah benar</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Font dan ukuran teks konsisten</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Gambar dan grafik terlihat jelas</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Audio dapat diputar</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Video dapat diputar</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Animasi berjalan dengan baik</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Transition sudah sesuai</td>
+                <td>☐</td>
+            </tr>
+
+            <tr>
+                <td>Slide Show sudah diuji</td>
+                <td>☐</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN 9
+========================= -->
+
+<section class="card">
+
+    <h2>9️⃣ Tips Membuat Presentasi Profesional</h2>
+
+    <ul>
+
+        <li>
+            Gunakan efek transisi secara sederhana.
+        </li>
+
+        <li>
+            Hindari penggunaan terlalu banyak jenis
+            transisi dalam satu presentasi.
+        </li>
+
+        <li>
+            Gunakan duration yang sesuai.
+        </li>
+
+        <li>
+            Pastikan teks mudah dibaca.
+        </li>
+
+        <li>
+            Pastikan audio dan video dapat berjalan.
+        </li>
+
+        <li>
+            Periksa ejaan sebelum presentasi.
+        </li>
+
+        <li>
+            Lakukan simulasi Slide Show.
+        </li>
+
+        <li>
+            Pastikan presenter memahami isi setiap slide.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     PRAKTIK
+========================= -->
+
+<section class="card practice">
+
+    <h2>🛠️ Praktik Modul 7</h2>
+
+    <p>
+        Buat sebuah presentasi minimal 5 slide kemudian
+        lakukan langkah berikut:
+    </p>
+
+    <ol>
+
+        <li>
+            Tambahkan efek Transition pada slide.
+        </li>
+
+        <li>
+            Atur Effect Options.
+        </li>
+
+        <li>
+            Atur Duration.
+        </li>
+
+        <li>
+            Gunakan Apply To All.
+        </li>
+
+        <li>
+            Atur perpindahan slide menggunakan
+            On Mouse Click atau After.
+        </li>
+
+        <li>
+            Jalankan presentasi menggunakan
+            From Beginning.
+        </li>
+
+        <li>
+            Jalankan presentasi menggunakan
+            From Current Slide.
+        </li>
+
+        <li>
+            Coba Presenter View.
+        </li>
+
+        <li>
+            Gunakan Rehearse Timings.
+        </li>
+
+        <li>
+            Periksa ejaan menggunakan Spelling.
+        </li>
+
+        <li>
+            Tambahkan Comment pada salah satu slide.
+        </li>
+
+        <li>
+            Lakukan review seluruh presentasi.
+        </li>
+
+    </ol>
+
+
+    <div class="success">
+
+        🎯 <strong>Target Praktik:</strong>
+
+        Peserta mampu membuat presentasi yang siap
+        ditampilkan dengan transisi, Slide Show,
+        timing, dan isi presentasi yang sudah direview.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RANGKUMAN
+========================= -->
+
+<section class="card">
+
+    <h2>📌 Rangkuman Modul 7</h2>
+
+    <ul>
+
+        <li>
+            Transition digunakan untuk mengatur efek
+            perpindahan antar-slide.
+        </li>
+
+        <li>
+            Duration mengatur lama efek transisi.
+        </li>
+
+        <li>
+            Apply To All menerapkan transition ke seluruh
+            slide.
+        </li>
+
+        <li>
+            Slide Show digunakan untuk menampilkan
+            presentasi.
+        </li>
+
+        <li>
+            Presenter View membantu presenter ketika
+            melakukan presentasi.
+        </li>
+
+        <li>
+            Rehearse Timings digunakan untuk berlatih
+            sekaligus merekam waktu presentasi.
+        </li>
+
+        <li>
+            Record Slide Show dapat digunakan untuk
+            merekam presentasi.
+        </li>
+
+        <li>
+            Review digunakan untuk memeriksa isi dan
+            kualitas presentasi.
+        </li>
+
+        <li>
+            Spelling membantu memeriksa kesalahan ejaan.
+        </li>
+
+        <li>
+            Comment digunakan untuk memberikan catatan
+            atau masukan.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================
+     NAVIGASI
+========================= -->
+
+<div class="navigation">
+
+    <a
+        href="modul-ppt-6.html"
+        class="nav-button secondary"
+    >
+        ← Modul 6
+    </a>
+
+
+    <a
+        href="kuis-ppt-7.html"
+        class="nav-button"
+    >
+        📝 Kuis Modul 7 →
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Modul 7 — Efek Transisi, Slide Show dan Review Presentasi
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
