@@ -91,7 +91,7 @@ content="width=device-width, initial-scale=1.0">
 
 
 /* =====================================================
-   BUTTON PASSWORD
+   BUTTON
 ===================================================== */
 
 .btn-password,
@@ -159,7 +159,7 @@ content="width=device-width, initial-scale=1.0">
 
 
 /* =====================================================
-   HALAMAN MULAI
+   ATURAN KUIS
 ===================================================== */
 
 .quiz-rules {
@@ -421,6 +421,27 @@ content="width=device-width, initial-scale=1.0">
     font-weight: bold;
 
 }
+
+
+/* =====================================================
+   STATUS PENYIMPANAN
+===================================================== */
+
+.status-simpan {
+
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #eaf6ff;
+    color: #005f8f;
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   BUTTON RESET
+===================================================== */
 
 .btn-reset {
 
@@ -797,6 +818,15 @@ Persentase
 
 
 <p id="pesanHasil"></p>
+
+
+<div
+id="statusSimpan"
+class="status-simpan">
+
+⏳ Menyimpan hasil kuis...
+
+</div>
 
 
 <button
@@ -1492,7 +1522,7 @@ UPTD BLK Kabupaten Subang
 <script>
 
 /* =====================================================
-   KONFIGURASI
+   KONFIGURASI KUIS
 ===================================================== */
 
 const PASSWORD_KUIS = "BLKSubang2026";
@@ -1502,6 +1532,25 @@ const DURASI_KUIS = 10 * 60;
 const BATAS_LULUS = 75;
 
 const TOTAL_SOAL = 15;
+
+
+/* =====================================================
+   KONFIGURASI API
+===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+
+/* =====================================================
+   IDENTITAS KUIS
+===================================================== */
+
+const KELAS_KUIS =
+"TIK";
+
+const MODUL_KUIS =
+"Modul 4 - Microsoft Word 2016 Tingkat Lanjut";
 
 
 /* =====================================================
@@ -1574,8 +1623,11 @@ function cekPassword() {
             .focus();
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     }
@@ -1597,20 +1649,24 @@ function cekPassword() {
    ENTER PASSWORD
 ===================================================== */
 
-document.getElementById("passwordInput")
-.addEventListener("keydown", function(event) {
+document
+.getElementById("passwordInput")
+.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "Enter") {
+        if (event.key === "Enter") {
 
-        cekPassword();
+            cekPassword();
+
+        }
 
     }
-
-});
+);
 
 
 /* =====================================================
-   SIMPAN NAMA PESERTA
+   SIMPAN NAMA
 ===================================================== */
 
 function simpanNama() {
@@ -1628,6 +1684,9 @@ function simpanNama() {
     if (nama === "") {
 
         error.style.display = "block";
+
+        error.innerHTML =
+            "⚠️ Nama peserta wajib diisi.";
 
         input.focus();
 
@@ -1655,16 +1714,19 @@ function simpanNama() {
     error.style.display = "none";
 
 
-    document.getElementById("namaPesertaMulai")
-        .textContent = namaPeserta;
+    document.getElementById(
+        "namaPesertaMulai"
+    ).textContent = namaPeserta;
 
 
-    document.getElementById("namaSection")
-        .style.display = "none";
+    document.getElementById(
+        "namaSection"
+    ).style.display = "none";
 
 
-    document.getElementById("halamanMulai")
-        .style.display = "block";
+    document.getElementById(
+        "halamanMulai"
+    ).style.display = "block";
 
 
     window.scrollTo({
@@ -1682,16 +1744,20 @@ function simpanNama() {
    ENTER NAMA
 ===================================================== */
 
-document.getElementById("namaInput")
-.addEventListener("keydown", function(event) {
+document
+.getElementById("namaInput")
+.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "Enter") {
+        if (event.key === "Enter") {
 
-        simpanNama();
+            simpanNama();
+
+        }
 
     }
-
-});
+);
 
 
 /* =====================================================
@@ -1721,12 +1787,14 @@ function mulaiKuis() {
     kuisDimulai = true;
 
 
-    document.getElementById("halamanMulai")
-        .style.display = "none";
+    document.getElementById(
+        "halamanMulai"
+    ).style.display = "none";
 
 
-    document.getElementById("areaKuis")
-        .style.display = "block";
+    document.getElementById(
+        "areaKuis"
+    ).style.display = "block";
 
 
     mulaiTimer();
@@ -1755,68 +1823,60 @@ function mulaiTimer() {
     timerInterval =
         setInterval(function() {
 
-
-        waktu--;
-
-
-        updateTimerDisplay();
-
-
-        /* =========================
-           PERINGATAN 2 MENIT
-        ========================= */
-
-        if (waktu <= 120) {
-
-            document.getElementById("timerBox")
-                .classList.add("timer-warning");
-
-        }
-
-
-        /* =========================
-           PERINGATAN 1 MENIT
-        ========================= */
-
-        if (waktu <= 60) {
-
-            document.getElementById("timerBox")
-                .classList.remove(
-                    "timer-warning"
-                );
-
-            document.getElementById("timerBox")
-                .classList.add(
-                    "timer-danger"
-                );
-
-        }
-
-
-        /* =========================
-           WAKTU HABIS
-        ========================= */
-
-        if (waktu <= 0) {
-
-            clearInterval(timerInterval);
-
-            waktu = 0;
+            waktu--;
 
             updateTimerDisplay();
 
 
-            alert(
-                "⏰ Waktu pengerjaan telah habis. Jawaban Anda akan dikumpulkan otomatis."
-            );
+            if (waktu <= 120) {
+
+                document.getElementById(
+                    "timerBox"
+                ).classList.add(
+                    "timer-warning"
+                );
+
+            }
 
 
-            periksaJawaban(true);
+            if (waktu <= 60) {
 
-        }
+                document.getElementById(
+                    "timerBox"
+                ).classList.remove(
+                    "timer-warning"
+                );
+
+                document.getElementById(
+                    "timerBox"
+                ).classList.add(
+                    "timer-danger"
+                );
+
+            }
 
 
-    }, 1000);
+            if (waktu <= 0) {
+
+                clearInterval(
+                    timerInterval
+                );
+
+                waktu = 0;
+
+                updateTimerDisplay();
+
+
+                alert(
+                    "⏰ Waktu pengerjaan telah habis. Jawaban Anda akan dikumpulkan otomatis."
+                );
+
+
+                periksaJawaban(true);
+
+            }
+
+        }, 1000);
 
 }
 
@@ -1834,8 +1894,9 @@ function updateTimerDisplay() {
         waktu % 60;
 
 
-    document.getElementById("timer")
-        .textContent =
+    document.getElementById(
+        "timer"
+    ).textContent =
 
         String(menit).padStart(2, "0")
         + ":" +
@@ -1848,7 +1909,9 @@ function updateTimerDisplay() {
    PENILAIAN
 ===================================================== */
 
-function periksaJawaban(otomatis = false) {
+function periksaJawaban(
+    otomatis = false
+) {
 
 
     if (kuisSelesai) {
@@ -1865,9 +1928,9 @@ function periksaJawaban(otomatis = false) {
     let belumDijawab = 0;
 
 
-    /* =========================
+    /* =================================================
        CEK SEMUA SOAL
-    ========================= */
+    ================================================= */
 
     for (
         let i = 1;
@@ -1878,7 +1941,9 @@ function periksaJawaban(otomatis = false) {
 
         const jawaban =
             document.querySelector(
-                'input[name="q' + i + '"]:checked'
+                'input[name="q' +
+                i +
+                '"]:checked'
             );
 
 
@@ -1891,7 +1956,9 @@ function periksaJawaban(otomatis = false) {
         else if (
 
             jawaban.value ===
-            kunciJawaban["q" + i]
+            kunciJawaban[
+                "q" + i
+            ]
 
         ) {
 
@@ -1962,7 +2029,9 @@ function periksaJawaban(otomatis = false) {
 
     if (timerInterval) {
 
-        clearInterval(timerInterval);
+        clearInterval(
+            timerInterval
+        );
 
     }
 
@@ -1973,7 +2042,8 @@ function periksaJawaban(otomatis = false) {
 
     const nilai =
         Math.round(
-            (jumlahBenar / TOTAL_SOAL) * 100
+            (jumlahBenar /
+            TOTAL_SOAL) * 100
         );
 
 
@@ -1982,30 +2052,64 @@ function periksaJawaban(otomatis = false) {
 
 
     /* =================================================
-       NAMA PESERTA
+       WAKTU YANG DIGUNAKAN
+    ================================================= */
+
+    const waktuTerpakai =
+        DURASI_KUIS - waktu;
+
+
+    const menitTerpakai =
+        Math.floor(
+            waktuTerpakai / 60
+        );
+
+
+    const detikTerpakai =
+        waktuTerpakai % 60;
+
+
+    const waktuHasil =
+
+        String(menitTerpakai)
+            .padStart(2, "0")
+
+        + ":" +
+
+        String(detikTerpakai)
+            .padStart(2, "0");
+
+
+    /* =================================================
+       TAMPILKAN NAMA
     ================================================= */
 
     document.getElementById(
         "namaPesertaHasil"
-    ).textContent = namaPeserta;
+    ).textContent =
+        namaPeserta;
 
 
     /* =================================================
-       HASIL
+       TAMPILKAN NILAI
     ================================================= */
 
-    document.getElementById("nilai")
-        .textContent = nilai;
+    document.getElementById(
+        "nilai"
+    ).textContent =
+        nilai;
 
 
     document.getElementById(
         "jumlahBenar"
-    ).textContent = jumlahBenar;
+    ).textContent =
+        jumlahBenar;
 
 
     document.getElementById(
         "jumlahSalah"
-    ).textContent = jumlahSalah;
+    ).textContent =
+        jumlahSalah;
 
 
     document.getElementById(
@@ -2014,7 +2118,11 @@ function periksaJawaban(otomatis = false) {
         persentase + "%";
 
 
-    const status =
+    /* =================================================
+       STATUS
+    ================================================= */
+
+    const statusElement =
         document.getElementById(
             "status"
         );
@@ -2026,14 +2134,15 @@ function periksaJawaban(otomatis = false) {
         );
 
 
-    /* =================================================
-       STATUS LULUS
-    ================================================= */
+    let statusKuis;
+
 
     if (nilai >= BATAS_LULUS) {
 
+        statusKuis = "Lulus";
 
-        status.innerHTML =
+
+        statusElement.innerHTML =
 
             '<div class="status-lulus">' +
 
@@ -2052,15 +2161,12 @@ function periksaJawaban(otomatis = false) {
 
     }
 
-
-    /* =================================================
-       STATUS BELUM LULUS
-    ================================================= */
-
     else {
 
+        statusKuis = "Belum Lulus";
 
-        status.innerHTML =
+
+        statusElement.innerHTML =
 
             '<div class="status-gagal">' +
 
@@ -2077,29 +2183,146 @@ function periksaJawaban(otomatis = false) {
 
 
     /* =================================================
-       SEMBUNYIKAN KUIS
+       SEMBUNYIKAN AREA KUIS
     ================================================= */
 
-    document.getElementById("areaKuis")
-        .style.display = "none";
+    document.getElementById(
+        "areaKuis"
+    ).style.display = "none";
 
 
     /* =================================================
        TAMPILKAN HASIL
     ================================================= */
 
-    document.getElementById("hasilKuis")
-        .style.display = "block";
+    document.getElementById(
+        "hasilKuis"
+    ).style.display = "block";
 
 
-    document.getElementById("hasilKuis")
-        .scrollIntoView({
+    document.getElementById(
+        "hasilKuis"
+    ).scrollIntoView({
 
-            behavior: "smooth",
+        behavior: "smooth",
 
-            block: "start"
+        block: "start"
 
-        });
+    });
+
+
+    /* =================================================
+       SIMPAN KE GOOGLE SHEETS
+    ================================================= */
+
+    simpanHasilKuis(
+
+        jumlahBenar,
+
+        nilai,
+
+        waktuHasil,
+
+        statusKuis
+
+    );
+
+}
+
+
+/* =====================================================
+   SIMPAN HASIL KE GOOGLE SHEETS
+===================================================== */
+
+function simpanHasilKuis(
+
+    jumlahBenar,
+
+    nilai,
+
+    waktuHasil,
+
+    statusKuis
+
+) {
+
+
+    const statusSimpan =
+        document.getElementById(
+            "statusSimpan"
+        );
+
+
+    statusSimpan.style.display =
+        "block";
+
+
+    statusSimpan.innerHTML =
+        "⏳ Menyimpan hasil kuis...";
+
+
+    const data = {
+
+        jenis: "kuis",
+
+        nama: namaPeserta,
+
+        kelas: KELAS_KUIS,
+
+        modul: MODUL_KUIS,
+
+        jumlahSoal: TOTAL_SOAL,
+
+        benar: jumlahBenar,
+
+        nilai: nilai,
+
+        waktu: waktuHasil
+
+    };
+
+
+    fetch(API_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+
+            "Content-Type":
+                "text/plain;charset=utf-8"
+
+        },
+
+        body:
+            JSON.stringify(data)
+
+    })
+
+    .then(function() {
+
+
+        statusSimpan.innerHTML =
+
+            "✅ Hasil kuis berhasil dikirim ke sistem.";
+
+    })
+
+    .catch(function(error) {
+
+
+        console.error(
+            "Gagal mengirim hasil:",
+            error
+        );
+
+
+        statusSimpan.innerHTML =
+
+            "⚠️ Kuis selesai, tetapi pengiriman hasil mengalami kendala. Silakan hubungi instruktur.";
+
+    });
 
 }
 
@@ -2111,57 +2334,99 @@ function periksaJawaban(otomatis = false) {
 function ulangKuis() {
 
 
-    /* Reset hasil */
+    /* =================================================
+       RESET HASIL
+    ================================================= */
 
-    document.getElementById("hasilKuis")
-        .style.display = "none";
-
-
-    /* Reset area kuis */
-
-    document.getElementById("areaKuis")
-        .style.display = "none";
+    document.getElementById(
+        "hasilKuis"
+    ).style.display = "none";
 
 
-    /* Tampilkan halaman mulai */
+    /* =================================================
+       RESET AREA KUIS
+    ================================================= */
 
-    document.getElementById("halamanMulai")
-        .style.display = "block";
-
-
-    /* Reset jawaban */
-
-    document.getElementById("quizForm")
-        .reset();
+    document.getElementById(
+        "areaKuis"
+    ).style.display = "none";
 
 
-    /* Reset timer */
+    /* =================================================
+       TAMPILKAN HALAMAN MULAI
+    ================================================= */
 
-    clearInterval(timerInterval);
+    document.getElementById(
+        "halamanMulai"
+    ).style.display = "block";
 
-    waktu = DURASI_KUIS;
 
-    kuisDimulai = false;
+    /* =================================================
+       RESET JAWABAN
+    ================================================= */
 
-    kuisSelesai = false;
+    document.getElementById(
+        "quizForm"
+    ).reset();
+
+
+    /* =================================================
+       RESET TIMER
+    ================================================= */
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    waktu =
+        DURASI_KUIS;
+
+
+    kuisDimulai =
+        false;
+
+
+    kuisSelesai =
+        false;
 
 
     updateTimerDisplay();
 
 
-    /* Reset warna timer */
+    /* =================================================
+       RESET WARNA TIMER
+    ================================================= */
 
-    document.getElementById("timerBox")
-        .classList.remove(
-            "timer-warning",
-            "timer-danger"
-        );
+    document.getElementById(
+        "timerBox"
+    ).classList.remove(
+
+        "timer-warning",
+
+        "timer-danger"
+
+    );
 
 
-    /* Reset peringatan */
+    /* =================================================
+       RESET PERINGATAN
+    ================================================= */
 
-    document.getElementById("peringatan")
-        .style.display = "none";
+    document.getElementById(
+        "peringatan"
+    ).style.display =
+        "none";
+
+
+    /* =================================================
+       RESET STATUS SIMPAN
+    ================================================= */
+
+    document.getElementById(
+        "statusSimpan"
+    ).innerHTML =
+        "⏳ Menyimpan hasil kuis...";
 
 
     window.scrollTo({
