@@ -2,7 +2,9 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Kuis Modul 5 - TIK Learning</title>
@@ -11,110 +13,51 @@
 
     <style>
 
-        /* =====================================================
+        /* =========================
            HALAMAN PASSWORD
-        ===================================================== */
+        ========================= */
 
         #halamanPassword {
             max-width: 600px;
             margin: 30px auto;
         }
 
+        .password-card,
+        .peserta-card,
+        .opening-card,
+        .quiz-header,
+        .question-card,
+        .quiz-button-area,
+        #hasilKuis {
+            background: white;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
         .password-card {
-            background: white;
             padding: 35px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
         }
 
-        .password-icon {
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-
-        .password-card h2 {
-            color: #0077b6;
-            margin-top: 0;
-        }
-
-        .password-card p {
-            line-height: 1.7;
-        }
-
-        .password-input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 14px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .password-input:focus {
-            outline: none;
-            border-color: #0077b6;
-            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
-        }
-
-        .btn-masuk {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: #0077b6;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .btn-masuk:hover {
-            background: #005f8f;
-        }
-
-        #pesanPassword {
-            color: #dc3545;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-
-        /* =====================================================
-           HALAMAN IDENTITAS PESERTA
-        ===================================================== */
-
-        #halamanPeserta {
-            display: none;
-            max-width: 600px;
-            margin: 30px auto;
-        }
-
-        .peserta-card {
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
-
+        .password-icon,
         .peserta-icon {
             font-size: 55px;
             margin-bottom: 10px;
         }
 
-        .peserta-card h2 {
+        .password-card h2,
+        .peserta-card h2,
+        .opening-card h2,
+        .quiz-header h2 {
             color: #0077b6;
-            margin-top: 0;
         }
 
+        .password-card p,
         .peserta-card p {
             line-height: 1.7;
-            color: #555;
         }
 
+        .password-input,
         .nama-input {
             width: 100%;
             box-sizing: border-box;
@@ -125,26 +68,70 @@
             font-size: 16px;
         }
 
+        .password-input {
+            text-align: center;
+        }
+
+        .password-input:focus,
         .nama-input:focus {
             outline: none;
             border-color: #0077b6;
             box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
         }
 
-        .btn-lanjut {
-            width: 100%;
-            padding: 14px;
+        .btn-masuk,
+        .btn-lanjut,
+        .btn-mulai,
+        .btn-submit,
+        .btn-kembali-hasil {
             border: none;
             border-radius: 8px;
             background: #0077b6;
             color: white;
-            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .btn-lanjut:hover {
+        .btn-masuk,
+        .btn-lanjut {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        .btn-masuk:hover,
+        .btn-lanjut:hover,
+        .btn-mulai:hover,
+        .btn-submit:hover,
+        .btn-kembali-hasil:hover {
             background: #005f8f;
+        }
+
+        #pesanPassword {
+            color: #dc3545;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+
+        /* =========================
+           PESERTA
+        ========================= */
+
+        #halamanPeserta {
+            display: none;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .peserta-card {
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .peserta-card p {
+            color: #555;
         }
 
         #pesanNama {
@@ -158,9 +145,9 @@
         }
 
 
-        /* =====================================================
-           HALAMAN PEMBUKA
-        ===================================================== */
+        /* =========================
+           PEMBUKA
+        ========================= */
 
         #halamanPembuka {
             display: none;
@@ -169,15 +156,9 @@
         }
 
         .opening-card {
-            background: white;
             padding: 35px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
-
-        .opening-card h2 {
-            color: #0077b6;
         }
 
         .opening-info {
@@ -208,39 +189,22 @@
         .btn-mulai {
             display: inline-block;
             padding: 14px 30px;
-            border: none;
-            border-radius: 8px;
-            background: #0077b6;
-            color: white;
             font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .btn-mulai:hover {
-            background: #005f8f;
         }
 
 
-        /* =====================================================
-           HALAMAN KUIS
-        ===================================================== */
+        /* =========================
+           KUIS
+        ========================= */
 
         #halamanKuis {
             display: none;
         }
 
         .quiz-header {
-            background: white;
             padding: 25px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .quiz-header h2 {
-            margin-top: 0;
-            color: #0077b6;
         }
 
         .nama-saat-kuis {
@@ -251,9 +215,9 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            TIMER
-        ===================================================== */
+        ========================= */
 
         .timer-box {
             position: sticky;
@@ -288,9 +252,9 @@
         }
 
 
-        /* =====================================================
-           INFORMASI KUIS
-        ===================================================== */
+        /* =========================
+           INFO KUIS
+        ========================= */
 
         .quiz-info {
             display: grid;
@@ -313,16 +277,14 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            SOAL
-        ===================================================== */
+        ========================= */
 
         .question-card {
-            background: white;
             padding: 25px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .question-number {
@@ -339,9 +301,9 @@
         }
 
 
-        /* =====================================================
-           PILIHAN JAWABAN
-        ===================================================== */
+        /* =========================
+           PILIHAN
+        ========================= */
 
         .option {
             display: block;
@@ -364,9 +326,9 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            PERINGATAN
-        ===================================================== */
+        ========================= */
 
         .peringatan {
             display: none;
@@ -378,58 +340,32 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            TOMBOL
-        ===================================================== */
+        ========================= */
 
         .quiz-button-area {
-            background: white;
             padding: 25px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             text-align: center;
         }
 
-        .btn-submit,
-        .btn-kembali {
-            display: inline-block;
-            padding: 12px 22px;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            margin: 5px;
-        }
-
         .btn-submit {
-            background: #0077b6;
-            color: white;
-        }
-
-        .btn-submit:hover {
-            background: #005f8f;
-        }
-
-        .btn-kembali {
-            background: #e9ecef;
-            color: #333;
+            padding: 12px 22px;
+            font-size: 15px;
         }
 
 
-        /* =====================================================
+        /* =========================
            HASIL
-        ===================================================== */
+        ========================= */
 
         #hasilKuis {
             display: none;
-            background: white;
             padding: 30px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             text-align: center;
         }
 
@@ -479,21 +415,35 @@
             font-weight: bold;
         }
 
+        .status-menyimpan {
+            color: #0077b6;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .status-tersimpan {
+            color: #198754;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .status-error {
+            color: #dc3545;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
         .btn-kembali-hasil {
             display: inline-block;
-            background: #0077b6;
-            color: white;
             padding: 12px 22px;
-            border-radius: 7px;
             text-decoration: none;
-            font-weight: 600;
             margin-top: 10px;
         }
 
 
-        /* =====================================================
+        /* =========================
            RESPONSIVE
-        ===================================================== */
+        ========================= */
 
         @media (max-width: 700px) {
 
@@ -526,9 +476,7 @@
 <body>
 
 
-    <!-- =====================================================
-         HEADER
-    ===================================================== -->
+    <!-- HEADER -->
 
     <header>
 
@@ -539,9 +487,7 @@
     </header>
 
 
-    <!-- =====================================================
-         NAVIGASI
-    ===================================================== -->
+    <!-- NAVIGASI -->
 
     <nav>
 
@@ -563,21 +509,17 @@
     <main class="container">
 
 
-        <!-- =================================================
-             HALAMAN PASSWORD
-        ================================================== -->
+        <!-- =====================================
+             PASSWORD
+        ====================================== -->
 
         <section id="halamanPassword">
 
             <div class="password-card">
 
-                <div class="password-icon">
-                    🔐
-                </div>
+                <div class="password-icon">🔐</div>
 
-                <h2>
-                    Kuis Modul 5
-                </h2>
+                <h2>Kuis Modul 5</h2>
 
                 <p>
                     Masukkan password yang diberikan
@@ -607,21 +549,17 @@
         </section>
 
 
-        <!-- =================================================
-             HALAMAN IDENTITAS PESERTA
-        ================================================== -->
+        <!-- =====================================
+             IDENTITAS PESERTA
+        ====================================== -->
 
         <section id="halamanPeserta">
 
             <div class="peserta-card">
 
-                <div class="peserta-icon">
-                    👤
-                </div>
+                <div class="peserta-icon">👤</div>
 
-                <h2>
-                    Identitas Peserta
-                </h2>
+                <h2>Identitas Peserta</h2>
 
                 <p>
                     Sebelum mengikuti Kuis Modul 5,
@@ -660,28 +598,23 @@
         </section>
 
 
-        <!-- =================================================
-             HALAMAN PEMBUKA
-        ================================================== -->
+        <!-- =====================================
+             PEMBUKA
+        ====================================== -->
 
         <section id="halamanPembuka">
 
             <div class="opening-card">
 
-                <h2>
-                    📝 Kuis Modul 5
-                </h2>
+                <h2>📝 Kuis Modul 5</h2>
 
                 <p>
-                    <strong>
-                        Microsoft Word 2016
-                    </strong>
+                    <strong>Microsoft Word 2016</strong>
                 </p>
 
                 <p>
                     Tabel, Gambar, dan Objek Profesional
                 </p>
-
 
                 <div class="nama-peserta-box">
 
@@ -690,7 +623,6 @@
                     <span id="namaTampilPembuka"></span>
 
                 </div>
-
 
                 <div class="opening-info">
 
@@ -720,7 +652,6 @@
                     </p>
 
                 </div>
-
 
                 <div
                     class="peringatan"
@@ -755,7 +686,6 @@
 
                 </div>
 
-
                 <button
                     type="button"
                     class="btn-mulai"
@@ -770,20 +700,15 @@
         </section>
 
 
-        <!-- =================================================
+        <!-- =====================================
              HALAMAN KUIS
-        ================================================== -->
+        ====================================== -->
 
         <section id="halamanKuis">
 
-
-            <!-- HEADER KUIS -->
-
             <section class="quiz-header">
 
-                <h2>
-                    📝 Kuis Modul 5
-                </h2>
+                <h2>📝 Kuis Modul 5</h2>
 
                 <p>
                     <strong>
@@ -800,23 +725,14 @@
 
                 </div>
 
-
-                <!-- TIMER -->
-
                 <div
                     id="timerBox"
                     class="timer-box">
 
                     ⏱️ Sisa Waktu:
-
-                    <span id="timer">
-                        10:00
-                    </span>
+                    <span id="timer">10:00</span>
 
                 </div>
-
-
-                <!-- INFORMASI -->
 
                 <div class="quiz-info">
 
@@ -849,24 +765,19 @@
             </section>
 
 
-            <!-- PERINGATAN -->
-
             <div
                 id="peringatanKuis"
                 class="peringatan">
-
             </div>
 
 
-            <!-- =================================================
-                 HASIL KUIS
-            ================================================== -->
+            <!-- =====================================
+                 HASIL
+            ====================================== -->
 
             <section id="hasilKuis">
 
-                <h2>
-                    🎉 Hasil Kuis
-                </h2>
+                <h2>🎉 Hasil Kuis</h2>
 
                 <div class="hasil-nama">
 
@@ -876,9 +787,7 @@
 
                 </div>
 
-                <p>
-                    Nilai Anda
-                </p>
+                <p>Nilai Anda</p>
 
                 <div
                     id="nilai"
@@ -888,39 +797,29 @@
 
                 </div>
 
-
                 <div id="status"></div>
-
 
                 <div class="hasil-detail">
 
                     <div class="hasil-card">
 
-                        <strong id="jumlahBenar">
-                            0
-                        </strong>
+                        <strong id="jumlahBenar">0</strong>
 
                         Jawaban Benar
 
                     </div>
 
-
                     <div class="hasil-card">
 
-                        <strong id="jumlahSalah">
-                            0
-                        </strong>
+                        <strong id="jumlahSalah">0</strong>
 
                         Jawaban Salah
 
                     </div>
 
-
                     <div class="hasil-card">
 
-                        <strong id="persentase">
-                            0%
-                        </strong>
+                        <strong id="persentase">0%</strong>
 
                         Persentase
 
@@ -928,9 +827,11 @@
 
                 </div>
 
-
                 <p id="pesanHasil"></p>
 
+                <!-- STATUS PENYIMPANAN -->
+
+                <div id="statusPenyimpanan"></div>
 
                 <a
                     href="modul-word-5.html"
@@ -943,9 +844,9 @@
             </section>
 
 
-            <!-- =================================================
-                 FORM KUIS
-            ================================================== -->
+            <!-- =====================================
+                 FORM SOAL
+            ====================================== -->
 
             <form id="quizForm">
 
@@ -1528,9 +1429,7 @@
                 </div>
 
 
-                <!-- =================================================
-                     TOMBOL KIRIM
-                ================================================== -->
+                <!-- TOMBOL SUBMIT -->
 
                 <section class="quiz-button-area">
 
@@ -1545,7 +1444,6 @@
 
                 </section>
 
-
             </form>
 
         </section>
@@ -1553,9 +1451,7 @@
     </main>
 
 
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -1566,30 +1462,61 @@
     </footer>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
-
     <script>
 
 
         /* =====================================================
-           PASSWORD
+           KONFIGURASI
         ===================================================== */
 
-        const PASSWORD_KUIS = "TIK123";
+        const PASSWORD_KUIS = "TIK2026";
+
+
+        /*
+         * PENTING:
+         * GANTI URL DI BAWAH DENGAN URL WEB APP APPS SCRIPT
+         * YANG SAMA DENGAN MODUL 4.
+         *
+         * Contoh:
+         * https://script.google.com/macros/s/XXXXXXXX/exec
+         */
+
+        const URL_APPS_SCRIPT =
+            "MASUKKAN_URL_APPS_SCRIPT_MODUL_4_DI_SINI";
 
 
         /* =====================================================
-           DATA PESERTA
+           IDENTITAS MODUL
+        ===================================================== */
+
+        const NAMA_MODUL = "Modul 5";
+
+        const KELAS = "TIK";
+
+        const JUMLAH_SOAL = 15;
+
+        const BATAS_LULUS = 75;
+
+
+        /* =====================================================
+           VARIABEL
         ===================================================== */
 
         let namaPeserta = "";
 
+        let waktu = 10 * 60;
+
+        let timerInterval = null;
+
+        let kuisSudahDimulai = false;
+
+        let kuisSudahSelesai = false;
+
+        let dataSudahDikirim = false;
+
 
         /* =====================================================
            KUNCI JAWABAN
-           TIDAK DIUBAH
         ===================================================== */
 
         const kunciJawaban = {
@@ -1614,19 +1541,6 @@
 
 
         /* =====================================================
-           TIMER
-        ===================================================== */
-
-        let waktu = 10 * 60;
-
-        let timerInterval = null;
-
-        let kuisSudahDimulai = false;
-
-        let kuisSudahSelesai = false;
-
-
-        /* =====================================================
            CEK PASSWORD
         ===================================================== */
 
@@ -1648,14 +1562,11 @@
                     "halamanPassword"
                 ).style.display = "none";
 
-
                 document.getElementById(
                     "halamanPeserta"
                 ).style.display = "block";
 
-
                 pesan.textContent = "";
-
 
                 setTimeout(function() {
 
@@ -1693,8 +1604,6 @@
 
                     if (event.key === "Enter") {
 
-                        event.preventDefault();
-
                         cekPassword();
 
                     }
@@ -1714,7 +1623,6 @@
 
             const pesan =
                 document.getElementById("pesanNama");
-
 
             namaPeserta =
                 input.value.trim();
@@ -1761,7 +1669,7 @@
 
 
         /* =====================================================
-           ENTER INPUT NAMA
+           ENTER NAMA
         ===================================================== */
 
         document
@@ -1801,16 +1709,13 @@
                     "halamanPembuka"
                 ).style.display = "none";
 
-
                 document.getElementById(
                     "halamanPeserta"
                 ).style.display = "block";
 
-
                 document.getElementById(
                     "namaPeserta"
                 ).focus();
-
 
                 return;
 
@@ -1887,33 +1792,49 @@
             ).textContent =
 
                 String(menit).padStart(2, "0")
-                + ":"
+                +
+                ":"
                 +
                 String(detik).padStart(2, "0");
 
 
             const timerBox =
-                document.getElementById("timerBox");
+                document.getElementById(
+                    "timerBox"
+                );
 
 
-            timerBox.classList.remove(
-                "timer-warning",
-                "timer-danger"
-            );
+            if (waktu > 120) {
 
-
-            if (waktu <= 60) {
-
-                timerBox.classList.add(
+                timerBox.classList.remove(
+                    "timer-warning",
                     "timer-danger"
                 );
 
             }
 
-            else if (waktu <= 120) {
+
+            if (waktu <= 120 && waktu > 60) {
 
                 timerBox.classList.add(
                     "timer-warning"
+                );
+
+                timerBox.classList.remove(
+                    "timer-danger"
+                );
+
+            }
+
+
+            if (waktu <= 60) {
+
+                timerBox.classList.remove(
+                    "timer-warning"
+                );
+
+                timerBox.classList.add(
+                    "timer-danger"
                 );
 
             }
@@ -1945,13 +1866,10 @@
 
             if (waktu <= 0) {
 
-                clearInterval(
-                    timerInterval
-                );
+                clearInterval(timerInterval);
 
 
                 waktu = 0;
-
 
                 updateTimer();
 
@@ -1990,7 +1908,7 @@
 
             for (
                 let i = 1;
-                i <= 15;
+                i <= JUMLAH_SOAL;
                 i++
             ) {
 
@@ -2027,7 +1945,7 @@
 
 
             /* =================================================
-               CEK JAWABAN KOSONG
+               CEK SOAL KOSONG
             ================================================= */
 
             if (
@@ -2072,9 +1990,7 @@
                HENTIKAN TIMER
             ================================================= */
 
-            clearInterval(
-                timerInterval
-            );
+            clearInterval(timerInterval);
 
 
             kuisSudahSelesai = true;
@@ -2086,40 +2002,35 @@
 
             const nilai =
                 Math.round(
-                    (jumlahBenar / 15) * 100
+                    (jumlahBenar / JUMLAH_SOAL) * 100
                 );
 
 
-            const persentase =
-                nilai;
+            const persentase = nilai;
 
 
             /* =================================================
-               HASIL PESERTA
+               TAMPILKAN HASIL
             ================================================= */
 
             document.getElementById(
                 "namaTampilHasil"
-            ).textContent =
-                namaPeserta;
+            ).textContent = namaPeserta;
 
 
             document.getElementById(
                 "nilai"
-            ).textContent =
-                nilai;
+            ).textContent = nilai;
 
 
             document.getElementById(
                 "jumlahBenar"
-            ).textContent =
-                jumlahBenar;
+            ).textContent = jumlahBenar;
 
 
             document.getElementById(
                 "jumlahSalah"
-            ).textContent =
-                jumlahSalah;
+            ).textContent = jumlahSalah;
 
 
             document.getElementById(
@@ -2127,10 +2038,6 @@
             ).textContent =
                 persentase + "%";
 
-
-            /* =================================================
-               STATUS KELULUSAN
-            ================================================= */
 
             const status =
                 document.getElementById(
@@ -2144,7 +2051,13 @@
                 );
 
 
-            if (nilai >= 75) {
+            let statusKelulusan;
+
+
+            if (nilai >= BATAS_LULUS) {
+
+                statusKelulusan = "Lulus";
+
 
                 status.innerHTML =
 
@@ -2162,6 +2075,9 @@
             }
 
             else {
+
+                statusKelulusan = "Belum Lulus";
+
 
                 status.innerHTML =
 
@@ -2213,9 +2129,195 @@
 
             });
 
+
+            /* =================================================
+               KIRIM DATA KE GOOGLE SHEETS
+            ================================================= */
+
+            kirimKeGoogleSheet(
+
+                jumlahBenar,
+
+                nilai,
+
+                statusKelulusan,
+
+                otomatis
+
+            );
+
         }
 
+
+        /* =====================================================
+           KIRIM DATA KE GOOGLE APPS SCRIPT
+        ===================================================== */
+
+        function kirimKeGoogleSheet(
+
+            jumlahBenar,
+            nilai,
+            statusKelulusan,
+            otomatis
+
+        ) {
+
+
+            if (dataSudahDikirim) {
+
+                return;
+
+            }
+
+
+            dataSudahDikirim = true;
+
+
+            const statusPenyimpanan =
+                document.getElementById(
+                    "statusPenyimpanan"
+                );
+
+
+            statusPenyimpanan.className =
+                "status-menyimpan";
+
+
+            statusPenyimpanan.innerHTML =
+                "⏳ Menyimpan hasil kuis ke server...";
+
+
+            /* =================================================
+               DATA YANG DIKIRIM
+            ================================================= */
+
+            const data = {
+
+                id:
+                    "KUIS-" +
+                    Date.now(),
+
+                nama:
+                    namaPeserta,
+
+                kelas:
+                    KELAS,
+
+                modul:
+                    NAMA_MODUL,
+
+                jumlahSoal:
+                    JUMLAH_SOAL,
+
+                benar:
+                    jumlahBenar,
+
+                nilai:
+                    nilai,
+
+                waktu:
+                    new Date().toLocaleString(
+                        "id-ID"
+                    ),
+
+                status:
+                    statusKelulusan,
+
+                otomatis:
+                    otomatis ? "Ya" : "Tidak"
+
+            };
+
+
+            /* =================================================
+               CEK URL
+            ================================================= */
+
+            if (
+                !URL_APPS_SCRIPT ||
+                URL_APPS_SCRIPT.includes(
+                    "MASUKKAN_URL"
+                )
+            ) {
+
+                statusPenyimpanan.className =
+                    "status-error";
+
+
+                statusPenyimpanan.innerHTML =
+
+                    "⚠️ Hasil kuis sudah dihitung, " +
+                    "tetapi URL Apps Script belum dipasang. " +
+                    "Masukkan URL Web App Apps Script Modul 4 " +
+                    "pada bagian URL_APPS_SCRIPT.";
+
+                return;
+
+            }
+
+
+            /* =================================================
+               KIRIM FETCH
+            ================================================= */
+
+            fetch(
+                URL_APPS_SCRIPT,
+                {
+
+                    method: "POST",
+
+                    mode: "no-cors",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+
+            )
+
+            .then(function() {
+
+                statusPenyimpanan.className =
+                    "status-tersimpan";
+
+
+                statusPenyimpanan.innerHTML =
+
+                    "✅ Hasil kuis telah dikirim ke server.";
+
+            })
+
+            .catch(function(error) {
+
+                console.error(
+                    "Gagal mengirim data:",
+                    error
+                );
+
+
+                statusPenyimpanan.className =
+                    "status-error";
+
+
+                statusPenyimpanan.innerHTML =
+
+                    "❌ Hasil kuis gagal dikirim ke server. " +
+                    "Silakan hubungi instruktur.";
+
+            });
+
+        }
+
+
     </script>
+
 
 </body>
 
