@@ -3,406 +3,504 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kuis Modul 8 - TIK Learning</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-
-        /* =========================
-           HALAMAN PEMBUKA
-        ========================= */
-
-        #halamanPembuka {
-            background: white;
-            padding: 40px;
-            border-radius: 14px;
-            text-align: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-        }
-
-        #halamanPembuka h2 {
-            color: #0077b6;
-            margin-top: 0;
-        }
-
-        .quiz-icon {
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-
-        .aturan-kuis {
-            max-width: 700px;
-            margin: 25px auto;
-            text-align: left;
-            background: #f1f7fb;
-            padding: 20px 25px;
-            border-radius: 10px;
-        }
-
-        .aturan-kuis li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-
-        /* =========================
-           FORM IDENTITAS
-        ========================= */
-
-        .form-peserta {
-            max-width: 500px;
-            margin: 25px auto;
-            text-align: left;
-            background: #f8fafc;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-peserta label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .form-peserta input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 13px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-            font-size: 16px;
-            margin-bottom: 18px;
-        }
-
-        .form-peserta input:focus {
-            outline: none;
-            border-color: #0077b6;
-            box-shadow: 0 0 0 2px rgba(0,119,182,0.1);
-        }
-
-        .password-error,
-        .nama-error {
-            display: none;
-            color: #dc3545;
-            margin-top: -10px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .btn-mulai {
-            background: #0077b6;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 5px;
-        }
-
-        .btn-mulai:hover {
-            opacity: 0.9;
-        }
-
-        /* =========================
-           KONTEN KUIS
-        ========================= */
-
-        #halamanKuis {
-            display: none;
-        }
-
-        .quiz-header {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .quiz-header h2 {
-            margin-top: 0;
-            color: #0077b6;
-        }
-
-        .nama-peserta-header {
-            background: #e8f5e9;
-            color: #198754;
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-weight: bold;
-        }
-
-        .quiz-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .info-card {
-            background: #f1f7fb;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .info-card strong {
-            display: block;
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        /* =========================
-           TIMER
-        ========================= */
-
-        .timer-box {
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-            background: #0077b6;
-            color: white;
-            padding: 14px;
-            border-radius: 9px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .timer-warning {
-            background: #ffc107;
-            color: #222;
-        }
-
-        .timer-danger {
-            background: #dc3545;
-            color: white;
-            animation: kedip 1s infinite;
-        }
-
-        @keyframes kedip {
-            50% {
-                opacity: 0.65;
-            }
-        }
-
-        /* =========================
-           SOAL
-        ========================= */
-
-        .question-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .question-number {
-            color: #0077b6;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .question-text {
-            font-size: 17px;
-            font-weight: 600;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .option {
-            display: block;
-            padding: 13px 15px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            cursor: pointer;
-            background: white;
-            transition: 0.2s;
-        }
-
-        .option:hover {
-            background: #f1f7fb;
-            border-color: #0077b6;
-        }
-
-        .option input {
-            margin-right: 10px;
-        }
-
-        /* =========================
-           PERINGATAN
-        ========================= */
-
-        .peringatan {
-            display: none;
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
-
-        /* =========================
-           TOMBOL
-        ========================= */
-
-        .quiz-button-area {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .btn-submit,
-        .btn-reset,
-        .btn-kembali {
-            display: inline-block;
-            padding: 12px 22px;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            margin: 5px;
-        }
-
-        .btn-submit {
-            background: #0077b6;
-            color: white;
-        }
-
-        .btn-submit:hover {
-            opacity: 0.9;
-        }
-
-        .btn-reset {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-reset:hover {
-            opacity: 0.9;
-        }
-
-        .btn-kembali {
-            background: #e9ecef;
-            color: #333;
-        }
-
-        .btn-kembali:hover {
-            background: #dee2e6;
-        }
-
-        /* =========================
-           HASIL
-        ========================= */
-
-        #hasilKuis {
-            display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-
-        .hasil-nama {
-            background: #f1f7fb;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px auto;
-            max-width: 500px;
-            font-size: 18px;
-        }
-
-        .hasil-nama strong {
-            color: #0077b6;
-        }
-
-        .nilai {
-            font-size: 52px;
-            font-weight: bold;
-            color: #0077b6;
-            margin: 10px 0;
-        }
-
-        .hasil-detail {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .hasil-card {
-            padding: 18px;
-            background: #f8fafc;
-            border-radius: 8px;
-        }
-
-        .hasil-card strong {
-            display: block;
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .status-lulus {
-            color: #198754;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .status-gagal {
-            color: #dc3545;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            .quiz-info,
-            .hasil-detail {
-                grid-template-columns: 1fr;
-            }
-
-            #halamanPembuka {
-                padding: 25px 18px;
-            }
-
-            .question-card {
-                padding: 18px;
-            }
-
-            .nilai {
-                font-size: 42px;
-            }
-
-            .quiz-header {
-                padding: 18px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Modul 8 - TIK Learning</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =====================================================
+   PASSWORD / NAMA / MULAI
+===================================================== */
+
+.password-box,
+.nama-box,
+.quiz-start {
+
+    max-width: 650px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+.password-icon,
+.nama-icon,
+.quiz-icon {
+
+    font-size: 60px;
+    margin-bottom: 10px;
+
+}
+
+.password-box h2,
+.nama-box h2,
+.quiz-start h2 {
+
+    color: #0077b6;
+    margin-bottom: 10px;
+
+}
+
+.password-box p,
+.nama-box p,
+.quiz-start p {
+
+    color: #555;
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.password-input,
+.nama-input {
+
+    width: 100%;
+    padding: 14px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+
+}
+
+.password-input {
+
+    text-align: center;
+
+}
+
+.nama-input {
+
+    text-align: left;
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn-password,
+.btn-nama,
+.btn-mulai {
+
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #0077b6;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.btn-password:hover,
+.btn-nama:hover,
+.btn-mulai:hover {
+
+    background: #005f8f;
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.password-error,
+.nama-error {
+
+    display: none;
+    background: #f8d7da;
+    color: #842029;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+}
+
+
+/* =====================================================
+   PESERTA
+===================================================== */
+
+.peserta-info {
+
+    background: #eaf6ff;
+    border-left: 5px solid #0077b6;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: left;
+
+}
+
+.peserta-info strong {
+
+    color: #0077b6;
+
+}
+
+
+/* =====================================================
+   RULES
+===================================================== */
+
+.quiz-rules {
+
+    margin: 25px 0;
+    padding: 20px;
+    background: #f1f7fb;
+    border-radius: 10px;
+    text-align: left;
+
+}
+
+.quiz-rules h3 {
+
+    color: #0077b6;
+    margin-top: 0;
+
+}
+
+.quiz-rules li {
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =====================================================
+   AREA KUIS
+===================================================== */
+
+#areaKuis {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+.timer-box {
+
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
+    background: #0077b6;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+}
+
+.timer-warning {
+
+    background: #ffc107;
+    color: #222;
+
+}
+
+.timer-danger {
+
+    background: #dc3545;
+    color: white;
+    animation: berkedip 1s infinite;
+
+}
+
+@keyframes berkedip {
+
+    50% {
+        opacity: 0.65;
+    }
+
+}
+
+
+/* =====================================================
+   SOAL
+===================================================== */
+
+.question-card {
+
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+}
+
+.question-number {
+
+    color: #0077b6;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}
+
+.question-text {
+
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 18px;
+
+}
+
+.option {
+
+    display: block;
+    padding: 13px 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+
+}
+
+.option:hover {
+
+    background: #f1f7fb;
+    border-color: #0077b6;
+
+}
+
+.option input {
+
+    margin-right: 10px;
+
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+.quiz-button-area {
+
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.btn-submit {
+
+    padding: 13px 25px;
+    background: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.btn-submit:hover {
+
+    background: #005f8f;
+
+}
+
+.btn-submit:disabled {
+
+    background: #999;
+    cursor: not-allowed;
+
+}
+
+
+/* =====================================================
+   PERINGATAN
+===================================================== */
+
+.peringatan {
+
+    display: none;
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================================
+   STATUS PENGIRIMAN
+===================================================== */
+
+.status-kirim {
+
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    background: #eaf6ff;
+    color: #005f8f;
+    font-weight: bold;
+
+}
+
+.status-kirim.berhasil {
+
+    background: #d1e7dd;
+    color: #0f5132;
+
+}
+
+.status-kirim.gagal {
+
+    background: #f8d7da;
+    color: #842029;
+
+}
+
+
+/* =====================================================
+   HASIL
+===================================================== */
+
+#hasilKuis {
+
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+}
+
+.hasil-peserta {
+
+    background: #f1f7fb;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+
+}
+
+.nilai {
+
+    font-size: 55px;
+    font-weight: bold;
+    color: #0077b6;
+
+}
+
+.hasil-detail {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+
+}
+
+.hasil-card {
+
+    padding: 18px;
+    background: #f8fafc;
+    border-radius: 8px;
+
+}
+
+.hasil-card strong {
+
+    display: block;
+    font-size: 25px;
+    margin-bottom: 5px;
+
+}
+
+.status-lulus {
+
+    color: #198754;
+    font-size: 23px;
+    font-weight: bold;
+
+}
+
+.status-gagal {
+
+    color: #dc3545;
+    font-size: 23px;
+    font-weight: bold;
+
+}
+
+.btn-reset {
+
+    padding: 12px 22px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+
+.btn-reset:hover {
+
+    background: #545b62;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:700px) {
+
+    .hasil-detail {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .password-box,
+    .nama-box,
+    .quiz-start {
+
+        margin: 20px;
+        padding: 25px;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -410,2134 +508,2066 @@
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <header>
+<header>
 
-        <h1>TIK LEARNING</h1>
+<h1>TIK LEARNING</h1>
 
-        <p>UPTD BLK Kabupaten Subang</p>
+<p>UPTD BLK Kabupaten Subang</p>
 
-    </header>
+</header>
 
 
-    <!-- =========================
-         NAVIGASI
-    ========================= -->
+<!-- =====================================================
+     NAVIGASI
+===================================================== -->
 
-    <nav>
+<nav>
 
-        <a href="index.html">Beranda</a>
+<a href="index.html">Beranda</a>
 
-        <a href="autobiografi.html">Autobiografi</a>
+<a href="autobiografi.html">
+Autobiografi
+</a>
 
-        <a href="materi.html">Materi</a>
+<a href="materi.html">
+Materi
+</a>
 
-        <a href="tugas.html">Tugas</a>
+<a href="tugas.html">
+Tugas
+</a>
 
-        <a href="kelas.html">Kelas Saya</a>
+<a href="kelas.html">
+Kelas Saya
+</a>
 
-        <a href="ruang-bertanya.html">Ruang Bertanya</a>
+<a href="ruang-bertanya.html">
+Ruang Bertanya
+</a>
 
-    </nav>
+</nav>
 
 
-    <main class="container">
+<main class="container">
 
 
-        <!-- ==================================================
-             HALAMAN PEMBUKA
-        ================================================== -->
+<!-- =====================================================
+     1. PASSWORD
+===================================================== -->
 
-        <section id="halamanPembuka">
+<section
+id="passwordSection"
+class="password-box">
 
-            <div class="quiz-icon">
-                📝
-            </div>
+<div class="password-icon">
+🔐
+</div>
 
-            <h2>Kuis Modul 8</h2>
+<h2>
+Akses Kuis Modul 8
+</h2>
 
-            <p>
-                <strong>
-                    Formulir Interaktif & Protect Document
-                </strong>
-            </p>
+<p>
 
+Masukkan password yang diberikan
+oleh instruktur untuk mengikuti
+Kuis Modul 8.
 
-            <!-- PETUNJUK -->
+</p>
 
-            <div class="aturan-kuis">
+<div
+id="passwordError"
+class="password-error">
 
-                <h3>📌 Petunjuk Kuis</h3>
+❌ Password salah.
+Silakan periksa kembali password Anda.
 
-                <ul>
+</div>
 
-                    <li>
-                        Kuis terdiri dari
-                        <strong>15 soal</strong>.
-                    </li>
+<input
+type="password"
+id="passwordInput"
+class="password-input"
+placeholder="Masukkan password"
+autocomplete="off">
 
-                    <li>
-                        Waktu pengerjaan adalah
-                        <strong>10 menit</strong>.
-                    </li>
+<button
+type="button"
+class="btn-password"
+onclick="cekPassword()">
 
-                    <li>
-                        Timer mulai berjalan setelah tombol
-                        <strong>Mulai Kuis</strong> ditekan.
-                    </li>
+🔓 Masuk
 
-                    <li>
-                        Setelah dimulai, waktu
-                        <strong>tidak dapat dihentikan</strong>.
-                    </li>
+</button>
 
-                    <li>
-                        Semua soal harus dijawab.
-                    </li>
+</section>
 
-                    <li>
-                        Jika waktu habis, jawaban akan
-                        <strong>dikumpulkan otomatis</strong>.
-                    </li>
 
-                    <li>
-                        Batas nilai kelulusan adalah
-                        <strong>75</strong>.
-                    </li>
+<!-- =====================================================
+     2. NAMA
+===================================================== -->
 
-                </ul>
+<section
+id="namaSection"
+class="nama-box"
+style="display:none;">
 
-            </div>
+<div class="nama-icon">
+👤
+</div>
 
+<h2>
+Identitas Peserta
+</h2>
 
-            <!-- FORM PESERTA -->
+<p>
 
-            <div class="form-peserta">
+Silakan masukkan nama lengkap Anda
+sebelum memulai kuis.
 
-                <label for="namaPeserta">
-                    👤 Nama Peserta
-                </label>
+</p>
 
-                <input
-                    type="text"
-                    id="namaPeserta"
-                    placeholder="Masukkan nama lengkap"
-                    autocomplete="name">
+<div
+id="namaError"
+class="nama-error">
 
-                <div
-                    id="namaError"
-                    class="nama-error">
+⚠️ Nama peserta wajib diisi.
 
-                    ❌ Nama peserta wajib diisi.
+</div>
 
-                </div>
+<input
+type="text"
+id="namaInput"
+class="nama-input"
+placeholder="Masukkan nama lengkap"
+autocomplete="off">
 
+<button
+type="button"
+class="btn-nama"
+onclick="simpanNama()">
 
-                <label for="passwordKuis">
-                    🔐 Password Kuis
-                </label>
+➡️ Lanjut
 
-                <input
-                    type="password"
-                    id="passwordKuis"
-                    placeholder="Masukkan password">
+</button>
 
-                <div
-                    id="passwordError"
-                    class="password-error">
+</section>
 
-                    ❌ Password salah. Silakan coba lagi.
 
-                </div>
+<!-- =====================================================
+     3. HALAMAN MULAI
+===================================================== -->
 
-            </div>
+<section
+id="halamanMulai"
+class="quiz-start"
+style="display:none;">
 
+<div class="quiz-icon">
+📝
+</div>
 
-            <!-- TOMBOL MULAI -->
+<h2>
+Kuis Modul 8
+</h2>
 
-            <button
-                type="button"
-                class="btn-mulai"
-                onclick="mulaiKuis()">
+<p>
+<strong>
+Microsoft Word 2016 — Formulir Interaktif & Protect Document
+</strong>
+</p>
 
-                ▶️ Mulai Kuis
+<div class="peserta-info">
 
-            </button>
+👤 <strong>Nama Peserta:</strong>
 
+<span id="namaPesertaMulai">
+-
+</span>
 
-            <br><br>
+</div>
 
+<div class="quiz-rules">
 
-            <a
-                href="modul-word-8.html"
-                class="btn-kembali">
+<h3>
+📌 Ketentuan Kuis
+</h3>
 
-                ← Kembali ke Modul 8
+<ul>
 
-            </a>
+<li>
+Jumlah soal:
+<strong>15 soal</strong>
+</li>
 
-        </section>
+<li>
+Waktu pengerjaan:
+<strong>10 menit</strong>
+</li>
 
+<li>
+Timer mulai berjalan setelah tombol
+<strong>Mulai Kuis</strong> ditekan.
+</li>
 
-        <!-- ==================================================
-             HALAMAN KUIS
-        ================================================== -->
+<li>
+Timer tidak dapat dihentikan
+atau dijeda.
+</li>
 
-        <section id="halamanKuis">
+<li>
+Jika waktu habis, jawaban akan
+dikumpulkan otomatis.
+</li>
 
+<li>
+Batas kelulusan:
+<strong>75</strong>
+</li>
 
-            <!-- HEADER KUIS -->
+</ul>
 
-            <section class="quiz-header">
+</div>
 
-                <h2>
-                    📝 Kuis Modul 8
-                </h2>
 
-                <p>
-                    Microsoft Word 2016 —
-                    Formulir Interaktif & Protect Document
-                </p>
+<button
+type="button"
+class="btn-mulai"
+onclick="mulaiKuis()">
 
+▶️ Mulai Kuis
 
-                <!-- NAMA PESERTA -->
+</button>
 
-                <div class="nama-peserta-header">
+</section>
 
-                    👤 Peserta:
-                    <span id="namaPesertaHeader">
-                        -
-                    </span>
 
-                </div>
+<!-- =====================================================
+     4. HASIL
+===================================================== -->
 
+<section
+id="hasilKuis">
 
-                <!-- TIMER -->
+<h2>
+🎉 Hasil Kuis
+</h2>
 
-                <div
-                    id="timerBox"
-                    class="timer-box">
+<div class="hasil-peserta">
 
-                    ⏱️ Sisa Waktu:
-                    <span id="timer">
-                        10:00
-                    </span>
+👤 <strong>Nama Peserta:</strong>
 
-                </div>
+<span id="namaPesertaHasil">
+-
+</span>
 
+</div>
 
-                <!-- INFO -->
+<p>
+Nilai Anda
+</p>
 
-                <div class="quiz-info">
+<div
+id="nilai"
+class="nilai">
 
-                    <div class="info-card">
+0
 
-                        <strong>15</strong>
+</div>
 
-                        Soal
+<div id="status"></div>
 
-                    </div>
+<div class="hasil-detail">
 
+<div class="hasil-card">
 
-                    <div class="info-card">
+<strong id="jumlahBenar">
+0
+</strong>
 
-                        <strong>100</strong>
+Jawaban Benar
 
-                        Nilai Maksimal
+</div>
 
-                    </div>
+<div class="hasil-card">
 
+<strong id="jumlahSalah">
+0
+</strong>
 
-                    <div class="info-card">
+Jawaban Salah
 
-                        <strong>75</strong>
+</div>
 
-                        Batas Kelulusan
+<div class="hasil-card">
 
-                    </div>
+<strong id="persentase">
+0%
+</strong>
 
-                </div>
+Persentase
 
-            </section>
+</div>
 
+</div>
 
-            <!-- PERINGATAN -->
+<p id="pesanHasil"></p>
 
-            <div
-                id="peringatan"
-                class="peringatan">
+<div
+id="statusKirim"
+class="status-kirim">
 
-            </div>
+⏳ Menyiapkan penyimpanan hasil...
 
+</div>
 
-            <!-- ==================================================
-                 HASIL KUIS
-            ================================================== -->
+<button
+type="button"
+class="btn-reset"
+onclick="ulangKuis()">
 
-            <section id="hasilKuis">
+🔄 Ulangi Kuis
 
-                <h2>
-                    🎉 Hasil Kuis
-                </h2>
+</button>
 
+</section>
 
-                <div class="hasil-nama">
 
-                    👤 Nama Peserta:
-                    <strong id="namaPesertaHasil">
-                        -
-                    </strong>
+<!-- =====================================================
+     5. AREA KUIS
+===================================================== -->
 
-                </div>
+<section
+id="areaKuis">
 
 
-                <p>
-                    Nilai Anda
-                </p>
+<!-- TIMER -->
 
+<div
+id="timerBox"
+class="timer-box">
 
-                <div
-                    id="nilai"
-                    class="nilai">
+⏱️ Sisa Waktu:
 
-                    0
+<span id="timer">
+10:00
+</span>
 
-                </div>
+</div>
 
 
-                <div id="status"></div>
+<!-- PERINGATAN -->
 
+<div
+id="peringatan"
+class="peringatan">
 
-                <div class="hasil-detail">
+</div>
 
-                    <div class="hasil-card">
 
-                        <strong id="jumlahBenar">
-                            0
-                        </strong>
+<form id="quizForm">
 
-                        Jawaban Benar
 
-                    </div>
+<!-- =====================================================
+     SOAL 1
+===================================================== -->
 
+<div class="question-card">
 
-                    <div class="hasil-card">
+<div class="question-number">
+Soal 1 dari 15
+</div>
 
-                        <strong id="jumlahSalah">
-                            0
-                        </strong>
+<div class="question-text">
 
-                        Jawaban Salah
+Fitur formulir interaktif pada Microsoft Word
+digunakan untuk...
 
-                    </div>
+</div>
 
+<label class="option">
+<input type="radio" name="q1" value="A">
+A. Membuat dokumen yang dapat diisi pengguna pada bagian tertentu
+</label>
 
-                    <div class="hasil-card">
+<label class="option">
+<input type="radio" name="q1" value="B">
+B. Menghapus seluruh isi dokumen
+</label>
 
-                        <strong id="persentase">
-                            0%
-                        </strong>
+<label class="option">
+<input type="radio" name="q1" value="C">
+C. Mengubah Word menjadi Excel
+</label>
 
-                        Persentase
+<label class="option">
+<input type="radio" name="q1" value="D">
+D. Membuat animasi
+</label>
 
-                    </div>
+</div>
 
-                </div>
 
+<!-- =====================================================
+     SOAL 2
+===================================================== -->
 
-                <p id="pesanHasil"></p>
+<div class="question-card">
 
+<div class="question-number">
+Soal 2 dari 15
+</div>
 
-                <button
-                    type="button"
-                    class="btn-reset"
-                    onclick="ulangKuis()">
+<div class="question-text">
 
-                    🔄 Ulangi Kuis
+Tab yang digunakan untuk membuat Content Control
+pada Microsoft Word adalah...
 
-                </button>
+</div>
 
+<label class="option">
+<input type="radio" name="q2" value="A">
+A. Home
+</label>
 
-                <a
-                    href="modul-word-8.html"
-                    class="btn-kembali">
+<label class="option">
+<input type="radio" name="q2" value="B">
+B. Insert
+</label>
 
-                    ← Kembali ke Modul 8
+<label class="option">
+<input type="radio" name="q2" value="C">
+C. Developer
+</label>
 
-                </a>
+<label class="option">
+<input type="radio" name="q2" value="D">
+D. Review
+</label>
 
-            </section>
+</div>
 
 
-            <!-- ==================================================
-                 FORM KUIS
-            ================================================== -->
+<!-- =====================================================
+     SOAL 3
+===================================================== -->
 
-            <form id="quizForm">
+<div class="question-card">
 
+<div class="question-number">
+Soal 3 dari 15
+</div>
 
-                <!-- SOAL 1 -->
+<div class="question-text">
 
-                <div class="question-card">
+Jika tab Developer belum terlihat pada Ribbon,
+langkah yang tepat untuk menampilkannya adalah...
 
-                    <div class="question-number">
-                        Soal 1 dari 15
-                    </div>
+</div>
 
-                    <div class="question-text">
+<label class="option">
+<input type="radio" name="q3" value="A">
+A. File → Options → Customize Ribbon → centang Developer
+</label>
 
-                        Tab yang digunakan untuk membuat
-                        formulir interaktif di Word adalah...
+<label class="option">
+<input type="radio" name="q3" value="B">
+B. Home → Font → Developer
+</label>
 
-                    </div>
+<label class="option">
+<input type="radio" name="q3" value="C">
+C. Insert → Table → Developer
+</label>
 
+<label class="option">
+<input type="radio" name="q3" value="D">
+D. View → Zoom → Developer
+</label>
 
-                    <label class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="q1"
-                            value="A">
 
-                        A. Home
+<!-- =====================================================
+     SOAL 4
+===================================================== -->
 
-                    </label>
+<div class="question-card">
 
+<div class="question-number">
+Soal 4 dari 15
+</div>
 
-                    <label class="option">
+<div class="question-text">
 
-                        <input
-                            type="radio"
-                            name="q1"
-                            value="B">
+Content Control yang paling tepat digunakan
+untuk memasukkan teks sederhana seperti
+Nama Lengkap atau NIK adalah...
 
-                        B. Insert
+</div>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q4" value="A">
+A. Plain Text Content Control
+</label>
 
+<label class="option">
+<input type="radio" name="q4" value="B">
+B. Check Box
+</label>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q4" value="C">
+C. Date Picker
+</label>
 
-                        <input
-                            type="radio"
-                            name="q1"
-                            value="C">
+<label class="option">
+<input type="radio" name="q4" value="D">
+D. Drop-Down List
+</label>
 
-                        C. Developer
+</div>
 
-                    </label>
 
+<!-- =====================================================
+     SOAL 5
+===================================================== -->
 
-                    <label class="option">
+<div class="question-card">
 
-                        <input
-                            type="radio"
-                            name="q1"
-                            value="D">
+<div class="question-number">
+Soal 5 dari 15
+</div>
 
-                        D. Review
+<div class="question-text">
 
-                    </label>
+Check Box paling tepat digunakan ketika...
 
-                </div>
+</div>
 
+<label class="option">
+<input type="radio" name="q5" value="A">
+A. Pengguna harus memilih tanggal
+</label>
 
-                <!-- SOAL 2 -->
+<label class="option">
+<input type="radio" name="q5" value="B">
+B. Pengguna dapat memilih atau mencentang pilihan
+</label>
 
-                <div class="question-card">
+<label class="option">
+<input type="radio" name="q5" value="C">
+C. Pengguna harus memasukkan nama
+</label>
 
-                    <div class="question-number">
-                        Soal 2 dari 15
-                    </div>
+<label class="option">
+<input type="radio" name="q5" value="D">
+D. Pengguna harus memilih satu tanggal
+</label>
 
-                    <div class="question-text">
+</div>
 
-                        Untuk mengaktifkan tab Developer,
-                        pengaturannya dapat ditemukan pada...
 
-                    </div>
+<!-- =====================================================
+     SOAL 6
+===================================================== -->
 
+<div class="question-card">
 
-                    <label class="option">
+<div class="question-number">
+Soal 6 dari 15
+</div>
 
-                        <input
-                            type="radio"
-                            name="q2"
-                            value="A">
+<div class="question-text">
 
-                        A. File → Options → Customize Ribbon
+Drop-Down List digunakan untuk...
 
-                    </label>
+</div>
 
+<label class="option">
+<input type="radio" name="q6" value="A">
+A. Memasukkan teks bebas sebanyak-banyaknya
+</label>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q6" value="B">
+B. Memilih satu pilihan dari daftar yang telah disediakan
+</label>
 
-                        <input
-                            type="radio"
-                            name="q2"
-                            value="B">
+<label class="option">
+<input type="radio" name="q6" value="C">
+C. Membuat tabel otomatis
+</label>
 
-                        B. Home → Options
+<label class="option">
+<input type="radio" name="q6" value="D">
+D. Menghapus proteksi dokumen
+</label>
 
-                    </label>
+</div>
 
 
-                    <label class="option">
+<!-- =====================================================
+     SOAL 7
+===================================================== -->
 
-                        <input
-                            type="radio"
-                            name="q2"
-                            value="C">
+<div class="question-card">
 
-                        C. Insert → Developer
+<div class="question-number">
+Soal 7 dari 15
+</div>
 
-                    </label>
+<div class="question-text">
 
+Untuk membuat kolom tanggal yang dapat dipilih
+menggunakan kalender, kontrol yang digunakan adalah...
 
-                    <label class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="q2"
-                            value="D">
+<label class="option">
+<input type="radio" name="q7" value="A">
+A. Plain Text
+</label>
 
-                        D. Review → Customize
+<label class="option">
+<input type="radio" name="q7" value="B">
+B. Check Box
+</label>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q7" value="C">
+C. Date Picker
+</label>
 
-                </div>
+<label class="option">
+<input type="radio" name="q7" value="D">
+D. Drop-Down List
+</label>
 
+</div>
 
-                <!-- SOAL 3 -->
 
-                <div class="question-card">
+<!-- =====================================================
+     SOAL 8
+===================================================== -->
 
-                    <div class="question-number">
-                        Soal 3 dari 15
-                    </div>
+<div class="question-card">
 
-                    <div class="question-text">
+<div class="question-number">
+Soal 8 dari 15
+</div>
 
-                        Kontrol yang digunakan untuk memasukkan
-                        teks biasa adalah...
+<div class="question-text">
 
-                    </div>
+Menu Properties pada Content Control digunakan
+untuk...
 
+</div>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q8" value="A">
+A. Mengatur judul, tag, pilihan, dan tampilan kontrol
+</label>
 
-                        <input
-                            type="radio"
-                            name="q3"
-                            value="A">
+<label class="option">
+<input type="radio" name="q8" value="B">
+B. Menghapus Microsoft Word
+</label>
 
-                        A. Check Box
+<label class="option">
+<input type="radio" name="q8" value="C">
+C. Membuat animasi
+</label>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q8" value="D">
+D. Mengubah Word menjadi PowerPoint
+</label>
 
+</div>
 
-                    <label class="option">
 
-                        <input
-                            type="radio"
-                            name="q3"
-                            value="B">
+<!-- =====================================================
+     SOAL 9
+===================================================== -->
 
-                        B. Plain Text Content Control
+<div class="question-card">
 
-                    </label>
+<div class="question-number">
+Soal 9 dari 15
+</div>
 
+<div class="question-text">
 
-                    <label class="option">
+Protect Document digunakan untuk...
 
-                        <input
-                            type="radio"
-                            name="q3"
-                            value="C">
+</div>
 
-                        C. Date Picker
+<label class="option">
+<input type="radio" name="q9" value="A">
+A. Membatasi perubahan pada dokumen
+</label>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q9" value="B">
+B. Menambahkan gambar
+</label>
 
+<label class="option">
+<input type="radio" name="q9" value="C">
+C. Membuat tabel
+</label>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q9" value="D">
+D. Mengatur ukuran font
+</label>
 
-                        <input
-                            type="radio"
-                            name="q3"
-                            value="D">
+</div>
 
-                        D. Drop-Down List
 
-                    </label>
+<!-- =====================================================
+     SOAL 10
+===================================================== -->
 
-                </div>
+<div class="question-card">
 
+<div class="question-number">
+Soal 10 dari 15
+</div>
 
-                <!-- SOAL 4 -->
+<div class="question-text">
 
-                <div class="question-card">
+Fitur yang digunakan untuk membatasi pengeditan
+dokumen pada Microsoft Word adalah...
 
-                    <div class="question-number">
-                        Soal 4 dari 15
-                    </div>
+</div>
 
-                    <div class="question-text">
+<label class="option">
+<input type="radio" name="q10" value="A">
+A. Word Count
+</label>
 
-                        Check Box paling tepat digunakan
-                        untuk...
+<label class="option">
+<input type="radio" name="q10" value="B">
+B. Restrict Editing
+</label>
 
-                    </div>
+<label class="option">
+<input type="radio" name="q10" value="C">
+C. Track Changes
+</label>
 
+<label class="option">
+<input type="radio" name="q10" value="D">
+D. Format Painter
+</label>
 
-                    <label class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="q4"
-                            value="A">
 
-                        A. Memilih pilihan yang dapat dicentang
+<!-- =====================================================
+     SOAL 11
+===================================================== -->
 
-                    </label>
+<div class="question-card">
 
+<div class="question-number">
+Soal 11 dari 15
+</div>
 
-                    <label class="option">
+<div class="question-text">
 
-                        <input
-                            type="radio"
-                            name="q4"
-                            value="B">
+Password pada perlindungan dokumen digunakan
+untuk...
 
-                        B. Mengatur margin
+</div>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q11" value="A">
+A. Mencegah orang lain menghentikan proteksi tanpa izin
+</label>
 
+<label class="option">
+<input type="radio" name="q11" value="B">
+B. Menambah jumlah halaman
+</label>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q11" value="C">
+C. Mengubah warna dokumen
+</label>
 
-                        <input
-                            type="radio"
-                            name="q4"
-                            value="C">
+<label class="option">
+<input type="radio" name="q11" value="D">
+D. Membuat tabel otomatis
+</label>
 
-                        C. Membuat tabel
+</div>
 
-                    </label>
 
+<!-- =====================================================
+     SOAL 12
+===================================================== -->
 
-                    <label class="option">
+<div class="question-card">
 
-                        <input
-                            type="radio"
-                            name="q4"
-                            value="D">
+<div class="question-number">
+Soal 12 dari 15
+</div>
 
-                        D. Mengatur font
+<div class="question-text">
 
-                    </label>
+Jika pemilik dokumen ingin melakukan perubahan
+pada dokumen yang telah dilindungi password,
+maka yang harus dilakukan adalah...
 
-                </div>
+</div>
 
+<label class="option">
+<input type="radio" name="q12" value="A">
+A. Menghapus Microsoft Word
+</label>
 
-                <!-- SOAL 5 -->
+<label class="option">
+<input type="radio" name="q12" value="B">
+B. Menghentikan proteksi dan memasukkan password jika diminta
+</label>
 
-                <div class="question-card">
+<label class="option">
+<input type="radio" name="q12" value="C">
+C. Mengganti nama file
+</label>
 
-                    <div class="question-number">
-                        Soal 5 dari 15
-                    </div>
+<label class="option">
+<input type="radio" name="q12" value="D">
+D. Membuka file Excel
+</label>
 
-                    <div class="question-text">
+</div>
 
-                        Kontrol untuk memilih satu pilihan
-                        dari daftar yang telah disediakan adalah...
 
-                    </div>
+<!-- =====================================================
+     SOAL 13
+===================================================== -->
 
+<div class="question-card">
 
-                    <label class="option">
+<div class="question-number">
+Soal 13 dari 15
+</div>
 
-                        <input
-                            type="radio"
-                            name="q5"
-                            value="A">
+<div class="question-text">
 
-                        A. Check Box
+Salah satu tujuan utama Protect Document
+pada formulir adalah...
 
-                    </label>
+</div>
 
+<label class="option">
+<input type="radio" name="q13" value="A">
+A. Pengguna dapat mengisi bagian formulir tanpa mengubah struktur utama
+</label>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q13" value="B">
+B. Pengguna dapat menghapus semua isi formulir
+</label>
 
-                        <input
-                            type="radio"
-                            name="q5"
-                            value="B">
+<label class="option">
+<input type="radio" name="q13" value="C">
+C. Formulir tidak dapat dibuka sama sekali
+</label>
 
-                        B. Drop-Down List
+<label class="option">
+<input type="radio" name="q13" value="D">
+D. Mengubah formulir menjadi gambar
+</label>
 
-                    </label>
+</div>
 
 
-                    <label class="option">
+<!-- =====================================================
+     SOAL 14
+===================================================== -->
 
-                        <input
-                            type="radio"
-                            name="q5"
-                            value="C">
+<div class="question-card">
 
-                        C. Plain Text
+<div class="question-number">
+Soal 14 dari 15
+</div>
 
-                    </label>
+<div class="question-text">
 
+Sebelum formulir digital dibagikan kepada peserta,
+hal yang paling tepat dilakukan adalah...
 
-                    <label class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="q5"
-                            value="D">
+<label class="option">
+<input type="radio" name="q14" value="A">
+A. Langsung mencetak tanpa pengujian
+</label>
 
-                        D. Page Break
+<label class="option">
+<input type="radio" name="q14" value="B">
+B. Menguji semua kontrol dan memastikan proteksi bekerja dengan baik
+</label>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q14" value="C">
+C. Menghapus semua Content Control
+</label>
 
-                </div>
+<label class="option">
+<input type="radio" name="q14" value="D">
+D. Mengubah dokumen menjadi gambar
+</label>
 
+</div>
 
-                <!-- SOAL 6 -->
 
-                <div class="question-card">
+<!-- =====================================================
+     SOAL 15
+===================================================== -->
 
-                    <div class="question-number">
-                        Soal 6 dari 15
-                    </div>
+<div class="question-card">
 
-                    <div class="question-text">
+<div class="question-number">
+Soal 15 dari 15
+</div>
 
-                        Kontrol yang digunakan untuk memilih
-                        tanggal adalah...
+<div class="question-text">
 
-                    </div>
+Sebuah formulir pendaftaran pelatihan membutuhkan
+Nama, NIK, pilihan program, pilihan keterampilan,
+dan tanggal pendaftaran. Kombinasi kontrol yang
+paling tepat adalah...
 
+</div>
 
-                    <label class="option">
+<label class="option">
+<input type="radio" name="q15" value="A">
+A. Plain Text, Check Box, Drop-Down List, dan Date Picker
+</label>
 
-                        <input
-                            type="radio"
-                            name="q6"
-                            value="A">
+<label class="option">
+<input type="radio" name="q15" value="B">
+B. WordArt, Shapes, dan SmartArt saja
+</label>
 
-                        A. Date Picker
+<label class="option">
+<input type="radio" name="q15" value="C">
+C. Table dan Page Number saja
+</label>
 
-                    </label>
+<label class="option">
+<input type="radio" name="q15" value="D">
+D. Header dan Footer saja
+</label>
 
+</div>
 
-                    <label class="option">
 
-                        <input
-                            type="radio"
-                            name="q6"
-                            value="B">
+<!-- =====================================================
+     SUBMIT
+===================================================== -->
 
-                        B. Check Box
+<div class="quiz-button-area">
 
-                    </label>
+<button
+type="button"
+id="btnSubmit"
+class="btn-submit"
+onclick="periksaJawaban(false)">
 
+✅ Kirim Jawaban
 
-                    <label class="option">
+</button>
 
-                        <input
-                            type="radio"
-                            name="q6"
-                            value="C">
+</div>
 
-                        C. Drop-Down
 
-                    </label>
+</form>
 
+</section>
 
-                    <label class="option">
 
-                        <input
-                            type="radio"
-                            name="q6"
-                            value="D">
+</main>
 
-                        D. Text Box
 
-                    </label>
+<footer>
 
-                </div>
+<p>
+© 2026 TIK Learning -
+UPTD BLK Kabupaten Subang
+</p>
 
+</footer>
 
-                <!-- SOAL 7 -->
 
-                <div class="question-card">
+<script>
 
-                    <div class="question-number">
-                        Soal 7 dari 15
-                    </div>
+/* =====================================================
+   KONFIGURASI UTAMA
+===================================================== */
 
-                    <div class="question-text">
+const PASSWORD_KUIS = "TIK12345";
 
-                        Pengaturan Content Control dapat
-                        dilakukan melalui...
+const DURASI_KUIS = 10 * 60;
 
-                    </div>
+const BATAS_LULUS = 75;
 
+const TOTAL_SOAL = 15;
 
-                    <label class="option">
 
-                        <input
-                            type="radio"
-                            name="q7"
-                            value="A">
+/* =====================================================
+   KONFIGURASI DATABASE
+===================================================== */
 
-                        A. Properties
+const API_URL =
+"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
 
-                    </label>
 
+/* =====================================================
+   IDENTITAS KUIS
+===================================================== */
 
-                    <label class="option">
+const KELAS_KUIS =
+"Microsoft Word 2016";
 
-                        <input
-                            type="radio"
-                            name="q7"
-                            value="B">
+const MODUL_KUIS =
+"Modul 8 - Formulir Interaktif & Protect Document";
 
-                        B. Save As
 
-                    </label>
+/* =====================================================
+   VARIABEL
+===================================================== */
 
+let waktu = DURASI_KUIS;
 
-                    <label class="option">
+let timerInterval = null;
 
-                        <input
-                            type="radio"
-                            name="q7"
-                            value="C">
+let kuisDimulai = false;
 
-                        C. Print
+let kuisSelesai = false;
 
-                    </label>
+let namaPeserta = "";
 
+let hasilSudahDikirim = false;
 
-                    <label class="option">
 
-                        <input
-                            type="radio"
-                            name="q7"
-                            value="D">
+/* =====================================================
+   KUNCI JAWABAN
+===================================================== */
 
-                        D. Zoom
+const kunciJawaban = {
 
-                    </label>
+    q1: "A",
 
-                </div>
+    q2: "C",
 
+    q3: "A",
 
-                <!-- SOAL 8 -->
+    q4: "A",
 
-                <div class="question-card">
+    q5: "B",
 
-                    <div class="question-number">
-                        Soal 8 dari 15
-                    </div>
+    q6: "B",
 
-                    <div class="question-text">
+    q7: "C",
 
-                        Tujuan utama Protect Document adalah...
+    q8: "A",
 
-                    </div>
+    q9: "A",
 
+    q10: "B",
 
-                    <label class="option">
+    q11: "A",
 
-                        <input
-                            type="radio"
-                            name="q8"
-                            value="A">
+    q12: "B",
 
-                        A. Memperbesar ukuran dokumen
+    q13: "A",
 
-                    </label>
+    q14: "B",
 
+    q15: "A"
 
-                    <label class="option">
+};
 
-                        <input
-                            type="radio"
-                            name="q8"
-                            value="B">
 
-                        B. Membatasi perubahan pada dokumen
+/* =====================================================
+   CEK PASSWORD
+===================================================== */
 
-                    </label>
+function cekPassword() {
 
+    const input =
+        document.getElementById("passwordInput");
 
-                    <label class="option">
+    const password =
+        input.value.trim();
 
-                        <input
-                            type="radio"
-                            name="q8"
-                            value="C">
+    const error =
+        document.getElementById("passwordError");
 
-                        C. Mengubah warna dokumen
 
-                    </label>
+    if (password === PASSWORD_KUIS) {
 
+        error.style.display = "none";
 
-                    <label class="option">
+        document.getElementById(
+            "passwordSection"
+        ).style.display = "none";
 
-                        <input
-                            type="radio"
-                            name="q8"
-                            value="D">
+        document.getElementById(
+            "namaSection"
+        ).style.display = "block";
 
-                        D. Menghapus isi dokumen
+        document.getElementById(
+            "namaInput"
+        ).focus();
 
-                    </label>
+        window.scrollTo({
 
-                </div>
+            top: 0,
 
+            behavior: "smooth"
 
-                <!-- SOAL 9 -->
+        });
 
-                <div class="question-card">
+    }
 
-                    <div class="question-number">
-                        Soal 9 dari 15
-                    </div>
+    else {
 
-                    <div class="question-text">
+        error.style.display = "block";
 
-                        Fitur untuk membatasi pengeditan dokumen
-                        adalah...
+        input.value = "";
 
-                    </div>
+        input.focus();
 
+    }
 
-                    <label class="option">
+}
 
-                        <input
-                            type="radio"
-                            name="q9"
-                            value="A">
 
-                        A. Restrict Editing
+/* =====================================================
+   ENTER PASSWORD
+===================================================== */
 
-                    </label>
+document.getElementById(
+    "passwordInput"
+).addEventListener(
+    "keydown",
+    function(event) {
 
+        if (event.key === "Enter") {
 
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q9"
-                            value="B">
-
-                        B. Format Painter
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q9"
-                            value="C">
-
-                        C. Word Count
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q9"
-                            value="D">
-
-                        D. Page Color
-
-                    </label>
-
-                </div>
-
-
-                <!-- SOAL 10 -->
-
-                <div class="question-card">
-
-                    <div class="question-number">
-                        Soal 10 dari 15
-                    </div>
-
-                    <div class="question-text">
-
-                        Password pada dokumen yang diproteksi
-                        berfungsi untuk...
-
-                    </div>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q10"
-                            value="A">
-
-                        A. Membuat dokumen lebih besar
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q10"
-                            value="B">
-
-                        B. Mencegah perubahan proteksi tanpa izin
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q10"
-                            value="C">
-
-                        C. Mengubah font
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q10"
-                            value="D">
-
-                        D. Mengatur margin
-
-                    </label>
-
-                </div>
-
-
-                <!-- SOAL 11 -->
-
-                <div class="question-card">
-
-                    <div class="question-number">
-                        Soal 11 dari 15
-                    </div>
-
-                    <div class="question-text">
-
-                        Sebelum formulir dibagikan kepada pengguna,
-                        sebaiknya dilakukan...
-
-                    </div>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q11"
-                            value="A">
-
-                        A. Pengujian formulir
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q11"
-                            value="B">
-
-                        B. Penghapusan kontrol
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q11"
-                            value="C">
-
-                        C. Penghapusan password
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q11"
-                            value="D">
-
-                        D. Mengubah semua font
-
-                    </label>
-
-                </div>
-
-
-                <!-- SOAL 12 -->
-
-                <div class="question-card">
-
-                    <div class="question-number">
-                        Soal 12 dari 15
-                    </div>
-
-                    <div class="question-text">
-
-                        Jika ingin pengguna hanya dapat memilih
-                        pilihan yang sudah disediakan, kontrol
-                        yang paling tepat adalah...
-
-                    </div>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q12"
-                            value="A">
-
-                        A. Plain Text
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q12"
-                            value="B">
-
-                        B. Drop-Down List
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q12"
-                            value="C">
-
-                        C. Date Picker
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q12"
-                            value="D">
-
-                        D. Page Number
-
-                    </label>
-
-                </div>
-
-
-                <!-- SOAL 13 -->
-
-                <div class="question-card">
-
-                    <div class="question-number">
-                        Soal 13 dari 15
-                    </div>
-
-                    <div class="question-text">
-
-                        Jika sebuah formulir memiliki pilihan
-                        "Word", "Excel", dan "PowerPoint" dan peserta
-                        dapat memilih lebih dari satu, kontrol yang
-                        tepat adalah...
-
-                    </div>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q13"
-                            value="A">
-
-                        A. Check Box
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q13"
-                            value="B">
-
-                        B. Date Picker
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q13"
-                            value="C">
-
-                        C. Drop-Down List
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q13"
-                            value="D">
-
-                        D. Plain Text
-
-                    </label>
-
-                </div>
-
-
-                <!-- SOAL 14 -->
-
-                <div class="question-card">
-
-                    <div class="question-number">
-                        Soal 14 dari 15
-                    </div>
-
-                    <div class="question-text">
-
-                        Jika pemilik dokumen ingin melakukan perubahan
-                        pada dokumen yang sedang diproteksi, maka
-                        perlindungan harus...
-
-                    </div>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q14"
-                            value="A">
-
-                        A. Diperkuat
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q14"
-                            value="B">
-
-                        B. Dihentikan terlebih dahulu
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q14"
-                            value="C">
-
-                        C. Disimpan sebagai PDF
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q14"
-                            value="D">
-
-                        D. Dicetak
-
-                    </label>
-
-                </div>
-
-
-                <!-- SOAL 15 -->
-
-                <div class="question-card">
-
-                    <div class="question-number">
-                        Soal 15 dari 15
-                    </div>
-
-                    <div class="question-text">
-
-                        Tujuan utama penggunaan formulir interaktif
-                        yang dilindungi adalah...
-
-                    </div>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q15"
-                            value="A">
-
-                        A. Membuat dokumen lebih sulit dibaca
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q15"
-                            value="B">
-
-                        B. Memungkinkan pengguna mengisi data
-                        tanpa mengubah struktur dokumen
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q15"
-                            value="C">
-
-                        C. Menghapus semua isi dokumen
-
-                    </label>
-
-
-                    <label class="option">
-
-                        <input
-                            type="radio"
-                            name="q15"
-                            value="D">
-
-                        D. Membuat dokumen tidak dapat dibuka
-
-                    </label>
-
-                </div>
-
-
-                <!-- TOMBOL -->
-
-                <section class="quiz-button-area">
-
-                    <button
-                        type="button"
-                        class="btn-submit"
-                        onclick="periksaJawaban(false)">
-
-                        ✅ Kirim Jawaban
-
-                    </button>
-
-
-                    <a
-                        href="modul-word-8.html"
-                        class="btn-kembali">
-
-                        ← Kembali ke Modul
-
-                    </a>
-
-                </section>
-
-
-            </form>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        <p>
-            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
-        </p>
-
-    </footer>
-
-
-    <script>
-
-
-        /* ==================================================
-           PASSWORD KUIS
-           GANTI PASSWORD DI SINI JIKA DIPERLUKAN
-        ================================================== */
-
-        const PASSWORD_KUIS = "BLKSubang2026";
-
-
-        /* ==================================================
-           VARIABEL
-        ================================================== */
-
-        let waktu = 10 * 60;
-
-        let timerInterval = null;
-
-        let kuisSedangBerjalan = false;
-
-        let kuisSelesai = false;
-
-        let namaPeserta = "";
-
-
-        /* ==================================================
-           MULAI KUIS
-        ================================================== */
-
-        function mulaiKuis() {
-
-            const namaInput =
-                document.getElementById("namaPeserta");
-
-            const passwordInput =
-                document.getElementById("passwordKuis");
-
-            const namaError =
-                document.getElementById("namaError");
-
-            const passwordError =
-                document.getElementById("passwordError");
-
-
-            const nama =
-                namaInput.value.trim();
-
-            const password =
-                passwordInput.value;
-
-
-            /* =========================
-               CEK NAMA
-            ========================= */
-
-            if (nama === "") {
-
-                namaError.style.display = "block";
-
-                namaInput.focus();
-
-                return;
-
-            }
-
-            else {
-
-                namaError.style.display = "none";
-
-            }
-
-
-            /* =========================
-               CEK PASSWORD
-            ========================= */
-
-            if (password !== PASSWORD_KUIS) {
-
-                passwordError.style.display = "block";
-
-                passwordInput.focus();
-
-                return;
-
-            }
-
-            else {
-
-                passwordError.style.display = "none";
-
-            }
-
-
-            /* =========================
-               SIMPAN NAMA
-            ========================= */
-
-            namaPeserta = nama;
-
-
-            document.getElementById(
-                "namaPesertaHeader"
-            ).textContent = namaPeserta;
-
-
-            document.getElementById(
-                "namaPesertaHasil"
-            ).textContent = namaPeserta;
-
-
-            /* =========================
-               PINDAH KE KUIS
-            ========================= */
-
-            document.getElementById(
-                "halamanPembuka"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "halamanKuis"
-            ).style.display = "block";
-
-
-            kuisSedangBerjalan = true;
-
-            kuisSelesai = false;
-
-            waktu = 10 * 60;
-
-
-            tampilkanWaktu();
-
-            mulaiTimer();
-
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            cekPassword();
 
         }
 
+    }
+);
 
-        /* ==================================================
-           ENTER PADA PASSWORD
-        ================================================== */
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
+/* =====================================================
+   SIMPAN NAMA
+===================================================== */
 
-                document
-                    .getElementById("passwordKuis")
-                    .addEventListener(
-                        "keydown",
-                        function (event) {
+function simpanNama() {
 
-                            if (event.key === "Enter") {
+    const input =
+        document.getElementById("namaInput");
 
-                                event.preventDefault();
+    const error =
+        document.getElementById("namaError");
 
-                                mulaiKuis();
+    const nama =
+        input.value.trim();
 
-                            }
 
-                        }
+    if (nama === "") {
+
+        error.style.display = "block";
+
+        error.innerHTML =
+            "⚠️ Nama peserta wajib diisi.";
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    if (nama.length < 3) {
+
+        error.style.display = "block";
+
+        error.innerHTML =
+            "⚠️ Nama peserta minimal 3 karakter.";
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    namaPeserta = nama;
+
+    error.style.display = "none";
+
+
+    document.getElementById(
+        "namaPesertaMulai"
+    ).textContent = namaPeserta;
+
+
+    document.getElementById(
+        "namaSection"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "halamanMulai"
+    ).style.display = "block";
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   ENTER NAMA
+===================================================== */
+
+document.getElementById(
+    "namaInput"
+).addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            simpanNama();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   MULAI KUIS
+===================================================== */
+
+function mulaiKuis() {
+
+    if (kuisDimulai) {
+
+        return;
+
+    }
+
+
+    if (!namaPeserta) {
+
+        alert(
+            "Nama peserta belum diisi."
+        );
+
+        return;
+
+    }
+
+
+    kuisDimulai = true;
+
+    kuisSelesai = false;
+
+    hasilSudahDikirim = false;
+
+    waktu = DURASI_KUIS;
+
+
+    document.getElementById(
+        "halamanMulai"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "areaKuis"
+    ).style.display = "block";
+
+
+    mulaiTimer();
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function mulaiTimer() {
+
+    updateTimerDisplay();
+
+
+    timerInterval =
+        setInterval(
+            function() {
+
+                waktu--;
+
+                updateTimerDisplay();
+
+
+                if (waktu <= 120) {
+
+                    document.getElementById(
+                        "timerBox"
+                    ).classList.add(
+                        "timer-warning"
+                    );
+
+                }
+
+
+                if (waktu <= 60) {
+
+                    document.getElementById(
+                        "timerBox"
+                    ).classList.remove(
+                        "timer-warning"
+                    );
+
+                    document.getElementById(
+                        "timerBox"
+                    ).classList.add(
+                        "timer-danger"
+                    );
+
+                }
+
+
+                if (waktu <= 0) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+                    waktu = 0;
+
+                    updateTimerDisplay();
+
+
+                    alert(
+                        "⏰ Waktu pengerjaan telah habis. Jawaban Anda akan dikumpulkan otomatis."
                     );
 
 
-                document
-                    .getElementById("namaPeserta")
-                    .addEventListener(
-                        "keydown",
-                        function (event) {
+                    periksaJawaban(true);
 
-                            if (event.key === "Enter") {
+                }
 
-                                event.preventDefault();
+            },
+            1000
+        );
 
-                                mulaiKuis();
+}
 
-                            }
 
-                        }
-                    );
+/* =====================================================
+   UPDATE TIMER
+===================================================== */
 
-            }
+function updateTimerDisplay() {
+
+    const menit =
+        Math.floor(waktu / 60);
+
+    const detik =
+        waktu % 60;
+
+
+    document.getElementById(
+        "timer"
+    ).textContent =
+
+        String(menit).padStart(2, "0")
+        + ":"
+        + String(detik).padStart(2, "0");
+
+}
+
+
+/* =====================================================
+   PENILAIAN
+===================================================== */
+
+function periksaJawaban(
+    otomatis = false
+) {
+
+    if (kuisSelesai) {
+
+        return;
+
+    }
+
+
+    let jumlahBenar = 0;
+
+    let jumlahSalah = 0;
+
+    let belumDijawab = 0;
+
+
+    for (
+        let i = 1;
+        i <= TOTAL_SOAL;
+        i++
+    ) {
+
+        const jawaban =
+            document.querySelector(
+                'input[name="q' +
+                i +
+                '"]:checked'
+            );
+
+
+        if (!jawaban) {
+
+            belumDijawab++;
+
+        }
+
+        else if (
+            jawaban.value ===
+            kunciJawaban["q" + i]
+        ) {
+
+            jumlahBenar++;
+
+        }
+
+        else {
+
+            jumlahSalah++;
+
+        }
+
+    }
+
+
+    /* =================================================
+       JIKA MANUAL DAN BELUM LENGKAP
+    ================================================= */
+
+    if (
+        belumDijawab > 0 &&
+        otomatis === false
+    ) {
+
+        const peringatan =
+            document.getElementById(
+                "peringatan"
+            );
+
+
+        peringatan.style.display =
+            "block";
+
+
+        peringatan.innerHTML =
+
+            "⚠️ <strong>Masih ada " +
+
+            belumDijawab +
+
+            " soal yang belum dijawab.</strong><br>" +
+
+            "Silakan lengkapi semua jawaban sebelum mengirim kuis.";
+
+
+        peringatan.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+        });
+
+
+        return;
+
+    }
+
+
+    /* =================================================
+       KUIS SELESAI
+    ================================================= */
+
+    kuisSelesai = true;
+
+
+    if (timerInterval) {
+
+        clearInterval(
+            timerInterval
+        );
+
+    }
+
+
+    /* =================================================
+       NONAKTIFKAN TOMBOL
+    ================================================= */
+
+    const tombolSubmit =
+        document.getElementById(
+            "btnSubmit"
+        );
+
+    if (tombolSubmit) {
+
+        tombolSubmit.disabled = true;
+
+    }
+
+
+    /* =================================================
+       HITUNG NILAI
+    ================================================= */
+
+    const nilai =
+        Math.round(
+            (jumlahBenar / TOTAL_SOAL) *
+            100
         );
 
 
-        /* ==================================================
-           TAMPILKAN WAKTU
-        ================================================== */
-
-        function tampilkanWaktu() {
-
-            const menit =
-                Math.floor(waktu / 60);
-
-            const detik =
-                waktu % 60;
+    const persentase =
+        nilai;
 
 
-            document.getElementById(
-                "timer"
-            ).textContent =
-                String(menit).padStart(2, "0")
-                + ":"
-                +
-                String(detik).padStart(2, "0");
-
-        }
+    const statusHasil =
+        nilai >= BATAS_LULUS
+            ? "Lulus"
+            : "Belum Lulus";
 
 
-        /* ==================================================
-           TIMER
-        ================================================== */
+    /* =================================================
+       TAMPILKAN HASIL
+    ================================================= */
 
-        function mulaiTimer() {
-
-            clearInterval(timerInterval);
-
-
-            timerInterval =
-                setInterval(function () {
+    document.getElementById(
+        "namaPesertaHasil"
+    ).textContent =
+        namaPeserta;
 
 
-                    if (
-                        !kuisSedangBerjalan ||
-                        kuisSelesai
-                    ) {
-
-                        clearInterval(
-                            timerInterval
-                        );
-
-                        return;
-
-                    }
+    document.getElementById(
+        "nilai"
+    ).textContent =
+        nilai;
 
 
-                    waktu--;
+    document.getElementById(
+        "jumlahBenar"
+    ).textContent =
+        jumlahBenar;
 
 
-                    tampilkanWaktu();
+    document.getElementById(
+        "jumlahSalah"
+    ).textContent =
+        jumlahSalah;
 
 
-                    const timerBox =
-                        document.getElementById(
-                            "timerBox"
-                        );
+    document.getElementById(
+        "persentase"
+    ).textContent =
+        persentase + "%";
 
 
-                    /* =========================
-                       2 MENIT
-                    ========================= */
-
-                    if (waktu <= 120) {
-
-                        timerBox.classList.add(
-                            "timer-warning"
-                        );
-
-                    }
+    const status =
+        document.getElementById(
+            "status"
+        );
 
 
-                    /* =========================
-                       1 MENIT
-                    ========================= */
-
-                    if (waktu <= 60) {
-
-                        timerBox.classList.remove(
-                            "timer-warning"
-                        );
-
-                        timerBox.classList.add(
-                            "timer-danger"
-                        );
-
-                    }
+    const pesan =
+        document.getElementById(
+            "pesanHasil"
+        );
 
 
-                    /* =========================
-                       WAKTU HABIS
-                    ========================= */
+    if (nilai >= BATAS_LULUS) {
 
-                    if (waktu <= 0) {
+        status.innerHTML =
 
-                        clearInterval(
-                            timerInterval
-                        );
+            '<div class="status-lulus">' +
 
-                        kuisSedangBerjalan = false;
+            '🎉 LULUS' +
+
+            '</div>';
 
 
-                        alert(
-                            "⏰ Waktu pengerjaan telah habis.\n\n" +
-                            "Jawaban akan dikumpulkan otomatis."
-                        );
+        pesan.textContent =
+
+            "Selamat! " +
+
+            namaPeserta +
+
+            " telah mencapai batas kelulusan Modul 8.";
+
+    }
+
+    else {
+
+        status.innerHTML =
+
+            '<div class="status-gagal">' +
+
+            '❌ BELUM LULUS' +
+
+            '</div>';
 
 
-                        periksaJawaban(true);
+        pesan.textContent =
 
-                    }
+            "Nilai Anda belum mencapai batas kelulusan. Silakan pelajari kembali materi Modul 8.";
 
-
-                }, 1000);
-
-        }
+    }
 
 
-        /* ==================================================
-           PERIKSA JAWABAN
-        ================================================== */
+    /* =================================================
+       SEMBUNYIKAN KUIS
+    ================================================= */
 
-        function periksaJawaban(
-            dariTimer = false
+    document.getElementById(
+        "areaKuis"
+    ).style.display = "none";
+
+
+    /* =================================================
+       TAMPILKAN HASIL
+    ================================================= */
+
+    document.getElementById(
+        "hasilKuis"
+    ).style.display = "block";
+
+
+    /* =================================================
+       KIRIM KE GOOGLE APPS SCRIPT
+    ================================================= */
+
+    kirimHasilKeServer(
+
+        jumlahBenar,
+
+        nilai,
+
+        waktu,
+
+        statusHasil
+
+    );
+
+
+    document.getElementById(
+        "hasilKuis"
+    ).scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
+
+}
+
+
+/* =====================================================
+   KIRIM HASIL KE GOOGLE APPS SCRIPT
+===================================================== */
+
+async function kirimHasilKeServer(
+
+    jumlahBenar,
+
+    nilai,
+
+    waktuTersisa,
+
+    statusHasil
+
+) {
+
+
+    if (hasilSudahDikirim) {
+
+        return;
+
+    }
+
+
+    hasilSudahDikirim = true;
+
+
+    const statusKirim =
+        document.getElementById(
+            "statusKirim"
+        );
+
+
+    statusKirim.className =
+        "status-kirim";
+
+
+    statusKirim.innerHTML =
+
+        "⏳ Menyimpan hasil kuis ke server...";
+
+
+    /* =================================================
+       HITUNG WAKTU PENGERJAAN
+    ================================================= */
+
+    const waktuDigunakan =
+        DURASI_KUIS - waktuTersisa;
+
+
+    const menit =
+        Math.floor(
+            waktuDigunakan / 60
+        );
+
+
+    const detik =
+        waktuDigunakan % 60;
+
+
+    const waktuFormat =
+
+        String(menit).padStart(2, "0")
+        + ":"
+        +
+        String(detik).padStart(2, "0");
+
+
+    /* =================================================
+       DATA YANG DIKIRIM
+    ================================================= */
+
+    const data = {
+
+        jenis: "kuis",
+
+        nama: namaPeserta,
+
+        kelas: KELAS_KUIS,
+
+        modul: MODUL_KUIS,
+
+        jumlahSoal: TOTAL_SOAL,
+
+        benar: jumlahBenar,
+
+        nilai: nilai,
+
+        waktu: waktuFormat
+
+    };
+
+
+    console.log(
+        "Data kuis yang dikirim:",
+        data
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                API_URL,
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+
+            );
+
+
+        const hasil =
+            await response.json();
+
+
+        console.log(
+            "Response Apps Script:",
+            hasil
+        );
+
+
+        if (
+            hasil.status ===
+            "success"
         ) {
 
-
-            if (kuisSelesai) {
-
-                return;
-
-            }
+            statusKirim.className =
+                "status-kirim berhasil";
 
 
-            let jumlahBenar = 0;
+            statusKirim.innerHTML =
 
-            let jumlahSalah = 0;
+                "✅ Hasil kuis berhasil disimpan ke database.";
 
-            let belumDijawab = 0;
+        }
 
+        else {
 
-            /* =========================
-               PERIKSA 15 SOAL
-            ========================= */
-
-            for (
-                let i = 1;
-                i <= 15;
-                i++
-            ) {
+            hasilSudahDikirim = false;
 
 
-                const jawaban =
-                    document.querySelector(
-                        'input[name="q' +
-                        i +
-                        '"]:checked'
-                    );
+            statusKirim.className =
+                "status-kirim gagal";
 
 
-                if (!jawaban) {
+            statusKirim.innerHTML =
 
-                    belumDijawab++;
+                "❌ Hasil belum berhasil disimpan. " +
 
-                }
-
-                else {
-
-                    if (
-                        jawaban.value ===
-                        kunciJawaban[
-                            "q" + i
-                        ]
-                    ) {
-
-                        jumlahBenar++;
-
-                    }
-
-                    else {
-
-                        jumlahSalah++;
-
-                    }
-
-                }
-
-            }
-
-
-            /* =========================
-               JIKA MANUAL
-            ========================= */
-
-            if (
-                belumDijawab > 0 &&
-                !dariTimer
-            ) {
-
-
-                const peringatan =
-                    document.getElementById(
-                        "peringatan"
-                    );
-
-
-                peringatan.style.display =
-                    "block";
-
-
-                peringatan.innerHTML =
-                    "⚠️ <strong>Masih ada " +
-                    belumDijawab +
-                    " soal yang belum dijawab.</strong><br>" +
-                    "Silakan lengkapi semua jawaban " +
-                    "sebelum mengirim kuis.";
-
-
-                peringatan.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-
-                return;
-
-            }
-
-
-            /* =========================
-               JIKA WAKTU HABIS
-            ========================= */
-
-            if (dariTimer) {
-
-                jumlahSalah =
-                    15 - jumlahBenar;
-
-            }
-
-
-            /* =========================
-               SELESAI
-            ========================= */
-
-            clearInterval(timerInterval);
-
-            kuisSedangBerjalan = false;
-
-            kuisSelesai = true;
-
-
-            document.getElementById(
-                "peringatan"
-            ).style.display = "none";
-
-
-            /* =========================
-               HITUNG NILAI
-            ========================= */
-
-            const nilai =
-                Math.round(
-                    (jumlahBenar / 15) * 100
+                (
+                    hasil.message ||
+                    "Terjadi kesalahan pada server."
                 );
-
-
-            const persentase =
-                nilai;
-
-
-            /* =========================
-               TAMPILKAN HASIL
-            ========================= */
-
-            document.getElementById(
-                "nilai"
-            ).textContent = nilai;
-
-
-            document.getElementById(
-                "jumlahBenar"
-            ).textContent =
-                jumlahBenar;
-
-
-            document.getElementById(
-                "jumlahSalah"
-            ).textContent =
-                jumlahSalah;
-
-
-            document.getElementById(
-                "persentase"
-            ).textContent =
-                persentase + "%";
-
-
-            document.getElementById(
-                "namaPesertaHasil"
-            ).textContent =
-                namaPeserta;
-
-
-            /* =========================
-               STATUS
-            ========================= */
-
-            const status =
-                document.getElementById(
-                    "status"
-                );
-
-
-            const pesan =
-                document.getElementById(
-                    "pesanHasil"
-                );
-
-
-            if (nilai >= 75) {
-
-
-                status.innerHTML =
-                    '<div class="status-lulus">' +
-                    '🎉 LULUS' +
-                    '</div>';
-
-
-                pesan.textContent =
-                    "Selamat, " +
-                    namaPeserta +
-                    "! Anda telah mencapai " +
-                    "batas nilai kelulusan Modul 8.";
-
-            }
-
-
-            else {
-
-
-                status.innerHTML =
-                    '<div class="status-gagal">' +
-                    '❌ BELUM LULUS' +
-                    '</div>';
-
-
-                pesan.textContent =
-                    "Nama peserta: " +
-                    namaPeserta +
-                    ". Nilai Anda belum mencapai " +
-                    "batas kelulusan. Pelajari kembali " +
-                    "Modul 8 dan ulangi kuis.";
-
-            }
-
-
-            /* =========================
-               SEMBUNYIKAN FORM
-            ========================= */
-
-            document.getElementById(
-                "quizForm"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "hasilKuis"
-            ).style.display = "block";
-
-
-            /* =========================
-               SCROLL KE HASIL
-            ========================= */
-
-            document.getElementById(
-                "hasilKuis"
-            ).scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
 
         }
 
 
-        /* ==================================================
-           ULANGI KUIS
-        ================================================== */
+    }
 
-        function ulangKuis() {
+    catch (error) {
 
-
-            clearInterval(
-                timerInterval
-            );
+        console.error(
+            "Error mengirim hasil:",
+            error
+        );
 
 
-            document.getElementById(
-                "quizForm"
-            ).reset();
+        hasilSudahDikirim = false;
 
 
-            document.getElementById(
-                "hasilKuis"
-            ).style.display = "none";
+        statusKirim.className =
+            "status-kirim gagal";
 
 
-            document.getElementById(
-                "quizForm"
-            ).style.display = "block";
+        statusKirim.innerHTML =
+
+            "❌ Tidak dapat terhubung ke server. " +
+
+            "Periksa koneksi internet atau Apps Script.";
+
+    }
+
+}
 
 
-            document.getElementById(
-                "peringatan"
-            ).style.display = "none";
+/* =====================================================
+   ULANGI KUIS
+===================================================== */
+
+function ulangKuis() {
 
 
-            /* RESET TIMER */
+    if (
+        !confirm(
+            "Apakah Anda yakin ingin mengulang kuis?"
+        )
+    ) {
 
-            waktu = 10 * 60;
+        return;
 
-            kuisSedangBerjalan = false;
-
-            kuisSelesai = false;
-
-
-            /* RESET WARNA TIMER */
-
-            document.getElementById(
-                "timerBox"
-            ).classList.remove(
-                "timer-warning",
-                "timer-danger"
-            );
+    }
 
 
-            tampilkanWaktu();
+    /* =================================================
+       RESET HASIL
+    ================================================= */
+
+    document.getElementById(
+        "hasilKuis"
+    ).style.display = "none";
 
 
-            /* KEMBALI KE HALAMAN PEMBUKA */
+    /* =================================================
+       RESET AREA
+    ================================================= */
 
-            document.getElementById(
-                "halamanKuis"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "halamanPembuka"
-            ).style.display = "block";
+    document.getElementById(
+        "areaKuis"
+    ).style.display = "none";
 
 
-            /* KOSONGKAN DATA */
+    /* =================================================
+       TAMPILKAN HALAMAN MULAI
+    ================================================= */
 
-            document.getElementById(
-                "passwordKuis"
-            ).value = "";
-
-
-            document.getElementById(
-                "namaPeserta"
-            ).value = "";
+    document.getElementById(
+        "halamanMulai"
+    ).style.display = "block";
 
 
-            document.getElementById(
-                "namaError"
-            ).style.display = "none";
+    /* =================================================
+       RESET FORM
+    ================================================= */
+
+    document.getElementById(
+        "quizForm"
+    ).reset();
 
 
-            document.getElementById(
-                "passwordError"
-            ).style.display = "none";
+    /* =================================================
+       RESET TIMER
+    ================================================= */
+
+    clearInterval(
+        timerInterval
+    );
 
 
-            namaPeserta = "";
+    waktu =
+        DURASI_KUIS;
 
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
+    kuisDimulai =
+        false;
 
 
-        /* ==================================================
-           KUNCI JAWABAN
-        ================================================== */
-
-        const kunciJawaban = {
-
-            q1: "C",
-
-            q2: "A",
-
-            q3: "B",
-
-            q4: "A",
-
-            q5: "B",
-
-            q6: "A",
-
-            q7: "A",
-
-            q8: "B",
-
-            q9: "A",
-
-            q10: "B",
-
-            q11: "A",
-
-            q12: "B",
-
-            q13: "A",
-
-            q14: "B",
-
-            q15: "B"
-
-        };
+    kuisSelesai =
+        false;
 
 
-    </script>
+    hasilSudahDikirim =
+        false;
+
+
+    updateTimerDisplay();
+
+
+    /* =================================================
+       RESET TIMER COLOR
+    ================================================= */
+
+    document.getElementById(
+        "timerBox"
+    ).classList.remove(
+
+        "timer-warning",
+
+        "timer-danger"
+
+    );
+
+
+    /* =================================================
+       RESET PERINGATAN
+    ================================================= */
+
+    document.getElementById(
+        "peringatan"
+    ).style.display =
+        "none";
+
+
+    /* =================================================
+       RESET STATUS KIRIM
+    ================================================= */
+
+    const statusKirim =
+        document.getElementById(
+            "statusKirim"
+        );
+
+
+    statusKirim.className =
+        "status-kirim";
+
+
+    statusKirim.innerHTML =
+        "⏳ Menyiapkan penyimpanan hasil...";
+
+
+    /* =================================================
+       RESET TOMBOL
+    ================================================= */
+
+    const tombolSubmit =
+        document.getElementById(
+            "btnSubmit"
+        );
+
+
+    if (tombolSubmit) {
+
+        tombolSubmit.disabled =
+            false;
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
 
 </body>
 
