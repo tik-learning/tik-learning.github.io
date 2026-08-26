@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 11 - Macro & Otomasi Tingkat Lanjut</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:42px 20px;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+}
+
+.container{
+    max-width:1050px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:20px 0 10px;
+}
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.tip{
+    background:#e3f2fd;
+    border-left:5px solid #1976d2;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.danger{
+    background:#ffebee;
+    border-left:5px solid #d32f2f;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.example{
+    background:#f7faf8;
+    border:1px solid #dce5df;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+.step{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:15px;
+    margin:10px 0;
+}
+
+.badge{
+    display:inline-block;
+    background:#107c41;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.code{
+    background:#263238;
+    color:#e8f5e9;
+    padding:18px;
+    border-radius:10px;
+    margin:15px 0;
+    font-family:Consolas,"Courier New",monospace;
+    overflow-x:auto;
+    white-space:pre;
+    line-height:1.5;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th,td{
+    border:1px solid #d8e0dc;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#107c41;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+ul,ol{
+    padding-left:25px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin:25px 0 40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:8px;
+    background:#107c41;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+}
+
+@media(max-width:650px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    table{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<header class="header">
+
+<h1>⚙️ MODUL 11</h1>
+
+<p>
+Macro & Otomasi Tingkat Lanjut pada Microsoft Excel 2016
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- TUJUAN -->
+
+<section class="card">
+
+<h2>🎯 Tujuan Pembelajaran</h2>
+
+<p>
+Setelah menyelesaikan modul ini, peserta diharapkan mampu:
+</p>
+
+<ul>
+
+<li>Memahami konsep Macro pada Microsoft Excel.</li>
+
+<li>Menjelaskan hubungan Macro dengan VBA.</li>
+
+<li>Mengaktifkan tab Developer.</li>
+
+<li>Memahami keamanan Macro.</li>
+
+<li>Merekam Macro menggunakan Record Macro.</li>
+
+<li>Menjalankan Macro.</li>
+
+<li>Menggunakan Relative References.</li>
+
+<li>Membuka dan mengenali Visual Basic Editor.</li>
+
+<li>Mengedit Macro sederhana.</li>
+
+<li>Memahami dasar sintaks VBA.</li>
+
+<li>Menggunakan variabel sederhana.</li>
+
+<li>Menggunakan kondisi If...Then.</li>
+
+<li>Menggunakan perulangan For...Next.</li>
+
+<li>Menggunakan MsgBox.</li>
+
+<li>Membuat tombol untuk menjalankan Macro.</li>
+
+<li>Membuat otomasi sederhana untuk pekerjaan Excel.</li>
+
+</ul>
+
+</section>
+
+
+<!-- PENGANTAR -->
+
+<section class="card">
+
+<h2>1. Apa Itu Macro?</h2>
+
+<p>
+<strong>Macro</strong> adalah sekumpulan instruksi yang digunakan
+untuk mengotomatisasi pekerjaan berulang di Microsoft Excel.
+</p>
+
+<p>
+Dengan Macro, pekerjaan yang biasanya dilakukan secara manual
+berulang kali dapat dijalankan dengan satu perintah.
+</p>
+
+<div class="example">
+
+<strong>Contoh pekerjaan berulang:</strong>
+
+<ul>
+
+<li>Memberikan format pada laporan.</li>
+
+<li>Menghapus data tertentu.</li>
+
+<li>Membuat laporan secara otomatis.</li>
+
+<li>Menyalin data dari satu worksheet ke worksheet lain.</li>
+
+<li>Mengatur ukuran kolom.</li>
+
+<li>Membuat tabel laporan.</li>
+
+<li>Membersihkan data.</li>
+
+</ul>
+
+</div>
+
+<div class="info">
+
+<strong>Contoh sederhana:</strong>
+
+<p>
+Jika setiap hari kita harus melakukan 10 langkah untuk
+membuat laporan, Macro dapat digunakan untuk menjalankan
+langkah-langkah tersebut secara otomatis.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- VBA -->
+
+<section class="card">
+
+<h2>2. Apa Itu VBA?</h2>
+
+<p>
+<strong>VBA (Visual Basic for Applications)</strong> adalah bahasa
+pemrograman yang digunakan untuk membuat dan mengembangkan Macro
+di Microsoft Office.
+</p>
+
+<p>
+Pada Excel, VBA memungkinkan kita membuat otomatisasi yang lebih
+fleksibel dibandingkan hanya menggunakan Record Macro.
+</p>
+
+<table>
+
+<tr>
+<th>Istilah</th>
+<th>Pengertian</th>
+</tr>
+
+<tr>
+<td>Macro</td>
+<td>Serangkaian perintah untuk mengotomatisasi pekerjaan.</td>
+</tr>
+
+<tr>
+<td>VBA</td>
+<td>Bahasa pemrograman yang digunakan untuk membuat Macro.</td>
+</tr>
+
+<tr>
+<td>Visual Basic Editor</td>
+<td>Lingkungan untuk melihat dan mengedit kode VBA.</td>
+</tr>
+
+<tr>
+<td>Module</td>
+<td>Tempat penyimpanan kode Macro VBA.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- DEVELOPER -->
+
+<section class="card">
+
+<h2>3. Mengaktifkan Tab Developer</h2>
+
+<p>
+Untuk menggunakan Macro dan VBA, tab <strong>Developer</strong>
+perlu diaktifkan.
+</p>
+
+<h3>Langkah pada Excel 2016</h3>
+
+<div class="step">
+
+<span class="badge">1</span>
+
+<p>
+Klik <strong>File</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">2</span>
+
+<p>
+Klik <strong>Options</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">3</span>
+
+<p>
+Pilih <strong>Customize Ribbon</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">4</span>
+
+<p>
+Pada bagian Main Tabs, centang <strong>Developer</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">5</span>
+
+<p>
+Klik <strong>OK</strong>.
+</p>
+
+</div>
+
+<p>
+Setelah itu tab Developer akan muncul pada Ribbon Excel.
+</p>
+
+</section>
+
+
+<!-- KEAMANAN -->
+
+<section class="card">
+
+<h2>4. Keamanan Macro</h2>
+
+<p>
+Macro dapat menjalankan kode sehingga Excel memiliki fitur
+keamanan untuk mengontrol Macro yang berasal dari file.
+</p>
+
+<h3>Macro Security</h3>
+
+<p>
+Pengaturan keamanan dapat ditemukan melalui:
+</p>
+
+<div class="code">File → Options → Trust Center → Trust Center Settings → Macro Settings</div>
+
+<p>
+Beberapa pilihan keamanan Macro antara lain:
+</p>
+
+<table>
+
+<tr>
+<th>Pengaturan</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td>Disable all macros with notification</td>
+<td>Macro dinonaktifkan tetapi pengguna diberi pilihan untuk mengaktifkannya.</td>
+</tr>
+
+<tr>
+<td>Disable all macros without notification</td>
+<td>Macro dinonaktifkan tanpa pemberitahuan.</td>
+</tr>
+
+<tr>
+<td>Enable all macros</td>
+<td>Semua Macro diizinkan berjalan.</td>
+</tr>
+
+</table>
+
+<div class="warning">
+
+<strong>⚠️ Penting:</strong>
+
+<p>
+Jangan sembarangan mengaktifkan Macro dari file yang tidak
+dipercaya. Macro dapat berisi kode yang menjalankan tindakan
+pada komputer.
+</p>
+
+<p>
+Untuk latihan, gunakan file Macro yang dibuat sendiri atau
+file dari sumber yang terpercaya.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FORMAT FILE -->
+
+<section class="card">
+
+<h2>5. Format File yang Mendukung Macro</h2>
+
+<p>
+Workbook yang berisi Macro tidak sebaiknya disimpan menggunakan
+format .xlsx karena format tersebut tidak menyimpan Macro VBA.
+</p>
+
+<table>
+
+<tr>
+<th>Format</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td>.xlsx</td>
+<td>Workbook Excel biasa, tidak menyimpan Macro VBA.</td>
+</tr>
+
+<tr>
+<td>.xlsm</td>
+<td>Excel Macro-Enabled Workbook dan dapat menyimpan Macro.</td>
+</tr>
+
+<tr>
+<td>.xlsb</td>
+<td>Excel Binary Workbook dan dapat menyimpan Macro.</td>
+</tr>
+
+<tr>
+<td>.xls</td>
+<td>Format workbook Excel versi lama.</td>
+</tr>
+
+</table>
+
+<div class="info">
+
+<strong>💡 Untuk latihan Macro Excel 2016:</strong>
+
+<p>
+Gunakan format:
+</p>
+
+<div class="code">Excel Macro-Enabled Workbook (*.xlsm)</div>
+
+</div>
+
+</section>
+
+
+<!-- RECORD MACRO -->
+
+<section class="card">
+
+<h2>6. Record Macro</h2>
+
+<p>
+<strong>Record Macro</strong> adalah fitur untuk merekam tindakan
+yang kita lakukan di Excel dan mengubahnya menjadi kode VBA.
+</p>
+
+<p>
+Fitur ini sangat berguna bagi pemula yang belum menguasai VBA.
+</p>
+
+<h3>Cara Record Macro</h3>
+
+<div class="step">
+
+<span class="badge">1</span>
+
+<p>
+Buka tab <strong>Developer</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">2</span>
+
+<p>
+Klik <strong>Record Macro</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">3</span>
+
+<p>
+Masukkan nama Macro.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">4</span>
+
+<p>
+Tentukan tempat penyimpanan Macro.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">5</span>
+
+<p>
+Klik <strong>OK</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">6</span>
+
+<p>
+Lakukan pekerjaan yang ingin direkam.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">7</span>
+
+<p>
+Klik <strong>Stop Recording</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTOH RECORD -->
+
+<section class="card">
+
+<h2>7. Praktik Record Macro Sederhana</h2>
+
+<p>
+Kita akan membuat Macro untuk memberikan format sederhana
+pada sebuah judul laporan.
+</p>
+
+<h3>Langkah</h3>
+
+<ol>
+
+<li>Buat teks "LAPORAN DATA PESERTA" pada cell A1.</li>
+
+<li>Aktifkan Record Macro.</li>
+
+<li>Beri nama Macro: <strong>FormatJudul</strong>.</li>
+
+<li>Pilih A1.</li>
+
+<li>Buat tulisan menjadi Bold.</li>
+
+<li>Atur alignment menjadi Center.</li>
+
+<li>Atur ukuran font.</li>
+
+<li>Hentikan Record Macro.</li>
+
+</ol>
+
+<p>
+Macro tersebut sekarang dapat digunakan kembali untuk
+menjalankan format yang sama.
+</p>
+
+</section>
+
+
+<!-- RUN MACRO -->
+
+<section class="card">
+
+<h2>8. Menjalankan Macro</h2>
+
+<p>
+Macro yang sudah dibuat dapat dijalankan melalui beberapa cara.
+</p>
+
+<h3>Cara 1 — Developer</h3>
+
+<div class="code">Developer → Macros → pilih Macro → Run</div>
+
+<h3>Cara 2 — Shortcut</h3>
+
+<p>
+Macro dapat diberikan shortcut ketika dibuat.
+</p>
+
+<h3>Cara 3 — Tombol</h3>
+
+<p>
+Macro dapat dihubungkan dengan Button pada worksheet.
+</p>
+
+</section>
+
+
+<!-- RELATIVE -->
+
+<section class="card">
+
+<h2>9. Use Relative References</h2>
+
+<p>
+Pada Record Macro terdapat pilihan
+<strong>Use Relative References</strong>.
+</p>
+
+<p>
+Pilihan ini menentukan apakah Macro merekam posisi cell
+secara relatif terhadap cell aktif.
+</p>
+
+<h3>Perbedaan</h3>
+
+<table>
+
+<tr>
+<th>Absolute Reference</th>
+<th>Relative Reference</th>
+</tr>
+
+<tr>
+<td>Menggunakan posisi cell tertentu.</td>
+<td>Mengikuti posisi relatif terhadap cell aktif.</td>
+</tr>
+
+<tr>
+<td>Cocok untuk pekerjaan pada lokasi tertentu.</td>
+<td>Cocok untuk pekerjaan yang ingin diterapkan pada posisi berbeda.</td>
+</tr>
+
+</table>
+
+<div class="tip">
+
+<strong>Contoh:</strong>
+
+<p>
+Jika Macro direkam untuk memformat cell di sebelah kanan
+cell aktif, Relative References memungkinkan pola tersebut
+digunakan ketika cell aktif berpindah.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- VBA EDITOR -->
+
+<section class="card">
+
+<h2>10. Mengenal Visual Basic Editor</h2>
+
+<p>
+Visual Basic Editor atau VBE digunakan untuk melihat,
+membuat, dan mengedit kode VBA.
+</p>
+
+<h3>Cara membuka VBE</h3>
+
+<ul>
+
+<li>Developer → Visual Basic</li>
+
+<li>Shortcut: <strong>Alt + F11</strong></li>
+
+</ul>
+
+<p>
+Di dalam VBE kita akan menemukan beberapa bagian penting:
+</p>
+
+<table>
+
+<tr>
+<th>Bagian</th>
+<th>Fungsi</th>
+</tr>
+
+<tr>
+<td>Project Explorer</td>
+<td>Menampilkan workbook dan objek VBA.</td>
+</tr>
+
+<tr>
+<td>Code Window</td>
+<td>Tempat menulis dan mengedit kode.</td>
+</tr>
+
+<tr>
+<td>Properties Window</td>
+<td>Menampilkan properti objek.</td>
+</tr>
+
+<tr>
+<td>Immediate Window</td>
+<td>Dapat digunakan untuk pengujian dan debugging sederhana.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- MODULE -->
+
+<section class="card">
+
+<h2>11. Module VBA</h2>
+
+<p>
+Kode Macro biasanya disimpan di dalam sebuah Module.
+</p>
+
+<h3>Cara membuat Module</h3>
+
+<div class="code">Alt + F11
+↓
+Insert
+↓
+Module</div>
+
+<p>
+Setelah Module dibuat, kita dapat menulis prosedur VBA.
+</p>
+
+</section>
+
+
+<!-- SUB -->
+
+<section class="card">
+
+<h2>12. Struktur Dasar VBA</h2>
+
+<p>
+Macro VBA biasanya menggunakan struktur
+<strong>Sub...End Sub</strong>.
+</p>
+
+<div class="code">Sub ContohMacro()
+
+    MsgBox "Halo, Excel!"
+
+End Sub</div>
+
+<p>
+Keterangan:
+</p>
+
+<ul>
+
+<li><strong>Sub</strong> menandai awal prosedur.</li>
+
+<li><strong>ContohMacro</strong> adalah nama Macro.</li>
+
+<li><strong>MsgBox</strong> menampilkan pesan.</li>
+
+<li><strong>End Sub</strong> menandai akhir prosedur.</li>
+
+</ul>
+
+</section>
+
+
+<!-- OBJECT -->
+
+<section class="card">
+
+<h2>13. Mengenal Object dalam VBA</h2>
+
+<p>
+Excel memiliki banyak objek yang dapat dikendalikan menggunakan VBA.
+</p>
+
+<table>
+
+<tr>
+<th>Object</th>
+<th>Contoh</th>
+</tr>
+
+<tr>
+<td>Application</td>
+<td>Aplikasi Excel.</td>
+</tr>
+
+<tr>
+<td>Workbook</td>
+<td>File Excel yang sedang dibuka.</td>
+</tr>
+
+<tr>
+<td>Worksheet</td>
+<td>Lembar kerja.</td>
+</tr>
+
+<tr>
+<td>Range</td>
+<td>Satu atau beberapa cell.</td>
+</tr>
+
+<tr>
+<td>Cell</td>
+<td>Sel pada worksheet.</td>
+</tr>
+
+</table>
+
+<h3>Contoh</h3>
+
+<div class="code">Range("A1").Value = "Laporan Peserta"</div>
+
+<p>
+Kode tersebut mengisi cell A1 dengan teks
+"Laporan Peserta".
+</p>
+
+</section>
+
+
+<!-- PROPERTY -->
+
+<section class="card">
+
+<h2>14. Property dan Method</h2>
+
+<p>
+Dalam VBA terdapat istilah <strong>Property</strong> dan
+<strong>Method</strong>.
+</p>
+
+<h3>Property</h3>
+
+<p>
+Property merupakan karakteristik atau nilai dari suatu objek.
+</p>
+
+<div class="code">Range("A1").Value = "Excel"</div>
+
+<p>
+<strong>Value</strong> merupakan property.
+</p>
+
+<h3>Method</h3>
+
+<p>
+Method merupakan tindakan yang dapat dilakukan terhadap objek.
+</p>
+
+<div class="code">Range("A1").ClearContents</div>
+
+<p>
+<strong>ClearContents</strong> merupakan method.
+</p>
+
+</section>
+
+
+<!-- RANGE -->
+
+<section class="card">
+
+<h2>15. Menggunakan Range</h2>
+
+<h3>Mengisi Cell</h3>
+
+<div class="code">Range("A1").Value = "Nama Peserta"</div>
+
+<h3>Mengisi Beberapa Cell</h3>
+
+<div class="code">Range("A1:A10").Value = "Peserta"</div>
+
+<h3>Mengubah Format</h3>
+
+<div class="code">Range("A1").Font.Bold = True</div>
+
+<h3>Menghapus Isi</h3>
+
+<div class="code">Range("A1").ClearContents</div>
+
+</section>
+
+
+<!-- CELLS -->
+
+<section class="card">
+
+<h2>16. Menggunakan Cells</h2>
+
+<p>
+Selain Range, kita dapat menggunakan objek Cells.
+</p>
+
+<div class="code">Cells(1,1).Value = "Nama"</div>
+
+<p>
+Artinya:
+</p>
+
+<ul>
+
+<li>1 = nomor baris</li>
+
+<li>1 = nomor kolom</li>
+
+</ul>
+
+<p>
+Sehingga kode tersebut mengacu pada cell A1.
+</p>
+
+<div class="code">Cells(2,1).Value = "Andi"</div>
+
+<p>
+Kode tersebut mengisi cell A2.
+</p>
+
+</section>
+
+
+<!-- VARIABEL -->
+
+<section class="card">
+
+<h2>17. Variabel VBA</h2>
+
+<p>
+Variabel digunakan untuk menyimpan nilai sementara selama
+Macro berjalan.
+</p>
+
+<h3>Contoh</h3>
+
+<div class="code">Dim nama As String
+
+nama = "Andi"
+
+MsgBox nama</div>
+
+<p>
+Pada contoh tersebut:
+</p>
+
+<ul>
+
+<li><strong>Dim</strong> digunakan untuk mendeklarasikan variabel.</li>
+
+<li><strong>nama</strong> adalah nama variabel.</li>
+
+<li><strong>String</strong> adalah tipe data teks.</li>
+
+</ul>
+
+</section>
+
+
+<!-- IF -->
+
+<section class="card">
+
+<h2>18. IF...THEN dalam VBA</h2>
+
+<p>
+IF digunakan untuk membuat keputusan berdasarkan kondisi tertentu.
+</p>
+
+<h3>Contoh</h3>
+
+<div class="code">Sub CekNilai()
+
+    Dim nilai As Double
+
+    nilai = Range("A1").Value
+
+    If nilai >= 75 Then
+
+        MsgBox "Lulus"
+
+    Else
+
+        MsgBox "Belum Lulus"
+
+    End If
+
+End Sub</div>
+
+<p>
+Jika nilai di A1 minimal 75 maka akan muncul pesan
+<strong>Lulus</strong>.
+</p>
+
+</section>
+
+
+<!-- FOR -->
+
+<section class="card">
+
+<h2>19. Perulangan For...Next</h2>
+
+<p>
+For...Next digunakan untuk menjalankan perintah berulang.
+</p>
+
+<h3>Contoh</h3>
+
+<div class="code">Sub IsiNomor()
+
+    Dim i As Integer
+
+    For i = 1 To 10
+
+        Cells(i,1).Value = i
+
+    Next i
+
+End Sub</div>
+
+<p>
+Macro tersebut akan mengisi angka 1 sampai 10 pada
+cell A1 sampai A10.
+</p>
+
+</section>
+
+
+<!-- MSGBOX -->
+
+<section class="card">
+
+<h2>20. MsgBox</h2>
+
+<p>
+<strong>MsgBox</strong> digunakan untuk menampilkan pesan
+kepada pengguna.
+</p>
+
+<div class="code">MsgBox "Data berhasil diproses."</div>
+
+<p>
+MsgBox dapat digunakan sebagai pemberitahuan setelah Macro
+selesai melakukan suatu pekerjaan.
+</p>
+
+</section>
+
+
+<!-- BUTTON -->
+
+<section class="card">
+
+<h2>21. Membuat Tombol Macro</h2>
+
+<p>
+Macro dapat dijalankan menggunakan tombol sehingga pengguna
+tidak perlu membuka menu Developer setiap kali menjalankan Macro.
+</p>
+
+<h3>Langkah</h3>
+
+<ol>
+
+<li>Buka tab <strong>Developer</strong>.</li>
+
+<li>Klik <strong>Insert</strong>.</li>
+
+<li>Pilih <strong>Button (Form Control)</strong>.</li>
+
+<li>Gambar tombol pada worksheet.</li>
+
+<li>Pilih Macro yang ingin dijalankan.</li>
+
+<li>Klik OK.</li>
+
+</ol>
+
+<p>
+Teks tombol dapat diubah menjadi:
+</p>
+
+<div class="code">PROSES DATA</div>
+
+</section>
+
+
+<!-- PRAKTIK 1 -->
+
+<section class="card">
+
+<h2>22. Praktik 1 — Membuat Macro Sapaan</h2>
+
+<p>
+Buat Module baru kemudian masukkan kode berikut:
+</p>
+
+<div class="code">Sub Sapaan()
+
+    MsgBox "Selamat datang di Pelatihan Microsoft Excel!"
+
+End Sub</div>
+
+<p>
+Jalankan Macro tersebut menggunakan tombol
+<strong>Run</strong> pada Visual Basic Editor.
+</p>
+
+</section>
+
+
+<!-- PRAKTIK 2 -->
+
+<section class="card">
+
+<h2>23. Praktik 2 — Mengisi Data Otomatis</h2>
+
+<p>
+Macro berikut akan mengisi nomor 1 sampai 20 secara otomatis.
+</p>
+
+<div class="code">Sub IsiNomorPeserta()
+
+    Dim i As Integer
+
+    For i = 1 To 20
+
+        Cells(i,1).Value = i
+
+    Next i
+
+    MsgBox "Nomor peserta berhasil dibuat."
+
+End Sub</div>
+
+</section>
+
+
+<!-- PRAKTIK 3 -->
+
+<section class="card">
+
+<h2>24. Praktik 3 — Pemeriksaan Nilai Otomatis</h2>
+
+<p>
+Misalnya nilai peserta berada pada kolom B.
+Kita ingin menentukan status pada kolom C.
+</p>
+
+<div class="code">Sub CekKelulusan()
+
+    Dim i As Integer
+
+    For i = 2 To 20
+
+        If Cells(i,2).Value >= 75 Then
+
+            Cells(i,3).Value = "Lulus"
+
+        Else
+
+            Cells(i,3).Value = "Belum Lulus"
+
+        End If
+
+    Next i
+
+    MsgBox "Pemeriksaan nilai selesai."
+
+End Sub</div>
+
+<p>
+Macro tersebut memeriksa nilai pada B2:B20 kemudian
+menuliskan hasil pada C2:C20.
+</p>
+
+</section>
+
+
+<!-- PRAKTIK 4 -->
+
+<section class="card">
+
+<h2>25. Praktik 4 — Format Laporan Otomatis</h2>
+
+<p>
+Macro berikut dapat digunakan untuk memberikan format sederhana
+pada header laporan.
+</p>
+
+<div class="code">Sub FormatHeader()
+
+    With Range("A1:E1")
+
+        .Font.Bold = True
+
+        .HorizontalAlignment = xlCenter
+
+    End With
+
+    MsgBox "Format header selesai."
+
+End Sub</div>
+
+</section>
+
+
+<!-- PRAKTIK 5 -->
+
+<section class="card">
+
+<h2>26. Praktik 5 — Membersihkan Data</h2>
+
+<p>
+Macro dapat digunakan untuk menghapus isi area tertentu.
+</p>
+
+<div class="code">Sub BersihkanData()
+
+    Range("A2:E100").ClearContents
+
+    MsgBox "Data berhasil dibersihkan."
+
+End Sub</div>
+
+<div class="warning">
+
+<strong>⚠️ Perhatian:</strong>
+
+<p>
+Pastikan range yang akan dihapus benar.
+Macro yang menggunakan ClearContents dapat menghapus data
+dalam range tersebut.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- WITH -->
+
+<section class="card">
+
+<h2>27. Menggunakan With...End With</h2>
+
+<p>
+With digunakan untuk menjalankan beberapa perintah pada objek
+yang sama tanpa menuliskan objek berulang kali.
+</p>
+
+<div class="code">With Range("A1")
+
+    .Font.Bold = True
+
+    .Font.Size = 14
+
+    .HorizontalAlignment = xlCenter
+
+End With</div>
+
+<p>
+Kode tersebut menerapkan beberapa property pada cell A1.
+</p>
+
+</section>
+
+
+<!-- OTOMASI LANJUTAN -->
+
+<section class="card">
+
+<h2>28. Konsep Otomasi Tingkat Lanjut</h2>
+
+<p>
+Setelah memahami dasar Macro dan VBA, otomasi dapat dikembangkan
+menjadi sistem yang lebih kompleks.
+</p>
+
+<ul>
+
+<li>Otomatisasi pembuatan laporan.</li>
+
+<li>Otomatisasi rekap data.</li>
+
+<li>Otomatisasi pemeriksaan data.</li>
+
+<li>Otomatisasi format laporan.</li>
+
+<li>Otomatisasi pembuatan nomor dokumen.</li>
+
+<li>Otomatisasi pemindahan data antar-sheet.</li>
+
+<li>Otomatisasi filter data.</li>
+
+<li>Otomatisasi pembuatan file laporan.</li>
+
+</ul>
+
+</section>
+
+
+<!-- CONTOH OTOMASI LAPORAN -->
+
+<section class="card">
+
+<h2>29. Contoh Otomasi Laporan Peserta</h2>
+
+<p>
+Misalnya tersedia data peserta dengan struktur:
+</p>
+
+<table>
+
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+
+<tr>
+<td>No</td>
+<td>Nama</td>
+<td>Nilai</td>
+<td>Status</td>
+</tr>
+
+</table>
+
+<p>
+Macro dapat digunakan untuk:
+</p>
+
+<ol>
+
+<li>Mengisi nomor peserta.</li>
+
+<li>Mengecek nilai.</li>
+
+<li>Menentukan status.</li>
+
+<li>Memberikan format header.</li>
+
+<li>Menyesuaikan lebar kolom.</li>
+
+<li>Menampilkan pesan bahwa proses selesai.</li>
+
+</ol>
+
+<h3>Contoh kode</h3>
+
+<div class="code">Sub BuatLaporan()
+
+    Dim i As Integer
+
+    For i = 2 To 100
+
+        Cells(i,1).Value = i - 1
+
+        If Cells(i,3).Value >= 75 Then
+
+            Cells(i,4).Value = "Lulus"
+
+        Else
+
+            Cells(i,4).Value = "Belum Lulus"
+
+        End If
+
+    Next i
+
+    With Range("A1:D1")
+
+        .Font.Bold = True
+
+        .HorizontalAlignment = xlCenter
+
+    End With
+
+    Columns("A:D").AutoFit
+
+    MsgBox "Laporan berhasil diproses."
+
+End Sub</div>
+
+</section>
+
+
+<!-- DEBUG -->
+
+<section class="card">
+
+<h2>30. Debugging Macro</h2>
+
+<p>
+<strong>Debugging</strong> adalah proses mencari dan memperbaiki
+kesalahan pada kode VBA.
+</p>
+
+<h3>Beberapa penyebab error:</h3>
+
+<ul>
+
+<li>Salah mengetik nama objek.</li>
+
+<li>Salah menulis sintaks.</li>
+
+<li>Range tidak sesuai.</li>
+
+<li>Tipe data tidak sesuai.</li>
+
+<li>Objek worksheet tidak ditemukan.</li>
+
+</ul>
+
+<h3>Fitur penting pada VBA Editor</h3>
+
+<table>
+
+<tr>
+<th>Fitur</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>Run</td>
+<td>Menjalankan Macro.</td>
+</tr>
+
+<tr>
+<td>Break</td>
+<td>Menghentikan sementara eksekusi kode.</td>
+</tr>
+
+<tr>
+<td>Step Into</td>
+<td>Menjalankan kode langkah demi langkah.</td>
+</tr>
+
+<tr>
+<td>Immediate Window</td>
+<td>Menguji perintah VBA secara langsung.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- ERROR -->
+
+<section class="card">
+
+<h2>31. Kesalahan yang Sering Terjadi</h2>
+
+<table>
+
+<tr>
+<th>Masalah</th>
+<th>Kemungkinan Penyebab</th>
+<th>Solusi</th>
+</tr>
+
+<tr>
+<td>Macro tidak muncul</td>
+<td>File bukan format Macro-enabled.</td>
+<td>Simpan sebagai .xlsm.</td>
+</tr>
+
+<tr>
+<td>Macro tidak berjalan</td>
+<td>Macro diblokir.</td>
+<td>Periksa Macro Security.</td>
+</tr>
+
+<tr>
+<td>Kode error</td>
+<td>Sintaks VBA salah.</td>
+<td>Periksa kode.</td>
+</tr>
+
+<tr>
+<td>Data salah</td>
+<td>Range tidak tepat.</td>
+<td>Periksa alamat Range.</td>
+</tr>
+
+<tr>
+<td>Macro menghapus data</td>
+<td>ClearContents diarahkan ke range yang salah.</td>
+<td>Periksa range sebelum menjalankan.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- PRAKTIK AKHIR -->
+
+<section class="card">
+
+<h2>🧪 32. Praktik Akhir Modul</h2>
+
+<p>
+Buat sebuah workbook Excel dengan data peserta pelatihan.
+Kemudian buat Macro yang mampu melakukan proses berikut:
+</p>
+
+<ol>
+
+<li>Mengisi nomor peserta secara otomatis.</li>
+
+<li>Memeriksa nilai peserta.</li>
+
+<li>Menentukan status Lulus atau Belum Lulus.</li>
+
+<li>Memformat header tabel.</li>
+
+<li>Menyesuaikan lebar kolom.</li>
+
+<li>Menampilkan pesan setelah proses selesai.</li>
+
+</ol>
+
+<h3>Target hasil</h3>
+
+<div class="info">
+
+<strong>
+Satu tombol → seluruh proses laporan berjalan otomatis.
+</strong>
+
+<p>
+Inilah konsep dasar otomasi menggunakan Macro dan VBA.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- TIPS -->
+
+<section class="card">
+
+<h2>💡 33. Tips Menggunakan Macro</h2>
+
+<div class="step">
+
+<strong>1. Gunakan nama Macro yang jelas</strong>
+
+<p>
+Contoh: <strong>BuatLaporan</strong>,
+<strong>CekKelulusan</strong>, atau
+<strong>FormatData</strong>.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>2. Simpan workbook sebagai .xlsm</strong>
+
+<p>
+Gunakan Excel Macro-Enabled Workbook untuk menyimpan VBA.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>3. Uji Macro dengan data contoh</strong>
+
+<p>
+Jangan langsung menjalankan Macro pada data penting.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>4. Berikan tombol yang jelas</strong>
+
+<p>
+Contohnya "PROSES DATA" atau "BUAT LAPORAN".
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>5. Buat backup data</strong>
+
+<p>
+Simpan salinan data sebelum menjalankan Macro yang
+mengubah atau menghapus data.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- RANGKUMAN -->
+
+<section class="card">
+
+<h2>📌 34. Ringkasan Modul 11</h2>
+
+<table>
+
+<tr>
+<th>Materi</th>
+<th>Inti Pembelajaran</th>
+</tr>
+
+<tr>
+<td>Macro</td>
+<td>Otomatisasi pekerjaan berulang.</td>
+</tr>
+
+<tr>
+<td>VBA</td>
+<td>Bahasa pemrograman untuk Macro.</td>
+</tr>
+
+<tr>
+<td>Developer</td>
+<td>Tab untuk mengakses fitur Macro dan VBA.</td>
+</tr>
+
+<tr>
+<td>Record Macro</td>
+<td>Merekam tindakan pengguna menjadi kode VBA.</td>
+</tr>
+
+<tr>
+<td>Relative References</td>
+<td>Merekam referensi berdasarkan posisi relatif.</td>
+</tr>
+
+<tr>
+<td>VBE</td>
+<td>Editor untuk membuat dan mengedit kode VBA.</td>
+</tr>
+
+<tr>
+<td>Range</td>
+<td>Objek untuk mengakses cell/range.</td>
+</tr>
+
+<tr>
+<td>IF</td>
+<td>Membuat keputusan berdasarkan kondisi.</td>
+</tr>
+
+<tr>
+<td>For...Next</td>
+<td>Melakukan perulangan.</td>
+</tr>
+
+<tr>
+<td>MsgBox</td>
+<td>Menampilkan pesan kepada pengguna.</td>
+</tr>
+
+<tr>
+<td>Button</td>
+<td>Menjalankan Macro melalui tombol.</td>
+</tr>
+
+<tr>
+<td>.xlsm</td>
+<td>Format workbook yang dapat menyimpan Macro VBA.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- KESIMPULAN -->
+
+<section class="card">
+
+<h2>🎓 Kesimpulan</h2>
+
+<p>
+Macro dan VBA memungkinkan Excel digunakan bukan hanya sebagai
+aplikasi pengolah data, tetapi juga sebagai alat otomasi pekerjaan.
+</p>
+
+<p>
+Dengan Record Macro, pengguna pemula dapat mulai membuat
+otomasi tanpa harus langsung memahami seluruh sintaks VBA.
+Selanjutnya, kode hasil rekaman dapat dipelajari dan dimodifikasi
+menggunakan Visual Basic Editor.
+</p>
+
+<div class="info">
+
+<strong>🎯 Kompetensi akhir Modul 11:</strong>
+
+<p>
+Peserta mampu membuat Macro sederhana, merekam pekerjaan,
+menjalankan Macro, memahami dasar VBA, menggunakan kondisi
+dan perulangan, membuat tombol Macro, serta membangun
+otomasi sederhana untuk laporan Excel.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- NAVIGASI -->
+
+<div class="navigation">
+
+<a href="kuis-excel-10.html" class="btn">
+⬅️ Kembali ke Kuis Modul 10
+</a>
+
+<a href="kuis-excel-11.html" class="btn">
+📝 Lanjut ke Kuis Modul 11 ➡️
+</a>
+
+</div>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Modul 11 — Macro & Otomasi Tingkat Lanjut
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+</body>
+</html>

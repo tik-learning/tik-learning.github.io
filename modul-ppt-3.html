@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul 3 - Menyisipkan Objek | PowerPoint 2016</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.7;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.header-icon{
+    font-size:52px;
+    margin-bottom:8px;
+}
+
+.header h1{
+    font-size:30px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:16px;
+    opacity:.95;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1050px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:#fff;
+    border-radius:14px;
+    padding:26px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#c62828;
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#b71c1c;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:12px;
+}
+
+
+/* =========================
+   TUJUAN
+========================= */
+
+.learning-objective{
+    background:#fff3f3;
+    border-left:5px solid #e53935;
+    border-radius:9px;
+    padding:20px;
+}
+
+ul,
+ol{
+    margin-left:25px;
+    margin-bottom:15px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.number{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#e53935;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    flex-shrink:0;
+}
+
+
+/* =========================
+   PATH MENU
+========================= */
+
+.path{
+    display:inline-block;
+    background:#263238;
+    color:white;
+    padding:10px 16px;
+    border-radius:7px;
+    font-family:Consolas,monospace;
+    margin:8px 0 15px;
+}
+
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.highlight{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:18px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.tip{
+    background:#e8f5e9;
+    border-left:5px solid #43a047;
+    padding:18px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#ffebee;
+    border-left:5px solid #e53935;
+    padding:18px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+
+/* =========================
+   OBJECT GRID
+========================= */
+
+.object-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.object-item{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:18px;
+    text-align:center;
+    transition:.25s;
+}
+
+.object-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 12px rgba(0,0,0,.1);
+}
+
+.object-icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.object-item strong{
+    display:block;
+    color:#c62828;
+    margin-bottom:5px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+    margin:18px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th{
+    background:#c62828;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:11px;
+    border:1px solid #ddd;
+    vertical-align:top;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+
+/* =========================
+   STEP
+========================= */
+
+.step{
+    display:flex;
+    gap:15px;
+    margin:15px 0;
+    align-items:flex-start;
+}
+
+.step-number{
+    min-width:34px;
+    height:34px;
+    background:#e53935;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+
+/* =========================
+   EXAMPLE BOX
+========================= */
+
+.example{
+    background:#f8f9fa;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+.example-title{
+    color:#c62828;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+
+/* =========================
+   PRACTICE
+========================= */
+
+.practice{
+    background:linear-gradient(135deg,#fff3e0,#fff8e1);
+    border:2px solid #ffb300;
+    border-radius:14px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.practice h2{
+    color:#e65100;
+    margin-bottom:15px;
+}
+
+.practice-card{
+    background:white;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+    border-left:4px solid #e53935;
+}
+
+.practice-card h3{
+    margin-top:0;
+    color:#b71c1c;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+    background:linear-gradient(135deg,#263238,#37474f);
+    color:white;
+    padding:26px;
+    border-radius:14px;
+    margin-bottom:25px;
+}
+
+.summary h2{
+    color:white;
+    margin-bottom:12px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.button-area{
+    text-align:center;
+    margin:35px 0;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    padding:14px 25px;
+    border-radius:9px;
+    font-weight:bold;
+    margin:5px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(0,0,0,.2);
+}
+
+.btn-secondary{
+    background:#455a64;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:4px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .object-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:23px;
+    }
+
+    .header p{
+        font-size:14px;
+    }
+
+    .card{
+        padding:19px;
+    }
+
+    .card h2{
+        font-size:20px;
+    }
+
+    .object-grid{
+        grid-template-columns:1fr;
+    }
+
+    .step{
+        gap:10px;
+    }
+
+    .btn{
+        display:block;
+        margin:10px 0;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="header">
+
+    <div class="header-icon">
+        📊
+    </div>
+
+    <h1>
+        Modul 3
+    </h1>
+
+    <p>
+        Menyisipkan Objek pada Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ==================================================
+     TENTANG MODUL
+================================================== -->
+
+<section class="card">
+
+    <h2>
+        📚 Tentang Modul
+    </h2>
+
+    <p>
+        Pada modul ini peserta akan mempelajari cara
+        <strong>menyisipkan berbagai objek ke dalam slide
+        Microsoft PowerPoint 2016</strong>.
+    </p>
+
+    <p>
+        Objek dapat digunakan untuk membuat presentasi
+        lebih informatif, menarik, interaktif, dan profesional.
+    </p>
+
+    <div class="object-grid">
+
+        <div class="object-item">
+            <div class="object-icon">🖼️</div>
+            <strong>Picture</strong>
+            Gambar dari komputer
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">🌐</div>
+            <strong>Online Picture</strong>
+            Gambar online
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">🔷</div>
+            <strong>Shapes</strong>
+            Bentuk dan diagram
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">⭐</div>
+            <strong>Icons</strong>
+            Simbol visual
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">🔄</div>
+            <strong>SmartArt</strong>
+            Diagram informasi
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">📈</div>
+            <strong>Chart</strong>
+            Grafik data
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">📋</div>
+            <strong>Table</strong>
+            Data baris dan kolom
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">📸</div>
+            <strong>Screenshot</strong>
+            Tangkapan layar
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">🔗</div>
+            <strong>Hyperlink</strong>
+            Tautan
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     TUJUAN
+================================================== -->
+
+<section class="card">
+
+    <h2>
+        🎯 Tujuan Pembelajaran
+    </h2>
+
+    <div class="learning-objective">
+
+        <p>
+            Setelah menyelesaikan modul ini, peserta
+            diharapkan mampu:
+        </p>
+
+        <ol>
+
+            <li>Menyisipkan Picture.</li>
+
+            <li>Menyisipkan Online Picture.</li>
+
+            <li>Menggunakan Shapes.</li>
+
+            <li>Menyisipkan Icons.</li>
+
+            <li>Membuat SmartArt.</li>
+
+            <li>Membuat Chart.</li>
+
+            <li>Membuat dan mengatur Table.</li>
+
+            <li>Menggunakan Screenshot.</li>
+
+            <li>Membuat Hyperlink.</li>
+
+            <li>Menggunakan Action Buttons.</li>
+
+            <li>Mengatur Header dan Footer.</li>
+
+            <li>Menampilkan Date and Time.</li>
+
+            <li>Menampilkan Slide Number.</li>
+
+        </ol>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     1 PICTURE
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">1</div>
+
+        <h2>Picture</h2>
+
+    </div>
+
+    <p>
+        Picture digunakan untuk memasukkan gambar dari
+        komputer ke dalam slide.
+    </p>
+
+    <div class="path">
+        Insert → Pictures → This Device
+    </div>
+
+    <h3>Langkah-langkah</h3>
+
+    <div class="step">
+
+        <div class="step-number">1</div>
+
+        <div>
+            Klik tab <strong>Insert</strong>.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">2</div>
+
+        <div>
+            Pilih <strong>Pictures</strong>.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">3</div>
+
+        <div>
+            Pilih <strong>This Device</strong>.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">4</div>
+
+        <div>
+            Cari dan pilih gambar.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">5</div>
+
+        <div>
+            Klik <strong>Insert</strong>.
+        </div>
+
+    </div>
+
+    <h3>Mengatur Gambar</h3>
+
+    <p>
+        Setelah gambar dipilih, gunakan menu:
+    </p>
+
+    <div class="path">
+        Picture Tools → Format
+    </div>
+
+    <ul>
+
+        <li>Crop</li>
+
+        <li>Corrections</li>
+
+        <li>Color</li>
+
+        <li>Artistic Effects</li>
+
+        <li>Picture Styles</li>
+
+        <li>Picture Border</li>
+
+        <li>Picture Effects</li>
+
+        <li>Rotate</li>
+
+        <li>Compress Pictures</li>
+
+    </ul>
+
+    <div class="tip">
+
+        <strong>💡 Tips:</strong>
+
+        <p>
+            Gunakan gambar dengan resolusi yang baik agar
+            gambar tidak terlihat pecah ketika ditampilkan
+            pada layar besar.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     2 ONLINE PICTURE
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">2</div>
+
+        <h2>Online Picture</h2>
+
+    </div>
+
+    <p>
+        Online Picture digunakan untuk mencari dan
+        memasukkan gambar dari sumber online.
+    </p>
+
+    <div class="path">
+        Insert → Online Pictures
+    </div>
+
+    <h3>Langkah-langkah</h3>
+
+    <ol>
+
+        <li>Klik <strong>Insert</strong>.</li>
+
+        <li>Pilih <strong>Online Pictures</strong>.</li>
+
+        <li>Ketik kata kunci pencarian.</li>
+
+        <li>Pilih gambar.</li>
+
+        <li>Klik <strong>Insert</strong>.</li>
+
+    </ol>
+
+    <div class="example">
+
+        <div class="example-title">
+            Contoh kata kunci
+        </div>
+
+        <p>
+            <strong>Microsoft Office Training</strong>
+        </p>
+
+        <p>
+            <strong>Computer Training</strong>
+        </p>
+
+    </div>
+
+    <div class="warning">
+
+        <strong>⚠️ Perhatian:</strong>
+
+        <p>
+            Perhatikan hak penggunaan gambar.
+            Untuk publikasi atau penggunaan komersial,
+            gunakan gambar yang memiliki izin yang sesuai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     3 SHAPES
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">3</div>
+
+        <h2>Shapes</h2>
+
+    </div>
+
+    <p>
+        Shapes adalah bentuk-bentuk siap pakai yang dapat
+        digunakan untuk membuat diagram, tombol,
+        ilustrasi, maupun penanda.
+    </p>
+
+    <div class="path">
+        Insert → Shapes
+    </div>
+
+    <h3>Contoh Shapes</h3>
+
+    <ul>
+
+        <li>Rectangle</li>
+
+        <li>Rounded Rectangle</li>
+
+        <li>Oval</li>
+
+        <li>Triangle</li>
+
+        <li>Arrow</li>
+
+        <li>Line</li>
+
+        <li>Callout</li>
+
+        <li>Flowchart</li>
+
+    </ul>
+
+    <h3>Penggunaan Shapes</h3>
+
+    <div class="object-grid">
+
+        <div class="object-item">
+            <div class="object-icon">➡️</div>
+            Diagram Alur
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">🔘</div>
+            Tombol
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">📦</div>
+            Kotak Informasi
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">📍</div>
+            Penanda
+        </div>
+
+    </div>
+
+    <h3>Mengatur Shapes</h3>
+
+    <div class="path">
+        Drawing Tools → Format
+    </div>
+
+    <ul>
+
+        <li>Shape Fill</li>
+
+        <li>Shape Outline</li>
+
+        <li>Shape Effects</li>
+
+        <li>Shape Style</li>
+
+        <li>Rotate</li>
+
+        <li>Align</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ==================================================
+     4 ICONS
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">4</div>
+
+        <h2>Icons</h2>
+
+    </div>
+
+    <p>
+        Icons merupakan simbol grafis yang dapat digunakan
+        untuk memperjelas informasi pada slide.
+    </p>
+
+    <div class="path">
+        Insert → Icons
+    </div>
+
+    <div class="highlight">
+
+        <strong>📌 Catatan PowerPoint 2016</strong>
+
+        <p>
+            Fitur <strong>Icons</strong> dapat berbeda
+            ketersediaannya tergantung edisi dan versi
+            pembaruan Microsoft Office yang digunakan.
+        </p>
+
+    </div>
+
+    <h3>Contoh Penggunaan</h3>
+
+    <ul>
+
+        <li>💻 Komputer</li>
+
+        <li>📊 Data</li>
+
+        <li>📁 File</li>
+
+        <li>👥 Peserta</li>
+
+        <li>📅 Jadwal</li>
+
+        <li>📍 Lokasi</li>
+
+    </ul>
+
+    <div class="tip">
+
+        <strong>💡 Manfaat:</strong>
+
+        <p>
+            Ikon dapat membuat slide lebih mudah dipahami
+            tanpa menggunakan terlalu banyak teks.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     5 SMARTART
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">5</div>
+
+        <h2>SmartArt</h2>
+
+    </div>
+
+    <p>
+        SmartArt digunakan untuk membuat informasi dalam
+        bentuk diagram visual.
+    </p>
+
+    <div class="path">
+        Insert → SmartArt
+    </div>
+
+    <h3>Kategori SmartArt</h3>
+
+    <ul>
+
+        <li>List</li>
+
+        <li>Process</li>
+
+        <li>Cycle</li>
+
+        <li>Hierarchy</li>
+
+        <li>Relationship</li>
+
+        <li>Matrix</li>
+
+        <li>Pyramid</li>
+
+    </ul>
+
+    <div class="example">
+
+        <div class="example-title">
+            Contoh SmartArt Process
+        </div>
+
+        <p style="text-align:center;font-size:18px;font-weight:bold;">
+
+            Pendaftaran
+            →
+            Seleksi
+            →
+            Pelatihan
+            →
+            Evaluasi
+            →
+            Kelulusan
+
+        </p>
+
+    </div>
+
+    <h3>Mengatur SmartArt</h3>
+
+    <p>
+        Gunakan:
+    </p>
+
+    <div class="path">
+        SmartArt Tools → Design
+    </div>
+
+    <p>
+        dan:
+    </p>
+
+    <div class="path">
+        SmartArt Tools → Format
+    </div>
+
+    <ul>
+
+        <li>Mengubah warna.</li>
+
+        <li>Mengubah SmartArt Style.</li>
+
+        <li>Menambah Shape.</li>
+
+        <li>Menghapus Shape.</li>
+
+        <li>Mengubah Layout.</li>
+
+        <li>Mengatur ukuran.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ==================================================
+     6 CHART
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">6</div>
+
+        <h2>Chart</h2>
+
+    </div>
+
+    <p>
+        Chart digunakan untuk menyajikan data dalam bentuk
+        grafik sehingga data lebih mudah dibandingkan dan
+        dipahami.
+    </p>
+
+    <div class="path">
+        Insert → Chart
+    </div>
+
+    <h3>Jenis Chart</h3>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Jenis Chart</th>
+
+                    <th>Penggunaan</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Column</td>
+
+                    <td>Membandingkan data.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Bar</td>
+
+                    <td>Membandingkan data secara horizontal.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Line</td>
+
+                    <td>Melihat perkembangan data.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Pie</td>
+
+                    <td>Melihat persentase.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Area</td>
+
+                    <td>Menampilkan perubahan data.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Scatter</td>
+
+                    <td>Menampilkan hubungan antar-data.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>Contoh Data</h3>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Program</th>
+
+                    <th>Peserta</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>TIK</td>
+
+                    <td>20</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Bisnis & Manajemen</td>
+
+                    <td>25</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Teknik Las</td>
+
+                    <td>18</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Garmen</td>
+
+                    <td>22</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     7 TABLE
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">7</div>
+
+        <h2>Table</h2>
+
+    </div>
+
+    <p>
+        Table digunakan untuk menyajikan data dalam bentuk
+        baris dan kolom.
+    </p>
+
+    <div class="path">
+        Insert → Table
+    </div>
+
+    <h3>Contoh</h3>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>No</th>
+
+                    <th>Nama</th>
+
+                    <th>Program</th>
+
+                    <th>Nilai</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>1</td>
+
+                    <td>Andi</td>
+
+                    <td>TIK</td>
+
+                    <td>85</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>2</td>
+
+                    <td>Budi</td>
+
+                    <td>Las</td>
+
+                    <td>88</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>3</td>
+
+                    <td>Citra</td>
+
+                    <td>Garmen</td>
+
+                    <td>90</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>Mengatur Table</h3>
+
+    <div class="path">
+        Table Tools → Design
+    </div>
+
+    <div class="path">
+        Table Tools → Layout
+    </div>
+
+    <ul>
+
+        <li>Mengubah warna.</li>
+
+        <li>Menambah baris.</li>
+
+        <li>Menghapus baris.</li>
+
+        <li>Menggabungkan cell.</li>
+
+        <li>Mengatur ukuran kolom.</li>
+
+        <li>Mengatur posisi teks.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ==================================================
+     8 SCREENSHOT
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">8</div>
+
+        <h2>Screenshot</h2>
+
+    </div>
+
+    <p>
+        Screenshot digunakan untuk mengambil gambar dari
+        jendela aplikasi yang sedang terbuka dan memasukkannya
+        ke PowerPoint.
+    </p>
+
+    <div class="path">
+        Insert → Screenshot
+    </div>
+
+    <h3>Available Windows</h3>
+
+    <p>
+        Digunakan untuk mengambil gambar dari jendela aplikasi
+        yang sedang terbuka.
+    </p>
+
+    <h3>Screen Clipping</h3>
+
+    <p>
+        Digunakan untuk memilih bagian tertentu dari layar.
+    </p>
+
+    <div class="tip">
+
+        <strong>💡 Contoh penggunaan:</strong>
+
+        <ul>
+
+            <li>Membuat tutorial komputer.</li>
+
+            <li>Menjelaskan langkah penggunaan software.</li>
+
+            <li>Menampilkan halaman website.</li>
+
+            <li>Menunjukkan hasil pengaturan aplikasi.</li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     9 HYPERLINK
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">9</div>
+
+        <h2>Hyperlink</h2>
+
+    </div>
+
+    <p>
+        Hyperlink digunakan untuk membuat teks atau objek
+        dapat diklik dan mengarah ke lokasi tertentu.
+    </p>
+
+    <div class="path">
+        Insert → Hyperlink
+    </div>
+
+    <div class="highlight">
+
+        <strong>⌨️ Shortcut:</strong>
+
+        <p>
+            <strong>Ctrl + K</strong>
+        </p>
+
+    </div>
+
+    <h3>Hyperlink dapat mengarah ke:</h3>
+
+    <ul>
+
+        <li>Website.</li>
+
+        <li>File.</li>
+
+        <li>Email.</li>
+
+        <li>Slide tertentu.</li>
+
+    </ul>
+
+    <h3>Contoh Navigasi</h3>
+
+    <div class="example">
+
+        <p>🏠 Menu Utama</p>
+
+        <p>📚 Materi 1</p>
+
+        <p>📚 Materi 2</p>
+
+        <p>📝 Latihan</p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     10 ACTION BUTTON
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">10</div>
+
+        <h2>Action Buttons</h2>
+
+    </div>
+
+    <p>
+        Action Buttons merupakan tombol yang dapat diberikan
+        tindakan tertentu ketika diklik.
+    </p>
+
+    <div class="path">
+        Insert → Shapes → Action Buttons
+    </div>
+
+    <h3>Contoh Action Button</h3>
+
+    <div class="object-grid">
+
+        <div class="object-item">
+            <div class="object-icon">🏠</div>
+            <strong>Home</strong>
+            Menu utama
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">◀️</div>
+            <strong>Back</strong>
+            Slide sebelumnya
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">▶️</div>
+            <strong>Next</strong>
+            Slide berikutnya
+        </div>
+
+        <div class="object-item">
+            <div class="object-icon">❌</div>
+            <strong>Exit</strong>
+            Keluar
+        </div>
+
+    </div>
+
+    <h3>Action Settings</h3>
+
+    <p>
+        Action Button dapat diarahkan ke:
+    </p>
+
+    <ul>
+
+        <li>Next Slide</li>
+
+        <li>Previous Slide</li>
+
+        <li>First Slide</li>
+
+        <li>Last Slide</li>
+
+        <li>Hyperlink</li>
+
+        <li>Run Program</li>
+
+    </ul>
+
+    <div class="tip">
+
+        <strong>💡 Manfaat:</strong>
+
+        <p>
+            Action Button dapat digunakan untuk membuat
+            media pembelajaran PowerPoint yang interaktif.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     11 HEADER FOOTER
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">11</div>
+
+        <h2>Header and Footer</h2>
+
+    </div>
+
+    <p>
+        Header dan Footer digunakan untuk memberikan
+        informasi tambahan pada slide.
+    </p>
+
+    <div class="path">
+        Insert → Header & Footer
+    </div>
+
+    <h3>Informasi yang dapat ditampilkan</h3>
+
+    <ul>
+
+        <li>Date and Time</li>
+
+        <li>Slide Number</li>
+
+        <li>Footer</li>
+
+    </ul>
+
+    <h3>Langkah-langkah</h3>
+
+    <ol>
+
+        <li>Klik tab <strong>Insert</strong>.</li>
+
+        <li>Pilih <strong>Header & Footer</strong>.</li>
+
+        <li>Centang informasi yang ingin ditampilkan.</li>
+
+        <li>Klik <strong>Apply</strong>.</li>
+
+        <li>Atau klik <strong>Apply to All</strong>.</li>
+
+    </ol>
+
+</section>
+
+
+<!-- ==================================================
+     12 DATE TIME
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">12</div>
+
+        <h2>Date and Time</h2>
+
+    </div>
+
+    <p>
+        Date and Time digunakan untuk menampilkan tanggal
+        dan waktu pada slide.
+    </p>
+
+    <div class="path">
+        Insert → Header & Footer → Date and Time
+    </div>
+
+    <h3>Jenis Pengaturan</h3>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Pengaturan</th>
+
+                    <th>Fungsi</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Update automatically</td>
+
+                    <td>
+                        Tanggal diperbarui secara otomatis.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Fixed</td>
+
+                    <td>
+                        Tanggal tetap sesuai tanggal yang dimasukkan.
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="tip">
+
+        <strong>💡 Penggunaan:</strong>
+
+        <p>
+            Cocok digunakan untuk presentasi rapat, pelatihan,
+            seminar, laporan, dan presentasi kegiatan.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     13 SLIDE NUMBER
+================================================== -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        <div class="number">13</div>
+
+        <h2>Slide Number</h2>
+
+    </div>
+
+    <p>
+        Slide Number digunakan untuk menampilkan nomor
+        halaman slide.
+    </p>
+
+    <div class="path">
+        Insert → Header & Footer → Slide Number
+    </div>
+
+    <h3>Langkah-langkah</h3>
+
+    <ol>
+
+        <li>Klik <strong>Insert</strong>.</li>
+
+        <li>Pilih <strong>Header & Footer</strong>.</li>
+
+        <li>Centang <strong>Slide number</strong>.</li>
+
+        <li>Klik <strong>Apply to All</strong>.</li>
+
+    </ol>
+
+    <div class="example">
+
+        <div class="example-title">
+            Contoh
+        </div>
+
+        <p>
+            Slide 1 → 1
+        </p>
+
+        <p>
+            Slide 2 → 2
+        </p>
+
+        <p>
+            Slide 3 → 3
+        </p>
+
+        <p>
+            Slide 4 → 4
+        </p>
+
+    </div>
+
+    <div class="tip">
+
+        <strong>💡 Manfaat:</strong>
+
+        <p>
+            Nomor slide membantu audiens mengetahui posisi
+            mereka dalam sebuah presentasi.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     PRAKTIK MODUL 3
+================================================== -->
+
+<section class="practice">
+
+    <h2>
+        🛠️ Praktik Modul 3
+    </h2>
+
+    <p>
+        Buat sebuah presentasi dengan tema:
+    </p>
+
+    <h3>
+        "Profil dan Program Pelatihan BLK"
+    </h3>
+
+
+    <!-- SLIDE 1 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 1 — Cover
+        </h3>
+
+        <p>
+            Masukkan:
+        </p>
+
+        <ul>
+
+            <li>Judul.</li>
+
+            <li>Picture.</li>
+
+            <li>WordArt atau Text Box.</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- SLIDE 2 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 2 — Profil
+        </h3>
+
+        <p>
+            Gunakan:
+        </p>
+
+        <ul>
+
+            <li>Picture.</li>
+
+            <li>Shapes.</li>
+
+            <li>Text Box.</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- SLIDE 3 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 3 — Program Pelatihan
+        </h3>
+
+        <p>
+            Gunakan <strong>SmartArt</strong>.
+        </p>
+
+        <p>
+            Contoh:
+        </p>
+
+        <p style="font-weight:bold;text-align:center;">
+
+            TIK →
+            Bisnis & Manajemen →
+            Teknik →
+            Garmen
+
+        </p>
+
+    </div>
+
+
+    <!-- SLIDE 4 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 4 — Data Peserta
+        </h3>
+
+        <p>
+            Buat tabel menggunakan:
+        </p>
+
+        <strong>
+            Insert → Table
+        </strong>
+
+        <p>
+            Minimal 4 kolom dan 5 baris.
+        </p>
+
+    </div>
+
+
+    <!-- SLIDE 5 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 5 — Grafik
+        </h3>
+
+        <p>
+            Masukkan data peserta menggunakan:
+        </p>
+
+        <strong>
+            Insert → Chart
+        </strong>
+
+        <p>
+            Gunakan jenis <strong>Column Chart</strong>.
+        </p>
+
+    </div>
+
+
+    <!-- SLIDE 6 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 6 — Screenshot
+        </h3>
+
+        <p>
+            Masukkan screenshot halaman website
+            atau aplikasi menggunakan:
+        </p>
+
+        <strong>
+            Insert → Screenshot
+        </strong>
+
+    </div>
+
+
+    <!-- SLIDE 7 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 7 — Navigasi
+        </h3>
+
+        <p>
+            Buat tombol:
+        </p>
+
+        <ul>
+
+            <li>🏠 Home</li>
+
+            <li>◀ Back</li>
+
+            <li>▶ Next</li>
+
+        </ul>
+
+        <p>
+            Gunakan <strong>Action Buttons</strong>
+            dan hyperlink untuk navigasi antar-slide.
+        </p>
+
+    </div>
+
+
+    <!-- SLIDE 8 -->
+
+    <div class="practice-card">
+
+        <h3>
+            Slide 8 — Penutup
+        </h3>
+
+        <p>
+            Masukkan:
+        </p>
+
+        <ul>
+
+            <li>Date and Time.</li>
+
+            <li>Slide Number.</li>
+
+            <li>Footer.</li>
+
+        </ul>
+
+        <p>
+            Contoh Footer:
+        </p>
+
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+
+    </div>
+
+
+    <div class="highlight">
+
+        <strong>📁 Nama File:</strong>
+
+        <p>
+            Latihan_Modul_3_NamaPeserta.pptx
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     TUGAS
+================================================== -->
+
+<section class="card">
+
+    <h2>
+        🎯 Tugas Praktik
+    </h2>
+
+    <p>
+        Peserta membuat presentasi minimal
+        <strong>8 slide</strong>.
+    </p>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>No</th>
+
+                    <th>Objek</th>
+
+                    <th>Wajib</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>Picture</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Online Picture</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Shapes</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Icons</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>SmartArt</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Chart</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Table</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Screenshot</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>Hyperlink</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>Action Button</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>11</td>
+                    <td>Footer</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>12</td>
+                    <td>Date and Time</td>
+                    <td>✅</td>
+                </tr>
+
+                <tr>
+                    <td>13</td>
+                    <td>Slide Number</td>
+                    <td>✅</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     RANGKUMAN
+================================================== -->
+
+<section class="summary">
+
+    <h2>
+        📌 Rangkuman Modul 3
+    </h2>
+
+    <p>
+        Pada Modul 3 peserta telah mempelajari berbagai
+        objek yang dapat disisipkan ke dalam Microsoft
+        PowerPoint 2016.
+    </p>
+
+    <p>
+        Materi meliputi:
+    </p>
+
+    <p style="font-weight:bold;">
+
+        Picture →
+        Online Picture →
+        Shapes →
+        Icons →
+        SmartArt →
+        Chart →
+        Table →
+        Screenshot →
+        Hyperlink →
+        Action Buttons →
+        Header & Footer →
+        Date and Time →
+        Slide Number
+
+    </p>
+
+    <p>
+        Dengan menguasai fitur tersebut, peserta dapat
+        membuat presentasi yang lebih visual, informatif,
+        interaktif, dan profesional.
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     EVALUASI
+================================================== -->
+
+<section class="card">
+
+    <h2>
+        📝 Evaluasi
+    </h2>
+
+    <p>
+        Setelah mempelajari seluruh materi Modul 3 dan
+        menyelesaikan latihan, peserta dapat mengerjakan
+        kuis untuk menguji pemahaman.
+    </p>
+
+    <div class="warning">
+
+        <strong>
+            ⚠️ Perhatian!
+        </strong>
+
+        <p>
+            Pastikan seluruh materi sudah dipahami dan
+            latihan sudah dikerjakan sebelum mengerjakan
+            Kuis Modul 3.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     NAVIGATION
+================================================== -->
+
+<div class="button-area">
+
+    <a
+        href="modul-ppt-2.html"
+        class="btn btn-secondary">
+
+        ← Modul 2
+
+    </a>
+
+
+    <a
+        href="kuis-ppt-3.html"
+        class="btn">
+
+        📝 Mulai Kuis Modul 3 →
+
+    </a>
+
+</div>
+
+
+</main>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Modul 3 — Menyisipkan Objek
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+</body>
+</html>

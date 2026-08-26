@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 2 - Mengelola Slide dan Memformat Teks</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+        .header {
+            background: linear-gradient(135deg, #b71c1c, #e53935);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .header .icon {
+            font-size: 50px;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+        .container {
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+        .info-card {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-card h2 {
+            color: #c62828;
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .info-card h3 {
+            color: #b71c1c;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            margin-bottom: 12px;
+        }
+
+        /* =========================
+           TUJUAN
+        ========================= */
+        .tujuan {
+            background: #fff3f3;
+            border-left: 5px solid #e53935;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            background: white;
+        }
+
+        th {
+            background: #c62828;
+            color: white;
+            padding: 13px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* =========================
+           HIGHLIGHT
+        ========================= */
+        .highlight {
+            background: #fff8e1;
+            border-left: 5px solid #ffb300;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .tip {
+            background: #e8f5e9;
+            border-left: 5px solid #43a047;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .warning {
+            background: #ffebee;
+            border-left: 5px solid #e53935;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           MENU / FITUR
+        ========================= */
+        .menu-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .menu-box strong {
+            color: #c62828;
+        }
+
+        /* =========================
+           PATH
+        ========================= */
+        .path {
+            display: inline-block;
+            background: #263238;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 7px;
+            font-family: Consolas, monospace;
+            margin: 8px 0;
+        }
+
+        /* =========================
+           STEP
+        ========================= */
+        .step {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            min-width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e53935;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* =========================
+           PRACTICE
+        ========================= */
+        .practice {
+            background: linear-gradient(135deg, #fff3e0, #fff8e1);
+            border: 2px solid #ffb300;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+        }
+
+        .practice h2 {
+            color: #e65100;
+            margin-bottom: 12px;
+        }
+
+        .practice-card {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #e53935;
+        }
+
+        /* =========================
+           SUMMARY
+        ========================= */
+        .summary {
+            background: linear-gradient(135deg, #263238, #37474f);
+            color: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+        }
+
+        .summary h2 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+        .button-area {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #b71c1c, #e53935);
+            padding: 14px 28px;
+            border-radius: 9px;
+            font-weight: bold;
+            margin: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #455a64;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 4px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 700px) {
+
+            .header h1 {
+                font-size: 23px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .info-card {
+                padding: 18px;
+            }
+
+            .info-card h2 {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 9px;
+            }
+
+            .step {
+                gap: 10px;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+    <header class="header">
+
+        <div class="icon">📊</div>
+
+        <h1>Modul 2</h1>
+
+        <p>Mengelola Slide dan Memformat Teks</p>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- =========================
+             TENTANG MODUL
+        ========================= -->
+        <section class="info-card">
+
+            <h2>📚 Tentang Modul</h2>
+
+            <p>
+                Pada modul ini peserta akan mempelajari cara mengelola slide
+                dan memformat teks pada Microsoft PowerPoint 2016.
+            </p>
+
+            <p>
+                Materi dimulai dari membuat, menghapus, menyalin dan
+                memindahkan slide, kemudian dilanjutkan dengan pengaturan
+                layout, section, ukuran slide, serta berbagai teknik
+                pemformatan teks.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             TUJUAN
+        ========================= -->
+        <section class="info-card">
+
+            <h2>🎯 Tujuan Pembelajaran</h2>
+
+            <div class="tujuan">
+
+                <p>
+                    Setelah menyelesaikan modul ini, peserta diharapkan mampu:
+                </p>
+
+                <ul>
+
+                    <li>Membuat slide baru.</li>
+
+                    <li>Menghapus slide.</li>
+
+                    <li>Menyalin atau menggandakan slide.</li>
+
+                    <li>Memindahkan urutan slide.</li>
+
+                    <li>Mengubah layout slide.</li>
+
+                    <li>Menggunakan Section.</li>
+
+                    <li>Mengubah ukuran slide.</li>
+
+                    <li>Membuat dan menggunakan Text Box.</li>
+
+                    <li>Mengubah jenis dan ukuran huruf.</li>
+
+                    <li>Menggunakan Bold, Italic, dan Underline.</li>
+
+                    <li>Membuat WordArt.</li>
+
+                    <li>Menggunakan Bullet dan Numbering.</li>
+
+                    <li>Mengatur Line Spacing.</li>
+
+                    <li>Mengatur Indent.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             1 MEMBUAT SLIDE
+        ========================= -->
+        <section class="info-card">
+
+            <h2>1. Membuat Slide Baru</h2>
+
+            <p>
+                Slide baru digunakan untuk menambahkan halaman atau bagian
+                baru dalam sebuah presentasi.
+            </p>
+
+            <h3>Cara Membuat Slide Baru</h3>
+
+            <div class="path">
+                Home → New Slide
+            </div>
+
+            <p>
+                Cara cepat menggunakan keyboard:
+            </p>
+
+            <div class="highlight">
+
+                <strong>⌨️ Ctrl + M</strong>
+
+                <p>
+                    Shortcut Ctrl + M digunakan untuk membuat slide baru.
+                </p>
+
+            </div>
+
+            <h3>Langkah-langkah</h3>
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div>
+                    Pilih slide yang menjadi posisi sebelum slide baru.
+                </div>
+
+            </div>
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div>
+                    Klik tab <strong>Home</strong>.
+                </div>
+
+            </div>
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div>
+                    Klik <strong>New Slide</strong>.
+                </div>
+
+            </div>
+
+            <div class="step">
+
+                <div class="step-number">4</div>
+
+                <div>
+                    Slide baru akan muncul setelah slide yang dipilih.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             2 MENGHAPUS SLIDE
+        ========================= -->
+        <section class="info-card">
+
+            <h2>2. Menghapus Slide</h2>
+
+            <p>
+                Slide yang tidak diperlukan dapat dihapus dari presentasi.
+            </p>
+
+            <h3>Cara Menghapus Slide</h3>
+
+            <ol>
+
+                <li>Pilih slide pada <strong>Thumbnail Pane</strong>.</li>
+
+                <li>Klik kanan pada slide.</li>
+
+                <li>Pilih <strong>Delete Slide</strong>.</li>
+
+            </ol>
+
+            <div class="tip">
+
+                <strong>💡 Cara cepat:</strong>
+
+                <p>
+                    Pilih slide kemudian tekan tombol
+                    <strong>Delete</strong> pada keyboard.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             3 MENYALIN SLIDE
+        ========================= -->
+        <section class="info-card">
+
+            <h2>3. Menyalin atau Menggandakan Slide</h2>
+
+            <p>
+                Fitur <strong>Duplicate Slide</strong> digunakan untuk
+                membuat salinan slide tanpa harus membuat ulang isi slide.
+            </p>
+
+            <h3>Cara Menggandakan Slide</h3>
+
+            <ol>
+
+                <li>Pilih slide yang ingin digandakan.</li>
+
+                <li>Klik kanan pada slide.</li>
+
+                <li>Pilih <strong>Duplicate Slide</strong>.</li>
+
+            </ol>
+
+            <div class="highlight">
+
+                <strong>⌨️ Shortcut:</strong>
+
+                <p>
+                    <strong>Ctrl + D</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             4 MEMINDAHKAN SLIDE
+        ========================= -->
+        <section class="info-card">
+
+            <h2>4. Memindahkan Urutan Slide</h2>
+
+            <p>
+                Urutan slide dapat diubah sesuai alur presentasi.
+            </p>
+
+            <h3>Cara Memindahkan Slide</h3>
+
+            <ol>
+
+                <li>Pilih slide pada Thumbnail Pane.</li>
+
+                <li>Klik dan tahan slide.</li>
+
+                <li>Seret slide ke posisi yang diinginkan.</li>
+
+                <li>Lepaskan tombol mouse.</li>
+
+            </ol>
+
+            <div class="tip">
+
+                <strong>💡 Tips:</strong>
+
+                <p>
+                    Untuk presentasi dengan banyak slide, gunakan
+                    <strong>View → Slide Sorter</strong>.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             5 LAYOUT
+        ========================= -->
+        <section class="info-card">
+
+            <h2>5. Mengubah Layout Slide</h2>
+
+            <p>
+                Layout menentukan susunan tempat judul, teks, gambar,
+                dan objek lainnya pada sebuah slide.
+            </p>
+
+            <div class="path">
+                Home → Layout
+            </div>
+
+            <h3>Jenis Layout</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Layout</th>
+                        <th>Fungsi</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Title Slide</td>
+                        <td>Digunakan untuk slide judul.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Title and Content</td>
+                        <td>Judul dan satu area isi.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Section Header</td>
+                        <td>Untuk judul bagian atau section.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Two Content</td>
+                        <td>Memiliki dua area isi.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Comparison</td>
+                        <td>Untuk membandingkan dua informasi.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Title Only</td>
+                        <td>Hanya menyediakan area judul.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Blank</td>
+                        <td>Slide kosong tanpa placeholder.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Content with Caption</td>
+                        <td>Isi dengan keterangan.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Picture with Caption</td>
+                        <td>Gambar dengan keterangan.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             6 SECTION
+        ========================= -->
+        <section class="info-card">
+
+            <h2>6. Menggunakan Section</h2>
+
+            <p>
+                <strong>Section</strong> digunakan untuk mengelompokkan
+                slide berdasarkan topik atau bagian tertentu.
+            </p>
+
+            <div class="menu-box">
+
+                <strong>Contoh pembagian Section:</strong>
+
+                <p>
+                    <strong>Section 1 — Pendahuluan</strong><br>
+                    Slide 1–3
+                </p>
+
+                <p>
+                    <strong>Section 2 — Materi</strong><br>
+                    Slide 4–10
+                </p>
+
+                <p>
+                    <strong>Section 3 — Latihan</strong><br>
+                    Slide 11–13
+                </p>
+
+                <p>
+                    <strong>Section 4 — Penutup</strong><br>
+                    Slide 14–15
+                </p>
+
+            </div>
+
+            <h3>Cara Membuat Section</h3>
+
+            <ol>
+
+                <li>Pilih slide yang menjadi awal bagian baru.</li>
+
+                <li>Klik kanan pada slide.</li>
+
+                <li>Pilih <strong>Add Section</strong>.</li>
+
+                <li>Masukkan nama Section.</li>
+
+                <li>Klik <strong>Rename</strong>.</li>
+
+            </ol>
+
+            <div class="tip">
+
+                <strong>💡 Manfaat Section</strong>
+
+                <p>
+                    Section sangat membantu mengelola presentasi yang
+                    memiliki banyak slide.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             7 UKURAN SLIDE
+        ========================= -->
+        <section class="info-card">
+
+            <h2>7. Mengubah Ukuran Slide</h2>
+
+            <p>
+                Ukuran slide dapat disesuaikan dengan perangkat atau
+                kebutuhan presentasi.
+            </p>
+
+            <div class="path">
+                Design → Slide Size
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Ukuran</th>
+                        <th>Perbandingan</th>
+                        <th>Penggunaan</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Standard</td>
+                        <td>4 : 3</td>
+                        <td>Perangkat atau proyektor lama.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Widescreen</td>
+                        <td>16 : 9</td>
+                        <td>Laptop, monitor, TV, dan proyektor modern.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Custom</td>
+                        <td>Sesuai kebutuhan</td>
+                        <td>Poster, infografis, banner, dan kebutuhan khusus.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <h3>Custom Slide Size</h3>
+
+            <div class="path">
+                Design → Slide Size → Custom Slide Size
+            </div>
+
+            <p>
+                Pengguna dapat mengatur:
+            </p>
+
+            <ul>
+
+                <li><strong>Width</strong> — lebar slide.</li>
+
+                <li><strong>Height</strong> — tinggi slide.</li>
+
+                <li><strong>Orientation</strong> — orientasi slide.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             8 TEXT BOX
+        ========================= -->
+        <section class="info-card">
+
+            <h2>8. Membuat dan Memasukkan Text Box</h2>
+
+            <p>
+                Text Box digunakan untuk menempatkan teks secara bebas
+                pada area slide.
+            </p>
+
+            <div class="path">
+                Insert → Text Box
+            </div>
+
+            <h3>Langkah-langkah</h3>
+
+            <ol>
+
+                <li>Klik tab <strong>Insert</strong>.</li>
+
+                <li>Pilih <strong>Text Box</strong>.</li>
+
+                <li>Klik pada area slide.</li>
+
+                <li>Ketik teks.</li>
+
+            </ol>
+
+            <div class="tip">
+
+                <strong>💡 Text Box dapat digunakan untuk:</strong>
+
+                <ul>
+
+                    <li>Keterangan gambar.</li>
+
+                    <li>Kutipan.</li>
+
+                    <li>Informasi tambahan.</li>
+
+                    <li>Label.</li>
+
+                    <li>Teks pada posisi tertentu.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             9 FONT
+        ========================= -->
+        <section class="info-card">
+
+            <h2>9. Mengubah Jenis Huruf</h2>
+
+            <p>
+                Jenis huruf disebut <strong>Font</strong>.
+                PowerPoint menyediakan berbagai jenis font yang dapat
+                digunakan untuk memperjelas tampilan presentasi.
+            </p>
+
+            <div class="path">
+                Home → Font
+            </div>
+
+            <h3>Contoh Font</h3>
+
+            <ul>
+
+                <li>Arial</li>
+
+                <li>Calibri</li>
+
+                <li>Times New Roman</li>
+
+                <li>Verdana</li>
+
+                <li>Tahoma</li>
+
+            </ul>
+
+            <h3>Cara Mengubah Font</h3>
+
+            <ol>
+
+                <li>Blok teks.</li>
+
+                <li>Klik tab <strong>Home</strong>.</li>
+
+                <li>Pilih jenis font.</li>
+
+                <li>Pilih font yang diinginkan.</li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- =========================
+             10 FONT SIZE
+        ========================= -->
+        <section class="info-card">
+
+            <h2>10. Mengubah Ukuran Huruf</h2>
+
+            <p>
+                Ukuran huruf disebut <strong>Font Size</strong>.
+            </p>
+
+            <p>Contoh ukuran:</p>
+
+            <div class="menu-box">
+
+                <strong>12 pt → 16 pt → 20 pt → 24 pt → 28 pt → 32 pt</strong>
+
+            </div>
+
+            <h3>Cara Mengubah Ukuran</h3>
+
+            <ol>
+
+                <li>Blok teks.</li>
+
+                <li>Pilih tab <strong>Home</strong>.</li>
+
+                <li>Pilih ukuran font.</li>
+
+                <li>Atau ketik ukuran secara manual.</li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- =========================
+             11 B I U
+        ========================= -->
+        <section class="info-card">
+
+            <h2>11. Bold, Italic, dan Underline</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Format</th>
+                        <th>Fungsi</th>
+                        <th>Shortcut</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td><strong>Bold</strong></td>
+
+                        <td>Membuat teks menjadi tebal.</td>
+
+                        <td>Ctrl + B</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td><em>Italic</em></td>
+
+                        <td>Membuat teks menjadi miring.</td>
+
+                        <td>Ctrl + I</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td><u>Underline</u></td>
+
+                        <td>Memberikan garis bawah pada teks.</td>
+
+                        <td>Ctrl + U</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             12 WORDART
+        ========================= -->
+        <section class="info-card">
+
+            <h2>12. Menggunakan WordArt</h2>
+
+            <p>
+                WordArt digunakan untuk membuat teks dengan gaya dekoratif
+                dan efek visual.
+            </p>
+
+            <div class="path">
+                Insert → WordArt
+            </div>
+
+            <h3>Langkah-langkah</h3>
+
+            <ol>
+
+                <li>Klik tab <strong>Insert</strong>.</li>
+
+                <li>Klik <strong>WordArt</strong>.</li>
+
+                <li>Pilih salah satu gaya.</li>
+
+                <li>Ketik teks.</li>
+
+                <li>Atur warna, ukuran, dan efek sesuai kebutuhan.</li>
+
+            </ol>
+
+            <div class="warning">
+
+                <strong>⚠️ Perhatian</strong>
+
+                <p>
+                    Gunakan WordArt secara seperlunya agar presentasi
+                    tetap terlihat profesional.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             13 BULLET
+        ========================= -->
+        <section class="info-card">
+
+            <h2>13. Menggunakan Bullet</h2>
+
+            <p>
+                Bullet digunakan untuk membuat daftar yang tidak membutuhkan
+                urutan tertentu.
+            </p>
+
+            <div class="path">
+                Home → Bullets
+            </div>
+
+            <div class="menu-box">
+
+                <p>• Microsoft Word</p>
+
+                <p>• Microsoft Excel</p>
+
+                <p>• Microsoft PowerPoint</p>
+
+            </div>
+
+            <h3>Langkah</h3>
+
+            <ol>
+
+                <li>Blok teks.</li>
+
+                <li>Klik tab <strong>Home</strong>.</li>
+
+                <li>Klik <strong>Bullets</strong>.</li>
+
+                <li>Pilih bentuk bullet.</li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- =========================
+             14 NUMBERING
+        ========================= -->
+        <section class="info-card">
+
+            <h2>14. Menggunakan Numbering</h2>
+
+            <p>
+                Numbering digunakan untuk membuat daftar yang memiliki
+                urutan.
+            </p>
+
+            <div class="path">
+                Home → Numbering
+            </div>
+
+            <div class="menu-box">
+
+                <p>1. Membuka PowerPoint.</p>
+
+                <p>2. Membuat slide.</p>
+
+                <p>3. Menambahkan teks.</p>
+
+                <p>4. Menyimpan presentasi.</p>
+
+            </div>
+
+            <h3>Bullet vs Numbering</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Bullet</th>
+                        <th>Numbering</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Tidak menunjukkan urutan.</td>
+
+                        <td>Menunjukkan urutan.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Cocok untuk daftar informasi.</td>
+
+                        <td>Cocok untuk langkah atau prosedur.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             15 LINE SPACING
+        ========================= -->
+        <section class="info-card">
+
+            <h2>15. Mengatur Line Spacing</h2>
+
+            <p>
+                Line Spacing digunakan untuk mengatur jarak antarbaris
+                pada sebuah paragraf.
+            </p>
+
+            <div class="path">
+                Home → Line Spacing
+            </div>
+
+            <h3>Contoh Jarak</h3>
+
+            <ul>
+
+                <li>1.0</li>
+
+                <li>1.15</li>
+
+                <li>1.5</li>
+
+                <li>2.0</li>
+
+            </ul>
+
+            <h3>Langkah</h3>
+
+            <ol>
+
+                <li>Blok paragraf.</li>
+
+                <li>Klik tab <strong>Home</strong>.</li>
+
+                <li>Klik <strong>Line Spacing</strong>.</li>
+
+                <li>Pilih jarak yang diinginkan.</li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- =========================
+             16 INDENT
+        ========================= -->
+        <section class="info-card">
+
+            <h2>16. Mengatur Indent</h2>
+
+            <p>
+                Indent digunakan untuk mengatur posisi teks atau paragraf
+                dari batas kiri.
+            </p>
+
+            <div class="menu-box">
+
+                <p>• Materi PowerPoint</p>
+
+                <p style="margin-left:30px;">
+                    ◦ Membuat slide
+                </p>
+
+                <p style="margin-left:30px;">
+                    ◦ Mengatur layout
+                </p>
+
+                <p style="margin-left:30px;">
+                    ◦ Memformat teks
+                </p>
+
+            </div>
+
+            <h3>Cara Mengatur Indent</h3>
+
+            <ol>
+
+                <li>Pilih paragraf.</li>
+
+                <li>Klik tab <strong>Home</strong>.</li>
+
+                <li>Gunakan <strong>Increase List Level</strong>
+                    atau <strong>Decrease List Level</strong>.</li>
+
+            </ol>
+
+            <div class="tip">
+
+                <strong>💡 Tips:</strong>
+
+                <p>
+                    Indent sangat berguna untuk membuat sub-poin pada
+                    Bullet maupun Numbering.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRAKTIK
+        ========================= -->
+        <section class="practice">
+
+            <h2>🛠️ Praktik Modul 2</h2>
+
+            <p>
+                Buat sebuah presentasi baru dan lakukan latihan berikut.
+            </p>
+
+
+            <div class="practice-card">
+
+                <h3>Slide 1 — Judul</h3>
+
+                <p>
+                    Buat judul:
+                    <strong>Microsoft PowerPoint 2016</strong>
+                </p>
+
+                <ul>
+
+                    <li>Gunakan WordArt.</li>
+
+                    <li>Gunakan ukuran font besar.</li>
+
+                    <li>Gunakan Bold.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="practice-card">
+
+                <h3>Slide 2 — Materi</h3>
+
+                <p>
+                    Buat daftar:
+                </p>
+
+                <ul>
+
+                    <li>Pengertian PowerPoint</li>
+
+                    <li>Fungsi PowerPoint</li>
+
+                    <li>Manfaat PowerPoint</li>
+
+                </ul>
+
+                <p>
+                    Gunakan <strong>Bullet</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="practice-card">
+
+                <h3>Slide 3 — Langkah Belajar</h3>
+
+                <p>
+                    Buat daftar:
+                </p>
+
+                <ol>
+
+                    <li>Membuka PowerPoint.</li>
+
+                    <li>Membuat slide baru.</li>
+
+                    <li>Mengatur layout.</li>
+
+                    <li>Memasukkan teks.</li>
+
+                    <li>Menyimpan presentasi.</li>
+
+                </ol>
+
+                <p>
+                    Gunakan <strong>Numbering</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="practice-card">
+
+                <h3>Slide 4 — Materi Tambahan</h3>
+
+                <p>Gunakan:</p>
+
+                <ul>
+
+                    <li>Text Box.</li>
+
+                    <li>Font berbeda.</li>
+
+                    <li>Ukuran font berbeda.</li>
+
+                    <li>Bold.</li>
+
+                    <li>Italic.</li>
+
+                    <li>Underline.</li>
+
+                    <li>Line Spacing.</li>
+
+                    <li>Indent.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="practice-card">
+
+                <h3>Slide 5 — Pengelolaan Slide</h3>
+
+                <p>Praktikkan:</p>
+
+                <ul>
+
+                    <li>Membuat slide baru.</li>
+
+                    <li>Menghapus slide.</li>
+
+                    <li>Menggandakan slide.</li>
+
+                    <li>Mengubah urutan slide.</li>
+
+                    <li>Mengubah layout.</li>
+
+                    <li>Membuat Section.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>📁 Nama File:</strong>
+
+                <p>
+                    Latihan_Modul_2_NamaPeserta.pptx
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RANGKUMAN
+        ========================= -->
+        <section class="summary">
+
+            <h2>📌 Rangkuman Modul 2</h2>
+
+            <p>
+                Pada modul ini peserta telah mempelajari cara mengelola
+                slide dan memformat teks pada Microsoft PowerPoint 2016.
+            </p>
+
+            <p>
+                Materi meliputi membuat, menghapus, menggandakan,
+                memindahkan slide, mengubah layout, menggunakan Section,
+                mengatur ukuran slide, membuat Text Box, mengatur font,
+                ukuran huruf, Bold, Italic, Underline, WordArt, Bullet,
+                Numbering, Line Spacing, dan Indent.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             EVALUASI
+        ========================= -->
+        <section class="info-card">
+
+            <h2>📝 Evaluasi</h2>
+
+            <p>
+                Setelah mempelajari seluruh materi Modul 2 dan menyelesaikan
+                latihan, peserta dapat mengerjakan kuis untuk menguji
+                pemahaman.
+            </p>
+
+            <div class="warning">
+
+                <strong>Perhatian!</strong>
+
+                <p>
+                    Pastikan seluruh materi sudah dipahami sebelum
+                    mengerjakan Kuis Modul 2.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BUTTON
+        ========================= -->
+        <div class="button-area">
+
+            <a href="modul-ppt-1.html"
+               class="btn btn-secondary">
+                ← Modul 1
+            </a>
+
+            <a href="kuis-ppt-2.html"
+               class="btn">
+                📝 Mulai Kuis Modul 2 →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+    <footer>
+
+        <p>
+            <strong>Pelatihan Microsoft PowerPoint 2016</strong>
+        </p>
+
+        <p>
+            Modul 2 — Mengelola Slide dan Memformat Teks
+        </p>
+
+        <p>
+            © 2026 UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+</body>
+</html>

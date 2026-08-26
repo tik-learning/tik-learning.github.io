@@ -1,0 +1,1017 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 10 - Membuat Laporan Profesional | TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           HEADER MODUL
+        ========================= */
+
+        .modul-header {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid #0077b6;
+        }
+
+        .modul-header h2 {
+            margin-top: 0;
+            color: #0077b6;
+        }
+
+        .modul-label {
+            display: inline-block;
+            background: #0077b6;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           MATERI
+        ========================= */
+
+        .materi-section {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            margin-bottom: 22px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .materi-section h2 {
+            color: #0077b6;
+            margin-top: 0;
+            border-bottom: 2px solid #e9f3f8;
+            padding-bottom: 10px;
+        }
+
+        .materi-section h3 {
+            color: #333;
+            margin-top: 22px;
+        }
+
+        .materi-section p {
+            line-height: 1.8;
+        }
+
+        .materi-section li {
+            margin-bottom: 9px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           TIPS
+        ========================= */
+
+        .tips {
+            background: #eaf7ff;
+            border-left: 5px solid #0077b6;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .tips strong {
+            color: #0077b6;
+        }
+
+
+        /* =========================
+           LANGKAH PRAKTIK
+        ========================= */
+
+        .step {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 9px;
+            margin: 12px 0;
+            border-left: 4px solid #0077b6;
+        }
+
+        .step strong {
+            color: #0077b6;
+        }
+
+
+        /* =========================
+           TABEL
+        ========================= */
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .materi-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .materi-table th,
+        .materi-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .materi-table th {
+            background: #0077b6;
+            color: white;
+        }
+
+        .materi-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           PROJECT
+        ========================= */
+
+        .project-box {
+            background: linear-gradient(135deg, #0077b6, #005f8d);
+            color: white;
+            padding: 30px;
+            border-radius: 14px;
+            margin-top: 20px;
+        }
+
+        .project-box h2 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .project-box li {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        .modul-button-area {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .btn-modul {
+            display: inline-block;
+            padding: 13px 22px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-kuis {
+            background: #0077b6;
+            color: white;
+        }
+
+        .btn-kuis:hover {
+            opacity: 0.9;
+        }
+
+        .btn-kembali {
+            background: #e9ecef;
+            color: #333;
+        }
+
+
+        /* =========================
+           CHECKLIST
+        ========================= */
+
+        .checklist {
+            background: #f8fafc;
+            padding: 20px 25px;
+            border-radius: 10px;
+        }
+
+        .checklist li {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .checklist li::before {
+            content: "✓";
+            color: #198754;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .modul-header,
+            .materi-section {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- NAVIGASI -->
+
+    <nav>
+
+        <a href="index.html">Beranda</a>
+
+        <a href="autobiografi.html">Autobiografi</a>
+
+        <a href="materi.html">Materi</a>
+
+        <a href="tugas.html">Tugas</a>
+
+        <a href="kelas.html">Kelas Saya</a>
+
+        <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+    </nav>
+
+
+    <!-- KONTEN -->
+
+    <main class="container">
+
+
+        <!-- HEADER MODUL -->
+
+        <section class="modul-header">
+
+            <span class="modul-label">
+                MODUL 10
+            </span>
+
+            <h2>
+                📄 Membuat Laporan Profesional
+            </h2>
+
+            <p>
+                Microsoft Word 2016 — Tingkat Lanjutan
+            </p>
+
+            <p>
+                Pada modul ini peserta akan mempelajari cara
+                membuat laporan yang terstruktur, konsisten,
+                profesional, dan siap digunakan dalam lingkungan
+                kerja maupun kegiatan pelatihan.
+            </p>
+
+        </section>
+
+
+        <!-- 1 -->
+
+        <section class="materi-section">
+
+            <h2>1. Konsep dan Struktur Laporan Profesional</h2>
+
+            <p>
+                Laporan profesional merupakan dokumen yang digunakan
+                untuk menyampaikan informasi, hasil kegiatan,
+                hasil pekerjaan, atau suatu analisis secara sistematis.
+            </p>
+
+            <h3>Struktur umum laporan</h3>
+
+            <ol>
+
+                <li>Cover / halaman sampul</li>
+
+                <li>Kata pengantar</li>
+
+                <li>Daftar isi</li>
+
+                <li>Pendahuluan</li>
+
+                <li>Isi atau pembahasan</li>
+
+                <li>Kesimpulan</li>
+
+                <li>Daftar pustaka</li>
+
+                <li>Lampiran</li>
+
+            </ol>
+
+            <div class="tips">
+
+                <strong>Tips:</strong>
+
+                <p>
+                    Struktur laporan dapat disesuaikan dengan kebutuhan
+                    instansi, kegiatan, atau jenis laporan yang dibuat.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 2 -->
+
+        <section class="materi-section">
+
+            <h2>2. Membuat Cover Laporan Profesional</h2>
+
+            <p>
+                Cover merupakan bagian pertama yang dilihat pembaca.
+                Oleh karena itu, cover harus memiliki susunan yang
+                rapi dan mudah dibaca.
+            </p>
+
+            <h3>Informasi yang dapat dicantumkan:</h3>
+
+            <ul>
+
+                <li>Logo instansi</li>
+
+                <li>Judul laporan</li>
+
+                <li>Nama kegiatan</li>
+
+                <li>Nama penyusun</li>
+
+                <li>Nama instansi</li>
+
+                <li>Tahun pembuatan</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- 3 -->
+
+        <section class="materi-section">
+
+            <h2>3. Menggunakan Styles untuk Konsistensi</h2>
+
+            <p>
+                Styles digunakan untuk memberikan format yang konsisten
+                pada judul, subjudul, dan bagian tertentu dalam dokumen.
+            </p>
+
+            <h3>Style yang umum digunakan:</h3>
+
+            <ul>
+
+                <li>Normal</li>
+
+                <li>Title</li>
+
+                <li>Heading 1</li>
+
+                <li>Heading 2</li>
+
+                <li>Heading 3</li>
+
+            </ul>
+
+            <div class="step">
+
+                <strong>Langkah:</strong>
+
+                <p>
+                    Blok judul → pilih tab <b>Home</b> →
+                    bagian <b>Styles</b> → pilih Heading yang sesuai.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 4 -->
+
+        <section class="materi-section">
+
+            <h2>4. Membuat Daftar Isi Otomatis</h2>
+
+            <p>
+                Daftar isi otomatis dapat dibuat berdasarkan Heading
+                yang telah diterapkan pada dokumen.
+            </p>
+
+            <div class="step">
+
+                <strong>Langkah 1:</strong>
+
+                <p>
+                    Pastikan judul dan subjudul sudah menggunakan
+                    Heading 1, Heading 2, atau Heading 3.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 2:</strong>
+
+                <p>
+                    Letakkan kursor pada halaman daftar isi.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 3:</strong>
+
+                <p>
+                    Pilih <b>References → Table of Contents</b>.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 4:</strong>
+
+                <p>
+                    Pilih salah satu format daftar isi otomatis.
+                </p>
+
+            </div>
+
+            <div class="tips">
+
+                <strong>Catatan:</strong>
+
+                <p>
+                    Jika isi laporan berubah, gunakan
+                    <b>Update Table</b> untuk memperbarui daftar isi.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 5 -->
+
+        <section class="materi-section">
+
+            <h2>5. Membuat Daftar Gambar dan Tabel</h2>
+
+            <p>
+                Microsoft Word dapat membuat daftar gambar atau tabel
+                secara otomatis menggunakan fitur Caption.
+            </p>
+
+            <h3>Caption</h3>
+
+            <p>
+                Caption digunakan untuk memberikan keterangan dan
+                nomor otomatis pada gambar atau tabel.
+            </p>
+
+            <div class="step">
+
+                <strong>Langkah:</strong>
+
+                <p>
+                    Pilih gambar atau tabel → tab <b>References</b> →
+                    <b>Insert Caption</b>.
+                </p>
+
+            </div>
+
+            <p>
+                Setelah caption dibuat, daftar gambar atau tabel dapat
+                dibuat melalui fitur <b>Insert Table of Figures</b>.
+            </p>
+
+        </section>
+
+
+        <!-- 6 -->
+
+        <section class="materi-section">
+
+            <h2>6. Penomoran Halaman Profesional</h2>
+
+            <p>
+                Nomor halaman membantu pembaca mengetahui posisi
+                suatu bagian dalam laporan.
+            </p>
+
+            <h3>Contoh pembagian:</h3>
+
+            <ul>
+
+                <li>Cover — tanpa nomor halaman</li>
+
+                <li>Bagian awal — nomor halaman tertentu</li>
+
+                <li>Isi laporan — nomor halaman utama</li>
+
+                <li>Lampiran — dapat menggunakan format berbeda</li>
+
+            </ul>
+
+            <div class="tips">
+
+                <strong>Fitur penting:</strong>
+
+                <p>
+                    Untuk membuat format halaman berbeda, gunakan
+                    <b>Section Break</b>.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 7 -->
+
+        <section class="materi-section">
+
+            <h2>7. Header dan Footer</h2>
+
+            <p>
+                Header dan Footer dapat digunakan untuk menampilkan
+                informasi tambahan secara otomatis pada setiap halaman.
+            </p>
+
+            <h3>Contoh informasi:</h3>
+
+            <ul>
+
+                <li>Nama instansi</li>
+
+                <li>Judul laporan</li>
+
+                <li>Nama kegiatan</li>
+
+                <li>Tahun</li>
+
+                <li>Nomor halaman</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- 8 -->
+
+        <section class="materi-section">
+
+            <h2>8. Membuat Tabel Profesional</h2>
+
+            <p>
+                Tabel digunakan untuk menyajikan informasi secara
+                terstruktur sehingga lebih mudah dibaca.
+            </p>
+
+            <h3>Hal yang perlu diperhatikan:</h3>
+
+            <ul>
+
+                <li>Gunakan judul kolom yang jelas.</li>
+
+                <li>Gunakan ukuran tabel yang proporsional.</li>
+
+                <li>Gunakan alignment yang konsisten.</li>
+
+                <li>Hindari terlalu banyak warna.</li>
+
+                <li>Pastikan tabel tidak terpotong saat dicetak.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- 9 -->
+
+        <section class="materi-section">
+
+            <h2>9. Memasukkan dan Mengatur Gambar</h2>
+
+            <p>
+                Gambar dapat membantu menjelaskan kegiatan atau
+                informasi dalam laporan.
+            </p>
+
+            <h3>Fitur yang dapat digunakan:</h3>
+
+            <ul>
+
+                <li>Insert Picture</li>
+
+                <li>Crop</li>
+
+                <li>Wrap Text</li>
+
+                <li>Position</li>
+
+                <li>Picture Size</li>
+
+                <li>Caption</li>
+
+            </ul>
+
+            <div class="tips">
+
+                <strong>Tips:</strong>
+
+                <p>
+                    Gunakan gambar dengan resolusi yang cukup dan
+                    jangan memperbesar gambar secara berlebihan
+                    hingga terlihat pecah.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 10 -->
+
+        <section class="materi-section">
+
+            <h2>10. Referensi dan Daftar Pustaka</h2>
+
+            <p>
+                Daftar pustaka digunakan untuk mencantumkan sumber
+                informasi yang digunakan dalam penyusunan laporan.
+            </p>
+
+            <h3>Fitur Word:</h3>
+
+            <ul>
+
+                <li>Insert Citation</li>
+
+                <li>Manage Sources</li>
+
+                <li>Bibliography</li>
+
+            </ul>
+
+            <div class="step">
+
+                <strong>Langkah umum:</strong>
+
+                <p>
+                    References → Insert Citation →
+                    Add New Source → masukkan informasi sumber.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 11 -->
+
+        <section class="materi-section">
+
+            <h2>11. Section Break untuk Laporan Kompleks</h2>
+
+            <p>
+                Section Break memungkinkan setiap bagian dokumen
+                memiliki pengaturan yang berbeda.
+            </p>
+
+            <h3>Contoh penggunaan:</h3>
+
+            <ul>
+
+                <li>Halaman portrait dan landscape dalam satu dokumen.</li>
+
+                <li>Header berbeda antarbagian.</li>
+
+                <li>Footer berbeda.</li>
+
+                <li>Format nomor halaman berbeda.</li>
+
+            </ul>
+
+            <div class="step">
+
+                <strong>Langkah:</strong>
+
+                <p>
+                    Layout → Breaks → Section Breaks.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 12 -->
+
+        <section class="materi-section">
+
+            <h2>12. Navigasi Dokumen</h2>
+
+            <p>
+                Navigation Pane membantu pengguna berpindah dari satu
+                bagian dokumen ke bagian lainnya dengan cepat.
+            </p>
+
+            <h3>Fitur yang dapat digunakan:</h3>
+
+            <ul>
+
+                <li>Navigation Pane</li>
+
+                <li>Heading</li>
+
+                <li>Bookmark</li>
+
+                <li>Hyperlink</li>
+
+            </ul>
+
+            <div class="step">
+
+                <strong>Contoh:</strong>
+
+                <p>
+                    Gunakan Heading pada setiap bab sehingga judul
+                    dapat muncul di Navigation Pane.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 13 -->
+
+        <section class="materi-section">
+
+            <h2>13. Pemeriksaan dan Penyempurnaan Laporan</h2>
+
+            <p>
+                Sebelum laporan diserahkan, lakukan pemeriksaan
+                menyeluruh terhadap isi dan tampilannya.
+            </p>
+
+            <div class="checklist">
+
+                <ul>
+
+                    <li>Periksa ejaan dan tata bahasa.</li>
+
+                    <li>Periksa konsistensi font.</li>
+
+                    <li>Periksa ukuran dan jenis heading.</li>
+
+                    <li>Periksa margin halaman.</li>
+
+                    <li>Periksa spasi paragraf.</li>
+
+                    <li>Periksa nomor halaman.</li>
+
+                    <li>Perbarui daftar isi.</li>
+
+                    <li>Periksa tabel dan gambar.</li>
+
+                    <li>Periksa daftar pustaka.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- 14 -->
+
+        <section class="materi-section">
+
+            <h2>14. Finalisasi dan Distribusi Laporan</h2>
+
+            <p>
+                Setelah laporan selesai, lakukan pemeriksaan akhir
+                sebelum dokumen dicetak atau dibagikan.
+            </p>
+
+            <h3>Langkah akhir:</h3>
+
+            <ol>
+
+                <li>Simpan dokumen dalam format DOCX.</li>
+
+                <li>Periksa Print Preview.</li>
+
+                <li>Pastikan tidak ada halaman yang terpotong.</li>
+
+                <li>Periksa kembali tabel dan gambar.</li>
+
+                <li>Gunakan Save As untuk membuat versi PDF.</li>
+
+                <li>Buka kembali file PDF untuk memastikan hasilnya.</li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- 15 PROJECT -->
+
+        <section class="materi-section">
+
+            <div class="project-box">
+
+                <h2>
+                    💼 15. Latihan Praktik Modul 10
+                </h2>
+
+                <h3>
+                    Proyek: Membuat Laporan Profesional
+                </h3>
+
+                <p>
+                    Buat sebuah laporan kegiatan dengan tema:
+                </p>
+
+                <p>
+                    <strong>
+                        "LAPORAN KEGIATAN PELATIHAN BERBASIS KOMPETENSI"
+                    </strong>
+                </p>
+
+                <p>
+                    Gunakan Microsoft Word 2016 dan terapkan
+                    seluruh keterampilan yang telah dipelajari.
+                </p>
+
+                <h3>Ketentuan proyek:</h3>
+
+                <ul>
+
+                    <li>Cover profesional.</li>
+
+                    <li>Header dan footer.</li>
+
+                    <li>Nomor halaman.</li>
+
+                    <li>Heading yang konsisten.</li>
+
+                    <li>Daftar isi otomatis.</li>
+
+                    <li>Minimal 2 tabel.</li>
+
+                    <li>Minimal 2 gambar.</li>
+
+                    <li>Caption gambar atau tabel.</li>
+
+                    <li>Kesimpulan.</li>
+
+                    <li>Daftar pustaka.</li>
+
+                    <li>Lampiran.</li>
+
+                    <li>File akhir DOCX dan PDF.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- RINGKASAN -->
+
+        <section class="materi-section">
+
+            <h2>📌 Ringkasan Modul 10</h2>
+
+            <p>
+                Setelah menyelesaikan modul ini, peserta diharapkan
+                mampu membuat laporan menggunakan Microsoft Word 2016
+                secara lebih terstruktur dan profesional.
+            </p>
+
+            <div class="checklist">
+
+                <ul>
+
+                    <li>Membuat struktur laporan.</li>
+
+                    <li>Membuat cover profesional.</li>
+
+                    <li>Menggunakan Styles dan Heading.</li>
+
+                    <li>Membuat daftar isi otomatis.</li>
+
+                    <li>Membuat daftar gambar dan tabel.</li>
+
+                    <li>Mengatur nomor halaman.</li>
+
+                    <li>Menggunakan Header dan Footer.</li>
+
+                    <li>Mengelola tabel dan gambar.</li>
+
+                    <li>Mengelola referensi.</li>
+
+                    <li>Menggunakan Section Break.</li>
+
+                    <li>Memeriksa dan memfinalisasi laporan.</li>
+
+                    <li>Menghasilkan dokumen DOCX dan PDF.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOMBOL -->
+
+        <section class="modul-button-area">
+
+            <a
+                href="kuis-modul-10.html"
+                class="btn-modul btn-kuis">
+
+                📝 Mulai Kuis Modul 10
+
+            </a>
+
+            <a
+                href="materi.html"
+                class="btn-modul btn-kembali">
+
+                ← Kembali ke Materi
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```

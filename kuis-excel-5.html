@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Excel Modul 5 - Fungsi Matematika & Trigonometri</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.6;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:16px;
+}
+
+.container{
+    max-width:900px;
+    margin:30px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    margin-bottom:20px;
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:18px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:15px 0 10px;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* FORM */
+input[type="text"],
+input[type="password"]{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #ccd5d9;
+    border-radius:8px;
+    font-size:16px;
+    margin:8px 0 15px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#107c41;
+    box-shadow:0 0 0 3px rgba(16,124,65,.1);
+}
+
+.btn{
+    border:none;
+    padding:13px 22px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    color:white;
+    background:#107c41;
+    transition:.2s;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn-blue{
+    background:#2878d4;
+}
+
+.btn-blue:hover{
+    background:#185ca8;
+}
+
+.btn-red{
+    background:#d32f2f;
+}
+
+.btn-red:hover{
+    background:#b71c1c;
+}
+
+/* TIMER */
+.timer-box{
+    position:sticky;
+    top:10px;
+    z-index:10;
+    background:#fff3cd;
+    border:2px solid #ffc107;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.timer-label{
+    font-size:14px;
+    color:#795548;
+}
+
+.timer{
+    font-size:30px;
+    font-weight:bold;
+    color:#c62828;
+}
+
+.timer.warning{
+    color:#e65100;
+}
+
+.timer.danger{
+    color:#b71c1c;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:.45;
+    }
+}
+
+/* PESERTA */
+.participant{
+    background:#eaf7ef;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+/* SOAL */
+.question{
+    margin-bottom:25px;
+    padding:22px;
+    border:1px solid #e0e6e9;
+    border-radius:12px;
+    background:#fff;
+}
+
+.question-number{
+    color:#107c41;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.question-text{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:10px 12px;
+    border-radius:7px;
+    margin:7px 0;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.option:hover{
+    background:#eef7f1;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+/* RESULT */
+.result-box{
+    text-align:center;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:20px;
+}
+
+.lulus{
+    background:#e8f5e9;
+    border:2px solid #43a047;
+    color:#2e7d32;
+}
+
+.tidak-lulus{
+    background:#ffebee;
+    border:2px solid #e53935;
+    color:#c62828;
+}
+
+.score{
+    font-size:55px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.status{
+    font-size:24px;
+    font-weight:bold;
+}
+
+/* PEMBAHASAN */
+.review{
+    border:1px solid #dfe5e8;
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.review.correct{
+    border-left:5px solid #43a047;
+}
+
+.review.wrong{
+    border-left:5px solid #e53935;
+}
+
+.correct-text{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+.wrong-text{
+    color:#c62828;
+    font-weight:bold;
+}
+
+.answer{
+    background:#f5f7f8;
+    padding:10px;
+    border-radius:7px;
+    margin-top:8px;
+}
+
+.formula{
+    background:#1e1e1e;
+    color:#d4d4d4;
+    padding:12px 15px;
+    border-radius:7px;
+    font-family:Consolas,"Courier New",monospace;
+    margin:10px 0;
+    overflow-x:auto;
+}
+
+.info{
+    background:#e3f2fd;
+    border-left:5px solid #2196f3;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:18px;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:18px;
+}
+
+.navigation{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .score{
+        font-size:45px;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>📝 KUIS EXCEL MODUL 5</h1>
+
+<p>
+Fungsi Matematika dan Trigonometri
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ==================================================
+PASSWORD
+================================================== -->
+
+<section id="passwordSection" class="card">
+
+<h2>🔐 Akses Kuis</h2>
+
+<div class="info">
+
+<p>
+Silakan masukkan password yang diberikan oleh instruktur
+untuk mengakses Kuis Excel Modul 5.
+</p>
+
+</div>
+
+<label>
+<strong>Password</strong>
+</label>
+
+<input
+type="password"
+id="passwordInput"
+placeholder="Masukkan password">
+
+<button
+class="btn"
+onclick="checkPassword()">
+🔓 Verifikasi Password
+</button>
+
+<p
+id="passwordMessage"
+style="margin-top:12px;color:#c62828;font-weight:bold;">
+</p>
+
+</section>
+
+
+<!-- ==================================================
+NAMA PESERTA
+================================================== -->
+
+<section id="nameSection" class="card hidden">
+
+<h2>👤 Data Peserta</h2>
+
+<div class="info">
+
+<p>
+Masukkan nama lengkap Anda sebelum memulai kuis.
+</p>
+
+</div>
+
+<label>
+<strong>Nama Peserta</strong>
+</label>
+
+<input
+type="text"
+id="participantName"
+placeholder="Masukkan nama lengkap">
+
+<button
+class="btn"
+onclick="startQuiz()">
+▶ Mulai Kuis
+</button>
+
+<p
+id="nameMessage"
+style="margin-top:12px;color:#c62828;font-weight:bold;">
+</p>
+
+</section>
+
+
+<!-- ==================================================
+QUIZ
+================================================== -->
+
+<section id="quizSection" class="hidden">
+
+<div class="timer-box">
+
+<div class="timer-label">
+⏱️ WAKTU TERSISA
+</div>
+
+<div id="timer" class="timer">
+15:00
+</div>
+
+</div>
+
+
+<div class="participant">
+
+<strong>Peserta:</strong>
+<span id="displayName"></span>
+
+<br>
+
+<strong>Materi:</strong>
+Fungsi Matematika dan Trigonometri
+
+</div>
+
+
+<form id="quizForm">
+
+
+<!-- SOAL 1 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 1 dari 20
+</div>
+
+<div class="question-text">
+Fungsi Excel yang digunakan untuk menjumlahkan sejumlah nilai adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+A. PRODUCT
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+B. SUM
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+C. QUOTIENT
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+D. ABS
+</label>
+
+</div>
+
+
+<!-- SOAL 2 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 2 dari 20
+</div>
+
+<div class="question-text">
+Formula yang benar untuk menjumlahkan nilai B2 sampai B10 adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+A. =SUM(B2:B10)
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+B. =ADD(B2:B10)
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+C. =TOTAL(B2:B10)
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+D. =COUNT(B2:B10)
+</label>
+
+</div>
+
+
+<!-- SOAL 3 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 3 dari 20
+</div>
+
+<div class="question-text">
+Fungsi SUMIF digunakan untuk...
+</div>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+A. Mengalikan angka
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+B. Membulatkan angka
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+C. Menjumlahkan berdasarkan kriteria
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+D. Mencari akar
+</label>
+
+</div>
+
+
+<!-- SOAL 4 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 4 dari 20
+</div>
+
+<div class="question-text">
+Formula =PRODUCT(2,3,4) menghasilkan nilai...
+</div>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+A. 9
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+B. 12
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+C. 24
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+D. 48
+</label>
+
+</div>
+
+
+<!-- SOAL 5 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 5 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =QUOTIENT(17,5)?
+</div>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+A. 2
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+B. 3
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+C. 3,4
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D">
+D. 4
+</label>
+
+</div>
+
+
+<!-- SOAL 6 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 6 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =ROUND(125.678,2)?
+</div>
+
+<label class="option">
+<input type="radio" name="q6" value="A">
+A. 125
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B">
+B. 125,6
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C">
+C. 125,67
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D">
+D. 125,68
+</label>
+
+</div>
+
+
+<!-- SOAL 7 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 7 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =INT(125.9)?
+</div>
+
+<label class="option">
+<input type="radio" name="q7" value="A">
+A. 125
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B">
+B. 125,9
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C">
+C. 126
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D">
+D. 124
+</label>
+
+</div>
+
+
+<!-- SOAL 8 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 8 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =TRUNC(125.987,2)?
+</div>
+
+<label class="option">
+<input type="radio" name="q8" value="A">
+A. 125,98
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B">
+B. 125,99
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C">
+C. 126
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D">
+D. 125,9
+</label>
+
+</div>
+
+
+<!-- SOAL 9 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 9 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =ABS(-250)?
+</div>
+
+<label class="option">
+<input type="radio" name="q9" value="A">
+A. -250
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B">
+B. 0
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C">
+C. 250
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D">
+D. 25
+</label>
+
+</div>
+
+
+<!-- SOAL 10 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 10 dari 20
+</div>
+
+<div class="question-text">
+Fungsi yang digunakan untuk mendapatkan sisa hasil pembagian adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q10" value="A">
+A. MOD
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B">
+B. INT
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C">
+C. ROUND
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D">
+D. ABS
+</label>
+
+</div>
+
+
+<!-- SOAL 11 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 11 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =MOD(17,5)?
+</div>
+
+<label class="option">
+<input type="radio" name="q11" value="A">
+A. 2
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="B">
+B. 3
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="C">
+C. 3,4
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="D">
+D. 5
+</label>
+
+</div>
+
+
+<!-- SOAL 12 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 12 dari 20
+</div>
+
+<div class="question-text">
+Fungsi POWER digunakan untuk...
+</div>
+
+<label class="option">
+<input type="radio" name="q12" value="A">
+A. Menjumlahkan angka
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="B">
+B. Menghitung perpangkatan
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="C">
+C. Menghitung sisa pembagian
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="D">
+D. Membulatkan angka
+</label>
+
+</div>
+
+
+<!-- SOAL 13 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 13 dari 20
+</div>
+
+<div class="question-text">
+Apa hasil dari =SQRT(144)?
+</div>
+
+<label class="option">
+<input type="radio" name="q13" value="A">
+A. 10
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="B">
+B. 11
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="C">
+C. 12
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="D">
+D. 14
+</label>
+
+</div>
+
+
+<!-- SOAL 14 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 14 dari 20
+</div>
+
+<div class="question-text">
+Fungsi yang digunakan untuk selalu membulatkan angka ke atas adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q14" value="A">
+A. ROUND
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="B">
+B. INT
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="C">
+C. ROUNDUP
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="D">
+D. TRUNC
+</label>
+
+</div>
+
+
+<!-- SOAL 15 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 15 dari 20
+</div>
+
+<div class="question-text">
+Fungsi SUMPRODUCT digunakan untuk...
+</div>
+
+<label class="option">
+<input type="radio" name="q15" value="A">
+A. Mengubah derajat menjadi radian
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="B">
+B. Mengalikan nilai antar-range kemudian menjumlahkannya
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C">
+C. Menghitung akar
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D">
+D. Membulatkan angka
+</label>
+
+</div>
+
+
+<!-- SOAL 16 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 16 dari 20
+</div>
+
+<div class="question-text">
+Excel menggunakan satuan apa untuk fungsi SIN, COS, dan TAN?
+</div>
+
+<label class="option">
+<input type="radio" name="q16" value="A">
+A. Meter
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="B">
+B. Derajat
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="C">
+C. Radian
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="D">
+D. Persen
+</label>
+
+</div>
+
+
+<!-- SOAL 17 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 17 dari 20
+</div>
+
+<div class="question-text">
+Formula yang tepat untuk menghitung sinus 30 derajat adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q17" value="A">
+A. =SIN(30)
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="B">
+B. =SIN(RADIANS(30))
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="C">
+C. =RADIANS(SIN(30))
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="D">
+D. =DEGREES(SIN(30))
+</label>
+
+</div>
+
+
+<!-- SOAL 18 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 18 dari 20
+</div>
+
+<div class="question-text">
+Formula =TAN(RADIANS(45)) menghasilkan nilai mendekati...
+</div>
+
+<label class="option">
+<input type="radio" name="q18" value="A">
+A. 0
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="B">
+B. 0,5
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="C">
+C. 1
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="D">
+D. 45
+</label>
+
+</div>
+
+
+<!-- SOAL 19 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 19 dari 20
+</div>
+
+<div class="question-text">
+Fungsi RADIANS digunakan untuk...
+</div>
+
+<label class="option">
+<input type="radio" name="q19" value="A">
+A. Mengubah radian menjadi derajat
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="B">
+B. Mengubah derajat menjadi radian
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="C">
+C. Menghitung sinus
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="D">
+D. Menghitung akar
+</label>
+
+</div>
+
+
+<!-- SOAL 20 -->
+
+<div class="question">
+
+<div class="question-number">
+Soal 20 dari 20
+</div>
+
+<div class="question-text">
+Formula yang menghasilkan 180 adalah...
+</div>
+
+<label class="option">
+<input type="radio" name="q20" value="A">
+A. =RADIANS(180)
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="B">
+B. =DEGREES(180)
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="C">
+C. =DEGREES(PI())
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="D">
+D. =SIN(180)
+</label>
+
+</div>
+
+
+<button
+type="button"
+class="btn btn-red"
+onclick="submitQuiz(false)">
+📤 Submit Kuis
+</button>
+
+</form>
+
+</section>
+
+
+<!-- ==================================================
+HASIL
+================================================== -->
+
+<section id="resultSection" class="card hidden">
+
+<h2>📊 Hasil Kuis</h2>
+
+<div id="resultBox" class="result-box">
+
+<div>
+Nilai Anda
+</div>
+
+<div id="score" class="score">
+0
+</div>
+
+<div id="status" class="status">
+-
+</div>
+
+</div>
+
+<div class="participant">
+
+<strong>Nama Peserta:</strong>
+<span id="resultName"></span>
+
+<br>
+
+<strong>Jawaban Benar:</strong>
+<span id="correctCount"></span> dari 20
+
+<br>
+
+<strong>Jawaban Salah:</strong>
+<span id="wrongCount"></span>
+
+<br>
+
+<strong>Tidak Dijawab:</strong>
+<span id="emptyCount"></span>
+
+</div>
+
+<div class="warning">
+
+<strong>Ketentuan Kelulusan</strong>
+
+<p>
+Peserta dinyatakan <strong>LULUS</strong> apabila memperoleh
+nilai minimal <strong>75</strong>.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+PEMBAHASAN
+================================================== -->
+
+<section id="reviewSection" class="card hidden">
+
+<h2>📖 Pembahasan Jawaban</h2>
+
+<div id="reviewContent"></div>
+
+<div class="navigation">
+
+<a
+href="modul-excel-6.html"
+class="btn btn-blue">
+➡️ Lanjut ke Modul Excel 6
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<footer class="footer">
+
+<p>
+<strong>Pelatihan Microsoft Excel</strong>
+</p>
+
+<p>
+Kuis Modul 5 — Fungsi Matematika dan Trigonometri
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+
+<script>
+
+/* ==================================================
+   PENGATURAN KUIS
+================================================== */
+
+const PASSWORD = "EXCEL5";
+
+const TOTAL_SOAL = 20;
+
+const DURASI = 15 * 60;
+
+const NILAI_LULUS = 75;
+
+let timeLeft = DURASI;
+
+let timerInterval = null;
+
+let quizFinished = false;
+
+
+/* ==================================================
+   KUNCI JAWABAN
+================================================== */
+
+const answerKey = {
+
+q1:"B",
+q2:"A",
+q3:"C",
+q4:"C",
+q5:"B",
+q6:"D",
+q7:"A",
+q8:"A",
+q9:"C",
+q10:"A",
+q11:"A",
+q12:"B",
+q13:"C",
+q14:"C",
+q15:"B",
+q16:"C",
+q17:"B",
+q18:"C",
+q19:"B",
+q20:"C"
+
+};
+
+
+/* ==================================================
+   PEMBAHASAN
+================================================== */
+
+const explanations = {
+
+q1:{
+answer:"B",
+text:"SUM digunakan untuk menjumlahkan sejumlah nilai atau range."
+},
+
+q2:{
+answer:"A",
+text:"=SUM(B2:B10) menjumlahkan seluruh nilai dari cell B2 sampai B10."
+},
+
+q3:{
+answer:"C",
+text:"SUMIF digunakan untuk menjumlahkan nilai berdasarkan satu kriteria."
+},
+
+q4:{
+answer:"C",
+text:"PRODUCT(2,3,4) menghitung 2 × 3 × 4 = 24."
+},
+
+q5:{
+answer:"B",
+text:"QUOTIENT(17,5) menghasilkan bagian bilangan bulat dari pembagian, yaitu 3."
+},
+
+q6:{
+answer:"D",
+text:"ROUND(125.678,2) membulatkan sampai dua angka desimal menjadi 125,68."
+},
+
+q7:{
+answer:"A",
+text:"INT(125.9) menghasilkan 125 karena INT membulatkan ke bawah."
+},
+
+q8:{
+answer:"A",
+text:"TRUNC(125.987,2) memotong angka setelah dua desimal tanpa pembulatan sehingga hasilnya 125,98."
+},
+
+q9:{
+answer:"C",
+text:"ABS menghasilkan nilai absolut. ABS(-250) = 250."
+},
+
+q10:{
+answer:"A",
+text:"MOD digunakan untuk mendapatkan sisa hasil pembagian."
+},
+
+q11:{
+answer:"A",
+text:"17 dibagi 5 menghasilkan 3 sisa 2, sehingga MOD(17,5) = 2."
+},
+
+q12:{
+answer:"B",
+text:"POWER digunakan untuk melakukan perpangkatan, misalnya POWER(5,2) = 25."
+},
+
+q13:{
+answer:"C",
+text:"SQRT(144) menghasilkan akar kuadrat 144, yaitu 12."
+},
+
+q14:{
+answer:"C",
+text:"ROUNDUP digunakan untuk selalu membulatkan angka ke atas."
+},
+
+q15:{
+answer:"B",
+text:"SUMPRODUCT mengalikan nilai antar-range kemudian menjumlahkan hasil perkaliannya."
+},
+
+q16:{
+answer:"C",
+text:"Fungsi SIN, COS, dan TAN di Excel menggunakan satuan radian."
+},
+
+q17:{
+answer:"B",
+text:"Karena 30 dinyatakan dalam derajat, harus dikonversi ke radian dengan RADIANS(30)."
+},
+
+q18:{
+answer:"C",
+text:"TAN 45° bernilai 1. Karena Excel menggunakan radian, digunakan TAN(RADIANS(45))."
+},
+
+q19:{
+answer:"B",
+text:"RADIANS digunakan untuk mengubah satuan derajat menjadi radian."
+},
+
+q20:{
+answer:"C",
+text:"PI() menghasilkan π radian. DEGREES(PI()) mengubahnya menjadi 180 derajat."
+}
+
+};
+
+
+/* ==================================================
+   PASSWORD
+================================================== */
+
+function checkPassword(){
+
+    const input =
+        document.getElementById("passwordInput").value.trim();
+
+    const message =
+        document.getElementById("passwordMessage");
+
+    if(input === PASSWORD){
+
+        document
+        .getElementById("passwordSection")
+        .classList.add("hidden");
+
+        document
+        .getElementById("nameSection")
+        .classList.remove("hidden");
+
+        message.textContent = "";
+
+    }else{
+
+        message.textContent =
+            "❌ Password salah. Silakan coba kembali.";
+
+    }
+
+}
+
+
+/* ==================================================
+   MULAI KUIS
+================================================== */
+
+function startQuiz(){
+
+    const name =
+        document
+        .getElementById("participantName")
+        .value.trim();
+
+    const message =
+        document.getElementById("nameMessage");
+
+    if(name === ""){
+
+        message.textContent =
+            "⚠️ Nama peserta wajib diisi.";
+
+        return;
+
+    }
+
+    document
+    .getElementById("nameSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("quizSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("displayName")
+    .textContent = name;
+
+    startTimer();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ==================================================
+   TIMER
+================================================== */
+
+function startTimer(){
+
+    updateTimer();
+
+    timerInterval = setInterval(function(){
+
+        timeLeft--;
+
+        updateTimer();
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            submitQuiz(true);
+
+        }
+
+    },1000);
+
+}
+
+
+function updateTimer(){
+
+    const timer =
+        document.getElementById("timer");
+
+    let minutes =
+        Math.floor(timeLeft / 60);
+
+    let seconds =
+        timeLeft % 60;
+
+    minutes =
+        String(minutes).padStart(2,"0");
+
+    seconds =
+        String(seconds).padStart(2,"0");
+
+    timer.textContent =
+        minutes + ":" + seconds;
+
+
+    timer.classList.remove(
+        "warning",
+        "danger"
+    );
+
+
+    if(timeLeft <= 300){
+
+        timer.classList.add("warning");
+
+    }
+
+    if(timeLeft <= 60){
+
+        timer.classList.remove("warning");
+
+        timer.classList.add("danger");
+
+    }
+
+}
+
+
+/* ==================================================
+   SUBMIT KUIS
+================================================== */
+
+function submitQuiz(autoSubmit){
+
+    if(quizFinished){
+        return;
+    }
+
+    if(!autoSubmit){
+
+        const confirmation =
+            confirm(
+                "Apakah Anda yakin ingin mengirim jawaban?\n\n" +
+                "Setelah dikirim, jawaban tidak dapat diubah."
+            );
+
+        if(!confirmation){
+            return;
+        }
+
+    }
+
+    quizFinished = true;
+
+    clearInterval(timerInterval);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let empty = 0;
+
+
+    for(let i=1;i<=TOTAL_SOAL;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+
+        if(!selected){
+
+            empty++;
+
+        }else if(
+            selected.value === answerKey["q"+i]
+        ){
+
+            correct++;
+
+        }else{
+
+            wrong++;
+
+        }
+
+    }
+
+
+    const score =
+        Math.round(
+            (correct / TOTAL_SOAL) * 100
+        );
+
+
+    const name =
+        document
+        .getElementById("participantName")
+        .value.trim();
+
+
+    document
+    .getElementById("quizSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("resultSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("reviewSection")
+    .classList.remove("hidden");
+
+
+    document
+    .getElementById("score")
+    .textContent = score;
+
+
+    document
+    .getElementById("resultName")
+    .textContent = name;
+
+
+    document
+    .getElementById("correctCount")
+    .textContent = correct;
+
+
+    document
+    .getElementById("wrongCount")
+    .textContent = wrong;
+
+
+    document
+    .getElementById("emptyCount")
+    .textContent = empty;
+
+
+    const resultBox =
+        document.getElementById("resultBox");
+
+    const status =
+        document.getElementById("status");
+
+
+    if(score >= NILAI_LULUS){
+
+        resultBox.className =
+            "result-box lulus";
+
+        status.textContent =
+            "🎉 LULUS";
+
+    }else{
+
+        resultBox.className =
+            "result-box tidak-lulus";
+
+        status.textContent =
+            "❌ BELUM LULUS";
+
+    }
+
+
+    generateReview();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ==================================================
+   PEMBAHASAN
+================================================== */
+
+function generateReview(){
+
+    const container =
+        document.getElementById("reviewContent");
+
+    container.innerHTML = "";
+
+
+    const questions =
+        document.querySelectorAll(".question");
+
+
+    questions.forEach(function(question,index){
+
+        const number = index + 1;
+
+        const key = "q" + number;
+
+        const selected =
+            document.querySelector(
+                'input[name="'+key+'"]:checked'
+            );
+
+
+        let selectedAnswer =
+            selected ? selected.value : "Tidak dijawab";
+
+
+        const correctAnswer =
+            answerKey[key];
+
+
+        const isCorrect =
+            selected &&
+            selected.value === correctAnswer;
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "review " +
+            (isCorrect ? "correct" : "wrong");
+
+
+        let resultText;
+
+
+        if(!selected){
+
+            resultText =
+                '<span class="wrong-text">⚠️ Tidak dijawab</span>';
+
+        }else if(isCorrect){
+
+            resultText =
+                '<span class="correct-text">✅ Jawaban benar</span>';
+
+        }else{
+
+            resultText =
+                '<span class="wrong-text">❌ Jawaban salah</span>';
+
+        }
+
+
+        div.innerHTML = `
+
+            <strong>Soal ${number}</strong>
+
+            <p style="margin:8px 0;">
+                ${question.querySelector(".question-text").textContent}
+            </p>
+
+            <div class="answer">
+                Jawaban Anda:
+                <strong>${selectedAnswer}</strong>
+            </div>
+
+            <div class="answer">
+                Jawaban benar:
+                <strong>${correctAnswer}</strong>
+            </div>
+
+            <p style="margin-top:10px;">
+                ${resultText}
+            </p>
+
+            <div class="info" style="margin-top:12px;">
+                <strong>💡 Pembahasan:</strong><br>
+                ${explanations[key].text}
+            </div>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* ==================================================
+   CEGAH REFRESH / MENINGGALKAN HALAMAN SAAT KUIS
+================================================== */
+
+window.addEventListener("beforeunload",function(e){
+
+    if(
+        !document
+        .getElementById("quizSection")
+        .classList
+        .contains("hidden")
+        &&
+        !quizFinished
+    ){
+
+        e.preventDefault();
+
+        e.returnValue = "";
+
+    }
+
+});
+
+</script>
+<script src="progress-sync.js"></script>
+</body>
+</html>

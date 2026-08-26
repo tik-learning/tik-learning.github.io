@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 1 - Pengenalan Microsoft Excel</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #263238;
+    line-height: 1.7;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    background: linear-gradient(135deg, #107c41, #185c37);
+    color: white;
+    padding: 45px 20px 55px;
+    text-align: center;
+}
+
+.header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 18px;
+    opacity: .92;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    max-width: 1100px;
+    margin: -25px auto 50px;
+    padding: 0 18px;
+}
+
+/* ================= PROGRESS ================= */
+
+.progress-box {
+    background: white;
+    border-radius: 15px;
+    padding: 18px 22px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    margin-bottom: 25px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.progress {
+    height: 9px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #107c41;
+    transition: .3s;
+}
+
+/* ================= CARD ================= */
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.07);
+}
+
+.card h2 {
+    color: #107c41;
+    font-size: 25px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: #185c37;
+    margin: 22px 0 10px;
+}
+
+.card p {
+    margin-bottom: 12px;
+}
+
+.card ul,
+.card ol {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.card li {
+    margin-bottom: 7px;
+}
+
+/* ================= HERO ================= */
+
+.hero-box {
+    background: linear-gradient(135deg, #e8f5e9, #f5fff8);
+    border-left: 5px solid #107c41;
+    padding: 22px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.hero-box strong {
+    color: #107c41;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap {
+    overflow-x: auto;
+    margin: 18px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    background: #107c41;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f8faf9;
+}
+
+/* ================= CODE ================= */
+
+.code-box {
+    background: #17202a;
+    color: #d5f5e3;
+    padding: 16px 20px;
+    border-radius: 9px;
+    font-family: Consolas, monospace;
+    margin: 12px 0;
+    overflow-x: auto;
+}
+
+/* ================= INFO BOX ================= */
+
+.info {
+    padding: 17px 20px;
+    border-radius: 10px;
+    margin: 18px 0;
+}
+
+.info.green {
+    background: #e9f7ef;
+    border-left: 4px solid #27ae60;
+}
+
+.info.yellow {
+    background: #fff8df;
+    border-left: 4px solid #f1c40f;
+}
+
+.info.blue {
+    background: #eaf4ff;
+    border-left: 4px solid #3498db;
+}
+
+.info.red {
+    background: #fdecea;
+    border-left: 4px solid #e74c3c;
+}
+
+/* ================= GRID ================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.grid-item {
+    background: #f7faf8;
+    border: 1px solid #e1e8e4;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.grid-item .icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.grid-item h4 {
+    color: #107c41;
+    margin-bottom: 5px;
+}
+
+/* ================= CELL VISUAL ================= */
+
+.excel-grid {
+    display: inline-grid;
+    grid-template-columns: 80px 80px 80px 80px;
+    margin: 20px 0;
+    border: 1px solid #aaa;
+}
+
+.excel-grid div {
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: white;
+}
+
+.excel-grid .header-cell {
+    background: #e8f5e9;
+    font-weight: bold;
+}
+
+.excel-grid .active {
+    background: #d5f5e3;
+    border: 2px solid #107c41;
+    font-weight: bold;
+}
+
+/* ================= PRACTICE ================= */
+
+.practice {
+    background: linear-gradient(135deg, #f0fff5, #ffffff);
+    border: 2px dashed #107c41;
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 18px;
+}
+
+.practice-title {
+    font-weight: bold;
+    color: #107c41;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* ================= NAVIGATION ================= */
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 9px;
+    background: #107c41;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.btn:hover {
+    background: #0b5c30;
+    transform: translateY(-1px);
+}
+
+.btn.secondary {
+    background: #607d8b;
+}
+
+.btn.secondary:hover {
+    background: #455a64;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    text-align: center;
+    background: #17202a;
+    color: white;
+    padding: 30px 20px;
+    margin-top: 40px;
+}
+
+.footer strong {
+    color: #6fcf97;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:700px) {
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 15px;
+    }
+
+    .card {
+        padding: 22px 18px;
+    }
+
+    .card h2 {
+        font-size: 21px;
+    }
+
+    .navigation {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="badge">
+        MODUL 1 • MICROSOFT EXCEL
+    </div>
+
+    <h1>Pengenalan Microsoft Excel</h1>
+
+    <p>
+        Mengenal Excel, antarmuka, format file, persiapan kerja,
+        dan Region Setting
+    </p>
+
+</header>
+
+
+<main class="container">
+
+<!-- ================= PROGRESS ================= -->
+
+<div class="progress-box">
+
+    <div class="progress-top">
+        <span>Progress Materi</span>
+        <span id="progressText">0%</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<!-- ================= TUJUAN ================= -->
+
+<section class="card" id="section1">
+
+<h2>🎯 Tujuan Pembelajaran</h2>
+
+<p>
+Setelah menyelesaikan modul ini, peserta diharapkan mampu:
+</p>
+
+<ol>
+    <li>Menjelaskan pengertian dan fungsi Microsoft Excel.</li>
+    <li>Mengenali berbagai kegunaan Microsoft Excel.</li>
+    <li>Membuka dan menjalankan Microsoft Excel.</li>
+    <li>Mengenali bagian-bagian antarmuka Microsoft Excel.</li>
+    <li>Mengetahui jenis-jenis format file Excel.</li>
+    <li>Melakukan persiapan sebelum bekerja menggunakan Excel.</li>
+    <li>Memahami pengaruh Region Setting.</li>
+    <li>Menyesuaikan pengaturan Excel dengan format Indonesia.</li>
+</ol>
+
+</section>
+
+
+<!-- ================= BERKENALAN ================= -->
+
+<section class="card" id="section2">
+
+<h2>💻 1. Berkenalan dengan Microsoft Excel</h2>
+
+<div class="hero-box">
+
+<strong>Microsoft Excel</strong> adalah aplikasi pengolah angka
+atau spreadsheet yang dikembangkan oleh Microsoft.
+
+</div>
+
+<p>
+Excel digunakan untuk mengolah data dalam bentuk tabel,
+melakukan perhitungan, membuat laporan, menganalisis data,
+dan menyajikan data dalam bentuk grafik.
+</p>
+
+<h3>Contoh penggunaan Excel</h3>
+
+<div class="grid">
+
+<div class="grid-item">
+<div class="icon">📊</div>
+<h4>Pengolahan Data</h4>
+<p>Mengelola data peserta, pegawai, barang, dan lainnya.</p>
+</div>
+
+<div class="grid-item">
+<div class="icon">💰</div>
+<h4>Keuangan</h4>
+<p>Membuat anggaran dan laporan keuangan.</p>
+</div>
+
+<div class="grid-item">
+<div class="icon">📈</div>
+<h4>Analisis</h4>
+<p>Menganalisis dan membandingkan data.</p>
+</div>
+
+<div class="grid-item">
+<div class="icon">📋</div>
+<h4>Laporan</h4>
+<p>Membuat laporan secara terstruktur.</p>
+</div>
+
+</div>
+
+<h3>Istilah dasar Excel</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Istilah</th>
+<th>Pengertian</th>
+</tr>
+
+<tr>
+<td>Workbook</td>
+<td>File atau dokumen Excel.</td>
+</tr>
+
+<tr>
+<td>Worksheet</td>
+<td>Lembar kerja dalam workbook.</td>
+</tr>
+
+<tr>
+<td>Row</td>
+<td>Baris yang ditandai dengan angka.</td>
+</tr>
+
+<tr>
+<td>Column</td>
+<td>Kolom yang ditandai dengan huruf.</td>
+</tr>
+
+<tr>
+<td>Cell</td>
+<td>Pertemuan antara baris dan kolom.</td>
+</tr>
+
+<tr>
+<td>Range</td>
+<td>Kumpulan beberapa cell.</td>
+</tr>
+
+<tr>
+<td>Formula</td>
+<td>Rumus yang digunakan untuk melakukan perhitungan.</td>
+</tr>
+
+<tr>
+<td>Function</td>
+<td>Fungsi bawaan Excel.</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ================= MEMBUKA EXCEL ================= -->
+
+<section class="card" id="section3">
+
+<h2>🚀 2. Cara Membuka Microsoft Excel</h2>
+
+<h3>Cara 1 – Melalui Start Menu</h3>
+
+<ol>
+<li>Klik tombol <strong>Start</strong>.</li>
+<li>Cari <strong>Microsoft Excel</strong>.</li>
+<li>Klik Microsoft Excel.</li>
+<li>Tunggu sampai Excel terbuka.</li>
+</ol>
+
+<h3>Cara 2 – Menggunakan Search Windows</h3>
+
+<ol>
+<li>Tekan tombol <strong>Windows</strong>.</li>
+<li>Ketik <strong>Excel</strong>.</li>
+<li>Pilih Microsoft Excel.</li>
+<li>Tekan <strong>Enter</strong>.</li>
+</ol>
+
+<h3>Cara 3 – Shortcut Desktop</h3>
+
+<ol>
+<li>Cari ikon Microsoft Excel di Desktop.</li>
+<li>Klik dua kali ikon tersebut.</li>
+</ol>
+
+<h3>Cara 4 – Membuka File Excel</h3>
+
+<ol>
+<li>Buka folder tempat file disimpan.</li>
+<li>Cari file Excel.</li>
+<li>Klik dua kali file tersebut.</li>
+</ol>
+
+<div class="info blue">
+
+<strong>Tips:</strong>
+Cara tercepat untuk mencari Excel di Windows adalah
+menekan tombol Windows kemudian mengetik <strong>Excel</strong>.
+
+</div>
+
+</section>
+
+
+<!-- ================= ANTARMUKA ================= -->
+
+<section class="card" id="section4">
+
+<h2>🖥️ 3. Mengenal Antarmuka Microsoft Excel</h2>
+
+<h3>1. Title Bar</h3>
+
+<p>
+Menampilkan nama file yang sedang dibuka.
+</p>
+
+<div class="code-box">
+Data_Peserta.xlsx - Excel
+</div>
+
+
+<h3>2. Quick Access Toolbar</h3>
+
+<p>
+Berisi perintah yang sering digunakan, seperti:
+</p>
+
+<ul>
+<li>Save</li>
+<li>Undo</li>
+<li>Redo</li>
+</ul>
+
+
+<h3>3. Ribbon</h3>
+
+<p>
+Ribbon berisi berbagai menu dan perintah Excel.
+Contoh tab:
+</p>
+
+<div class="grid">
+
+<div class="grid-item">
+<h4>File</h4>
+<p>Mengelola file.</p>
+</div>
+
+<div class="grid-item">
+<h4>Home</h4>
+<p>Perintah dasar dan formatting.</p>
+</div>
+
+<div class="grid-item">
+<h4>Insert</h4>
+<p>Menyisipkan objek.</p>
+</div>
+
+<div class="grid-item">
+<h4>Page Layout</h4>
+<p>Mengatur halaman.</p>
+</div>
+
+<div class="grid-item">
+<h4>Formulas</h4>
+<p>Mengelola formula.</p>
+</div>
+
+<div class="grid-item">
+<h4>Data</h4>
+<p>Mengelola dan menganalisis data.</p>
+</div>
+
+</div>
+
+
+<h3>4. Name Box</h3>
+
+<p>
+Name Box menunjukkan alamat cell yang sedang aktif.
+</p>
+
+<div class="code-box">
+A1
+</div>
+
+
+<h3>5. Formula Bar</h3>
+
+<p>
+Formula Bar digunakan untuk melihat, memasukkan,
+dan mengedit isi cell serta formula.
+</p>
+
+
+<h3>6. Row dan Column</h3>
+
+<p>
+<strong>Row</strong> adalah baris yang ditandai dengan angka.
+</p>
+
+<p>
+<strong>Column</strong> adalah kolom yang ditandai dengan huruf.
+</p>
+
+
+<h3>7. Cell</h3>
+
+<p>
+Cell adalah pertemuan antara Row dan Column.
+Contohnya A1, B2, C5, dan D10.
+</p>
+
+<div class="excel-grid">
+
+<div class="header-cell"></div>
+<div class="header-cell">A</div>
+<div class="header-cell">B</div>
+<div class="header-cell">C</div>
+
+<div class="header-cell">1</div>
+<div class="active">A1</div>
+<div>B1</div>
+<div>C1</div>
+
+<div class="header-cell">2</div>
+<div>A2</div>
+<div>B2</div>
+<div>C2</div>
+
+<div class="header-cell">3</div>
+<div>A3</div>
+<div>B3</div>
+<div>C3</div>
+
+</div>
+
+<div class="info green">
+
+<strong>Contoh:</strong>
+Cell C5 berarti kolom C dan baris 5.
+
+</div>
+
+</section>
+
+
+<!-- ================= WORKBOOK ================= -->
+
+<section class="card" id="section5">
+
+<h2>📑 4. Worksheet dan Workbook</h2>
+
+<h3>Worksheet</h3>
+
+<p>
+Worksheet adalah lembar kerja tempat kita memasukkan
+dan mengolah data.
+</p>
+
+<div class="code-box">
+Sheet1 | Sheet2 | Sheet3
+</div>
+
+<p>Contoh:</p>
+
+<ul>
+<li>Sheet1 = Data Peserta</li>
+<li>Sheet2 = Nilai</li>
+<li>Sheet3 = Rekapitulasi</li>
+</ul>
+
+<h3>Workbook</h3>
+
+<p>
+Workbook adalah keseluruhan file Excel.
+Satu workbook dapat memiliki beberapa worksheet.
+</p>
+
+<div class="hero-box">
+
+<strong>Hubungan:</strong>
+
+<br><br>
+
+Workbook → Worksheet → Cell
+
+</div>
+
+</section>
+
+
+<!-- ================= FORMAT FILE ================= -->
+
+<section class="card" id="section6">
+
+<h2>💾 5. Format File Microsoft Excel</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Format</th>
+<th>Nama</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td><strong>.xlsx</strong></td>
+<td>Excel Workbook</td>
+<td>Format Excel modern dan paling umum.</td>
+</tr>
+
+<tr>
+<td><strong>.xls</strong></td>
+<td>Excel 97–2003</td>
+<td>Format Excel versi lama.</td>
+</tr>
+
+<tr>
+<td><strong>.xlsm</strong></td>
+<td>Excel Macro-Enabled</td>
+<td>Mendukung Macro/VBA.</td>
+</tr>
+
+<tr>
+<td><strong>.csv</strong></td>
+<td>Comma-Separated Values</td>
+<td>Digunakan untuk pertukaran data.</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="info yellow">
+
+<strong>Perhatian:</strong>
+Jika workbook memiliki Macro/VBA, jangan menyimpannya
+sebagai <strong>.xlsx</strong> karena Macro dapat hilang.
+Gunakan format <strong>.xlsm</strong>.
+
+</div>
+
+</section>
+
+
+<!-- ================= PERSIAPAN ================= -->
+
+<section class="card" id="section7">
+
+<h2>⚙️ 6. Penting Sebelum Memulai Excel</h2>
+
+<h3>1. Tentukan tujuan pengolahan data</h3>
+
+<p>
+Tentukan terlebih dahulu data apa yang akan dibuat.
+</p>
+
+<ul>
+<li>Data peserta</li>
+<li>Data pegawai</li>
+<li>Data inventaris</li>
+<li>Data penjualan</li>
+<li>Data keuangan</li>
+</ul>
+
+
+<h3>2. Buat struktur tabel</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>No</th>
+<th>Nama</th>
+<th>NIK</th>
+<th>Program</th>
+<th>Nilai</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Andi</td>
+<td>327...</td>
+<td>Las</td>
+<td>85</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Budi</td>
+<td>327...</td>
+<td>TIK</td>
+<td>90</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<h3>3. Gunakan satu jenis data untuk satu kolom</h3>
+
+<p>
+Contohnya kolom Nilai hanya berisi angka.
+Jangan mencampurkan angka dengan keterangan.
+</p>
+
+<div class="info red">
+
+❌ Salah:
+
+<strong>85 Lulus</strong>
+
+<br><br>
+
+✅ Lebih baik:
+
+<table style="min-width:200px;">
+<tr>
+<th>Nilai</th>
+<th>Keterangan</th>
+</tr>
+<tr>
+<td>85</td>
+<td>Lulus</td>
+</tr>
+</table>
+
+</div>
+
+
+<h3>4. Hindari Merge Cell pada database</h3>
+
+<p>
+Merge Cell sebaiknya tidak digunakan pada tabel data utama
+karena dapat menyulitkan Sort, Filter, dan pengolahan data.
+</p>
+
+
+<h3>5. Simpan pekerjaan secara berkala</h3>
+
+<div class="code-box">
+Ctrl + S
+</div>
+
+<p>
+Biasakan menyimpan file secara berkala untuk mencegah
+kehilangan pekerjaan.
+</p>
+
+</section>
+
+
+<!-- ================= REGION ================= -->
+
+<section class="card" id="section8">
+
+<h2>🌏 7. Region Setting</h2>
+
+<div class="hero-box">
+
+<strong>Region Setting</strong> adalah pengaturan wilayah
+pada Windows yang memengaruhi format tanggal, angka,
+waktu, dan mata uang.
+
+</div>
+
+<h3>Mengapa penting untuk Excel?</h3>
+
+<p>
+Region Setting dapat memengaruhi bagaimana Excel membaca
+angka, tanggal, dan formula.
+</p>
+
+<h3>Format Indonesia</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Pengaturan</th>
+<th>Format Indonesia</th>
+</tr>
+
+<tr>
+<td>Pemisah desimal</td>
+<td><strong>,</strong></td>
+</tr>
+
+<tr>
+<td>Pemisah ribuan</td>
+<td><strong>.</strong></td>
+</tr>
+
+<tr>
+<td>Format tanggal</td>
+<td><strong>dd/mm/yyyy</strong></td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>Contoh</h3>
+
+<div class="code-box">
+1.500,50
+</div>
+
+<p>
+Dalam format Indonesia, angka tersebut dapat berarti
+seribu lima ratus koma lima puluh.
+</p>
+
+</section>
+
+
+<!-- ================= CARA REGION ================= -->
+
+<section class="card" id="section9">
+
+<h2>🛠️ 8. Cara Mengecek Region Setting Windows</h2>
+
+<ol>
+
+<li>Buka <strong>Control Panel</strong>.</li>
+
+<li>Pilih <strong>Clock and Region</strong>.</li>
+
+<li>Pilih <strong>Region</strong>.</li>
+
+<li>Perhatikan bagian <strong>Format</strong>.</li>
+
+<li>Pilih <strong>Indonesian (Indonesia)</strong>.</li>
+
+<li>Klik <strong>Apply</strong>.</li>
+
+<li>Klik <strong>OK</strong>.</li>
+
+</ol>
+
+<div class="info blue">
+
+<strong>Catatan:</strong>
+Pengaturan tampilan pada Windows dapat sedikit berbeda
+tergantung versi Windows yang digunakan.
+
+</div>
+
+</section>
+
+
+<!-- ================= DECIMAL ================= -->
+
+<section class="card" id="section10">
+
+<h2>🔢 9. Pengaturan Angka dan Formula</h2>
+
+<p>
+Pada format Indonesia umumnya digunakan:
+</p>
+
+<div class="grid">
+
+<div class="grid-item">
+<h4>Decimal Symbol</h4>
+<p><strong>,</strong></p>
+<p>Contoh: 10,5</p>
+</div>
+
+<div class="grid-item">
+<h4>Digit Grouping</h4>
+<p><strong>.</strong></p>
+<p>Contoh: 10.000</p>
+</div>
+
+</div>
+
+<h3>Pemisah formula</h3>
+
+<p>
+Tergantung pengaturan regional, Excel dapat menggunakan
+tanda <strong>;</strong> sebagai pemisah argument.
+</p>
+
+<div class="code-box">
+=SUM(A1;B1)
+</div>
+
+<div class="info yellow">
+
+Jika menemukan rumus dari internet menggunakan tanda
+<strong>,</strong> sedangkan Excel Anda menggunakan
+<strong>;</strong>, jangan langsung menganggap rumusnya salah.
+Perhatikan pengaturan regional Excel.
+
+</div>
+
+</section>
+
+
+<!-- ================= PRAKTIK 1 ================= -->
+
+<section class="card">
+
+<h2>📝 Praktik 1 – Mengenal Antarmuka Excel</h2>
+
+<div class="practice">
+
+<div class="practice-title">
+Tugas Praktik
+</div>
+
+<ol>
+
+<li>Buka Microsoft Excel.</li>
+
+<li>Buat workbook baru.</li>
+
+<li>Perhatikan Title Bar.</li>
+
+<li>Perhatikan Ribbon.</li>
+
+<li>Perhatikan Name Box.</li>
+
+<li>Perhatikan Formula Bar.</li>
+
+<li>Klik cell A1.</li>
+
+<li>Klik cell C5.</li>
+
+<li>Ketik:
+<strong>Pengenalan Excel</strong></li>
+
+<li>Tekan Enter.</li>
+
+<li>Simpan file dengan nama:
+<strong>Latihan_Modul_1.xlsx</strong></li>
+
+</ol>
+
+</div>
+
+</section>
+
+
+<!-- ================= PRAKTIK 2 ================= -->
+
+<section class="card">
+
+<h2>📝 Praktik 2 – Mengenal Cell</h2>
+
+<p>Masukkan data berikut:</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Nama</th>
+<th>Program</th>
+<th>Nilai</th>
+</tr>
+
+<tr>
+<td>Andi</td>
+<td>TIK</td>
+<td>85</td>
+</tr>
+
+<tr>
+<td>Budi</td>
+<td>Excel</td>
+<td>90</td>
+</tr>
+
+<tr>
+<td>Citra</td>
+<td>Word</td>
+<td>88</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="practice">
+
+<ol>
+
+<li>Klik cell A2.</li>
+
+<li>Perhatikan Name Box.</li>
+
+<li>Klik cell C4.</li>
+
+<li>Perhatikan Name Box.</li>
+
+<li>Klik cell C2.</li>
+
+<li>Perhatikan isi Formula Bar.</li>
+
+</ol>
+
+</div>
+
+</section>
+
+
+<!-- ================= PRAKTIK 3 ================= -->
+
+<section class="card">
+
+<h2>📝 Praktik 3 – Mengenal Format File</h2>
+
+<p>
+Buat workbook sederhana kemudian simpan dengan nama:
+</p>
+
+<div class="code-box">
+Latihan_Excel
+</div>
+
+<p>
+Coba simpan dalam format:
+</p>
+
+<ol>
+
+<li>Excel Workbook (.xlsx)</li>
+
+<li>Excel 97–2003 Workbook (.xls)</li>
+
+<li>CSV (.csv)</li>
+
+</ol>
+
+<div class="info yellow">
+
+Perhatikan perbedaan masing-masing format file.
+
+</div>
+
+</section>
+
+
+<!-- ================= PRAKTIK 4 ================= -->
+
+<section class="card">
+
+<h2>📝 Praktik 4 – Memeriksa Region Setting</h2>
+
+<div class="practice">
+
+<ol>
+
+<li>Periksa Region Setting komputer.</li>
+
+<li>Pastikan format menggunakan
+<strong>Indonesian (Indonesia)</strong>.</li>
+
+<li>Periksa Decimal Symbol.</li>
+
+<li>Periksa Digit Grouping Symbol.</li>
+
+<li>Periksa format tanggal.</li>
+
+<li>Buka Excel.</li>
+
+<li>Masukkan angka:</li>
+
+</ol>
+
+<div class="code-box">
+1500000,50
+</div>
+
+<p>
+Perhatikan bagaimana Excel membaca dan menampilkan
+angka tersebut.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= KESALAHAN ================= -->
+
+<section class="card">
+
+<h2>⚠️ Kesalahan Umum Pemula</h2>
+
+<div class="grid">
+
+<div class="grid-item">
+
+<h4>01</h4>
+
+<p>
+Menganggap Excel hanya digunakan untuk menghitung.
+</p>
+
+</div>
+
+<div class="grid-item">
+
+<h4>02</h4>
+
+<p>
+Tidak memahami alamat Cell seperti A1, B2, dan C5.
+</p>
+
+</div>
+
+<div class="grid-item">
+
+<h4>03</h4>
+
+<p>
+Mencampurkan berbagai jenis data dalam satu kolom.
+</p>
+
+</div>
+
+<div class="grid-item">
+
+<h4>04</h4>
+
+<p>
+Menggunakan Merge Cell pada database utama.
+</p>
+
+</div>
+
+<div class="grid-item">
+
+<h4>05</h4>
+
+<p>
+Mengabaikan Region Setting.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= RINGKASAN ================= -->
+
+<section class="card">
+
+<h2>📌 Ringkasan Modul</h2>
+
+<p>
+Pada Modul 1 peserta telah mempelajari:
+</p>
+
+<ol>
+
+<li>Pengertian Microsoft Excel.</li>
+
+<li>Fungsi dan manfaat Excel.</li>
+
+<li>Cara membuka Microsoft Excel.</li>
+
+<li>Antarmuka Excel.</li>
+
+<li>Workbook dan Worksheet.</li>
+
+<li>Row, Column, dan Cell.</li>
+
+<li>Format file Excel.</li>
+
+<li>Persiapan sebelum mengolah data.</li>
+
+<li>Region Setting.</li>
+
+<li>Pengaruh Region Setting terhadap angka,
+tanggal, dan formula.</li>
+
+</ol>
+
+<div class="hero-box">
+
+<strong>Inti Modul:</strong>
+
+<br><br>
+
+Kuasai terlebih dahulu dasar Excel seperti
+<strong>Workbook, Worksheet, Row, Column, Cell,
+dan pengaturan data</strong> sebelum masuk ke materi
+formula dan pengolahan data.
+
+</div>
+
+</section>
+
+
+<!-- ================= KOMPETENSI ================= -->
+
+<section class="card">
+
+<h2>🏆 Kompetensi Akhir Modul</h2>
+
+<div class="grid">
+
+<div class="grid-item">
+<h4>✓</h4>
+<p>Membuka Microsoft Excel.</p>
+</div>
+
+<div class="grid-item">
+<h4>✓</h4>
+<p>Mengenali antarmuka Excel.</p>
+</div>
+
+<div class="grid-item">
+<h4>✓</h4>
+<p>Menentukan alamat Cell.</p>
+</div>
+
+<div class="grid-item">
+<h4>✓</h4>
+<p>Mengenali format file Excel.</p>
+</div>
+
+<div class="grid-item">
+<h4>✓</h4>
+<p>Menyimpan workbook.</p>
+</div>
+
+<div class="grid-item">
+<h4>✓</h4>
+<p>Memahami Region Setting.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= NAVIGASI ================= -->
+
+<div class="navigation">
+
+<a href="index.html" class="btn secondary">
+← Kembali
+</a>
+
+<a href="kuis-excel-1.html" class="btn">
+📝 Mulai Kuis Excel 1 →
+</a>
+
+</div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<p>
+<strong>Modul 1 – Pengenalan Microsoft Excel</strong>
+</p>
+
+<p>
+Pelatihan Microsoft Office • Materi Pembelajaran
+</p>
+
+<p style="margin-top:10px;font-size:13px;opacity:.7;">
+© 2026 • Modul Pembelajaran
+</p>
+
+</footer>
+
+
+<script>
+
+/* ================= PROGRESS ================= */
+
+window.addEventListener("scroll", function() {
+
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    const progress =
+        (scrollTop / scrollHeight) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    document.getElementById("progressText").innerText =
+        Math.round(progress) + "%";
+
+});
+
+</script>
+
+</body>
+</html>

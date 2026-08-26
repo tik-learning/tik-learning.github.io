@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 9 - Macro & Otomatisasi Tingkat Lanjut | TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           HEADER MODUL
+        ========================= */
+
+        .module-header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .module-header h2 {
+            margin-top: 0;
+            color: #0077b6;
+        }
+
+        .module-number {
+            display: inline-block;
+            background: #0077b6;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           MATERI
+        ========================= */
+
+        .materi-section {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .materi-section h2 {
+            color: #0077b6;
+            margin-top: 0;
+        }
+
+        .materi-section h3 {
+            color: #333;
+            margin-top: 25px;
+        }
+
+        .materi-section p {
+            line-height: 1.8;
+        }
+
+        .materi-section li {
+            margin-bottom: 9px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #f1f7fb;
+            border-left: 5px solid #0077b6;
+            padding: 18px;
+            border-radius: 7px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 18px;
+            border-radius: 7px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: #e9f7ef;
+            border-left: 5px solid #198754;
+            padding: 18px;
+            border-radius: 7px;
+            margin: 20px 0;
+        }
+
+
+        /* =========================
+           KODE VBA
+        ========================= */
+
+        .code-box {
+            background: #1e1e1e;
+            color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 18px 0;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           TABEL
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #0077b6;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           LANGKAH PRAKTIK
+        ========================= */
+
+        .step {
+            background: #f8fafc;
+            border-left: 4px solid #0077b6;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 6px;
+        }
+
+        .step strong {
+            color: #0077b6;
+        }
+
+
+        /* =========================
+           PROYEK
+        ========================= */
+
+        .project-box {
+            background: linear-gradient(
+                135deg,
+                #eaf6ff,
+                #f8fbff
+            );
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #cfe8f5;
+            margin-top: 20px;
+        }
+
+        .project-box h3 {
+            color: #0077b6;
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        .module-button-area {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .btn-belajar,
+        .btn-kembali {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .btn-belajar {
+            background: #0077b6;
+            color: white;
+        }
+
+        .btn-belajar:hover {
+            opacity: 0.9;
+        }
+
+        .btn-kembali {
+            background: #e9ecef;
+            color: #333;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .materi-section,
+            .module-header {
+                padding: 20px;
+            }
+
+            .code-box {
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGASI
+    ========================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Beranda
+        </a>
+
+        <a href="autobiografi.html">
+            Autobiografi
+        </a>
+
+        <a href="materi.html">
+            Materi
+        </a>
+
+        <a href="tugas.html">
+            Tugas
+        </a>
+
+        <a href="kelas.html">
+            Kelas Saya
+        </a>
+
+        <a href="ruang-bertanya.html">
+            Ruang Bertanya
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         KONTEN
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- HEADER MODUL -->
+
+        <section class="module-header">
+
+            <span class="module-number">
+                MODUL 9
+            </span>
+
+            <h2>
+                ⚙️ Macro & Otomatisasi Tingkat Lanjut
+            </h2>
+
+            <p>
+                Microsoft Word 2016
+            </p>
+
+            <p>
+                Pada modul ini peserta akan mempelajari bagaimana
+                menggunakan Macro dan VBA untuk mengotomatisasi
+                pekerjaan yang dilakukan berulang kali pada
+                Microsoft Word.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             1. PENGENALAN MACRO
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                1. Pengenalan Macro pada Microsoft Word 2016
+            </h2>
+
+            <p>
+                Macro adalah serangkaian perintah yang direkam atau
+                ditulis menggunakan VBA (Visual Basic for Applications)
+                untuk menjalankan pekerjaan secara otomatis.
+            </p>
+
+            <p>
+                Dengan Macro, pekerjaan yang sebelumnya harus dilakukan
+                secara berulang dapat dijalankan hanya dengan satu
+                perintah atau satu tombol.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Contoh penggunaan:</strong>
+
+                <ul>
+
+                    <li>
+                        Mengatur format dokumen secara otomatis.
+                    </li>
+
+                    <li>
+                        Membuat format laporan yang seragam.
+                    </li>
+
+                    <li>
+                        Menjalankan beberapa perintah sekaligus.
+                    </li>
+
+                    <li>
+                        Membantu pekerjaan administrasi yang berulang.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             2. DEVELOPER TAB
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                2. Mengenal Developer Tab
+            </h2>
+
+            <p>
+                Tab Developer merupakan bagian penting untuk bekerja
+                dengan Macro, VBA, dan kontrol formulir di Microsoft Word.
+            </p>
+
+            <h3>
+                Cara menampilkan Developer
+            </h3>
+
+            <div class="step">
+
+                <strong>Langkah 1:</strong>
+
+                Klik
+
+                <b>File → Options</b>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 2:</strong>
+
+                Pilih
+
+                <b>Customize Ribbon</b>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 3:</strong>
+
+                Beri tanda centang pada
+
+                <b>Developer</b>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 4:</strong>
+
+                Klik
+
+                <b>OK</b>
+
+            </div>
+
+            <p>
+                Setelah berhasil, tab <b>Developer</b> akan muncul
+                pada Ribbon Microsoft Word.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             3. RECORD MACRO
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                3. Membuat Macro dengan Record Macro
+            </h2>
+
+            <p>
+                Record Macro memungkinkan pengguna merekam tindakan
+                yang dilakukan di Word kemudian menjalankannya kembali
+                secara otomatis.
+            </p>
+
+            <div class="step">
+
+                <strong>Langkah 1:</strong>
+
+                Buka tab
+
+                <b>View → Macros → Record Macro</b>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 2:</strong>
+
+                Masukkan nama Macro.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 3:</strong>
+
+                Tentukan apakah Macro akan dijalankan melalui
+                tombol atau keyboard shortcut.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 4:</strong>
+
+                Lakukan pekerjaan yang ingin direkam.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 5:</strong>
+
+                Pilih
+
+                <b>View → Macros → Stop Recording</b>.
+
+            </div>
+
+            <div class="success-box">
+
+                <strong>Tips:</strong>
+
+                Buat nama Macro yang mudah dikenali, misalnya:
+
+                <b>FormatLaporan</b>
+
+                atau
+
+                <b>FormatSurat</b>.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             4. MENJALANKAN MACRO
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                4. Menjalankan Macro
+            </h2>
+
+            <p>
+                Macro yang telah dibuat dapat dijalankan melalui
+                beberapa cara.
+            </p>
+
+            <ul>
+
+                <li>
+                    Melalui menu Macro.
+                </li>
+
+                <li>
+                    Menggunakan keyboard shortcut.
+                </li>
+
+                <li>
+                    Menggunakan tombol yang telah dibuat.
+                </li>
+
+            </ul>
+
+            <div class="info-box">
+
+                <strong>Contoh:</strong>
+
+                Jika Macro bernama
+
+                <b>FormatLaporan</b>
+
+                memiliki shortcut tertentu, pengguna dapat menjalankan
+                seluruh rangkaian format hanya dengan menekan shortcut tersebut.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             5. VISUAL BASIC EDITOR
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                5. Mengenal Visual Basic Editor
+            </h2>
+
+            <p>
+                Macro pada Microsoft Word dapat dilihat dan diedit
+                melalui Visual Basic Editor atau VBE.
+            </p>
+
+            <p>
+                Untuk membukanya dapat menggunakan:
+            </p>
+
+            <div class="info-box">
+
+                <b>Developer → Visual Basic</b>
+
+            </div>
+
+            <p>
+                Di dalam Visual Basic Editor, Macro ditulis menggunakan
+                bahasa pemrograman VBA.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             6. VBA DASAR
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                6. Pengenalan VBA Dasar
+            </h2>
+
+            <p>
+                VBA merupakan bahasa pemrograman yang digunakan untuk
+                mengendalikan dan mengotomatisasi aplikasi Microsoft Office.
+            </p>
+
+            <p>
+                Struktur sederhana sebuah Macro VBA adalah:
+            </p>
+
+            <div class="code-box">
+
+Sub ContohMacro()
+
+    MsgBox "Selamat datang di TIK Learning!"
+
+End Sub
+
+            </div>
+
+            <p>
+                Ketika Macro tersebut dijalankan, Word akan menampilkan
+                kotak pesan.
+            </p>
+
+            <div class="info-box">
+
+                <b>Sub</b> digunakan untuk memulai prosedur Macro,
+                sedangkan <b>End Sub</b> menandai akhir prosedur.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             7. MSGBOX
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                7. Membuat Pesan Otomatis dengan MsgBox
+            </h2>
+
+            <p>
+                Salah satu perintah VBA yang sederhana adalah
+                <b>MsgBox</b>.
+            </p>
+
+            <div class="code-box">
+
+Sub PesanTIK()
+
+    MsgBox "Dokumen berhasil diproses."
+
+End Sub
+
+            </div>
+
+            <p>
+                Macro tersebut akan menampilkan pesan setelah dijalankan.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             8. OTOMATISASI FORMAT
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                8. Macro untuk Pemformatan Otomatis
+            </h2>
+
+            <p>
+                Macro dapat digunakan untuk menerapkan format tertentu
+                secara otomatis.
+            </p>
+
+            <p>
+                Contohnya adalah membuat seluruh teks terpilih menjadi
+                tebal dan rata tengah.
+            </p>
+
+            <div class="code-box">
+
+Sub FormatJudul()
+
+    Selection.Font.Bold = True
+    Selection.ParagraphFormat.Alignment = wdAlignParagraphCenter
+
+End Sub
+
+            </div>
+
+            <p>
+                Dengan Macro tersebut, pekerjaan yang biasanya dilakukan
+                melalui beberapa menu dapat dijalankan secara otomatis.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             9. PEKERJAAN BERULANG
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                9. Macro untuk Pekerjaan Berulang
+            </h2>
+
+            <p>
+                Salah satu manfaat terbesar Macro adalah mengurangi
+                pekerjaan manual yang dilakukan berulang kali.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <tr>
+
+                        <th>
+                            Pekerjaan
+                        </th>
+
+                        <th>
+                            Tanpa Macro
+                        </th>
+
+                        <th>
+                            Dengan Macro
+                        </th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Format judul
+                        </td>
+
+                        <td>
+                            Dilakukan manual
+                        </td>
+
+                        <td>
+                            Satu perintah
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Format laporan
+                        </td>
+
+                        <td>
+                            Berulang
+                        </td>
+
+                        <td>
+                            Otomatis
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Menampilkan pesan
+                        </td>
+
+                        <td>
+                            Tidak otomatis
+                        </td>
+
+                        <td>
+                            MsgBox
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Pekerjaan administratif
+                        </td>
+
+                        <td>
+                            Banyak langkah
+                        </td>
+
+                        <td>
+                            Dapat disederhanakan
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             10. TOMBOL OTOMATIS
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                10. Membuat Tombol untuk Menjalankan Macro
+            </h2>
+
+            <p>
+                Macro dapat dihubungkan dengan tombol sehingga pengguna
+                tidak perlu membuka menu Macro setiap kali ingin
+                menjalankannya.
+            </p>
+
+            <div class="step">
+
+                <strong>Langkah 1:</strong>
+
+                Buka tab
+
+                <b>Developer</b>.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 2:</strong>
+
+                Gunakan kontrol atau perintah yang sesuai untuk membuat
+                tombol.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 3:</strong>
+
+                Hubungkan tombol dengan Macro.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Langkah 4:</strong>
+
+                Uji tombol tersebut.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             11. MACRO DAN TEMPLATE
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                11. Macro dan Template
+            </h2>
+
+            <p>
+                Macro dapat digunakan bersama template untuk membuat
+                dokumen dengan format yang lebih terstandar.
+            </p>
+
+            <p>
+                Dalam pekerjaan administrasi, pendekatan ini dapat
+                membantu membuat dokumen yang memiliki struktur dan
+                format yang konsisten.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Format penting:</strong>
+
+                <ul>
+
+                    <li>
+                        <b>.docm</b> — dokumen Word yang dapat menyimpan Macro.
+                    </li>
+
+                    <li>
+                        <b>.dotm</b> — template Word yang dapat menyimpan Macro.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             12. KEAMANAN MACRO
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                12. Keamanan Macro
+            </h2>
+
+            <p>
+                Macro memberikan kemampuan otomatisasi yang kuat,
+                tetapi Macro juga dapat digunakan untuk menjalankan
+                kode yang tidak aman.
+            </p>
+
+            <div class="warning-box">
+
+                ⚠️ <strong>Penting!</strong>
+
+                Jangan mengaktifkan Macro dari dokumen yang berasal
+                dari sumber yang tidak dipercaya.
+
+            </div>
+
+            <h3>
+                Hal yang perlu diperhatikan
+            </h3>
+
+            <ul>
+
+                <li>
+                    Periksa sumber dokumen sebelum mengaktifkan Macro.
+                </li>
+
+                <li>
+                    Jangan sembarangan memilih Enable Content.
+                </li>
+
+                <li>
+                    Gunakan dokumen Macro-enabled hanya ketika diperlukan.
+                </li>
+
+                <li>
+                    Pahami kode Macro sebelum menggunakannya.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             13. STUDI KASUS
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                13. Studi Kasus Otomatisasi Administrasi
+            </h2>
+
+            <p>
+                Bayangkan seorang staf harus membuat puluhan dokumen
+                laporan dengan format yang sama.
+            </p>
+
+            <p>
+                Tanpa otomatisasi, setiap dokumen harus diformat satu
+                per satu.
+            </p>
+
+            <p>
+                Dengan Macro, beberapa pekerjaan dapat dibuat menjadi
+                satu rangkaian perintah.
+            </p>
+
+            <div class="success-box">
+
+                <strong>Contoh alur:</strong>
+
+                <ol>
+
+                    <li>
+                        Membuka dokumen.
+                    </li>
+
+                    <li>
+                        Menjalankan Macro.
+                    </li>
+
+                    <li>
+                        Macro menerapkan format standar.
+                    </li>
+
+                    <li>
+                        Macro menampilkan pesan bahwa proses selesai.
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             14. LATIHAN PRAKTIK
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                14. Latihan Praktik Modul 9
+            </h2>
+
+            <p>
+                Buatlah sebuah Macro sederhana yang dapat digunakan
+                untuk membantu pekerjaan administrasi.
+            </p>
+
+            <div class="step">
+
+                <strong>Tugas 1:</strong>
+
+                Aktifkan tab Developer pada Microsoft Word 2016.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Tugas 2:</strong>
+
+                Buat Macro dengan nama
+
+                <b>FormatJudul</b>.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Tugas 3:</strong>
+
+                Atur Macro agar judul menjadi tebal dan berada
+                di tengah halaman.
+
+            </div>
+
+            <div class="step">
+
+                <strong>Tugas 4:</strong>
+
+                Buat Macro kedua yang menampilkan pesan:
+
+                <b>"Dokumen berhasil diproses."</b>
+
+            </div>
+
+            <div class="step">
+
+                <strong>Tugas 5:</strong>
+
+                Jalankan kedua Macro tersebut dan pastikan berfungsi.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROYEK AKHIR
+        ========================= -->
+
+        <section class="materi-section">
+
+            <div class="project-box">
+
+                <h3>
+                    🏆 Proyek Praktik Modul 9
+                </h3>
+
+                <p>
+                    Buat sebuah <strong>Template Dokumen Administrasi Otomatis</strong>
+                    menggunakan Microsoft Word 2016.
+                </p>
+
+                <p>
+                    Template minimal memiliki:
+                </p>
+
+                <ul>
+
+                    <li>
+                        Format judul yang konsisten.
+                    </li>
+
+                    <li>
+                        Macro untuk menjalankan pemformatan.
+                    </li>
+
+                    <li>
+                        Tombol atau shortcut untuk menjalankan Macro.
+                    </li>
+
+                    <li>
+                        Pesan otomatis setelah proses selesai.
+                    </li>
+
+                    <li>
+                        File disimpan dalam format Macro-enabled.
+                    </li>
+
+                </ul>
+
+                <p>
+                    <strong>Tujuan:</strong>
+                    peserta mampu membuat solusi otomatisasi sederhana
+                    yang dapat digunakan dalam pekerjaan administrasi.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RANGKUMAN
+        ========================= -->
+
+        <section class="materi-section">
+
+            <h2>
+                📌 Rangkuman Modul 9
+            </h2>
+
+            <ul>
+
+                <li>
+                    Macro digunakan untuk mengotomatisasi pekerjaan
+                    yang berulang.
+                </li>
+
+                <li>
+                    Developer merupakan tab penting untuk bekerja
+                    dengan Macro dan VBA.
+                </li>
+
+                <li>
+                    Macro dapat dibuat melalui Record Macro maupun
+                    melalui VBA.
+                </li>
+
+                <li>
+                    VBA memungkinkan pengguna membuat otomatisasi
+                    yang lebih fleksibel.
+                </li>
+
+                <li>
+                    Macro dapat dihubungkan dengan tombol atau shortcut.
+                </li>
+
+                <li>
+                    Dokumen Macro-enabled menggunakan format seperti
+                    <b>.docm</b> dan <b>.dotm</b>.
+                </li>
+
+                <li>
+                    Keamanan Macro harus selalu diperhatikan.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             TOMBOL
+        ========================= -->
+
+        <section class="module-button-area">
+
+            <a
+                href="kuis-modul-9.html"
+                class="btn-belajar">
+
+                📝 Mulai Kuis Modul 9
+
+            </a>
+
+            <a
+                href="materi.html"
+                class="btn-kembali">
+
+                ← Kembali ke Materi
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

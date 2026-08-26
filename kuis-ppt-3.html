@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Modul 3 - Menyisipkan Objek | PowerPoint 2016</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#263238;
+    line-height:1.6;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.header-icon{
+    font-size:50px;
+    margin-bottom:8px;
+}
+
+.header h1{
+    font-size:29px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:15px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:950px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    border-radius:14px;
+    padding:25px;
+    margin-bottom:22px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#c62828;
+    margin-bottom:15px;
+}
+
+/* LOGIN */
+.login-box{
+    max-width:550px;
+    margin:35px auto;
+}
+
+.login-box h2{
+    text-align:center;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.form-group input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.form-group input:focus{
+    outline:none;
+    border-color:#e53935;
+    box-shadow:0 0 0 3px rgba(229,57,53,.12);
+}
+
+/* INFO */
+.info{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.info ul{
+    margin-left:22px;
+}
+
+/* TIMER */
+.timer-box{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#263238;
+    color:white;
+    padding:13px 18px;
+    border-radius:10px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.timer{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.timer.warning{
+    background:#e65100;
+    padding:4px 10px;
+    border-radius:6px;
+}
+
+/* QUESTION */
+.question{
+    background:#fff;
+    border-radius:12px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+    border-left:4px solid #e53935;
+}
+
+.question h3{
+    color:#263238;
+    margin-bottom:15px;
+    font-size:17px;
+}
+
+.option{
+    display:block;
+    background:#f8f9fa;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:11px 13px;
+    margin:9px 0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#ffebee;
+    border-color:#e53935;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
+    padding:13px 24px;
+    border-radius:9px;
+    font-size:16px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+}
+
+.btn-secondary{
+    background:#455a64;
+}
+
+.btn-center{
+    text-align:center;
+    margin:25px 0;
+}
+
+/* RESULT */
+.result{
+    display:none;
+    text-align:center;
+}
+
+.score{
+    font-size:52px;
+    font-weight:bold;
+    color:#c62828;
+    margin:10px 0;
+}
+
+.status{
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:bold;
+    margin:10px 0 20px;
+}
+
+.lulus{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.tidak-lulus{
+    background:#ffebee;
+    color:#c62828;
+}
+
+/* REVIEW */
+.review{
+    text-align:left;
+    margin-top:25px;
+}
+
+.review-item{
+    border-radius:9px;
+    padding:15px;
+    margin:12px 0;
+}
+
+.review-benar{
+    background:#e8f5e9;
+    border-left:5px solid #43a047;
+}
+
+.review-salah{
+    background:#ffebee;
+    border-left:5px solid #e53935;
+}
+
+.review-item strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+/* FOOTER */
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+
+    .header h1{
+        font-size:23px;
+    }
+
+    .container{
+        padding:0 12px;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        padding:17px;
+    }
+
+    .timer-box{
+        flex-direction:column;
+        gap:5px;
+        text-align:center;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="header-icon">📝</div>
+
+    <h1>Kuis Modul 3</h1>
+
+    <p>
+        Menyisipkan Objek — Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<main class="container">
+
+<!-- ================================
+     LOGIN / IDENTITAS
+================================ -->
+
+<section class="card login-box" id="loginBox">
+
+    <h2>🔐 Mulai Kuis</h2>
+
+    <p style="text-align:center;margin-bottom:20px;">
+        Silakan isi identitas sebelum memulai kuis.
+    </p>
+
+    <div class="form-group">
+
+        <label for="nama">
+            Nama Peserta
+        </label>
+
+        <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama lengkap"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="password">
+            Password Kuis
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan password"
+        >
+
+    </div>
+
+
+    <div class="info">
+
+        <strong>📌 Ketentuan Kuis</strong>
+
+        <ul>
+
+            <li>Jumlah soal: <strong>15 soal</strong></li>
+
+            <li>Waktu: <strong>10 menit</strong></li>
+
+            <li>Setiap soal bernilai sama.</li>
+
+            <li>Nilai minimum kelulusan: <strong>70</strong></li>
+
+            <li>Jawaban akan dinilai otomatis.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="btn-center">
+
+        <button
+            class="btn"
+            onclick="mulaiKuis()">
+
+            🚀 Mulai Kuis
+
+        </button>
+
+    </div>
+
+    <p
+        id="loginError"
+        style="
+        color:#c62828;
+        text-align:center;
+        font-weight:bold;
+        display:none;
+        ">
+    </p>
+
+</section>
+
+
+<!-- ================================
+     AREA KUIS
+================================ -->
+
+<section id="quizArea" style="display:none;">
+
+    <div class="timer-box">
+
+        <div>
+            👤 <span id="namaPeserta"></span>
+        </div>
+
+        <div>
+            ⏱️ Waktu:
+            <span id="timer" class="timer">
+                10:00
+            </span>
+        </div>
+
+    </div>
+
+
+    <form id="quizForm">
+
+
+<!-- ================================
+     SOAL 1
+================================ -->
+
+<div class="question">
+
+<h3>
+1. Menu yang digunakan untuk memasukkan gambar dari komputer adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+A. Home → Picture
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+B. Insert → Pictures → This Device
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+C. Design → Pictures
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+D. View → Picture
+</label>
+
+</div>
+
+
+<!-- SOAL 2 -->
+
+<div class="question">
+
+<h3>
+2. Shortcut untuk membuka dialog Hyperlink adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+A. Ctrl + H
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+B. Ctrl + K
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+C. Ctrl + L
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+D. Ctrl + P
+</label>
+
+</div>
+
+
+<!-- SOAL 3 -->
+
+<div class="question">
+
+<h3>
+3. Fitur yang digunakan untuk membuat diagram visual seperti Process dan Hierarchy adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+A. WordArt
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+B. SmartArt
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+C. Screenshot
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+D. Table
+</label>
+
+</div>
+
+
+<!-- SOAL 4 -->
+
+<div class="question">
+
+<h3>
+4. Menu untuk membuat grafik atau diagram data adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+A. Insert → Chart
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+B. Insert → Footer
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+C. Design → Chart
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+D. View → Chart
+</label>
+
+</div>
+
+
+<!-- SOAL 5 -->
+
+<div class="question">
+
+<h3>
+5. Jenis Chart yang paling sesuai untuk menunjukkan persentase dari keseluruhan adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+A. Line
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+B. Pie
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+C. Scatter
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D">
+D. Area
+</label>
+
+</div>
+
+
+<!-- SOAL 6 -->
+
+<div class="question">
+
+<h3>
+6. Untuk membuat tabel pada PowerPoint digunakan menu...
+</h3>
+
+<label class="option">
+<input type="radio" name="q6" value="A">
+A. Insert → Table
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B">
+B. Home → Table
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C">
+C. Design → Table
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D">
+D. View → Table
+</label>
+
+</div>
+
+
+<!-- SOAL 7 -->
+
+<div class="question">
+
+<h3>
+7. Fitur Screenshot digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q7" value="A">
+A. Menghapus gambar
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B">
+B. Mengambil tampilan layar atau jendela aplikasi
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C">
+C. Membuat tabel
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D">
+D. Membuat animasi
+</label>
+
+</div>
+
+
+<!-- SOAL 8 -->
+
+<div class="question">
+
+<h3>
+8. Menu yang digunakan untuk membuat tombol navigasi seperti Next, Back, dan Home adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q8" value="A">
+A. Insert → Shapes → Action Buttons
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B">
+B. Design → Action
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C">
+C. View → Navigation
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D">
+D. Home → Buttons
+</label>
+
+</div>
+
+
+<!-- SOAL 9 -->
+
+<div class="question">
+
+<h3>
+9. Action Button dapat digunakan untuk melakukan hal berikut, kecuali...
+</h3>
+
+<label class="option">
+<input type="radio" name="q9" value="A">
+A. Menuju slide berikutnya
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B">
+B. Menuju slide sebelumnya
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C">
+C. Membuat rumus Excel secara otomatis
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D">
+D. Membuka hyperlink
+</label>
+
+</div>
+
+
+<!-- SOAL 10 -->
+
+<div class="question">
+
+<h3>
+10. Menu yang digunakan untuk mengatur Date and Time serta Slide Number adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q10" value="A">
+A. Insert → Header & Footer
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B">
+B. Home → Footer
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C">
+C. Design → Number
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D">
+D. View → Header
+</label>
+
+</div>
+
+
+<!-- SOAL 11 -->
+
+<div class="question">
+
+<h3>
+11. Jika ingin menampilkan nomor slide pada semua slide, setelah mencentang Slide Number sebaiknya klik...
+</h3>
+
+<label class="option">
+<input type="radio" name="q11" value="A">
+A. Cancel
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="B">
+B. Apply to All
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="C">
+C. Reset
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="D">
+D. Close
+</label>
+
+</div>
+
+
+<!-- SOAL 12 -->
+
+<div class="question">
+
+<h3>
+12. Fitur yang digunakan untuk mencari gambar dari sumber online adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q12" value="A">
+A. Online Pictures
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="B">
+B. Screenshot
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="C">
+C. SmartArt
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="D">
+D. Chart
+</label>
+
+</div>
+
+
+<!-- SOAL 13 -->
+
+<div class="question">
+
+<h3>
+13. Shapes dapat digunakan untuk membuat hal berikut, kecuali...
+</h3>
+
+<label class="option">
+<input type="radio" name="q13" value="A">
+A. Diagram alur
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="B">
+B. Tombol navigasi
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="C">
+C. Kotak informasi
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="D">
+D. Menghitung nilai secara otomatis
+</label>
+
+</div>
+
+
+<!-- SOAL 14 -->
+
+<div class="question">
+
+<h3>
+14. Fitur yang dapat digunakan untuk membuat teks atau objek mengarah ke website adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q14" value="A">
+A. Hyperlink
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="B">
+B. Crop
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="C">
+C. SmartArt
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="D">
+D. WordArt
+</label>
+
+</div>
+
+
+<!-- SOAL 15 -->
+
+<div class="question">
+
+<h3>
+15. Manakah pasangan fitur dan fungsinya yang benar?
+</h3>
+
+<label class="option">
+<input type="radio" name="q15" value="A">
+A. Chart — membuat grafik data
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="B">
+B. Screenshot — membuat nomor slide
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C">
+C. Hyperlink — membuat tabel
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D">
+D. SmartArt — mengambil gambar layar
+</label>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<div class="btn-center">
+
+    <button
+        type="button"
+        class="btn"
+        onclick="periksaJawaban()">
+
+        ✅ Selesai & Lihat Nilai
+
+    </button>
+
+</div>
+
+</form>
+
+</section>
+
+
+<!-- ================================
+     HASIL
+================================ -->
+
+<section class="card result" id="resultBox">
+
+    <h2>
+        🎉 Hasil Kuis
+    </h2>
+
+    <p>
+        Peserta:
+    </p>
+
+    <h3 id="hasilNama"></h3>
+
+    <div class="score" id="nilai">
+        0
+    </div>
+
+    <p>
+        Jawaban benar:
+        <strong id="jumlahBenar">0</strong>
+        dari 15 soal
+    </p>
+
+    <div
+        id="status"
+        class="status">
+
+    </div>
+
+    <div class="review">
+
+        <h2>
+            📋 Pembahasan Jawaban
+        </h2>
+
+        <div id="reviewArea"></div>
+
+    </div>
+
+
+    <div class="btn-center">
+
+        <a
+            href="modul-ppt-3.html"
+            class="btn btn-secondary">
+
+            ← Kembali ke Modul 3
+
+        </a>
+
+        <button
+            class="btn"
+            onclick="location.reload()">
+
+            🔄 Ulangi Kuis
+
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Kuis Modul 3 — Menyisipkan Objek
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   PENGATURAN KUIS
+========================================== */
+
+const PASSWORD = "BLK2026";
+
+const TOTAL_SOAL = 15;
+
+const WAKTU = 10 * 60;
+
+let waktuTersisa = WAKTU;
+
+let timerInterval;
+
+
+/* ==========================================
+   KUNCI JAWABAN
+========================================== */
+
+const jawabanBenar = {
+
+    q1:"B",
+
+    q2:"B",
+
+    q3:"B",
+
+    q4:"A",
+
+    q5:"B",
+
+    q6:"A",
+
+    q7:"B",
+
+    q8:"A",
+
+    q9:"C",
+
+    q10:"A",
+
+    q11:"B",
+
+    q12:"A",
+
+    q13:"D",
+
+    q14:"A",
+
+    q15:"A"
+
+};
+
+
+/* ==========================================
+   PEMBAHASAN
+========================================== */
+
+const pembahasan = {
+
+    q1:
+    "Picture dapat dimasukkan melalui Insert → Pictures → This Device.",
+
+    q2:
+    "Ctrl + K merupakan shortcut untuk membuka dialog Hyperlink.",
+
+    q3:
+    "SmartArt digunakan untuk membuat diagram visual seperti Process, Cycle, Hierarchy, dan lainnya.",
+
+    q4:
+    "Chart dibuat melalui Insert → Chart.",
+
+    q5:
+    "Pie Chart cocok digunakan untuk menunjukkan bagian atau persentase dari keseluruhan.",
+
+    q6:
+    "Table dibuat melalui Insert → Table.",
+
+    q7:
+    "Screenshot digunakan untuk mengambil tampilan layar atau jendela aplikasi.",
+
+    q8:
+    "Action Buttons tersedia melalui Insert → Shapes → Action Buttons.",
+
+    q9:
+    "Action Button tidak digunakan untuk membuat rumus Excel secara otomatis.",
+
+    q10:
+    "Date and Time serta Slide Number dapat diatur melalui Insert → Header & Footer.",
+
+    q11:
+    "Apply to All digunakan agar pengaturan diterapkan pada seluruh slide.",
+
+    q12:
+    "Online Pictures digunakan untuk mencari dan memasukkan gambar dari sumber online.",
+
+    q13:
+    "Shapes tidak digunakan untuk menghitung nilai secara otomatis.",
+
+    q14:
+    "Hyperlink dapat mengarahkan teks atau objek menuju website atau lokasi lainnya.",
+
+    q15:
+    "Chart digunakan untuk membuat grafik yang menyajikan data."
+};
+
+
+/* ==========================================
+   MULAI KUIS
+========================================== */
+
+function mulaiKuis(){
+
+    const nama =
+        document.getElementById("nama").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("loginError");
+
+
+    if(nama === ""){
+
+        error.innerText =
+            "Nama peserta wajib diisi.";
+
+        error.style.display = "block";
+
+        return;
+
+    }
+
+
+    if(password !== PASSWORD){
+
+        error.innerText =
+            "Password kuis salah.";
+
+        error.style.display = "block";
+
+        return;
+
+    }
+
+
+    document.getElementById("loginBox")
+        .style.display = "none";
+
+    document.getElementById("quizArea")
+        .style.display = "block";
+
+    document.getElementById("namaPeserta")
+        .innerText = nama;
+
+
+    mulaiTimer();
+
+}
+
+
+/* ==========================================
+   TIMER
+========================================== */
+
+function mulaiTimer(){
+
+    timerInterval =
+        setInterval(function(){
+
+            let menit =
+                Math.floor(waktuTersisa / 60);
+
+            let detik =
+                waktuTersisa % 60;
+
+
+            let tampilanMenit =
+                menit.toString().padStart(2,"0");
+
+            let tampilanDetik =
+                detik.toString().padStart(2,"0");
+
+
+            const timer =
+                document.getElementById("timer");
+
+
+            timer.innerText =
+                tampilanMenit +
+                ":" +
+                tampilanDetik;
+
+
+            if(waktuTersisa <= 60){
+
+                timer.classList.add("warning");
+
+            }
+
+
+            if(waktuTersisa <= 0){
+
+                clearInterval(timerInterval);
+
+                alert(
+                    "Waktu kuis telah habis. Jawaban akan diperiksa otomatis."
+                );
+
+                periksaJawaban();
+
+            }
+
+
+            waktuTersisa--;
+
+        },1000);
+
+}
+
+
+/* ==========================================
+   PERIKSA JAWABAN
+========================================== */
+
+function periksaJawaban(){
+
+    clearInterval(timerInterval);
+
+
+    let benar = 0;
+
+    let reviewHTML = "";
+
+
+    for(let i = 1; i <= TOTAL_SOAL; i++){
+
+        const namaSoal = "q" + i;
+
+        const pilihan =
+            document.querySelector(
+                'input[name="' +
+                namaSoal +
+                '"]:checked'
+            );
+
+
+        const jawaban =
+            pilihan ? pilihan.value : "-";
+
+
+        const benarSoal =
+            jawabanBenar[namaSoal];
+
+
+        if(jawaban === benarSoal){
+
+            benar++;
+
+            reviewHTML += `
+
+                <div class="review-item review-benar">
+
+                    <strong>
+                        Soal ${i} — ✅ Benar
+                    </strong>
+
+                    Jawaban Anda:
+                    <strong>${jawaban}</strong>
+
+                    <br>
+
+                    Pembahasan:
+                    ${pembahasan[namaSoal]}
+
+                </div>
+
+            `;
+
+        }else{
+
+            reviewHTML += `
+
+                <div class="review-item review-salah">
+
+                    <strong>
+                        Soal ${i} — ❌ Salah
+                    </strong>
+
+                    Jawaban Anda:
+                    <strong>${jawaban}</strong>
+
+                    <br>
+
+                    Jawaban yang benar:
+                    <strong>${benarSoal}</strong>
+
+                    <br>
+
+                    Pembahasan:
+                    ${pembahasan[namaSoal]}
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    const nilai =
+        Math.round(
+            (benar / TOTAL_SOAL) * 100
+        );
+
+
+    const nama =
+        document.getElementById("nama")
+            .value.trim();
+
+
+    document.getElementById("quizArea")
+        .style.display = "none";
+
+
+    document.getElementById("resultBox")
+        .style.display = "block";
+
+
+    document.getElementById("hasilNama")
+        .innerText = nama;
+
+
+    document.getElementById("nilai")
+        .innerText = nilai;
+
+
+    document.getElementById("jumlahBenar")
+        .innerText = benar;
+
+
+    const status =
+        document.getElementById("status");
+
+
+    if(nilai >= 70){
+
+        status.innerText =
+            "🎉 LULUS";
+
+        status.className =
+            "status lulus";
+
+    }else{
+
+        status.innerText =
+            "❌ BELUM LULUS";
+
+        status.className =
+            "status tidak-lulus";
+
+    }
+
+
+    document.getElementById("reviewArea")
+        .innerHTML = reviewHTML;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>

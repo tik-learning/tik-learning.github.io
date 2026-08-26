@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 7 - Mail Merge & Otomatisasi Dokumen</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           HEADER MODUL
+        ========================= */
+
+        .modul-header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .modul-header h2 {
+            margin-top: 0;
+            color: #0077b6;
+        }
+
+        .modul-label {
+            display: inline-block;
+            background: #0077b6;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           TUJUAN PEMBELAJARAN
+        ========================= */
+
+        .tujuan {
+            background: #eef8ff;
+            border-left: 5px solid #0077b6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .tujuan h3 {
+            margin-top: 0;
+        }
+
+        .tujuan li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           MATERI
+        ========================= */
+
+        .materi-section {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .materi-section h2 {
+            color: #0077b6;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .materi-section h3 {
+            margin-top: 25px;
+            color: #333;
+        }
+
+        .materi-section p {
+            line-height: 1.8;
+        }
+
+        .materi-section li {
+            margin-bottom: 9px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #f8fafc;
+            border-left: 4px solid #0077b6;
+            padding: 15px 18px;
+            border-radius: 6px;
+            margin: 18px 0;
+        }
+
+        .tip-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px 18px;
+            border-radius: 6px;
+            margin: 18px 0;
+        }
+
+        .praktik-box {
+            background: #eefaf2;
+            border-left: 4px solid #198754;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+
+        /* =========================
+           LANGKAH
+        ========================= */
+
+        .step {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            min-width: 32px;
+            height: 32px;
+            background: #0077b6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+
+        /* =========================
+           TABEL DATA
+        ========================= */
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background: #0077b6;
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+
+        /* =========================
+           KODE / FIELD
+        ========================= */
+
+        .field {
+            display: inline-block;
+            background: #eef2f7;
+            border: 1px solid #d7dee7;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            color: #333;
+        }
+
+
+        /* =========================
+           NAVIGASI MODUL
+        ========================= */
+
+        .modul-navigation {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .btn-modul {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+            background: #0077b6;
+            color: white;
+        }
+
+        .btn-modul:hover {
+            opacity: 0.9;
+        }
+
+        .btn-kembali {
+            background: #6c757d;
+        }
+
+        .btn-kuis {
+            background: #198754;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .materi-section {
+                padding: 20px;
+            }
+
+            .step {
+                gap: 10px;
+            }
+
+            .data-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- NAVIGASI -->
+
+    <nav>
+
+        <a href="index.html">Beranda</a>
+
+        <a href="autobiografi.html">Autobiografi</a>
+
+        <a href="materi.html">Materi</a>
+
+        <a href="tugas.html">Tugas</a>
+
+        <a href="kelas.html">Kelas Saya</a>
+
+        <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+    </nav>
+
+
+    <!-- KONTEN -->
+
+    <main class="container">
+
+
+        <!-- JUDUL -->
+
+        <section class="modul-header">
+
+            <span class="modul-label">
+                MODUL 7
+            </span>
+
+            <h2>
+                📄 Mail Merge & Otomatisasi Dokumen
+            </h2>
+
+            <p>
+                <strong>Microsoft Word 2016 — Tingkat Lanjut</strong>
+            </p>
+
+            <p>
+                Pada modul ini peserta akan mempelajari teknik
+                <strong>Mail Merge</strong> untuk membuat dokumen
+                secara otomatis berdasarkan data yang tersimpan
+                dalam tabel atau Microsoft Excel.
+            </p>
+
+        </section>
+
+
+        <!-- TUJUAN -->
+
+        <section class="tujuan">
+
+            <h3>🎯 Tujuan Pembelajaran</h3>
+
+            <p>
+                Setelah menyelesaikan Modul 7, peserta diharapkan mampu:
+            </p>
+
+            <ul>
+
+                <li>
+                    Menjelaskan fungsi Mail Merge pada Microsoft Word.
+                </li>
+
+                <li>
+                    Membuat sumber data untuk Mail Merge.
+                </li>
+
+                <li>
+                    Menghubungkan Microsoft Word dengan Microsoft Excel.
+                </li>
+
+                <li>
+                    Membuat dokumen utama Mail Merge.
+                </li>
+
+                <li>
+                    Memasukkan dan mengatur Merge Field.
+                </li>
+
+                <li>
+                    Menghasilkan dokumen untuk banyak penerima secara otomatis.
+                </li>
+
+                <li>
+                    Membuat surat, undangan, sertifikat, dan dokumen
+                    administrasi lainnya menggunakan Mail Merge.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 1 -->
+
+        <section class="materi-section">
+
+            <h2>1. Mengenal Mail Merge</h2>
+
+            <p>
+                <strong>Mail Merge</strong> adalah fitur Microsoft Word
+                yang memungkinkan kita membuat banyak dokumen dengan
+                format yang sama tetapi memiliki data penerima yang berbeda.
+            </p>
+
+            <p>
+                Dengan Mail Merge, kita tidak perlu mengetik ulang
+                nama, alamat, nomor peserta, atau data lainnya
+                satu per satu.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Contoh penggunaan:</strong>
+
+                <ul>
+
+                    <li>Surat panggilan peserta pelatihan</li>
+
+                    <li>Surat undangan</li>
+
+                    <li>Sertifikat peserta</li>
+
+                    <li>Surat keterangan</li>
+
+                    <li>Label alamat</li>
+
+                    <li>Daftar peserta</li>
+
+                    <li>Surat pemberitahuan</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 2 -->
+
+        <section class="materi-section">
+
+            <h2>2. Komponen Mail Merge</h2>
+
+            <p>
+                Mail Merge terdiri dari beberapa komponen utama.
+            </p>
+
+            <h3>① Main Document</h3>
+
+            <p>
+                Main Document adalah dokumen utama yang berisi
+                format surat atau dokumen yang akan dibuat.
+            </p>
+
+            <h3>② Data Source</h3>
+
+            <p>
+                Data Source adalah sumber data yang berisi informasi
+                penerima atau peserta.
+            </p>
+
+            <h3>③ Merge Field</h3>
+
+            <p>
+                Merge Field adalah bagian yang digunakan untuk
+                memasukkan data dari Data Source ke dalam dokumen.
+            </p>
+
+            <div class="info-box">
+
+                Contoh Merge Field:
+
+                <br><br>
+
+                <span class="field">«Nama»</span>
+
+                <span class="field">«Alamat»</span>
+
+                <span class="field">«No_Peserta»</span>
+
+                <span class="field">«Program»</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 3 -->
+
+        <section class="materi-section">
+
+            <h2>3. Membuat Data Source dengan Excel</h2>
+
+            <p>
+                Salah satu cara yang paling praktis adalah menggunakan
+                Microsoft Excel sebagai sumber data.
+            </p>
+
+            <p>
+                Buat tabel dengan nama kolom yang jelas.
+            </p>
+
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+
+                        <th>Nama</th>
+
+                        <th>Alamat</th>
+
+                        <th>Program</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>Andi</td>
+
+                        <td>Subang</td>
+
+                        <td>Microsoft Office</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>Budi</td>
+
+                        <td>Pagaden</td>
+
+                        <td>Microsoft Office</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>Siti</td>
+
+                        <td>Subang</td>
+
+                        <td>Microsoft Office</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+            <div class="tip-box">
+
+                💡 <strong>Tips:</strong>
+
+                Gunakan nama kolom yang sederhana dan mudah dikenali.
+                Hindari membuat nama kolom yang terlalu panjang.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 4 -->
+
+        <section class="materi-section">
+
+            <h2>4. Menghubungkan Word dengan Excel</h2>
+
+            <p>
+                Setelah data peserta dibuat di Excel,
+                data tersebut dapat digunakan sebagai sumber
+                Mail Merge di Word.
+            </p>
+
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div class="step-content">
+
+                    Buka dokumen Microsoft Word yang akan digunakan.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div class="step-content">
+
+                    Pilih tab <strong>Mailings</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div class="step-content">
+
+                    Klik <strong>Start Mail Merge</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">4</div>
+
+                <div class="step-content">
+
+                    Pilih jenis dokumen, misalnya
+                    <strong>Letters</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">5</div>
+
+                <div class="step-content">
+
+                    Klik <strong>Select Recipients</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">6</div>
+
+                <div class="step-content">
+
+                    Pilih <strong>Use an Existing List</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">7</div>
+
+                <div class="step-content">
+
+                    Pilih file Excel yang berisi data peserta.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 5 -->
+
+        <section class="materi-section">
+
+            <h2>5. Memasukkan Merge Field</h2>
+
+            <p>
+                Setelah sumber data terhubung,
+                kita dapat memasukkan data peserta
+                ke dalam dokumen.
+            </p>
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div class="step-content">
+
+                    Letakkan kursor pada posisi data
+                    yang ingin dimasukkan.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div class="step-content">
+
+                    Pilih tab <strong>Mailings</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div class="step-content">
+
+                    Klik <strong>Insert Merge Field</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">4</div>
+
+                <div class="step-content">
+
+                    Pilih field yang diperlukan,
+                    misalnya <strong>Nama</strong>.
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                Contoh surat:
+
+                <br><br>
+
+                Kepada Yth.
+
+                <br>
+
+                <strong>«Nama»</strong>
+
+                <br>
+
+                di <strong>«Alamat»</strong>
+
+                <br><br>
+
+                Dengan ini kami mengundang Saudara
+                untuk mengikuti pelatihan
+                <strong>«Program»</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 6 -->
+
+        <section class="materi-section">
+
+            <h2>6. Preview Results</h2>
+
+            <p>
+                Setelah Merge Field dimasukkan,
+                gunakan fitur <strong>Preview Results</strong>
+                untuk melihat hasil penggabungan data.
+            </p>
+
+            <p>
+                Fitur ini memungkinkan kita memastikan bahwa
+                nama, alamat, program, dan informasi lainnya
+                tampil dengan benar sebelum dokumen dibuat.
+            </p>
+
+            <div class="tip-box">
+
+                ⚠️ Jangan langsung mencetak dokumen sebelum
+                melakukan pemeriksaan melalui Preview Results.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 7 -->
+
+        <section class="materi-section">
+
+            <h2>7. Edit Recipient List</h2>
+
+            <p>
+                Fitur <strong>Edit Recipient List</strong>
+                digunakan untuk memilih data mana saja yang
+                akan digunakan dalam proses Mail Merge.
+            </p>
+
+            <p>
+                Kita dapat memilih atau menghilangkan
+                penerima tertentu tanpa harus mengubah
+                data asli pada Excel.
+            </p>
+
+            <h3>Contoh penggunaan</h3>
+
+            <ul>
+
+                <li>
+                    Hanya mencetak surat untuk peserta tertentu.
+                </li>
+
+                <li>
+                    Memilih peserta berdasarkan wilayah.
+                </li>
+
+                <li>
+                    Menghilangkan data peserta yang tidak diperlukan.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 8 -->
+
+        <section class="materi-section">
+
+            <h2>8. Finish & Merge</h2>
+
+            <p>
+                Setelah seluruh dokumen diperiksa,
+                proses Mail Merge dapat diselesaikan melalui
+                <strong>Finish & Merge</strong>.
+            </p>
+
+            <p>
+                Beberapa pilihan yang tersedia antara lain:
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Edit Individual Documents</strong>
+                    — membuat dokumen gabungan yang dapat diedit.
+                </li>
+
+                <li>
+                    <strong>Print Documents</strong>
+                    — langsung mencetak hasil Mail Merge.
+                </li>
+
+                <li>
+                    <strong>Send E-mail Messages</strong>
+                    — mengirim dokumen melalui email.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- MATERI 9 -->
+
+        <section class="materi-section">
+
+            <h2>9. Membuat Surat Panggilan Peserta</h2>
+
+            <p>
+                Mail Merge sangat cocok digunakan untuk membuat
+                surat panggilan peserta pelatihan.
+            </p>
+
+            <p>
+                Format surat cukup dibuat satu kali.
+                Data peserta kemudian dimasukkan secara otomatis.
+            </p>
+
+            <div class="praktik-box">
+
+                <strong>Contoh data yang dapat digunakan:</strong>
+
+                <ul>
+
+                    <li>Nomor peserta</li>
+
+                    <li>Nama peserta</li>
+
+                    <li>Alamat</li>
+
+                    <li>Program pelatihan</li>
+
+                    <li>Tanggal pelatihan</li>
+
+                    <li>Tempat pelatihan</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 10 -->
+
+        <section class="materi-section">
+
+            <h2>10. Membuat Sertifikat Otomatis</h2>
+
+            <p>
+                Mail Merge juga dapat digunakan untuk membuat
+                sertifikat dalam jumlah banyak.
+            </p>
+
+            <p>
+                Nama peserta, program pelatihan,
+                tanggal pelaksanaan, dan nomor sertifikat
+                dapat diambil dari data Excel.
+            </p>
+
+            <div class="info-box">
+
+                Contoh field sertifikat:
+
+                <br><br>
+
+                <span class="field">«Nama»</span>
+
+                <span class="field">«Program»</span>
+
+                <span class="field">«Tanggal»</span>
+
+                <span class="field">«No_Sertifikat»</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 11 -->
+
+        <section class="materi-section">
+
+            <h2>11. Membuat Label dan Amplop</h2>
+
+            <p>
+                Selain surat dan sertifikat,
+                Mail Merge dapat digunakan untuk membuat
+                label dan amplop.
+            </p>
+
+            <p>
+                Fitur ini sangat berguna apabila terdapat
+                banyak penerima dengan alamat yang berbeda.
+            </p>
+
+        </section>
+
+
+        <!-- MATERI 12 -->
+
+        <section class="materi-section">
+
+            <h2>12. Menggunakan Kondisi dengan IF Field</h2>
+
+            <p>
+                Pada kebutuhan yang lebih lanjut,
+                Mail Merge dapat menggunakan kondisi
+                untuk menampilkan informasi tertentu.
+            </p>
+
+            <p>
+                Contohnya, dokumen dapat memberikan teks
+                yang berbeda berdasarkan kategori peserta.
+            </p>
+
+            <div class="tip-box">
+
+                💡 Contoh:
+
+                Peserta dengan kategori tertentu dapat
+                memperoleh kalimat atau informasi tambahan
+                yang berbeda pada dokumen.
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 13 -->
+
+        <section class="materi-section">
+
+            <h2>13. Praktik Administrasi Pelatihan</h2>
+
+            <p>
+                Untuk meningkatkan keterampilan peserta,
+                Mail Merge dapat diterapkan pada pekerjaan
+                administrasi pelatihan.
+            </p>
+
+            <div class="praktik-box">
+
+                <strong>Proyek praktik:</strong>
+
+                <ol>
+
+                    <li>
+                        Buat data 10 peserta menggunakan Excel.
+                    </li>
+
+                    <li>
+                        Buat format surat panggilan di Word.
+                    </li>
+
+                    <li>
+                        Hubungkan Word dengan Excel.
+                    </li>
+
+                    <li>
+                        Masukkan Merge Field.
+                    </li>
+
+                    <li>
+                        Gunakan Preview Results.
+                    </li>
+
+                    <li>
+                        Pilih seluruh peserta.
+                    </li>
+
+                    <li>
+                        Gunakan Finish & Merge.
+                    </li>
+
+                    <li>
+                        Periksa hasil dokumen.
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERI 14 -->
+
+        <section class="materi-section">
+
+            <h2>14. Tips Membuat Mail Merge Profesional</h2>
+
+            <ul>
+
+                <li>
+                    Gunakan nama kolom yang jelas.
+                </li>
+
+                <li>
+                    Pastikan tidak ada data peserta yang kosong
+                    pada field penting.
+                </li>
+
+                <li>
+                    Periksa format tanggal dan angka.
+                </li>
+
+                <li>
+                    Gunakan Preview Results sebelum mencetak.
+                </li>
+
+                <li>
+                    Periksa jumlah penerima sebelum Finish & Merge.
+                </li>
+
+                <li>
+                    Simpan file Word dan Excel dalam folder
+                    yang mudah ditemukan.
+                </li>
+
+                <li>
+                    Lakukan uji coba dengan beberapa data
+                    sebelum membuat dokumen dalam jumlah besar.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- LATIHAN -->
+
+        <section class="materi-section">
+
+            <h2>📝 Latihan Praktik Modul 7</h2>
+
+            <p>
+                Kerjakan latihan berikut untuk menguji
+                keterampilan Anda.
+            </p>
+
+            <div class="praktik-box">
+
+                <h3>Proyek: Surat Panggilan Peserta</h3>
+
+                <ol>
+
+                    <li>
+                        Buat tabel data 10 peserta di Excel.
+                    </li>
+
+                    <li>
+                        Buat dokumen surat panggilan di Word.
+                    </li>
+
+                    <li>
+                        Hubungkan dokumen Word dengan data Excel.
+                    </li>
+
+                    <li>
+                        Masukkan minimal 4 Merge Field.
+                    </li>
+
+                    <li>
+                        Gunakan Preview Results.
+                    </li>
+
+                    <li>
+                        Hasilkan dokumen untuk seluruh peserta.
+                    </li>
+
+                    <li>
+                        Simpan hasil pekerjaan dengan nama:
+                        <strong>Latihan_Mail_Merge_NamaPeserta.docx</strong>
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- RANGKUMAN -->
+
+        <section class="materi-section">
+
+            <h2>📌 Rangkuman Modul 7</h2>
+
+            <ul>
+
+                <li>
+                    Mail Merge digunakan untuk membuat
+                    dokumen dengan data penerima yang berbeda.
+                </li>
+
+                <li>
+                    Excel dapat digunakan sebagai sumber data.
+                </li>
+
+                <li>
+                    Merge Field digunakan untuk memasukkan
+                    data ke dalam dokumen.
+                </li>
+
+                <li>
+                    Preview Results digunakan untuk memeriksa
+                    hasil sebelum dokumen dibuat.
+                </li>
+
+                <li>
+                    Finish & Merge digunakan untuk menyelesaikan
+                    proses penggabungan dokumen.
+                </li>
+
+                <li>
+                    Mail Merge dapat digunakan untuk surat,
+                    sertifikat, label, dan berbagai dokumen
+                    administrasi lainnya.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGASI -->
+
+        <section class="modul-navigation">
+
+            <a
+                href="materi.html"
+                class="btn-modul btn-kembali">
+
+                ← Kembali ke Materi
+
+            </a>
+
+
+            <a
+                href="kuis-modul-7.html"
+                class="btn-modul btn-kuis">
+
+                📝 Mulai Kuis Modul 7
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

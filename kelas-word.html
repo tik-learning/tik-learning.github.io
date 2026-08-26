@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kelas Saya - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           KELAS SAYA
+        ===================================================== */
+
+        .kelas-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           IDENTITAS KELAS
+        ===================================================== */
+
+        .kelas-header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .kelas-header h2 {
+            margin-top: 0;
+            color: #0077b6;
+        }
+
+        .kelas-header p {
+            line-height: 1.7;
+            color: #555;
+        }
+
+
+        /* =====================================================
+           PROGRESS
+        ===================================================== */
+
+        .progress-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .progress-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .progress-title h2 {
+            margin: 0;
+            color: #0077b6;
+            font-size: 22px;
+        }
+
+        .progress-percent {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0077b6;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 22px;
+            background: #e9ecef;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #0077b6;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-info {
+            margin-top: 12px;
+            color: #555;
+        }
+
+
+        /* =====================================================
+           DAFTAR MODUL
+        ===================================================== */
+
+        .daftar-modul-title {
+            margin-bottom: 20px;
+        }
+
+        .daftar-modul-title h2 {
+            color: #0077b6;
+        }
+
+        .modul-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+
+        /* =====================================================
+           CARD MODUL
+        ===================================================== */
+
+        .modul-card {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+            transition: 0.25s;
+            border: 2px solid transparent;
+        }
+
+        .modul-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(0,0,0,0.12);
+        }
+
+        .modul-card.selesai {
+            border-color: #198754;
+        }
+
+        .modul-nomor {
+            color: #0077b6;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .modul-card h3 {
+            margin: 0 0 12px;
+            font-size: 18px;
+            line-height: 1.4;
+            color: #222;
+        }
+
+        .modul-deskripsi {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .modul-status {
+            margin: 15px 0;
+            padding: 9px 12px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-belum {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-selesai {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+
+        /* =====================================================
+           TOMBOL MODUL
+        ===================================================== */
+
+        .modul-button-area {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-modul,
+        .btn-kuis {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 13px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-modul {
+            background: #0077b6;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-kuis {
+            background: #e9ecef;
+            color: #333;
+            flex: 1;
+        }
+
+        .btn-modul:hover,
+        .btn-kuis:hover {
+            opacity: 0.88;
+        }
+
+
+        /* =====================================================
+           INFORMASI
+        ===================================================== */
+
+        .info-kelas {
+            background: #f1f7fb;
+            padding: 20px;
+            border-left: 5px solid #0077b6;
+            border-radius: 8px;
+            margin-top: 30px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           RESET PROGRESS
+        ===================================================== */
+
+        .reset-area {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn-reset-progress {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-reset-progress:hover {
+            opacity: 0.9;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .modul-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .modul-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kelas-header,
+            .progress-section {
+                padding: 22px;
+            }
+
+            .progress-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .progress-percent {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVIGASI
+    ===================================================== -->
+
+    <nav>
+
+        <a href="index.html">
+            Beranda
+        </a>
+
+        <a href="autobiografi.html">
+            Autobiografi
+        </a>
+
+        <a href="materi.html">
+            Materi
+        </a>
+
+        <a href="tugas.html">
+            Tugas
+        </a>
+
+        <a href="kelas.html" class="active">
+            Kelas Saya
+        </a>
+
+        <a href="ruang-bertanya.html">
+            Ruang Bertanya
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="container">
+
+        <div class="kelas-container">
+
+
+            <!-- =================================================
+                 IDENTITAS KELAS
+            ================================================= -->
+
+            <section class="kelas-header">
+
+                <h2>
+                    📚 Kelas Microsoft Word 2016
+                </h2>
+
+                <p>
+                    <strong>
+                        Kejuruan Teknologi Informasi dan Komunikasi
+                    </strong>
+                </p>
+
+                <p>
+                    Kelas TIK — UPTD BLK Kabupaten Subang
+                </p>
+
+                <p>
+                    Program pembelajaran berbasis kompetensi
+                    Microsoft Word 2016 dari tingkat dasar
+                    hingga pembuatan laporan profesional.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROGRESS PEMBELAJARAN
+            ================================================= -->
+
+            <section class="progress-section">
+
+                <div class="progress-title">
+
+                    <h2>
+                        📊 Progress Pembelajaran
+                    </h2>
+
+                    <div
+                        class="progress-percent"
+                        id="progressPercent">
+
+                        0%
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill">
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="progress-info"
+                    id="progressInfo">
+
+                    Anda sudah menyelesaikan
+                    <strong>0 dari 10 modul</strong>.
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DAFTAR MODUL
+            ================================================= -->
+
+            <section>
+
+                <div class="daftar-modul-title">
+
+                    <h2>
+                        📖 Daftar Modul
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="modul-grid"
+                    id="modulGrid">
+
+                    <!-- Modul dibuat otomatis oleh JavaScript -->
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 INFORMASI KELAS
+            ================================================= -->
+
+            <div class="info-kelas">
+
+                💡 <strong>Informasi Pembelajaran</strong>
+
+                <br>
+
+                Pelajari setiap modul secara berurutan.
+                Setelah mempelajari materi, kerjakan latihan
+                dan kuis untuk mengukur pemahaman Anda.
+
+                <br><br>
+
+                <strong>Target pembelajaran:</strong>
+
+                Menyelesaikan seluruh
+                <strong>10 modul Microsoft Word 2016</strong>.
+
+            </div>
+
+
+            <!-- =================================================
+                 RESET PROGRESS
+            ================================================= -->
+
+            <div class="reset-area">
+
+                <button
+                    type="button"
+                    class="btn-reset-progress"
+                    onclick="resetProgress()">
+
+                    🔄 Reset Progress
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           DATA 10 MODUL
+        ===================================================== */
+
+        const daftarModul = [
+
+            {
+                nomor: 1,
+                judul: "Pengenalan Microsoft Word",
+                deskripsi:
+                    "Mengenal Microsoft Word, tampilan aplikasi, menu, toolbar, dan fungsi dasar.",
+                file:
+                    "modul-word-1.html",
+                kuis:
+                    "kuis-modul-1.html"
+            },
+
+
+            {
+                nomor: 2,
+                judul: "Membuat Dokumen",
+                deskripsi:
+                    "Membuat dokumen baru, mengetik teks, menyimpan, membuka, dan mengelola dokumen.",
+                file:
+                    "modul-word-2.html",
+                kuis:
+                    "kuis-modul-2.html"
+            },
+
+
+            {
+                nomor: 3,
+                judul: "Format Dokumen",
+                deskripsi:
+                    "Mengatur font, paragraf, alignment, spacing, indentasi, dan format teks.",
+                file:
+                    "modul-word-3.html",
+                kuis:
+                    "kuis-modul-3.html"
+            },
+
+
+            {
+                nomor: 4,
+                judul: "Menambahkan dan Mengelola Elemen Dokumen",
+                deskripsi:
+                    "Mengelola tabel, gambar, shapes, text box, dan berbagai elemen dalam dokumen.",
+                file:
+                    "modul-word-4.html",
+                kuis:
+                    "kuis-modul-4.html"
+            },
+
+
+            {
+                nomor: 5,
+                judul: "Styles dan Heading",
+                deskripsi:
+                    "Menggunakan Styles dan Heading untuk membuat dokumen lebih konsisten dan terstruktur.",
+                file:
+                    "modul-word-5.html",
+                kuis:
+                    "kuis-modul-5.html"
+            },
+
+
+            {
+                nomor: 6,
+                judul: "Page Layout dan Section Break",
+                deskripsi:
+                    "Mengatur margin, ukuran kertas, orientasi halaman, page break, dan section break.",
+                file:
+                    "modul-word-6.html",
+                kuis:
+                    "kuis-modul-6.html"
+            },
+
+
+            {
+                nomor: 7,
+                judul: "Daftar Isi Otomatis",
+                deskripsi:
+                    "Membuat Heading dan menghasilkan daftar isi otomatis yang rapi dan profesional.",
+                file:
+                    "modul-word-7.html",
+                kuis:
+                    "kuis-modul-7.html"
+            },
+
+
+            {
+                nomor: 8,
+                judul: "Referensi dan Daftar Pustaka",
+                deskripsi:
+                    "Menggunakan Citation, Footnote, Bibliography, dan pengelolaan referensi.",
+                file:
+                    "modul-word-8.html",
+                kuis:
+                    "kuis-modul-8.html"
+            },
+
+
+            {
+                nomor: 9,
+                judul: "Macro dan Otomatisasi Tingkat Lanjut",
+                deskripsi:
+                    "Mengenal Macro dan otomatisasi pekerjaan berulang untuk meningkatkan produktivitas.",
+                file:
+                    "modul-word-9.html",
+                kuis:
+                    "kuis-modul-9.html"
+            },
+
+
+            {
+                nomor: 10,
+                judul: "Membuat Laporan Profesional",
+                deskripsi:
+                    "Menyusun laporan profesional dengan struktur, format, daftar isi, referensi, dan tata letak yang baik.",
+                file:
+                    "modul-word-10.html",
+                kuis:
+                    "kuis-modul-10.html"
+            }
+
+        ];
+
+
+        /* =====================================================
+           TOTAL MODUL
+        ===================================================== */
+
+        const totalModul = daftarModul.length;
+
+
+        /* =====================================================
+           KEY LOCAL STORAGE
+        ===================================================== */
+
+        const progressKey =
+            "tikLearningProgressWord";
+
+
+        /* =====================================================
+           AMBIL PROGRESS
+        ===================================================== */
+
+        function ambilProgress() {
+
+            const data =
+                localStorage.getItem(progressKey);
+
+
+            if (!data) {
+
+                return [];
+
+            }
+
+
+            try {
+
+                return JSON.parse(data);
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SIMPAN PROGRESS
+        ===================================================== */
+
+        function simpanProgress(progress) {
+
+            localStorage.setItem(
+                progressKey,
+                JSON.stringify(progress)
+            );
+
+        }
+
+
+        /* =====================================================
+           CEK MODUL SELESAI
+        ===================================================== */
+
+        function modulSelesai(nomor) {
+
+            const progress =
+                ambilProgress();
+
+            return progress.includes(nomor);
+
+        }
+
+
+        /* =====================================================
+           TANDAI MODUL SELESAI
+        ===================================================== */
+
+        function tandaiSelesai(nomor) {
+
+            let progress =
+                ambilProgress();
+
+
+            if (!progress.includes(nomor)) {
+
+                progress.push(nomor);
+
+                progress.sort(
+                    (a, b) => a - b
+                );
+
+                simpanProgress(progress);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           BUAT DAFTAR MODUL
+        ===================================================== */
+
+        function tampilkanModul() {
+
+            const grid =
+                document.getElementById("modulGrid");
+
+
+            grid.innerHTML = "";
+
+
+            daftarModul.forEach(function(modul) {
+
+                const selesai =
+                    modulSelesai(modul.nomor);
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "modul-card" +
+                    (selesai ? " selesai" : "");
+
+
+                const statusClass =
+                    selesai
+                    ? "status-selesai"
+                    : "status-belum";
+
+
+                const statusText =
+                    selesai
+                    ? "✅ Sudah dipelajari"
+                    : "⏳ Belum dipelajari";
+
+
+                card.innerHTML = `
+
+                    <div class="modul-nomor">
+
+                        MODUL ${modul.nomor}
+
+                    </div>
+
+
+                    <h3>
+
+                        ${modul.judul}
+
+                    </h3>
+
+
+                    <div class="modul-deskripsi">
+
+                        ${modul.deskripsi}
+
+                    </div>
+
+
+                    <div class="modul-status ${statusClass}">
+
+                        ${statusText}
+
+                    </div>
+
+
+                    <div class="modul-button-area">
+
+                        <a
+                            href="${modul.file}"
+                            class="btn-modul"
+                            onclick="bukaModul(${modul.nomor})">
+
+                            📖 Buka Modul
+
+                        </a>
+
+
+                        <a
+                            href="${modul.kuis}"
+                            class="btn-kuis">
+
+                            📝 Kuis
+
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                grid.appendChild(card);
+
+            });
+
+
+        }
+
+
+        /* =====================================================
+           BUKA MODUL
+        ===================================================== */
+
+        function bukaModul(nomor) {
+
+            /*
+             * Modul otomatis dianggap sudah dipelajari
+             * ketika peserta membuka halaman modul.
+             */
+
+            tandaiSelesai(nomor);
+
+        }
+
+
+        /* =====================================================
+           UPDATE PROGRESS
+        ===================================================== */
+
+        function updateProgress() {
+
+            const progress =
+                ambilProgress();
+
+
+            const jumlahSelesai =
+                progress.length;
+
+
+            const persentase =
+                Math.round(
+                    (jumlahSelesai / totalModul) * 100
+                );
+
+
+            document.getElementById("progressFill")
+                .style.width =
+                persentase + "%";
+
+
+            document.getElementById("progressPercent")
+                .textContent =
+                persentase + "%";
+
+
+            document.getElementById("progressInfo")
+                .innerHTML =
+
+                "Anda sudah menyelesaikan " +
+
+                "<strong>" +
+
+                jumlahSelesai +
+
+                " dari " +
+
+                totalModul +
+
+                " modul</strong>.";
+
+
+        }
+
+
+        /* =====================================================
+           RESET PROGRESS
+        ===================================================== */
+
+        function resetProgress() {
+
+            const konfirmasi =
+                confirm(
+                    "Apakah Anda yakin ingin mereset seluruh progress pembelajaran?"
+                );
+
+
+            if (!konfirmasi) {
+
+                return;
+
+            }
+
+
+            localStorage.removeItem(
+                progressKey
+            );
+
+
+            tampilkanModul();
+
+            updateProgress();
+
+
+            alert(
+                "Progress pembelajaran berhasil direset."
+            );
+
+        }
+
+
+        /* =====================================================
+           LOAD HALAMAN
+        ===================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                tampilkanModul();
+
+                updateProgress();
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul 6 - Fungsi Statistik Microsoft Excel</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.header p{
+    font-size:17px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 15px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+    border-bottom:2px solid #e7efea;
+    padding-bottom:10px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:20px 0 10px;
+}
+
+/* INFO */
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.tip{
+    background:#e3f2fd;
+    border-left:5px solid #2196f3;
+    padding:15px 18px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+/* TABLE */
+.table-wrapper{
+    overflow-x:auto;
+    margin:15px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+th{
+    background:#107c41;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    border:1px solid #dce3e6;
+    padding:11px;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+/* FORMULA */
+.formula{
+    background:#1e1e1e;
+    color:#d4d4d4;
+    padding:14px 17px;
+    border-radius:8px;
+    font-family:Consolas,"Courier New",monospace;
+    margin:12px 0;
+    overflow-x:auto;
+    font-size:15px;
+}
+
+/* EXAMPLE */
+.example{
+    border:1px solid #dce5df;
+    border-radius:10px;
+    padding:18px;
+    margin:18px 0;
+    background:#fcfefd;
+}
+
+.example-title{
+    font-weight:bold;
+    color:#107c41;
+    margin-bottom:10px;
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    background:#107c41;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* LIST */
+ul,ol{
+    padding-left:25px;
+    margin:10px 0;
+}
+
+li{
+    margin-bottom:6px;
+}
+
+/* BUTTON */
+.navigation{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    border:none;
+    background:#107c41;
+    color:white;
+    padding:13px 22px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:16px;
+    transition:.2s;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn-blue{
+    background:#2878d4;
+}
+
+.btn-blue:hover{
+    background:#185ca8;
+}
+
+/* PROGRESS */
+.progress-box{
+    background:white;
+    padding:15px 20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.progress-text{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.progress{
+    height:10px;
+    background:#e0e0e0;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:60%;
+    background:#107c41;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:35px 15px;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .header{
+        padding:35px 15px;
+    }
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+HEADER
+================================================== -->
+
+<header class="header">
+
+<h1>📊 MODUL 6</h1>
+
+<p>
+Fungsi Statistik Microsoft Excel
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ==================================================
+PROGRESS
+================================================== -->
+
+<div class="progress-box">
+
+<div class="progress-text">
+
+<span>
+<strong>Progress Pembelajaran</strong>
+</span>
+
+<span>
+Modul 6
+</span>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+</div>
+
+
+<!-- ==================================================
+PENDAHULUAN
+================================================== -->
+
+<section class="card">
+
+<h2>1. Pengenalan Fungsi Statistik</h2>
+
+<p>
+Fungsi statistik pada Microsoft Excel digunakan untuk
+mengolah, menganalisis, dan merangkum sekumpulan data
+sehingga informasi dari data tersebut dapat lebih mudah
+dipahami.
+</p>
+
+<p>
+Dalam pekerjaan administrasi, fungsi statistik sangat
+sering digunakan untuk mengolah data peserta, nilai
+pelatihan, absensi, penjualan, stok, laporan keuangan,
+dan berbagai jenis data lainnya.
+</p>
+
+<div class="info">
+
+<strong>💡 Tujuan pembelajaran</strong>
+
+<p>
+Setelah mempelajari modul ini, peserta diharapkan mampu
+menggunakan fungsi statistik dasar dan beberapa fungsi
+statistik lanjutan untuk mengolah data menggunakan
+Microsoft Excel.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+DATA CONTOH
+================================================== -->
+
+<section class="card">
+
+<h2>2. Data Contoh</h2>
+
+<p>
+Agar lebih mudah memahami fungsi statistik, gunakan
+contoh data nilai peserta berikut:
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>No</th>
+<th>Nama</th>
+<th>Program</th>
+<th>Nilai</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>1</td>
+<td>Andi</td>
+<td>Excel</td>
+<td>85</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Budi</td>
+<td>Excel</td>
+<td>78</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Citra</td>
+<td>Excel</td>
+<td>92</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Deni</td>
+<td>Word</td>
+<td>68</td>
+<td>Belum Lulus</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Eka</td>
+<td>Excel</td>
+<td>75</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Fajar</td>
+<td>Word</td>
+<td>88</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Gina</td>
+<td>Excel</td>
+<td>95</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Hadi</td>
+<td>Word</td>
+<td>70</td>
+<td>Belum Lulus</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<p>
+Misalnya data nilai berada pada range
+<strong>D2:D9</strong>.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+MIN
+================================================== -->
+
+<section class="card">
+
+<h2>3. Fungsi MIN</h2>
+
+<p>
+Fungsi <strong>MIN</strong> digunakan untuk mencari
+nilai terkecil dari sekumpulan data.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=MIN(number1,number2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=MIN(D2:D9)
+</div>
+
+<p>
+Hasilnya adalah <strong>68</strong>, karena 68 merupakan
+nilai paling rendah pada data tersebut.
+</p>
+
+<div class="tip">
+
+<strong>💡 Tips:</strong>
+MIN sangat berguna untuk mengetahui nilai terendah,
+harga terendah, jumlah stok terendah, atau pencapaian
+minimum.
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+MAX
+================================================== -->
+
+<section class="card">
+
+<h2>4. Fungsi MAX</h2>
+
+<p>
+Fungsi <strong>MAX</strong> digunakan untuk mencari
+nilai terbesar dari suatu kumpulan data.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=MAX(number1,number2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=MAX(D2:D9)
+</div>
+
+<p>
+Hasilnya adalah <strong>95</strong>.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+COUNT
+================================================== -->
+
+<section class="card">
+
+<h2>5. Fungsi COUNT</h2>
+
+<p>
+<strong>COUNT</strong> digunakan untuk menghitung jumlah
+cell yang berisi angka.
+</p>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=COUNT(D2:D9)
+</div>
+
+<p>
+Pada data contoh terdapat 8 nilai angka sehingga hasilnya
+adalah <strong>8</strong>.
+</p>
+
+<div class="warning">
+
+<strong>⚠️ Perhatikan:</strong>
+
+<p>
+COUNT hanya menghitung data berupa angka.
+Data berupa teks tidak dihitung.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+COUNTA
+================================================== -->
+
+<section class="card">
+
+<h2>6. Fungsi COUNTA</h2>
+
+<p>
+<strong>COUNTA</strong> digunakan untuk menghitung jumlah
+cell yang tidak kosong.
+</p>
+
+<div class="formula">
+=COUNTA(B2:B9)
+</div>
+
+<p>
+Jika seluruh nama peserta terisi, hasilnya adalah
+<strong>8</strong>.
+</p>
+
+<h3>Perbedaan COUNT dan COUNTA</h3>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Yang dihitung</th>
+</tr>
+
+<tr>
+<td>COUNT</td>
+<td>Cell yang berisi angka</td>
+</tr>
+
+<tr>
+<td>COUNTA</td>
+<td>Cell yang tidak kosong</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+COUNTBLANK
+================================================== -->
+
+<section class="card">
+
+<h2>7. Fungsi COUNTBLANK</h2>
+
+<p>
+<strong>COUNTBLANK</strong> digunakan untuk menghitung
+jumlah cell yang kosong.
+</p>
+
+<div class="formula">
+=COUNTBLANK(B2:B20)
+</div>
+
+<p>
+Fungsi ini sangat berguna untuk memeriksa kelengkapan
+data administrasi.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+COUNTIF
+================================================== -->
+
+<section class="card">
+
+<h2>8. Fungsi COUNTIF</h2>
+
+<p>
+<strong>COUNTIF</strong> digunakan untuk menghitung jumlah
+data yang memenuhi satu kriteria tertentu.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=COUNTIF(range,criteria)
+</div>
+
+<h3>Contoh 1 — Menghitung peserta Excel</h3>
+
+<div class="formula">
+=COUNTIF(C2:C9,"Excel")
+</div>
+
+<p>
+Formula tersebut menghitung jumlah peserta yang memiliki
+program <strong>Excel</strong>.
+</p>
+
+<h3>Contoh 2 — Menghitung nilai minimal 80</h3>
+
+<div class="formula">
+=COUNTIF(D2:D9,">=80")
+</div>
+
+<p>
+Formula tersebut menghitung berapa peserta yang memperoleh
+nilai minimal 80.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+COUNTIFS
+================================================== -->
+
+<section class="card">
+
+<h2>9. Fungsi COUNTIFS</h2>
+
+<p>
+<strong>COUNTIFS</strong> digunakan untuk menghitung jumlah
+data yang memenuhi <strong>lebih dari satu kriteria</strong>.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=COUNTIFS(range1,criteria1,range2,criteria2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<p>
+Menghitung peserta program Excel dengan nilai minimal 80:
+</p>
+
+<div class="formula">
+=COUNTIFS(C2:C9,"Excel",D2:D9,">=80")
+</div>
+
+<div class="info">
+
+<strong>Perbedaan:</strong>
+
+<ul>
+
+<li>
+COUNTIF → satu atau satu jenis kriteria.
+</li>
+
+<li>
+COUNTIFS → dua atau lebih kriteria.
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+AVERAGE
+================================================== -->
+
+<section class="card">
+
+<h2>10. Fungsi AVERAGE</h2>
+
+<p>
+<strong>AVERAGE</strong> digunakan untuk menghitung
+nilai rata-rata dari sekumpulan angka.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=AVERAGE(number1,number2,...)
+</div>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=AVERAGE(D2:D9)
+</div>
+
+<p>
+Hasilnya merupakan rata-rata seluruh nilai peserta.
+</p>
+
+<div class="tip">
+
+<strong>💡 Penggunaan:</strong>
+
+<p>
+AVERAGE banyak digunakan untuk menghitung rata-rata nilai,
+rata-rata penjualan, rata-rata kehadiran, dan rata-rata
+produktivitas.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+AVERAGEIF
+================================================== -->
+
+<section class="card">
+
+<h2>11. Fungsi AVERAGEIF</h2>
+
+<p>
+<strong>AVERAGEIF</strong> digunakan untuk menghitung
+rata-rata berdasarkan satu kriteria.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=AVERAGEIF(range,criteria,average_range)
+</div>
+
+<h3>Contoh</h3>
+
+<p>
+Menghitung rata-rata nilai peserta program Excel:
+</p>
+
+<div class="formula">
+=AVERAGEIF(C2:C9,"Excel",D2:D9)
+</div>
+
+<p>
+Excel akan mengambil nilai pada kolom D hanya untuk peserta
+yang programnya adalah Excel.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+AVERAGEIFS
+================================================== -->
+
+<section class="card">
+
+<h2>12. Fungsi AVERAGEIFS</h2>
+
+<p>
+<strong>AVERAGEIFS</strong> digunakan untuk menghitung
+rata-rata berdasarkan beberapa kriteria.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=AVERAGEIFS(average_range,criteria_range1,criteria1,...)
+</div>
+
+<h3>Contoh</h3>
+
+<p>
+Misalnya ingin menghitung rata-rata nilai peserta program
+Excel yang memperoleh nilai minimal 80:
+</p>
+
+<div class="formula">
+=AVERAGEIFS(D2:D9,C2:C9,"Excel",D2:D9,">=80")
+</div>
+
+</section>
+
+
+<!-- ==================================================
+RANK
+================================================== -->
+
+<section class="card">
+
+<h2>13. Fungsi RANK</h2>
+
+<p>
+Fungsi <strong>RANK</strong> digunakan untuk menentukan
+peringkat suatu angka dibandingkan dengan kumpulan angka
+lainnya.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=RANK(number,ref,[order])
+</div>
+
+<p>
+Parameter <strong>order</strong> menentukan urutan peringkat.
+</p>
+
+<ul>
+
+<li>
+<strong>0</strong> atau dikosongkan → nilai terbesar mendapat
+peringkat 1.
+</li>
+
+<li>
+<strong>1</strong> → nilai terkecil mendapat peringkat 1.
+</li>
+
+</ul>
+
+<h3>Contoh</h3>
+
+<p>
+Jika nilai Andi berada di D2 dan seluruh nilai berada di
+D2:D9:
+</p>
+
+<div class="formula">
+=RANK(D2,$D$2:$D$9,0)
+</div>
+
+<p>
+Formula tersebut menentukan peringkat Andi berdasarkan
+nilai terbesar sebagai peringkat pertama.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+RANK.EQ
+================================================== -->
+
+<section class="card">
+
+<h2>14. Fungsi RANK.EQ</h2>
+
+<p>
+Pada Excel versi yang lebih baru, fungsi
+<strong>RANK.EQ</strong> dapat digunakan untuk menentukan
+peringkat sebuah angka.
+</p>
+
+<div class="formula">
+=RANK.EQ(D2,$D$2:$D$9,0)
+</div>
+
+<div class="info">
+
+<strong>Catatan untuk Excel 2016:</strong>
+
+<p>
+RANK masih dapat digunakan dan sangat umum ditemukan pada
+file Excel lama. RANK.EQ merupakan pengembangan nama fungsi
+untuk penentuan peringkat.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+LARGE
+================================================== -->
+
+<section class="card">
+
+<h2>15. Fungsi LARGE</h2>
+
+<p>
+<strong>LARGE</strong> digunakan untuk mengambil nilai
+terbesar ke-n dari suatu range.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Nilai terbesar pertama:
+</p>
+
+<div class="formula">
+=LARGE(D2:D9,1)
+</div>
+
+<p>
+Nilai terbesar kedua:
+</p>
+
+<div class="formula">
+=LARGE(D2:D9,2)
+</div>
+
+<p>
+Nilai terbesar ketiga:
+</p>
+
+<div class="formula">
+=LARGE(D2:D9,3)
+</div>
+
+</section>
+
+
+<!-- ==================================================
+SMALL
+================================================== -->
+
+<section class="card">
+
+<h2>16. Fungsi SMALL</h2>
+
+<p>
+<strong>SMALL</strong> digunakan untuk mengambil nilai
+terkecil ke-n dari suatu range.
+</p>
+
+<h3>Contoh</h3>
+
+<p>
+Nilai terkecil pertama:
+</p>
+
+<div class="formula">
+=SMALL(D2:D9,1)
+</div>
+
+<p>
+Nilai terkecil kedua:
+</p>
+
+<div class="formula">
+=SMALL(D2:D9,2)
+</div>
+
+</section>
+
+
+<!-- ==================================================
+MEDIAN
+================================================== -->
+
+<section class="card">
+
+<h2>17. Fungsi MEDIAN</h2>
+
+<p>
+<strong>MEDIAN</strong> digunakan untuk mencari nilai
+tengah dari sekumpulan angka setelah data diurutkan.
+</p>
+
+<h3>Contoh</h3>
+
+<div class="formula">
+=MEDIAN(D2:D9)
+</div>
+
+<div class="tip">
+
+<strong>💡 Kapan menggunakan MEDIAN?</strong>
+
+<p>
+MEDIAN berguna ketika terdapat data yang memiliki nilai
+ekstrem dan kita ingin mengetahui nilai tengah yang lebih
+representatif dibandingkan rata-rata.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+MODE
+================================================== -->
+
+<section class="card">
+
+<h2>18. Fungsi MODE</h2>
+
+<p>
+Fungsi <strong>MODE</strong> digunakan untuk mencari nilai
+yang paling sering muncul dalam suatu kumpulan data.
+</p>
+
+<div class="formula">
+=MODE.SNGL(D2:D9)
+</div>
+
+<p>
+Pada Excel versi lama, fungsi <strong>MODE</strong> juga
+dapat digunakan.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+SUM
+================================================== -->
+
+<section class="card">
+
+<h2>19. Fungsi SUM sebagai Fungsi Statistik Dasar</h2>
+
+<p>
+Walaupun SUM lebih dikenal sebagai fungsi matematika,
+fungsi ini juga sangat sering digunakan dalam pengolahan
+data statistik sederhana.
+</p>
+
+<div class="formula">
+=SUM(D2:D9)
+</div>
+
+<p>
+Formula tersebut menghitung jumlah seluruh nilai pada
+range D2:D9.
+</p>
+
+</section>
+
+
+<!-- ==================================================
+RINGKASAN
+================================================== -->
+
+<section class="card">
+
+<h2>20. Ringkasan Fungsi Statistik</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+<th>Contoh</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>MIN</td>
+<td>Mencari nilai terkecil</td>
+<td>=MIN(D2:D9)</td>
+</tr>
+
+<tr>
+<td>MAX</td>
+<td>Mencari nilai terbesar</td>
+<td>=MAX(D2:D9)</td>
+</tr>
+
+<tr>
+<td>COUNT</td>
+<td>Menghitung cell berisi angka</td>
+<td>=COUNT(D2:D9)</td>
+</tr>
+
+<tr>
+<td>COUNTA</td>
+<td>Menghitung cell tidak kosong</td>
+<td>=COUNTA(B2:B9)</td>
+</tr>
+
+<tr>
+<td>COUNTBLANK</td>
+<td>Menghitung cell kosong</td>
+<td>=COUNTBLANK(B2:B20)</td>
+</tr>
+
+<tr>
+<td>COUNTIF</td>
+<td>Menghitung berdasarkan satu kriteria</td>
+<td>=COUNTIF(C2:C9,"Excel")</td>
+</tr>
+
+<tr>
+<td>COUNTIFS</td>
+<td>Menghitung berdasarkan beberapa kriteria</td>
+<td>=COUNTIFS(C2:C9,"Excel",D2:D9,">=80")</td>
+</tr>
+
+<tr>
+<td>AVERAGE</td>
+<td>Menghitung rata-rata</td>
+<td>=AVERAGE(D2:D9)</td>
+</tr>
+
+<tr>
+<td>AVERAGEIF</td>
+<td>Rata-rata dengan satu kriteria</td>
+<td>=AVERAGEIF(C2:C9,"Excel",D2:D9)</td>
+</tr>
+
+<tr>
+<td>AVERAGEIFS</td>
+<td>Rata-rata dengan beberapa kriteria</td>
+<td>=AVERAGEIFS(...)</td>
+</tr>
+
+<tr>
+<td>RANK</td>
+<td>Menentukan peringkat</td>
+<td>=RANK(D2,$D$2:$D$9,0)</td>
+</tr>
+
+<tr>
+<td>RANK.EQ</td>
+<td>Menentukan peringkat</td>
+<td>=RANK.EQ(D2,$D$2:$D$9,0)</td>
+</tr>
+
+<tr>
+<td>LARGE</td>
+<td>Mencari nilai terbesar ke-n</td>
+<td>=LARGE(D2:D9,2)</td>
+</tr>
+
+<tr>
+<td>SMALL</td>
+<td>Mencari nilai terkecil ke-n</td>
+<td>=SMALL(D2:D9,2)</td>
+</tr>
+
+<tr>
+<td>MEDIAN</td>
+<td>Mencari nilai tengah</td>
+<td>=MEDIAN(D2:D9)</td>
+</tr>
+
+<tr>
+<td>MODE</td>
+<td>Mencari nilai yang paling sering muncul</td>
+<td>=MODE.SNGL(D2:D9)</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+LATIHAN
+================================================== -->
+
+<section class="card">
+
+<h2>21. Latihan Mandiri</h2>
+
+<p>
+Gunakan data peserta pada modul ini untuk mencoba
+pertanyaan berikut di Microsoft Excel.
+</p>
+
+<ol>
+
+<li>
+Cari nilai terendah menggunakan fungsi <strong>MIN</strong>.
+</li>
+
+<li>
+Cari nilai tertinggi menggunakan fungsi <strong>MAX</strong>.
+</li>
+
+<li>
+Hitung jumlah peserta menggunakan <strong>COUNTA</strong>.
+</li>
+
+<li>
+Hitung jumlah peserta yang mendapatkan nilai minimal 80
+menggunakan <strong>COUNTIF</strong>.
+</li>
+
+<li>
+Hitung jumlah peserta program Excel yang mendapatkan nilai
+minimal 80 menggunakan <strong>COUNTIFS</strong>.
+</li>
+
+<li>
+Hitung rata-rata seluruh peserta menggunakan
+<strong>AVERAGE</strong>.
+</li>
+
+<li>
+Hitung rata-rata nilai peserta program Excel menggunakan
+<strong>AVERAGEIF</strong>.
+</li>
+
+<li>
+Tentukan peringkat masing-masing peserta menggunakan
+<strong>RANK</strong>.
+</li>
+
+<li>
+Cari nilai tertinggi kedua menggunakan
+<strong>LARGE</strong>.
+</li>
+
+<li>
+Cari nilai terendah kedua menggunakan
+<strong>SMALL</strong>.
+</li>
+
+</ol>
+
+<div class="warning">
+
+<strong>🎯 Tantangan:</strong>
+
+<p>
+Buatlah tabel baru yang menampilkan:
+<strong>Nama Peserta, Nilai, dan Peringkat</strong>.
+Kemudian urutkan berdasarkan peringkat terbaik.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+KESIMPULAN
+================================================== -->
+
+<section class="card">
+
+<h2>22. Kesimpulan</h2>
+
+<p>
+Fungsi statistik merupakan bagian penting dalam pengolahan
+data menggunakan Microsoft Excel.
+</p>
+
+<p>
+Dengan menguasai fungsi seperti <strong>MIN, MAX, COUNT,
+COUNTA, COUNTIF, COUNTIFS, AVERAGE, AVERAGEIF, RANK,
+LARGE, SMALL, MEDIAN</strong> dan fungsi sejenis lainnya,
+peserta dapat melakukan analisis data secara lebih cepat
+dan akurat.
+</p>
+
+<div class="info">
+
+<strong>📌 Fokus yang harus dikuasai:</strong>
+
+<ul>
+
+<li>
+Membedakan COUNT dan COUNTA.
+</li>
+
+<li>
+Memahami penggunaan COUNTIF dan COUNTIFS.
+</li>
+
+<li>
+Memahami AVERAGE dan AVERAGEIF.
+</li>
+
+<li>
+Menggunakan RANK untuk menentukan peringkat.
+</li>
+
+<li>
+Menggunakan LARGE dan SMALL untuk mengambil nilai
+ke-n.
+</li>
+
+<li>
+Menggunakan MIN dan MAX untuk mengetahui nilai ekstrem.
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+NAVIGASI
+================================================== -->
+
+<section class="card">
+
+<h2>🚀 Lanjut Pembelajaran</h2>
+
+<p>
+Setelah mempelajari materi Fungsi Statistik, silakan
+kerjakan kuis untuk mengukur pemahaman Anda.
+</p>
+
+<div class="navigation">
+
+<a
+href="kuis-excel-6.html"
+class="btn btn-blue">
+
+📝 Mulai Kuis Modul 6
+
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- ==================================================
+FOOTER
+================================================== -->
+
+<footer class="footer">
+
+<p>
+<strong>Pelatihan Microsoft Excel</strong>
+</p>
+
+<p>
+Modul 6 — Fungsi Statistik
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+
+</body>
+</html>

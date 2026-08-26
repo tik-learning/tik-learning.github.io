@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Excel Modul 10 - PivotTable</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.6;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+.header h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:16px;
+}
+
+.container{
+    max-width:950px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+input[type="text"],
+input[type="password"]{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd6d2;
+    border-radius:8px;
+    font-size:16px;
+    margin-top:7px;
+}
+
+.btn{
+    border:none;
+    padding:13px 24px;
+    border-radius:8px;
+    background:#107c41;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn-blue{
+    background:#2878d4;
+}
+
+.btn-blue:hover{
+    background:#185ca8;
+}
+
+.btn-red{
+    background:#d32f2f;
+}
+
+.btn-red:hover{
+    background:#a51f1f;
+}
+
+.center{
+    text-align:center;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.timer{
+    position:sticky;
+    top:10px;
+    z-index:100;
+    background:#fff;
+    border:2px solid #107c41;
+    border-radius:12px;
+    padding:12px 18px;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    color:#107c41;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+.timer.warning-time{
+    color:#e65100;
+    border-color:#e65100;
+}
+
+.timer.danger{
+    color:#c62828;
+    border-color:#c62828;
+}
+
+.question{
+    background:#fff;
+    border:1px solid #dce5df;
+    border-radius:12px;
+    padding:22px;
+    margin-bottom:18px;
+}
+
+.question h3{
+    color:#185c37;
+    margin-bottom:12px;
+}
+
+.option{
+    display:block;
+    padding:11px 13px;
+    margin:8px 0;
+    background:#f7faf8;
+    border:1px solid #dce5df;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#edf7f0;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+.result{
+    text-align:center;
+    padding:25px;
+    border-radius:12px;
+    background:#f7faf8;
+}
+
+.score{
+    font-size:48px;
+    font-weight:bold;
+    color:#107c41;
+}
+
+.status{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:20px;
+    color:white;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+.lulus{
+    background:#2e7d32;
+}
+
+.tidak-lulus{
+    background:#c62828;
+}
+
+.review{
+    border:1px solid #dce5df;
+    border-radius:12px;
+    padding:20px;
+    margin:15px 0;
+}
+
+.correct{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+.incorrect{
+    color:#c62828;
+    font-weight:bold;
+}
+
+.answer-box{
+    background:#f1f8f3;
+    border-left:5px solid #107c41;
+    padding:12px;
+    margin-top:10px;
+}
+
+.explanation{
+    background:#f8f9fa;
+    padding:12px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+}
+
+.formula{
+    background:#263238;
+    color:#e8f5e9;
+    padding:10px 14px;
+    border-radius:6px;
+    font-family:Consolas,monospace;
+    margin:8px 0;
+    overflow-x:auto;
+}
+
+@media(max-width:600px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>📝 KUIS EXCEL MODUL 10</h1>
+
+<p>
+PivotTable — Mengolah dan Menganalisis Data
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- PASSWORD -->
+
+<section id="passwordSection" class="card">
+
+<h2>🔐 Verifikasi Kuis</h2>
+
+<p>
+Masukkan password yang diberikan oleh instruktur
+untuk melanjutkan ke Kuis Modul 10.
+</p>
+
+<div class="info">
+
+<strong>Materi:</strong>
+PivotTable
+<br>
+
+<strong>Jumlah soal:</strong> 20 soal
+<br>
+
+<strong>Waktu:</strong> 15 menit
+<br>
+
+<strong>Nilai minimum:</strong> 75
+
+</div>
+
+<label>
+<strong>Password Kuis</strong>
+</label>
+
+<input
+type="password"
+id="password"
+placeholder="Masukkan password"
+>
+
+<button
+class="btn"
+onclick="checkPassword()">
+
+🔓 Lanjut
+
+</button>
+
+<p
+id="passwordError"
+style="color:#c62828;margin-top:10px;">
+</p>
+
+</section>
+
+
+<!-- NAMA -->
+
+<section id="nameSection" class="card hidden">
+
+<h2>👤 Nama Peserta</h2>
+
+<p>
+Masukkan nama lengkap peserta sebelum memulai kuis.
+</p>
+
+<label>
+<strong>Nama Peserta</strong>
+</label>
+
+<input
+type="text"
+id="participantName"
+placeholder="Masukkan nama lengkap"
+>
+
+<button
+class="btn"
+onclick="startQuiz()">
+
+▶️ Mulai Kuis
+
+</button>
+
+<p
+id="nameError"
+style="color:#c62828;margin-top:10px;">
+</p>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quizSection" class="hidden">
+
+<div class="timer" id="timer">
+⏱️ Waktu: 15:00
+</div>
+
+
+<div class="card">
+
+<h2>📝 Kuis Modul 10 — PivotTable</h2>
+
+<p>
+Pilih satu jawaban yang paling tepat.
+</p>
+
+<div class="info">
+
+<strong>Nama Peserta:</strong>
+<span id="displayName"></span>
+
+</div>
+
+</div>
+
+
+<form id="quizForm">
+
+
+<!-- SOAL 1 -->
+
+<div class="question">
+
+<h3>
+1. Apa fungsi utama PivotTable?
+</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+A. Membuat animasi di Excel
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+B. Merangkum dan menganalisis data dengan cepat
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+C. Menghapus data secara otomatis
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+D. Membuat password workbook
+</label>
+
+</div>
+
+
+<!-- SOAL 2 -->
+
+<div class="question">
+
+<h3>
+2. Sebelum membuat PivotTable, hal yang paling penting adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+A. Memberi warna pada semua cell
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+B. Memastikan data sumber tersusun dengan baik dan memiliki header
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+C. Menghapus semua angka
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+D. Menutup workbook
+</label>
+
+</div>
+
+
+<!-- SOAL 3 -->
+
+<div class="question">
+
+<h3>
+3. Di Excel 2016, PivotTable dapat dibuat melalui tab...
+</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+A. Home
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+B. Page Layout
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+C. Insert
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+D. Review
+</label>
+
+</div>
+
+
+<!-- SOAL 4 -->
+
+<div class="question">
+
+<h3>
+4. Area Rows pada PivotTable digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+A. Menampilkan kategori secara vertikal
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+B. Menampilkan kategori secara horizontal
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+C. Menghapus data
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+D. Mengubah warna worksheet
+</label>
+
+</div>
+
+
+<!-- SOAL 5 -->
+
+<div class="question">
+
+<h3>
+5. Jika field "Program" dimasukkan ke area Rows, maka PivotTable akan...
+</h3>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+A. Menghapus nama program
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+B. Mengelompokkan data berdasarkan program
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+C. Mengubah program menjadi grafik
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D">
+D. Mengurutkan workbook
+</label>
+
+</div>
+
+
+<!-- SOAL 6 -->
+
+<div class="question">
+
+<h3>
+6. Area Values pada PivotTable digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q6" value="A">
+A. Melakukan perhitungan terhadap data
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B">
+B. Mengubah ukuran worksheet
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C">
+C. Membuat password
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D">
+D. Mengubah nama workbook
+</label>
+
+</div>
+
+
+<!-- SOAL 7 -->
+
+<div class="question">
+
+<h3>
+7. Jika field "Nilai" dimasukkan ke Values dan ingin mendapatkan rata-rata nilai, maka gunakan...
+</h3>
+
+<label class="option">
+<input type="radio" name="q7" value="A">
+A. Count
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B">
+B. Sum
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C">
+C. Average
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D">
+D. Max
+</label>
+
+</div>
+
+
+<!-- SOAL 8 -->
+
+<div class="question">
+
+<h3>
+8. Jika ingin mengetahui jumlah peserta berdasarkan jenis kelamin untuk setiap program, susunan field yang tepat adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q8" value="A">
+A. Rows = Program, Columns = Gender, Values = Nama
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B">
+B. Rows = Nama, Columns = Program, Values = Gender
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C">
+C. Filters = Nama saja
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D">
+D. Columns = Nilai saja
+</label>
+
+</div>
+
+
+<!-- SOAL 9 -->
+
+<div class="question">
+
+<h3>
+9. Area Columns pada PivotTable digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q9" value="A">
+A. Menampilkan kategori secara horizontal
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B">
+B. Menghapus kolom
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C">
+C. Mengubah data menjadi teks
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D">
+D. Menyembunyikan workbook
+</label>
+
+</div>
+
+
+<!-- SOAL 10 -->
+
+<div class="question">
+
+<h3>
+10. Apa fungsi area Filters?
+</h3>
+
+<label class="option">
+<input type="radio" name="q10" value="A">
+A. Menyaring laporan berdasarkan field tertentu
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B">
+B. Menghapus filter secara permanen
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C">
+C. Membuat formula
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D">
+D. Membuat worksheet baru
+</label>
+
+</div>
+
+
+<!-- SOAL 11 -->
+
+<div class="question">
+
+<h3>
+11. Pada Value Field Settings, pilihan Count digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q11" value="A">
+A. Menjumlahkan angka
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="B">
+B. Menghitung jumlah data
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="C">
+C. Mencari nilai terbesar
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="D">
+D. Mencari rata-rata
+</label>
+
+</div>
+
+
+<!-- SOAL 12 -->
+
+<div class="question">
+
+<h3>
+12. Jika ingin mengetahui nilai tertinggi pada PivotTable, jenis perhitungan yang digunakan adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q12" value="A">
+A. Average
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="B">
+B. Count
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="C">
+C. Max
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="D">
+D. Sum
+</label>
+
+</div>
+
+
+<!-- SOAL 13 -->
+
+<div class="question">
+
+<h3>
+13. Jika ingin menampilkan hanya peserta dengan status "Lulus", field Status paling tepat ditempatkan pada...
+</h3>
+
+<label class="option">
+<input type="radio" name="q13" value="A">
+A. Filters
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="B">
+B. Values
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="C">
+C. Columns
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="D">
+D. Rows
+</label>
+
+</div>
+
+
+<!-- SOAL 14 -->
+
+<div class="question">
+
+<h3>
+14. Fungsi Group pada PivotTable dapat digunakan untuk...
+</h3>
+
+<label class="option">
+<input type="radio" name="q14" value="A">
+A. Menggabungkan workbook
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="B">
+B. Mengelompokkan data, misalnya berdasarkan bulan atau tahun
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="C">
+Menghapus data sumber
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="D">
+D. Membuat password
+</label>
+
+</div>
+
+
+<!-- SOAL 15 -->
+
+<div class="question">
+
+<h3>
+15. Jika data sumber PivotTable berubah atau bertambah, tindakan yang umum dilakukan adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q15" value="A">
+A. Refresh
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="B">
+B. Delete
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C">
+C. Merge
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D">
+D. Hide
+</label>
+
+</div>
+
+
+<!-- SOAL 16 -->
+
+<div class="question">
+
+<h3>
+16. Jika range sumber PivotTable tidak mencakup data baru, menu yang digunakan untuk mengubah range sumber adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q16" value="A">
+A. Change Data Source
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="B">
+B. Format Cells
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="C">
+C. Freeze Panes
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="D">
+D. Conditional Formatting
+</label>
+
+</div>
+
+
+<!-- SOAL 17 -->
+
+<div class="question">
+
+<h3>
+17. PivotChart merupakan...
+</h3>
+
+<label class="option">
+<input type="radio" name="q17" value="A">
+A. Grafik yang terhubung dengan PivotTable
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="B">
+B. Grafik yang tidak berhubungan dengan data
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="C">
+C. Formula untuk menghitung nilai
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="D">
+D. Jenis worksheet
+</label>
+
+</div>
+
+
+<!-- SOAL 18 -->
+
+<div class="question">
+
+<h3>
+18. Salah satu cara yang baik untuk menyiapkan data sumber agar mudah dikelola adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q18" value="A">
+A. Menggabungkan semua cell
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="B">
+B. Mengubah data menjadi Excel Table dengan Ctrl + T
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="C">
+C. Menghapus header
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="D">
+D. Membiarkan baris kosong di tengah data
+</label>
+
+</div>
+
+
+<!-- SOAL 19 -->
+
+<div class="question">
+
+<h3>
+19. Jika ingin mengetahui program dengan jumlah peserta paling banyak, fitur yang dapat membantu adalah...
+</h3>
+
+<label class="option">
+<input type="radio" name="q19" value="A">
+A. Sorting berdasarkan jumlah peserta
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="B">
+B. Menghapus PivotTable
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="C">
+C. Merge Cells
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="D">
+D. Page Break
+</label>
+
+</div>
+
+
+<!-- SOAL 20 -->
+
+<div class="question">
+
+<h3>
+20. Manakah susunan PivotTable yang tepat untuk mendapatkan rata-rata nilai setiap program?
+</h3>
+
+<label class="option">
+<input type="radio" name="q20" value="A">
+A. Rows = Program, Values = Nilai dengan Average
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="B">
+B. Rows = Nilai, Values = Program
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="C">
+C. Filters = Nilai saja
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="D">
+D. Columns = Nama saja
+</label>
+
+</div>
+
+
+<div class="card center">
+
+<button
+type="button"
+class="btn btn-red"
+onclick="submitQuiz()">
+
+📤 Submit Kuis
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+
+<!-- HASIL -->
+
+<section id="resultSection" class="card hidden">
+
+<div class="result">
+
+<h2>🎓 Hasil Kuis Modul 10</h2>
+
+<p>
+<strong>Nama Peserta:</strong>
+<span id="resultName"></span>
+</p>
+
+<div class="score">
+<span id="score">0</span>/100
+</div>
+
+<p>
+Jawaban benar:
+<strong>
+<span id="correctCount">0</span>/20
+</strong>
+</p>
+
+<div id="status"></div>
+
+<p id="resultMessage"></p>
+
+</div>
+
+<div class="navigation">
+
+<button
+class="btn btn-blue"
+onclick="showReview()">
+
+📖 Lihat Pembahasan
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PEMBAHASAN -->
+
+<section id="reviewSection" class="card hidden">
+
+<h2>📖 Pembahasan Jawaban</h2>
+
+<div id="reviewContent"></div>
+
+<div class="navigation">
+
+<a
+href="modul-excel-10.html"
+class="btn">
+
+📚 Kembali ke Modul 10
+
+</a>
+
+<a
+href="index.html"
+class="btn btn-blue">
+
+🏠 Kembali ke Beranda
+
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Kuis Modul 10 — PivotTable
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   KONFIGURASI
+===================================================== */
+
+const PASSWORD = "BLKEXCEL10";
+
+const TIME_LIMIT = 15 * 60;
+
+let timeLeft = TIME_LIMIT;
+
+let timerInterval;
+
+let quizStarted = false;
+
+let submitted = false;
+
+
+/* =====================================================
+   KUNCI JAWABAN
+===================================================== */
+
+const answers = {
+
+q1:"B",
+q2:"B",
+q3:"C",
+q4:"A",
+q5:"B",
+q6:"A",
+q7:"C",
+q8:"A",
+q9:"A",
+q10:"A",
+q11:"B",
+q12:"C",
+q13:"A",
+q14:"B",
+q15:"A",
+q16:"A",
+q17:"A",
+q18:"B",
+q19:"A",
+q20:"A"
+
+};
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+const explanations = {
+
+q1:
+"PivotTable digunakan untuk merangkum, menganalisis, mengeksplorasi, dan menyajikan data secara lebih mudah.",
+
+q2:
+"Data sumber harus disiapkan dengan baik, memiliki header yang jelas, dan sebaiknya tidak memiliki baris atau kolom kosong di tengah data.",
+
+q3:
+"Di Excel 2016, PivotTable dapat dibuat melalui tab Insert kemudian memilih PivotTable.",
+
+q4:
+"Area Rows digunakan untuk menampilkan kategori secara vertikal.",
+
+q5:
+"Field Program pada Rows akan membuat data dikelompokkan berdasarkan program.",
+
+q6:
+"Area Values digunakan untuk melakukan perhitungan seperti Sum, Count, Average, Max, dan Min.",
+
+q7:
+"Average digunakan untuk menghitung nilai rata-rata.",
+
+q8:
+"Rows = Program mengelompokkan program secara vertikal, Columns = Gender menampilkan gender secara horizontal, dan Values = Nama menghitung jumlah peserta.",
+
+q9:
+"Area Columns digunakan untuk menampilkan kategori secara horizontal.",
+
+q10:
+"Filters digunakan untuk menyaring laporan berdasarkan field tertentu.",
+
+q11:
+"Count digunakan untuk menghitung jumlah data.",
+
+q12:
+"Max digunakan untuk mencari nilai terbesar.",
+
+q13:
+"Status dapat ditempatkan pada Filters kemudian dipilih Lulus untuk menampilkan hanya peserta yang lulus.",
+
+q14:
+"Grouping digunakan untuk mengelompokkan data, misalnya tanggal berdasarkan bulan, kuartal, atau tahun.",
+
+q15:
+"Refresh digunakan untuk memperbarui hasil PivotTable setelah data sumber berubah.",
+
+q16:
+"Change Data Source digunakan ketika range sumber PivotTable perlu diubah atau diperluas.",
+
+q17:
+"PivotChart adalah grafik yang terhubung dengan PivotTable sehingga dapat digunakan untuk memvisualisasikan hasil analisis.",
+
+q18:
+"Ctrl + T dapat digunakan untuk mengubah data menjadi Excel Table sehingga data lebih mudah dikelola sebagai sumber PivotTable.",
+
+q19:
+"Sorting dapat digunakan untuk mengurutkan jumlah peserta dari terbesar ke terkecil sehingga program dengan jumlah peserta terbanyak mudah ditemukan.",
+
+q20:
+"Rows = Program membuat kategori program, sedangkan Values = Nilai dengan Average menghasilkan rata-rata nilai setiap program."
+
+};
+
+
+/* =====================================================
+   CHECK PASSWORD
+===================================================== */
+
+function checkPassword(){
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("passwordError");
+
+    if(password === PASSWORD){
+
+        document
+        .getElementById("passwordSection")
+        .classList.add("hidden");
+
+        document
+        .getElementById("nameSection")
+        .classList.remove("hidden");
+
+        error.textContent = "";
+
+    }else{
+
+        error.textContent =
+        "❌ Password salah. Silakan coba kembali.";
+
+    }
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+function startQuiz(){
+
+    const name =
+        document
+        .getElementById("participantName")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("nameError");
+
+    if(name === ""){
+
+        error.textContent =
+        "❌ Nama peserta wajib diisi.";
+
+        return;
+
+    }
+
+    document
+    .getElementById("nameSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("quizSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("displayName")
+    .textContent = name;
+
+    quizStarted = true;
+
+    startTimer();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer(){
+
+    updateTimer();
+
+    timerInterval =
+    setInterval(function(){
+
+        timeLeft--;
+
+        updateTimer();
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "⏰ Waktu kuis telah habis. Jawaban akan otomatis dikumpulkan."
+            );
+
+            submitQuiz(true);
+
+        }
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   UPDATE TIMER
+===================================================== */
+
+function updateTimer(){
+
+    const timer =
+        document.getElementById("timer");
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+    const seconds =
+        timeLeft % 60;
+
+    timer.textContent =
+        "⏱️ Waktu: " +
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    timer.classList.remove(
+        "warning-time",
+        "danger"
+    );
+
+    if(timeLeft <= 300 && timeLeft > 60){
+
+        timer.classList.add("warning-time");
+
+    }
+
+    if(timeLeft <= 60){
+
+        timer.classList.add("danger");
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBMIT QUIZ
+===================================================== */
+
+function submitQuiz(autoSubmit=false){
+
+    if(submitted){
+        return;
+    }
+
+    const confirmSubmit =
+        autoSubmit ||
+        confirm(
+            "Apakah Anda yakin ingin mengumpulkan jawaban?"
+        );
+
+    if(!confirmSubmit){
+        return;
+    }
+
+    clearInterval(timerInterval);
+
+    submitted = true;
+
+    let correct = 0;
+
+    for(let i=1;i<=20;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(
+            selected &&
+            selected.value === answers["q"+i]
+        ){
+
+            correct++;
+
+        }
+
+    }
+
+    const score =
+        correct * 5;
+
+    const name =
+        document
+        .getElementById("participantName")
+        .value
+        .trim();
+
+    document
+    .getElementById("quizSection")
+    .classList.add("hidden");
+
+    document
+    .getElementById("resultSection")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("resultName")
+    .textContent = name;
+
+    document
+    .getElementById("score")
+    .textContent = score;
+
+    document
+    .getElementById("correctCount")
+    .textContent = correct;
+
+    const status =
+        document.getElementById("status");
+
+    const message =
+        document.getElementById("resultMessage");
+
+    if(score >= 75){
+
+        status.className =
+        "status lulus";
+
+        status.textContent =
+        "✅ LULUS";
+
+        message.textContent =
+        "Selamat! Anda telah memenuhi nilai minimum kelulusan.";
+
+    }else{
+
+        status.className =
+        "status tidak-lulus";
+
+        status.textContent =
+        "❌ BELUM LULUS";
+
+        message.textContent =
+        "Nilai Anda belum mencapai batas kelulusan. Silakan pelajari kembali Modul 10.";
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+function showReview(){
+
+    const review =
+        document.getElementById("reviewContent");
+
+    review.innerHTML = "";
+
+    for(let i=1;i<=20;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        const userAnswer =
+            selected ?
+            selected.value :
+            "Tidak dijawab";
+
+        const correctAnswer =
+            answers["q"+i];
+
+        const isCorrect =
+            userAnswer === correctAnswer;
+
+        const box =
+            document.createElement("div");
+
+        box.className = "review";
+
+        box.innerHTML = `
+
+            <h3>Soal ${i}</h3>
+
+            <p>
+                Jawaban Anda:
+                <strong class="${
+                    isCorrect
+                    ? "correct"
+                    : "incorrect"
+                }">
+                    ${userAnswer}
+                </strong>
+            </p>
+
+            <div class="answer-box">
+
+                Jawaban benar:
+                <strong>${correctAnswer}</strong>
+
+            </div>
+
+            <div class="explanation">
+
+                <strong>💡 Pembahasan:</strong><br>
+
+                ${explanations["q"+i]}
+
+            </div>
+
+        `;
+
+        review.appendChild(box);
+
+    }
+
+    document
+    .getElementById("reviewSection")
+    .classList.remove("hidden");
+
+    window.scrollTo({
+        top:
+        document
+        .getElementById("reviewSection")
+        .offsetTop - 20,
+
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   BLOK REFRESH / MENUTUP HALAMAN
+===================================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(e){
+
+        if(quizStarted && !submitted){
+
+            e.preventDefault();
+
+            e.returnValue =
+            "Kuis sedang berlangsung.";
+
+        }
+
+    }
+);
+
+</script>
+<script src="progress-sync.js"></script>
+</body>
+</html>

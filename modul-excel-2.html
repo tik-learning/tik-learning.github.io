@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul 2 - Menginput dan Mengelola Data Dasar Excel</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f4f7fb;
+    color:#263238;
+    line-height:1.7;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:55px 20px 70px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:7px 20px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.header h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.header p{
+    font-size:17px;
+    opacity:.92;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1000px;
+    margin:-30px auto 60px;
+    padding:0 18px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:18px;
+    font-size:25px;
+}
+
+.card h3{
+    color:#185c37;
+    margin-top:22px;
+    margin-bottom:10px;
+}
+
+/* TUJUAN */
+
+.goal-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.goal{
+    background:#f4faf6;
+    border-left:4px solid #107c41;
+    padding:13px 15px;
+    border-radius:8px;
+}
+
+/* INFO */
+
+.info{
+    background:#eaf7ef;
+    border-left:5px solid #107c41;
+    padding:18px;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#fff7e6;
+    border-left:5px solid #f39c12;
+    padding:18px;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+.tip{
+    background:#eef5ff;
+    border-left:5px solid #2878d4;
+    padding:18px;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+/* CODE */
+
+.code{
+    background:#17202a;
+    color:#ecf0f1;
+    padding:16px 20px;
+    border-radius:9px;
+    font-family:Consolas,monospace;
+    margin:12px 0;
+    overflow-x:auto;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0;
+}
+
+th{
+    background:#107c41;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:11px 12px;
+    border:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#f8faf9;
+}
+
+/* STEP */
+
+.steps{
+    counter-reset:step;
+    margin-top:15px;
+}
+
+.step{
+    position:relative;
+    padding:14px 15px 14px 52px;
+    margin-bottom:10px;
+    background:#f7f9fa;
+    border-radius:9px;
+}
+
+.step:before{
+    counter-increment:step;
+    content:counter(step);
+    position:absolute;
+    left:14px;
+    top:12px;
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:#107c41;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* SHORTCUT */
+
+.shortcut{
+    display:inline-block;
+    background:#263238;
+    color:white;
+    padding:4px 9px;
+    border-radius:5px;
+    font-family:Consolas,monospace;
+    font-size:14px;
+}
+
+/* PRACTICE */
+
+.practice{
+    background:linear-gradient(135deg,#f0faf4,#ffffff);
+    border:2px solid #d7eddf;
+}
+
+/* NAVIGATION */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    background:#107c41;
+    color:white;
+    text-decoration:none;
+    border-radius:9px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn.secondary{
+    background:#607d8b;
+}
+
+.btn.secondary:hover{
+    background:#455a64;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#17202a;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.footer strong{
+    color:#6fcf97;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+    .header h1{
+        font-size:28px;
+    }
+
+    .card{
+        padding:22px 18px;
+    }
+
+    .goal-list{
+        grid-template-columns:1fr;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="badge">
+        MODUL 2 • MICROSOFT EXCEL
+    </div>
+
+    <h1>
+        Menginput dan Mengelola Data Dasar Excel
+    </h1>
+
+    <p>
+        Cara mengisi Cell • Data Text • Flash Fill • Worksheet • Warna Tab
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ================= TUJUAN ================= -->
+
+<section class="card">
+
+    <h2>🎯 Tujuan Pembelajaran</h2>
+
+    <p>
+        Setelah menyelesaikan Modul 2, peserta diharapkan mampu:
+    </p>
+
+    <div class="goal-list">
+
+        <div class="goal">
+            ✓ Mengisi data ke dalam cell Excel
+        </div>
+
+        <div class="goal">
+            ✓ Mengedit dan menghapus isi cell
+        </div>
+
+        <div class="goal">
+            ✓ Memahami data teks pada Excel
+        </div>
+
+        <div class="goal">
+            ✓ Menggunakan Flash Fill
+        </div>
+
+        <div class="goal">
+            ✓ Membuat dan mengelola worksheet
+        </div>
+
+        <div class="goal">
+            ✓ Mengganti nama worksheet
+        </div>
+
+        <div class="goal">
+            ✓ Memindahkan dan menyalin worksheet
+        </div>
+
+        <div class="goal">
+            ✓ Mengatur warna tab worksheet
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= A ================= -->
+
+<section class="card">
+
+    <h2>A. Cara Mengisi Cell Excel</h2>
+
+    <p>
+        <strong>Cell</strong> merupakan tempat utama untuk memasukkan data
+        ke dalam Excel.
+    </p>
+
+    <p>Data yang dapat dimasukkan antara lain:</p>
+
+    <ul style="margin-left:25px;">
+        <li>Teks</li>
+        <li>Angka</li>
+        <li>Tanggal</li>
+        <li>Waktu</li>
+        <li>Rumus</li>
+        <li>Formula</li>
+    </ul>
+
+    <h3>Contoh Mengisi Cell</h3>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik cell yang ingin diisi.
+        </div>
+
+        <div class="step">
+            Ketik data menggunakan keyboard.
+        </div>
+
+        <div class="step">
+            Tekan <span class="shortcut">Enter</span>.
+        </div>
+
+    </div>
+
+    <div class="code">
+A1 → Nama Peserta
+A2 → Andi
+A3 → Budi
+A4 → Citra
+    </div>
+
+    <div class="tip">
+        💡 <strong>Tips:</strong> Biasakan menentukan posisi data
+        sebelum mengetik agar data tetap terstruktur.
+    </div>
+
+</section>
+
+
+<!-- ================= B ================= -->
+
+<section class="card">
+
+    <h2>B. Tombol untuk Berpindah Cell</h2>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Tombol</th>
+                <th>Fungsi</th>
+            </tr>
+
+            <tr>
+                <td>Enter</td>
+                <td>Berpindah ke cell di bawah</td>
+            </tr>
+
+            <tr>
+                <td>Tab</td>
+                <td>Berpindah ke cell di sebelah kanan</td>
+            </tr>
+
+            <tr>
+                <td>↑</td>
+                <td>Berpindah ke atas</td>
+            </tr>
+
+            <tr>
+                <td>↓</td>
+                <td>Berpindah ke bawah</td>
+            </tr>
+
+            <tr>
+                <td>←</td>
+                <td>Berpindah ke kiri</td>
+            </tr>
+
+            <tr>
+                <td>→</td>
+                <td>Berpindah ke kanan</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= C ================= -->
+
+<section class="card">
+
+    <h2>C. Mengedit Isi Cell</h2>
+
+    <p>
+        Data yang sudah dimasukkan ke Excel dapat diperbaiki atau diedit.
+    </p>
+
+    <h3>Cara 1 – Double Click</h3>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik dua kali pada cell.
+        </div>
+
+        <div class="step">
+            Edit teks atau angka.
+        </div>
+
+        <div class="step">
+            Tekan Enter.
+        </div>
+
+    </div>
+
+    <h3>Cara 2 – Formula Bar</h3>
+
+    <div class="steps">
+
+        <div class="step">
+            Pilih cell.
+        </div>
+
+        <div class="step">
+            Klik Formula Bar.
+        </div>
+
+        <div class="step">
+            Perbaiki isi cell.
+        </div>
+
+        <div class="step">
+            Tekan Enter.
+        </div>
+
+    </div>
+
+    <h3>Cara 3 – Tombol F2</h3>
+
+    <p>
+        Pilih cell kemudian tekan
+        <span class="shortcut">F2</span>
+        untuk mengedit isi cell.
+    </p>
+
+    <div class="tip">
+        💡 <strong>Tips:</strong>
+        Tombol F2 sangat berguna ketika harus mengedit isi cell
+        dengan cepat.
+    </div>
+
+</section>
+
+
+<!-- ================= D ================= -->
+
+<section class="card">
+
+    <h2>D. Menghapus Isi Cell</h2>
+
+    <p>
+        Untuk menghapus data yang terdapat di dalam cell:
+    </p>
+
+    <div class="steps">
+
+        <div class="step">
+            Pilih cell.
+        </div>
+
+        <div class="step">
+            Tekan tombol <span class="shortcut">Delete</span>.
+        </div>
+
+    </div>
+
+    <div class="warning">
+
+        ⚠️ <strong>Perhatikan:</strong>
+        Menghapus isi cell berbeda dengan menghapus cell.
+        Tombol Delete hanya menghapus isi data pada cell yang dipilih.
+
+    </div>
+
+</section>
+
+
+<!-- ================= E ================= -->
+
+<section class="card">
+
+    <h2>E. Excel Text – Data Teks</h2>
+
+    <p>
+        Data teks merupakan data berupa tulisan atau karakter.
+        Data teks biasanya digunakan untuk informasi seperti nama,
+        alamat, keterangan, dan kode.
+    </p>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama</th>
+                <th>Program</th>
+                <th>Keterangan</th>
+            </tr>
+
+            <tr>
+                <td>Andi</td>
+                <td>TIK</td>
+                <td>Lulus</td>
+            </tr>
+
+            <tr>
+                <td>Budi</td>
+                <td>Las</td>
+                <td>Lulus</td>
+            </tr>
+
+            <tr>
+                <td>Citra</td>
+                <td>Garmen</td>
+                <td>Lulus</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= F ================= -->
+
+<section class="card">
+
+    <h2>F. Angka yang Harus Diperlakukan sebagai Text</h2>
+
+    <p>
+        Ada data yang terlihat seperti angka tetapi sebenarnya merupakan
+        <strong>kode atau identitas</strong>.
+    </p>
+
+    <p>Contoh:</p>
+
+    <div class="code">
+00125
+00126
+00127
+00128
+    </div>
+
+    <p>
+        Jika dimasukkan sebagai angka biasa, Excel dapat menghilangkan
+        angka nol di bagian depan.
+    </p>
+
+    <div class="warning">
+
+        ⚠️ Contoh:
+
+        <br><br>
+
+        <strong>00125</strong> dapat berubah menjadi
+        <strong>125</strong> jika diperlakukan sebagai angka.
+
+    </div>
+
+</section>
+
+
+<!-- ================= G ================= -->
+
+<section class="card">
+
+    <h2>G. Cara Memasukkan Angka sebagai Text</h2>
+
+    <h3>Cara 1 – Menggunakan Tanda Petik Satu</h3>
+
+    <p>Ketik:</p>
+
+    <div class="code">
+'00125
+    </div>
+
+    <p>
+        Excel akan menyimpan nilai tersebut sebagai teks:
+    </p>
+
+    <div class="code">
+00125
+    </div>
+
+    <h3>Cara 2 – Mengatur Format Text</h3>
+
+    <div class="steps">
+
+        <div class="step">
+            Pilih cell atau range.
+        </div>
+
+        <div class="step">
+            Buka tab <strong>Home</strong>.
+        </div>
+
+        <div class="step">
+            Buka bagian <strong>Number Format</strong>.
+        </div>
+
+        <div class="step">
+            Pilih <strong>Text</strong>.
+        </div>
+
+        <div class="step">
+            Masukkan data.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= H ================= -->
+
+<section class="card">
+
+    <h2>H. Perataan Data Text</h2>
+
+    <p>
+        Secara default, Excel biasanya menempatkan data teks
+        di sebelah kiri cell.
+    </p>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Jenis Data</th>
+                <th>Posisi Default</th>
+            </tr>
+
+            <tr>
+                <td>Teks</td>
+                <td>Kiri</td>
+            </tr>
+
+            <tr>
+                <td>Angka</td>
+                <td>Kanan</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="tip">
+        💡 Posisi default ini dapat membantu mengenali
+        jenis data yang dimasukkan ke Excel.
+    </div>
+
+</section>
+
+
+<!-- ================= I ================= -->
+
+<section class="card">
+
+    <h2>I. Flash Fill</h2>
+
+    <p>
+        <strong>Flash Fill</strong> merupakan fitur Excel yang dapat
+        mengenali pola data kemudian mengisi data berikutnya
+        berdasarkan pola tersebut.
+    </p>
+
+    <h3>Contoh</h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>Nama Depan</th>
+            </tr>
+
+            <tr>
+                <td>Andi Saputra</td>
+                <td>Andi</td>
+            </tr>
+
+            <tr>
+                <td>Budi Setiawan</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Citra Lestari</td>
+                <td></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <p>
+        Setelah contoh pertama dimasukkan, Excel dapat mengenali pola
+        dan melengkapi data lainnya.
+    </p>
+
+</section>
+
+
+<!-- ================= J ================= -->
+
+<section class="card">
+
+    <h2>J. Cara Menggunakan Flash Fill</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            Masukkan data nama lengkap pada kolom A.
+        </div>
+
+        <div class="step">
+            Pada kolom B, masukkan contoh nama depan pertama.
+        </div>
+
+        <div class="step">
+            Pindahkan cursor ke cell berikutnya.
+        </div>
+
+        <div class="step">
+            Tekan <span class="shortcut">Ctrl + E</span>.
+        </div>
+
+        <div class="step">
+            Excel akan mencoba mengenali pola dan mengisi data.
+        </div>
+
+    </div>
+
+    <div class="code">
+Ctrl + E
+= Flash Fill
+    </div>
+
+</section>
+
+
+<!-- ================= K ================= -->
+
+<section class="card">
+
+    <h2>K. Contoh Flash Fill</h2>
+
+    <h3>Mengambil Nama Depan</h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>Nama Depan</th>
+            </tr>
+
+            <tr>
+                <td>Andi Saputra</td>
+                <td>Andi</td>
+            </tr>
+
+            <tr>
+                <td>Budi Setiawan</td>
+                <td>Budi</td>
+            </tr>
+
+            <tr>
+                <td>Citra Lestari</td>
+                <td>Citra</td>
+            </tr>
+
+            <tr>
+                <td>Dedi Kurniawan</td>
+                <td>Dedi</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <h3>Mengambil Nama Belakang</h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>Nama Belakang</th>
+            </tr>
+
+            <tr>
+                <td>Andi Saputra</td>
+                <td>Saputra</td>
+            </tr>
+
+            <tr>
+                <td>Budi Setiawan</td>
+                <td>Setiawan</td>
+            </tr>
+
+            <tr>
+                <td>Citra Lestari</td>
+                <td>Lestari</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= L ================= -->
+
+<section class="card">
+
+    <h2>L. Flash Fill untuk Mengubah Format Data</h2>
+
+    <p>
+        Flash Fill juga dapat digunakan untuk membuat format data
+        baru berdasarkan contoh yang diberikan.
+    </p>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama</th>
+                <th>Format Baru</th>
+            </tr>
+
+            <tr>
+                <td>Andi Saputra</td>
+                <td>ANDI SAPUTRA</td>
+            </tr>
+
+            <tr>
+                <td>Budi Setiawan</td>
+                <td>BUDI SETIAWAN</td>
+            </tr>
+
+            <tr>
+                <td>Citra Lestari</td>
+                <td>CITRA LESTARI</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="warning">
+
+        ⚠️ <strong>Perhatian:</strong>
+        Flash Fill bekerja berdasarkan pola yang dikenali Excel.
+        Selalu periksa hasilnya sebelum digunakan.
+
+    </div>
+
+</section>
+
+
+<!-- ================= M ================= -->
+
+<section class="card">
+
+    <h2>M. Panduan Dasar Tab Worksheet</h2>
+
+    <p>
+        Worksheet digunakan untuk memisahkan berbagai jenis data
+        dalam satu workbook.
+    </p>
+
+    <h3>Contoh Struktur Workbook</h3>
+
+    <div class="code">
+Data Peserta | Nilai | Rekap | Laporan
+    </div>
+
+    <p>
+        Dengan pembagian tersebut, data menjadi lebih terorganisasi
+        dan mudah ditemukan.
+    </p>
+
+</section>
+
+
+<!-- ================= N ================= -->
+
+<section class="card">
+
+    <h2>N. Membuat Worksheet Baru</h2>
+
+    <h3>Cara 1</h3>
+
+    <p>
+        Klik tanda <strong>+</strong> di samping tab worksheet.
+    </p>
+
+    <h3>Cara 2</h3>
+
+    <p>
+        Gunakan shortcut:
+    </p>
+
+    <div class="code">
+Shift + F11
+    </div>
+
+    <p>
+        Excel akan membuat worksheet baru.
+    </p>
+
+</section>
+
+
+<!-- ================= O ================= -->
+
+<section class="card">
+
+    <h2>O. Mengganti Nama Worksheet</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik kanan tab worksheet.
+        </div>
+
+        <div class="step">
+            Pilih <strong>Rename</strong>.
+        </div>
+
+        <div class="step">
+            Ketik nama baru.
+        </div>
+
+        <div class="step">
+            Tekan <strong>Enter</strong>.
+        </div>
+
+    </div>
+
+    <div class="code">
+Sheet1
+↓
+Data Peserta
+    </div>
+
+    <div class="tip">
+
+        💡 Gunakan nama worksheet yang singkat,
+        jelas, dan mudah dipahami.
+
+    </div>
+
+</section>
+
+
+<!-- ================= P ================= -->
+
+<section class="card">
+
+    <h2>P. Contoh Nama Worksheet yang Baik</h2>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama Worksheet</th>
+                <th>Keterangan</th>
+            </tr>
+
+            <tr>
+                <td>Data Peserta</td>
+                <td>Data utama peserta</td>
+            </tr>
+
+            <tr>
+                <td>Nilai</td>
+                <td>Data nilai peserta</td>
+            </tr>
+
+            <tr>
+                <td>Rekap</td>
+                <td>Ringkasan data</td>
+            </tr>
+
+            <tr>
+                <td>Laporan</td>
+                <td>Hasil akhir laporan</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= Q ================= -->
+
+<section class="card">
+
+    <h2>Q. Memindahkan Worksheet</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik tab worksheet.
+        </div>
+
+        <div class="step">
+            Tahan tombol mouse.
+        </div>
+
+        <div class="step">
+            Geser ke kiri atau kanan.
+        </div>
+
+        <div class="step">
+            Lepaskan mouse pada posisi yang diinginkan.
+        </div>
+
+    </div>
+
+    <div class="code">
+Data | Nilai | Rekap
+
+↓ dipindahkan
+
+Data | Rekap | Nilai
+    </div>
+
+</section>
+
+
+<!-- ================= R ================= -->
+
+<section class="card">
+
+    <h2>R. Menyalin Worksheet</h2>
+
+    <p>
+        Worksheet dapat disalin jika kita membutuhkan struktur
+        atau format yang sama.
+    </p>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik kanan tab worksheet.
+        </div>
+
+        <div class="step">
+            Pilih <strong>Move or Copy</strong>.
+        </div>
+
+        <div class="step">
+            Centang <strong>Create a copy</strong>.
+        </div>
+
+        <div class="step">
+            Tentukan lokasi worksheet.
+        </div>
+
+        <div class="step">
+            Klik <strong>OK</strong>.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= S ================= -->
+
+<section class="card">
+
+    <h2>S. Menghapus Worksheet</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik kanan tab worksheet.
+        </div>
+
+        <div class="step">
+            Pilih <strong>Delete</strong>.
+        </div>
+
+        <div class="step">
+            Konfirmasi jika diminta.
+        </div>
+
+    </div>
+
+    <div class="warning">
+
+        ⚠️ <strong>Perhatian:</strong>
+        Menghapus worksheet dapat menghapus seluruh data
+        yang terdapat di dalam worksheet tersebut.
+
+        Pastikan worksheet memang sudah tidak diperlukan.
+
+    </div>
+
+</section>
+
+
+<!-- ================= T ================= -->
+
+<section class="card">
+
+    <h2>T. Mengatur Warna Tab Worksheet</h2>
+
+    <p>
+        Excel memungkinkan pengguna memberikan warna pada tab worksheet
+        untuk membantu membedakan dan mengelompokkan worksheet.
+    </p>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Worksheet</th>
+                <th>Contoh Warna</th>
+                <th>Fungsi</th>
+            </tr>
+
+            <tr>
+                <td>Data Peserta</td>
+                <td>Hijau</td>
+                <td>Data utama</td>
+            </tr>
+
+            <tr>
+                <td>Nilai</td>
+                <td>Biru</td>
+                <td>Data penilaian</td>
+            </tr>
+
+            <tr>
+                <td>Rekap</td>
+                <td>Kuning</td>
+                <td>Ringkasan</td>
+            </tr>
+
+            <tr>
+                <td>Laporan</td>
+                <td>Merah</td>
+                <td>Laporan penting</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= U ================= -->
+
+<section class="card">
+
+    <h2>U. Cara Mengubah Warna Tab</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            Klik kanan tab worksheet.
+        </div>
+
+        <div class="step">
+            Pilih <strong>Tab Color</strong>.
+        </div>
+
+        <div class="step">
+            Pilih warna yang diinginkan.
+        </div>
+
+    </div>
+
+    <div class="tip">
+
+        💡 Warna tab tidak mengubah isi worksheet.
+        Warna hanya digunakan sebagai penanda visual.
+
+    </div>
+
+</section>
+
+
+<!-- ================= V ================= -->
+
+<section class="card">
+
+    <h2>V. Manfaat Warna Tab Worksheet</h2>
+
+    <ul style="margin-left:25px;">
+
+        <li>Mengelompokkan worksheet.</li>
+
+        <li>Mempermudah navigasi.</li>
+
+        <li>Membuat workbook lebih terorganisasi.</li>
+
+        <li>Mempermudah menemukan worksheet tertentu.</li>
+
+        <li>Memberikan tanda visual pada worksheet penting.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ================= PRAKTIK 1 ================= -->
+
+<section class="card practice">
+
+    <h2>📝 Praktik 1 – Mengisi Cell</h2>
+
+    <p>
+        Buat workbook baru dan masukkan data berikut:
+    </p>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Program</th>
+                <th>Nilai</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>Andi</td>
+                <td>TIK</td>
+                <td>85</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Budi</td>
+                <td>Las</td>
+                <td>90</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Citra</td>
+                <td>Garmen</td>
+                <td>88</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Dedi</td>
+                <td>TIK</td>
+                <td>92</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Eka</td>
+                <td>Las</td>
+                <td>87</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <h3>Tugas</h3>
+
+    <ol style="margin-left:25px;">
+
+        <li>Edit nilai Andi menjadi 86.</li>
+
+        <li>Hapus data Dedi.</li>
+
+        <li>Masukkan kembali data Dedi.</li>
+
+        <li>Simpan file.</li>
+
+    </ol>
+
+</section>
+
+
+<!-- ================= PRAKTIK 2 ================= -->
+
+<section class="card practice">
+
+    <h2>📝 Praktik 2 – Data Text</h2>
+
+    <p>
+        Buat tabel berikut:
+    </p>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>No Peserta</th>
+                <th>Nama</th>
+            </tr>
+
+            <tr>
+                <td>001</td>
+                <td>Andi</td>
+            </tr>
+
+            <tr>
+                <td>002</td>
+                <td>Budi</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>Citra</td>
+            </tr>
+
+            <tr>
+                <td>004</td>
+                <td>Dedi</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <p>
+        Pastikan nomor peserta tetap memiliki angka nol di depan.
+    </p>
+
+</section>
+
+
+<!-- ================= PRAKTIK 3 ================= -->
+
+<section class="card practice">
+
+    <h2>📝 Praktik 3 – Flash Fill</h2>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>Nama Depan</th>
+            </tr>
+
+            <tr>
+                <td>Andi Saputra</td>
+                <td>Andi</td>
+            </tr>
+
+            <tr>
+                <td>Budi Setiawan</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Citra Lestari</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Dedi Kurniawan</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Eka Permana</td>
+                <td></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <p>
+        Gunakan <span class="shortcut">Ctrl + E</span>
+        untuk melengkapi kolom Nama Depan.
+    </p>
+
+    <p>
+        Periksa kembali hasil Flash Fill.
+    </p>
+
+</section>
+
+
+<!-- ================= PRAKTIK 4 ================= -->
+
+<section class="card practice">
+
+    <h2>📝 Praktik 4 – Mengelola Worksheet</h2>
+
+    <p>
+        Buat workbook dengan worksheet berikut:
+    </p>
+
+    <div class="code">
+Data Peserta
+Nilai
+Rekap
+Laporan
+    </div>
+
+    <h3>Tugas:</h3>
+
+    <ol style="margin-left:25px;">
+
+        <li>Ubah nama Sheet1 menjadi Data Peserta.</li>
+
+        <li>Tambahkan worksheet Nilai.</li>
+
+        <li>Buat worksheet Rekap.</li>
+
+        <li>Buat worksheet Laporan.</li>
+
+        <li>Atur urutan worksheet.</li>
+
+        <li>Berikan warna berbeda pada setiap tab.</li>
+
+    </ol>
+
+</section>
+
+
+<!-- ================= KESALAHAN UMUM ================= -->
+
+<section class="card">
+
+    <h2>⚠️ Kesalahan Umum yang Harus Dihindari</h2>
+
+    <h3>1. Salah memasukkan data</h3>
+
+    <p>
+        Pastikan data dimasukkan pada cell yang tepat.
+    </p>
+
+    <h3>2. Kode dianggap sebagai angka</h3>
+
+    <p>
+        Kode seperti <strong>00125</strong> dapat kehilangan
+        angka nol di depan.
+    </p>
+
+    <h3>3. Tidak memeriksa Flash Fill</h3>
+
+    <p>
+        Selalu periksa hasil Flash Fill sebelum digunakan.
+    </p>
+
+    <h3>4. Menghapus worksheet tanpa pemeriksaan</h3>
+
+    <p>
+        Pastikan worksheet tidak lagi diperlukan sebelum menghapusnya.
+    </p>
+
+    <h3>5. Worksheet tidak terorganisasi</h3>
+
+    <p>
+        Hindari terlalu banyak worksheet dengan nama default
+        seperti Sheet1, Sheet2, Sheet3.
+    </p>
+
+</section>
+
+
+<!-- ================= RINGKASAN ================= -->
+
+<section class="card">
+
+    <h2>📚 Ringkasan Modul 2</h2>
+
+    <p>
+        Pada modul ini kita telah mempelajari:
+    </p>
+
+    <ul style="margin-left:25px;">
+
+        <li>Cara mengisi cell.</li>
+
+        <li>Cara mengedit cell.</li>
+
+        <li>Cara menghapus isi cell.</li>
+
+        <li>Data teks di Excel.</li>
+
+        <li>Menyimpan kode sebagai Text.</li>
+
+        <li>Flash Fill.</li>
+
+        <li>Membuat worksheet baru.</li>
+
+        <li>Mengganti nama worksheet.</li>
+
+        <li>Memindahkan worksheet.</li>
+
+        <li>Menyalin worksheet.</li>
+
+        <li>Menghapus worksheet.</li>
+
+        <li>Mengatur warna tab worksheet.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ================= KOMPETENSI ================= -->
+
+<section class="card">
+
+    <h2>🏆 Kompetensi Akhir</h2>
+
+    <div class="goal-list">
+
+        <div class="goal">✓ Mengisi data ke cell</div>
+
+        <div class="goal">✓ Mengedit dan menghapus data</div>
+
+        <div class="goal">✓ Mengelola data Text</div>
+
+        <div class="goal">✓ Menggunakan Flash Fill</div>
+
+        <div class="goal">✓ Membuat worksheet</div>
+
+        <div class="goal">✓ Mengganti nama worksheet</div>
+
+        <div class="goal">✓ Mengatur posisi worksheet</div>
+
+        <div class="goal">✓ Mengatur warna tab worksheet</div>
+
+    </div>
+
+    <div class="info" style="margin-top:25px;">
+
+        <strong>💡 Kunci Modul 2:</strong>
+
+        Biasakan mengelola data secara terstruktur sejak awal.
+        Cell yang diisi dengan benar dan worksheet yang tertata
+        akan sangat membantu ketika mempelajari
+        <strong>Formatting, Formula, Fungsi, Sort, Filter,
+        dan Pembuatan Laporan</strong>.
+
+    </div>
+
+</section>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<div class="navigation">
+
+    <a href="modul-excel-1.html" class="btn secondary">
+        ← Modul 1
+    </a>
+
+    <a href="kuis-excel-2.html" class="btn">
+        Kuis Modul 2 →
+    </a>
+
+</div>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <p>
+        <strong>Pelatihan Microsoft Excel</strong>
+    </p>
+
+    <p>
+        Modul 2 • Menginput dan Mengelola Data Dasar Excel
+    </p>
+
+    <p style="margin-top:8px;font-size:13px;opacity:.7;">
+        © 2026 • Materi Pelatihan
+    </p>
+
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Perpustakaan - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .perpustakaan-container {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .perpustakaan-header {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .perpustakaan-header h2 {
+            color: #0077b6;
+            margin-top: 0;
+        }
+
+        .perpustakaan-header p {
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FILTER
+        ========================= */
+
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .filter-btn {
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            background: white;
+            color: #0077b6;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #0077b6;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: #0077b6;
+            color: white;
+        }
+
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .perpustakaan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .buku-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.25s;
+        }
+
+        .buku-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .buku-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .buku-card h3 {
+            color: #0077b6;
+            margin: 10px 0;
+        }
+
+        .buku-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           INFO
+        ========================= */
+
+        .buku-info {
+            background: #f1f7fb;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .btn-baca {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            background: #0077b6;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-baca:hover {
+            background: #005f8f;
+        }
+
+
+        /* =========================
+           LABEL KATEGORI
+        ========================= */
+
+        .kategori-label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: #e8f4fa;
+            color: #0077b6;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .perpustakaan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .perpustakaan-container {
+                margin: 20px 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- NAVIGASI -->
+
+    <nav>
+
+        <a href="index.html">Beranda</a>
+
+        <a href="autobiografi.html">Autobiografi</a>
+
+        <a href="materi.html">Materi</a>
+
+        <a href="tugas.html">Tugas</a>
+
+        <a href="kelas.html">Kelas Saya</a>
+
+        <a href="galeri.html">Galeri</a>
+
+        <a href="perpustakaan.html">Perpustakaan</a>
+
+        <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+    </nav>
+
+
+    <!-- KONTEN -->
+
+    <main class="container">
+
+        <div class="perpustakaan-container">
+
+
+            <!-- HEADER PERPUSTAKAAN -->
+
+            <section class="perpustakaan-header">
+
+                <h2>
+                    📖 Perpustakaan
+                </h2>
+
+                <p>
+                    Selamat datang di Perpustakaan TIK Learning
+                    UPTD BLK Kabupaten Subang.
+                </p>
+
+                <p>
+                    Halaman ini menyediakan modul dan bahan
+                    pembelajaran yang dapat digunakan oleh peserta
+                    pelatihan sebagai sumber belajar.
+                </p>
+
+            </section>
+
+
+            <!-- FILTER -->
+
+            <div class="filter-container">
+
+                <button
+                    class="filter-btn active"
+                    onclick="filterBuku('semua', this)">
+
+                    Semua
+
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterBuku('word', this)">
+
+                    Word 2016
+
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterBuku('excel', this)">
+
+                    Excel 2016
+
+                </button>
+
+            </div>
+
+
+            <!-- DAFTAR DOKUMEN -->
+
+            <section class="perpustakaan-grid">
+
+
+                <!-- =========================
+                     WORD
+                ========================= -->
+
+                <div
+                    class="buku-card"
+                    data-kategori="word">
+
+                    <div class="buku-icon">
+                        📘
+                    </div>
+
+                    <span class="kategori-label">
+                        Microsoft Word 2016
+                    </span>
+
+                    <h3>
+                        Modul Microsoft Word 2016
+                    </h3>
+
+                    <p>
+                        Modul pembelajaran Microsoft Word 2016
+                        yang digunakan sebagai bahan pembelajaran
+                        dalam pelatihan TIK.
+                    </p>
+
+                    <div class="buku-info">
+
+                        📄 <strong>Format:</strong> PDF<br>
+
+                        💻 <strong>Aplikasi:</strong>
+                        Microsoft Word 2016
+
+                    </div>
+
+                    <a
+                        href="perpustakaan/modul-word-2016.pdf"
+                        target="_blank"
+                        class="btn-baca">
+
+                        📖 Buka Dokumen
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================
+                     EXCEL
+                ========================= -->
+
+                <div
+                    class="buku-card"
+                    data-kategori="excel">
+
+                    <div class="buku-icon">
+                        📊
+                    </div>
+
+                    <span class="kategori-label">
+                        Microsoft Excel 2016
+                    </span>
+
+                    <h3>
+                        Buku Materi Microsoft Excel 2016
+                    </h3>
+
+                    <p>
+                        Buku materi Microsoft Excel 2016
+                        sebagai bahan pembelajaran dan referensi
+                        peserta pelatihan.
+                    </p>
+
+                    <div class="buku-info">
+
+                        📄 <strong>Format:</strong> PDF<br>
+
+                        💻 <strong>Aplikasi:</strong>
+                        Microsoft Excel 2016
+
+                    </div>
+
+                    <a
+                        href="perpustakaan/buku-materi-excel-2016.pdf"
+                        target="_blank"
+                        class="btn-baca">
+
+                        📖 Buka Dokumen
+
+                    </a>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning -
+            UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT FILTER -->
+
+    <script>
+
+        function filterBuku(kategori, tombol) {
+
+            const buku =
+                document.querySelectorAll(".buku-card");
+
+            const tombolFilter =
+                document.querySelectorAll(".filter-btn");
+
+
+            /* Hapus status aktif */
+
+            tombolFilter.forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+            /* Aktifkan tombol yang dipilih */
+
+            tombol.classList.add("active");
+
+
+            /* Filter dokumen */
+
+            buku.forEach(function(item) {
+
+                const kategoriBuku =
+                    item.getAttribute("data-kategori");
+
+
+                if (
+                    kategori === "semua" ||
+                    kategoriBuku === kategori
+                ) {
+
+                    item.style.display = "block";
+
+                } else {
+
+                    item.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

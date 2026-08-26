@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 1 - Mengenal Microsoft PowerPoint 2016</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #b71c1c, #e53935);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .header .icon {
+            font-size: 50px;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        /* INFO CARD */
+        .info-card {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-card h2 {
+            color: #c62828;
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .info-card h3 {
+            color: #b71c1c;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            margin-bottom: 12px;
+        }
+
+        /* TUJUAN */
+        .tujuan {
+            background: #fff3f3;
+            border-left: 5px solid #e53935;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .tujuan ul {
+            margin-left: 22px;
+        }
+
+        /* LIST */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            background: white;
+        }
+
+        th {
+            background: #c62828;
+            color: white;
+            padding: 13px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* HIGHLIGHT */
+        .highlight {
+            background: #fff8e1;
+            border-left: 5px solid #ffb300;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .tip {
+            background: #e8f5e9;
+            border-left: 5px solid #43a047;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .warning {
+            background: #ffebee;
+            border-left: 5px solid #e53935;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        /* CODE PATH */
+        .path {
+            display: inline-block;
+            background: #263238;
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 7px;
+            font-family: Consolas, monospace;
+            margin: 8px 0;
+        }
+
+        /* STEP */
+        .step {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            min-width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e53935;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* MENU */
+        .menu-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .menu-box strong {
+            color: #c62828;
+        }
+
+        /* PRACTICE */
+        .practice {
+            background: linear-gradient(135deg, #fff3e0, #fff8e1);
+            border: 2px solid #ffb300;
+            padding: 25px;
+            border-radius: 14px;
+            margin-top: 20px;
+        }
+
+        .practice h2 {
+            color: #e65100;
+            margin-bottom: 12px;
+        }
+
+        /* SUMMARY */
+        .summary {
+            background: linear-gradient(135deg, #263238, #37474f);
+            color: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-top: 25px;
+        }
+
+        .summary h2 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        /* BUTTON */
+        .button-area {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #b71c1c, #e53935);
+            padding: 14px 28px;
+            border-radius: 9px;
+            font-weight: bold;
+            margin: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #455a64;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 4px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+
+            .header h1 {
+                font-size: 23px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .info-card {
+                padding: 18px;
+            }
+
+            .info-card h2 {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 9px;
+            }
+
+            .step {
+                gap: 10px;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="icon">📊</div>
+
+        <h1>Modul 1</h1>
+
+        <p>Mengenal Microsoft PowerPoint 2016</p>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- PENDAHULUAN -->
+        <section class="info-card">
+
+            <h2>📚 Tentang Modul</h2>
+
+            <p>
+                Microsoft PowerPoint 2016 merupakan salah satu aplikasi
+                Microsoft Office yang digunakan untuk membuat dan menyampaikan
+                presentasi dalam bentuk slide.
+            </p>
+
+            <p>
+                Pada modul pertama ini peserta akan mengenal PowerPoint 2016,
+                mulai dari pengertian, fungsi, manfaat, bagian-bagian tampilan,
+                Ribbon, Tab Menu, hingga pengaturan ukuran dan orientasi slide.
+            </p>
+
+        </section>
+
+
+        <!-- TUJUAN -->
+        <section class="info-card">
+
+            <h2>🎯 Tujuan Pembelajaran</h2>
+
+            <div class="tujuan">
+
+                <p>Setelah menyelesaikan modul ini, peserta diharapkan mampu:</p>
+
+                <ul>
+                    <li>Menjelaskan pengertian Microsoft PowerPoint 2016.</li>
+                    <li>Menjelaskan fungsi Microsoft PowerPoint.</li>
+                    <li>Menjelaskan manfaat PowerPoint dalam pekerjaan dan pembelajaran.</li>
+                    <li>Mengenali bagian-bagian utama PowerPoint 2016.</li>
+                    <li>Mengenali Ribbon, Tab Menu, Group dan Command.</li>
+                    <li>Mengatur ukuran slide.</li>
+                    <li>Mengatur orientasi slide.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- PENGERTIAN -->
+        <section class="info-card">
+
+            <h2>1. Pengertian Microsoft PowerPoint 2016</h2>
+
+            <p>
+                Microsoft PowerPoint 2016 adalah aplikasi pengolah presentasi
+                yang dikembangkan oleh Microsoft dan menjadi bagian dari
+                Microsoft Office 2016.
+            </p>
+
+            <p>
+                PowerPoint digunakan untuk membuat materi presentasi dalam
+                bentuk slide yang dapat berisi teks, gambar, tabel, grafik,
+                audio, video, animasi, dan berbagai elemen visual lainnya.
+            </p>
+
+            <div class="highlight">
+
+                <strong>💡 Intinya:</strong>
+
+                <p>
+                    PowerPoint digunakan untuk membantu pengguna menyampaikan
+                    informasi atau ide secara visual melalui rangkaian slide.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUNGSI -->
+        <section class="info-card">
+
+            <h2>2. Fungsi Microsoft PowerPoint 2016</h2>
+
+            <p>PowerPoint memiliki berbagai fungsi, antara lain:</p>
+
+            <ul>
+                <li>Membuat bahan presentasi.</li>
+                <li>Menyajikan informasi secara visual.</li>
+                <li>Membuat materi pembelajaran.</li>
+                <li>Membuat laporan dan proposal.</li>
+                <li>Membuat presentasi bisnis.</li>
+                <li>Membuat media promosi.</li>
+                <li>Menyampaikan data dalam bentuk grafik dan diagram.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- MANFAAT -->
+        <section class="info-card">
+
+            <h2>3. Manfaat Microsoft PowerPoint 2016</h2>
+
+            <ul>
+                <li>Informasi menjadi lebih mudah dipahami.</li>
+                <li>Presentasi menjadi lebih menarik.</li>
+                <li>Materi dapat disusun secara sistematis.</li>
+                <li>Mempermudah penyampaian ide.</li>
+                <li>Mendukung penggunaan gambar, audio, video, dan grafik.</li>
+                <li>Membantu membuat presentasi yang profesional.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- BAGIAN POWERPOINT -->
+        <section class="info-card">
+
+            <h2>4. Bagian-Bagian Microsoft PowerPoint 2016</h2>
+
+            <p>
+                Sebelum membuat presentasi, penting untuk mengenali bagian
+                utama dari tampilan Microsoft PowerPoint 2016.
+            </p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Bagian</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>Title Bar</strong></td>
+                        <td>Menampilkan nama file dan aplikasi PowerPoint.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Quick Access Toolbar</strong></td>
+                        <td>Memberikan akses cepat ke perintah yang sering digunakan.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>File</strong></td>
+                        <td>Digunakan untuk mengelola file seperti membuat, membuka, menyimpan, dan mencetak.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Ribbon</strong></td>
+                        <td>Area yang berisi berbagai perintah PowerPoint.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Tab Menu</strong></td>
+                        <td>Mengelompokkan perintah berdasarkan fungsi.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Group</strong></td>
+                        <td>Mengelompokkan perintah yang memiliki fungsi sejenis.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Command</strong></td>
+                        <td>Tombol atau perintah untuk menjalankan fungsi tertentu.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Thumbnail Pane</strong></td>
+                        <td>Menampilkan daftar slide dalam bentuk gambar kecil.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Slide Pane</strong></td>
+                        <td>Area utama untuk membuat dan mengedit slide.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Notes Pane</strong></td>
+                        <td>Tempat menambahkan catatan untuk presenter.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Status Bar</strong></td>
+                        <td>Menampilkan informasi mengenai dokumen dan tampilan.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Zoom Slider</strong></td>
+                        <td>Digunakan untuk memperbesar atau memperkecil tampilan slide.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- RIBBON -->
+        <section class="info-card">
+
+            <h2>5. Mengenal Ribbon</h2>
+
+            <p>
+                <strong>Ribbon</strong> adalah bagian pada Microsoft PowerPoint
+                yang berisi kumpulan perintah untuk mengolah presentasi.
+            </p>
+
+            <p>Struktur Ribbon dapat dipahami sebagai:</p>
+
+            <div class="highlight">
+
+                <h3 style="margin-top:0;">
+                    Tab → Group → Command
+                </h3>
+
+                <p>
+                    Contoh:
+                </p>
+
+                <p>
+                    <strong>Home → Font → Bold</strong>
+                </p>
+
+            </div>
+
+            <p>
+                Artinya:
+            </p>
+
+            <ul>
+                <li><strong>Home</strong> = Tab</li>
+                <li><strong>Font</strong> = Group</li>
+                <li><strong>Bold</strong> = Command</li>
+            </ul>
+
+        </section>
+
+
+        <!-- TAB MENU -->
+        <section class="info-card">
+
+            <h2>6. Mengenal Tab Menu</h2>
+
+            <p>
+                Tab Menu digunakan untuk mengelompokkan berbagai perintah
+                berdasarkan fungsi.
+            </p>
+
+            <div class="menu-box">
+                <strong>File</strong>
+                <p>Mengelola file seperti New, Open, Save, Save As, Print, dan Options.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Home</strong>
+                <p>Mengatur teks, paragraf, clipboard, slide, drawing, dan editing.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Insert</strong>
+                <p>Memasukkan gambar, tabel, grafik, bentuk, SmartArt, audio, video, dan objek lainnya.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Design</strong>
+                <p>Mengatur tema, warna, background, dan ukuran slide.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Transitions</strong>
+                <p>Mengatur efek perpindahan dari satu slide ke slide lainnya.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Animations</strong>
+                <p>Memberikan efek animasi pada objek yang terdapat di dalam slide.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Slide Show</strong>
+                <p>Menjalankan dan mengatur tampilan presentasi.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>Review</strong>
+                <p>Membantu pemeriksaan, komentar, bahasa, dan fitur review lainnya.</p>
+            </div>
+
+            <div class="menu-box">
+                <strong>View</strong>
+                <p>Mengatur tampilan dan cara melihat presentasi.</p>
+            </div>
+
+        </section>
+
+
+        <!-- THUMBNAIL -->
+        <section class="info-card">
+
+            <h2>7. Thumbnail Pane dan Slide Pane</h2>
+
+            <h3>Thumbnail Pane</h3>
+
+            <p>
+                Thumbnail Pane berada di sisi kiri tampilan PowerPoint.
+                Bagian ini menampilkan slide dalam bentuk gambar kecil.
+            </p>
+
+            <p>
+                Thumbnail dapat digunakan untuk:
+            </p>
+
+            <ul>
+                <li>Memilih slide.</li>
+                <li>Mengubah urutan slide.</li>
+                <li>Menghapus slide.</li>
+                <li>Menduplikasi slide.</li>
+            </ul>
+
+            <h3>Slide Pane</h3>
+
+            <p>
+                Slide Pane merupakan area utama tempat pengguna membuat
+                dan mengedit isi slide.
+            </p>
+
+        </section>
+
+
+        <!-- NOTES -->
+        <section class="info-card">
+
+            <h2>8. Notes Pane</h2>
+
+            <p>
+                Notes Pane digunakan untuk menambahkan catatan yang membantu
+                presenter ketika menyampaikan materi.
+            </p>
+
+            <p>Contoh isi catatan:</p>
+
+            <ul>
+                <li>Poin penting yang harus dijelaskan.</li>
+                <li>Informasi tambahan.</li>
+                <li>Catatan untuk presenter.</li>
+                <li>Penjelasan yang tidak perlu ditampilkan pada slide.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- STATUS -->
+        <section class="info-card">
+
+            <h2>9. Status Bar dan Zoom</h2>
+
+            <h3>Status Bar</h3>
+
+            <p>
+                Status Bar berada di bagian bawah jendela PowerPoint.
+                Bagian ini menampilkan informasi mengenai presentasi dan
+                tampilan dokumen.
+            </p>
+
+            <h3>Zoom Slider</h3>
+
+            <p>
+                Zoom digunakan untuk memperbesar atau memperkecil tampilan
+                slide pada layar.
+            </p>
+
+            <div class="tip">
+
+                <strong>💡 Tips:</strong>
+
+                <p>
+                    Zoom hanya mengubah ukuran tampilan di layar.
+                    Zoom tidak mengubah ukuran sebenarnya dari slide.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- UKURAN SLIDE -->
+        <section class="info-card">
+
+            <h2>10. Mengatur Ukuran Slide</h2>
+
+            <p>
+                Ukuran slide menentukan bentuk dan perbandingan bidang
+                presentasi yang digunakan.
+            </p>
+
+            <p>Untuk mengatur ukuran slide:</p>
+
+            <div class="path">
+                Design → Slide Size → Custom Slide Size
+            </div>
+
+            <h3>Ukuran yang Umum Digunakan</h3>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Ukuran</th>
+                        <th>Perbandingan</th>
+                        <th>Penggunaan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Standard</td>
+                        <td>4 : 3</td>
+                        <td>Presentasi pada perangkat atau proyektor lama.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Widescreen</td>
+                        <td>16 : 9</td>
+                        <td>Monitor, laptop, TV, dan proyektor modern.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Custom</td>
+                        <td>Sesuai kebutuhan</td>
+                        <td>Poster, infografis, banner, dan kebutuhan khusus.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="highlight">
+
+                <strong>📌 Rekomendasi:</strong>
+
+                <p>
+                    Untuk presentasi modern, ukuran
+                    <strong>Widescreen 16:9</strong> merupakan pilihan yang
+                    umum digunakan.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CUSTOM SIZE -->
+        <section class="info-card">
+
+            <h2>11. Custom Slide Size</h2>
+
+            <p>
+                Custom Slide Size digunakan apabila pengguna membutuhkan
+                ukuran slide tertentu.
+            </p>
+
+            <p>
+                Pada jendela Custom Slide Size, pengguna dapat mengatur:
+            </p>
+
+            <ul>
+                <li><strong>Width</strong> — lebar slide.</li>
+                <li><strong>Height</strong> — tinggi slide.</li>
+                <li><strong>Orientation</strong> — orientasi slide.</li>
+            </ul>
+
+            <div class="menu-box">
+
+                <strong>Contoh ukuran:</strong>
+
+                <ul>
+                    <li>Widescreen: 13,333 × 7,5 inci</li>
+                    <li>Standard: 10 × 7,5 inci</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ORIENTASI -->
+        <section class="info-card">
+
+            <h2>12. Mengatur Orientasi Slide</h2>
+
+            <p>
+                Orientasi menentukan arah tampilan slide.
+            </p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Orientasi</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>Landscape</strong></td>
+                        <td>Slide berbentuk horizontal. Umumnya digunakan untuk presentasi.</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Portrait</strong></td>
+                        <td>Slide berbentuk vertikal. Cocok untuk poster atau materi tertentu.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- PRAKTIK -->
+        <section class="practice">
+
+            <h2>🛠️ Praktik Modul 1</h2>
+
+            <p>
+                Setelah mempelajari materi, lakukan praktik berikut:
+            </p>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Buka Microsoft PowerPoint 2016.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Buat presentasi baru menggunakan Blank Presentation.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Kenali bagian-bagian utama tampilan PowerPoint.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Buka menu <strong>Design</strong>.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>Ubah ukuran slide menjadi <strong>Widescreen 16:9</strong>.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div>Buat satu slide baru.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div>Ubah orientasi slide dan amati perubahan tampilannya.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div>Simpan file dengan nama <strong>Latihan_Modul_1_NamaPeserta.pptx</strong>.</div>
+            </div>
+
+        </section>
+
+
+        <!-- RANGKUMAN -->
+        <section class="summary">
+
+            <h2>📌 Rangkuman Modul 1</h2>
+
+            <p>
+                Microsoft PowerPoint 2016 merupakan aplikasi untuk membuat
+                dan menyampaikan presentasi dalam bentuk slide.
+            </p>
+
+            <p>
+                Pada modul ini peserta telah mengenal pengertian, fungsi,
+                manfaat, bagian-bagian tampilan PowerPoint, Ribbon, Tab Menu,
+                Group, Command, Thumbnail Pane, Slide Pane, Notes Pane,
+                Status Bar, Zoom, serta pengaturan ukuran dan orientasi slide.
+            </p>
+
+        </section>
+
+
+        <!-- EVALUASI -->
+        <section class="info-card">
+
+            <h2>📝 Persiapan Evaluasi</h2>
+
+            <p>
+                Setelah memahami seluruh materi Modul 1, peserta dapat
+                melanjutkan ke kuis untuk menguji pemahaman.
+            </p>
+
+            <div class="warning">
+
+                <strong>Perhatian!</strong>
+
+                <p>
+                    Pastikan Anda telah membaca seluruh materi sebelum
+                    mengerjakan kuis.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUTTON -->
+        <div class="button-area">
+
+            <a href="kelas.html" class="btn btn-secondary">
+                ← Kembali ke Kelas
+            </a>
+
+            <a href="kuis-ppt-1.html" class="btn">
+                📝 Mulai Kuis Modul 1 →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p><strong>Pelatihan Microsoft PowerPoint 2016</strong></p>
+
+        <p>Modul 1 — Mengenal Microsoft PowerPoint 2016</p>
+
+        <p>© 2026 UPTD BLK Kabupaten Subang</p>
+
+    </footer>
+
+</body>
+
+</html>

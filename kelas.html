@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kelas Saya - TIK Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .kelas-container {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .kelas-header {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .kelas-header h2 {
+            color: #0077b6;
+            margin-top: 0;
+        }
+
+        .kelas-header p {
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PILIHAN KELAS
+        ========================= */
+
+        .kelas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .kelas-card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.25s;
+        }
+
+        .kelas-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .kelas-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .kelas-card h3 {
+            color: #0077b6;
+            margin: 10px 0;
+        }
+
+        .kelas-card p {
+            color: #555;
+            line-height: 1.6;
+            min-height: 65px;
+        }
+
+        .kelas-info {
+            background: #f1f7fb;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .btn-kelas {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            background: #0077b6;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .btn-kelas:hover {
+            background: #005f8f;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .kelas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kelas-container {
+                margin: 20px 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>TIK LEARNING</h1>
+
+        <p>UPTD BLK Kabupaten Subang</p>
+
+    </header>
+
+
+    <!-- NAVIGASI -->
+
+    <nav>
+
+    <a href="index.html">Beranda</a>
+
+    <a href="autobiografi.html">Autobiografi</a>
+
+    <a href="materi.html">Materi</a>
+
+    <a href="tugas.html">Tugas</a>
+
+    <a href="kelas.html">Kelas Saya</a>
+
+    <a href="galeri.html">Galeri</a>
+
+    <a href="perpustakaan.html">Perpustakaan</a>
+
+    <a href="ruang-bertanya.html">Ruang Bertanya</a>
+
+</nav>
+
+
+    <!-- KONTEN -->
+
+    <main class="container">
+
+        <div class="kelas-container">
+
+
+            <!-- HEADER HALAMAN -->
+
+            <section class="kelas-header">
+
+                <h2>
+                    🎓 Kelas Saya
+                </h2>
+
+                <p>
+                    Selamat datang di halaman kelas pembelajaran
+                    TIK Learning UPTD BLK Kabupaten Subang.
+                </p>
+
+                <p>
+                    Silakan pilih kelas yang ingin Anda ikuti.
+                </p>
+
+            </section>
+
+
+            <!-- PILIHAN KELAS -->
+
+            <section class="kelas-grid">
+
+
+                <!-- =========================
+                     WORD
+                ========================= -->
+
+                <div class="kelas-card">
+
+                    <div class="kelas-icon">
+                        📘
+                    </div>
+
+                    <h3>
+                        Microsoft Word 2016
+                    </h3>
+
+                    <p>
+                        Pembelajaran Microsoft Word 2016
+                        dari tingkat dasar hingga membuat
+                        laporan profesional.
+                    </p>
+
+                    <div class="kelas-info">
+
+                        📚 <strong>10 Modul</strong><br>
+
+                        📝 Materi & Kuis<br>
+
+                        🎯 Pembelajaran berbasis kompetensi
+
+                    </div>
+
+                    <a
+                        href="kelas-word.html"
+                        class="btn-kelas">
+
+                        Masuk Kelas Word →
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================
+                     EXCEL
+                ========================= -->
+
+                <div class="kelas-card">
+
+                    <div class="kelas-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Microsoft Excel 2016
+                    </h3>
+
+                    <p>
+                        Pembelajaran Microsoft Excel 2016
+                        dari dasar hingga pengolahan data,
+                        Pivot Table, dan Macro.
+                    </p>
+
+                    <div class="kelas-info">
+
+                        📚 <strong>11 Modul</strong><br>
+
+                        📝 Materi & Kuis<br>
+
+                        🎯 Pembelajaran berbasis kompetensi
+
+                    </div>
+
+                    <a
+                        href="kelas-excel.html"
+                        class="btn-kelas">
+
+                        Masuk Kelas Excel →
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================
+                     POWERPOINT
+                ========================= -->
+
+                <div class="kelas-card">
+
+                    <div class="kelas-icon">
+                        📽️
+                    </div>
+
+                    <h3>
+                        Microsoft PowerPoint 2016
+                    </h3>
+
+                    <p>
+                        Pembelajaran Microsoft PowerPoint 2016
+                        dari dasar hingga membuat presentasi
+                        yang menarik dan profesional.
+                    </p>
+
+                    <div class="kelas-info">
+
+                        📚 <strong>10 Modul</strong><br>
+
+                        📝 Materi & Kuis<br>
+
+                        🎯 Pembelajaran berbasis kompetensi
+
+                    </div>
+
+                    <a
+                        href="kelas-powerpoint.html"
+                        class="btn-kelas">
+
+                        Masuk Kelas PowerPoint →
+
+                    </a>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 TIK Learning -
+            UPTD BLK Kabupaten Subang
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

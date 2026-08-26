@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 6 - Audio, Video dan Efek Animasi</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #b71c1c,
+                #e53935
+            );
+
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,.15);
+        }
+
+        .ppt-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: .95;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        .card h2 {
+            color: #b71c1c;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #c62828;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           TUJUAN PEMBELAJARAN
+        ========================= */
+
+        .learning-box {
+            background: #ffebee;
+            border-left: 6px solid #e53935;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .learning-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .learning-box ul {
+            padding-left: 22px;
+        }
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .number {
+            min-width: 42px;
+            height: 42px;
+            background: #e53935;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* =========================
+           STEP
+        ========================= */
+
+        .step {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 12px 0;
+        }
+
+        .step strong {
+            color: #b71c1c;
+        }
+
+        /* =========================
+           MENU PATH
+        ========================= */
+
+        .menu-path {
+            display: inline-block;
+            background: #263238;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FEATURE GRID
+        ========================= */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(180px, 1fr)
+            );
+
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .feature strong {
+            display: block;
+            color: #b71c1c;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           EXAMPLE
+        ========================= */
+
+        .example {
+            background: #e3f2fd;
+            border-left: 5px solid #1976d2;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example strong {
+            color: #1565c0;
+        }
+
+        /* =========================
+           WARNING
+        ========================= */
+
+        .warning {
+            background: #fff8e1;
+            border-left: 5px solid #ffb300;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* =========================
+           INFO
+        ========================= */
+
+        .info {
+            background: #e8f5e9;
+            border-left: 5px solid #43a047;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            background: #b71c1c;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* =========================
+           PRACTICE
+        ========================= */
+
+        .practice {
+            background: #e8f5e9;
+            border-left: 6px solid #43a047;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .practice h2 {
+            color: #2e7d32;
+        }
+
+        .practice ol {
+            padding-left: 22px;
+        }
+
+        /* =========================
+           CHECKLIST
+        ========================= */
+
+        .checklist {
+            margin-top: 15px;
+        }
+
+        .check-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .check-item:last-child {
+            border-bottom: none;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button-area {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 20px;
+            background: #e53935;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,.18);
+        }
+
+        .btn-dark {
+            background: #455a64;
+        }
+
+        .btn-green {
+            background: #2e7d32;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 600px) {
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                align-items: flex-start;
+            }
+
+            .number {
+                min-width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .button-area {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="ppt-icon">
+        🎬
+    </div>
+
+    <h1>
+        MODUL 6
+    </h1>
+
+    <p>
+        Menambahkan Audio, Video, dan Efek Animasi
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="container">
+
+
+    <!-- =====================================
+         TUJUAN
+    ====================================== -->
+
+    <section class="card learning-box">
+
+        <h2>
+            🎯 Tujuan Pembelajaran
+        </h2>
+
+        <p>
+            Setelah mempelajari modul ini, peserta
+            diharapkan mampu:
+        </p>
+
+        <ul>
+
+            <li>
+                Menyisipkan audio ke dalam presentasi.
+            </li>
+
+            <li>
+                Menyisipkan video ke dalam slide.
+            </li>
+
+            <li>
+                Mengatur Playback audio dan video.
+            </li>
+
+            <li>
+                Memotong audio dan video menggunakan
+                fitur Trim.
+            </li>
+
+            <li>
+                Mengatur media agar berjalan
+                <strong>On Click</strong> atau
+                <strong>Automatically</strong>.
+            </li>
+
+            <li>
+                Menggunakan efek
+                <strong>Entrance, Emphasis,</strong>
+                dan <strong>Exit</strong>.
+            </li>
+
+            <li>
+                Menggunakan
+                <strong>Motion Path</strong>.
+            </li>
+
+            <li>
+                Mengatur animasi menggunakan
+                <strong>Animation Pane</strong>.
+            </li>
+
+            <li>
+                Menggunakan
+                <strong>Effect Options</strong>
+                dan <strong>Trigger</strong>.
+            </li>
+
+            <li>
+                Mengatur
+                <strong>Timing, Duration,</strong>
+                dan <strong>Delay</strong>.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =====================================
+         PENGANTAR
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                1
+            </div>
+
+            <h2>
+                Mengenal Audio, Video, dan Animasi
+            </h2>
+
+        </div>
+
+        <p>
+            Presentasi yang hanya berisi teks dan
+            gambar terkadang terasa kurang menarik.
+            Microsoft PowerPoint 2016 menyediakan
+            fitur multimedia dan animasi yang dapat
+            digunakan untuk membuat presentasi lebih
+            interaktif.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔊
+                </div>
+
+                <strong>
+                    Audio
+                </strong>
+
+                <p>
+                    Menambahkan suara, musik,
+                    narasi, atau efek suara.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎥
+                </div>
+
+                <strong>
+                    Video
+                </strong>
+
+                <p>
+                    Menampilkan video sebagai
+                    bagian dari presentasi.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✨
+                </div>
+
+                <strong>
+                    Animasi
+                </strong>
+
+                <p>
+                    Memberikan efek gerakan pada
+                    objek di dalam slide.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         AUDIO
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                2
+            </div>
+
+            <h2>
+                Menyisipkan Audio
+            </h2>
+
+        </div>
+
+        <p>
+            Audio dapat digunakan untuk menambahkan
+            musik, suara narasi, maupun efek suara
+            pada presentasi.
+        </p>
+
+        <h3>
+            Cara Menyisipkan Audio
+        </h3>
+
+        <div class="step">
+
+            <strong>
+                Langkah 1
+            </strong>
+
+            <p>
+                Buka slide tempat audio akan
+                ditempatkan.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 2
+            </strong>
+
+            <p>
+                Pilih menu:
+            </p>
+
+            <div class="menu-path">
+                Insert → Audio → Audio on My PC
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 3
+            </strong>
+
+            <p>
+                Pilih file audio yang terdapat
+                di komputer.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 4
+            </strong>
+
+            <p>
+                Klik <strong>Insert</strong>.
+            </p>
+
+        </div>
+
+        <div class="info">
+
+            <strong>
+                💡 Contoh penggunaan Audio
+            </strong>
+
+            <ul style="padding-left:20px; margin-top:8px;">
+
+                <li>
+                    Musik pembuka presentasi.
+                </li>
+
+                <li>
+                    Narasi materi.
+                </li>
+
+                <li>
+                    Efek suara.
+                </li>
+
+                <li>
+                    Musik latar.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PLAYBACK AUDIO
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                3
+            </div>
+
+            <h2>
+                Mengatur Playback Audio
+            </h2>
+
+        </div>
+
+        <p>
+            Setelah audio dipilih, PowerPoint akan
+            menampilkan tab <strong>Playback</strong>.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                🔊
+                <strong>Volume</strong>
+                <p>Mengatur tingkat suara.</p>
+            </div>
+
+            <div class="feature">
+                ✂️
+                <strong>Trim Audio</strong>
+                <p>Memotong bagian audio.</p>
+            </div>
+
+            <div class="feature">
+                ▶️
+                <strong>Start</strong>
+                <p>Mengatur kapan audio dimulai.</p>
+            </div>
+
+            <div class="feature">
+                🔁
+                <strong>Loop</strong>
+                <p>Memutar audio berulang.</p>
+            </div>
+
+            <div class="feature">
+                🎚️
+                <strong>Fade In</strong>
+                <p>Suara masuk secara perlahan.</p>
+            </div>
+
+            <div class="feature">
+                🎚️
+                <strong>Fade Out</strong>
+                <p>Suara keluar secara perlahan.</p>
+            </div>
+
+        </div>
+
+        <h3>
+            Play On Click
+        </h3>
+
+        <p>
+            Audio akan diputar ketika pengguna
+            mengklik ikon audio.
+        </p>
+
+        <div class="menu-path">
+            Playback → Start → On Click
+        </div>
+
+        <h3>
+            Play Automatically
+        </h3>
+
+        <p>
+            Audio akan diputar otomatis ketika
+            slide ditampilkan.
+        </p>
+
+        <div class="menu-path">
+            Playback → Start → Automatically
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         TRIM AUDIO
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                4
+            </div>
+
+            <h2>
+                Trim Audio
+            </h2>
+
+        </div>
+
+        <p>
+            Fitur <strong>Trim Audio</strong> digunakan
+            untuk memotong bagian awal atau akhir
+            file audio.
+        </p>
+
+        <div class="step">
+
+            <strong>
+                Langkah 1
+            </strong>
+
+            <p>
+                Pilih objek audio.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 2
+            </strong>
+
+            <div class="menu-path">
+                Playback → Trim Audio
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 3
+            </strong>
+
+            <p>
+                Atur <strong>Start Time</strong> dan
+                <strong>End Time</strong>.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 4
+            </strong>
+
+            <p>
+                Klik <strong>OK</strong>.
+            </p>
+
+        </div>
+
+        <div class="example">
+
+            <strong>
+                Contoh:
+            </strong>
+
+            <p>
+                Audio berdurasi 5 menit, tetapi hanya
+                bagian menit ke-1 sampai menit ke-3
+                yang diperlukan. Gunakan Trim Audio
+                untuk mengambil bagian tersebut.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         VIDEO
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                5
+            </div>
+
+            <h2>
+                Menyisipkan Video
+            </h2>
+
+        </div>
+
+        <p>
+            Video dapat membantu menjelaskan materi
+            secara visual dan membuat presentasi
+            lebih menarik.
+        </p>
+
+        <h3>
+            Cara Menyisipkan Video
+        </h3>
+
+        <div class="step">
+
+            <strong>
+                Langkah 1
+            </strong>
+
+            <p>
+                Pilih slide tempat video akan
+                ditempatkan.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 2
+            </strong>
+
+            <div class="menu-path">
+                Insert → Video → Video on My PC
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 3
+            </strong>
+
+            <p>
+                Pilih file video.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 4
+            </strong>
+
+            <p>
+                Klik <strong>Insert</strong>.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PLAYBACK VIDEO
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                6
+            </div>
+
+            <h2>
+                Mengatur Playback Video
+            </h2>
+
+        </div>
+
+        <p>
+            Setelah video dipilih, tab
+            <strong>Playback</strong> dapat digunakan
+            untuk mengatur cara video diputar.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                ▶️
+                <strong>Play</strong>
+                <p>Memutar video.</p>
+            </div>
+
+            <div class="feature">
+                ✂️
+                <strong>Trim Video</strong>
+                <p>Memotong video.</p>
+            </div>
+
+            <div class="feature">
+                🔊
+                <strong>Volume</strong>
+                <p>Mengatur suara video.</p>
+            </div>
+
+            <div class="feature">
+                🖥️
+                <strong>Full Screen</strong>
+                <p>Memutar video layar penuh.</p>
+            </div>
+
+            <div class="feature">
+                🔁
+                <strong>Loop</strong>
+                <p>Memutar video berulang.</p>
+            </div>
+
+            <div class="feature">
+                ↩️
+                <strong>Rewind</strong>
+                <p>Mengulang video setelah selesai.</p>
+            </div>
+
+        </div>
+
+        <h3>
+            Play On Click
+        </h3>
+
+        <div class="menu-path">
+            Playback → Start → On Click
+        </div>
+
+        <h3>
+            Play Automatically
+        </h3>
+
+        <div class="menu-path">
+            Playback → Start → Automatically
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         TRIM VIDEO
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                7
+            </div>
+
+            <h2>
+                Trim Video
+            </h2>
+
+        </div>
+
+        <p>
+            Trim Video digunakan untuk mengambil
+            bagian video yang diperlukan tanpa harus
+            mengedit file video menggunakan aplikasi
+            lain.
+        </p>
+
+        <div class="step">
+
+            <strong>
+                Langkah 1
+            </strong>
+
+            <p>
+                Klik video.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 2
+            </strong>
+
+            <div class="menu-path">
+                Playback → Trim Video
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 3
+            </strong>
+
+            <p>
+                Tentukan <strong>Start Time</strong>
+                dan <strong>End Time</strong>.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 4
+            </strong>
+
+            <p>
+                Klik <strong>OK</strong>.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ANIMASI
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                8
+            </div>
+
+            <h2>
+                Mengenal Efek Animasi
+            </h2>
+
+        </div>
+
+        <p>
+            Animasi digunakan untuk memberikan efek
+            gerakan pada objek seperti teks, gambar,
+            Shape, SmartArt, dan Chart.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🟢
+                </div>
+
+                <strong>
+                    Entrance
+                </strong>
+
+                <p>
+                    Efek ketika objek masuk atau
+                    muncul.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🟡
+                </div>
+
+                <strong>
+                    Emphasis
+                </strong>
+
+                <p>
+                    Efek untuk memberikan penekanan
+                    pada objek.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔴
+                </div>
+
+                <strong>
+                    Exit
+                </strong>
+
+                <p>
+                    Efek ketika objek keluar atau
+                    menghilang.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🛤️
+                </div>
+
+                <strong>
+                    Motion Path
+                </strong>
+
+                <p>
+                    Membuat objek bergerak mengikuti
+                    jalur tertentu.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ENTRANCE
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                9
+            </div>
+
+            <h2>
+                Entrance
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Entrance</strong> digunakan untuk
+            menentukan bagaimana objek masuk atau
+            muncul pada slide.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                ✨
+                <strong>Appear</strong>
+                <p>Objek muncul secara langsung.</p>
+            </div>
+
+            <div class="feature">
+                🌫️
+                <strong>Fade</strong>
+                <p>Objek muncul secara perlahan.</p>
+            </div>
+
+            <div class="feature">
+                ➡️
+                <strong>Fly In</strong>
+                <p>Objek masuk dari arah tertentu.</p>
+            </div>
+
+            <div class="feature">
+                🔍
+                <strong>Zoom</strong>
+                <p>Objek muncul dengan efek pembesaran.</p>
+            </div>
+
+        </div>
+
+        <div class="menu-path">
+            Animations → Entrance
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         EMPHASIS
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                10
+            </div>
+
+            <h2>
+                Emphasis
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Emphasis</strong> digunakan untuk
+            memberikan penekanan pada objek yang sudah
+            berada di dalam slide.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                💓
+                <strong>Pulse</strong>
+                <p>Membuat objek berdenyut.</p>
+            </div>
+
+            <div class="feature">
+                🔄
+                <strong>Spin</strong>
+                <p>Membuat objek berputar.</p>
+            </div>
+
+            <div class="feature">
+                🔎
+                <strong>Grow/Shrink</strong>
+                <p>Membesarkan atau mengecilkan objek.</p>
+            </div>
+
+            <div class="feature">
+                ↔️
+                <strong>Teeter</strong>
+                <p>Membuat objek bergerak miring.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         EXIT
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                11
+            </div>
+
+            <h2>
+                Exit
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Exit</strong> digunakan untuk
+            menentukan bagaimana objek keluar atau
+            menghilang dari slide.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                🌫️
+                <strong>Fade</strong>
+                <p>Objek menghilang secara perlahan.</p>
+            </div>
+
+            <div class="feature">
+                ➡️
+                <strong>Fly Out</strong>
+                <p>Objek keluar ke arah tertentu.</p>
+            </div>
+
+            <div class="feature">
+                👻
+                <strong>Disappear</strong>
+                <p>Objek langsung menghilang.</p>
+            </div>
+
+            <div class="feature">
+                ⬆️
+                <strong>Float Out</strong>
+                <p>Objek bergerak keluar.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MOTION PATH
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                12
+            </div>
+
+            <h2>
+                Motion Path
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Motion Path</strong> digunakan untuk
+            membuat objek bergerak mengikuti jalur
+            tertentu.
+        </p>
+
+        <h3>
+            Contoh Motion Path
+        </h3>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                ➖
+                <strong>Lines</strong>
+                <p>Jalur garis lurus.</p>
+            </div>
+
+            <div class="feature">
+                ⤴️
+                <strong>Arcs</strong>
+                <p>Jalur berbentuk lengkung.</p>
+            </div>
+
+            <div class="feature">
+                🔄
+                <strong>Turns</strong>
+                <p>Jalur berbelok.</p>
+            </div>
+
+            <div class="feature">
+                ⭐
+                <strong>Shapes</strong>
+                <p>Jalur berbentuk objek tertentu.</p>
+            </div>
+
+            <div class="feature">
+                ✏️
+                <strong>Custom Path</strong>
+                <p>Membuat jalur sendiri.</p>
+            </div>
+
+        </div>
+
+        <div class="menu-path">
+            Animations → Add Animation → Motion Paths
+        </div>
+
+        <div class="example">
+
+            <strong>
+                Contoh:
+            </strong>
+
+            <p>
+                Gambar mobil dapat dibuat bergerak
+                dari sisi kiri ke sisi kanan menggunakan
+                Motion Path.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ANIMATION PANE
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                13
+            </div>
+
+            <h2>
+                Animation Pane
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Animation Pane</strong> digunakan
+            untuk melihat dan mengatur seluruh animasi
+            yang terdapat pada sebuah slide.
+        </p>
+
+        <div class="menu-path">
+            Animations → Animation Pane
+        </div>
+
+        <h3>
+            Fungsi Animation Pane
+        </h3>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                🔢
+                <strong>Urutan</strong>
+                <p>Mengatur urutan animasi.</p>
+            </div>
+
+            <div class="feature">
+                ⏱️
+                <strong>Timing</strong>
+                <p>Mengatur waktu animasi.</p>
+            </div>
+
+            <div class="feature">
+                ⚙️
+                <strong>Effect</strong>
+                <p>Mengatur efek animasi.</p>
+            </div>
+
+            <div class="feature">
+                ⏳
+                <strong>Delay</strong>
+                <p>Mengatur jeda animasi.</p>
+            </div>
+
+        </div>
+
+        <h3>
+            Mengubah Urutan Animasi
+        </h3>
+
+        <p>
+            Pilih animasi pada Animation Pane kemudian
+            gunakan:
+        </p>
+
+        <div class="menu-path">
+            Move Earlier
+        </div>
+
+        <div class="menu-path">
+            Move Later
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         EFFECT OPTIONS
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                14
+            </div>
+
+            <h2>
+                Effect Options
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Effect Options</strong> digunakan
+            untuk mengatur karakteristik dari efek
+            animasi yang dipilih.
+        </p>
+
+        <div class="example">
+
+            <strong>
+                Contoh:
+            </strong>
+
+            <p>
+                Pada efek <strong>Fly In</strong>, kita
+                dapat menentukan arah datangnya objek:
+            </p>
+
+            <ul style="padding-left:20px;">
+
+                <li>
+                    From Left
+                </li>
+
+                <li>
+                    From Right
+                </li>
+
+                <li>
+                    From Top
+                </li>
+
+                <li>
+                    From Bottom
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="menu-path">
+            Animations → Effect Options
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         TRIGGER
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                15
+            </div>
+
+            <h2>
+                Trigger
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Trigger</strong> digunakan untuk
+            menjalankan animasi berdasarkan tindakan
+            tertentu, misalnya ketika sebuah objek
+            diklik.
+        </p>
+
+        <div class="example">
+
+            <strong>
+                Contoh:
+            </strong>
+
+            <p>
+                Buat tombol
+                <strong>"Klik untuk melihat jawaban"</strong>.
+                Ketika tombol tersebut diklik, jawaban
+                akan muncul menggunakan animasi.
+            </p>
+
+        </div>
+
+        <h3>
+            Cara Menggunakan Trigger
+        </h3>
+
+        <div class="step">
+
+            <strong>
+                Langkah 1
+            </strong>
+
+            <p>
+                Pilih objek yang akan diberi animasi.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 2
+            </strong>
+
+            <div class="menu-path">
+                Animations → Advanced Animation → Trigger
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>
+                Langkah 3
+            </strong>
+
+            <p>
+                Pilih <strong>On Click of</strong> dan
+                tentukan objek yang menjadi pemicu.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         TIMING
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                16
+            </div>
+
+            <h2>
+                Timing
+            </h2>
+
+        </div>
+
+        <p>
+            Timing digunakan untuk mengatur kapan
+            sebuah animasi dimulai dan bagaimana
+            animasi tersebut dijalankan.
+        </p>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Start
+                        </th>
+
+                        <th>
+                            Fungsi
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>On Click</strong>
+                        </td>
+
+                        <td>
+                            Animasi berjalan ketika pengguna
+                            mengklik mouse.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <strong>With Previous</strong>
+                        </td>
+
+                        <td>
+                            Animasi berjalan bersamaan dengan
+                            animasi sebelumnya.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <strong>After Previous</strong>
+                        </td>
+
+                        <td>
+                            Animasi berjalan setelah animasi
+                            sebelumnya selesai.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         DURATION
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                17
+            </div>
+
+            <h2>
+                Duration
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Duration</strong> menentukan berapa
+            lama efek animasi berlangsung.
+        </p>
+
+        <div class="example">
+
+            <strong>
+                Contoh:
+            </strong>
+
+            <p>
+                Duration = <strong>2.00 detik</strong>
+                berarti animasi membutuhkan waktu
+                sekitar 2 detik untuk menyelesaikan
+                efeknya.
+            </p>
+
+        </div>
+
+        <div class="info">
+
+            <strong>
+                💡 Tips
+            </strong>
+
+            <ul style="padding-left:20px;">
+
+                <li>
+                    Gunakan durasi pendek untuk efek sederhana.
+                </li>
+
+                <li>
+                    Gunakan durasi lebih panjang untuk
+                    animasi yang membutuhkan perhatian.
+                </li>
+
+                <li>
+                    Hindari animasi terlalu lambat.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         DELAY
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                18
+            </div>
+
+            <h2>
+                Delay
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>Delay</strong> menentukan jeda
+            sebelum animasi dimulai.
+        </p>
+
+        <div class="example">
+
+            <strong>
+                Contoh:
+            </strong>
+
+            <p>
+                Duration: <strong>2 detik</strong><br>
+                Delay: <strong>1 detik</strong>
+            </p>
+
+            <p style="margin-top:8px;">
+
+                Artinya animasi akan menunggu selama
+                1 detik sebelum mulai berjalan.
+
+            </p>
+
+        </div>
+
+        <p>
+            Delay sangat berguna untuk membuat urutan
+            animasi berjalan secara otomatis.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================
+         CONTOH KOMBINASI
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                19
+            </div>
+
+            <h2>
+                Contoh Kombinasi Animasi
+            </h2>
+
+        </div>
+
+        <p>
+            Berikut contoh pengaturan animasi pada
+            sebuah slide:
+        </p>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Objek
+                        </th>
+
+                        <th>
+                            Efek
+                        </th>
+
+                        <th>
+                            Start
+                        </th>
+
+                        <th>
+                            Duration
+                        </th>
+
+                        <th>
+                            Delay
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Judul
+                        </td>
+
+                        <td>
+                            Fade
+                        </td>
+
+                        <td>
+                            On Click
+                        </td>
+
+                        <td>
+                            1 detik
+                        </td>
+
+                        <td>
+                            0
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Gambar
+                        </td>
+
+                        <td>
+                            Zoom
+                        </td>
+
+                        <td>
+                            After Previous
+                        </td>
+
+                        <td>
+                            1 detik
+                        </td>
+
+                        <td>
+                            0
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Keterangan
+                        </td>
+
+                        <td>
+                            Fly In
+                        </td>
+
+                        <td>
+                            After Previous
+                        </td>
+
+                        <td>
+                            1 detik
+                        </td>
+
+                        <td>
+                            0,5 detik
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="example">
+
+            <strong>
+                Hasil:
+            </strong>
+
+            <p>
+                Judul muncul terlebih dahulu, kemudian
+                gambar muncul otomatis, dan setelah itu
+                keterangan muncul dengan jeda 0,5 detik.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         TIPS
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                20
+            </div>
+
+            <h2>
+                Tips Membuat Presentasi Interaktif
+            </h2>
+
+        </div>
+
+        <div class="checklist">
+
+            <div class="check-item">
+                🔊 Gunakan audio yang mendukung materi.
+            </div>
+
+            <div class="check-item">
+                🎥 Gunakan video yang relevan dengan
+                materi presentasi.
+            </div>
+
+            <div class="check-item">
+                ✂️ Gunakan Trim Audio dan Trim Video
+                untuk mengambil bagian yang diperlukan.
+            </div>
+
+            <div class="check-item">
+                ✨ Jangan menggunakan terlalu banyak
+                jenis animasi dalam satu slide.
+            </div>
+
+            <div class="check-item">
+                📋 Gunakan Animation Pane untuk mengatur
+                urutan animasi.
+            </div>
+
+            <div class="check-item">
+                🎯 Gunakan Trigger jika animasi harus
+                dijalankan setelah objek tertentu diklik.
+            </div>
+
+            <div class="check-item">
+                ⏱️ Atur Duration dan Delay agar animasi
+                tidak terlalu cepat atau lambat.
+            </div>
+
+            <div class="check-item">
+                ▶️ Gunakan On Click atau Automatically
+                sesuai kebutuhan presentasi.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         LATIHAN PRAKTIK
+    ====================================== -->
+
+    <section class="card practice">
+
+        <h2>
+            📝 Latihan Praktik
+        </h2>
+
+        <p>
+            Buat sebuah presentasi dengan tema:
+        </p>
+
+        <h3>
+            "Profil Program Pelatihan"
+        </h3>
+
+        <p>
+            Kemudian lakukan latihan berikut:
+        </p>
+
+        <ol>
+
+            <li>
+                Tambahkan sebuah file audio.
+            </li>
+
+            <li>
+                Atur audio agar berjalan
+                <strong>Automatically</strong>.
+            </li>
+
+            <li>
+                Gunakan <strong>Trim Audio</strong>
+                untuk mengambil bagian tertentu.
+            </li>
+
+            <li>
+                Tambahkan sebuah video.
+            </li>
+
+            <li>
+                Atur video agar berjalan
+                <strong>On Click</strong>.
+            </li>
+
+            <li>
+                Gunakan <strong>Trim Video</strong>.
+            </li>
+
+            <li>
+                Tambahkan judul dengan efek
+                <strong>Entrance</strong>.
+            </li>
+
+            <li>
+                Tambahkan gambar dengan efek
+                <strong>Emphasis</strong>.
+            </li>
+
+            <li>
+                Tambahkan objek dengan efek
+                <strong>Exit</strong>.
+            </li>
+
+            <li>
+                Gunakan <strong>Motion Path</strong>
+                pada salah satu objek.
+            </li>
+
+            <li>
+                Buka <strong>Animation Pane</strong>
+                dan atur urutan animasi.
+            </li>
+
+            <li>
+                Gunakan <strong>Effect Options</strong>.
+            </li>
+
+            <li>
+                Gunakan <strong>Trigger</strong>
+                pada salah satu animasi.
+            </li>
+
+            <li>
+                Atur <strong>Start</strong>,
+                <strong>Duration</strong>,
+                dan <strong>Delay</strong>.
+            </li>
+
+        </ol>
+
+        <div class="example">
+
+            <strong>
+                💡 Nama file latihan:
+            </strong>
+
+            <p>
+                Latihan-PPT-Modul-6.pptx
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         RANGKUMAN
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                ✓
+            </div>
+
+            <h2>
+                Rangkuman Modul 6
+            </h2>
+
+        </div>
+
+        <h3>
+            Audio & Video
+        </h3>
+
+        <ul style="padding-left:22px;">
+
+            <li>
+                Insert Audio
+            </li>
+
+            <li>
+                Insert Video
+            </li>
+
+            <li>
+                Playback
+            </li>
+
+            <li>
+                Trim
+            </li>
+
+            <li>
+                On Click
+            </li>
+
+            <li>
+                Automatically
+            </li>
+
+        </ul>
+
+        <h3>
+            Animasi
+        </h3>
+
+        <ul style="padding-left:22px;">
+
+            <li>
+                Entrance
+            </li>
+
+            <li>
+                Emphasis
+            </li>
+
+            <li>
+                Exit
+            </li>
+
+            <li>
+                Motion Path
+            </li>
+
+            <li>
+                Animation Pane
+            </li>
+
+            <li>
+                Effect Options
+            </li>
+
+            <li>
+                Trigger
+            </li>
+
+            <li>
+                Timing
+            </li>
+
+            <li>
+                Duration
+            </li>
+
+            <li>
+                Delay
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =====================================
+         NAVIGASI
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>
+            📚 Navigasi Pembelajaran
+        </h2>
+
+        <div class="button-area">
+
+            <a
+                href="modul-ppt-5.html"
+                class="btn btn-dark"
+            >
+                ← Modul 5
+            </a>
+
+            <a
+                href="kuis-ppt-6.html"
+                class="btn btn-green"
+            >
+                📝 Mulai Kuis Modul 6
+            </a>
+
+            <a
+                href="modul-ppt-7.html"
+                class="btn"
+            >
+                Modul 7 →
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Modul 6 — Audio, Video, dan Efek Animasi
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

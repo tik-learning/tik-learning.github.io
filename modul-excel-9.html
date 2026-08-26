@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 9 - IF Bertingkat, HLOOKUP, VLOOKUP & Kombinasi Fungsi</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f3f6f8;
+    color:#263238;
+    line-height:1.7;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    text-align:center;
+    padding:42px 20px;
+}
+
+.header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:17px;
+}
+
+.container{
+    max-width:1050px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:20px 0 10px;
+}
+
+.info{
+    background:#e8f5e9;
+    border-left:5px solid #107c41;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.tip{
+    background:#e3f2fd;
+    border-left:5px solid #1976d2;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ffb300;
+    padding:15px;
+    border-radius:8px;
+    margin:18px 0;
+}
+
+.formula{
+    background:#263238;
+    color:#e8f5e9;
+    padding:16px;
+    border-radius:8px;
+    margin:12px 0;
+    font-family:Consolas,monospace;
+    overflow-x:auto;
+}
+
+.example{
+    background:#f7faf8;
+    border:1px solid #dce5df;
+    border-radius:10px;
+    padding:18px;
+    margin:15px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th,td{
+    border:1px solid #d8e0dc;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#107c41;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f7faf8;
+}
+
+.step{
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:15px;
+    margin:10px 0;
+}
+
+.badge{
+    display:inline-block;
+    background:#107c41;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin:25px 0 40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:8px;
+    background:#107c41;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.footer{
+    text-align:center;
+    color:#607d8b;
+    padding:30px 15px;
+}
+
+@media(max-width:650px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    table{
+        font-size:14px;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<header class="header">
+
+<h1>📚 MODUL 9</h1>
+
+<p>
+IF Bertingkat, HLOOKUP, VLOOKUP & Kombinasi Fungsi
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- TUJUAN -->
+
+<section class="card">
+
+<h2>🎯 Tujuan Pembelajaran</h2>
+
+<p>
+Setelah menyelesaikan modul ini, peserta diharapkan mampu:
+</p>
+
+<ul>
+<li>Memahami konsep IF bertingkat pada Microsoft Excel 2016.</li>
+<li>Membuat formula IF dengan beberapa kondisi.</li>
+<li>Memahami fungsi VLOOKUP.</li>
+<li>Memahami fungsi HLOOKUP.</li>
+<li>Menggunakan TRUE dan FALSE pada fungsi lookup.</li>
+<li>Menggabungkan fungsi IF dengan VLOOKUP atau HLOOKUP.</li>
+<li>Menggunakan kombinasi beberapa fungsi Excel untuk menyelesaikan masalah pengolahan data.</li>
+<li>Membuat formula pengolahan data yang lebih efisien dan terstruktur.</li>
+</ul>
+
+</section>
+
+
+<!-- PENGANTAR -->
+
+<section class="card">
+
+<h2>1. Pengantar</h2>
+
+<p>
+Pada modul sebelumnya kita telah mempelajari fungsi logika,
+fungsi statistik, dan fungsi Text.
+Pada modul ini kita mulai menggabungkan beberapa fungsi tersebut
+untuk membuat pengolahan data yang lebih kompleks.
+</p>
+
+<div class="info">
+
+<strong>Materi utama Modul 9:</strong>
+
+<br><br>
+
+1. IF Bertingkat<br>
+2. VLOOKUP<br>
+3. HLOOKUP<br>
+4. Kombinasi Fungsi
+
+</div>
+
+<p>
+Kemampuan mengombinasikan fungsi sangat penting dalam pekerjaan
+administrasi karena satu data sering kali membutuhkan beberapa
+proses sekaligus sebelum menghasilkan informasi akhir.
+</p>
+
+</section>
+
+
+<!-- IF BERTINGKAT -->
+
+<section class="card">
+
+<h2>2. IF Bertingkat</h2>
+
+<p>
+<strong>IF bertingkat</strong> adalah penggunaan fungsi IF
+lebih dari satu dalam sebuah formula untuk menguji beberapa kondisi.
+</p>
+
+<p>
+IF bertingkat biasanya digunakan ketika terdapat lebih dari dua
+kategori hasil.
+</p>
+
+<h3>Contoh Kasus</h3>
+
+<p>
+Misalnya nilai peserta dikategorikan sebagai berikut:
+</p>
+
+<table>
+
+<tr>
+<th>Nilai</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td>≥ 90</td>
+<td>Sangat Baik</td>
+</tr>
+
+<tr>
+<td>≥ 80</td>
+<td>Baik</td>
+</tr>
+
+<tr>
+<td>≥ 70</td>
+<td>Cukup</td>
+</tr>
+
+<tr>
+<td>&lt; 70</td>
+<td>Kurang</td>
+</tr>
+
+</table>
+
+<h3>Formula</h3>
+
+<div class="formula">
+=IF(B2>=90,"Sangat Baik",IF(B2>=80,"Baik",IF(B2>=70,"Cukup","Kurang")))
+</div>
+
+<p>
+Excel akan memeriksa kondisi dari kiri ke kanan.
+Jika kondisi pertama benar, Excel langsung memberikan hasilnya.
+Jika salah, Excel memeriksa IF berikutnya.
+</p>
+
+</section>
+
+
+<!-- ALUR IF -->
+
+<section class="card">
+
+<h2>3. Cara Kerja IF Bertingkat</h2>
+
+<div class="step">
+
+<span class="badge">1</span>
+
+<strong>Periksa kondisi pertama</strong>
+
+<p>
+Apakah nilai ≥ 90?
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">2</span>
+
+<strong>Jika salah</strong>
+
+<p>
+Periksa kondisi berikutnya: apakah nilai ≥ 80?
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">3</span>
+
+<strong>Jika masih salah</strong>
+
+<p>
+Periksa apakah nilai ≥ 70.
+</p>
+
+</div>
+
+<div class="step">
+
+<span class="badge">4</span>
+
+<strong>Jika semua salah</strong>
+
+<p>
+Berikan hasil "Kurang".
+</p>
+
+</div>
+
+<div class="tip">
+
+<strong>💡 Tips:</strong>
+
+Dalam membuat IF bertingkat, susun kondisi dari nilai
+tertinggi ke nilai terendah agar hasil lebih mudah dikontrol.
+
+</div>
+
+</section>
+
+
+<!-- CONTOH IF -->
+
+<section class="card">
+
+<h2>4. Contoh IF Bertingkat untuk Status Kelulusan</h2>
+
+<p>
+Misalnya nilai peserta berada pada sel C2.
+Kriteria:
+</p>
+
+<table>
+
+<tr>
+<th>Nilai</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>≥ 85</td>
+<td>Lulus Sangat Baik</td>
+</tr>
+
+<tr>
+<td>≥ 75</td>
+<td>Lulus</td>
+</tr>
+
+<tr>
+<td>≥ 60</td>
+<td>Remedial</td>
+</tr>
+
+<tr>
+<td>&lt; 60</td>
+<td>Tidak Lulus</td>
+</tr>
+
+</table>
+
+<div class="formula">
+=IF(C2>=85,"Lulus Sangat Baik",IF(C2>=75,"Lulus",IF(C2>=60,"Remedial","Tidak Lulus")))
+</div>
+
+</section>
+
+
+<!-- VLOOKUP -->
+
+<section class="card">
+
+<h2>5. VLOOKUP</h2>
+
+<p>
+<strong>VLOOKUP</strong> digunakan untuk mencari sebuah nilai
+pada kolom pertama sebuah tabel dan mengambil data dari kolom
+lain pada baris yang sama.
+</p>
+
+<p>
+Huruf <strong>V</strong> pada VLOOKUP berarti
+<strong>Vertical</strong>.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=VLOOKUP(lookup_value,table_array,col_index_num,[range_lookup])
+</div>
+
+<h3>Parameter VLOOKUP</h3>
+
+<table>
+
+<tr>
+<th>Parameter</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td>lookup_value</td>
+<td>Nilai yang ingin dicari.</td>
+</tr>
+
+<tr>
+<td>table_array</td>
+<td>Area tabel tempat pencarian.</td>
+</tr>
+
+<tr>
+<td>col_index_num</td>
+<td>Nomor kolom yang akan dikembalikan.</td>
+</tr>
+
+<tr>
+<td>range_lookup</td>
+<td>TRUE atau FALSE untuk menentukan jenis pencarian.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- CONTOH VLOOKUP -->
+
+<section class="card">
+
+<h2>6. Contoh VLOOKUP</h2>
+
+<p>
+Misalnya terdapat tabel data program pelatihan:
+</p>
+
+<table>
+
+<tr>
+<th>Kode</th>
+<th>Program</th>
+<th>Durasi</th>
+</tr>
+
+<tr>
+<td>TK01</td>
+<td>Teknik Las</td>
+<td>30 Hari</td>
+</tr>
+
+<tr>
+<td>TK02</td>
+<td>Teknisi Instalasi Tenaga</td>
+<td>35 Hari</td>
+</tr>
+
+<tr>
+<td>TK03</td>
+<td>Garmen Apparel</td>
+<td>25 Hari</td>
+</tr>
+
+</table>
+
+<p>
+Jika kode program berada di E2 dan tabel berada di A2:C4:
+</p>
+
+<div class="formula">
+=VLOOKUP(E2,A2:C4,2,FALSE)
+</div>
+
+<p>
+Formula tersebut mengambil nama program dari kolom kedua.
+</p>
+
+<h3>Mengambil Durasi</h3>
+
+<div class="formula">
+=VLOOKUP(E2,A2:C4,3,FALSE)
+</div>
+
+<p>
+Karena durasi berada pada kolom ketiga.
+</p>
+
+</section>
+
+
+<!-- FALSE TRUE -->
+
+<section class="card">
+
+<h2>7. TRUE dan FALSE pada VLOOKUP</h2>
+
+<table>
+
+<tr>
+<th>Argumen</th>
+<th>Keterangan</th>
+</tr>
+
+<tr>
+<td>FALSE</td>
+<td>Mencari kecocokan yang tepat (exact match).</td>
+</tr>
+
+<tr>
+<td>TRUE</td>
+<td>Mencari kecocokan mendekati (approximate match).</td>
+</tr>
+
+</table>
+
+<h3>Exact Match</h3>
+
+<div class="formula">
+=VLOOKUP(E2,A2:C10,2,FALSE)
+</div>
+
+<p>
+FALSE biasanya digunakan ketika mencari kode, ID,
+nomor peserta, NIK, atau data lain yang harus cocok secara tepat.
+</p>
+
+<div class="warning">
+
+<strong>⚠️ Perhatian:</strong>
+
+Untuk pencarian kode atau ID yang harus sama persis,
+biasakan menggunakan <strong>FALSE</strong>.
+
+</div>
+
+</section>
+
+
+<!-- VLOOKUP NILAI -->
+
+<section class="card">
+
+<h2>8. VLOOKUP dengan Nilai Bertingkat</h2>
+
+<p>
+VLOOKUP juga dapat digunakan untuk menentukan kategori
+berdasarkan rentang nilai dengan menggunakan TRUE.
+</p>
+
+<table>
+
+<tr>
+<th>Nilai Minimum</th>
+<th>Predikat</th>
+</tr>
+
+<tr>
+<td>0</td>
+<td>Kurang</td>
+</tr>
+
+<tr>
+<td>60</td>
+<td>Cukup</td>
+</tr>
+
+<tr>
+<td>75</td>
+<td>Baik</td>
+</tr>
+
+<tr>
+<td>85</td>
+<td>Sangat Baik</td>
+</tr>
+
+</table>
+
+<p>
+Jika nilai berada di E2 dan tabel berada di A2:B5:
+</p>
+
+<div class="formula">
+=VLOOKUP(E2,A2:B5,2,TRUE)
+</div>
+
+<div class="warning">
+
+<strong>⚠️ Penting:</strong>
+
+Untuk approximate match menggunakan TRUE,
+kolom pertama tabel harus disusun secara menaik.
+
+</div>
+
+</section>
+
+
+<!-- HLOOKUP -->
+
+<section class="card">
+
+<h2>9. HLOOKUP</h2>
+
+<p>
+<strong>HLOOKUP</strong> digunakan untuk mencari data secara horizontal.
+</p>
+
+<p>
+Huruf <strong>H</strong> berarti
+<strong>Horizontal</strong>.
+</p>
+
+<h3>Sintaks</h3>
+
+<div class="formula">
+=HLOOKUP(lookup_value,table_array,row_index_num,[range_lookup])
+</div>
+
+<h3>Perbedaan VLOOKUP dan HLOOKUP</h3>
+
+<table>
+
+<tr>
+<th>VLOOKUP</th>
+<th>HLOOKUP</th>
+</tr>
+
+<tr>
+<td>Pencarian vertikal</td>
+<td>Pencarian horizontal</td>
+</tr>
+
+<tr>
+<td>Menggunakan nomor kolom</td>
+<td>Menggunakan nomor baris</td>
+</tr>
+
+<tr>
+<td>Data kunci berada pada kolom pertama</td>
+<td>Data kunci berada pada baris pertama</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- CONTOH HLOOKUP -->
+
+<section class="card">
+
+<h2>10. Contoh HLOOKUP</h2>
+
+<p>
+Misalnya tabel dibuat secara horizontal:
+</p>
+
+<table>
+
+<tr>
+<th>Kode</th>
+<th>TK01</th>
+<th>TK02</th>
+<th>TK03</th>
+</tr>
+
+<tr>
+<th>Program</th>
+<td>Teknik Las</td>
+<td>Teknisi Instalasi Tenaga</td>
+<td>Garmen Apparel</td>
+</tr>
+
+<tr>
+<th>Durasi</th>
+<td>30 Hari</td>
+<td>35 Hari</td>
+<td>25 Hari</td>
+</tr>
+
+</table>
+
+<p>
+Jika kode yang dicari berada di E2:
+</p>
+
+<div class="formula">
+=HLOOKUP(E2,A2:D4,2,FALSE)
+</div>
+
+<p>
+Formula tersebut mengambil nama program dari baris kedua.
+</p>
+
+<h3>Mengambil Durasi</h3>
+
+<div class="formula">
+=HLOOKUP(E2,A2:D4,3,FALSE)
+</div>
+
+</section>
+
+
+<!-- KOMBINASI FUNGSI -->
+
+<section class="card">
+
+<h2>11. Penggunaan Kombinasi Fungsi</h2>
+
+<p>
+Kombinasi fungsi berarti menggunakan dua atau lebih fungsi Excel
+dalam satu formula untuk menghasilkan informasi yang lebih spesifik.
+</p>
+
+<p>
+Contoh fungsi yang sering dikombinasikan:
+</p>
+
+<ul>
+
+<li>IF + VLOOKUP</li>
+
+<li>IF + HLOOKUP</li>
+
+<li>IF + AND</li>
+
+<li>IF + OR</li>
+
+<li>IF + COUNTIF</li>
+
+<li>IF + SUMIF</li>
+
+<li>IF + LEFT</li>
+
+<li>IF + RIGHT</li>
+
+<li>IF + MID</li>
+
+<li>IF + ISERROR</li>
+
+</ul>
+
+</section>
+
+
+<!-- IF VLOOKUP -->
+
+<section class="card">
+
+<h2>12. Kombinasi IF + VLOOKUP</h2>
+
+<p>
+Misalnya kita ingin mencari nama program berdasarkan kode.
+Jika kode tidak ditemukan, kita ingin menampilkan
+<strong>"Kode Tidak Ditemukan"</strong>.
+</p>
+
+<div class="formula">
+=IF(ISERROR(VLOOKUP(E2,A2:C10,2,FALSE)),"Kode Tidak Ditemukan",VLOOKUP(E2,A2:C10,2,FALSE))
+</div>
+
+<p>
+Formula tersebut menggunakan:
+</p>
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Peran</th>
+</tr>
+
+<tr>
+<td>VLOOKUP</td>
+<td>Mencari data program.</td>
+</tr>
+
+<tr>
+<td>ISERROR</td>
+<td>Mendeteksi apakah formula menghasilkan error.</td>
+</tr>
+
+<tr>
+<td>IF</td>
+<td>Menentukan hasil yang ditampilkan.</td>
+</tr>
+
+</table>
+
+<div class="tip">
+
+<strong>💡 Catatan Excel 2016:</strong>
+
+IFERROR juga tersedia pada Excel 2016 dan sering menjadi cara
+yang lebih sederhana untuk menangani error.
+
+</div>
+
+<h3>Menggunakan IFERROR</h3>
+
+<div class="formula">
+=IFERROR(VLOOKUP(E2,A2:C10,2,FALSE),"Kode Tidak Ditemukan")
+</div>
+
+</section>
+
+
+<!-- IF AND -->
+
+<section class="card">
+
+<h2>13. Kombinasi IF + AND</h2>
+
+<p>
+Kombinasi IF dan AND digunakan ketika beberapa kondisi
+harus terpenuhi sekaligus.
+</p>
+
+<p>
+Contoh:
+</p>
+
+<ul>
+<li>Nilai minimal 75</li>
+<li>Kehadiran minimal 80%</li>
+</ul>
+
+<p>
+Jika nilai berada di B2 dan kehadiran di C2:
+</p>
+
+<div class="formula">
+=IF(AND(B2>=75,C2>=80%),"Lulus","Tidak Lulus")
+</div>
+
+<p>
+Peserta dinyatakan lulus hanya jika kedua kondisi terpenuhi.
+</p>
+
+</section>
+
+
+<!-- IF OR -->
+
+<section class="card">
+
+<h2>14. Kombinasi IF + OR</h2>
+
+<p>
+OR digunakan ketika cukup salah satu dari beberapa kondisi
+yang terpenuhi.
+</p>
+
+<p>
+Contoh:
+</p>
+
+<p>
+Peserta mendapatkan status khusus jika nilai ≥ 90
+atau kehadiran ≥ 95%.
+</p>
+
+<div class="formula">
+=IF(OR(B2>=90,C2>=95%),"Peserta Terbaik","Peserta Reguler")
+</div>
+
+</section>
+
+
+<!-- IF LEFT -->
+
+<section class="card">
+
+<h2>15. Kombinasi IF + LEFT</h2>
+
+<p>
+Kombinasi IF dengan fungsi Text dapat digunakan untuk
+mengidentifikasi kategori berdasarkan kode.
+</p>
+
+<p>
+Misalnya:
+</p>
+
+<ul>
+<li>TK = Teknik</li>
+<li>BM = Bisnis Manajemen</li>
+<li>GA = Garmen Apparel</li>
+</ul>
+
+<p>
+Jika kode peserta berada di A2:
+</p>
+
+<div class="formula">
+=IF(LEFT(A2,2)="TK","Teknik",IF(LEFT(A2,2)="BM","Bisnis Manajemen",IF(LEFT(A2,2)="GA","Garmen Apparel","Lainnya")))
+</div>
+
+<p>
+Formula tersebut mengambil dua karakter pertama menggunakan
+LEFT kemudian menentukan kategori menggunakan IF bertingkat.
+</p>
+
+</section>
+
+
+<!-- KOMBINASI VLOOKUP + LEFT -->
+
+<section class="card">
+
+<h2>16. Kombinasi LEFT + VLOOKUP</h2>
+
+<p>
+Misalnya kode peserta:
+</p>
+
+<strong>TK20260025</strong>
+
+<p>
+Dua karakter pertama menunjukkan kode bidang.
+Tabel referensi:
+</p>
+
+<table>
+
+<tr>
+<th>Kode</th>
+<th>Bidang</th>
+</tr>
+
+<tr>
+<td>TK</td>
+<td>Teknik</td>
+</tr>
+
+<tr>
+<td>BM</td>
+<td>Bisnis Manajemen</td>
+</tr>
+
+<tr>
+<td>GA</td>
+<td>Garmen Apparel</td>
+</tr>
+
+</table>
+
+<p>
+Formula:
+</p>
+
+<div class="formula">
+=VLOOKUP(LEFT(A2,2),E2:F4,2,FALSE)
+</div>
+
+<p>
+Cara kerja formula:
+</p>
+
+<ol>
+<li>LEFT mengambil dua karakter pertama.</li>
+<li>Hasilnya digunakan sebagai lookup_value.</li>
+<li>VLOOKUP mencari kode tersebut pada tabel referensi.</li>
+<li>Kolom kedua dikembalikan sebagai nama bidang.</li>
+</ol>
+
+</section>
+
+
+<!-- KOMBINASI FORMULA -->
+
+<section class="card">
+
+<h2>17. Contoh Kombinasi Fungsi dalam Pengolahan Data</h2>
+
+<p>
+Misalnya kita memiliki data:
+</p>
+
+<table>
+
+<tr>
+<th>Nama</th>
+<th>Kode Peserta</th>
+<th>Nilai</th>
+<th>Kehadiran</th>
+</tr>
+
+<tr>
+<td>Ade Suhendar</td>
+<td>TK20260025</td>
+<td>88</td>
+<td>90%</td>
+</tr>
+
+<tr>
+<td>Budi Santoso</td>
+<td>BM20260026</td>
+<td>72</td>
+<td>85%</td>
+</tr>
+
+<tr>
+<td>Citra Lestari</td>
+<td>GA20260027</td>
+<td>65</td>
+<td>70%</td>
+</tr>
+
+</table>
+
+<h3>Menentukan Status</h3>
+
+<div class="formula">
+=IF(AND(C2>=75,D2>=80%),"Lulus","Tidak Lulus")
+</div>
+
+<h3>Mengambil Kode Bidang</h3>
+
+<div class="formula">
+=LEFT(B2,2)
+</div>
+
+<h3>Mengambil Nama Bidang dari Tabel Referensi</h3>
+
+<div class="formula">
+=VLOOKUP(LEFT(B2,2),H2:I4,2,FALSE)
+</div>
+
+<p>
+Dengan kombinasi fungsi tersebut, kita dapat membuat
+lembar kerja yang lebih otomatis.
+</p>
+
+</section>
+
+
+<!-- KESALAHAN -->
+
+<section class="card">
+
+<h2>18. Kesalahan yang Sering Terjadi</h2>
+
+<table>
+
+<tr>
+<th>Kesalahan</th>
+<th>Penyebab</th>
+<th>Solusi</th>
+</tr>
+
+<tr>
+<td>#N/A</td>
+<td>Data tidak ditemukan.</td>
+<td>Periksa lookup_value dan tabel referensi.</td>
+</tr>
+
+<tr>
+<td>#REF!</td>
+<td>Referensi cell tidak valid.</td>
+<td>Periksa area tabel.</td>
+</tr>
+
+<tr>
+<td>#VALUE!</td>
+<td>Jenis data tidak sesuai.</td>
+<td>Periksa isi dan argumen formula.</td>
+</tr>
+
+<tr>
+<td>Hasil salah</td>
+<td>Nomor kolom/baris salah.</td>
+<td>Periksa col_index_num atau row_index_num.</td>
+</tr>
+
+<tr>
+<td>VLOOKUP tidak menemukan kode</td>
+<td>FALSE digunakan dan data tidak sama persis.</td>
+<td>Periksa penulisan kode.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- TIPS -->
+
+<section class="card">
+
+<h2>💡 19. Tips Membuat Formula Kombinasi</h2>
+
+<div class="step">
+
+<strong>1. Tentukan hasil yang diinginkan</strong>
+
+<p>
+Tentukan informasi apa yang ingin dihasilkan terlebih dahulu.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>2. Pecah masalah menjadi beberapa fungsi</strong>
+
+<p>
+Misalnya gunakan LEFT untuk mengambil kode,
+kemudian VLOOKUP untuk mencari nama bidang.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>3. Uji setiap fungsi secara terpisah</strong>
+
+<p>
+Pastikan setiap bagian formula menghasilkan nilai yang benar
+sebelum digabungkan.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>4. Gunakan referensi cell dengan benar</strong>
+
+<p>
+Gunakan tanda <strong>$</strong> jika area tabel perlu dikunci
+ketika formula disalin.
+</p>
+
+</div>
+
+<div class="formula">
+=VLOOKUP(LEFT(A2,2),$H$2:$I$4,2,FALSE)
+</div>
+
+</section>
+
+
+<!-- LATIHAN -->
+
+<section class="card">
+
+<h2>📝 20. Latihan Praktik</h2>
+
+<p>
+Buat tabel peserta dengan kolom:
+</p>
+
+<table>
+
+<tr>
+<th>Nama</th>
+<th>Kode</th>
+<th>Nilai</th>
+<th>Kehadiran</th>
+<th>Bidang</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Ade</td>
+<td>TK2026001</td>
+<td>88</td>
+<td>90%</td>
+<td>?</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Budi</td>
+<td>BM2026002</td>
+<td>72</td>
+<td>85%</td>
+<td>?</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>Citra</td>
+<td>GA2026003</td>
+<td>65</td>
+<td>70%</td>
+<td>?</td>
+<td>?</td>
+</tr>
+
+</table>
+
+<p>
+Kemudian buat tabel referensi:
+</p>
+
+<table>
+
+<tr>
+<th>Kode</th>
+<th>Bidang</th>
+</tr>
+
+<tr>
+<td>TK</td>
+<td>Teknik</td>
+</tr>
+
+<tr>
+<td>BM</td>
+<td>Bisnis Manajemen</td>
+</tr>
+
+<tr>
+<td>GA</td>
+<td>Garmen Apparel</td>
+</tr>
+
+</table>
+
+<h3>Tugas</h3>
+
+<ol>
+
+<li>
+Gunakan LEFT untuk mengambil kode bidang.
+</li>
+
+<li>
+Gunakan VLOOKUP untuk mencari nama bidang.
+</li>
+
+<li>
+Gunakan IF + AND untuk menentukan status kelulusan.
+</li>
+
+<li>
+Gunakan IFERROR + VLOOKUP agar kode yang tidak ditemukan
+tidak menampilkan error.
+</li>
+
+<li>
+Gunakan referensi absolut untuk mengunci tabel referensi.
+</li>
+
+</ol>
+
+<div class="tip">
+
+<strong>🎯 Tantangan:</strong>
+
+Buat satu formula yang dapat menampilkan:
+
+<br><br>
+
+<strong>
+"TK - Teknik - Lulus"
+</strong>
+
+<p>
+Gunakan kombinasi LEFT, VLOOKUP, IF, AND dan operator
+penggabungan teks (&).
+</p>
+
+</div>
+
+</section>
+
+
+<!-- RANGKUMAN -->
+
+<section class="card">
+
+<h2>📌 21. Ringkasan Modul</h2>
+
+<table>
+
+<tr>
+<th>Fungsi</th>
+<th>Kegunaan</th>
+</tr>
+
+<tr>
+<td>IF Bertingkat</td>
+<td>Menguji beberapa kondisi.</td>
+</tr>
+
+<tr>
+<td>VLOOKUP</td>
+<td>Mencari data secara vertikal.</td>
+</tr>
+
+<tr>
+<td>HLOOKUP</td>
+<td>Mencari data secara horizontal.</td>
+</tr>
+
+<tr>
+<td>IF + AND</td>
+<td>Memeriksa beberapa kondisi yang semuanya harus terpenuhi.</td>
+</tr>
+
+<tr>
+<td>IF + OR</td>
+<td>Memeriksa beberapa kondisi yang salah satunya cukup terpenuhi.</td>
+</tr>
+
+<tr>
+<td>IF + VLOOKUP</td>
+<td>Menggabungkan logika dengan pencarian data.</td>
+</tr>
+
+<tr>
+<td>LEFT + VLOOKUP</td>
+<td>Mengambil kode kemudian mencari informasi berdasarkan kode tersebut.</td>
+</tr>
+
+<tr>
+<td>IFERROR + VLOOKUP</td>
+<td>Mencegah tampilan error ketika data tidak ditemukan.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- KESIMPULAN -->
+
+<section class="card">
+
+<h2>🎓 Kesimpulan</h2>
+
+<p>
+IF bertingkat, VLOOKUP, HLOOKUP, dan kombinasi fungsi merupakan
+kemampuan penting dalam pengolahan data menggunakan Excel 2016.
+</p>
+
+<p>
+Dengan menggabungkan beberapa fungsi, pekerjaan yang sebelumnya
+dilakukan secara manual dapat dibuat lebih otomatis.
+</p>
+
+<div class="info">
+
+<strong>📚 Setelah selesai mempelajari modul:</strong>
+
+<p>
+Silakan lanjutkan ke
+<strong>Kuis Excel Modul 9</strong>
+untuk menguji pemahaman Anda.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- NAVIGASI -->
+
+<div class="navigation">
+
+<a href="kuis-excel-8.html" class="btn">
+⬅️ Kembali ke Kuis Modul 8
+</a>
+
+<a href="kuis-excel-9.html" class="btn">
+📝 Mulai Kuis Modul 9 ➡️
+</a>
+
+</div>
+
+
+</div>
+
+
+<footer class="footer">
+
+<strong>Pelatihan Microsoft Excel</strong>
+
+<p>
+Modul 9 — IF Bertingkat, HLOOKUP, VLOOKUP & Kombinasi Fungsi
+</p>
+
+<p>
+UPTD BLK Kabupaten Subang
+</p>
+
+</footer>
+
+</body>
+</html>

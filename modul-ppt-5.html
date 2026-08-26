@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul 5 - Membuat Diagram dan Grafik</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #b71c1c,
+                #e53935
+            );
+
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,.15);
+        }
+
+        .ppt-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: .95;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        .card h2 {
+            color: #b71c1c;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #c62828;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           TUJUAN
+        ========================= */
+
+        .learning-box {
+            background: #ffebee;
+            border-left: 6px solid #e53935;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .learning-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .learning-box ul {
+            padding-left: 22px;
+        }
+
+        /* =========================
+           SECTION NUMBER
+        ========================= */
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .number {
+            min-width: 42px;
+            height: 42px;
+            background: #e53935;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* =========================
+           STEP
+        ========================= */
+
+        .step {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 12px 0;
+        }
+
+        .step strong {
+            color: #b71c1c;
+        }
+
+        /* =========================
+           MENU PATH
+        ========================= */
+
+        .menu-path {
+            display: inline-block;
+            background: #263238;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FEATURE GRID
+        ========================= */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(180px, 1fr)
+            );
+
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .feature strong {
+            display: block;
+            color: #b71c1c;
+        }
+
+        /* =========================
+           EXAMPLE
+        ========================= */
+
+        .example {
+            background: #e3f2fd;
+            border-left: 5px solid #1976d2;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example strong {
+            color: #1565c0;
+        }
+
+        /* =========================
+           WARNING
+        ========================= */
+
+        .warning {
+            background: #fff8e1;
+            border-left: 5px solid #ffb300;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            background: #b71c1c;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* =========================
+           PRACTICE
+        ========================= */
+
+        .practice {
+            background: #e8f5e9;
+            border-left: 6px solid #43a047;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .practice h2 {
+            color: #2e7d32;
+        }
+
+        .practice ol {
+            padding-left: 22px;
+        }
+
+        /* =========================
+           CHECKLIST
+        ========================= */
+
+        .checklist {
+            margin-top: 15px;
+        }
+
+        .check-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .check-item:last-child {
+            border-bottom: none;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button-area {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 20px;
+            background: #e53935;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,.18);
+        }
+
+        .btn-dark {
+            background: #455a64;
+        }
+
+        .btn-green {
+            background: #2e7d32;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 600px) {
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                align-items: flex-start;
+            }
+
+            .number {
+                min-width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .button-area {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="ppt-icon">
+        📊
+    </div>
+
+    <h1>
+        MODUL 5
+    </h1>
+
+    <p>
+        Membuat Diagram dan Grafik
+    </p>
+
+    <p>
+        Microsoft PowerPoint 2016
+    </p>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="container">
+
+
+    <!-- =====================================
+         TUJUAN PEMBELAJARAN
+    ====================================== -->
+
+    <section class="card learning-box">
+
+        <h2>
+            🎯 Tujuan Pembelajaran
+        </h2>
+
+        <p>
+            Setelah mempelajari modul ini, peserta
+            diharapkan mampu:
+        </p>
+
+        <ul>
+
+            <li>
+                Membuat diagram menggunakan
+                <strong>SmartArt</strong>.
+            </li>
+
+            <li>
+                Mengubah SmartArt menjadi
+                <strong>Shape</strong>.
+            </li>
+
+            <li>
+                Membuat
+                <strong>Chart/Grafik</strong>.
+            </li>
+
+            <li>
+                Mengedit data pada Chart.
+            </li>
+
+            <li>
+                Memilih jenis grafik yang sesuai
+                dengan kebutuhan penyajian data.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =====================================
+         PENGANTAR
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                1
+            </div>
+
+            <h2>
+                Mengenal Diagram dan Grafik
+            </h2>
+
+        </div>
+
+        <p>
+            Dalam sebuah presentasi, informasi yang
+            hanya disajikan dalam bentuk teks dan
+            angka terkadang sulit dipahami oleh
+            audiens.
+        </p>
+
+        <p style="margin-top:10px;">
+
+            Microsoft PowerPoint 2016 menyediakan
+            berbagai fasilitas untuk menyajikan
+            informasi secara visual, antara lain
+            <strong>SmartArt</strong> dan
+            <strong>Chart</strong>.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🧩
+                </div>
+
+                <strong>SmartArt</strong>
+
+                <p>
+                    Menyajikan informasi dalam bentuk
+                    diagram visual.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <strong>Chart</strong>
+
+                <p>
+                    Menyajikan data angka dalam
+                    bentuk grafik.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📈
+                </div>
+
+                <strong>Grafik</strong>
+
+                <p>
+                    Membantu melihat perbandingan
+                    dan perkembangan data.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         SMARTART
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                2
+            </div>
+
+            <h2>
+                Membuat SmartArt
+            </h2>
+
+        </div>
+
+        <p>
+            <strong>SmartArt</strong> adalah fitur
+            PowerPoint yang digunakan untuk menyajikan
+            informasi dalam bentuk diagram visual.
+        </p>
+
+        <h3>
+            Cara Membuat SmartArt
+        </h3>
+
+        <div class="step">
+
+            <strong>Langkah 1</strong>
+
+            <p>
+                Buka slide yang akan digunakan.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 2</strong>
+
+            <p>
+                Pilih menu:
+            </p>
+
+            <div class="menu-path">
+                Insert → SmartArt
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 3</strong>
+
+            <p>
+                Pilih kategori SmartArt yang sesuai.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 4</strong>
+
+            <p>
+                Pilih desain SmartArt kemudian klik
+                <strong>OK</strong>.
+            </p>
+
+        </div>
+
+        <h3>
+            Jenis SmartArt
+        </h3>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <div class="feature-icon">📋</div>
+                <strong>List</strong>
+                <p>Menampilkan daftar informasi.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <strong>Process</strong>
+                <p>Menampilkan tahapan atau proses.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">♻️</div>
+                <strong>Cycle</strong>
+                <p>Menampilkan proses yang berulang.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🌳</div>
+                <strong>Hierarchy</strong>
+                <p>Menampilkan hubungan hierarki.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔗</div>
+                <strong>Relationship</strong>
+                <p>Menampilkan hubungan antar informasi.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔺</div>
+                <strong>Pyramid</strong>
+                <p>Menampilkan informasi bertingkat.</p>
+            </div>
+
+        </div>
+
+        <div class="example">
+
+            <strong>Contoh penggunaan:</strong>
+
+            <p>
+                Pendaftaran → Seleksi → Pelatihan
+                → Evaluasi → Kelulusan
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CONVERT SMARTART
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                3
+            </div>
+
+            <h2>
+                Mengubah SmartArt Menjadi Shape
+            </h2>
+
+        </div>
+
+        <p>
+            SmartArt dapat dikonversi menjadi Shape
+            apabila kita membutuhkan pengeditan objek
+            yang lebih bebas.
+        </p>
+
+        <h3>
+            Langkah Mengubah SmartArt
+        </h3>
+
+        <div class="step">
+
+            <strong>1.</strong>
+
+            <p>
+                Klik SmartArt yang akan dikonversi.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>2.</strong>
+
+            <p>
+                Pilih tab:
+            </p>
+
+            <div class="menu-path">
+                SmartArt Design → Convert
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>3.</strong>
+
+            <p>
+                Pilih:
+            </p>
+
+            <div class="menu-path">
+                Convert to Shapes
+            </div>
+
+        </div>
+
+        <div class="warning">
+
+            <strong>⚠️ Perhatian</strong>
+
+            <p>
+                Setelah SmartArt dikonversi menjadi
+                Shape, objek tersebut tidak lagi
+                berfungsi sebagai SmartArt.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MEMBUAT CHART
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                4
+            </div>
+
+            <h2>
+                Membuat Chart atau Grafik
+            </h2>
+
+        </div>
+
+        <p>
+            Chart digunakan untuk menyajikan data
+            numerik dalam bentuk visual sehingga
+            perbandingan dan perkembangan data
+            lebih mudah dipahami.
+        </p>
+
+        <h3>
+            Langkah Membuat Chart
+        </h3>
+
+        <div class="step">
+
+            <strong>Langkah 1</strong>
+
+            <p>
+                Pilih slide tempat grafik akan
+                ditempatkan.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 2</strong>
+
+            <p>
+                Pilih:
+            </p>
+
+            <div class="menu-path">
+                Insert → Chart
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 3</strong>
+
+            <p>
+                Pilih jenis grafik yang sesuai.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 4</strong>
+
+            <p>
+                Klik <strong>OK</strong>.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 5</strong>
+
+            <p>
+                Masukkan data pada lembar kerja
+                Excel yang muncul.
+            </p>
+
+        </div>
+
+        <h3>
+            Jenis Chart
+        </h3>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <strong>Column</strong>
+
+                <p>
+                    Membandingkan nilai antar kategori.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📉
+                </div>
+
+                <strong>Bar</strong>
+
+                <p>
+                    Membandingkan banyak kategori.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📈
+                </div>
+
+                <strong>Line</strong>
+
+                <p>
+                    Menampilkan perkembangan dari waktu
+                    ke waktu.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🥧
+                </div>
+
+                <strong>Pie</strong>
+
+                <p>
+                    Menampilkan komposisi bagian dari
+                    keseluruhan.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📐
+                </div>
+
+                <strong>Area</strong>
+
+                <p>
+                    Menampilkan tren dan besarnya
+                    perubahan.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔵
+                </div>
+
+                <strong>Scatter</strong>
+
+                <p>
+                    Menampilkan hubungan antara
+                    dua variabel.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         EDIT DATA CHART
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                5
+            </div>
+
+            <h2>
+                Mengedit Data Chart
+            </h2>
+
+        </div>
+
+        <p>
+            Data pada Chart dapat diubah kapan saja
+            sesuai dengan kebutuhan.
+        </p>
+
+        <h3>
+            Cara Mengedit Data
+        </h3>
+
+        <div class="step">
+
+            <strong>Langkah 1</strong>
+
+            <p>
+                Klik grafik yang ingin diedit.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 2</strong>
+
+            <p>
+                Pilih tab:
+            </p>
+
+            <div class="menu-path">
+                Chart Design → Edit Data
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 3</strong>
+
+            <p>
+                Lembar kerja Excel akan muncul.
+                Ubahlah data sesuai kebutuhan.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <strong>Langkah 4</strong>
+
+            <p>
+                Setelah selesai, tutup lembar kerja
+                Excel. Grafik akan memperbarui data
+                secara otomatis.
+            </p>
+
+        </div>
+
+        <h3>
+            Contoh Data
+        </h3>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Bulan</th>
+                        <th>Jumlah Peserta</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Januari</td>
+                        <td>25</td>
+                    </tr>
+
+                    <tr>
+                        <td>Februari</td>
+                        <td>32</td>
+                    </tr>
+
+                    <tr>
+                        <td>Maret</td>
+                        <td>40</td>
+                    </tr>
+
+                    <tr>
+                        <td>April</td>
+                        <td>45</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MEMILIH GRAFIK
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                6
+            </div>
+
+            <h2>
+                Memilih Jenis Grafik yang Sesuai
+            </h2>
+
+        </div>
+
+        <p>
+            Jenis grafik harus dipilih berdasarkan
+            karakteristik dan tujuan penyajian data.
+        </p>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Jenis Grafik
+                        </th>
+
+                        <th>
+                            Kegunaan
+                        </th>
+
+                        <th>
+                            Contoh
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>Column</strong>
+                        </td>
+
+                        <td>
+                            Membandingkan nilai antar kategori.
+                        </td>
+
+                        <td>
+                            Jumlah peserta berdasarkan program.
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Bar</strong>
+                        </td>
+
+                        <td>
+                            Membandingkan banyak kategori.
+                        </td>
+
+                        <td>
+                            Ranking jumlah peserta.
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Line</strong>
+                        </td>
+
+                        <td>
+                            Menampilkan tren dari waktu ke waktu.
+                        </td>
+
+                        <td>
+                            Jumlah peserta Januari–Juni.
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Pie</strong>
+                        </td>
+
+                        <td>
+                            Menampilkan bagian dari keseluruhan.
+                        </td>
+
+                        <td>
+                            Persentase peserta berdasarkan bidang.
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Area</strong>
+                        </td>
+
+                        <td>
+                            Menampilkan tren dan perubahan.
+                        </td>
+
+                        <td>
+                            Perkembangan jumlah peserta.
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Scatter</strong>
+                        </td>
+
+                        <td>
+                            Menampilkan hubungan dua variabel.
+                        </td>
+
+                        <td>
+                            Hubungan usia dan nilai.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         TIPS
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                7
+            </div>
+
+            <h2>
+                Tips Membuat Diagram dan Grafik
+            </h2>
+
+        </div>
+
+        <div class="checklist">
+
+            <div class="check-item">
+                ✅ Gunakan diagram yang sesuai dengan
+                jenis informasi.
+            </div>
+
+            <div class="check-item">
+                ✅ Gunakan judul grafik yang jelas.
+            </div>
+
+            <div class="check-item">
+                ✅ Jangan menggunakan terlalu banyak
+                warna.
+            </div>
+
+            <div class="check-item">
+                ✅ Pastikan angka dan label mudah dibaca.
+            </div>
+
+            <div class="check-item">
+                ✅ Hindari memasukkan terlalu banyak
+                data dalam satu grafik.
+            </div>
+
+            <div class="check-item">
+                ✅ Gunakan SmartArt untuk proses,
+                hubungan, dan hierarki.
+            </div>
+
+            <div class="check-item">
+                ✅ Gunakan Chart untuk data numerik.
+            </div>
+
+            <div class="check-item">
+                ✅ Hindari efek 3D jika tidak diperlukan.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         LATIHAN
+    ====================================== -->
+
+    <section class="card practice">
+
+        <h2>
+            📝 Latihan Praktik
+        </h2>
+
+        <p>
+            Buat sebuah slide presentasi dengan judul:
+        </p>
+
+        <h3>
+            "Data Peserta Pelatihan Tahun 2026"
+        </h3>
+
+        <p>
+            Kemudian lakukan langkah berikut:
+        </p>
+
+        <ol>
+
+            <li>
+                Buat SmartArt yang menunjukkan proses:
+                <strong>
+                    Pendaftaran → Seleksi → Pelatihan
+                    → Evaluasi → Kelulusan
+                </strong>
+            </li>
+
+            <li>
+                Ubah SmartArt tersebut menjadi Shape.
+            </li>
+
+            <li>
+                Buat Column Chart berdasarkan data
+                jumlah peserta beberapa program pelatihan.
+            </li>
+
+            <li>
+                Edit data Chart.
+            </li>
+
+            <li>
+                Buat Line Chart untuk menunjukkan
+                perkembangan peserta dari Januari
+                sampai Juni.
+            </li>
+
+            <li>
+                Atur judul dan tampilan grafik agar
+                terlihat profesional.
+            </li>
+
+        </ol>
+
+        <div class="example">
+
+            <strong>
+                💡 Nama file latihan:
+            </strong>
+
+            <p>
+                Latihan-PPT-Modul-5.pptx
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         RANGKUMAN
+    ====================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div class="number">
+                ✓
+            </div>
+
+            <h2>
+                Rangkuman Modul 5
+            </h2>
+
+        </div>
+
+        <ul style="padding-left:22px;">
+
+            <li>
+                <strong>SmartArt</strong> digunakan untuk
+                menyajikan informasi dalam bentuk diagram
+                visual.
+            </li>
+
+            <li>
+                SmartArt dapat dikonversi menjadi
+                <strong>Shape</strong> untuk pengeditan
+                yang lebih bebas.
+            </li>
+
+            <li>
+                <strong>Chart</strong> digunakan untuk
+                menyajikan data numerik secara visual.
+            </li>
+
+            <li>
+                Data Chart dapat diedit melalui
+                <strong>Chart Design → Edit Data</strong>.
+            </li>
+
+            <li>
+                <strong>Column</strong> cocok untuk
+                perbandingan kategori.
+            </li>
+
+            <li>
+                <strong>Line</strong> cocok untuk
+                menunjukkan tren waktu.
+            </li>
+
+            <li>
+                <strong>Pie</strong> cocok untuk
+                menunjukkan komposisi keseluruhan.
+            </li>
+
+            <li>
+                Pemilihan jenis grafik harus disesuaikan
+                dengan tujuan penyajian data.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =====================================
+         NAVIGASI
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>
+            📚 Navigasi Pembelajaran
+        </h2>
+
+        <div class="button-area">
+
+            <a
+                href="modul-ppt-4.html"
+                class="btn btn-dark"
+            >
+                ← Modul 4
+            </a>
+
+            <a
+                href="kuis-ppt-5.html"
+                class="btn btn-green"
+            >
+                📝 Mulai Kuis Modul 5
+            </a>
+
+            <a
+                href="modul-ppt-6.html"
+                class="btn"
+            >
+                Modul 6 →
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            Pelatihan Microsoft PowerPoint 2016
+        </strong>
+    </p>
+
+    <p>
+        Modul 5 — Membuat Diagram dan Grafik
+    </p>
+
+    <p>
+        © 2026 UPTD BLK Kabupaten Subang
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

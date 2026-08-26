@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modul Excel 3 - Format Cell</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f4f7fb;
+    color:#263238;
+    line-height:1.7;
+}
+
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:45px 20px 65px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:7px 20px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.header h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.header p{
+    max-width:750px;
+    margin:auto;
+    opacity:.92;
+}
+
+.container{
+    max-width:950px;
+    margin:-30px auto 50px;
+    padding:0 18px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    margin-bottom:22px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#107c41;
+    margin-bottom:16px;
+}
+
+.card h3{
+    color:#185c37;
+    margin:22px 0 10px;
+}
+
+.card p{
+    margin-bottom:12px;
+}
+
+.card ul,
+.card ol{
+    margin-left:25px;
+    margin-bottom:15px;
+}
+
+.info{
+    background:#eaf7ef;
+    border-left:5px solid #107c41;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff7e6;
+    border-left:5px solid #f39c12;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.tip{
+    background:#eef6ff;
+    border-left:5px solid #2878d4;
+    padding:17px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.example{
+    background:#263238;
+    color:#f5f5f5;
+    padding:18px;
+    border-radius:9px;
+    margin:15px 0;
+    overflow-x:auto;
+}
+
+.example code{
+    font-family:Consolas,monospace;
+}
+
+.highlight{
+    color:#7ee2a8;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0;
+}
+
+th{
+    background:#107c41;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:11px;
+    border:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#f7f9fa;
+}
+
+.badge-data{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.text{
+    background:#e3f2fd;
+    color:#1565c0;
+}
+
+.number{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.date{
+    background:#fff3e0;
+    color:#ef6c00;
+}
+
+.percent{
+    background:#f3e5f5;
+    color:#7b1fa2;
+}
+
+.currency{
+    background:#e0f7fa;
+    color:#00838f;
+}
+
+/* Demo */
+.demo-box{
+    border:1px solid #dce3e7;
+    border-radius:12px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.demo-title{
+    background:#f0f4f6;
+    padding:12px 15px;
+    font-weight:bold;
+}
+
+.demo-content{
+    padding:18px;
+}
+
+.demo-input{
+    width:100%;
+    padding:12px;
+    border:1px solid #cfd8dc;
+    border-radius:7px;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+select{
+    padding:10px;
+    border:1px solid #cfd8dc;
+    border-radius:7px;
+    font-size:15px;
+    margin-bottom:12px;
+}
+
+.demo-result{
+    background:#eaf7ef;
+    padding:15px;
+    border-radius:8px;
+    font-weight:bold;
+    min-height:48px;
+}
+
+.color-demo{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.color-item{
+    padding:18px;
+    text-align:center;
+    border-radius:9px;
+    font-weight:bold;
+}
+
+.green{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.red{
+    background:#ffebee;
+    color:#c62828;
+}
+
+.black{
+    background:#f5f5f5;
+    color:#263238;
+}
+
+.step{
+    display:flex;
+    gap:15px;
+    margin:15px 0;
+    align-items:flex-start;
+}
+
+.step-number{
+    min-width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#107c41;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.exercise{
+    background:#f7f9fa;
+    border:1px dashed #107c41;
+    padding:20px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    border:none;
+    padding:13px 22px;
+    border-radius:9px;
+    color:white;
+    background:#107c41;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#0b5c30;
+}
+
+.btn.secondary{
+    background:#607d8b;
+}
+
+.btn.blue{
+    background:#2878d4;
+}
+
+.footer{
+    background:#17202a;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.footer strong{
+    color:#6fcf97;
+}
+
+@media(max-width:650px){
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .card{
+        padding:22px 17px;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    th,td{
+        padding:8px;
+    }
+
+    .color-demo{
+        grid-template-columns:1fr;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .navigation .btn{
+        text-align:center;
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="badge">
+        MODUL 3 • MICROSOFT EXCEL
+    </div>
+
+    <h1>Format Cell</h1>
+
+    <p>
+        Memahami Type Data, Format Data, Format Cell,
+        Number Custom, dan Custom Format dengan Kondisi Warna
+    </p>
+
+</header>
+
+<main class="container">
+
+<!-- =========================
+     PENDAHULUAN
+========================= -->
+
+<section class="card">
+
+    <h2>🎯 Tujuan Pembelajaran</h2>
+
+    <p>
+        Setelah menyelesaikan Modul 3, peserta diharapkan
+        mampu memahami dan menggunakan fitur
+        <strong>Format Cell</strong> pada Microsoft Excel.
+    </p>
+
+    <div class="info">
+
+        <strong>Kompetensi yang dipelajari:</strong>
+
+        <ul>
+            <li>Mengenali berbagai type data Excel.</li>
+            <li>Memahami perbedaan type data dan format data.</li>
+            <li>Memahami fungsi Format Cells.</li>
+            <li>Menggunakan Number Custom.</li>
+            <li>Membuat format angka sesuai kebutuhan.</li>
+            <li>Menggunakan kondisi warna pada Custom Format.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     1 TYPE DATA
+========================= -->
+
+<section class="card">
+
+    <h2>1. Type Data dan Format Data</h2>
+
+    <p>
+        Dalam Microsoft Excel, data yang dimasukkan ke dalam
+        cell dapat memiliki berbagai tipe. Excel akan mencoba
+        mengenali tipe data berdasarkan isi yang dimasukkan.
+    </p>
+
+    <h3>Type Data yang Umum Digunakan</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Type Data</th>
+                <th>Contoh</th>
+                <th>Kegunaan</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>
+                    <span class="badge-data text">
+                        Text
+                    </span>
+                </td>
+                <td>Nama Peserta</td>
+                <td>Data berupa tulisan.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="badge-data number">
+                        Number
+                    </span>
+                </td>
+                <td>125000</td>
+                <td>Data angka yang dapat dihitung.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="badge-data date">
+                        Date
+                    </span>
+                </td>
+                <td>23/08/2026</td>
+                <td>Data tanggal.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="badge-data percent">
+                        Percentage
+                    </span>
+                </td>
+                <td>85%</td>
+                <td>Data dalam bentuk persentase.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="badge-data currency">
+                        Currency
+                    </span>
+                </td>
+                <td>Rp 150.000</td>
+                <td>Data nominal uang.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <h3>Type Data vs Format Data</h3>
+
+    <p>
+        <strong>Type data</strong> berkaitan dengan bagaimana Excel
+        mengenali suatu nilai, sedangkan <strong>format data</strong>
+        mengatur bagaimana nilai tersebut ditampilkan.
+    </p>
+
+    <div class="example">
+
+        Nilai sebenarnya:
+        <span class="highlight">150000</span>
+
+        <br><br>
+
+        Dapat ditampilkan sebagai:
+
+        <br>
+
+        150000
+
+        <br>
+        150,000
+
+        <br>
+        Rp 150.000
+
+        <br>
+        Rp 150,000.00
+
+    </div>
+
+    <div class="tip">
+
+        💡 <strong>Ingat:</strong>
+        Mengubah format cell biasanya tidak mengubah nilai
+        sebenarnya. Yang berubah terutama adalah
+        cara nilai tersebut ditampilkan.
+
+    </div>
+
+</section>
+
+<!-- =========================
+     2 FORMAT CELL
+========================= -->
+
+<section class="card">
+
+    <h2>2. Apa Itu Format Cell?</h2>
+
+    <p>
+        <strong>Format Cell</strong> adalah fitur Microsoft Excel
+        yang digunakan untuk mengatur tampilan dan karakteristik
+        isi cell.
+    </p>
+
+    <p>
+        Dengan Format Cells, kita dapat mengatur angka,
+        tanggal, alignment, font, border, warna, dan berbagai
+        pengaturan lainnya.
+    </p>
+
+    <h3>Cara Membuka Format Cells</h3>
+
+    <div class="step">
+
+        <div class="step-number">1</div>
+
+        <div>
+            Pilih cell atau range yang ingin diformat.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">2</div>
+
+        <div>
+            Klik kanan pada cell kemudian pilih
+            <strong>Format Cells</strong>.
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div class="step-number">3</div>
+
+        <div>
+            Cara cepat menggunakan keyboard:
+            <strong>Ctrl + 1</strong>.
+        </div>
+
+    </div>
+
+    <h3>Bagian Penting Format Cells</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Tab</th>
+                <th>Fungsi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Number</td>
+                <td>Mengatur format angka, tanggal, persen, currency, dan Custom.</td>
+            </tr>
+
+            <tr>
+                <td>Alignment</td>
+                <td>Mengatur posisi dan arah teks.</td>
+            </tr>
+
+            <tr>
+                <td>Font</td>
+                <td>Mengatur jenis, ukuran, dan gaya huruf.</td>
+            </tr>
+
+            <tr>
+                <td>Border</td>
+                <td>Mengatur garis pada cell.</td>
+            </tr>
+
+            <tr>
+                <td>Fill</td>
+                <td>Mengatur warna latar belakang cell.</td>
+            </tr>
+
+            <tr>
+                <td>Protection</td>
+                <td>Mengatur perlindungan cell.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- =========================
+     3 NUMBER CUSTOM
+========================= -->
+
+<section class="card">
+
+    <h2>3. Format Cell – Number Custom</h2>
+
+    <p>
+        <strong>Custom</strong> memungkinkan kita membuat pola
+        tampilan angka sendiri tanpa mengubah nilai asli yang
+        tersimpan dalam cell.
+    </p>
+
+    <h3>Contoh Custom Format</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Custom Format</th>
+                <th>Nilai</th>
+                <th>Tampilan</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td><code>00000</code></td>
+                <td>125</td>
+                <td>00125</td>
+            </tr>
+
+            <tr>
+                <td><code>000-000-000</code></td>
+                <td>123456789</td>
+                <td>123-456-789</td>
+            </tr>
+
+            <tr>
+                <td><code>Rp #,##0</code></td>
+                <td>150000</td>
+                <td>Rp 150,000</td>
+            </tr>
+
+            <tr>
+                <td><code>0.00</code></td>
+                <td>75.5</td>
+                <td>75.50</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <h3>Contoh Nomor Peserta</h3>
+
+    <p>
+        Misalnya nomor peserta disimpan sebagai angka:
+    </p>
+
+    <div class="example">
+
+        Nilai asli:
+
+        <br>
+
+        <span class="highlight">25</span>
+
+        <br><br>
+
+        Custom Format:
+
+        <br>
+
+        <span class="highlight">0000</span>
+
+        <br><br>
+
+        Hasil tampilan:
+
+        <br>
+
+        <span class="highlight">0025</span>
+
+    </div>
+
+    <div class="warning">
+
+        ⚠️ Perlu diperhatikan bahwa Custom Format hanya
+        mengatur tampilan. Nilai asli cell tetap berupa angka
+        <strong>25</strong>, bukan teks <strong>0025</strong>.
+
+    </div>
+
+</section>
+
+<!-- =========================
+     4 SIMBOL CUSTOM
+========================= -->
+
+<section class="card">
+
+    <h2>4. Simbol Penting dalam Custom Format</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Simbol</th>
+                <th>Fungsi</th>
+                <th>Contoh</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td><code>0</code></td>
+                <td>Menampilkan angka, termasuk nol.</td>
+                <td><code>0000</code></td>
+            </tr>
+
+            <tr>
+                <td><code>#</code></td>
+                <td>Menampilkan angka jika tersedia.</td>
+                <td><code>#,##0</code></td>
+            </tr>
+
+            <tr>
+                <td><code>?</code></td>
+                <td>Membantu penyelarasan posisi angka.</td>
+                <td><code>???.??</code></td>
+            </tr>
+
+            <tr>
+                <td><code>,</code></td>
+                <td>Dapat digunakan sebagai pemisah ribuan sesuai pengaturan lokal.</td>
+                <td><code>#,##0</code></td>
+            </tr>
+
+            <tr>
+                <td><code>.</code></td>
+                <td>Dapat digunakan untuk desimal sesuai pengaturan lokal.</td>
+                <td><code>0.00</code></td>
+            </tr>
+
+            <tr>
+                <td><code>"teks"</code></td>
+                <td>Menampilkan teks tambahan.</td>
+                <td><code>0 "unit"</code></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="example">
+
+        Format:
+
+        <br>
+
+        <span class="highlight">0 "unit"</span>
+
+        <br><br>
+
+        Nilai:
+
+        <br>
+
+        25
+
+        <br><br>
+
+        Hasil:
+
+        <br>
+
+        <span class="highlight">25 unit</span>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     5 KONDISI WARNA
+========================= -->
+
+<section class="card">
+
+    <h2>5. Custom Format dengan Kondisi Warna</h2>
+
+    <p>
+        Custom Number Format juga dapat digunakan untuk
+        memberikan warna berdasarkan kondisi nilai.
+    </p>
+
+    <p>
+        Salah satu bentuk format Custom menggunakan beberapa
+        bagian yang dipisahkan dengan tanda titik koma
+        <strong>;</strong>.
+    </p>
+
+    <h3>Contoh Format</h3>
+
+    <div class="example">
+
+        <span class="highlight">
+            [Green]#,##0;[Red]-#,##0;0
+        </span>
+
+    </div>
+
+    <p>
+        Format tersebut dapat digunakan untuk menampilkan
+        nilai positif dengan warna hijau dan nilai negatif
+        dengan warna merah.
+    </p>
+
+    <div class="color-demo">
+
+        <div class="color-item green">
+            Nilai Positif<br>
+            Hijau
+        </div>
+
+        <div class="color-item red">
+            Nilai Negatif<br>
+            Merah
+        </div>
+
+        <div class="color-item black">
+            Nilai Nol<br>
+            Normal
+        </div>
+
+    </div>
+
+    <h3>Contoh Penggunaan</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Nilai</th>
+                <th>Makna</th>
+                <th>Warna Tampilan</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>500000</td>
+                <td>Nilai positif</td>
+                <td style="color:#2e7d32;font-weight:bold;">
+                    Hijau
+                </td>
+            </tr>
+
+            <tr>
+                <td>-250000</td>
+                <td>Nilai negatif</td>
+                <td style="color:#c62828;font-weight:bold;">
+                    Merah
+                </td>
+            </tr>
+
+            <tr>
+                <td>0</td>
+                <td>Tidak ada nilai perubahan</td>
+                <td>Normal</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- =========================
+     6 KONDISI NILAI
+========================= -->
+
+<section class="card">
+
+    <h2>6. Custom Format Berdasarkan Nilai</h2>
+
+    <p>
+        Selain warna positif dan negatif, Custom Format juga
+        dapat menggunakan kondisi tertentu.
+    </p>
+
+    <h3>Contoh Nilai Peserta</h3>
+
+    <div class="example">
+
+        <span class="highlight">
+        [Green][>=75]0;[Red][<75]0
+        </span>
+
+    </div>
+
+    <p>
+        Dengan pola tersebut, nilai <strong>75 atau lebih</strong>
+        dapat ditampilkan dengan warna hijau, sedangkan nilai
+        di bawah 75 ditampilkan dengan warna merah.
+    </p>
+
+    <div class="color-demo">
+
+        <div class="color-item green">
+            85<br>
+            LULUS
+        </div>
+
+        <div class="color-item green">
+            75<br>
+            LULUS
+        </div>
+
+        <div class="color-item red">
+            65<br>
+            BELUM LULUS
+        </div>
+
+    </div>
+
+    <div class="tip">
+
+        💡 <strong>Catatan:</strong>
+        Custom Format dengan warna berbeda dengan
+        Conditional Formatting. Custom Format mengatur
+        tampilan berdasarkan pola format cell, sedangkan
+        Conditional Formatting merupakan fitur khusus untuk
+        memberikan format berdasarkan aturan/kondisi.
+
+    </div>
+
+</section>
+
+<!-- =========================
+     7 DEMO INTERAKTIF
+========================= -->
+
+<section class="card">
+
+    <h2>🧪 Demo Custom Format</h2>
+
+    <p>
+        Gunakan contoh berikut untuk memahami bagaimana
+        nilai dapat ditampilkan dengan format yang berbeda.
+    </p>
+
+    <div class="demo-box">
+
+        <div class="demo-title">
+            Simulasi Format Angka
+        </div>
+
+        <div class="demo-content">
+
+            <input
+                type="number"
+                id="demoNumber"
+                class="demo-input"
+                value="125000"
+                placeholder="Masukkan angka"
+            >
+
+            <select id="demoFormat">
+
+                <option value="normal">
+                    Angka Normal
+                </option>
+
+                <option value="zero">
+                    000000
+                </option>
+
+                <option value="currency">
+                    Rp #,##0
+                </option>
+
+                <option value="decimal">
+                    0.00
+                </option>
+
+                <option value="unit">
+                    0 "unit"
+                </option>
+
+            </select>
+
+            <div
+                class="demo-result"
+                id="demoResult"
+            >
+                125000
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     8 PRAKTIK
+========================= -->
+
+<section class="card">
+
+    <h2>💻 Praktik Mandiri</h2>
+
+    <p>
+        Buatlah sebuah tabel sederhana seperti berikut
+        pada Microsoft Excel.
+    </p>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Nilai</th>
+                <th>Uang Saku</th>
+                <th>Stok</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>1</td>
+                <td>Andi</td>
+                <td>85</td>
+                <td>150000</td>
+                <td>20</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Budi</td>
+                <td>70</td>
+                <td>125000</td>
+                <td>15</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Citra</td>
+                <td>90</td>
+                <td>200000</td>
+                <td>-5</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="exercise">
+
+        <strong>🎯 Tugas:</strong>
+
+        <ol>
+
+            <li>
+                Buat format nomor menjadi empat digit.
+                Contoh: 0001, 0002, 0003.
+            </li>
+
+            <li>
+                Buat format Uang Saku menjadi format Rupiah.
+            </li>
+
+            <li>
+                Buat nilai 75 ke atas berwarna hijau.
+            </li>
+
+            <li>
+                Buat nilai di bawah 75 berwarna merah.
+            </li>
+
+            <li>
+                Buat stok positif berwarna hijau dan stok negatif
+                berwarna merah.
+            </li>
+
+        </ol>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     RANGKUMAN
+========================= -->
+
+<section class="card">
+
+    <h2>📌 Rangkuman Modul 3</h2>
+
+    <ul>
+
+        <li>
+            Excel memiliki berbagai type data seperti Text,
+            Number, Date, Percentage, dan Currency.
+        </li>
+
+        <li>
+            Format data menentukan bagaimana nilai ditampilkan
+            pada worksheet.
+        </li>
+
+        <li>
+            Format Cells dapat dibuka menggunakan
+            <strong>Ctrl + 1</strong>.
+        </li>
+
+        <li>
+            Number Custom memungkinkan kita membuat pola
+            tampilan angka sendiri.
+        </li>
+
+        <li>
+            Simbol <strong>0</strong> dan <strong>#</strong>
+            memiliki fungsi berbeda dalam Custom Format.
+        </li>
+
+        <li>
+            Custom Format dapat menggunakan kondisi dan warna
+            untuk membedakan nilai.
+        </li>
+
+        <li>
+            Custom Format terutama mengubah tampilan,
+            bukan nilai asli yang tersimpan dalam cell.
+        </li>
+
+    </ul>
+
+    <div class="info">
+
+        <strong>💡 Kunci pembelajaran:</strong>
+
+        <br>
+
+        Jangan hanya memasukkan data ke Excel.
+        Pastikan data juga memiliki format yang tepat agar
+        mudah dibaca, dihitung, dan digunakan dalam laporan.
+
+    </div>
+
+</section>
+
+<!-- =========================
+     NAVIGASI
+========================= -->
+
+<section class="card">
+
+    <div class="navigation">
+
+        <a
+            href="kuis-excel-2.html"
+            class="btn secondary"
+        >
+            ← Kuis Modul 2
+        </a>
+
+        <a
+            href="kuis-excel-3.html"
+            class="btn blue"
+        >
+            📝 Mulai Kuis Modul 3 →
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <p>
+        <strong>Pelatihan Microsoft Excel</strong>
+    </p>
+
+    <p>
+        Modul 3 • Format Cell
+    </p>
+
+    <p style="margin-top:8px;font-size:13px;opacity:.7;">
+        © 2026 • Materi Pelatihan
+    </p>
+
+</footer>
+
+<script>
+
+/* =========================
+   DEMO CUSTOM FORMAT
+========================= */
+
+const demoNumber =
+    document.getElementById("demoNumber");
+
+const demoFormat =
+    document.getElementById("demoFormat");
+
+const demoResult =
+    document.getElementById("demoResult");
+
+function updateDemo(){
+
+    let value =
+        Number(demoNumber.value);
+
+    if(isNaN(value)){
+        demoResult.textContent = "-";
+        return;
+    }
+
+    let format =
+        demoFormat.value;
+
+    let result = "";
+
+    if(format === "normal"){
+
+        result =
+            value.toLocaleString("id-ID");
+
+    }
+
+    else if(format === "zero"){
+
+        result =
+            String(
+                Math.round(value)
+            ).padStart(6,"0");
+
+    }
+
+    else if(format === "currency"){
+
+        result =
+            "Rp " +
+            Math.round(value)
+            .toLocaleString("id-ID");
+
+    }
+
+    else if(format === "decimal"){
+
+        result =
+            value.toFixed(2);
+
+    }
+
+    else if(format === "unit"){
+
+        result =
+            Math.round(value)
+            .toLocaleString("id-ID")
+            + " unit";
+
+    }
+
+    demoResult.textContent = result;
+}
+
+demoNumber.addEventListener(
+    "input",
+    updateDemo
+);
+
+demoFormat.addEventListener(
+    "change",
+    updateDemo
+);
+
+updateDemo();
+
+</script>
+
+</body>
+</html>
