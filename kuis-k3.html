@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis K3 - TIK Learning</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #263238;
+    line-height: 1.6;
+}
+
+.header {
+    background: linear-gradient(135deg, #0d6efd, #084298);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 15px;
+}
+
+.container {
+    width: 94%;
+    max-width: 900px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    color: #084298;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13,110,253,0.1);
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 13px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background: #0d6efd;
+    color: white;
+}
+
+.btn-success {
+    background: #198754;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.instruction {
+    background: #eef5ff;
+    border-left: 5px solid #0d6efd;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.instruction ul {
+    padding-left: 22px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.timer {
+    background: #dc3545;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.timer.warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.timer.danger {
+    background: #dc3545;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.55;
+    }
+}
+
+.progress-area {
+    margin-bottom: 20px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #0d6efd;
+    transition: width 0.3s;
+}
+
+.question-card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.question-number {
+    color: #0d6efd;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    border: 2px solid #e1e5ea;
+    padding: 13px 15px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: 0.2s;
+    background: white;
+}
+
+.option:hover {
+    border-color: #0d6efd;
+    background: #f4f8ff;
+}
+
+.option.selected {
+    border-color: #0d6efd;
+    background: #e8f1ff;
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.navigation button {
+    min-width: 120px;
+}
+
+.result-card {
+    text-align: center;
+}
+
+.result-score {
+    font-size: 58px;
+    font-weight: bold;
+    color: #0d6efd;
+    margin: 15px 0;
+}
+
+.result-status {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.status-lulus {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-gagal {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.status-saving {
+    background: #fff3cd;
+    color: #664d03;
+}
+
+.result-info {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.result-info p {
+    margin-bottom: 5px;
+}
+
+.save-message {
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.save-success {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.save-error {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.discussion-item {
+    border-radius: 10px;
+    padding: 17px;
+    margin-bottom: 15px;
+    border-left: 5px solid #6c757d;
+}
+
+.discussion-item.correct {
+    background: #e8f5e9;
+    border-left-color: #198754;
+}
+
+.discussion-item.wrong {
+    background: #fff1f2;
+    border-left-color: #dc3545;
+}
+
+.discussion-item h4 {
+    margin-bottom: 8px;
+}
+
+.answer-correct {
+    color: #198754;
+    font-weight: bold;
+}
+
+.answer-wrong {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    padding: 25px 15px;
+}
+
+@media (max-width: 600px) {
+
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .card,
+    .question-card {
+        padding: 18px;
+    }
+
+    .question-text {
+        font-size: 16px;
+    }
+
+    .quiz-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .timer {
+        text-align: center;
+    }
+
+    .navigation {
+        flex-direction: column;
+    }
+
+    .navigation button {
+        width: 100%;
+    }
+
+    .result-score {
+        font-size: 48px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <h1>TIK LEARNING</h1>
+    <p>UPTD BLK Kabupaten Subang</p>
+</header>
+
+
+<div class="container">
+
+<!-- =====================================================
+     PASSWORD
+===================================================== -->
+
+<section id="passwordPage" class="card">
+
+    <h2>Kuis K3</h2>
+
+    <p>
+        Kesehatan dan Keselamatan Kerja (K3)
+        dalam menggunakan perangkat Teknologi Informasi
+        dan Komunikasi.
+    </p>
+
+    <div class="instruction">
+
+        <strong>Petunjuk Kuis:</strong>
+
+        <ul>
+            <li>Masukkan password kuis.</li>
+            <li>Masukkan nama peserta.</li>
+            <li>Pilih kelas peserta.</li>
+            <li>Waktu pengerjaan 10 menit.</li>
+            <li>Jumlah soal 15 soal.</li>
+            <li>Nilai minimum kelulusan 75.</li>
+            <li>Pilih satu jawaban yang paling tepat.</li>
+        </ul>
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="password">
+            Password Kuis
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan password"
+        >
+
+    </div>
+
+    <button
+        class="btn btn-primary"
+        onclick="checkPassword()"
+    >
+        Lanjut
+    </button>
+
+    <p
+        id="passwordError"
+        style="color:#dc3545; margin-top:12px;"
+    ></p>
+
+</section>
+
+
+<!-- =====================================================
+     IDENTITAS
+===================================================== -->
+
+<section id="namePage" class="card hidden">
+
+    <h2>Identitas Peserta</h2>
+
+    <p>
+        Silakan isi identitas sebelum memulai kuis.
+    </p>
+
+    <div class="form-group">
+
+        <label for="participantName">
+            Nama Peserta
+        </label>
+
+        <input
+            type="text"
+            id="participantName"
+            placeholder="Masukkan nama lengkap"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="participantClass">
+            Kelas
+        </label>
+
+        <input
+            type="text"
+            id="participantClass"
+            placeholder="Contoh: TIK"
+            value="TIK"
+        >
+
+    </div>
+
+
+    <button
+        class="btn btn-success"
+        onclick="startQuiz()"
+    >
+        Mulai Kuis
+    </button>
+
+    <p
+        id="nameError"
+        style="color:#dc3545; margin-top:12px;"
+    ></p>
+
+</section>
+
+
+<!-- =====================================================
+     KUIS
+===================================================== -->
+
+<section id="quizPage" class="hidden">
+
+    <div class="quiz-header">
+
+        <div>
+
+            <h2>Kuis K3</h2>
+
+            <p id="participantDisplay"></p>
+
+        </div>
+
+        <div
+            id="timer"
+            class="timer"
+        >
+            10:00
+        </div>
+
+    </div>
+
+
+    <div class="progress-area">
+
+        <div class="progress-info">
+
+            <span id="questionCounter">
+                Soal 1 dari 15
+            </span>
+
+            <span id="answeredCounter">
+                Terjawab: 0/15
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="question-card">
+
+        <div
+            id="questionNumber"
+            class="question-number"
+        ></div>
+
+        <div
+            id="questionText"
+            class="question-text"
+        ></div>
+
+        <div
+            id="options"
+            class="options"
+        ></div>
+
+
+        <div class="navigation">
+
+            <button
+                id="prevButton"
+                class="btn btn-secondary"
+                onclick="previousQuestion()"
+            >
+                ← Sebelumnya
+            </button>
+
+            <button
+                id="nextButton"
+                class="btn btn-primary"
+                onclick="nextQuestion()"
+            >
+                Berikutnya →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HASIL
+===================================================== -->
+
+<section
+    id="resultPage"
+    class="card result-card hidden"
+>
+
+    <h2>Hasil Kuis K3</h2>
+
+    <p>Peserta:</p>
+
+    <h3 id="resultName"></h3>
+
+    <div
+        id="resultScore"
+        class="result-score"
+    >
+        0
+    </div>
+
+    <div
+        id="resultStatus"
+        class="result-status status-saving"
+    >
+        Menyimpan hasil...
+    </div>
+
+
+    <div class="result-info">
+
+        <p>
+            <strong>Kelas:</strong>
+            <span id="resultClass"></span>
+        </p>
+
+        <p>
+            <strong>Jumlah Soal:</strong>
+            <span id="resultTotal"></span>
+        </p>
+
+        <p>
+            <strong>Jawaban Benar:</strong>
+            <span id="resultCorrect"></span>
+        </p>
+
+        <p>
+            <strong>Jawaban Salah:</strong>
+            <span id="resultWrong"></span>
+        </p>
+
+        <p>
+            <strong>Tidak Dijawab:</strong>
+            <span id="resultEmpty"></span>
+        </p>
+
+        <p>
+            <strong>Nilai Minimum:</strong>
+            75
+        </p>
+
+    </div>
+
+
+    <div
+        id="saveMessage"
+        class="save-message"
+    >
+        Menyimpan hasil kuis ke database...
+    </div>
+
+
+    <div style="margin-top:20px;">
+
+        <button
+            class="btn btn-primary"
+            onclick="showDiscussion()"
+        >
+            Lihat Pembahasan
+        </button>
+
+        <a
+            href="modul-k3.html"
+            class="btn btn-secondary"
+        >
+            Kembali ke Materi K3
+        </a>
+
+        <a
+            href="materi.html"
+            class="btn btn-secondary"
+        >
+            Menu Materi Utama
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PEMBAHASAN
+===================================================== -->
+
+<section
+    id="discussionPage"
+    class="card hidden"
+>
+
+    <h2>Pembahasan Kuis K3</h2>
+
+    <p style="margin-bottom:20px;">
+        Berikut pembahasan jawaban peserta.
+    </p>
+
+    <div id="discussionContainer"></div>
+
+    <div style="text-align:center; margin-top:25px;">
+
+        <a
+            href="modul-k3.html"
+            class="btn btn-primary"
+        >
+            Kembali ke Materi K3
+        </a>
+
+        <a
+            href="materi.html"
+            class="btn btn-secondary"
+        >
+            Menu Materi Utama
+        </a>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<footer>
+
+    <p>
+        TIK LEARNING — UPTD BLK Kabupaten Subang
+    </p>
+
+    <p>
+        Kuis Kesehatan dan Keselamatan Kerja (K3)
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   KONFIGURASI
+===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+const QUIZ_PASSWORD = "K3BLK";
+
+const QUIZ_TIME = 10 * 60;
+
+const PASSING_SCORE = 75;
+
+const QUIZ_MODULE =
+"Modul K3 - Kesehatan dan Keselamatan Kerja";
+
+
+/* =====================================================
+   SOAL
+===================================================== */
+
+const questions = [
+
+{
+    question:
+    "Berapa kisaran intensitas nilai pencahayaan yang dibutuhkan untuk pekerjaan dengan tingkat ketelitian dan kecermatan seperti di ruang komputer?",
+
+    options: [
+        "20 sampai 40 foot candles",
+        "40 sampai 80 foot candles",
+        "50 sampai 100 foot candles",
+        "80 sampai 120 foot candles"
+    ],
+
+    answer: 1,
+
+    explanation:
+    "Pekerjaan dengan tingkat ketelitian dan kecermatan seperti di ruang komputer membutuhkan intensitas pencahayaan 40 sampai 80 foot candles."
+},
+
+{
+    question:
+    "Pada daerah penempatan Visual Display Units, intensitas pencahayaan sebaiknya tidak lebih dari ...",
+
+    options: [
+        "30 foot candles",
+        "40 foot candles",
+        "50 foot candles",
+        "80 foot candles"
+    ],
+
+    answer: 2,
+
+    explanation:
+    "Pada daerah penempatan Visual Display Units, intensitas nilai pencahayaan sebaiknya tidak lebih dari 50 foot candles."
+},
+
+{
+    question:
+    "Apa yang harus dihindarkan dari sinar matahari langsung dalam ruang komputer?",
+
+    options: [
+        "Kursi dan meja peserta",
+        "Konsole dan panel kontrol",
+        "Pintu dan jendela",
+        "Keyboard dan mouse"
+    ],
+
+    answer: 1,
+
+    explanation:
+    "Konsole dan panel kontrol harus dihindarkan dari sinar matahari langsung."
+},
+
+{
+    question:
+    "Material untuk pembuatan ruang komputer dianjurkan memenuhi ketentuan ...",
+
+    options: [
+        "Ketahanan terhadap api",
+        "Ketahanan terhadap suara",
+        "Ketahanan terhadap debu",
+        "Ketahanan terhadap air"
+    ],
+
+    answer: 0,
+
+    explanation:
+    "Material pembuatan ruang komputer dianjurkan memenuhi ketentuan ketahanan terhadap api berdasarkan standar NEPA."
+},
+
+{
+    question:
+    "Mengapa ruang komputer sebaiknya jauh dari kegiatan mesin pres atau sejenisnya?",
+
+    options: [
+        "Karena menimbulkan cahaya",
+        "Karena menimbulkan kelembaban",
+        "Karena menimbulkan sumber getaran",
+        "Karena menimbulkan suara manusia"
+    ],
+
+    answer: 2,
+
+    explanation:
+    "Mesin pres atau kegiatan sejenis dapat menimbulkan sumber getaran yang harus dihindari dari ruang komputer."
+},
+
+{
+    question:
+    "Manakah yang termasuk persyaratan teknis ruang komputer?",
+
+    options: [
+        "Bebas debu",
+        "Banyak asap",
+        "Banyak getaran",
+        "Banyak zat kimia"
+    ],
+
+    answer: 0,
+
+    explanation:
+    "Salah satu persyaratan teknis ruang komputer adalah bebas debu."
+},
+
+{
+    question:
+    "Manakah yang termasuk persyaratan teknis ruang komputer?",
+
+    options: [
+        "Bebas pengaruh medan magnet dan listrik",
+        "Dekat dengan medan listrik besar",
+        "Dekat dengan sumber asap",
+        "Dekat dengan proses kimia"
+    ],
+
+    answer: 0,
+
+    explanation:
+    "Ruang komputer harus bebas dari pengaruh medan magnet dan listrik."
+},
+
+{
+    question:
+    "Apa yang sebaiknya dilakukan terhadap alat-alat komputer yang sering digunakan?",
+
+    options: [
+        "Diletakkan jauh dari pengguna",
+        "Diletakkan di bawah meja",
+        "Diletakkan dekat agar mudah dijangkau",
+        "Disimpan di ruangan lain"
+    ],
+
+    answer: 2,
+
+    explanation:
+    "Alat-alat yang sering digunakan sebaiknya ditempatkan dekat sehingga mudah dijangkau."
+},
+
+{
+    question:
+    "Bagaimana posisi tubuh yang baik ketika duduk menggunakan komputer?",
+
+    options: [
+        "Duduk membungkuk",
+        "Duduk tegap dengan pinggul, bahu dan telinga lurus",
+        "Duduk miring ke kiri",
+        "Duduk dengan kaki menggantung"
+    ],
+
+    answer: 1,
+
+    explanation:
+    "Pengguna sebaiknya duduk tegap dan menjaga pinggul, bahu, serta telinga dalam posisi lurus."
+},
+
+{
+    question:
+    "Jika kaki tidak menyentuh lantai ketika duduk menggunakan komputer, apa yang dapat dilakukan?",
+
+    options: [
+        "Menaikkan kursi",
+        "Menggunakan meja yang lebih tinggi",
+        "Merendahkan kursi atau menggunakan sandaran kaki",
+        "Menjauhkan kursi dari meja"
+    ],
+
+    answer: 2,
+
+    explanation:
+    "Jika kaki tidak menyentuh lantai, kursi dapat direndahkan atau digunakan sandaran kaki."
+},
+
+{
+    question:
+    "Bagaimana posisi monitor yang benar?",
+
+    options: [
+        "Jauh di bawah mata",
+        "Bagian atas monitor tepat di mata dan langsung berhadapan",
+        "Di samping pengguna",
+        "Jauh di atas kepala"
+    ],
+
+    answer: 1,
+
+    explanation:
+    "Bagian atas monitor sebaiknya berada tepat di mata dan langsung berhadapan dengan pengguna."
+},
+
+{
+    question:
+    "Menurut materi, jarak antara operator dengan monitor kira-kira ...",
+
+    options: [
+        "5–10 inch",
+        "10–15 inch",
+        "15–30 inch",
+        "30–50 inch"
+    ],
+
+    answer: 2,
+
+    explanation:
+    "Materi menyebutkan jarak antara operator dengan monitor kira-kira 15 sampai 30 inch."
+},
+
+{
+    question:
+    "Berapa jarak pandang yang disebutkan dalam materi untuk garis pandang mata yang tegak lurus pada monitor?",
+
+    options: [
+        "25 cm",
+        "40 cm",
+        "50 cm",
+        "75 cm"
+    ],
+
+    answer: 2,
+
+    explanation:
+    "Garis pandang dari mata harus tegak lurus pada monitor dengan jarak 50 cm."
+},
+
+{
+    question:
+    "Manakah tindakan yang dianjurkan untuk mengurangi kelelahan mata, punggung dan leher?",
+
+    options: [
+        "Terus bekerja tanpa istirahat",
+        "Istirahat sebentar-sebentar tetapi sering",
+        "Duduk dalam posisi membungkuk",
+        "Menatap monitor terus-menerus"
+    ],
+
+    answer: 1,
+
+    explanation:
+    "Materi menganjurkan istirahat sebentar-sebentar tetapi sering untuk membantu mengurangi kelelahan."
+},
+
+{
+    question:
+    "Manakah urutan yang sesuai dengan prosedur menghidupkan komputer?",
+
+    options: [
+        "Monitor → CPU → kabel listrik → stavol → desktop",
+        "Kabel listrik → stavol → CPU → monitor → tunggu desktop",
+        "CPU → monitor → stavol → kabel listrik → desktop",
+        "Stavol → monitor → kabel listrik → CPU → desktop"
+    ],
+
+    answer: 1,
+
+    explanation:
+    "Urutan menghidupkan komputer adalah menyambungkan kabel listrik, menghidupkan stavol, menghidupkan CPU, menghidupkan monitor, kemudian menunggu tampilan desktop."
+}
+
+];
+
+
+/* =====================================================
+   VARIABEL
+===================================================== */
+
+let currentQuestion = 0;
+
+let userAnswers =
+    new Array(questions.length).fill(null);
+
+let participantName = "";
+
+let participantClass = "";
+
+let timeLeft = QUIZ_TIME;
+
+let timerInterval = null;
+
+let quizFinished = false;
+
+let quizResult = null;
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+function checkPassword() {
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    const error =
+        document.getElementById("passwordError");
+
+
+    if (password === QUIZ_PASSWORD) {
+
+        error.textContent = "";
+
+        document
+            .getElementById("passwordPage")
+            .classList.add("hidden");
+
+        document
+            .getElementById("namePage")
+            .classList.remove("hidden");
+
+    } else {
+
+        error.textContent =
+        "Password yang dimasukkan tidak benar.";
+
+    }
+}
+
+
+/* =====================================================
+   MULAI KUIS
+===================================================== */
+
+function startQuiz() {
+
+    participantName =
+        document
+        .getElementById("participantName")
+        .value
+        .trim();
+
+
+    participantClass =
+        document
+        .getElementById("participantClass")
+        .value
+        .trim();
+
+
+    const error =
+        document.getElementById("nameError");
+
+
+    if (participantName === "") {
+
+        error.textContent =
+        "Nama peserta wajib diisi.";
+
+        document
+        .getElementById("participantName")
+        .focus();
+
+        return;
+    }
+
+
+    if (participantClass === "") {
+
+        error.textContent =
+        "Kelas wajib diisi.";
+
+        document
+        .getElementById("participantClass")
+        .focus();
+
+        return;
+    }
+
+
+    error.textContent = "";
+
+
+    document
+        .getElementById("namePage")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("quizPage")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("participantDisplay")
+        .textContent =
+        "Peserta: " +
+        participantName +
+        " | Kelas: " +
+        participantClass;
+
+
+    currentQuestion = 0;
+
+    userAnswers =
+        new Array(questions.length).fill(null);
+
+    timeLeft = QUIZ_TIME;
+
+    quizFinished = false;
+
+
+    showQuestion();
+
+    startTimer();
+}
+
+
+/* =====================================================
+   TAMPILKAN SOAL
+===================================================== */
+
+function showQuestion() {
+
+    const q =
+        questions[currentQuestion];
+
+
+    document
+        .getElementById("questionNumber")
+        .textContent =
+        "Soal " +
+        (currentQuestion + 1);
+
+
+    document
+        .getElementById("questionText")
+        .textContent =
+        q.question;
+
+
+    document
+        .getElementById("questionCounter")
+        .textContent =
+        "Soal " +
+        (currentQuestion + 1) +
+        " dari " +
+        questions.length;
+
+
+    const optionsContainer =
+        document.getElementById("options");
+
+
+    optionsContainer.innerHTML = "";
+
+
+    const letters =
+        ["A", "B", "C", "D"];
+
+
+    q.options.forEach(function(option, index) {
+
+        const label =
+            document.createElement("label");
+
+
+        label.className = "option";
+
+
+        if (
+            userAnswers[currentQuestion] === index
+        ) {
+
+            label.classList.add("selected");
+
+        }
+
+
+        label.innerHTML = `
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${
+                    userAnswers[currentQuestion] === index
+                    ? "checked"
+                    : ""
+                }
+            >
+
+            <strong>
+                ${letters[index]}.
+            </strong>
+
+            ${option}
+
+        `;
+
+
+        label
+            .querySelector("input")
+            .addEventListener(
+                "change",
+                function() {
+
+                    userAnswers[currentQuestion] =
+                        Number(this.value);
+
+
+                    updateProgress();
+
+
+                    document
+                        .querySelectorAll(".option")
+                        .forEach(function(item) {
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+                        });
+
+
+                    label.classList.add(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+        optionsContainer
+            .appendChild(label);
+
+    });
+
+
+    document
+        .getElementById("prevButton")
+        .style.visibility =
+        currentQuestion === 0
+        ? "hidden"
+        : "visible";
+
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+
+    if (
+        currentQuestion ===
+        questions.length - 1
+    ) {
+
+        nextButton.textContent =
+        "Selesai & Lihat Nilai";
+
+        nextButton.className =
+        "btn btn-success";
+
+    } else {
+
+        nextButton.textContent =
+        "Berikutnya →";
+
+        nextButton.className =
+        "btn btn-primary";
+
+    }
+
+
+    updateProgress();
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress() {
+
+    const answered =
+        userAnswers.filter(
+            answer => answer !== null
+        ).length;
+
+
+    document
+        .getElementById("answeredCounter")
+        .textContent =
+        "Terjawab: " +
+        answered +
+        "/" +
+        questions.length;
+
+
+    const progress =
+        (
+            (currentQuestion + 1) /
+            questions.length
+        ) * 100;
+
+
+    document
+        .getElementById("progressFill")
+        .style.width =
+        progress + "%";
+}
+
+
+/* =====================================================
+   SEBELUMNYA
+===================================================== */
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        showQuestion();
+
+    }
+}
+
+
+/* =====================================================
+   BERIKUTNYA
+===================================================== */
+
+function nextQuestion() {
+
+    if (
+        currentQuestion <
+        questions.length - 1
+    ) {
+
+        currentQuestion++;
+
+        showQuestion();
+
+    } else {
+
+        finishQuiz();
+
+    }
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer() {
+
+    clearInterval(timerInterval);
+
+    updateTimer();
+
+
+    timerInterval =
+        setInterval(function() {
+
+            timeLeft--;
+
+            updateTimer();
+
+
+            if (timeLeft <= 0) {
+
+                clearInterval(timerInterval);
+
+
+                alert(
+                    "Waktu kuis telah habis. Jawaban akan dikumpulkan otomatis."
+                );
+
+
+                finishQuiz();
+
+            }
+
+        }, 1000);
+}
+
+
+/* =====================================================
+   UPDATE TIMER
+===================================================== */
+
+function updateTimer() {
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+
+    const seconds =
+        timeLeft % 60;
+
+
+    const timer =
+        document.getElementById("timer");
+
+
+    timer.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+
+    timer.classList.remove(
+        "warning",
+        "danger"
+    );
+
+
+    if (timeLeft <= 60) {
+
+        timer.classList.add("danger");
+
+    } else if (timeLeft <= 180) {
+
+        timer.classList.add("warning");
+
+    }
+}
+
+
+/* =====================================================
+   SELESAI KUIS
+===================================================== */
+
+function finishQuiz() {
+
+    if (quizFinished) {
+        return;
+    }
+
+
+    quizFinished = true;
+
+
+    clearInterval(timerInterval);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let empty = 0;
+
+
+    questions.forEach(function(q, index) {
+
+        if (
+            userAnswers[index] === null
+        ) {
+
+            empty++;
+
+        } else if (
+            userAnswers[index] === q.answer
+        ) {
+
+            correct++;
+
+        } else {
+
+            wrong++;
+
+        }
+
+    });
+
+
+    const score =
+        Math.round(
+            (correct / questions.length) *
+            100
+        );
+
+
+    const status =
+        score >= PASSING_SCORE
+        ? "Lulus"
+        : "Belum Lulus";
+
+
+    quizResult = {
+
+        nama: participantName,
+
+        kelas: participantClass,
+
+        modul: QUIZ_MODULE,
+
+        jumlahSoal: questions.length,
+
+        benar: correct,
+
+        nilai: score,
+
+        waktu: formatWaktuPengerjaan(),
+
+        status: status
+
+    };
+
+
+    document
+        .getElementById("quizPage")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("resultPage")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("resultName")
+        .textContent =
+        participantName;
+
+
+    document
+        .getElementById("resultClass")
+        .textContent =
+        participantClass;
+
+
+    document
+        .getElementById("resultScore")
+        .textContent =
+        score;
+
+
+    document
+        .getElementById("resultTotal")
+        .textContent =
+        questions.length;
+
+
+    document
+        .getElementById("resultCorrect")
+        .textContent =
+        correct;
+
+
+    document
+        .getElementById("resultWrong")
+        .textContent =
+        wrong;
+
+
+    document
+        .getElementById("resultEmpty")
+        .textContent =
+        empty;
+
+
+    const resultStatus =
+        document.getElementById(
+            "resultStatus"
+        );
+
+
+    resultStatus.textContent =
+        status.toUpperCase();
+
+
+    resultStatus.className =
+        "result-status " +
+        (
+            score >= PASSING_SCORE
+            ? "status-lulus"
+            : "status-gagal"
+        );
+
+
+    saveResultToGoogleSheet();
+}
+
+
+/* =====================================================
+   WAKTU PENGERJAAN
+===================================================== */
+
+function formatWaktuPengerjaan() {
+
+    const elapsed =
+        QUIZ_TIME - timeLeft;
+
+
+    const minutes =
+        Math.floor(elapsed / 60);
+
+
+    const seconds =
+        elapsed % 60;
+
+
+    return (
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0")
+    );
+}
+
+
+/* =====================================================
+   SIMPAN KE GOOGLE SHEETS
+===================================================== */
+
+async function saveResultToGoogleSheet() {
+
+    const message =
+        document.getElementById(
+            "saveMessage"
+        );
+
+
+    message.className =
+        "save-message";
+
+
+    message.textContent =
+        "⏳ Menyimpan hasil kuis ke Google Sheet...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                        "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                    JSON.stringify({
+
+                        jenis: "kuis",
+
+                        nama:
+                        quizResult.nama,
+
+                        kelas:
+                        quizResult.kelas,
+
+                        modul:
+                        quizResult.modul,
+
+                        jumlahSoal:
+                        quizResult.jumlahSoal,
+
+                        benar:
+                        quizResult.benar,
+
+                        nilai:
+                        quizResult.nilai,
+
+                        waktu:
+                        quizResult.waktu
+
+                    })
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.status === "success"
+        ) {
+
+            message.className =
+                "save-message save-success";
+
+
+            message.innerHTML =
+                "✅ Hasil kuis berhasil disimpan ke Google Sheet." +
+                "<br>" +
+                "ID Hasil: <strong>" +
+                result.id +
+                "</strong>";
+
+
+        } else {
+
+            throw new Error(
+                result.message ||
+                "Gagal menyimpan hasil."
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Gagal menyimpan hasil:",
+            error
+        );
+
+
+        message.className =
+            "save-message save-error";
+
+
+        message.innerHTML =
+            "❌ Hasil kuis belum berhasil dikirim ke Google Sheet." +
+            "<br>" +
+            "Silakan laporkan kepada instruktur.";
+
+
+        /*
+         * Hasil tetap disimpan di browser
+         * sebagai cadangan.
+         */
+
+        localStorage.setItem(
+            "hasilKuisK3",
+            JSON.stringify(quizResult)
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   PEMBAHASAN
+===================================================== */
+
+function showDiscussion() {
+
+    document
+        .getElementById("resultPage")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("discussionPage")
+        .classList.remove("hidden");
+
+
+    const container =
+        document.getElementById(
+            "discussionContainer"
+        );
+
+
+    container.innerHTML = "";
+
+
+    const letters =
+        ["A", "B", "C", "D"];
+
+
+    questions.forEach(function(q, index) {
+
+        const userAnswer =
+            userAnswers[index];
+
+
+        const isCorrect =
+            userAnswer === q.answer;
+
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "discussion-item " +
+            (
+                isCorrect
+                ? "correct"
+                : "wrong"
+            );
+
+
+        let userAnswerText;
+
+
+        if (userAnswer === null) {
+
+            userAnswerText =
+            "Tidak dijawab";
+
+        } else {
+
+            userAnswerText =
+                letters[userAnswer] +
+                ". " +
+                q.options[userAnswer];
+
+        }
+
+
+        const correctAnswerText =
+            letters[q.answer] +
+            ". " +
+            q.options[q.answer];
+
+
+        item.innerHTML = `
+
+            <h4>
+                Soal ${index + 1}
+            </h4>
+
+            <p>
+                <strong>
+                    ${q.question}
+                </strong>
+            </p>
+
+            <p>
+                Jawaban Anda:
+                <span class="${
+                    isCorrect
+                    ? "answer-correct"
+                    : "answer-wrong"
+                }">
+                    ${userAnswerText}
+                </span>
+            </p>
+
+            <p>
+                Jawaban yang benar:
+                <span class="answer-correct">
+                    ${correctAnswerText}
+                </span>
+            </p>
+
+            <p>
+                <strong>Pembahasan:</strong>
+                ${q.explanation}
+            </p>
+
+        `;
+
+
+        container.appendChild(item);
+
+    });
+
+}
+
+
+/* =====================================================
+   PERINGATAN KELUAR
+===================================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(event) {
+
+        if (
+            !quizFinished &&
+            !document
+                .getElementById("quizPage")
+                .classList
+                .contains("hidden")
+        ) {
+
+            event.preventDefault();
+
+            event.returnValue = "";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
