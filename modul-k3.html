@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modul K3 - TIK Learning</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f6fa;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #0d6efd, #084298);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 92%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        /* JUDUL MODUL */
+        .module-title {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border-left: 6px solid #0d6efd;
+        }
+
+        .module-title h2 {
+            color: #084298;
+            margin-bottom: 10px;
+        }
+
+        .module-title p {
+            color: #555;
+        }
+
+        /* DAFTAR MATERI */
+        .materi-list {
+            background: #eef5ff;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-top: 15px;
+        }
+
+        .materi-list h3 {
+            color: #084298;
+            margin-bottom: 10px;
+        }
+
+        .materi-list ol {
+            padding-left: 25px;
+        }
+
+        /* SECTION */
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+        }
+
+        .section h2 {
+            color: #0d6efd;
+            font-size: 21px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e5eaf0;
+            padding-bottom: 8px;
+        }
+
+        .section h3 {
+            color: #084298;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul,
+        .section ol {
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        .section li {
+            margin-bottom: 7px;
+        }
+
+        /* KOTAK INFORMASI */
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #0d6efd;
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 5px solid #198754;
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* PROSEDUR */
+        .procedure {
+            counter-reset: langkah;
+            list-style: none;
+            padding-left: 0 !important;
+        }
+
+        .procedure li {
+            counter-increment: langkah;
+            position: relative;
+            padding: 12px 15px 12px 55px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .procedure li::before {
+            content: counter(langkah);
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background: #0d6efd;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* TABEL */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d9dee5;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #0d6efd;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* TOMBOL */
+        .button-area {
+            background: white;
+            padding: 30px 20px;
+            margin-top: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .button-area h2 {
+            color: #084298;
+            margin-bottom: 10px;
+        }
+
+        .button-area p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 24px;
+            margin: 5px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn-quiz {
+            background: #198754;
+            color: white;
+        }
+
+        .btn-back {
+            background: #6c757d;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .section,
+            .module-title {
+                padding: 18px;
+            }
+
+            .section h2 {
+                font-size: 19px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>TIK LEARNING</h1>
+        <p>UPTD BLK Kabupaten Subang</p>
+    </header>
+
+
+    <main class="container">
+
+        <!-- JUDUL MODUL -->
+        <section class="module-title">
+
+            <h2>Modul K3 Bidang Teknologi Informasi dan Komunikasi</h2>
+
+            <p>
+                <strong>Kesehatan dan Keselamatan Kerja (K3)</strong>
+                dalam menggunakan perangkat teknologi informasi dan komunikasi.
+            </p>
+
+            <div class="materi-list">
+
+                <h3>Materi yang Dipelajari</h3>
+
+                <ol>
+                    <li>Persyaratan pencahayaan ruang komputer</li>
+                    <li>Tata letak ruang komputer</li>
+                    <li>Persyaratan teknis ruang komputer</li>
+                    <li>Mengatur posisi duduk</li>
+                    <li>Memperkirakan jarak pandang dengan monitor</li>
+                    <li>Menghidupkan dan mematikan komputer sesuai prosedur</li>
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- A -->
+        <section class="section">
+
+            <h2>A. Persyaratan Pencahayaan Ruang Komputer</h2>
+
+            <p>
+                Pencahayaan ruang komputer harus memungkinkan orang bekerja
+                dengan nyaman sehingga mata tidak mudah lelah.
+            </p>
+
+            <p>
+                Pekerjaan dengan tingkat ketelitian dan kecermatan seperti
+                di ruang komputer membutuhkan intensitas nilai pencahayaan
+                <strong>40 sampai dengan 80 foot candles</strong>
+                pada bidang 30 inci dari lantai.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Ketentuan pencahayaan:</strong>
+
+                <ul>
+                    <li>Intensitas pencahayaan umum: 40–80 foot candles.</li>
+                    <li>
+                        Pada daerah penempatan Visual Display Units,
+                        intensitas pencahayaan sebaiknya tidak lebih dari
+                        50 foot candles.
+                    </li>
+                    <li>
+                        Konsole dan panel kontrol harus dihindarkan
+                        dari sinar matahari langsung.
+                    </li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- B -->
+        <section class="section">
+
+            <h2>B. Tata Letak Ruang Komputer</h2>
+
+            <p>
+                Tata letak ruang komputer perlu memperhatikan pelayanan,
+                keamanan ruang, kondisi ruang, serta aliran kegiatan
+                yang direncanakan.
+            </p>
+
+            <h3>Persyaratan Ruang Komputer</h3>
+
+            <ul>
+                <li>
+                    Material pembuatan ruang dianjurkan memenuhi ketentuan
+                    ketahanan terhadap api berdasarkan standar NEPA.
+                </li>
+
+                <li>
+                    Dinding dan plafon mampu menyerap suara yang ditimbulkan
+                    dalam ruang serta menahan suara dan panas dari luar.
+                </li>
+
+                <li>
+                    Jauh dari daerah atau vents pelepas panas dan asap.
+                </li>
+
+                <li>
+                    Jauh dari kegiatan mesin pres atau kegiatan sejenis
+                    yang menimbulkan sumber getaran.
+                </li>
+
+                <li>
+                    Tidak langsung berada di bawah lantai yang banyak
+                    tandon air atau kegiatan yang menggunakan banyak air.
+                </li>
+
+                <li>
+                    Tidak terletak di bawah lantai yang airnya tidak dapat
+                    dikontrol dengan baik.
+                </li>
+
+                <li>
+                    Jauh dari pusat pembangkit medan listrik dan medan magnet,
+                    seperti gardu induk, gardu transformator, saklar pemutus
+                    beban listrik besar, saluran listrik berdaya besar
+                    dengan kawat telanjang, dan motor-motor listrik.
+                </li>
+
+                <li>
+                    Jauh dari daerah kegiatan proses kimia,
+                    seperti pembuatan printed dengan proses etching.
+                </li>
+
+                <li>
+                    Jauh dari proses material yang menimbulkan debu atau asap.
+                </li>
+            </ul>
+
+
+            <h3>Kesatuan dengan Ruang Lain</h3>
+
+            <p>
+                Sebagai bagian dari instalasi komputer, ruang komputer
+                dalam pengaturannya harus menunjukkan kesatuan dengan
+                ruang-ruang lain.
+            </p>
+
+            <ul>
+                <li>Ruang petugas perawat teknis.</li>
+                <li>Ruang penyimpan pita dan cakram magnetis.</li>
+                <li>Ruang penyiapan data.</li>
+                <li>Kantor bagian pemrograman (Programmer Office).</li>
+            </ul>
+
+            <div class="warning-box">
+
+                <strong>Akses Ruang Komputer</strong>
+
+                <p>
+                    Letak ruang komputer harus sedemikian rupa sehingga
+                    hanya orang-orang yang berkepentingan dan erat kaitannya
+                    dengan pemrosesan data yang dapat dan mudah mencapai
+                    ruang komputer.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- C -->
+        <section class="section">
+
+            <h2>C. Persyaratan Teknis Ruang Komputer</h2>
+
+            <p>
+                Persyaratan teknis ruang komputer berkaitan dengan keamanan
+                ruang terhadap berbagai gangguan.
+            </p>
+
+            <ul>
+                <li>Terjaminnya nilai temperatur ruang.</li>
+                <li>Terjaminnya nilai kelembaban ruang.</li>
+                <li>Bebas debu.</li>
+                <li>Bebas pengaruh medan magnet dan listrik.</li>
+                <li>Bebas getaran.</li>
+                <li>Bebas asap.</li>
+                <li>Bebas dari gas-gas tertentu.</li>
+                <li>Bebas zat kimia.</li>
+                <li>Terjaminnya nilai pencahayaan.</li>
+                <li>Memperhatikan akustik ruang.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- D -->
+        <section class="section">
+
+            <h2>D. Mengatur Posisi Duduk</h2>
+
+            <p>
+                Penempatan kursi, meja, mouse, keyboard, dan layar komputer
+                yang benar akan membantu mencegah risiko gangguan kesehatan.
+            </p>
+
+
+            <h3>Area Komputer</h3>
+
+            <p>
+                Area komputer harus dijaga agar tetap teratur.
+                Alat-alat yang sering digunakan sebaiknya ditempatkan
+                dekat sehingga mudah dijangkau.
+            </p>
+
+            <p>
+                Hindari menyimpan sesuatu di bawah meja yang dapat
+                mengganggu posisi kaki.
+            </p>
+
+
+            <h3>Duduk dengan Posisi yang Baik</h3>
+
+            <ul>
+                <li>
+                    Tempatkan pantat tepat di kursi.
+                </li>
+
+                <li>
+                    Duduk tegap.
+                </li>
+
+                <li>
+                    Usahakan pinggul, bahu, dan telinga berada dalam
+                    posisi lurus.
+                </li>
+
+                <li>
+                    Kaki sebaiknya menyentuh lantai.
+                </li>
+            </ul>
+
+
+            <div class="info-box">
+
+                <strong>Jika kaki tidak menyentuh lantai</strong>
+
+                <p>
+                    Rendahkan kursi atau gunakan sandaran kaki.
+                </p>
+
+            </div>
+
+
+            <h3>Posisi Monitor</h3>
+
+            <p>
+                Monitor harus ditempatkan dengan bagian atas monitor
+                berada tepat di mata dan langsung berhadapan dengan pengguna.
+            </p>
+
+            <p>
+                Jarak antara operator dengan monitor kira-kira
+                <strong>15–30 inch</strong>.
+            </p>
+
+
+            <h3>Istirahat dan Ganti Posisi</h3>
+
+            <p>
+                Berjalan-jalan sebentar dapat membantu mengurangi stres
+                dan ketegangan pada otot. Melentangkan badan juga dapat
+                memberikan perbedaan yang besar.
+            </p>
+
+        </section>
+
+
+        <!-- E -->
+        <section class="section">
+
+            <h2>E. Memperkirakan Jarak Pandang dengan Komputer</h2>
+
+            <p>
+                Dalam menggunakan komputer dengan baik dan demi keselamatan
+                kerja pengguna komputer (brainware), pengguna harus
+                mengetahui prosedur-prosedur yang aman dalam bekerja.
+            </p>
+
+            <p>
+                Sikap posisi duduk yang baik, jarak pandang mata terhadap
+                komputer, serta prosedur perawatan komputer perlu diperhatikan
+                demi kesehatan dan keselamatan kerja.
+            </p>
+
+
+            <h3>Usaha Mengurangi Kelelahan Mata, Punggung dan Leher</h3>
+
+            <ul>
+                <li>
+                    Garis pandang dari mata harus tegak lurus pada monitor
+                    dengan jarak 50 cm.
+                </li>
+
+                <li>
+                    Bagian belakang punggung pada sandaran kursi harus keras,
+                    tetapi berbantal empuk dan tegak pada posisi 90 derajat.
+                </li>
+
+                <li>
+                    Lakukan gerakan untuk melemaskan otot.
+                </li>
+
+                <li>
+                    Istirahatlah sebentar-sebentar tetapi sering.
+                </li>
+
+                <li>
+                    Tinggalkan komputer sejenak dan lakukan refreshing.
+                </li>
+
+                <li>
+                    Usahakan penerangan tidak menyilaukan mata.
+                </li>
+
+                <li>
+                    Tinggi atau letak monitor disesuaikan dengan arah
+                    pandang mata agar mudah melihatnya.
+                </li>
+
+                <li>
+                    Perbanyak makanan yang mengandung vitamin A,
+                    seperti wortel, pisang dan sebagainya.
+                </li>
+            </ul>
+
+        </section>
+
+
+        <!-- F -->
+        <section class="section">
+
+            <h2>F. Menghidupkan Komputer Sesuai dengan Prosedur</h2>
+
+            <p>
+                Dalam mengaktifkan komputer agar tidak terjadi kerusakan
+                pada komputer, pengguna harus mengikuti prosedur yang ada.
+            </p>
+
+
+            <h3>Prosedur Menghidupkan Komputer</h3>
+
+            <ol class="procedure">
+
+                <li>
+                    Sambungkan kabel listrik.
+                </li>
+
+                <li>
+                    Hidupkan stavol sebagai penyeimbang arus.
+                </li>
+
+                <li>
+                    Hidupkan CPU dengan menekan tombol power (on/off).
+                </li>
+
+                <li>
+                    Hidupkan monitor dengan menekan tombol power (on/off).
+                </li>
+
+                <li>
+                    Tunggu hingga muncul tampilan yang disebut desktop.
+                </li>
+
+            </ol>
+
+
+            <div class="success-box">
+
+                <strong>Perhatikan!</strong>
+
+                <p>
+                    Mengikuti prosedur yang benar membantu menghindari
+                    atau memperlambat kerusakan perangkat komputer.
+                </p>
+
+            </div>
+
+
+            <h3>Prosedur Mematikan Komputer</h3>
+
+            <ol class="procedure">
+
+                <li>
+                    Tutup program aplikasi yang telah selesai digunakan
+                    dengan cara Close Windows atau klik File lalu Exit.
+                </li>
+
+                <li>
+                    Klik Start / Begin / Mulai yang biasanya berada
+                    di sebelah kiri bawah.
+                </li>
+
+                <li>
+                    Pilih Shut Down (mematikan komputer).
+                </li>
+
+                <li>
+                    Setelah muncul dialog box Shut Down,
+                    pilih Shut Down.
+                </li>
+
+                <li>
+                    Klik Yes dan tunggu hingga monitor sudah tidak aktif.
+                </li>
+
+                <li>
+                    Matikan komputer atau layar pada tombol power monitor.
+                </li>
+
+                <li>
+                    Matikan tombol power pada CPU jika sistem Shut Down
+                    tidak otomatis. Jika CPU otomatis mati,
+                    tombol power tidak perlu ditekan.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- RINGKASAN -->
+        <section class="section">
+
+            <h2>Ringkasan Modul</h2>
+
+            <p>
+                K3 dalam penggunaan perangkat teknologi informasi dan
+                komunikasi bertujuan agar pengguna dapat bekerja dengan
+                memperhatikan kondisi ruang komputer, pencahayaan,
+                posisi tubuh, jarak pandang, serta prosedur penggunaan
+                komputer yang benar.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Hal penting yang perlu diingat:</strong>
+
+                <ul>
+                    <li>Pencahayaan harus sesuai agar mata tidak mudah lelah.</li>
+                    <li>Ruang komputer harus aman dari gangguan lingkungan.</li>
+                    <li>Posisi duduk harus baik dan nyaman.</li>
+                    <li>Monitor harus berada pada posisi dan jarak yang sesuai.</li>
+                    <li>Istirahat secara berkala membantu mengurangi ketegangan.</li>
+                    <li>Komputer harus dihidupkan dan dimatikan sesuai prosedur.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOMBOL AKHIR -->
+        <section class="button-area">
+
+            <h2>Materi Telah Selesai Dipelajari?</h2>
+
+            <p>
+                Setelah mempelajari seluruh materi K3,
+                silakan lanjutkan ke kuis untuk menguji pemahaman Anda.
+            </p>
+
+            <a href="kuis-k3.html" class="btn btn-quiz">
+                Kuis K3
+            </a>
+
+            <a href="materi.html" class="btn btn-back">
+                Kembali ke Menu Materi Utama
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            TIK LEARNING — UPTD BLK Kabupaten Subang
+        </p>
+
+        <p>
+            Modul Kesehatan dan Keselamatan Kerja (K3)
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        // Efek sederhana ketika halaman selesai dimuat
+        document.addEventListener("DOMContentLoaded", function () {
+
+            console.log("Modul K3 TIK Learning berhasil dimuat.");
+
+        });
+
+    </script>
+
+</body>
+</html>
