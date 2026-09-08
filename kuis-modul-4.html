@@ -6,368 +6,132 @@
 <title>Kuis Modul 4 - TIK Learning</title>
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* =====================================================
-   PASSWORD / NAMA / MULAI
-===================================================== */
-.password-box,
-.nama-box,
-.quiz-start {
-    max-width: 650px;
-    margin: 40px auto;
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+<style id="standar-tik-learning-modul4">
+*{box-sizing:border-box}
+body{
+ margin:0;background:#f4f8fb;color:#16324f;
+ font-family:Arial,Helvetica,sans-serif;line-height:1.6
 }
-
-.password-icon,
-.nama-icon,
-.quiz-icon {
-    font-size: 60px;
-    margin-bottom: 10px;
+header{
+ background:#10833f;color:#fff;text-align:center;
+ padding:28px 20px 26px
 }
-
-.password-box h2,
-.nama-box h2,
-.quiz-start h2 {
-    color: #0077b6;
-    margin-bottom: 10px;
+header h1{margin:0;font-size:31px;font-weight:700}
+header p{margin:5px 0 0;font-size:16px}
+nav{
+ background:#fff;display:flex;justify-content:center;flex-wrap:wrap;
+ border-bottom:1px solid #e4e9ed;box-shadow:0 2px 6px rgba(0,0,0,.06)
 }
-
-.password-box p,
-.nama-box p,
-.quiz-start p {
-    color: #555;
-    line-height: 1.6;
+nav a{
+ color:#087d3c;text-decoration:none;padding:15px 25px;font-weight:600
 }
-
-/* =====================================================
-   INPUT
-===================================================== */
-.password-input,
-.nama-input {
-    width: 100%;
-    padding: 14px;
-    margin: 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
+nav a:hover{background:#f0f8f3}
+.container{max-width:1000px;margin:30px auto;padding:0 18px}
+.password-box,.nama-box,.quiz-start,.question-card,#hasilKuis{
+ background:#fff;border-radius:14px;padding:30px;margin-bottom:22px;
+ box-shadow:0 4px 15px rgba(0,0,0,.08)
 }
-
-.password-input {
-    text-align: center;
+.password-box,.nama-box{
+ max-width:650px;margin:40px auto;text-align:center
 }
-
-.nama-input {
-    text-align: left;
+.quiz-start{max-width:870px;margin:30px auto;text-align:left}
+.password-icon,.nama-icon,.quiz-icon{display:none}
+.password-box h2,.nama-box h2,.quiz-start h2{
+ color:#075d8e;margin:0 0 12px
 }
-
-/* =====================================================
-   BUTTON
-===================================================== */
-.btn-password,
-.btn-nama,
-.btn-mulai {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    background: #0077b6;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+.password-box p,.nama-box p,.quiz-start p{color:#555}
+.password-input,.nama-input{
+ width:100%;padding:14px;margin:18px 0;border:1px solid #ccc;
+ border-radius:8px;font-size:16px
 }
-
-.btn-password:hover,
-.btn-nama:hover,
-.btn-mulai:hover {
-    background: #005f8f;
+.password-input{text-align:center}.nama-input{text-align:left}
+.btn-password,.btn-nama,.btn-mulai,.btn-submit{
+ border:0;border-radius:8px;background:#10833f;color:#fff;
+ font-size:16px;font-weight:bold;cursor:pointer
 }
-
-/* =====================================================
-   ERROR
-===================================================== */
-.password-error,
-.nama-error {
-    display: none;
-    background: #f8d7da;
-    color: #842029;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+.btn-password,.btn-nama,.btn-mulai{width:100%;padding:14px}
+.btn-password:hover,.btn-nama:hover,.btn-mulai:hover,.btn-submit:hover{background:#066b33}
+.password-error,.nama-error{
+ display:none;background:#f8d7da;color:#842029;padding:12px;border-radius:8px;margin-bottom:15px
 }
-
-/* =====================================================
-   PESERTA
-===================================================== */
-.peserta-info {
-    background: #eaf6ff;
-    border-left: 5px solid #0077b6;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
-    text-align: left;
+.peserta-info{
+ background:#eef6fb;border-left:5px solid #075d8e;
+ padding:15px;margin:18px 0;border-radius:8px;text-align:left
 }
-
-.peserta-info strong {
-    color: #0077b6;
+.peserta-info strong{color:#075d8e}
+.quiz-summary{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0
 }
-
-/* =====================================================
-   RULES
-===================================================== */
-.quiz-rules {
-    margin: 25px 0;
-    padding: 20px;
-    background: #f1f7fb;
-    border-radius: 10px;
-    text-align: left;
+.summary-card{
+ background:#eef6fb;border-radius:9px;padding:16px 10px;text-align:center
 }
-
-.quiz-rules h3 {
-    color: #0077b6;
-    margin-top: 0;
+.summary-card strong{display:block;font-size:24px;color:#102f4d}
+.summary-card span{font-size:15px}
+.quiz-rules{
+ margin:22px 0;padding:20px;background:#f1f7fb;border-radius:10px;text-align:left
 }
-
-.quiz-rules li {
-    margin-bottom: 10px;
+.quiz-rules h3{color:#075d8e;margin-top:0}
+.quiz-rules li{margin-bottom:9px}
+#areaKuis{display:none}
+.timer-box{
+ position:sticky;top:10px;z-index:1000;
+ background:#eaf7ef;color:#10833f;border:2px solid #10833f;
+ padding:13px 22px;border-radius:10px;text-align:center;
+ font-size:22px;font-weight:bold;margin-bottom:20px;
+ box-shadow:0 3px 10px rgba(0,0,0,.08)
 }
-
-/* =====================================================
-   AREA KUIS
-===================================================== */
-#areaKuis {
-    display: none;
+.timer-warning{background:#fff3cd;color:#a15c00;border-color:#d08a00}
+.timer-danger{
+ background:#fde8e8;color:#b42318;border-color:#c62828;
+ animation:berkedip 1s infinite
 }
-
-/* =====================================================
-   TIMER
-===================================================== */
-.timer-box {
-    position: sticky;
-    top: 10px;
-    z-index: 1000;
-    background: #0077b6;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 21px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+@keyframes berkedip{50%{opacity:.65}}
+.question-card{padding:25px 28px}
+.question-number{color:#075d8e;font-weight:bold;margin-bottom:8px}
+.question-text{font-size:17px;font-weight:600;line-height:1.6;margin-bottom:18px}
+.option{
+ display:block;padding:13px 15px;margin:10px 0;border:1px solid #ddd;
+ border-radius:8px;cursor:pointer;background:#fff
 }
-
-.timer-warning {
-    background: #ffc107;
-    color: #222;
+.option:hover{background:#f1f7fb;border-color:#10833f}
+.option input{margin-right:10px}
+.quiz-button-area{
+ background:#fff;padding:25px;border-radius:12px;text-align:center;margin-bottom:20px;
+ box-shadow:0 3px 10px rgba(0,0,0,.06)
 }
-
-.timer-danger {
-    background: #dc3545;
-    color: white;
-    animation: berkedip 1s infinite;
+.btn-submit{padding:13px 25px;background:#10833f}
+.btn-submit:disabled{background:#999;cursor:not-allowed}
+.peringatan{
+ display:none;background:#fff3cd;border-left:5px solid #ffc107;
+ padding:15px;border-radius:6px;margin-bottom:20px
 }
-
-@keyframes berkedip {
-    50% { opacity: 0.65; }
+.status-kirim{
+ margin:20px 0;padding:15px;border-radius:8px;
+ background:#eaf6ff;color:#075d8e;font-weight:bold
 }
-
-/* =====================================================
-   SOAL
-===================================================== */
-.question-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+.status-kirim.berhasil{background:#d1e7dd;color:#0f5132}
+.status-kirim.gagal{background:#f8d7da;color:#842029}
+#hasilKuis{
+ display:none;background:#fff;padding:30px;border-radius:12px;text-align:center;
+ margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)
 }
-
-.question-number {
-    color: #0077b6;
-    font-weight: bold;
-    margin-bottom: 10px;
+.hasil-peserta{background:#f1f7fb;padding:15px;border-radius:8px;margin:20px 0}
+.nilai{font-size:55px;font-weight:bold;color:#10833f}
+.hasil-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0}
+.hasil-card{padding:18px;background:#f8fafc;border-radius:8px}
+.hasil-card strong{display:block;font-size:25px;margin-bottom:5px}
+.status-lulus{color:#198754;font-size:23px;font-weight:bold}
+.status-gagal{color:#dc3545;font-size:23px;font-weight:bold}
+.btn-reset{
+ padding:12px 22px;background:#6c757d;color:#fff;border:0;
+ border-radius:7px;cursor:pointer
 }
-
-.question-text {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.6;
-    margin-bottom: 18px;
-}
-
-.option {
-    display: block;
-    padding: 13px 15px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    background: white;
-}
-
-.option:hover {
-    background: #f1f7fb;
-    border-color: #0077b6;
-}
-
-.option input {
-    margin-right: 10px;
-}
-
-/* =====================================================
-   SUBMIT
-===================================================== */
-.quiz-button-area {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.btn-submit {
-    padding: 13px 25px;
-    background: #0077b6;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.btn-submit:hover {
-    background: #005f8f;
-}
-
-.btn-submit:disabled {
-    background: #999;
-    cursor: not-allowed;
-}
-
-/* =====================================================
-   PERINGATAN
-===================================================== */
-.peringatan {
-    display: none;
-    background: #fff3cd;
-    border-left: 5px solid #ffc107;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-/* =====================================================
-   STATUS PENGIRIMAN
-===================================================== */
-.status-kirim {
-    margin: 20px 0;
-    padding: 15px;
-    border-radius: 8px;
-    background: #eaf6ff;
-    color: #005f8f;
-    font-weight: bold;
-}
-
-.status-kirim.berhasil {
-    background: #d1e7dd;
-    color: #0f5132;
-}
-
-.status-kirim.gagal {
-    background: #f8d7da;
-    color: #842029;
-}
-
-/* =====================================================
-   HASIL
-===================================================== */
-#hasilKuis {
-    display: none;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
-
-.hasil-peserta {
-    background: #f1f7fb;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.nilai {
-    font-size: 55px;
-    font-weight: bold;
-    color: #0077b6;
-}
-
-.hasil-detail {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 25px 0;
-}
-
-.hasil-card {
-    padding: 18px;
-    background: #f8fafc;
-    border-radius: 8px;
-}
-
-.hasil-card strong {
-    display: block;
-    font-size: 25px;
-    margin-bottom: 5px;
-}
-
-.status-lulus {
-    color: #198754;
-    font-size: 23px;
-    font-weight: bold;
-}
-
-.status-gagal {
-    color: #dc3545;
-    font-size: 23px;
-    font-weight: bold;
-}
-
-.btn-reset {
-    padding: 12px 22px;
-    background: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-}
-
-.btn-reset:hover {
-    background: #545b62;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media(max-width:700px) {
-    .hasil-detail {
-        grid-template-columns: 1fr;
-    }
-
-    .password-box,
-    .nama-box,
-    .quiz-start {
-        margin: 20px;
-        padding: 25px;
-    }
+footer{background:#10833f;color:#fff;text-align:center;padding:25px;margin-top:35px}
+@media(max-width:700px){
+ .quiz-summary,.hasil-detail{grid-template-columns:1fr}
+ .password-box,.nama-box,.quiz-start{margin:20px 0;padding:25px}
+ nav a{padding:12px 10px}
+ .container{padding:0 12px}
 }
 </style>
 </head>
@@ -472,6 +236,11 @@
     <div class="peserta-info">
         👤 <strong>Nama Peserta:</strong>
         <span id="namaPesertaMulai">-</span>
+    </div>
+    <div class="quiz-summary">
+        <div class="summary-card"><strong>15</strong><span>Soal</span></div>
+        <div class="summary-card"><strong>100</strong><span>Nilai Maksimal</span></div>
+        <div class="summary-card"><strong>75</strong><span>Batas Kelulusan</span></div>
     </div>
 
     <div class="quiz-rules">

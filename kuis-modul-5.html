@@ -29,6 +29,268 @@ button{cursor:pointer}.btn-password,.btn-nama,.btn-mulai,.btn-submit,.btn-reset{
 .btn-reset{width:auto;background:#6c757d;padding:12px 24px}footer{background:#075d8e;color:#fff;text-align:center;padding:25px}
 @media(max-width:700px){.hasil-detail{grid-template-columns:1fr}}
 </style>
+
+<style id="revisi-tampilan-kuis5">
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#f4f8fb;
+ color:#16324f;
+ font-family:Arial,Helvetica,sans-serif;
+ line-height:1.6
+}
+header{
+ background:#10833f;
+ color:#fff;
+ text-align:center;
+ padding:28px 20px 26px
+}
+header h1{
+ margin:0;
+ font-size:31px;
+ font-weight:700
+}
+header p{
+ margin:5px 0 0;
+ font-size:16px
+}
+nav{
+ background:#fff;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ border-bottom:1px solid #e4e9ed;
+ box-shadow:0 2px 6px rgba(0,0,0,.06)
+}
+nav a{
+ color:#087d3c;
+ text-decoration:none;
+ padding:15px 25px;
+ font-weight:600
+}
+nav a:hover{
+ background:#f0f8f3
+}
+.container{
+ max-width:1000px;
+ margin:30px auto;
+ padding:0 18px
+}
+.password-box,.nama-box,.quiz-start,.question-card,#hasilKuis{
+ background:#fff;
+ border-radius:14px;
+ padding:30px;
+ margin-bottom:22px;
+ box-shadow:0 4px 15px rgba(0,0,0,.08)
+}
+.password-box,.nama-box{
+ text-align:center;
+ max-width:650px;
+ margin-left:auto;
+ margin-right:auto
+}
+.password-icon,.nama-icon,.quiz-icon{
+ display:none
+}
+.quiz-start{
+ text-align:center;
+ max-width:770px;
+ margin:30px auto
+}
+.quiz-start h2{
+ color:#075d8e;
+ font-size:26px;
+ margin:0 0 14px
+}
+.quiz-start>p{
+ font-size:17px;
+ font-weight:600
+}
+.peserta-info{
+ background:transparent;
+ padding:0;
+ margin:13px 0;
+ text-align:left;
+ font-size:16px
+}
+.quiz-rules{
+ background:#eef7fb;
+ padding:20px;
+ border-radius:10px;
+ text-align:left;
+ margin:22px 0
+}
+.quiz-rules h3{
+ margin-top:0;
+ color:#075d8e
+}
+.quiz-summary{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+ margin:25px 0
+}
+.summary-card{
+ background:#eef6fb;
+ border-radius:9px;
+ padding:16px 10px;
+ text-align:center
+}
+.summary-card strong{
+ display:block;
+ font-size:24px;
+ color:#102f4d
+}
+.summary-card span{
+ font-size:15px
+}
+h2{color:#075d8e}
+input[type=text],input[type=password]{
+ width:100%;
+ padding:14px;
+ border:1px solid #cbd8df;
+ border-radius:8px;
+ font-size:16px;
+ margin:12px 0
+}
+button{cursor:pointer}
+.btn-password,.btn-nama,.btn-mulai,.btn-submit,.btn-reset{
+ width:100%;
+ padding:14px;
+ border:0;
+ border-radius:8px;
+ background:#087d3c;
+ color:#fff;
+ font-weight:bold;
+ font-size:16px
+}
+.btn-password:hover,.btn-nama:hover,.btn-mulai:hover,.btn-submit:hover{
+ background:#066b33
+}
+.password-error,.nama-error{
+ display:none;
+ background:#f8d7da;
+ color:#842029;
+ padding:12px;
+ border-radius:8px
+}
+.timer-box{
+ position:sticky;
+ top:0;
+ z-index:5;
+ background:#eaf7ef;
+ color:#10833f;
+ border:2px solid #10833f;
+ padding:13px 22px;
+ text-align:center;
+ border-radius:10px;
+ margin-bottom:18px;
+ font-size:22px;
+ font-weight:bold;
+ box-shadow:0 3px 10px rgba(0,0,0,.08)
+}
+.timer-warning{background:#fff3cd;color:#a15c00;border-color:#d08a00}
+.timer-danger{background:#fde8e8;color:#b42318;border-color:#c62828}
+.peringatan{
+ display:none;
+ background:#fff3cd;
+ color:#664d03;
+ padding:14px;
+ border-radius:8px;
+ margin-bottom:15px
+}
+.question-card{
+ padding:25px 28px
+}
+.question-number{
+ color:#075d8e;
+ font-weight:bold;
+ margin-bottom:8px
+}
+.question-text{
+ font-size:18px;
+ font-weight:bold;
+ margin:8px 0 15px
+}
+.option{
+ display:block;
+ border:1px solid #d8e3e8;
+ padding:12px;
+ margin:9px 0;
+ border-radius:8px;
+ cursor:pointer;
+ background:#fff
+}
+.option:hover{background:#eef7fb}
+.option input{margin-right:8px}
+.quiz-button-area{margin:25px 0}
+#hasilKuis{
+ display:none;
+ text-align:center
+}
+.nilai{
+ font-size:60px;
+ font-weight:bold;
+ color:#10833f
+}
+.hasil-detail{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+ margin:22px 0
+}
+.hasil-card{
+ background:#eef6fb;
+ padding:16px;
+ border-radius:9px
+}
+.hasil-card strong{
+ display:block;
+ font-size:28px
+}
+.status-lulus{
+ color:#198754;
+ font-size:24px;
+ font-weight:bold
+}
+.status-gagal{
+ color:#dc3545;
+ font-size:24px;
+ font-weight:bold
+}
+.status-kirim{
+ margin:18px 0;
+ padding:13px;
+ border-radius:8px;
+ background:#eef7fb
+}
+.status-kirim.berhasil{
+ background:#d1e7dd;
+ color:#0f5132
+}
+.status-kirim.gagal{
+ background:#f8d7da;
+ color:#842029
+}
+.btn-reset{
+ width:auto;
+ background:#6c757d;
+ padding:12px 24px
+}
+footer{
+ background:#10833f;
+ color:#fff;
+ text-align:center;
+ padding:25px;
+ margin-top:35px
+}
+@media(max-width:700px){
+ .quiz-summary,.hasil-detail{grid-template-columns:1fr}
+ nav a{padding:12px 10px}
+ .container{padding:0 12px}
+}
+</style>
+
 </head>
 <body>
 <header><h1>TIK LEARNING</h1><p>UPTD BLK Kabupaten Subang</p></header>
@@ -53,7 +315,11 @@ button{cursor:pointer}.btn-password,.btn-nama,.btn-mulai,.btn-submit,.btn-reset{
 <section id="halamanMulai" class="quiz-start" style="display:none">
 <div class="quiz-icon">📝</div><h2>Kuis Modul 5</h2>
 <p><strong>Microsoft Word 2016 — Chart dan SmartArt</strong></p>
-<div class="peserta-info">👤 <strong>Nama Peserta:</strong> <span id="namaPesertaMulai">-</span></div>
+<div class="peserta-info">👤 <strong>Nama Peserta:</strong> <span id="namaPesertaMulai">-</span></div><div class="quiz-summary">
+<div class="summary-card"><strong>15</strong><span>Soal</span></div>
+<div class="summary-card"><strong>100</strong><span>Nilai Maksimal</span></div>
+<div class="summary-card"><strong>75</strong><span>Batas Kelulusan</span></div>
+</div>
 <div class="quiz-rules"><h3>📌 Ketentuan Kuis</h3><ul>
 <li>Jumlah soal: <strong>15 soal</strong></li><li>Waktu pengerjaan: <strong>10 menit</strong></li>
 <li>Timer mulai setelah tombol <strong>Mulai Kuis</strong> ditekan.</li><li>Timer tidak dapat dijeda.</li>
