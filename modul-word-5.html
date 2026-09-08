@@ -1,1081 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Modul 5 - TIK Learning</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-
-        /* =========================
-           HEADER MODUL
-        ========================= */
-
-        .modul-header {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .modul-header h2 {
-            margin-top: 0;
-            color: #0077b6;
-        }
-
-        .modul-label {
-            display: inline-block;
-            background: #0077b6;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================
-           TUJUAN PEMBELAJARAN
-        ========================= */
-
-        .tujuan {
-            background: #f1f7fb;
-            padding: 22px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .tujuan h3 {
-            margin-top: 0;
-            color: #0077b6;
-        }
-
-        .tujuan li {
-            margin-bottom: 8px;
-        }
-
-
-        /* =========================
-           MATERI
-        ========================= */
-
-        .materi-section {
-            background: white;
-            padding: 28px;
-            border-radius: 12px;
-            margin-bottom: 22px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .materi-section h2 {
-            color: #0077b6;
-            margin-top: 0;
-        }
-
-        .materi-section h3 {
-            color: #333;
-            margin-top: 25px;
-        }
-
-        .materi-section p {
-            line-height: 1.8;
-        }
-
-        .materi-section li {
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-
-
-        /* =========================
-           KOTAK INFORMASI
-        ========================= */
-
-        .info-box {
-            background: #f1f7fb;
-            border-left: 5px solid #0077b6;
-            padding: 18px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-
-        .tips-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 18px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-
-
-        /* =========================
-           CONTOH TABEL
-        ========================= */
-
-        .contoh-tabel {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .contoh-tabel th,
-        .contoh-tabel td {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        .contoh-tabel th {
-            background: #0077b6;
-            color: white;
-            text-align: center;
-        }
-
-
-        /* =========================
-           PRAKTIK
-        ========================= */
-
-        .praktik {
-            background: #f8fafc;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .praktik h2 {
-            color: #0077b6;
-        }
-
-        .praktik ol li {
-            margin-bottom: 12px;
-        }
-
-
-        /* =========================
-           TOMBOL
-        ========================= */
-
-        .modul-button-area {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .btn-kuis,
-        .btn-kembali {
-            display: inline-block;
-            padding: 12px 22px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 5px;
-        }
-
-        .btn-kuis {
-            background: #0077b6;
-            color: white;
-        }
-
-        .btn-kuis:hover {
-            opacity: 0.9;
-        }
-
-        .btn-kembali {
-            background: #e9ecef;
-            color: #333;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            .materi-section,
-            .modul-header {
-                padding: 20px;
-            }
-
-            .contoh-tabel {
-                font-size: 13px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul 5 — Chart dan SmartArt | TIK Learning</title>
+<link rel="stylesheet" href="style.css">
+<style>
+:root{--p:#075d8e;--s:#087fbd;--bg:#f5f9fb;--line:#d8e7ee}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#26343d;font:16px/1.7 Arial,sans-serif}
+header{background:var(--p);color:#fff;padding:16px 20px}.head,.hero-in,.wrap{max-width:1100px;margin:auto}
+.head{display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-size:24px;font-weight:700}.brand small{display:block;font-size:13px;font-weight:400}.back{color:#fff;text-decoration:none;border:1px solid #fff;padding:7px 12px;border-radius:7px}
+.hero{background:linear-gradient(135deg,var(--p),var(--s));color:#fff;padding:52px 20px}.hero h1{font-size:40px;line-height:1.2;margin:12px 0}.badge{font-size:13px;font-weight:bold}
+.wrap{padding:30px 20px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 3px 12px #0000000d}
+h2{color:var(--p);border-bottom:2px solid #e6eff4;padding-bottom:9px}h3{color:var(--p);margin-top:28px}h4{color:var(--s)}
+.note,.success,.warning,.practice{padding:16px 18px;border-radius:9px;margin:18px 0}.note{background:#eef7fb;border-left:5px solid var(--s)}.success{background:#edf8f0;border-left:5px solid #2e8b57}.warning{background:#fff7df;border-left:5px solid #dfa900}.practice{background:#f8fbfd;border:1px solid var(--line)}
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:9px}.toc a{color:var(--p);text-decoration:none;background:#f4f9fc;border:1px solid var(--line);padding:10px 13px;border-radius:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.mini{background:#f8fbfd;border:1px solid var(--line);border-radius:10px;padding:18px}
+table{width:100%;border-collapse:collapse;margin:15px 0}th,td{border:1px solid #ccdce4;padding:10px;vertical-align:top}th{background:#edf5f9;text-align:left}
+.step{display:flex;gap:12px;margin:10px 0}.num{min-width:30px;height:30px;border-radius:50%;background:var(--s);color:#fff;text-align:center;line-height:30px;font-weight:bold}
+.quiz{text-align:center;background:#eef7fb;padding:25px;border-radius:10px}.btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:bold}
+footer{background:var(--p);color:#fff;text-align:center;padding:25px}
+@media(max-width:750px){.toc,.two{grid-template-columns:1fr}.head{flex-direction:column;align-items:flex-start}.hero h1{font-size:30px}}
+</style>
 </head>
-
-
 <body>
-
-
-    <!-- HEADER -->
-
-    <header>
-
-        <h1>TIK LEARNING</h1>
-
-        <p>UPTD BLK Kabupaten Subang</p>
-
-    </header>
-
-
-    <!-- NAVIGASI -->
-
-    <nav>
-
-        <a href="index.html">Beranda</a>
-
-        <a href="autobiografi.html">Autobiografi</a>
-
-        <a href="materi.html">Materi</a>
-
-        <a href="tugas.html">Tugas</a>
-
-        <a href="kelas.html">Kelas Saya</a>
-
-        <a href="ruang-bertanya.html">Ruang Bertanya</a>
-
-    </nav>
-
-
-    <!-- KONTEN -->
-
-    <main class="container">
-
-
-        <!-- HEADER MODUL -->
-
-        <section class="modul-header">
-
-            <span class="modul-label">
-                MODUL 5
-            </span>
-
-            <h2>
-                📊 Tabel, Gambar, dan Objek Profesional
-            </h2>
-
-            <p>
-                <strong>Microsoft Word 2016</strong>
-            </p>
-
-            <p>
-                Pada modul ini peserta akan mempelajari cara
-                membuat dan mengelola tabel, menyisipkan gambar,
-                menggunakan Shape dan Text Box, serta menggabungkan
-                berbagai objek untuk membuat dokumen yang lebih
-                profesional.
-            </p>
-
-
-            <!-- TUJUAN -->
-
-            <div class="tujuan">
-
-                <h3>🎯 Tujuan Pembelajaran</h3>
-
-                <p>
-                    Setelah menyelesaikan Modul 5, peserta mampu:
-                </p>
-
-                <ol>
-
-                    <li>
-                        Membuat dan mengelola tabel.
-                    </li>
-
-                    <li>
-                        Menggabungkan dan memisahkan sel.
-                    </li>
-
-                    <li>
-                        Mengatur struktur tabel.
-                    </li>
-
-                    <li>
-                        Mengolah data di dalam tabel.
-                    </li>
-
-                    <li>
-                        Menyisipkan gambar ke dalam dokumen.
-                    </li>
-
-                    <li>
-                        Mengatur posisi gambar terhadap teks.
-                    </li>
-
-                    <li>
-                        Membuat dan mengatur Shape.
-                    </li>
-
-                    <li>
-                        Menggunakan Text Box.
-                    </li>
-
-                    <li>
-                        Mengatur beberapa objek dalam satu dokumen.
-                    </li>
-
-                    <li>
-                        Membuat dokumen administrasi yang
-                        menggabungkan teks, tabel, gambar,
-                        dan objek.
-                    </li>
-
-                </ol>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 1 -->
-
-        <section class="materi-section">
-
-            <h2>
-                1. Membuat Tabel
-            </h2>
-
-            <p>
-                Tabel digunakan untuk menyajikan informasi
-                secara terstruktur dalam bentuk baris dan kolom.
-            </p>
-
-            <p>
-                Dalam pekerjaan administrasi, tabel sering
-                digunakan untuk membuat:
-            </p>
-
-            <ul>
-
-                <li>Daftar peserta</li>
-
-                <li>Daftar nilai</li>
-
-                <li>Jadwal pelatihan</li>
-
-                <li>Daftar inventaris</li>
-
-                <li>Rekap kegiatan</li>
-
-                <li>Daftar kehadiran</li>
-
-            </ul>
-
-            <h3>Cara Membuat Tabel</h3>
-
-            <p>
-                Pilih menu:
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Insert → Table
-                </strong>
-
-                <p>
-                    Kemudian tentukan jumlah kolom dan
-                    baris yang diperlukan.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 2 -->
-
-        <section class="materi-section">
-
-            <h2>
-                2. Menambah dan Menghapus Baris atau Kolom
-            </h2>
-
-            <p>
-                Struktur tabel dapat diubah setelah tabel dibuat.
-                Kita dapat menambahkan maupun menghapus baris
-                dan kolom sesuai kebutuhan.
-            </p>
-
-            <h3>Menambah Baris atau Kolom</h3>
-
-            <p>
-                Klik tabel kemudian pilih:
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Table Tools → Layout
-                </strong>
-
-                <ul>
-
-                    <li>Insert Above</li>
-
-                    <li>Insert Below</li>
-
-                    <li>Insert Left</li>
-
-                    <li>Insert Right</li>
-
-                </ul>
-
-            </div>
-
-
-            <h3>Menghapus Baris atau Kolom</h3>
-
-            <p>
-                Gunakan:
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Layout → Delete
-                </strong>
-
-                <p>
-                    Kemudian pilih bagian yang ingin dihapus.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 3 -->
-
-        <section class="materi-section">
-
-            <h2>
-                3. Merge Cells
-            </h2>
-
-            <p>
-                <strong>Merge Cells</strong> digunakan untuk
-                menggabungkan beberapa sel menjadi satu.
-            </p>
-
-            <p>
-                Fitur ini sering digunakan untuk membuat
-                judul tabel.
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Cara:
-                </strong>
-
-                <ol>
-
-                    <li>
-                        Blok sel yang ingin digabung.
-                    </li>
-
-                    <li>
-                        Pilih Table Tools → Layout.
-                    </li>
-
-                    <li>
-                        Klik Merge Cells.
-                    </li>
-
-                </ol>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 4 -->
-
-        <section class="materi-section">
-
-            <h2>
-                4. Split Cells
-            </h2>
-
-            <p>
-                <strong>Split Cells</strong> digunakan untuk
-                membagi satu sel menjadi beberapa sel.
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Layout → Split Cells
-                </strong>
-
-                <p>
-                    Tentukan jumlah kolom dan baris yang
-                    diinginkan.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 5 -->
-
-        <section class="materi-section">
-
-            <h2>
-                5. Mengatur Posisi Isi Tabel
-            </h2>
-
-            <p>
-                Isi tabel dapat diatur secara horizontal
-                maupun vertikal.
-            </p>
-
-            <p>Contoh:</p>
-
-            <ul>
-
-                <li>
-                    Nama → rata kiri
-                </li>
-
-                <li>
-                    Nomor → rata tengah
-                </li>
-
-                <li>
-                    Nilai → rata tengah
-                </li>
-
-                <li>
-                    Judul tabel → rata tengah
-                </li>
-
-            </ul>
-
-            <div class="info-box">
-
-                <strong>
-                    Table Tools → Layout → Alignment
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 6 -->
-
-        <section class="materi-section">
-
-            <h2>
-                6. Mengubah Data Menjadi Tabel
-            </h2>
-
-            <p>
-                Microsoft Word dapat mengubah data teks
-                menjadi tabel secara otomatis.
-            </p>
-
-            <p>
-                Contoh data:
-            </p>
-
-            <table class="contoh-tabel">
-
-                <tr>
-
-                    <th>
-                        No
-                    </th>
-
-                    <th>
-                        Nama
-                    </th>
-
-                    <th>
-                        Program
-                    </th>
-
-                    <th>
-                        Nilai
-                    </th>
-
-                </tr>
-
-                <tr>
-
-                    <td>1</td>
-
-                    <td>Andi</td>
-
-                    <td>TIK</td>
-
-                    <td>85</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>2</td>
-
-                    <td>Budi</td>
-
-                    <td>TIK</td>
-
-                    <td>90</td>
-
-                </tr>
-
-            </table>
-
-            <p>
-                Data tersebut dapat dibuat menjadi tabel
-                menggunakan:
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Insert → Table → Convert Text to Table
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 7 -->
-
-        <section class="materi-section">
-
-            <h2>
-                7. Menyisipkan Gambar
-            </h2>
-
-            <p>
-                Gambar dapat digunakan untuk memperkuat
-                informasi dalam sebuah dokumen.
-            </p>
-
-            <p>Contohnya:</p>
-
-            <ul>
-
-                <li>Logo instansi</li>
-
-                <li>Foto kegiatan</li>
-
-                <li>Foto peserta</li>
-
-                <li>Dokumentasi</li>
-
-                <li>Ilustrasi</li>
-
-            </ul>
-
-            <div class="info-box">
-
-                <strong>
-                    Insert → Pictures
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 8 -->
-
-        <section class="materi-section">
-
-            <h2>
-                8. Mengatur Posisi Gambar terhadap Teks
-            </h2>
-
-            <p>
-                Setelah gambar dimasukkan, posisi gambar
-                dapat diatur agar teks dapat berada di
-                sekitar gambar.
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Picture Format → Wrap Text
-                </strong>
-
-                <ul>
-
-                    <li>In Line with Text</li>
-
-                    <li>Square</li>
-
-                    <li>Tight</li>
-
-                    <li>Top and Bottom</li>
-
-                    <li>Behind Text</li>
-
-                    <li>In Front of Text</li>
-
-                </ul>
-
-            </div>
-
-            <div class="tips-box">
-
-                💡 <strong>Tips:</strong>
-
-                <p>
-                    Untuk membuat teks berada di samping
-                    gambar, pilihan <strong>Square</strong>
-                    biasanya paling mudah digunakan.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 9 -->
-
-        <section class="materi-section">
-
-            <h2>
-                9. Membuat Shape
-            </h2>
-
-            <p>
-                Shape dapat digunakan untuk membuat elemen
-                visual dalam dokumen.
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Insert → Shapes
-                </strong>
-
-            </div>
-
-            <p>Contoh Shape:</p>
-
-            <ul>
-
-                <li>Rectangle</li>
-
-                <li>Circle</li>
-
-                <li>Arrow</li>
-
-                <li>Line</li>
-
-                <li>Callout</li>
-
-            </ul>
-
-            <p>
-                Shape dapat digunakan untuk membuat diagram,
-                kotak informasi, panah, dan ilustrasi sederhana.
-            </p>
-
-        </section>
-
-
-        <!-- MATERI 10 -->
-
-        <section class="materi-section">
-
-            <h2>
-                10. Text Box
-            </h2>
-
-            <p>
-                Text Box digunakan untuk menempatkan teks
-                pada area tertentu secara lebih fleksibel.
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    Insert → Text Box
-                </strong>
-
-            </div>
-
-            <p>
-                Text Box dapat digunakan untuk:
-            </p>
-
-            <ul>
-
-                <li>Informasi penting</li>
-
-                <li>Catatan</li>
-
-                <li>Keterangan gambar</li>
-
-                <li>Identitas</li>
-
-                <li>Highlight informasi</li>
-
-            </ul>
-
-        </section>
-
-
-        <!-- MATERI 11 -->
-
-        <section class="materi-section">
-
-            <h2>
-                11. Mengatur Beberapa Objek
-            </h2>
-
-            <p>
-                Jika dokumen memiliki beberapa objek seperti
-                gambar, Shape, dan Text Box, objek tersebut
-                dapat diatur agar posisinya lebih rapi.
-            </p>
-
-            <p>
-                Beberapa fitur yang dapat digunakan:
-            </p>
-
-            <ul>
-
-                <li>Bring Forward</li>
-
-                <li>Send Backward</li>
-
-                <li>Bring to Front</li>
-
-                <li>Send to Back</li>
-
-                <li>Align</li>
-
-                <li>Group</li>
-
-            </ul>
-
-            <div class="info-box">
-
-                <strong>
-                    Group
-                </strong>
-
-                <p>
-                    Fitur Group memungkinkan beberapa objek
-                    diperlakukan sebagai satu objek sehingga
-                    lebih mudah dipindahkan atau diatur.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- MATERI 12 -->
-
-        <section class="materi-section">
-
-            <h2>
-                12. Membuat Dokumen Gabungan
-            </h2>
-
-            <p>
-                Pada tahap ini peserta menggabungkan beberapa
-                kemampuan untuk menghasilkan dokumen yang
-                lebih kompleks.
-            </p>
-
-            <h3>
-                Contoh: Laporan Kegiatan Pelatihan
-            </h3>
-
-            <p>Dokumen dapat berisi:</p>
-
-            <ol>
-
-                <li>
-                    Judul kegiatan
-                </li>
-
-                <li>
-                    Identitas kegiatan
-                </li>
-
-                <li>
-                    Foto kegiatan
-                </li>
-
-                <li>
-                    Tabel peserta
-                </li>
-
-                <li>
-                    Kotak informasi menggunakan Text Box
-                </li>
-
-                <li>
-                    Diagram sederhana menggunakan Shape
-                </li>
-
-            </ol>
-
-            <div class="tips-box">
-
-                💡 <strong>Tujuan:</strong>
-
-                <p>
-                    Peserta tidak hanya memahami fungsi
-                    setiap fitur, tetapi mampu menggabungkan
-                    beberapa fitur untuk membuat dokumen
-                    administrasi yang siap digunakan.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- LATIHAN PRAKTIK -->
-
-        <section class="materi-section praktik">
-
-            <h2>
-                🏆 Latihan Praktik Modul 5
-            </h2>
-
-            <h3>
-                Membuat Laporan Kegiatan Pelatihan TIK
-            </h3>
-
-            <p>
-                Buat sebuah dokumen dengan judul:
-            </p>
-
-            <div class="info-box">
-
-                <strong>
-                    LAPORAN KEGIATAN PELATIHAN TIK
-                </strong>
-
-            </div>
-
-            <p>
-                Dokumen wajib memiliki:
-            </p>
-
-            <ol>
-
-                <li>
-                    Judul kegiatan.
-                </li>
-
-                <li>
-                    Satu foto kegiatan.
-                </li>
-
-                <li>
-                    Tabel minimal 10 peserta.
-                </li>
-
-                <li>
-                    Merge Cells pada judul tabel.
-                </li>
-
-                <li>
-                    Pengaturan alignment isi tabel.
-                </li>
-
-                <li>
-                    Satu Text Box untuk informasi penting.
-                </li>
-
-                <li>
-                    Minimal dua Shape.
-                </li>
-
-                <li>
-                    Minimal satu penggunaan Wrap Text.
-                </li>
-
-                <li>
-                    Beberapa objek diatur menggunakan
-                    Align atau Group.
-                </li>
-
-            </ol>
-
-            <h3>
-                🎯 Hasil Akhir
-            </h3>
-
-            <p>
-                Dokumen harus terlihat seperti laporan kegiatan
-                yang siap digunakan, bukan sekadar latihan fitur
-                Microsoft Word.
-            </p>
-
-        </section>
-
-
-        <!-- TOMBOL -->
-
-        <section class="modul-button-area">
-
-            <a
-                href="kuis-modul-5.html"
-                class="btn-kuis">
-
-                📝 Mulai Kuis Modul 5
-
-            </a>
-
-            <a
-                href="materi.html"
-                class="btn-kembali">
-
-                ← Kembali ke Materi
-
-            </a>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
-        </p>
-
-    </footer>
-
-
+<header><div class="head"><div class="brand">TIK Learning<small>UPTD BLK Kabupaten Subang</small></div><a class="back" href="materi.html">← Kembali ke Materi</a></div></header>
+<section class="hero"><div class="hero-in"><span class="badge">MODUL 5 • MICROSOFT WORD 2016</span><h1>Chart dan SmartArt</h1><p>Menyajikan data dan informasi secara visual menggunakan Chart dan SmartArt agar dokumen lebih informatif, mudah dipahami, dan profesional.</p></div></section>
+
+<main class="wrap">
+<section class="card"><h2>📚 Tentang Modul</h2>
+<p>Modul 5 berfokus pada dua fitur visual penting di Microsoft Word 2016, yaitu <strong>Chart</strong> dan <strong>SmartArt</strong>. Chart digunakan untuk menyajikan data, terutama data angka, dalam bentuk grafik. SmartArt digunakan untuk menyajikan proses, siklus, hierarki, daftar, hubungan, dan informasi terstruktur lainnya.</p>
+<div class="success"><strong>Kompetensi utama:</strong> peserta mampu membuat, mengedit, memformat, dan menempatkan Chart serta SmartArt secara tepat dalam dokumen Microsoft Word 2016.</div></section>
+
+<section class="card"><h2>🎯 Tujuan Pembelajaran</h2><ol>
+<li>Menjelaskan pengertian dan fungsi Chart.</li><li>Memilih jenis Chart berdasarkan tujuan penyajian data.</li><li>Membuat Chart dan mengelola sumber datanya.</li><li>Mengenal Chart Area, Plot Area, Axis, Data Series, Legend, Data Labels, Gridlines, dan elemen lainnya.</li><li>Mengatur Chart Title, Legend, Data Labels, Axis Titles, dan Gridlines.</li><li>Mengubah jenis, layout, warna, style, ukuran, posisi, dan Wrap Text Chart.</li><li>Menjelaskan pengertian dan fungsi SmartArt.</li><li>Memilih kategori dan layout SmartArt yang sesuai.</li><li>Membuat dan mengedit isi SmartArt.</li><li>Mengelola Shape dengan Add Shape, Promote, Demote, Move Up, dan Move Down.</li><li>Mengubah Layout, Change Colors, dan SmartArt Styles.</li><li>Mengatur ukuran, posisi, Align, dan Wrap Text SmartArt.</li><li>Memahami Convert to Shapes.</li><li>Menggabungkan Chart dan SmartArt dalam satu dokumen profesional.</li>
+</ol></section>
+
+<section class="card"><h2>🗂️ Peta Materi</h2><div class="toc">
+<a href="#a">A. Chart / Grafik</a><a href="#a1">A.1 Pengertian & Fungsi</a><a href="#a2">A.2 Jenis-Jenis Chart</a><a href="#a3">A.3 Membuat Chart</a><a href="#a4">A.4 Mengelola Data</a><a href="#a5">A.5 Bagian-Bagian Chart</a><a href="#a6">A.6 Elemen Chart</a><a href="#a7">A.7 Design & Format</a><a href="#a8">A.8 Latihan Chart</a>
+<a href="#b">B. SmartArt</a><a href="#b1">B.1 Pengertian & Fungsi</a><a href="#b2">B.2 Kategori</a><a href="#b3">B.3 Membuat SmartArt</a><a href="#b4">B.4 Mengelola Isi</a><a href="#b5">B.5 Design & Format</a><a href="#b6">B.6 Latihan SmartArt</a><a href="#c">C. Proyek Akhir</a><a href="#d">D. Rangkuman & Checklist</a>
+</div></section>
+
+<section class="card" id="a"><h2>📊 A. CHART / GRAFIK</h2>
+<h3 id="a1">A.1 Pengertian dan Fungsi Chart</h3>
+<p><strong>Chart</strong> adalah penyajian data dalam bentuk visual sehingga pembaca dapat melihat perbandingan, kecenderungan, atau proporsi dengan lebih cepat. Di Word 2016 Chart dibuat melalui <strong>Insert → Chart</strong>.</p>
+<ul><li>Membandingkan nilai antar kategori.</li><li>Menunjukkan perkembangan atau tren.</li><li>Menunjukkan proporsi bagian terhadap keseluruhan.</li><li>Membantu pembaca menemukan pola data.</li><li>Membuat laporan lebih komunikatif.</li></ul>
+<div class="note"><strong>Prinsip:</strong> Chart bukan hiasan. Chart harus membantu pembaca memahami data.</div>
+
+<h3 id="a2">A.2 Jenis-Jenis Chart</h3>
+<table><tr><th>Jenis</th><th>Kegunaan</th><th>Contoh</th></tr>
+<tr><td>Column</td><td>Membandingkan kategori secara vertikal.</td><td>Jumlah peserta tiap kejuruan.</td></tr>
+<tr><td>Bar</td><td>Membandingkan kategori secara horizontal.</td><td>Kategori dengan nama panjang.</td></tr>
+<tr><td>Line</td><td>Menunjukkan perubahan atau tren.</td><td>Jumlah peserta per bulan.</td></tr>
+<tr><td>Pie</td><td>Menunjukkan bagian dari keseluruhan.</td><td>Komposisi peserta.</td></tr>
+<tr><td>Area</td><td>Menunjukkan perubahan dan besaran area.</td><td>Perkembangan data.</td></tr>
+<tr><td>Scatter</td><td>Menunjukkan hubungan dua variabel numerik.</td><td>Jam latihan dan nilai.</td></tr></table>
+<div class="warning"><strong>Catatan:</strong> pilih Chart berdasarkan tujuan dan karakter data, bukan sekadar karena tampilannya menarik.</div>
+
+<h3 id="a3">A.3 Membuat Chart di Word 2016</h3>
+<div class="step"><span class="num">1</span><div>Tempatkan kursor pada lokasi Chart.</div></div><div class="step"><span class="num">2</span><div>Pilih <strong>Insert → Chart</strong>.</div></div><div class="step"><span class="num">3</span><div>Pilih kategori, misalnya <strong>Column</strong>.</div></div><div class="step"><span class="num">4</span><div>Pilih tipe Chart lalu klik <strong>OK</strong>.</div></div><div class="step"><span class="num">5</span><div>Ganti data contoh pada lembar data bergaya Excel dengan data yang diperlukan.</div></div><div class="step"><span class="num">6</span><div>Tutup lembar data. Chart akan mengikuti data yang dimasukkan.</div></div>
+
+<h3 id="a4">A.4 Mengelola Data Chart</h3>
+<p>Data Chart biasanya terdiri atas kategori dan nilai. Contoh:</p>
+<table><tr><th>Program Pelatihan</th><th>Jumlah Peserta</th></tr><tr><td>TIK</td><td>16</td></tr><tr><td>Otomotif</td><td>18</td></tr><tr><td>Las</td><td>15</td></tr><tr><td>Listrik</td><td>17</td></tr></table>
+<p>Periksa nama kategori, nilai, dan rentang data. Jika terdapat beberapa Data Series, berikan nama series yang jelas agar Legend mudah dipahami.</p>
+
+<h3 id="a5">A.5 Bagian-Bagian Chart</h3>
+<table><tr><th>Bagian</th><th>Penjelasan</th></tr><tr><td>Chart Area</td><td>Keseluruhan objek Chart.</td></tr><tr><td>Plot Area</td><td>Area tempat data series ditampilkan.</td></tr><tr><td>Chart Title</td><td>Judul yang menjelaskan isi Chart.</td></tr><tr><td>Axis</td><td>Sumbu kategori dan/atau nilai.</td></tr><tr><td>Axis Title</td><td>Keterangan pada sumbu.</td></tr><tr><td>Legend</td><td>Petunjuk nama Data Series.</td></tr><tr><td>Data Series</td><td>Kumpulan nilai yang divisualisasikan.</td></tr><tr><td>Data Labels</td><td>Nilai/informasi yang ditampilkan langsung pada elemen Chart.</td></tr><tr><td>Gridlines</td><td>Garis bantu untuk membantu membaca nilai.</td></tr></table>
+
+<h3 id="a6">A.6 Mengatur Elemen Chart</h3>
+<h4>Chart Title</h4><p>Klik Chart → <strong>Chart Design → Add Chart Element → Chart Title</strong>. Pilih posisi dan tulis judul yang jelas.</p>
+<h4>Legend</h4><p>Gunakan <strong>Add Chart Element → Legend</strong>. Legend terutama berguna jika terdapat lebih dari satu Data Series.</p>
+<h4>Data Labels</h4><p>Gunakan <strong>Add Chart Element → Data Labels</strong> agar angka terlihat langsung pada batang, titik, atau bagian Chart. Gunakan bila membantu pembaca.</p>
+<h4>Axis Titles</h4><p>Gunakan <strong>Add Chart Element → Axis Titles</strong>. Contoh: X = Program Pelatihan, Y = Jumlah Peserta.</p>
+<h4>Gridlines</h4><p>Gridlines membantu memperkirakan nilai. Gunakan secukupnya agar tampilan tetap bersih.</p>
+
+<h3 id="a7">A.7 Chart Design dan Format</h3>
+<div class="two"><div class="mini"><h4>Chart Design</h4><ul><li>Add Chart Element</li><li>Quick Layout</li><li>Change Colors</li><li>Chart Styles</li><li>Change Chart Type</li><li>Select Data</li></ul></div><div class="mini"><h4>Chart Format</h4><ul><li>Mengatur ukuran</li><li>Mengatur posisi</li><li>Mengatur format objek</li><li>Mengatur hubungan objek dengan teks</li></ul></div></div>
+<h4>Change Chart Type</h4><p>Pilih <strong>Chart Design → Change Chart Type</strong> untuk mengganti jenis Chart tanpa membuatnya dari awal.</p>
+<h4>Change Colors dan Chart Styles</h4><p>Gunakan <strong>Change Colors</strong> dan <strong>Chart Styles</strong> untuk memperbaiki tampilan dengan tetap mempertahankan keterbacaan.</p>
+<h4>Ukuran, Posisi, dan Wrap Text</h4><p>Gunakan handle pada tepi Chart untuk resize. Atur posisi dan <strong>Wrap Text</strong> agar Chart tidak bertabrakan dengan teks.</p>
+
+<div class="practice" id="a8"><h3>📝 Latihan 1 — Chart Jumlah Peserta</h3><p>Buat <strong>Column Chart</strong> menggunakan data:</p><table><tr><th>Program</th><th>Jumlah</th></tr><tr><td>TIK</td><td>16</td></tr><tr><td>Bisnis dan Manajemen</td><td>14</td></tr><tr><td>Otomotif</td><td>18</td></tr><tr><td>Las</td><td>15</td></tr><tr><td>Listrik</td><td>17</td></tr></table><ol><li>Judul: <strong>Jumlah Peserta Pelatihan</strong>.</li><li>Tampilkan <strong>Data Labels</strong> sehingga setiap nilai terlihat jelas.</li><li>Tambahkan Axis Titles bila diperlukan.</li><li>Gunakan Legend hanya jika diperlukan.</li><li>Atur ukuran dan posisi secara proporsional.</li></ol></div>
+<div class="practice"><h3>📝 Latihan 2 — Chart Perkembangan</h3><p>Buat <strong>Line Chart</strong> dari data Januari–Juni: <strong>12, 15, 18, 16, 20, 24</strong>. Tambahkan Chart Title, Axis Titles, dan Data Labels. Jelaskan mengapa Line Chart lebih tepat daripada Pie Chart untuk data tersebut.</p></div>
+</section>
+
+<section class="card" id="b"><h2>🔷 B. SMARTART</h2>
+<h3 id="b1">B.1 Pengertian dan Fungsi SmartArt</h3><p><strong>SmartArt</strong> adalah kumpulan layout grafis siap pakai untuk menyajikan informasi secara visual dan terstruktur. SmartArt cocok untuk proses, siklus, hierarki, daftar, hubungan, dan struktur informasi lainnya.</p>
+<div class="note"><strong>Perbedaan sederhana:</strong> gunakan <strong>Chart</strong> untuk memvisualisasikan data; gunakan <strong>SmartArt</strong> untuk memvisualisasikan struktur atau hubungan informasi.</div>
+
+<h3 id="b2">B.2 Kategori SmartArt</h3>
+<table><tr><th>Kategori</th><th>Kegunaan</th><th>Contoh</th></tr><tr><td>List</td><td>Daftar informasi.</td><td>Fasilitas pelatihan.</td></tr><tr><td>Process</td><td>Langkah/tahapan.</td><td>Alur pendaftaran.</td></tr><tr><td>Cycle</td><td>Proses berulang.</td><td>Siklus evaluasi.</td></tr><tr><td>Hierarchy</td><td>Struktur bertingkat.</td><td>Struktur organisasi.</td></tr><tr><td>Relationship</td><td>Hubungan antar unsur.</td><td>Hubungan konsep.</td></tr><tr><td>Matrix</td><td>Hubungan informasi dalam matriks.</td><td>Perbandingan aspek.</td></tr><tr><td>Pyramid</td><td>Informasi bertingkat.</td><td>Level prioritas.</td></tr><tr><td>Picture</td><td>Informasi dengan gambar.</td><td>Profil bergambar.</td></tr></table>
+
+<h3 id="b3">B.3 Membuat SmartArt</h3>
+<div class="step"><span class="num">1</span><div>Tempatkan kursor pada lokasi SmartArt.</div></div><div class="step"><span class="num">2</span><div>Pilih <strong>Insert → SmartArt</strong>.</div></div><div class="step"><span class="num">3</span><div>Pilih kategori sesuai tujuan informasi.</div></div><div class="step"><span class="num">4</span><div>Pilih layout yang sesuai.</div></div><div class="step"><span class="num">5</span><div>Ketik informasi pada <strong>Text Pane</strong> atau langsung pada Shape.</div></div>
+
+<h3 id="b4">B.4 Mengelola Isi dan Struktur SmartArt</h3>
+<h4>Text Pane</h4><p>Text Pane memudahkan memasukkan dan mengatur teks. Struktur indentasi dapat memengaruhi tingkat Shape.</p>
+<h4>Add Shape</h4><p>Gunakan <strong>SmartArt Design → Add Shape</strong> untuk menambahkan Shape. Posisi penambahan bergantung pada layout.</p>
+<h4>Promote dan Demote</h4><p><strong>Promote</strong> menaikkan tingkat informasi, sedangkan <strong>Demote</strong> menurunkannya. Fitur ini penting pada SmartArt Hierarchy.</p>
+<h4>Move Up dan Move Down</h4><p>Digunakan untuk mengubah urutan informasi.</p>
+<h4>Menghapus Shape</h4><p>Pilih Shape yang tidak diperlukan kemudian hapus dengan hati-hati agar struktur tetap benar.</p>
+
+<h3 id="b5">B.5 SmartArt Design dan Format</h3>
+<h4>Change Layout</h4><p>Gunakan <strong>SmartArt Design → Change Layout</strong> untuk mencoba layout lain tanpa memasukkan ulang isi.</p>
+<h4>Change Colors</h4><p>Gunakan <strong>Change Colors</strong> dan pilih kombinasi yang kontras serta mudah dibaca.</p>
+<h4>SmartArt Styles</h4><p>Gunakan <strong>SmartArt Styles</strong> untuk mengubah tampilan keseluruhan SmartArt. Hindari efek berlebihan.</p>
+<h4>Ukuran, Posisi, Align, dan Wrap Text</h4><p>Gunakan handle untuk resize, atur posisi terhadap halaman, gunakan Align saat bersama objek lain, dan atur <strong>Wrap Text</strong> agar teks tidak bertabrakan.</p>
+<h4>Convert to Shapes</h4><p>SmartArt dapat dikonversi menjadi Shapes jika diperlukan pengeditan yang lebih bebas. Setelah dikonversi, objek tidak lagi diperlakukan sebagai satu SmartArt.</p>
+
+<div class="practice" id="b6"><h3>📝 Latihan 3 — SmartArt Process</h3><p>Buat SmartArt kategori <strong>Process</strong> dengan tahapan: <strong>Pendaftaran → Seleksi → Daftar Ulang → Pelaksanaan Pelatihan → Evaluasi → Sertifikasi</strong>. Atur Change Colors, SmartArt Styles, ukuran, dan posisi.</p></div>
+<div class="practice"><h3>📝 Latihan 4 — SmartArt Hierarchy</h3><p>Buat SmartArt kategori <strong>Hierarchy</strong> dengan struktur contoh:</p><ul><li><strong>Kepala UPTD BLK</strong><ul><li>Subbagian Tata Usaha</li><li>Instruktur TIK<ul><li>Instruktur Practical Office</li><li>Instruktur Desain Grafis</li><li>Instruktur Programmer</li></ul></li><li>Instruktur Otomotif</li><li>Instruktur Las</li><li>Instruktur Listrik</li></ul></li></ul><p>Gunakan Add Shape, Promote, dan Demote untuk membentuk struktur dengan benar.</p></div>
+<div class="practice"><h3>📝 Latihan 5 — SmartArt Cycle</h3><p>Buat SmartArt kategori <strong>Cycle</strong> dengan tema <strong>Siklus Perbaikan Pelatihan</strong>: Perencanaan → Pelaksanaan → Evaluasi → Perbaikan → kembali ke Perencanaan.</p></div>
+</section>
+
+<section class="card" id="c"><h2>🏆 C. PROYEK AKHIR MODUL 5</h2><h3>Laporan Visual Pelaksanaan Pelatihan TIK</h3>
+<p>Buat dokumen Microsoft Word 2016 minimal <strong>2 halaman</strong> dengan tema <strong>“Laporan Singkat Pelaksanaan Pelatihan TIK”</strong>.</p>
+<ol><li>Buat judul laporan.</li><li>Buat tabel berisi data jumlah peserta beberapa program.</li><li>Buat <strong>Column Chart</strong> berdasarkan data.</li><li>Berikan <strong>Chart Title</strong>.</li><li>Tampilkan <strong>Data Labels</strong> agar nilai dapat dibaca.</li><li>Gunakan <strong>Legend</strong> jika data mempunyai lebih dari satu series.</li><li>Buat <strong>SmartArt Process</strong> untuk tahapan pelatihan.</li><li>Atur warna dan style dengan memperhatikan keterbacaan.</li><li>Atur ukuran, posisi, dan Wrap Text Chart serta SmartArt.</li><li>Pastikan teks dan objek tidak bertabrakan.</li><li>Simpan dokumen dalam format Word dan PDF.</li></ol>
+<div class="success"><strong>Target kompetensi:</strong> peserta mampu menentukan kapan menggunakan Chart dan kapan menggunakan SmartArt, lalu menggunakannya untuk menyampaikan informasi secara efektif.</div></section>
+
+<section class="card"><h2>⚠️ Kesalahan yang Sering Terjadi</h2><ul><li>Memilih Chart tanpa mempertimbangkan karakter data.</li><li>Tidak memberi judul Chart.</li><li>Data Labels terlalu banyak.</li><li>Legend ditampilkan padahal tidak diperlukan.</li><li>SmartArt terlalu banyak teks.</li><li>Warna dan efek berlebihan.</li><li>Chart atau SmartArt terlalu kecil.</li><li>Wrap Text tidak diatur.</li><li>Mengutamakan dekorasi daripada kejelasan.</li></ul></section>
+
+<section class="card" id="d"><h2>🧠 D. Rangkuman</h2><p><strong>Chart</strong> digunakan untuk menyajikan data secara visual. Peserta harus mampu memilih jenis Chart, mengelola data, serta mengatur Chart Title, Legend, Data Labels, Axis Titles, Gridlines, Design, ukuran, posisi, dan Wrap Text.</p><p><strong>SmartArt</strong> digunakan untuk menyajikan informasi terstruktur. Peserta perlu memahami kategori List, Process, Cycle, Hierarchy, dan lainnya serta mampu mengelola Text Pane, Add Shape, Promote, Demote, Change Layout, Change Colors, SmartArt Styles, ukuran, posisi, Align, Wrap Text, dan Convert to Shapes.</p><p><strong>Kesimpulan:</strong> dokumen profesional bukan yang paling banyak menggunakan efek, tetapi yang mampu menyampaikan informasi dengan jelas, teratur, dan mudah dibaca.</p></section>
+
+<section class="card"><h2>✅ Checklist Kompetensi</h2><div id="check"><label><input type="checkbox"> Saya dapat menjelaskan fungsi Chart.</label><br><label><input type="checkbox"> Saya dapat memilih jenis Chart yang sesuai.</label><br><label><input type="checkbox"> Saya dapat membuat dan mengelola Chart.</label><br><label><input type="checkbox"> Saya dapat mengatur Chart Title, Legend, Data Labels, Axis Titles, dan Gridlines.</label><br><label><input type="checkbox"> Saya dapat mengubah Design, Style, ukuran, posisi, dan Wrap Text Chart.</label><br><label><input type="checkbox"> Saya dapat membuat SmartArt.</label><br><label><input type="checkbox"> Saya dapat memilih kategori dan layout SmartArt.</label><br><label><input type="checkbox"> Saya dapat menggunakan Text Pane, Add Shape, Promote, dan Demote.</label><br><label><input type="checkbox"> Saya dapat menggunakan Change Layout, Change Colors, dan SmartArt Styles.</label><br><label><input type="checkbox"> Saya dapat mengatur ukuran, posisi, Align, dan Wrap Text SmartArt.</label><br><label><input type="checkbox"> Saya memahami Convert to Shapes.</label><br><label><input type="checkbox"> Saya dapat menggabungkan Chart dan SmartArt dalam satu dokumen.</label></div></section>
+
+<section class="card"><div class="quiz"><h2>📝 Kuis Modul 5</h2><p>Setelah mempelajari materi dan menyelesaikan latihan, lanjutkan ke kuis Modul 5.</p><p><strong>15 soal • Timer 10 menit • Nilai lulus 75</strong></p><a class="btn" href="kuis-modul-5.html">Mulai Kuis Modul 5</a></div></section>
+</main>
+<footer><strong>TIK Learning — UPTD BLK Kabupaten Subang</strong><br>Microsoft Word 2016 • Modul 5 — Chart dan SmartArt</footer>
+<script>
+document.querySelectorAll('#check input').forEach((e,i)=>{let k='tik-m5-'+i;e.checked=localStorage.getItem(k)==='1';e.onchange=()=>localStorage.setItem(k,e.checked?'1':'0')});
+</script>
 </body>
-
 </html>
