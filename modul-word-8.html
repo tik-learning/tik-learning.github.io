@@ -1,1062 +1,568 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 8 - Formulir Interaktif & Perlindungan Dokumen</title>
+<link rel="stylesheet" href="style.css">
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Modul 8 - TIK Learning</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-
-        /* =========================
-           HEADER MODUL
-        ========================= */
-
-        .modul-header {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .modul-header h2 {
-            color: #0077b6;
-            margin-top: 0;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #0077b6;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-
-        /* =========================
-           MATERI
-        ========================= */
-
-        .materi-section {
-            background: white;
-            padding: 28px;
-            border-radius: 12px;
-            margin-bottom: 22px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .materi-section h2 {
-            color: #0077b6;
-            margin-top: 0;
-        }
-
-        .materi-section h3 {
-            color: #333;
-            margin-top: 22px;
-        }
-
-        .materi-section p {
-            line-height: 1.8;
-        }
-
-        .materi-section li {
-            margin-bottom: 9px;
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           INFO BOX
-        ========================= */
-
-        .info-box {
-            background: #eef8fc;
-            border-left: 5px solid #0077b6;
-            padding: 18px;
-            border-radius: 7px;
-            margin: 18px 0;
-        }
-
-        .warning-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 18px;
-            border-radius: 7px;
-            margin: 18px 0;
-        }
-
-        .success-box {
-            background: #e9f7ef;
-            border-left: 5px solid #198754;
-            padding: 18px;
-            border-radius: 7px;
-            margin: 18px 0;
-        }
-
-
-        /* =========================
-           CONTOH FORM
-        ========================= */
-
-        .form-example {
-            background: #f8fafc;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 20px 0;
-        }
-
-        .form-example h3 {
-            text-align: center;
-            margin-top: 0;
-        }
-
-        .form-row {
-            margin-bottom: 15px;
-        }
-
-        .form-row label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .form-input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            background: white;
-        }
-
-
-        /* =========================
-           LANGKAH
-        ========================= */
-
-        .step {
-            display: flex;
-            gap: 15px;
-            margin: 15px 0;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            min-width: 35px;
-            height: 35px;
-            background: #0077b6;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .step-content {
-            flex: 1;
-        }
-
-
-        /* =========================
-           TOMBOL
-        ========================= */
-
-        .button-area {
-            text-align: center;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 22px;
-            margin: 5px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background: #0077b6;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #e9ecef;
-            color: #333;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            .materi-section,
-            .modul-header {
-                padding: 20px;
-            }
-
-            .step {
-                gap: 10px;
-            }
-
-        }
-
-    </style>
-
+<style>
+.modul-header,.materi-section,.button-area{
+    background:white;padding:28px;border-radius:12px;margin-bottom:22px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)
+}
+.modul-header h2,.materi-section h2{color:#0077b6;margin-top:0}
+.badge{display:inline-block;background:#0077b6;color:white;padding:6px 12px;border-radius:20px;font-size:13px;margin-bottom:12px}
+.materi-section h3{color:#333;margin-top:22px}
+.materi-section p{line-height:1.8}
+.materi-section li{margin-bottom:9px;line-height:1.7}
+.info-box,.warning-box,.success-box{
+    padding:18px;border-radius:7px;margin:18px 0
+}
+.info-box{background:#eef8fc;border-left:5px solid #0077b6}
+.warning-box{background:#fff3cd;border-left:5px solid #ffc107}
+.success-box{background:#e9f7ef;border-left:5px solid #198754}
+.form-example{
+    background:#f8fafc;border:1px solid #ddd;border-radius:10px;padding:25px;margin:20px 0
+}
+.form-example h3{text-align:center;margin-top:0}
+.form-row{margin-bottom:15px}
+.form-row label{display:block;font-weight:600;margin-bottom:6px}
+.form-input{
+    width:100%;box-sizing:border-box;padding:10px;border:1px solid #ccc;
+    border-radius:6px;background:white
+}
+.step{display:flex;gap:15px;margin:15px 0;align-items:flex-start}
+.step-number{
+    min-width:35px;height:35px;background:#0077b6;color:white;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:bold
+}
+.step-content{flex:1}
+.button-area{text-align:center}
+.btn{
+    display:inline-block;padding:12px 22px;margin:5px;border-radius:7px;
+    text-decoration:none;font-weight:600
+}
+.btn-primary{background:#0077b6;color:white}
+.btn-secondary{background:#e9ecef;color:#333}
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0}
+.compare-table th,.compare-table td{border:1px solid #ddd;padding:12px;text-align:left;vertical-align:top}
+.compare-table th{background:#eef8fc;color:#075d8e}
+.flow{
+    background:#eef8fc;border:1px solid #c9e8f5;border-radius:10px;
+    padding:20px;text-align:center;font-weight:600
+}
+@media(max-width:700px){
+    .materi-section,.modul-header{padding:20px}
+    .step{gap:10px}
+    .compare-table{font-size:14px}
+}
+</style>
 </head>
-
 
 <body>
 
-
-    <!-- HEADER -->
-
-    <header>
-
-        <h1>TIK LEARNING</h1>
-
-        <p>UPTD BLK Kabupaten Subang</p>
-
-    </header>
-
-
-    <!-- NAVIGASI -->
-
-    <nav>
-
-        <a href="index.html">Beranda</a>
-
-        <a href="autobiografi.html">Autobiografi</a>
-
-        <a href="materi.html">Materi</a>
-
-        <a href="tugas.html">Tugas</a>
-
-        <a href="kelas.html">Kelas Saya</a>
-
-        <a href="ruang-bertanya.html">Ruang Bertanya</a>
-
-    </nav>
-
-
-    <!-- KONTEN -->
-
-    <main class="container">
-
-
-        <!-- JUDUL MODUL -->
-
-        <section class="modul-header">
-
-            <span class="badge">
-                MICROSOFT WORD 2016
-            </span>
-
-            <h2>
-                📋 Modul 8 — Formulir Interaktif & Protect Document
-            </h2>
-
-            <p>
-                Pada modul ini peserta akan mempelajari cara membuat
-                formulir interaktif menggunakan Microsoft Word 2016
-                serta melindungi dokumen agar bagian tertentu tidak
-                dapat diubah oleh pengguna.
-            </p>
-
-            <div class="info-box">
-
-                <strong>🎯 Kompetensi Modul:</strong>
-
-                <p>
-                    Setelah menyelesaikan modul ini, peserta mampu
-                    membuat formulir interaktif menggunakan Text Field,
-                    Check Box, Drop-Down List, Date Picker, serta
-                    menerapkan perlindungan dokumen.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 1 -->
-
-        <section class="materi-section">
-
-            <h2>1. Mengenal Formulir Interaktif</h2>
-
-            <p>
-                Formulir interaktif adalah dokumen yang menyediakan
-                bagian tertentu untuk diisi oleh pengguna secara
-                langsung. Berbeda dengan formulir biasa, pengguna
-                dapat mengisi kolom, memilih pilihan, atau menentukan
-                tanggal tanpa mengubah struktur utama dokumen.
-            </p>
-
-            <h3>Contoh penggunaan formulir:</h3>
-
-            <ul>
-
-                <li>Formulir pendaftaran peserta pelatihan.</li>
-
-                <li>Formulir data peserta.</li>
-
-                <li>Formulir evaluasi.</li>
-
-                <li>Formulir administrasi kantor.</li>
-
-                <li>Formulir pemeriksaan atau pendataan.</li>
-
-            </ul>
-
-        </section>
-
-
-        <!-- 2 -->
-
-        <section class="materi-section">
-
-            <h2>2. Mengaktifkan Tab Developer</h2>
-
-            <p>
-                Fitur untuk membuat formulir interaktif terdapat
-                pada tab <strong>Developer</strong>. Pada beberapa
-                instalasi Microsoft Word, tab ini belum ditampilkan
-                sehingga perlu diaktifkan terlebih dahulu.
-            </p>
-
-            <h3>Langkah mengaktifkan Developer:</h3>
-
-            <div class="step">
-
-                <div class="step-number">1</div>
-
-                <div class="step-content">
-                    Klik <strong>File</strong>.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">2</div>
-
-                <div class="step-content">
-                    Pilih <strong>Options</strong>.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">3</div>
-
-                <div class="step-content">
-                    Pilih <strong>Customize Ribbon</strong>.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">4</div>
-
-                <div class="step-content">
-                    Beri tanda centang pada
-                    <strong>Developer</strong>.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">5</div>
-
-                <div class="step-content">
-                    Klik <strong>OK</strong>.
-                </div>
-
-            </div>
-
-            <div class="success-box">
-
-                <strong>💡 Hasil:</strong>
-
-                <p>
-                    Tab Developer akan muncul pada Ribbon
-                    Microsoft Word.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 3 -->
-
-        <section class="materi-section">
-
-            <h2>3. Mengenal Controls pada Developer</h2>
-
-            <p>
-                Pada tab Developer terdapat beberapa kontrol yang
-                dapat digunakan untuk membuat formulir interaktif.
-            </p>
-
-            <ul>
-
-                <li>
-                    <strong>Rich Text Content Control</strong> —
-                    menyediakan area untuk memasukkan teks dengan
-                    format tertentu.
-                </li>
-
-                <li>
-                    <strong>Plain Text Content Control</strong> —
-                    digunakan untuk memasukkan teks sederhana.
-                </li>
-
-                <li>
-                    <strong>Check Box</strong> —
-                    digunakan untuk pilihan yang dapat dicentang.
-                </li>
-
-                <li>
-                    <strong>Drop-Down List</strong> —
-                    digunakan untuk memilih satu pilihan dari daftar.
-                </li>
-
-                <li>
-                    <strong>Date Picker</strong> —
-                    digunakan untuk memilih tanggal.
-                </li>
-
-            </ul>
-
-        </section>
-
-
-        <!-- 4 -->
-
-        <section class="materi-section">
-
-            <h2>4. Membuat Text Field</h2>
-
-            <p>
-                Text Field digunakan untuk menyediakan tempat
-                bagi pengguna untuk memasukkan informasi berupa teks.
-            </p>
-
-            <h3>Contoh:</h3>
-
-            <div class="form-example">
-
-                <div class="form-row">
-
-                    <label>Nama Lengkap</label>
-
-                    <input
-                        class="form-input"
-                        type="text"
-                        placeholder="Ketik nama lengkap">
-
-                </div>
-
-                <div class="form-row">
-
-                    <label>NIK</label>
-
-                    <input
-                        class="form-input"
-                        type="text"
-                        placeholder="Ketik NIK">
-
-                </div>
-
-                <div class="form-row">
-
-                    <label>Nomor HP</label>
-
-                    <input
-                        class="form-input"
-                        type="text"
-                        placeholder="Ketik nomor HP">
-
-                </div>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>Langkah di Word:</strong>
-
-                <p>
-                    Letakkan kursor pada posisi yang diinginkan,
-                    kemudian pilih:
-                    <strong>Developer → Plain Text Content Control</strong>.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 5 -->
-
-        <section class="materi-section">
-
-            <h2>5. Membuat Check Box</h2>
-
-            <p>
-                Check Box digunakan apabila pengguna dapat memilih
-                lebih dari satu pilihan.
-            </p>
-
-            <h3>Contoh:</h3>
-
-            <div class="form-example">
-
-                <strong>Keterampilan yang dikuasai:</strong>
-
-                <p>☐ Microsoft Word</p>
-
-                <p>☐ Microsoft Excel</p>
-
-                <p>☐ Microsoft PowerPoint</p>
-
-                <p>☐ Internet</p>
-
-            </div>
-
-            <p>
-                Pada Word, gunakan:
-                <strong>Developer → Check Box Content Control</strong>.
-            </p>
-
-        </section>
-
-
-        <!-- 6 -->
-
-        <section class="materi-section">
-
-            <h2>6. Membuat Drop-Down List</h2>
-
-            <p>
-                Drop-Down List memungkinkan pengguna memilih
-                salah satu pilihan yang telah disediakan.
-            </p>
-
-            <h3>Contoh:</h3>
-
-            <div class="form-example">
-
-                <div class="form-row">
-
-                    <label>Program Pelatihan</label>
-
-                    <select class="form-input">
-
-                        <option>Microsoft Office</option>
-
-                        <option>Teknologi Informasi</option>
-
-                        <option>Desain Grafis</option>
-
-                        <option>Administrasi Perkantoran</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>Langkah:</strong>
-
-                <p>
-                    Pilih:
-                    <strong>
-                        Developer → Drop-Down List Content Control
-                    </strong>
-                </p>
-
-                <p>
-                    Kemudian gunakan <strong>Properties</strong>
-                    untuk menambahkan pilihan.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 7 -->
-
-        <section class="materi-section">
-
-            <h2>7. Membuat Date Picker</h2>
-
-            <p>
-                Date Picker digunakan untuk membuat kolom tanggal
-                yang dapat dipilih menggunakan kalender.
-            </p>
-
-            <div class="form-example">
-
-                <div class="form-row">
-
-                    <label>Tanggal Pendaftaran</label>
-
-                    <input
-                        class="form-input"
-                        type="date">
-
-                </div>
-
-            </div>
-
-            <p>
-                Pada Word gunakan:
-                <strong>
-                    Developer → Date Picker Content Control
-                </strong>.
-            </p>
-
-        </section>
-
-
-        <!-- 8 -->
-
-        <section class="materi-section">
-
-            <h2>8. Mengatur Properties Form</h2>
-
-            <p>
-                Setiap Content Control dapat diatur melalui
-                menu <strong>Properties</strong>.
-            </p>
-
-            <p>Beberapa pengaturan yang dapat dilakukan antara lain:</p>
-
-            <ul>
-
-                <li>Memberikan judul kontrol.</li>
-
-                <li>Memberikan tag.</li>
-
-                <li>Mengatur pilihan Drop-Down.</li>
-
-                <li>Mengatur tampilan kontrol.</li>
-
-                <li>Mengatur pilihan tanggal.</li>
-
-            </ul>
-
-            <div class="warning-box">
-
-                <strong>⚠️ Perhatian:</strong>
-
-                <p>
-                    Atur Properties dengan baik sebelum dokumen
-                    diproteksi agar formulir mudah digunakan.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 9 -->
-
-        <section class="materi-section">
-
-            <h2>9. Membuat Formulir Profesional</h2>
-
-            <p>
-                Formulir yang baik harus memiliki struktur yang jelas,
-                mudah dibaca, dan menyediakan ruang yang cukup untuk
-                setiap informasi yang diperlukan.
-            </p>
-
-            <h3>Contoh struktur formulir:</h3>
-
-            <div class="form-example">
-
-                <h3>
-                    FORMULIR PENDAFTARAN PESERTA PELATIHAN
-                </h3>
-
-                <div class="form-row">
-
-                    <label>Nama Lengkap</label>
-
-                    <input class="form-input">
-
-                </div>
-
-                <div class="form-row">
-
-                    <label>NIK</label>
-
-                    <input class="form-input">
-
-                </div>
-
-                <div class="form-row">
-
-                    <label>Nomor HP</label>
-
-                    <input class="form-input">
-
-                </div>
-
-                <div class="form-row">
-
-                    <label>Program Pelatihan</label>
-
-                    <select class="form-input">
-
-                        <option>Pilih Program</option>
-
-                        <option>Microsoft Office</option>
-
-                        <option>Teknologi Informasi</option>
-
-                    </select>
-
-                </div>
-
-                <div class="form-row">
-
-                    <label>Tanggal Pendaftaran</label>
-
-                    <input
-                        type="date"
-                        class="form-input">
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- 10 -->
-
-        <section class="materi-section">
-
-            <h2>10. Protect Document</h2>
-
-            <p>
-                Protect Document digunakan untuk membatasi perubahan
-                pada dokumen sehingga pengguna tidak dapat mengubah
-                bagian-bagian tertentu secara bebas.
-            </p>
-
-            <h3>Langkah perlindungan dokumen:</h3>
-
-            <div class="step">
-
-                <div class="step-number">1</div>
-
-                <div class="step-content">
-                    Buka tab <strong>Developer</strong>.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">2</div>
-
-                <div class="step-content">
-                    Pilih <strong>Restrict Editing</strong>.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">3</div>
-
-                <div class="step-content">
-                    Atur pembatasan pengeditan sesuai kebutuhan.
-                </div>
-
-            </div>
-
-            <div class="step">
-
-                <div class="step-number">4</div>
-
-                <div class="step-content">
-                    Aktifkan perlindungan dokumen.
-                </div>
-
-            </div>
-
-            <div class="success-box">
-
-                <strong>🎯 Tujuan:</strong>
-
-                <p>
-                    Pengguna dapat mengisi bagian formulir tanpa
-                    mengubah struktur utama dokumen.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 11 -->
-
-        <section class="materi-section">
-
-            <h2>11. Memberikan Password</h2>
-
-            <p>
-                Password dapat digunakan untuk mencegah orang lain
-                menghentikan perlindungan dokumen tanpa izin.
-            </p>
-
-            <p>
-                Setelah pengaturan pembatasan selesai, pilih opsi
-                untuk memulai perlindungan dan masukkan password
-                yang diinginkan.
-            </p>
-
-            <div class="warning-box">
-
-                <strong>🔐 Penting:</strong>
-
-                <p>
-                    Simpan password di tempat yang aman. Jika password
-                    lupa, proses membuka proteksi dapat menjadi sulit.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- 12 -->
-
-        <section class="materi-section">
-
-            <h2>12. Menghentikan Proteksi</h2>
-
-            <p>
-                Jika pemilik dokumen perlu melakukan perubahan,
-                perlindungan dapat dihentikan melalui menu
-                <strong>Restrict Editing</strong>.
-            </p>
-
-            <p>
-                Apabila dokumen dilindungi dengan password,
-                password harus dimasukkan untuk menghentikan proteksi.
-            </p>
-
-        </section>
-
-
-        <!-- 13 -->
-
-        <section class="materi-section">
-
-            <h2>13. Menguji Formulir</h2>
-
-            <p>
-                Sebelum formulir dibagikan kepada peserta,
-                lakukan pengujian terlebih dahulu.
-            </p>
-
-            <ul>
-
-                <li>Pastikan semua kolom dapat diisi.</li>
-
-                <li>Pastikan Check Box dapat dipilih.</li>
-
-                <li>Pastikan Drop-Down memiliki pilihan yang benar.</li>
-
-                <li>Pastikan Date Picker berfungsi.</li>
-
-                <li>Pastikan struktur dokumen tidak berubah.</li>
-
-                <li>Pastikan proteksi bekerja dengan baik.</li>
-
-                <li>Pastikan password dapat digunakan.</li>
-
-            </ul>
-
-        </section>
-
-
-        <!-- LATIHAN -->
-
-        <section class="materi-section">
-
-            <h2>📝 Latihan Praktik Modul 8</h2>
-
-            <p>
-                Buatlah sebuah dokumen Microsoft Word dengan judul:
-            </p>
-
-            <div class="success-box">
-
-                <strong>
-                    FORMULIR PENDAFTARAN PESERTA PELATIHAN
-                    UPTD BLK KABUPATEN SUBANG
-                </strong>
-
-            </div>
-
-            <h3>Ketentuan:</h3>
-
-            <ul>
-
-                <li>
-                    Buat minimal <strong>5 Text Field</strong>.
-                </li>
-
-                <li>
-                    Buat minimal <strong>3 Check Box</strong>.
-                </li>
-
-                <li>
-                    Buat minimal <strong>2 Drop-Down List</strong>.
-                </li>
-
-                <li>
-                    Buat minimal <strong>1 Date Picker</strong>.
-                </li>
-
-                <li>
-                    Atur Properties setiap kontrol.
-                </li>
-
-                <li>
-                    Lindungi dokumen menggunakan
-                    <strong>Restrict Editing</strong>.
-                </li>
-
-                <li>
-                    Gunakan password untuk melindungi dokumen.
-                </li>
-
-            </ul>
-
-            <h3>🎯 Target hasil:</h3>
-
-            <p>
-                Dokumen harus dapat digunakan sebagai formulir
-                digital yang dapat diisi pengguna, tetapi struktur
-                dan bagian utama dokumen tidak dapat diubah
-                sembarangan.
-            </p>
-
-        </section>
-
-
-        <!-- KOMPETENSI -->
-
-        <section class="materi-section">
-
-            <h2>🏆 Kompetensi yang Diharapkan</h2>
-
-            <p>
-                Setelah menyelesaikan Modul 8, peserta mampu:
-            </p>
-
-            <ul>
-
-                <li>
-                    Membuat formulir interaktif di Microsoft Word.
-                </li>
-
-                <li>
-                    Menggunakan Text Field, Check Box,
-                    Drop-Down List, dan Date Picker.
-                </li>
-
-                <li>
-                    Mengatur Properties Content Control.
-                </li>
-
-                <li>
-                    Membuat formulir yang rapi dan profesional.
-                </li>
-
-                <li>
-                    Menggunakan Restrict Editing.
-                </li>
-
-                <li>
-                    Melindungi dokumen menggunakan password.
-                </li>
-
-            </ul>
-
-        </section>
-
-
-        <!-- TOMBOL -->
-
-        <section class="button-area">
-
-            <a
-                href="materi.html"
-                class="btn btn-secondary">
-
-                ← Kembali ke Materi
-
-            </a>
-
-            <a
-                href="kuis-modul-8.html"
-                class="btn btn-primary">
-
-                📝 Mulai Kuis Modul 8
-
-            </a>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
+<header>
+    <h1>TIK LEARNING</h1>
+    <p>UPTD BLK Kabupaten Subang</p>
+</header>
+
+<nav>
+    <a href="index.html">Beranda</a>
+    <a href="autobiografi.html">Autobiografi</a>
+    <a href="materi.html">Materi</a>
+    <a href="tugas.html">Tugas</a>
+    <a href="kelas.html">Kelas Saya</a>
+    <a href="ruang-bertanya.html">Ruang Bertanya</a>
+</nav>
+
+<main class="container">
+
+<section class="modul-header">
+    <span class="badge">MICROSOFT WORD 2016</span>
+    <h2>📋 Modul 8 — Formulir Interaktif & Perlindungan Dokumen</h2>
+    <p>
+        Pada modul ini peserta mempelajari cara membuat formulir interaktif
+        menggunakan Microsoft Word 2016, mengatur Content Control, serta
+        melindungi dokumen menggunakan Restrict Editing agar perubahan pada
+        dokumen dapat dibatasi sesuai kebutuhan.
+    </p>
+
+    <div class="info-box">
+        <strong>🎯 Kompetensi Modul:</strong>
         <p>
-            © 2026 TIK Learning - UPTD BLK Kabupaten Subang
+            Setelah menyelesaikan modul ini, peserta mampu membuat formulir
+            interaktif menggunakan Plain Text Content Control, Check Box,
+            Drop-Down List, Date Picker, mengatur Properties, menerapkan
+            Restrict Editing, menggunakan password protection, dan menguji
+            formulir yang telah dilindungi.
         </p>
+    </div>
+</section>
 
-    </footer>
+<section class="materi-section">
+<h2>1. Mengenal Formulir Interaktif</h2>
+<p>
+    Formulir interaktif adalah dokumen yang menyediakan bagian tertentu untuk
+    diisi oleh pengguna secara langsung. Pengguna dapat mengetik informasi,
+    memilih pilihan, mencentang pilihan, atau menentukan tanggal tanpa harus
+    mengubah struktur utama dokumen.
+</p>
+<h3>Contoh penggunaan formulir:</h3>
+<ul>
+<li>Formulir pendaftaran peserta pelatihan.</li>
+<li>Formulir data peserta.</li>
+<li>Formulir evaluasi.</li>
+<li>Formulir administrasi kantor.</li>
+<li>Formulir pemeriksaan atau pendataan.</li>
+</ul>
+<div class="info-box">
+<strong>💡 Prinsip formulir yang baik:</strong>
+<p>
+    Isi formulir harus jelas, susunan rapi, pilihan mudah dipahami, dan bagian
+    yang harus diisi dapat dibedakan dari bagian yang tidak boleh diubah.
+</p>
+</div>
+</section>
 
+<section class="materi-section">
+<h2>2. Mengaktifkan Tab Developer</h2>
+<p>
+    Fitur Content Control untuk membuat formulir interaktif terdapat pada tab
+    <strong>Developer</strong>. Pada beberapa instalasi Word 2016, tab ini
+    belum ditampilkan sehingga perlu diaktifkan.
+</p>
+
+<div class="step"><div class="step-number">1</div><div class="step-content">Klik <strong>File</strong>.</div></div>
+<div class="step"><div class="step-number">2</div><div class="step-content">Pilih <strong>Options</strong>.</div></div>
+<div class="step"><div class="step-number">3</div><div class="step-content">Pilih <strong>Customize Ribbon</strong>.</div></div>
+<div class="step"><div class="step-number">4</div><div class="step-content">Beri tanda centang pada <strong>Developer</strong>.</div></div>
+<div class="step"><div class="step-number">5</div><div class="step-content">Klik <strong>OK</strong>.</div></div>
+
+<div class="success-box">
+<strong>💡 Hasil:</strong>
+<p>Tab Developer akan muncul pada Ribbon Microsoft Word.</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>3. Mengenal Content Controls pada Developer</h2>
+<p>
+    Content Control adalah kontrol yang dapat ditempatkan pada dokumen untuk
+    menyediakan area input atau pilihan tertentu.
+</p>
+<ul>
+<li><strong>Rich Text Content Control</strong> — menyediakan area teks yang dapat menggunakan pemformatan.</li>
+<li><strong>Plain Text Content Control</strong> — digunakan untuk memasukkan teks sederhana.</li>
+<li><strong>Check Box Content Control</strong> — digunakan untuk pilihan yang dapat dicentang.</li>
+<li><strong>Drop-Down List Content Control</strong> — digunakan untuk memilih satu pilihan dari daftar.</li>
+<li><strong>Date Picker Content Control</strong> — digunakan untuk memilih tanggal.</li>
+</ul>
+<div class="info-box">
+<strong>Catatan:</strong>
+<p>
+    Untuk membuat formulir profesional, pilih jenis Content Control sesuai
+    dengan jenis data yang akan dimasukkan pengguna.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>4. Membuat Plain Text Content Control</h2>
+<p>
+    Plain Text Content Control digunakan untuk menyediakan tempat bagi
+    pengguna memasukkan informasi berupa teks.
+</p>
+
+<div class="form-example">
+<div class="form-row"><label>Nama Lengkap</label><input class="form-input" placeholder="Ketik nama lengkap"></div>
+<div class="form-row"><label>NIK</label><input class="form-input" placeholder="Ketik NIK"></div>
+<div class="form-row"><label>Nomor HP</label><input class="form-input" placeholder="Ketik nomor HP"></div>
+</div>
+
+<div class="info-box">
+<strong>Langkah di Word:</strong>
+<p>
+    Letakkan kursor pada posisi yang diinginkan, kemudian pilih
+    <strong>Developer → Plain Text Content Control</strong>.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>5. Membuat Check Box</h2>
+<p>
+    Check Box digunakan ketika pengguna dapat memilih atau mencentang pilihan.
+    Cocok untuk pertanyaan atau data yang memungkinkan lebih dari satu pilihan.
+</p>
+
+<div class="form-example">
+<strong>Keterampilan yang dikuasai:</strong>
+<p>☐ Microsoft Word</p>
+<p>☐ Microsoft Excel</p>
+<p>☐ Microsoft PowerPoint</p>
+<p>☐ Internet</p>
+</div>
+
+<p>
+    Pada Word gunakan <strong>Developer → Check Box Content Control</strong>.
+</p>
+</section>
+
+<section class="materi-section">
+<h2>6. Membuat Drop-Down List</h2>
+<p>
+    Drop-Down List memungkinkan pengguna memilih satu pilihan dari daftar
+    yang telah disediakan.
+</p>
+
+<div class="form-example">
+<div class="form-row">
+<label>Program Pelatihan</label>
+<select class="form-input">
+<option>Microsoft Office</option>
+<option>Teknologi Informasi</option>
+<option>Desain Grafis</option>
+<option>Administrasi Perkantoran</option>
+</select>
+</div>
+</div>
+
+<div class="info-box">
+<strong>Langkah:</strong>
+<p>
+    Pilih <strong>Developer → Drop-Down List Content Control</strong>,
+    kemudian gunakan <strong>Properties</strong> untuk menambahkan pilihan.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>7. Membuat Date Picker</h2>
+<p>
+    Date Picker Content Control digunakan untuk menyediakan kolom tanggal
+    yang dapat dipilih oleh pengguna.
+</p>
+
+<div class="form-example">
+<div class="form-row">
+<label>Tanggal Pendaftaran</label>
+<input class="form-input" type="date">
+</div>
+</div>
+
+<p>
+    Pada Word gunakan <strong>Developer → Date Picker Content Control</strong>.
+</p>
+</section>
+
+<section class="materi-section">
+<h2>8. Mengatur Properties Content Control</h2>
+<p>
+    Setiap Content Control dapat diatur melalui menu <strong>Properties</strong>.
+    Pengaturan ini membantu membuat formulir lebih jelas dan mudah digunakan.
+</p>
+<ul>
+<li>Memberikan <strong>Title</strong> atau judul kontrol.</li>
+<li>Memberikan <strong>Tag</strong> untuk identifikasi kontrol.</li>
+<li>Mengatur pilihan pada Drop-Down List.</li>
+<li>Mengatur tampilan kontrol.</li>
+<li>Mengatur pilihan tanggal pada Date Picker.</li>
+</ul>
+
+<div class="warning-box">
+<strong>⚠️ Perhatian:</strong>
+<p>
+    Atur Properties sebelum formulir diproteksi. Periksa kembali daftar
+    pilihan dan isi kontrol agar tidak terjadi kesalahan saat formulir digunakan.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>9. Membuat Formulir Profesional</h2>
+<p>
+    Formulir profesional harus memiliki judul yang jelas, susunan informasi
+    yang logis, jarak yang cukup, serta kontrol yang sesuai dengan data yang
+    harus diisi.
+</p>
+
+<div class="form-example">
+<h3>FORMULIR PENDAFTARAN PESERTA PELATIHAN</h3>
+<div class="form-row"><label>Nama Lengkap</label><input class="form-input" placeholder="Isi nama lengkap"></div>
+<div class="form-row"><label>NIK</label><input class="form-input" placeholder="Isi NIK"></div>
+<div class="form-row"><label>Nomor HP</label><input class="form-input" placeholder="Isi nomor HP"></div>
+<div class="form-row">
+<label>Program Pelatihan</label>
+<select class="form-input"><option>Pilih Program</option><option>Microsoft Office</option><option>Teknologi Informasi</option></select>
+</div>
+<div class="form-row"><label>Tanggal Pendaftaran</label><input type="date" class="form-input"></div>
+</div>
+
+<div class="success-box">
+<strong>🎯 Prinsip:</strong>
+<p>
+    Pisahkan bagian yang harus diisi dari judul, instruksi, dan elemen
+    dokumen yang harus tetap dipertahankan.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>10. Mengenal Restrict Editing</h2>
+<p>
+    <strong>Restrict Editing</strong> adalah fitur Microsoft Word yang digunakan
+    untuk membatasi jenis perubahan yang dapat dilakukan pengguna terhadap
+    sebuah dokumen.
+</p>
+
+<div class="info-box">
+<strong>💡 Contoh penggunaan:</strong>
+<p>
+    Formulir pendaftaran pelatihan memiliki judul, instruksi, tabel, dan format
+    yang sudah ditentukan. Peserta cukup mengisi bagian yang disediakan tanpa
+    mengubah struktur utama formulir.
+</p>
+</div>
+
+<h3>Membuka Restrict Editing</h3>
+<p>Di Microsoft Word 2016, pilih:</p>
+<div class="success-box"><strong>Review → Restrict Editing</strong></div>
+
+<div class="warning-box">
+<strong>⚠️ Jangan tertukar:</strong>
+<p>
+    <strong>Developer</strong> digunakan untuk membuat dan mengatur Content
+    Control. <strong>Review → Restrict Editing</strong> digunakan untuk
+    membatasi pengeditan dokumen.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>11. Jenis-Jenis Editing Restrictions</h2>
+<p>
+    Pada panel Restrict Editing terdapat pilihan pembatasan yang disesuaikan
+    dengan tujuan dokumen.
+</p>
+
+<table class="compare-table">
+<tr><th>Jenis</th><th>Fungsi</th><th>Contoh penggunaan</th></tr>
+<tr><td><strong>No changes (Read only)</strong></td><td>Membatasi perubahan sehingga dokumen terutama dapat dibaca.</td><td>Modul atau dokumen informasi.</td></tr>
+<tr><td><strong>Tracked changes</strong></td><td>Perubahan pengguna dicatat menggunakan Track Changes.</td><td>Dokumen yang sedang direvisi.</td></tr>
+<tr><td><strong>Comments</strong></td><td>Pengguna memberikan komentar atau masukan.</td><td>Dokumen untuk pemeriksaan.</td></tr>
+<tr><td><strong>Filling in forms</strong></td><td>Digunakan pada skenario formulir agar pengguna mengisi bagian yang disediakan.</td><td>Formulir pendaftaran atau pendataan.</td></tr>
+</table>
+
+<div class="info-box">
+<strong>🎯 Pilih sesuai kebutuhan:</strong>
+<p>
+    Jangan memilih pembatasan hanya karena ingin memberikan password.
+    Tentukan terlebih dahulu aktivitas apa yang masih boleh dilakukan pengguna.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>12. Menerapkan Restrict Editing pada Formulir</h2>
+<p>
+    Setelah formulir selesai dibuat dan Content Control ditempatkan pada
+    bagian yang diperlukan, lakukan langkah berikut.
+</p>
+
+<div class="step"><div class="step-number">1</div><div class="step-content">Pastikan formulir dan semua Content Control sudah selesai dibuat.</div></div>
+<div class="step"><div class="step-number">2</div><div class="step-content">Klik tab <strong>Review</strong>.</div></div>
+<div class="step"><div class="step-number">3</div><div class="step-content">Klik <strong>Restrict Editing</strong>.</div></div>
+<div class="step"><div class="step-number">4</div><div class="step-content">Centang <strong>Allow only this type of editing in the document</strong>.</div></div>
+<div class="step"><div class="step-number">5</div><div class="step-content">Pilih jenis pembatasan yang sesuai, misalnya <strong>Filling in forms</strong> untuk skenario formulir yang mendukung pilihan tersebut.</div></div>
+<div class="step"><div class="step-number">6</div><div class="step-content">Klik <strong>Yes, Start Enforcing Protection</strong>.</div></div>
+
+<div class="success-box">
+<strong>🎯 Hasil:</strong>
+<p>
+    Pembatasan mulai diterapkan sesuai pengaturan yang dipilih. Selanjutnya
+    lakukan pengujian terhadap formulir.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>13. Memberikan Password Protection</h2>
+<p>
+    Saat perlindungan mulai diterapkan, Word dapat meminta password.
+    Password membantu mencegah pengguna lain menghentikan perlindungan
+    tanpa izin.
+</p>
+
+<div class="step"><div class="step-number">1</div><div class="step-content">Klik <strong>Yes, Start Enforcing Protection</strong>.</div></div>
+<div class="step"><div class="step-number">2</div><div class="step-content">Masukkan password pada kolom yang disediakan.</div></div>
+<div class="step"><div class="step-number">3</div><div class="step-content">Masukkan kembali password untuk konfirmasi.</div></div>
+<div class="step"><div class="step-number">4</div><div class="step-content">Klik <strong>OK</strong>.</div></div>
+
+<div class="warning-box">
+<strong>🔐 Penting:</strong>
+<p>
+    Simpan password di tempat yang aman. Password perlindungan jangan diberikan
+    kepada pengguna yang memang tidak berwenang mengubah struktur dokumen.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>14. Menghentikan Proteksi</h2>
+<p>
+    Pemilik dokumen dapat menghentikan perlindungan apabila perlu melakukan
+    perubahan pada dokumen.
+</p>
+
+<div class="step"><div class="step-number">1</div><div class="step-content">Buka dokumen yang sedang dilindungi.</div></div>
+<div class="step"><div class="step-number">2</div><div class="step-content">Buka <strong>Review → Restrict Editing</strong>.</div></div>
+<div class="step"><div class="step-number">3</div><div class="step-content">Klik <strong>Stop Protection</strong>.</div></div>
+<div class="step"><div class="step-number">4</div><div class="step-content">Jika diminta, masukkan password perlindungan.</div></div>
+
+<div class="info-box">
+<strong>💡 Catatan:</strong>
+<p>
+    Setelah proteksi dihentikan, dokumen dapat diedit kembali. Setelah
+    perubahan selesai, perlindungan dapat diterapkan kembali.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>15. Menguji Formulir yang Dilindungi</h2>
+<p>
+    Sebelum formulir dibagikan, lakukan pengujian dari sudut pandang pengguna.
+</p>
+
+<h3>Checklist pengujian:</h3>
+<ul>
+<li>Semua Plain Text Content Control dapat diisi.</li>
+<li>Check Box dapat dipilih.</li>
+<li>Drop-Down memiliki pilihan yang benar.</li>
+<li>Date Picker dapat digunakan.</li>
+<li>Judul dan instruksi tetap sesuai.</li>
+<li>Struktur dan format utama tidak berubah sembarangan.</li>
+<li>Pembatasan pengeditan aktif.</li>
+<li>Password dapat digunakan untuk menghentikan proteksi.</li>
+</ul>
+
+<div class="success-box">
+<strong>✅ Prinsip penting:</strong>
+<p>
+    Jangan langsung membagikan formulir setelah membuatnya. Selalu uji
+    terlebih dahulu agar kesalahan pada kontrol dan perlindungan dapat ditemukan.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>16. Perbedaan Content Control dan Restrict Editing</h2>
+<table class="compare-table">
+<tr><th>Fitur</th><th>Fungsi</th></tr>
+<tr><td><strong>Content Control</strong></td><td>Menyediakan area input atau pilihan pada formulir.</td></tr>
+<tr><td><strong>Properties</strong></td><td>Mengatur karakteristik Content Control, seperti judul, tag, dan pilihan.</td></tr>
+<tr><td><strong>Restrict Editing</strong></td><td>Membatasi jenis perubahan yang boleh dilakukan pengguna.</td></tr>
+<tr><td><strong>Password Protection</strong></td><td>Membantu mencegah perlindungan dihentikan tanpa izin.</td></tr>
+</table>
+
+<div class="info-box">
+<strong>💡 Ingat:</strong>
+<p>
+    Content Control membuat <em>bagian yang diisi</em>, sedangkan Restrict
+    Editing mengatur <em>batas perubahan terhadap dokumen</em>.
+</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>17. Alur Lengkap Membuat Formulir Terlindungi</h2>
+<div class="flow">
+<p>1. Buat struktur formulir</p>
+<p>↓</p>
+<p>2. Aktifkan Developer</p>
+<p>↓</p>
+<p>3. Tambahkan Content Control</p>
+<p>↓</p>
+<p>4. Atur Properties</p>
+<p>↓</p>
+<p>5. Periksa dan uji formulir</p>
+<p>↓</p>
+<p>6. Review → Restrict Editing</p>
+<p>↓</p>
+<p>7. Tentukan editing restriction</p>
+<p>↓</p>
+<p>8. Yes, Start Enforcing Protection</p>
+<p>↓</p>
+<p>9. Gunakan password bila diperlukan</p>
+<p>↓</p>
+<p>10. Uji kembali formulir</p>
+</div>
+</section>
+
+<section class="materi-section">
+<h2>📝 18. Latihan Praktik Modul 8</h2>
+<p>
+    Buatlah sebuah dokumen Microsoft Word 2016 dengan judul:
+</p>
+
+<div class="success-box">
+<strong>FORMULIR PENDAFTARAN PESERTA PELATIHAN<br>
+UPTD BLK KABUPATEN SUBANG</strong>
+</div>
+
+<h3>Ketentuan:</h3>
+<ul>
+<li>Buat minimal <strong>5 Plain Text Content Control</strong>.</li>
+<li>Buat minimal <strong>3 Check Box Content Control</strong>.</li>
+<li>Buat minimal <strong>2 Drop-Down List Content Control</strong>.</li>
+<li>Buat minimal <strong>1 Date Picker Content Control</strong>.</li>
+<li>Atur <strong>Properties</strong> setiap kontrol.</li>
+<li>Buat formulir dengan tata letak yang rapi dan profesional.</li>
+<li>Buka <strong>Review → Restrict Editing</strong>.</li>
+<li>Pilih pembatasan pengeditan yang sesuai dengan skenario formulir.</li>
+<li>Klik <strong>Yes, Start Enforcing Protection</strong>.</li>
+<li>Gunakan password perlindungan.</li>
+<li>Uji dokumen sebagai pengguna.</li>
+</ul>
+
+<h3>🎯 Target hasil:</h3>
+<p>
+    Dokumen harus dapat digunakan sebagai formulir digital. Pengguna dapat
+    mengisi bagian yang disediakan, sementara bagian utama dokumen tetap
+    terlindungi sesuai pengaturan Restrict Editing.
+</p>
+</section>
+
+<section class="materi-section">
+<h2>🏆 19. Kompetensi yang Diharapkan</h2>
+<p>Setelah menyelesaikan Modul 8, peserta mampu:</p>
+<ul>
+<li>Menjelaskan konsep formulir interaktif.</li>
+<li>Mengaktifkan dan menggunakan tab Developer.</li>
+<li>Menggunakan Plain Text Content Control.</li>
+<li>Menggunakan Check Box Content Control.</li>
+<li>Menggunakan Drop-Down List Content Control.</li>
+<li>Menggunakan Date Picker Content Control.</li>
+<li>Mengatur Properties Content Control.</li>
+<li>Membuat formulir yang rapi dan profesional.</li>
+<li>Menjelaskan fungsi dan jenis Restrict Editing.</li>
+<li>Menerapkan <strong>Review → Restrict Editing</strong>.</li>
+<li>Menggunakan password protection.</li>
+<li>Menguji formulir yang telah dilindungi.</li>
+</ul>
+</section>
+
+<section class="button-area">
+<a href="materi.html" class="btn btn-secondary">← Kembali ke Materi</a>
+<a href="kuis-modul-8.html" class="btn btn-primary">📝 Mulai Kuis Modul 8</a>
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 TIK Learning - UPTD BLK Kabupaten Subang</p>
+</footer>
 
 </body>
-
 </html>
-```
