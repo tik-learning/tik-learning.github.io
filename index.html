@@ -194,19 +194,17 @@
 
     </footer>
 <script>
-
 <script>
 
 async function hitungPengunjung() {
 
-    const visitorElement = document.getElementById("visitor-count");
+    const visitorCount = document.getElementById("visitor-count");
 
     try {
 
-        // Ambil ID perangkat yang sudah tersimpan
+        // Ambil ID perangkat dari browser
         let deviceId = localStorage.getItem("tik_device_id");
 
-        // Jika belum ada, buat ID baru
         if (!deviceId) {
 
             deviceId =
@@ -219,11 +217,18 @@ async function hitungPengunjung() {
         }
 
         const scriptURL =
-            "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+            "https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
 
-        const response = await fetch(
-            scriptURL + "?deviceId=" + encodeURIComponent(deviceId)
-        );
+        const url =
+            scriptURL +
+            "?deviceId=" +
+            encodeURIComponent(deviceId);
+
+        console.log("Menghubungi:", url);
+
+        const response = await fetch(url);
+
+        console.log("Response diterima:", response);
 
         const data = await response.json();
 
@@ -231,26 +236,26 @@ async function hitungPengunjung() {
 
         if (data.status === "success") {
 
-            visitorElement.textContent =
+            visitorCount.textContent =
                 Number(data.total).toLocaleString("id-ID");
 
         } else {
 
-            visitorElement.textContent = "Tidak tersedia";
+            visitorCount.textContent = "Tidak tersedia";
 
         }
 
     } catch (error) {
 
-        console.error("Counter pengunjung gagal:", error);
+        console.error("Gagal mengambil jumlah pengunjung:", error);
 
-        visitorElement.textContent = "Tidak tersedia";
-
+        visitorCount.textContent = "Tidak tersedia";
     }
-
 }
 
-hitungPengunjung();
+
+// Jalankan setelah seluruh halaman selesai dimuat
+window.addEventListener("load", hitungPengunjung);
 
 </script>
 </script>
