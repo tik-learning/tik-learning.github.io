@@ -815,3 +815,50 @@ form .button {
 .card-link:hover .card h3 {
     color: #004f7d;
 }
+
+/* ================================
+   INFORMASI PELATIHAN
+================================ */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* Kartu pengunjung */
+
+.visitor-card {
+    text-align: center;
+}
+
+.visitor-card h3 {
+    margin-bottom: 10px;
+}
+
+.visitor-number {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.visitor-card p {
+    margin-top: 5px;
+}
+
+
+/* Tampilan HP */
+
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
