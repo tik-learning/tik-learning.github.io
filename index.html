@@ -93,14 +93,15 @@
 </a>
 
  <!-- TOTAL PENGUNJUNG -->
-<div class="card">
-    <h3>👥 Pengunjung</h3>
+<!-- TOTAL PENGUNJUNG -->
+<div class="card visitor-card">
+    <h3>👁️ Pengunjung</h3>
 
-    <p>
-        <strong id="visitor-count">Memuat...</strong>
-    </p>
+    <div class="visitor-number" id="visitor-count">
+        ...
+    </div>
 
-    <p>Total pengunjung website.</p>
+    <p>Total pengunjung website</p>
 </div>
 
 </div>
@@ -194,29 +195,56 @@
     </footer>
 <script>
 
+<script>
+
 async function hitungPengunjung() {
+
+    const visitorElement = document.getElementById("visitor-count");
 
     try {
 
+        // Ambil ID perangkat yang sudah tersimpan
+        let deviceId = localStorage.getItem("tik_device_id");
+
+        // Jika belum ada, buat ID baru
+        if (!deviceId) {
+
+            deviceId =
+                "device-" +
+                Date.now() +
+                "-" +
+                Math.random().toString(36).substring(2, 12);
+
+            localStorage.setItem("tik_device_id", deviceId);
+        }
+
+        const scriptURL =
+            "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
         const response = await fetch(
-            "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec"
+            scriptURL + "?deviceId=" + encodeURIComponent(deviceId)
         );
 
         const data = await response.json();
 
+        console.log("Data pengunjung:", data);
+
         if (data.status === "success") {
 
-            document.getElementById("visitor-count").textContent =
+            visitorElement.textContent =
                 Number(data.total).toLocaleString("id-ID");
+
+        } else {
+
+            visitorElement.textContent = "Tidak tersedia";
 
         }
 
     } catch (error) {
 
-        console.log("Counter pengunjung gagal:", error);
+        console.error("Counter pengunjung gagal:", error);
 
-        document.getElementById("visitor-count").textContent =
-            "Tidak tersedia";
+        visitorElement.textContent = "Tidak tersedia";
 
     }
 
@@ -224,6 +252,7 @@ async function hitungPengunjung() {
 
 hitungPengunjung();
 
+</script>
 </script>
 </body>
 
