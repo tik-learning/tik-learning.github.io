@@ -182,7 +182,39 @@
         </p>
 
     </footer>
+<script>
 
+async function hitungPengunjung() {
+
+    try {
+
+        const response = await fetch(
+            "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec"
+        );
+
+        const data = await response.json();
+
+        if (data.status === "success") {
+
+            document.getElementById("visitor-count").textContent =
+                Number(data.total).toLocaleString("id-ID");
+
+        }
+
+    } catch (error) {
+
+        console.log("Counter pengunjung gagal:", error);
+
+        document.getElementById("visitor-count").textContent =
+            "Tidak tersedia";
+
+    }
+
+}
+
+hitungPengunjung();
+
+</script>
 </body>
 
 </html>
