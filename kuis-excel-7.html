@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="id">
 
 <head>
@@ -6,9 +7,9 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+   content="width=device-width, initial-scale=1.0">
 
-<title>Kuis Microsoft Excel - Modul 7</title>
+<title>Kuis Excel Modul 7 - Fungsi Logika</title>
 
 <style>
 
@@ -28,9 +29,9 @@
 ===================================================== */
 
 body{
-    font-family:"Segoe UI",Arial,sans-serif;
-    background:#f3f6f8;
-    color:#263238;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f7f9;
+    color:#222;
     line-height:1.6;
 }
 
@@ -39,20 +40,22 @@ body{
    HEADER
 ===================================================== */
 
-.header{
-    background:linear-gradient(135deg,#107c41,#185c37);
+header{
+    background:#107c41;
     color:white;
-    padding:35px 20px;
+    padding:25px 15px;
     text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
 }
 
-.header h1{
+header h1{
     font-size:30px;
-    margin-bottom:8px;
+    margin-bottom:5px;
 }
 
-.header p{
-    font-size:16px;
+header p{
+    font-size:15px;
+    opacity:.95;
 }
 
 
@@ -61,152 +64,154 @@ body{
 ===================================================== */
 
 .container{
+    width:94%;
     max-width:900px;
-    margin:30px auto;
-    padding:0 15px;
+    margin:25px auto 40px;
 }
 
 
 /* =====================================================
-   CARD
+   PASSWORD OVERLAY
 ===================================================== */
 
-.card{
-    background:white;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 5px 20px rgba(0,0,0,.07);
-    margin-bottom:20px;
+.password-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
 }
 
-.card h2{
-    color:#107c41;
-    margin-bottom:18px;
-}
-
-
-/* =====================================================
-   HIDDEN
-===================================================== */
-
-.hidden{
-    display:none !important;
-}
-
-
-/* =====================================================
-   INPUT
-===================================================== */
-
-input[type="text"],
-input[type="password"]{
+.password-box{
     width:100%;
-    padding:13px 15px;
-    border:1px solid #ccd5d9;
+    max-width:480px;
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 10px 35px rgba(0,0,0,.3);
+}
+
+.password-box h2{
+    color:#107c41;
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.password-box p{
+    text-align:center;
+    color:#666;
+    margin-bottom:22px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
     border-radius:8px;
-    font-size:16px;
-    margin:8px 0 15px;
+    font-size:15px;
     outline:none;
 }
 
-input:focus{
+.input-group input:focus{
     border-color:#107c41;
-    box-shadow:0 0 0 3px rgba(16,124,65,.1);
+    box-shadow:0 0 0 2px rgba(16,124,65,.12);
 }
 
-
-/* =====================================================
-   BUTTON
-===================================================== */
-
-.btn{
+.btn-start{
+    width:100%;
     border:none;
-    padding:13px 22px;
-    border-radius:8px;
+    padding:13px;
+    background:#107c41;
+    color:white;
     font-size:16px;
     font-weight:bold;
+    border-radius:8px;
     cursor:pointer;
-    color:white;
-    background:#107c41;
-    transition:.2s;
 }
 
-.btn:hover{
-    background:#0b5c30;
+.btn-start:hover{
+    background:#0b6333;
 }
 
-.btn-blue{
-    background:#2878d4;
-}
-
-.btn-blue:hover{
-    background:#185ca8;
-}
-
-.btn-red{
-    background:#d32f2f;
-}
-
-.btn-red:hover{
-    background:#b71c1c;
-}
-
-
-/* =====================================================
-   TIMER
-===================================================== */
-
-.timer-box{
-    position:sticky;
-    top:10px;
-    z-index:10;
-    background:#fff3cd;
-    border:2px solid #ffc107;
-    padding:15px;
-    border-radius:12px;
+.error{
+    color:#d93025;
     text-align:center;
-    margin-bottom:20px;
-}
-
-.timer-label{
     font-size:14px;
-    color:#795548;
-}
-
-.timer{
-    font-size:30px;
-    font-weight:bold;
-    color:#c62828;
-}
-
-.timer.warning{
-    color:#e65100;
-}
-
-.timer.danger{
-    color:#b71c1c;
-    animation:blink 1s infinite;
-}
-
-@keyframes blink{
-
-    50%{
-        opacity:.45;
-    }
-
+    margin-top:12px;
+    min-height:20px;
 }
 
 
 /* =====================================================
-   PARTICIPANT
+   QUIZ AREA
 ===================================================== */
+
+#quizSection{
+    display:none;
+}
+
+
+/* =====================================================
+   TOP CARD
+===================================================== */
+
+.top-card{
+    background:white;
+    border-radius:12px;
+    padding:18px 20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    margin-bottom:18px;
+}
 
 .participant{
-    background:#eaf7ef;
-    border-left:5px solid #107c41;
-    padding:15px;
-    border-radius:8px;
-    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.participant div{
+    flex:1;
+    min-width:220px;
+}
+
+.participant strong{
+    color:#107c41;
+}
+
+.timer-box{
+    text-align:center;
+    margin-top:18px;
+    padding:12px;
+    background:#eef8f2;
+    border-radius:10px;
+}
+
+#timer{
+    font-size:28px;
+    font-weight:bold;
+    color:#107c41;
+}
+
+#timer.warning{
+    color:#e67e22;
+}
+
+#timer.danger{
+    color:#d93025;
 }
 
 
@@ -214,28 +219,24 @@ input:focus{
    PROGRESS
 ===================================================== */
 
-.progress-container{
-    margin-bottom:20px;
-}
-
 .progress-text{
-    font-size:14px;
+    margin-top:15px;
     font-weight:bold;
-    color:#107c41;
-    margin-bottom:7px;
+    color:#444;
 }
 
 .progress-bar{
     width:100%;
     height:12px;
-    background:#e0e0e0;
+    background:#e1e5e8;
     border-radius:20px;
     overflow:hidden;
+    margin-top:7px;
 }
 
-.progress-fill{
-    height:100%;
+#progressFill{
     width:0%;
+    height:100%;
     background:#107c41;
     transition:.3s;
 }
@@ -245,37 +246,39 @@ input:focus{
    QUESTION
 ===================================================== */
 
-.question{
-    margin-bottom:25px;
-    padding:22px;
-    border:1px solid #e0e6e9;
+.question-card{
+    background:white;
     border-radius:12px;
-    background:#fff;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
 }
 
 .question-number{
     color:#107c41;
     font-weight:bold;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
 .question-text{
     font-size:17px;
-    font-weight:600;
+    font-weight:bold;
     margin-bottom:15px;
 }
 
 .option{
     display:block;
-    padding:10px 12px;
-    border-radius:7px;
-    margin:7px 0;
+    padding:12px 14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin:8px 0;
     cursor:pointer;
-    transition:.15s;
+    transition:.2s;
 }
 
 .option:hover{
-    background:#eef7f1;
+    background:#f0f8f3;
+    border-color:#107c41;
 }
 
 .option input{
@@ -284,37 +287,139 @@ input:focus{
 
 
 /* =====================================================
+   SUBMIT
+===================================================== */
+
+.submit-area{
+    text-align:center;
+    margin:25px 0;
+}
+
+.btn-submit{
+    background:#107c41;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn-submit:hover{
+    background:#0b6333;
+}
+
+
+/* =====================================================
    RESULT
 ===================================================== */
 
-.result-box{
+#resultSection{
+    display:none;
+}
+
+.result-card{
+    background:white;
+    border-radius:15px;
+    padding:30px;
     text-align:center;
-    padding:25px;
-    border-radius:14px;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+}
+
+.result-card h2{
+    color:#107c41;
     margin-bottom:20px;
 }
 
-.lulus{
-    background:#e8f5e9;
-    border:2px solid #43a047;
-    color:#2e7d32;
+.result-info{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin:20px 0;
 }
 
-.tidak-lulus{
-    background:#ffebee;
-    border:2px solid #e53935;
-    color:#c62828;
+.result-item{
+    background:#f5f7f8;
+    padding:15px;
+    border-radius:10px;
+}
+
+.result-item span{
+    display:block;
+    font-size:13px;
+    color:#666;
+}
+
+.result-item strong{
+    display:block;
+    font-size:18px;
+    margin-top:3px;
 }
 
 .score{
     font-size:55px;
     font-weight:bold;
-    margin:10px 0;
+    color:#107c41;
+    margin:15px 0;
 }
 
 .status{
-    font-size:24px;
+    display:inline-block;
+    padding:9px 20px;
+    border-radius:30px;
     font-weight:bold;
+    margin-bottom:20px;
+}
+
+.lulus{
+    background:#dff5e8;
+    color:#107c41;
+}
+
+.tidak-lulus{
+    background:#fde5e5;
+    color:#c62828;
+}
+
+
+/* =====================================================
+   BUTTON RESULT
+===================================================== */
+
+.result-buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.result-buttons button,
+.result-buttons a{
+    display:inline-block;
+    padding:11px 18px;
+    border-radius:8px;
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.btn-review{
+    background:#107c41;
+    color:white;
+}
+
+.btn-retry{
+    background:#eeeeee;
+    color:#333;
+}
+
+.btn-next{
+    background:#0077b6;
+    color:white;
 }
 
 
@@ -322,70 +427,45 @@ input:focus{
    REVIEW
 ===================================================== */
 
-.review{
-    border:1px solid #dfe5e8;
-    border-radius:10px;
-    padding:18px;
+#reviewContainer{
+    display:none;
+    margin-top:20px;
+}
+
+.review-card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
     margin-bottom:15px;
+    box-shadow:0 2px 9px rgba(0,0,0,.08);
 }
 
-.review.correct{
-    border-left:5px solid #43a047;
+.review-card.correct{
+    border-left:6px solid #107c41;
 }
 
-.review.wrong{
-    border-left:5px solid #e53935;
+.review-card.wrong{
+    border-left:6px solid #d93025;
 }
 
-.correct-text{
-    color:#2e7d32;
+.review-card.empty{
+    border-left:6px solid #f39c12;
+}
+
+.review-question{
     font-weight:bold;
+    margin-bottom:10px;
 }
 
-.wrong-text{
-    color:#c62828;
-    font-weight:bold;
+.review-answer{
+    margin:6px 0;
 }
 
-.answer{
+.review-explanation{
     background:#f5f7f8;
     padding:10px;
     border-radius:7px;
-    margin-top:8px;
-}
-
-
-/* =====================================================
-   INFO
-===================================================== */
-
-.info{
-    background:#e3f2fd;
-    border-left:5px solid #2196f3;
-    padding:15px;
-    border-radius:8px;
-    margin-bottom:18px;
-}
-
-.warning{
-    background:#fff8e1;
-    border-left:5px solid #ffb300;
-    padding:15px;
-    border-radius:8px;
-    margin-bottom:18px;
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.navigation{
-    display:flex;
-    gap:12px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-top:25px;
+    margin-top:10px;
 }
 
 
@@ -393,11 +473,11 @@ input:focus{
    FOOTER
 ===================================================== */
 
-.footer{
+footer{
     text-align:center;
-    color:#607d8b;
-    padding:30px 15px;
-    font-size:14px;
+    padding:25px 15px;
+    color:#777;
+    font-size:13px;
 }
 
 
@@ -407,20 +487,32 @@ input:focus{
 
 @media(max-width:600px){
 
-    .header h1{
+    header h1{
         font-size:24px;
     }
 
-    .card{
-        padding:20px 15px;
+    .container{
+        width:96%;
+    }
+
+    .password-box{
+        padding:22px;
+    }
+
+    .question-card{
+        padding:17px;
+    }
+
+    .question-text{
+        font-size:16px;
+    }
+
+    .result-info{
+        grid-template-columns:1fr;
     }
 
     .score{
         font-size:45px;
-    }
-
-    .btn{
-        width:100%;
     }
 
 }
@@ -429,117 +521,72 @@ input:focus{
 
 </head>
 
-
 <body>
 
-
 <!-- =====================================================
-     HEADER
+     PASSWORD / IDENTITAS
 ===================================================== -->
 
-<header class="header">
+<div id="passwordOverlay"
+     class="password-overlay">
 
-    <h1>📝 KUIS EXCEL MODUL 7</h1>
+```
+<div class="password-box">
+
+    <h2>📝 Kuis Excel Modul 7</h2>
 
     <p>
-        Fungsi Logika Microsoft Excel 2016
+        Silakan isi identitas peserta sebelum memulai kuis.
     </p>
 
-</header>
 
+    <div class="input-group">
 
-<div class="container">
+        <label for="participantInput">
+            Nama Peserta
+        </label>
 
-
-<!-- =====================================================
-     PASSWORD
-===================================================== -->
-
-<section id="passwordSection" class="card">
-
-    <h2>🔐 Akses Kuis</h2>
-
-    <div class="info">
-
-        <p>
-            Silakan masukkan password yang diberikan oleh
-            instruktur untuk mengakses Kuis Excel Modul 7.
-        </p>
+        <input
+            type="text"
+            id="participantInput"
+            placeholder="Masukkan nama lengkap"
+            autocomplete="off">
 
     </div>
 
 
-    <label>
-        <strong>Password</strong>
-    </label>
+    <div class="input-group">
 
-    <input
-        type="password"
-        id="passwordInput"
-        placeholder="Masukkan password"
-    >
+        <label for="classInput">
+            Kelas
+        </label>
 
-
-    <button
-        class="btn"
-        onclick="checkPassword()">
-
-        ▶ Mulai Kuis
-
-    </button>
-
-
-    <p
-        id="passwordError"
-        style="margin-top:12px;color:#c62828;font-weight:bold;">
-    </p>
-
-</section>
-
-
-
-<!-- =====================================================
-     DATA PESERTA
-===================================================== -->
-
-<section id="participantSection" class="card hidden">
-
-    <h2>👤 Data Peserta</h2>
-
-    <div class="info">
-
-        <p>
-            Silakan masukkan nama lengkap dan kelas sebelum
-            memulai kuis.
-        </p>
+        <input
+            type="text"
+            id="classInput"
+            placeholder="Masukkan kelas"
+            autocomplete="off">
 
     </div>
 
 
-    <label>
-        <strong>Nama Peserta</strong>
-    </label>
+    <div class="input-group">
 
-    <input
-        type="text"
-        id="participantInput"
-        placeholder="Masukkan nama lengkap"
-    >
+        <label for="quizPassword">
+            Password Kuis
+        </label>
 
+        <input
+            type="password"
+            id="quizPassword"
+            placeholder="Masukkan password"
+            autocomplete="off">
 
-    <label>
-        <strong>Kelas</strong>
-    </label>
-
-    <input
-        type="text"
-        id="classInput"
-        placeholder="Masukkan kelas"
-    >
+    </div>
 
 
     <button
-        class="btn"
+        class="btn-start"
         onclick="startQuiz()">
 
         ▶ Mulai Kuis
@@ -547,994 +594,981 @@ input:focus{
     </button>
 
 
-    <p
-        id="participantError"
-        style="margin-top:12px;color:#c62828;font-weight:bold;">
-    </p>
+    <div
+        id="passwordError"
+        class="error">
+    </div>
 
-</section>
+</div>
+```
 
+</div>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+```
+<h1>📝 Kuis Excel Modul 7</h1>
+
+<p>
+    Fungsi Logika Microsoft Excel 2016
+</p>
+```
+
+</header>
+
+<!-- =====================================================
+     CONTAINER
+===================================================== -->
+
+<div class="container">
 
 <!-- =====================================================
      QUIZ
 ===================================================== -->
 
-<section id="quizSection" class="hidden">
+<section id="quizSection">
+
+```
+<!-- INFO PESERTA -->
+
+<div class="top-card">
+
+    <div class="participant">
+
+        <div>
+
+            <strong>Nama Peserta</strong><br>
+
+            <span id="displayName">-</span>
+
+        </div>
+
+
+        <div>
+
+            <strong>Kelas</strong><br>
+
+            <span id="displayClass">-</span>
+
+        </div>
+
+
+        <div>
+
+            <strong>KKM</strong><br>
+
+            75
+
+        </div>
+
+    </div>
 
 
     <!-- TIMER -->
 
     <div class="timer-box">
 
-        <div class="timer-label">
-            ⏱️ WAKTU TERSISA
+        <div>
+            ⏱ Sisa Waktu
         </div>
 
-        <div id="timer" class="timer">
+        <div id="timer">
             15:00
         </div>
 
     </div>
 
 
-
-    <!-- PESERTA -->
-
-    <div class="participant">
-
-        <strong>Nama Peserta:</strong>
-        <span id="displayName"></span>
-
-        <br>
-
-        <strong>Kelas:</strong>
-        <span id="displayClass"></span>
-
-        <br>
-
-        <strong>KKM:</strong>
-        75
-
-    </div>
-
-
-
     <!-- PROGRESS -->
 
-    <div class="progress-container">
+    <div class="progress-text">
 
-        <div
-            id="progressText"
-            class="progress-text">
+        Progress:
 
-            Progress: 0 dari 20 soal
-
-        </div>
-
-
-        <div class="progress-bar">
-
-            <div
-                id="progressFill"
-                class="progress-fill">
-            </div>
-
-        </div>
+        <span id="progressText">
+            0 dari 20 soal
+        </span>
 
     </div>
 
 
+    <div class="progress-bar">
 
-    <!-- FORM SOAL -->
+        <div id="progressFill"></div>
 
-    <form id="quizForm">
+    </div>
+
+</div>
 
 
-<!-- =====================================================
+<!-- =================================================
      SOAL 1
-===================================================== -->
+================================================= -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 1 dari 20
+    <div class="question-number">
+        Soal 1
+    </div>
+
+    <div class="question-text">
+        Apa fungsi utama dari IF dalam Excel?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q1" value="A">
+        A. Menjumlahkan data
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="B">
+        B. Menguji kondisi dan menghasilkan nilai berdasarkan kondisi tersebut
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="C">
+        C. Mengurutkan data
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="D">
+        D. Menghapus data
+    </label>
+
 </div>
-
-<div class="question-text">
-Apa fungsi utama dari IF dalam Excel?
-</div>
-
-<label class="option">
-<input type="radio" name="q1" value="A">
-A. Menjumlahkan data
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="B">
-B. Menguji kondisi dan menghasilkan nilai berdasarkan kondisi tersebut
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="C">
-C. Mengurutkan data
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="D">
-D. Menghapus data
-</label>
-
-</div>
-
 
 
 <!-- SOAL 2 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 2 dari 20
+    <div class="question-number">
+        Soal 2
+    </div>
+
+    <div class="question-text">
+        Manakah sintaks IF yang benar?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q2" value="A">
+        A. =IF(kondisi)
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="B">
+        B. =IF(kondisi,nilai_jika_benar,nilai_jika_salah)
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="C">
+        C. =IF(nilai1,nilai2)
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="D">
+        D. =IFERROR(kondisi)
+    </label>
+
 </div>
-
-<div class="question-text">
-Manakah sintaks IF yang benar?
-</div>
-
-<label class="option">
-<input type="radio" name="q2" value="A">
-A. =IF(kondisi)
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="B">
-B. =IF(kondisi,nilai_jika_benar,nilai_jika_salah)
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="C">
-C. =IF(nilai1,nilai2)
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="D">
-D. =IFERROR(kondisi)
-</label>
-
-</div>
-
 
 
 <!-- SOAL 3 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 3 dari 20
+    <div class="question-number">
+        Soal 3
+    </div>
+
+    <div class="question-text">
+        Fungsi AND menghasilkan TRUE apabila...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q3" value="A">
+        A. Semua kondisi TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="B">
+        B. Semua kondisi FALSE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="C">
+        C. Minimal satu kondisi TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="D">
+        D. Tidak ada kondisi
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi AND menghasilkan TRUE apabila...
-</div>
-
-<label class="option">
-<input type="radio" name="q3" value="A">
-A. Semua kondisi TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="B">
-B. Semua kondisi FALSE
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="C">
-C. Minimal satu kondisi TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="D">
-D. Tidak ada kondisi
-</label>
-
-</div>
-
 
 
 <!-- SOAL 4 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 4 dari 20
+    <div class="question-number">
+        Soal 4
+    </div>
+
+    <div class="question-text">
+        Apa hasil dari =AND(TRUE,FALSE)?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q4" value="A">
+        A. TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="B">
+        B. FALSE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="C">
+        C. 1
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="D">
+        D. ERROR
+    </label>
+
 </div>
-
-<div class="question-text">
-Apa hasil dari =AND(TRUE,FALSE)?
-</div>
-
-<label class="option">
-<input type="radio" name="q4" value="A">
-A. TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="B">
-B. FALSE
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="C">
-C. 1
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="D">
-D. ERROR
-</label>
-
-</div>
-
 
 
 <!-- SOAL 5 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 5 dari 20
+    <div class="question-number">
+        Soal 5
+    </div>
+
+    <div class="question-text">
+        Fungsi OR menghasilkan TRUE apabila...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q5" value="A">
+        A. Semua kondisi FALSE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="B">
+        B. Semua kondisi TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="C">
+        C. Minimal satu kondisi TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="D">
+        D. Tidak ada kondisi TRUE
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi OR menghasilkan TRUE apabila...
-</div>
-
-<label class="option">
-<input type="radio" name="q5" value="A">
-A. Semua kondisi FALSE
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="B">
-B. Semua kondisi TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="C">
-C. Minimal satu kondisi TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="D">
-D. Tidak ada kondisi TRUE
-</label>
-
-</div>
-
 
 
 <!-- SOAL 6 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 6 dari 20
+    <div class="question-number">
+        Soal 6
+    </div>
+
+    <div class="question-text">
+        Apa hasil dari =OR(FALSE,TRUE)?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q6" value="A">
+        A. TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="B">
+        B. FALSE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="C">
+        C. 0
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="D">
+        D. ERROR
+    </label>
+
 </div>
-
-<div class="question-text">
-Apa hasil dari =OR(FALSE,TRUE)?
-</div>
-
-<label class="option">
-<input type="radio" name="q6" value="A">
-A. TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="B">
-B. FALSE
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="C">
-C. 0
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="D">
-D. ERROR
-</label>
-
-</div>
-
 
 
 <!-- SOAL 7 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 7 dari 20
+    <div class="question-number">
+        Soal 7
+    </div>
+
+    <div class="question-text">
+        Fungsi NOT digunakan untuk...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q7" value="A">
+        A. Menjumlahkan angka
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="B">
+        B. Membalik nilai logika
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="C">
+        C. Menghapus formula
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="D">
+        D. Mengurutkan data
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi NOT digunakan untuk...
-</div>
-
-<label class="option">
-<input type="radio" name="q7" value="A">
-A. Menjumlahkan angka
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="B">
-B. Membalik nilai logika
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="C">
-C. Menghapus formula
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="D">
-D. Mengurutkan data
-</label>
-
-</div>
-
 
 
 <!-- SOAL 8 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 8 dari 20
+    <div class="question-number">
+        Soal 8
+    </div>
+
+    <div class="question-text">
+        Apa hasil dari =NOT(TRUE)?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q8" value="A">
+        A. TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="B">
+        B. FALSE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="C">
+        C. 1
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="D">
+        D. ERROR
+    </label>
+
 </div>
-
-<div class="question-text">
-Apa hasil dari =NOT(TRUE)?
-</div>
-
-<label class="option">
-<input type="radio" name="q8" value="A">
-A. TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="B">
-B. FALSE
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="C">
-C. 1
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="D">
-D. ERROR
-</label>
-
-</div>
-
 
 
 <!-- SOAL 9 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 9 dari 20
+    <div class="question-number">
+        Soal 9
+    </div>
+
+    <div class="question-text">
+        Apa fungsi XOR?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q9" value="A">
+        A. TRUE jika jumlah kondisi TRUE ganjil
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="B">
+        B. Selalu menghasilkan TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="C">
+        C. Menjumlahkan kondisi
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="D">
+        D. Menghapus kondisi
+    </label>
+
 </div>
-
-<div class="question-text">
-Apa fungsi XOR?
-</div>
-
-<label class="option">
-<input type="radio" name="q9" value="A">
-A. TRUE jika jumlah kondisi TRUE ganjil
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="B">
-B. Selalu menghasilkan TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="C">
-C. Menjumlahkan kondisi
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="D">
-D. Menghapus kondisi
-</label>
-
-</div>
-
 
 
 <!-- SOAL 10 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 10 dari 20
+    <div class="question-number">
+        Soal 10
+    </div>
+
+    <div class="question-text">
+        Apa hasil =XOR(TRUE,FALSE)?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q10" value="A">
+        A. TRUE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="B">
+        B. FALSE
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="C">
+        C. ERROR
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="D">
+        D. 0
+    </label>
+
 </div>
-
-<div class="question-text">
-Apa hasil =XOR(TRUE,FALSE)?
-</div>
-
-<label class="option">
-<input type="radio" name="q10" value="A">
-A. TRUE
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="B">
-B. FALSE
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="C">
-C. ERROR
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="D">
-D. 0
-</label>
-
-</div>
-
 
 
 <!-- SOAL 11 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 11 dari 20
+    <div class="question-number">
+        Soal 11
+    </div>
+
+    <div class="question-text">
+        Formula yang tepat untuk menentukan Lulus jika nilai B2 minimal 75 adalah...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q11" value="A">
+        A. =IF(B2&gt;75,"Lulus","Tidak")
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="B">
+        B. =IF(B2&gt;=75,"Lulus","Belum Lulus")
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="C">
+        C. =AND(B2&gt;=75)
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="D">
+        D. =OR(B2&gt;=75)
+    </label>
+
 </div>
-
-<div class="question-text">
-Formula yang tepat untuk menentukan Lulus jika nilai B2 minimal 75 adalah...
-</div>
-
-<label class="option">
-<input type="radio" name="q11" value="A">
-A. =IF(B2&gt;75,"Lulus","Tidak")
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="B">
-B. =IF(B2&gt;=75,"Lulus","Belum Lulus")
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="C">
-C. =AND(B2&gt;=75)
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="D">
-D. =OR(B2&gt;=75)
-</label>
-
-</div>
-
 
 
 <!-- SOAL 12 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 12 dari 20
+    <div class="question-number">
+        Soal 12
+    </div>
+
+    <div class="question-text">
+        Formula yang tepat untuk lulus jika nilai minimal 75 DAN kehadiran minimal 80% adalah...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q12" value="A">
+        A. =IF(OR(B2&gt;=75,C2&gt;=80%),"Lulus","Tidak")
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="B">
+        B. =IF(AND(B2&gt;=75,C2&gt;=80%),"Lulus","Tidak")
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="C">
+        C. =AND(B2,C2)
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="D">
+        D. =IF(NOT(B2),"Lulus","Tidak")
+    </label>
+
 </div>
-
-<div class="question-text">
-Formula yang tepat untuk lulus jika nilai minimal 75 DAN kehadiran minimal 80% adalah...
-</div>
-
-<label class="option">
-<input type="radio" name="q12" value="A">
-A. =IF(OR(B2&gt;=75,C2&gt;=80%),"Lulus","Tidak")
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="B">
-B. =IF(AND(B2&gt;=75,C2&gt;=80%),"Lulus","Tidak")
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="C">
-C. =AND(B2,C2)
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="D">
-D. =IF(NOT(B2),"Lulus","Tidak")
-</label>
-
-</div>
-
 
 
 <!-- SOAL 13 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 13 dari 20
+    <div class="question-number">
+        Soal 13
+    </div>
+
+    <div class="question-text">
+        Fungsi ISBLANK digunakan untuk...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q13" value="A">
+        A. Memeriksa apakah cell kosong
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="B">
+        B. Menjumlahkan cell kosong
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="C">
+        C. Menghapus cell
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="D">
+        D. Mengisi cell kosong
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi ISBLANK digunakan untuk...
-</div>
-
-<label class="option">
-<input type="radio" name="q13" value="A">
-A. Memeriksa apakah cell kosong
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="B">
-B. Menjumlahkan cell kosong
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="C">
-C. Menghapus cell
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="D">
-D. Mengisi cell kosong
-</label>
-
-</div>
-
 
 
 <!-- SOAL 14 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 14 dari 20
+    <div class="question-number">
+        Soal 14
+    </div>
+
+    <div class="question-text">
+        Fungsi ISNUMBER digunakan untuk memeriksa apakah...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q14" value="A">
+        A. Cell berisi teks
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="B">
+        B. Cell kosong
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="C">
+        C. Nilai berupa angka
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="D">
+        D. Nilai berupa error saja
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi ISNUMBER digunakan untuk memeriksa apakah...
-</div>
-
-<label class="option">
-<input type="radio" name="q14" value="A">
-A. Cell berisi teks
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="B">
-B. Cell kosong
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="C">
-C. Nilai berupa angka
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="D">
-D. Nilai berupa error saja
-</label>
-
-</div>
-
 
 
 <!-- SOAL 15 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 15 dari 20
+    <div class="question-number">
+        Soal 15
+    </div>
+
+    <div class="question-text">
+        Fungsi ISTEXT digunakan untuk...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q15" value="A">
+        A. Memeriksa apakah nilai berupa teks
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="B">
+        B. Memeriksa apakah nilai berupa angka
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="C">
+        C. Menghapus teks
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="D">
+        D. Mengubah angka menjadi teks
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi ISTEXT digunakan untuk...
-</div>
-
-<label class="option">
-<input type="radio" name="q15" value="A">
-A. Memeriksa apakah nilai berupa teks
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="B">
-B. Memeriksa apakah nilai berupa angka
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="C">
-C. Menghapus teks
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="D">
-D. Mengubah angka menjadi teks
-</label>
-
-</div>
-
 
 
 <!-- SOAL 16 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 16 dari 20
+    <div class="question-number">
+        Soal 16
+    </div>
+
+    <div class="question-text">
+        Fungsi IFERROR digunakan untuk...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q16" value="A">
+        A. Membuat error baru
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="B">
+        B. Mengganti hasil error dengan nilai alternatif
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="C">
+        C. Menghapus seluruh formula
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="D">
+        D. Mengubah error menjadi angka secara otomatis
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi IFERROR digunakan untuk...
-</div>
-
-<label class="option">
-<input type="radio" name="q16" value="A">
-A. Membuat error baru
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="B">
-B. Mengganti hasil error dengan nilai alternatif
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="C">
-C. Menghapus seluruh formula
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="D">
-D. Mengubah error menjadi angka secara otomatis
-</label>
-
-</div>
-
 
 
 <!-- SOAL 17 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 17 dari 20
+    <div class="question-number">
+        Soal 17
+    </div>
+
+    <div class="question-text">
+        Formula =IFERROR(A2/B2,0) akan menghasilkan...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q17" value="A">
+        A. Selalu 0
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="B">
+        B. Hasil A2/B2, tetapi 0 jika terjadi error
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="C">
+        C. Selalu error
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="D">
+        D. Hasil A2+B2
+    </label>
+
 </div>
-
-<div class="question-text">
-Formula =IFERROR(A2/B2,0) akan menghasilkan...
-</div>
-
-<label class="option">
-<input type="radio" name="q17" value="A">
-A. Selalu 0
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="B">
-B. Hasil A2/B2, tetapi 0 jika terjadi error
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="C">
-C. Selalu error
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="D">
-D. Hasil A2+B2
-</label>
-
-</div>
-
 
 
 <!-- SOAL 18 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 18 dari 20
+    <div class="question-number">
+        Soal 18
+    </div>
+
+    <div class="question-text">
+        Fungsi ISEVEN digunakan untuk memeriksa apakah...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q18" value="A">
+        A. Angka ganjil
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="B">
+        B. Angka genap
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="C">
+        C. Cell kosong
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="D">
+        D. Cell berupa teks
+    </label>
+
 </div>
-
-<div class="question-text">
-Fungsi ISEVEN digunakan untuk memeriksa apakah...
-</div>
-
-<label class="option">
-<input type="radio" name="q18" value="A">
-A. Angka ganjil
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="B">
-B. Angka genap
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="C">
-C. Cell kosong
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="D">
-D. Cell berupa teks
-</label>
-
-</div>
-
 
 
 <!-- SOAL 19 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 19 dari 20
+    <div class="question-number">
+        Soal 19
+    </div>
+
+    <div class="question-text">
+        Manakah pernyataan yang benar tentang IFS pada Excel 2016?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q19" value="A">
+        A. IFS merupakan fungsi utama Excel 2016
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="B">
+        B. IFS tidak tersedia pada Excel 2016 standar
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="C">
+        C. IFS hanya digunakan untuk penjumlahan
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="D">
+        D. IFS sama dengan SUM
+    </label>
+
 </div>
-
-<div class="question-text">
-Manakah pernyataan yang benar tentang IFS pada Excel 2016?
-</div>
-
-<label class="option">
-<input type="radio" name="q19" value="A">
-A. IFS merupakan fungsi utama Excel 2016
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="B">
-B. IFS tidak tersedia pada Excel 2016 standar
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="C">
-C. IFS hanya digunakan untuk penjumlahan
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="D">
-D. IFS sama dengan SUM
-</label>
-
-</div>
-
 
 
 <!-- SOAL 20 -->
 
-<div class="question">
+<div class="question-card">
 
-<div class="question-number">
-Soal 20 dari 20
-</div>
+    <div class="question-number">
+        Soal 20
+    </div>
 
-<div class="question-text">
-Untuk menggantikan IFS pada Excel 2016, salah satu cara yang dapat digunakan adalah...
-</div>
+    <div class="question-text">
+        Untuk menggantikan IFS pada Excel 2016, salah satu cara yang dapat digunakan adalah...
+    </div>
 
-<label class="option">
-<input type="radio" name="q20" value="A">
-A. IF bertingkat
-</label>
+    <label class="option">
+        <input type="radio" name="q20" value="A">
+        A. IF bertingkat
+    </label>
 
-<label class="option">
-<input type="radio" name="q20" value="B">
-B. DELETE
-</label>
+    <label class="option">
+        <input type="radio" name="q20" value="B">
+        B. DELETE
+    </label>
 
-<label class="option">
-<input type="radio" name="q20" value="C">
-C. PRINT
-</label>
+    <label class="option">
+        <input type="radio" name="q20" value="C">
+        C. PRINT
+    </label>
 
-<label class="option">
-<input type="radio" name="q20" value="D">
-D. FORMAT
-</label>
-
-</div>
-
-
-
-<!-- SUBMIT -->
-
-<div class="navigation">
-
-<button
-type="button"
-class="btn btn-red"
-onclick="finishQuiz(false)">
-
-📤 Submit Kuis
-
-</button>
+    <label class="option">
+        <input type="radio" name="q20" value="D">
+        D. FORMAT
+    </label>
 
 </div>
 
 
-</form>
+<!-- =================================================
+     SUBMIT
+================================================= -->
+
+<div class="submit-area">
+
+    <button
+        class="btn-submit"
+        onclick="finishQuiz(false)">
+
+        ✅ Selesai & Lihat Hasil
+
+    </button>
+
+</div>
+```
 
 </section>
-
-
 
 <!-- =====================================================
-     HASIL
+     RESULT
 ===================================================== -->
 
-<section id="resultSection" class="card hidden">
+<section id="resultSection">
 
-<h2>📊 Hasil Kuis</h2>
+```
+<div class="result-card">
+
+    <h2>🎉 Hasil Kuis</h2>
 
 
-<div id="resultBox"
-     class="result-box">
+    <p>
+        Nama Peserta:
+        <strong id="resultName">-</strong>
+    </p>
 
 
-<div>
-Nilai Anda
+    <p>
+        Kelas:
+        <strong id="resultClass">-</strong>
+    </p>
+
+
+    <div class="score"
+         id="finalScore">
+
+        0
+
+    </div>
+
+
+    <div id="status"
+         class="status">
+
+        -
+
+    </div>
+
+
+    <div class="result-info">
+
+        <div class="result-item">
+
+            <span>Jawaban Benar</span>
+
+            <strong id="correctCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="result-item">
+
+            <span>Jawaban Salah</span>
+
+            <strong id="wrongCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="result-item">
+
+            <span>Tidak Dijawab</span>
+
+            <strong id="emptyCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="result-item">
+
+            <span>Waktu</span>
+
+            <strong id="timeResult">
+                00:00
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="result-buttons">
+
+        <button
+            class="btn-review"
+            onclick="showReview()">
+
+            📖 Lihat Pembahasan
+
+        </button>
+
+
+        <button
+            class="btn-retry"
+            onclick="retryQuiz()">
+
+            🔄 Ulangi Kuis
+
+        </button>
+
+
+        <a
+            class="btn-next"
+            href="modul-excel-8.html">
+
+            ➡️ Modul 8
+
+        </a>
+
+    </div>
+
+
 </div>
 
 
-<div id="finalScore"
-     class="score">
+<!-- REVIEW -->
 
-0
-
-</div>
-
-
-<div id="status"
-     class="status">
-
--
-
-</div>
-
-
-</div>
-
-
-<div class="participant">
-
-<strong>Nama Peserta:</strong>
-<span id="resultName"></span>
-
-<br>
-
-<strong>Kelas:</strong>
-<span id="resultClass"></span>
-
-<br>
-
-<strong>Jawaban Benar:</strong>
-<span id="correctCount"></span> dari 20
-
-<br>
-
-<strong>Jawaban Salah:</strong>
-<span id="wrongCount"></span>
-
-<br>
-
-<strong>Tidak Dijawab:</strong>
-<span id="emptyCount"></span>
-
-<br>
-
-<strong>Waktu:</strong>
-<span id="timeResult"></span>
-
-</div>
-
-
-<div class="warning">
-
-<strong>Ketentuan Kelulusan</strong>
-
-<p>
-Peserta dinyatakan <strong>LULUS</strong>
-apabila memperoleh nilai minimal
-<strong>75</strong>.
-</p>
-
-</div>
-
-
-<div class="navigation">
-
-<button
-class="btn btn-blue"
-onclick="showReview()">
-
-📖 Lihat Pembahasan
-
-</button>
-
-<a
-href="modul-excel-8.html"
-class="btn">
-
-➡️ Lanjut ke Modul Excel 8
-
-</a>
-
-</div>
-
+<div id="reviewContainer"></div>
+```
 
 </section>
 
-
-
-<!-- =====================================================
-     PEMBAHASAN
-===================================================== -->
-
-<section id="reviewSection"
-         class="card hidden">
-
-<h2>📖 Pembahasan Jawaban</h2>
-
-<div id="reviewContent"></div>
-
-
-<div class="navigation">
-
-<a
-href="modul-excel-8.html"
-class="btn btn-blue">
-
-➡️ Lanjut ke Modul Excel 8
-
-</a>
-
 </div>
-
-</section>
-
-
-</div>
-
-
 
 <!-- =====================================================
      FOOTER
 ===================================================== -->
 
-<footer class="footer">
+<footer>
 
-<p>
-<strong>Pelatihan Microsoft Excel</strong>
-</p>
-
-<p>
-Kuis Modul 7 — Fungsi Logika
-</p>
-
-<p>
+```
+© 2026 TIK LEARNING —
 UPTD BLK Kabupaten Subang
-</p>
+```
 
 </footer>
-
-
 
 <script>
 
@@ -1552,18 +1586,8 @@ const PASSING_SCORE = 75;
 
 const QUIZ_DURATION = 15 * 60;
 
-
-/* =====================================================
-   GOOGLE SHEET API
-===================================================== */
-
 const GOOGLE_SHEET_API_URL =
     "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
-
-
-/* =====================================================
-   NAMA MODUL
-===================================================== */
 
 const QUIZ_MODULE_NAME =
 "Modul 7 - Fungsi Logika Microsoft Excel";
@@ -1590,28 +1614,28 @@ let quizFinished = false;
    KUNCI JAWABAN
 ===================================================== */
 
-const answerKey = {
+const answers = {
 
-q1:"B",
-q2:"B",
-q3:"A",
-q4:"B",
-q5:"C",
-q6:"A",
-q7:"B",
-q8:"B",
-q9:"A",
-q10:"A",
-q11:"B",
-q12:"B",
-q13:"A",
-q14:"C",
-q15:"A",
-q16:"B",
-q17:"B",
-q18:"B",
-q19:"B",
-q20:"A"
+    q1:"B",
+    q2:"B",
+    q3:"A",
+    q4:"B",
+    q5:"C",
+    q6:"A",
+    q7:"B",
+    q8:"B",
+    q9:"A",
+    q10:"A",
+    q11:"B",
+    q12:"B",
+    q13:"A",
+    q14:"C",
+    q15:"A",
+    q16:"B",
+    q17:"B",
+    q18:"B",
+    q19:"B",
+    q20:"A"
 
 };
 
@@ -1622,110 +1646,67 @@ q20:"A"
 
 const explanations = {
 
-q1:
-"IF digunakan untuk menguji suatu kondisi dan memberikan hasil berbeda berdasarkan kondisi benar atau salah.",
+    q1:
+    "IF digunakan untuk menguji suatu kondisi dan memberikan hasil berbeda berdasarkan kondisi benar atau salah.",
 
-q2:
-"Sintaks dasar IF adalah =IF(logical_test,value_if_true,value_if_false).",
+    q2:
+    "Sintaks dasar IF adalah =IF(logical_test,value_if_true,value_if_false).",
 
-q3:
-"AND menghasilkan TRUE hanya jika seluruh kondisi yang diuji bernilai TRUE.",
+    q3:
+    "AND menghasilkan TRUE hanya jika seluruh kondisi yang diuji bernilai TRUE.",
 
-q4:
-"Karena salah satu kondisi bernilai FALSE, maka AND menghasilkan FALSE.",
+    q4:
+    "Karena salah satu kondisi bernilai FALSE, maka AND menghasilkan FALSE.",
 
-q5:
-"OR menghasilkan TRUE apabila minimal satu dari kondisi yang diuji bernilai TRUE.",
+    q5:
+    "OR menghasilkan TRUE apabila minimal satu dari kondisi yang diuji bernilai TRUE.",
 
-q6:
-"FALSE OR TRUE menghasilkan TRUE karena terdapat minimal satu kondisi TRUE.",
+    q6:
+    "FALSE OR TRUE menghasilkan TRUE karena terdapat minimal satu kondisi TRUE.",
 
-q7:
-"NOT digunakan untuk membalik nilai logika TRUE menjadi FALSE dan FALSE menjadi TRUE.",
+    q7:
+    "NOT digunakan untuk membalik nilai logika TRUE menjadi FALSE dan FALSE menjadi TRUE.",
 
-q8:
-"NOT(TRUE) menghasilkan FALSE.",
+    q8:
+    "NOT(TRUE) menghasilkan FALSE.",
 
-q9:
-"XOR menghasilkan TRUE jika jumlah kondisi TRUE adalah ganjil.",
+    q9:
+    "XOR menghasilkan TRUE jika jumlah kondisi TRUE adalah ganjil.",
 
-q10:
-"Pada XOR(TRUE,FALSE), hanya satu kondisi yang TRUE sehingga hasilnya TRUE.",
+    q10:
+    "Pada XOR(TRUE,FALSE), hanya satu kondisi yang TRUE sehingga hasilnya TRUE.",
 
-q11:
-"B2>=75 berarti nilai minimal 75. IF kemudian memberikan status Lulus atau Belum Lulus.",
+    q11:
+    "B2>=75 berarti nilai minimal 75. IF kemudian memberikan status Lulus atau Belum Lulus.",
 
-q12:
-"AND digunakan karena kedua syarat harus terpenuhi: nilai minimal 75 dan kehadiran minimal 80%.",
+    q12:
+    "AND digunakan karena kedua syarat harus terpenuhi: nilai minimal 75 dan kehadiran minimal 80%.",
 
-q13:
-"ISBLANK digunakan untuk memeriksa apakah sebuah cell benar-benar kosong.",
+    q13:
+    "ISBLANK digunakan untuk memeriksa apakah sebuah cell benar-benar kosong.",
 
-q14:
-"ISNUMBER menghasilkan TRUE jika nilai yang diperiksa merupakan angka.",
+    q14:
+    "ISNUMBER menghasilkan TRUE jika nilai yang diperiksa merupakan angka.",
 
-q15:
-"ISTEXT menghasilkan TRUE jika nilai yang diperiksa berupa teks.",
+    q15:
+    "ISTEXT menghasilkan TRUE jika nilai yang diperiksa berupa teks.",
 
-q16:
-"IFERROR memungkinkan kita menentukan nilai alternatif ketika formula menghasilkan error.",
+    q16:
+    "IFERROR memungkinkan kita menentukan nilai alternatif ketika formula menghasilkan error.",
 
-q17:
-"Formula tersebut menghitung A2/B2. Jika terjadi error, misalnya pembagian dengan nol, hasilnya diganti menjadi 0.",
+    q17:
+    "Formula tersebut menghitung A2/B2. Jika terjadi error, misalnya pembagian dengan nol, hasilnya diganti menjadi 0.",
 
-q18:
-"ISEVEN digunakan untuk memeriksa apakah sebuah angka merupakan bilangan genap.",
+    q18:
+    "ISEVEN digunakan untuk memeriksa apakah sebuah angka merupakan bilangan genap.",
 
-q19:
-"IFS tidak tersedia pada Excel 2016 standar sehingga pengguna Excel 2016 perlu menggunakan alternatif lain.",
+    q19:
+    "IFS tidak tersedia pada Excel 2016 standar sehingga pengguna Excel 2016 perlu menggunakan alternatif lain.",
 
-q20:
-"IF bertingkat dapat digunakan sebagai alternatif IFS pada Excel 2016."
+    q20:
+    "IF bertingkat dapat digunakan sebagai alternatif IFS pada Excel 2016."
 
 };
-
-
-/* =====================================================
-   CHECK PASSWORD
-===================================================== */
-
-function checkPassword(){
-
-    const input =
-        document
-        .getElementById("passwordInput")
-        .value
-        .trim();
-
-    const error =
-        document.getElementById("passwordError");
-
-
-    if(input === QUIZ_PASSWORD){
-
-        document
-        .getElementById("passwordSection")
-        .classList.add("hidden");
-
-        document
-        .getElementById("participantSection")
-        .classList.remove("hidden");
-
-        error.textContent = "";
-
-        document
-        .getElementById("participantInput")
-        .focus();
-
-    }
-    else{
-
-        error.textContent =
-        "❌ Password salah. Silakan coba kembali.";
-
-    }
-
-}
 
 
 /* =====================================================
@@ -1734,31 +1715,35 @@ function checkPassword(){
 
 function startQuiz(){
 
-    const name =
-        document
-        .getElementById("participantInput")
-        .value
-        .trim();
+    const nameInput =
+        document.getElementById("participantInput");
 
-    const kelas =
-        document
-        .getElementById("classInput")
-        .value
-        .trim();
+    const classInput =
+        document.getElementById("classInput");
+
+    const passwordInput =
+        document.getElementById("quizPassword");
 
     const error =
-        document
-        .getElementById("participantError");
+        document.getElementById("passwordError");
+
+
+    const name =
+        nameInput.value.trim();
+
+    const kelas =
+        classInput.value.trim();
+
+    const password =
+        passwordInput.value.trim();
 
 
     if(name === ""){
 
         error.textContent =
-        "⚠️ Nama peserta wajib diisi.";
+        "Nama peserta wajib diisi.";
 
-        document
-        .getElementById("participantInput")
-        .focus();
+        nameInput.focus();
 
         return;
 
@@ -1768,11 +1753,21 @@ function startQuiz(){
     if(kelas === ""){
 
         error.textContent =
-        "⚠️ Kelas wajib diisi.";
+        "Kelas wajib diisi.";
 
-        document
-        .getElementById("classInput")
-        .focus();
+        classInput.focus();
+
+        return;
+
+    }
+
+
+    if(password !== QUIZ_PASSWORD){
+
+        error.textContent =
+        "Password kuis salah.";
+
+        passwordInput.focus();
 
         return;
 
@@ -1797,13 +1792,15 @@ function startQuiz(){
 
 
     document
-    .getElementById("participantSection")
-    .classList.add("hidden");
+    .getElementById("passwordOverlay")
+    .style.display =
+    "none";
 
 
     document
     .getElementById("quizSection")
-    .classList.remove("hidden");
+    .style.display =
+    "block";
 
 
     quizStarted = true;
@@ -1813,9 +1810,11 @@ function startQuiz(){
     timeLeft = QUIZ_DURATION;
 
 
-    updateProgress();
+    updateTimer();
 
     startTimer();
+
+    updateProgress();
 
 
     window.scrollTo({
@@ -1827,6 +1826,60 @@ function startQuiz(){
 
 
 /* =====================================================
+   ENTER KEY
+===================================================== */
+
+document
+.getElementById("quizPassword")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            startQuiz();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("classInput")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            startQuiz();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("participantInput")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            document
+            .getElementById("classInput")
+            .focus();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    TIMER
 ===================================================== */
 
@@ -1834,11 +1887,16 @@ function startTimer(){
 
     clearInterval(timerInterval);
 
-    updateTimer();
-
 
     timerInterval =
     setInterval(function(){
+
+        if(!quizStarted || quizFinished){
+
+            return;
+
+        }
+
 
         timeLeft--;
 
@@ -1892,17 +1950,15 @@ function updateTimer(){
     );
 
 
-    if(timeLeft <= 300 &&
-       timeLeft > 60){
-
-        timer.classList.add("warning");
-
-    }
-
-
     if(timeLeft <= 60){
 
         timer.classList.add("danger");
+
+    }
+
+    else if(timeLeft <= 300){
+
+        timer.classList.add("warning");
 
     }
 
@@ -1913,16 +1969,37 @@ function updateTimer(){
    PROGRESS
 ===================================================== */
 
+document.addEventListener(
+    "change",
+    function(event){
+
+        if(
+            event.target.type === "radio" &&
+            event.target.name.startsWith("q")
+        ){
+
+            updateProgress();
+
+        }
+
+    }
+);
+
+
 function updateProgress(){
 
     let answered = 0;
 
 
-    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+    for(
+        let i = 1;
+        i <= TOTAL_QUESTIONS;
+        i++
+    ){
 
         const selected =
             document.querySelector(
-                'input[name="q'+i+'"]:checked'
+                'input[name="q' + i + '"]:checked'
             );
 
 
@@ -1935,55 +2012,32 @@ function updateProgress(){
     }
 
 
+    document
+    .getElementById("progressText")
+    .textContent =
+        answered +
+        " dari " +
+        TOTAL_QUESTIONS +
+        " soal";
+
+
     const percentage =
         (answered / TOTAL_QUESTIONS) * 100;
 
 
     document
-    .getElementById("progressText")
-    .textContent =
-    "Progress: " +
-    answered +
-    " dari " +
-    TOTAL_QUESTIONS +
-    " soal";
-
-
-    document
     .getElementById("progressFill")
     .style.width =
-    percentage + "%";
+        percentage + "%";
 
 }
-
-
-/* =====================================================
-   MONITOR JAWABAN
-===================================================== */
-
-document.addEventListener(
-    "change",
-    function(e){
-
-        if(
-            e.target.matches(
-                'input[type="radio"]'
-            )
-        ){
-
-            updateProgress();
-
-        }
-
-    }
-);
 
 
 /* =====================================================
    FINISH QUIZ
 ===================================================== */
 
-function finishQuiz(timeUp=false){
+function finishQuiz(timeUp = false){
 
     if(quizFinished){
 
@@ -1994,14 +2048,13 @@ function finishQuiz(timeUp=false){
 
     if(!timeUp){
 
-        const confirmation =
+        const confirmSubmit =
             confirm(
-                "Apakah Anda yakin ingin mengirim jawaban?\n\n" +
-                "Setelah dikirim, jawaban tidak dapat diubah."
+                "Apakah Anda yakin ingin mengakhiri kuis?"
             );
 
 
-        if(!confirmation){
+        if(!confirmSubmit){
 
             return;
 
@@ -2022,52 +2075,124 @@ function finishQuiz(timeUp=false){
     let empty = 0;
 
 
-    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+    let reviewHTML = "";
+
+
+    for(
+        let i = 1;
+        i <= TOTAL_QUESTIONS;
+        i++
+    ){
+
+        const question =
+            document.querySelector(
+                'input[name="q' + i + '"]'
+            )
+            ?.closest(".question-card");
+
 
         const selected =
             document.querySelector(
-                'input[name="q'+i+'"]:checked'
+                'input[name="q' + i + '"]:checked'
             );
 
 
-        if(!selected){
+        const userAnswer =
+            selected
+            ? selected.value
+            : null;
+
+
+        const correctAnswer =
+            answers["q" + i];
+
+
+        let resultClass = "";
+
+
+        if(!userAnswer){
 
             empty++;
 
+            resultClass = "empty";
+
         }
+
         else if(
-            selected.value ===
-            answerKey["q"+i]
+            userAnswer === correctAnswer
         ){
 
             correct++;
 
+            resultClass = "correct";
+
         }
+
         else{
 
             wrong++;
 
+            resultClass = "wrong";
+
         }
+
+
+        const userText =
+            userAnswer
+            ? getOptionText(i,userAnswer)
+            : "Tidak dijawab";
+
+
+        const correctText =
+            getOptionText(i,correctAnswer);
+
+
+        reviewHTML += `
+
+        <div class="review-card ${resultClass}">
+
+            <div class="review-question">
+
+                Soal ${i}
+
+            </div>
+
+
+            <div class="review-answer">
+
+                <strong>Jawaban Anda:</strong>
+
+                ${userText}
+
+            </div>
+
+
+            <div class="review-answer">
+
+                <strong>Jawaban Benar:</strong>
+
+                ${correctText}
+
+            </div>
+
+
+            <div class="review-explanation">
+
+                <strong>Pembahasan:</strong><br>
+
+                ${explanations["q" + i]}
+
+            </div>
+
+        </div>
+
+        `;
 
     }
 
 
     const score =
         correct * POINT_PER_QUESTION;
-
-
-    const timeUsed =
-        QUIZ_DURATION - timeLeft;
-
-
-    document
-    .getElementById("quizSection")
-    .classList.add("hidden");
-
-
-    document
-    .getElementById("resultSection")
-    .classList.remove("hidden");
 
 
     document
@@ -2109,13 +2234,9 @@ function finishQuiz(timeUp=false){
     document
     .getElementById("timeResult")
     .textContent =
-    timeUp
-    ? "Waktu habis"
-    : formatTime(timeUsed);
-
-
-    const resultBox =
-        document.getElementById("resultBox");
+        timeUp
+        ? "Waktu habis"
+        : formatTimeUsed();
 
 
     const status =
@@ -2124,24 +2245,41 @@ function finishQuiz(timeUp=false){
 
     if(score >= PASSING_SCORE){
 
-        resultBox.className =
-        "result-box lulus";
-
-
         status.textContent =
-        "🎉 LULUS";
+        "LULUS";
+
+        status.className =
+        "status lulus";
 
     }
+
     else{
 
-        resultBox.className =
-        "result-box tidak-lulus";
-
-
         status.textContent =
-        "❌ BELUM LULUS";
+        "BELUM LULUS";
+
+        status.className =
+        "status tidak-lulus";
 
     }
+
+
+    document
+    .getElementById("reviewContainer")
+    .innerHTML =
+    reviewHTML;
+
+
+    document
+    .getElementById("quizSection")
+    .style.display =
+    "none";
+
+
+    document
+    .getElementById("resultSection")
+    .style.display =
+    "block";
 
 
     kirimHasilKuis(
@@ -2160,30 +2298,83 @@ function finishQuiz(timeUp=false){
 
 
 /* =====================================================
-   FORMAT WAKTU
+   AMBIL TEKS OPSI
 ===================================================== */
 
-function formatTime(seconds){
+function getOptionText(
+    questionNumber,
+    letter
+){
 
-    const minutes =
-        Math.floor(seconds / 60);
+    const input =
+        document.querySelector(
+            'input[name="q' +
+            questionNumber +
+            '"][value="' +
+            letter +
+            '"]'
+        );
 
-    const secs =
-        seconds % 60;
+
+    if(!input){
+
+        return letter;
+
+    }
 
 
-    return (
-        String(minutes).padStart(2,"0")
-        +
-        ":" +
-        String(secs).padStart(2,"0")
-    );
+    const label =
+        input.closest("label");
+
+
+    if(!label){
+
+        return letter;
+
+    }
+
+
+    return label.textContent
+        .trim()
+        .replace(
+            /^[A-D]\.\s*/,
+            ""
+        );
 
 }
 
 
 /* =====================================================
-   KIRIM HASIL KE GOOGLE SHEET
+   FORMAT WAKTU
+===================================================== */
+
+function formatTimeUsed(){
+
+    const used =
+        QUIZ_DURATION - timeLeft;
+
+
+    let minutes =
+        Math.floor(used / 60);
+
+    let seconds =
+        used % 60;
+
+
+    minutes =
+        String(minutes).padStart(2,"0");
+
+    seconds =
+        String(seconds).padStart(2,"0");
+
+
+    return minutes + ":" + seconds;
+
+}
+
+
+/* =====================================================
+   KIRIM KE GOOGLE SHEET
 ===================================================== */
 
 function kirimHasilKuis(
@@ -2194,8 +2385,8 @@ function kirimHasilKuis(
 
     if(!GOOGLE_SHEET_API_URL){
 
-        console.error(
-            "Google Sheet API URL belum diatur."
+        console.warn(
+            "URL Google Sheet belum diatur."
         );
 
         return;
@@ -2222,15 +2413,18 @@ function kirimHasilKuis(
         waktu:
             timeUp
             ? "Waktu habis"
-            : formatTime(
-                QUIZ_DURATION - timeLeft
-              )
+            : formatTimeUsed()
 
     };
 
 
     console.log(
-        "Mengirim hasil kuis:",
+        "=== KIRIM HASIL KUIS MODUL 7 ==="
+    );
+
+
+    console.log(
+        "Data:",
         payload
     );
 
@@ -2255,7 +2449,7 @@ function kirimHasilKuis(
     .then(function(){
 
         console.log(
-            "Hasil kuis berhasil dikirim."
+            "Hasil kuis berhasil dikirim ke Google Sheet."
         );
 
     })
@@ -2272,239 +2466,109 @@ function kirimHasilKuis(
 
 
 /* =====================================================
-   PEMBAHASAN
+   REVIEW
 ===================================================== */
 
 function showReview(){
 
-    const container =
-        document.getElementById(
-            "reviewContent"
-        );
-
-
-    container.innerHTML = "";
-
-
-    for(let i=1;i<=TOTAL_QUESTIONS;i++){
-
-        const key =
-            "q" + i;
-
-
-        const question =
-            document.querySelector(
-                'input[name="'+key+'"]'
-            )
-            .closest(".question");
-
-
-        const selected =
-            document.querySelector(
-                'input[name="'+key+'"]:checked'
-            );
-
-
-        const selectedAnswer =
-            selected
-            ? selected.value
-            : "Tidak dijawab";
-
-
-        const correctAnswer =
-            answerKey[key];
-
-
-        const isCorrect =
-            selected &&
-            selected.value ===
-            correctAnswer;
-
-
-        const div =
-            document.createElement("div");
-
-
-        div.className =
-            "review " +
-            (
-                isCorrect
-                ? "correct"
-                : "wrong"
-            );
-
-
-        let resultText;
-
-
-        if(!selected){
-
-            resultText =
-            '<span class="wrong-text">' +
-            '⚠️ Tidak dijawab' +
-            '</span>';
-
-        }
-        else if(isCorrect){
-
-            resultText =
-            '<span class="correct-text">' +
-            '✅ Jawaban benar' +
-            '</span>';
-
-        }
-        else{
-
-            resultText =
-            '<span class="wrong-text">' +
-            '❌ Jawaban salah' +
-            '</span>';
-
-        }
-
-
-        div.innerHTML = `
-
-            <strong>Soal ${i}</strong>
-
-            <p style="margin:8px 0;">
-
-                ${
-                    question
-                    .querySelector(".question-text")
-                    .textContent
-                }
-
-            </p>
-
-
-            <div class="answer">
-
-                Jawaban Anda:
-                <strong>
-                    ${selectedAnswer}
-                </strong>
-
-            </div>
-
-
-            <div class="answer">
-
-                Jawaban benar:
-                <strong>
-                    ${correctAnswer}
-                </strong>
-
-            </div>
-
-
-            <p style="margin-top:10px;">
-
-                ${resultText}
-
-            </p>
-
-
-            <div
-                class="info"
-                style="margin-top:12px;">
-
-                <strong>
-                    💡 Pembahasan:
-                </strong>
-
-                <br>
-
-                ${explanations[key]}
-
-            </div>
-
-        `;
-
-
-        container.appendChild(div);
-
-    }
-
-
     document
     .getElementById("resultSection")
-    .classList.add("hidden");
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
 
     document
-    .getElementById("reviewSection")
-    .classList.remove("hidden");
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    .getElementById("reviewContainer")
+    .style.display =
+    "block";
 
 }
 
 
 /* =====================================================
-   ENTER PADA PASSWORD
+   RETRY
 ===================================================== */
 
-document
-.getElementById("passwordInput")
-.addEventListener(
-    "keydown",
-    function(e){
+function retryQuiz(){
 
-        if(e.key === "Enter"){
-
-            checkPassword();
-
-        }
-
-    }
-);
+    clearInterval(timerInterval);
 
 
-/* =====================================================
-   ENTER PADA NAMA
-===================================================== */
+    quizStarted = false;
 
-document
-.getElementById("participantInput")
-.addEventListener(
-    "keydown",
-    function(e){
+    quizFinished = false;
 
-        if(e.key === "Enter"){
-
-            document
-            .getElementById("classInput")
-            .focus();
-
-        }
-
-    }
-);
+    timeLeft = QUIZ_DURATION;
 
 
-/* =====================================================
-   ENTER PADA KELAS
-===================================================== */
+    document
+    .querySelectorAll(
+        'input[type="radio"]'
+    )
+    .forEach(function(input){
 
-document
-.getElementById("classInput")
-.addEventListener(
-    "keydown",
-    function(e){
+        input.checked = false;
 
-        if(e.key === "Enter"){
+    });
 
-            startQuiz();
 
-        }
+    document
+    .getElementById("resultSection")
+    .style.display =
+    "none";
 
-    }
-);
+
+    document
+    .getElementById("reviewContainer")
+    .style.display =
+    "none";
+
+
+    document
+    .getElementById("quizSection")
+    .style.display =
+    "none";
+
+
+    document
+    .getElementById("passwordOverlay")
+    .style.display =
+    "flex";
+
+
+    document
+    .getElementById("quizPassword")
+    .value =
+    "";
+
+
+    document
+    .getElementById("passwordError")
+    .textContent =
+    "";
+
+
+    document
+    .getElementById("progressText")
+    .textContent =
+    "0 dari 20 soal";
+
+
+    document
+    .getElementById("progressFill")
+    .style.width =
+    "0%";
+
+
+    updateTimer();
+
+
+    document
+    .getElementById("quizPassword")
+    .focus();
+
+}
 
 
 /* =====================================================
@@ -2513,23 +2577,16 @@ document
 
 window.addEventListener(
     "beforeunload",
-    function(e){
-
-        const quizVisible =
-            !document
-            .getElementById("quizSection")
-            .classList
-            .contains("hidden");
-
+    function(event){
 
         if(
-            quizVisible &&
+            quizStarted &&
             !quizFinished
         ){
 
-            e.preventDefault();
+            event.preventDefault();
 
-            e.returnValue = "";
+            event.returnValue = "";
 
         }
 
@@ -2539,4 +2596,5 @@ window.addEventListener(
 </script>
 
 </body>
+
 </html>
