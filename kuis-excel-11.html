@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kuis Excel Modul 11 - Macro & Otomasi Tingkat Lanjut</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Excel 11 - Macro & Otomasi Tingkat Lanjut</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body{
-    margin:0;
     font-family:"Segoe UI",Arial,sans-serif;
     background:#f1f5f3;
     color:#263238;
+    line-height:1.6;
 }
 
+
+/* =====================================================
+   HEADER
+===================================================== */
+
 .header{
-    background:linear-gradient(135deg,#107c41,#185c37);
+    background:linear-gradient(
+        135deg,
+        #107c41,
+        #185c37
+    );
+
     color:white;
     text-align:center;
     padding:30px 20px;
 }
 
 .header h1{
-    margin:0 0 8px;
+    margin-bottom:8px;
     font-size:30px;
 }
 
 .header p{
-    margin:0;
     font-size:16px;
 }
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
     max-width:950px;
@@ -41,40 +71,134 @@ body{
     padding:0 15px;
 }
 
+
+/* =====================================================
+   CARD
+===================================================== */
+
 .card{
     background:white;
     border-radius:16px;
     padding:28px;
     margin-bottom:20px;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.08);
 }
+
+
+/* =====================================================
+   HEADING
+===================================================== */
 
 h2{
     color:#107c41;
-    margin-top:0;
+    margin-bottom:15px;
 }
 
 h3{
     color:#185c37;
 }
 
+
+/* =====================================================
+   PASSWORD OVERLAY
+===================================================== */
+
+.password-overlay{
+    position:fixed;
+    inset:0;
+
+    background:
+        rgba(0,0,0,.72);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:9999;
+}
+
+.password-box{
+    width:100%;
+    max-width:520px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.25);
+}
+
+.password-box h2{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.password-box p{
+    margin-bottom:15px;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
 input[type="text"],
 input[type="password"]{
+
     width:100%;
+
     padding:13px;
-    border:1px solid #cfd8d3;
+
+    border:
+        1px solid #cfd8d3;
+
     border-radius:8px;
+
     font-size:16px;
+
     margin-top:8px;
 }
 
+input:focus{
+    outline:none;
+
+    border-color:#107c41;
+
+    box-shadow:
+        0 0 0 2px rgba(16,124,65,.12);
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
 button{
+
     border:0;
+
     border-radius:8px;
+
     padding:13px 22px;
+
     font-size:16px;
+
     font-weight:bold;
+
     cursor:pointer;
+
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
 }
 
 .btn-primary{
@@ -96,55 +220,143 @@ button{
     color:white;
 }
 
+
+/* =====================================================
+   CENTER
+===================================================== */
+
+.center{
+    text-align:center;
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info{
+    background:#e3f2fd;
+
+    border-left:
+        5px solid #1976d2;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    margin:15px 0;
+}
+
+
+/* =====================================================
+   WARNING
+===================================================== */
+
+.warning{
+    background:#fff8e1;
+
+    border-left:
+        5px solid #ffb300;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    margin:15px 0;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error{
+    background:#ffebee;
+
+    color:#c62828;
+
+    border-left:
+        5px solid #c62828;
+
+    padding:12px;
+
+    border-radius:7px;
+
+    margin-top:15px;
+}
+
+
+/* =====================================================
+   HIDDEN
+===================================================== */
+
 .hidden{
     display:none !important;
 }
 
-.error{
-    background:#ffebee;
-    color:#c62828;
-    border-left:5px solid #c62828;
+
+/* =====================================================
+   PARTICIPANT INFO
+===================================================== */
+
+.participant-info{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.participant-item{
+
+    background:#f5f8f6;
+
+    border-radius:10px;
+
     padding:12px;
-    border-radius:7px;
-    margin-top:15px;
+
+    text-align:center;
 }
 
-.success{
-    background:#e8f5e9;
-    color:#2e7d32;
-    border-left:5px solid #2e7d32;
-    padding:12px;
-    border-radius:7px;
-    margin-top:15px;
+.participant-item strong{
+    display:block;
+
+    color:#107c41;
+
+    margin-bottom:3px;
 }
 
-.info{
-    background:#e3f2fd;
-    border-left:5px solid #1976d2;
-    padding:14px;
-    border-radius:8px;
-    margin:15px 0;
-}
 
-.warning{
-    background:#fff8e1;
-    border-left:5px solid #ffb300;
-    padding:14px;
-    border-radius:8px;
-    margin:15px 0;
-}
+/* =====================================================
+   TIMER
+===================================================== */
 
 .timer{
+
     position:sticky;
+
     top:10px;
+
     z-index:100;
+
     background:#263238;
+
     color:white;
+
     padding:15px;
+
     text-align:center;
+
     border-radius:10px;
+
     margin-bottom:20px;
+
     font-size:22px;
+
     font-weight:bold;
 }
 
@@ -156,132 +368,333 @@ button{
     background:#c62828;
 }
 
-.progress-box{
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-wrap{
+
     margin-bottom:20px;
 }
 
+.progress-text{
+
+    display:flex;
+
+    justify-content:
+        space-between;
+
+    align-items:center;
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+}
+
 .progress-bar{
+
     width:100%;
+
     height:12px;
+
     background:#e0e0e0;
+
     border-radius:20px;
+
     overflow:hidden;
 }
 
-.progress{
+.progress-fill{
+
     height:100%;
+
     width:0%;
+
     background:#107c41;
+
     transition:.3s;
 }
 
+
+/* =====================================================
+   QUESTION
+===================================================== */
+
 .question{
+
     background:#fafafa;
-    border:1px solid #e0e0e0;
+
+    border:
+        1px solid #e0e0e0;
+
     border-radius:12px;
+
     padding:20px;
+
     margin-bottom:18px;
 }
 
 .question-number{
+
     display:inline-block;
+
     background:#107c41;
+
     color:white;
+
     padding:4px 10px;
+
     border-radius:20px;
+
     font-size:13px;
+
     font-weight:bold;
+
     margin-bottom:10px;
 }
 
 .question-text{
+
     font-size:17px;
+
     font-weight:600;
+
     margin-bottom:15px;
 }
 
+
+/* =====================================================
+   OPTION
+===================================================== */
+
 .option{
+
     display:block;
+
     padding:10px 12px;
-    border:1px solid #ddd;
+
+    border:
+        1px solid #ddd;
+
     border-radius:8px;
+
     margin:8px 0;
+
     cursor:pointer;
+
     background:white;
+
+    transition:.2s;
 }
 
 .option:hover{
     background:#f1f8f4;
+
+    border-color:#107c41;
 }
 
 .option input{
     margin-right:10px;
 }
 
+
+/* =====================================================
+   SUBMIT AREA
+===================================================== */
+
+.submit-area{
+
+    text-align:center;
+
+    margin-top:25px;
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
 .result{
     text-align:center;
 }
 
 .score{
+
     font-size:48px;
+
     font-weight:bold;
+
     color:#107c41;
+
     margin:10px 0;
 }
 
 .status{
+
     display:inline-block;
+
     padding:10px 20px;
+
     border-radius:25px;
+
     font-weight:bold;
+
     font-size:18px;
 }
 
 .lulus{
+
     background:#e8f5e9;
+
     color:#2e7d32;
 }
 
-.belum{
+.tidak-lulus{
+
     background:#ffebee;
+
     color:#c62828;
 }
 
-.review{
-    background:#fafafa;
-    border:1px solid #ddd;
+
+/* =====================================================
+   RESULT DETAIL
+===================================================== */
+
+.result-detail{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+
+    margin:25px 0;
+}
+
+.result-item{
+
+    background:#f5f8f6;
+
+    padding:15px;
+
     border-radius:10px;
+
+    text-align:center;
+}
+
+.result-item strong{
+
+    display:block;
+
+    font-size:24px;
+
+    color:#107c41;
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+.review{
+
+    background:#fafafa;
+
+    border:
+        1px solid #ddd;
+
+    border-radius:10px;
+
     padding:18px;
+
     margin:15px 0;
 }
 
 .correct{
+
     color:#2e7d32;
+
     font-weight:bold;
 }
 
 .incorrect{
+
     color:#c62828;
+
     font-weight:bold;
 }
 
 .unanswered{
+
     color:#ef6c00;
+
     font-weight:bold;
 }
 
+.answer-box{
+
+    background:white;
+
+    border-radius:8px;
+
+    padding:10px;
+
+    margin:10px 0;
+}
+
+.explanation{
+
+    background:#e8f5e9;
+
+    border-left:
+        4px solid #107c41;
+
+    padding:12px;
+
+    border-radius:6px;
+
+    margin-top:12px;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation{
+
+    display:flex;
+
+    gap:12px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    margin-top:25px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
 .footer{
+
     text-align:center;
+
     padding:30px;
+
     color:#607d8b;
 }
 
-.navigation{
-    display:flex;
-    gap:12px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:650px){
 
@@ -301,199 +714,234 @@ button{
         font-size:16px;
     }
 
+    .participant-info{
+        grid-template-columns:1fr;
+    }
+
+    .result-detail{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
     button{
         width:100%;
     }
+
+    .navigation{
+        flex-direction:column;
+    }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
 
-<h1>📝 KUIS EXCEL MODUL 11</h1>
+    <h1>📝 Kuis Excel Modul 11</h1>
 
-<p>Macro & Otomasi Tingkat Lanjut</p>
+    <p>Macro & Otomasi Tingkat Lanjut</p>
 
 </header>
 
 
+<!-- =====================================================
+     PASSWORD / IDENTITAS OVERLAY
+===================================================== -->
+
+<div id="passwordOverlay"
+     class="password-overlay">
+
+    <div class="password-box">
+
+        <h2>🔐 Akses Kuis</h2>
+
+        <p class="center">
+            Silakan isi data peserta dan password
+            untuk memulai Kuis Excel Modul 11.
+        </p>
+
+
+        <label>
+            <strong>Nama Peserta</strong>
+        </label>
+
+        <input
+            type="text"
+            id="participantInput"
+            placeholder="Masukkan nama lengkap">
+
+
+        <br>
+
+
+        <label>
+            <strong>Kelas</strong>
+        </label>
+
+        <input
+            type="text"
+            id="classInput"
+            placeholder="Masukkan kelas">
+
+
+        <br>
+
+
+        <label>
+            <strong>Password Kuis</strong>
+        </label>
+
+        <input
+            type="password"
+            id="quizPassword"
+            placeholder="Masukkan password">
+
+
+        <button
+            class="btn-primary"
+            onclick="startQuiz()"
+            style="width:100%;margin-top:20px;">
+
+            ▶ Mulai Kuis
+
+        </button>
+
+
+        <div
+            id="passwordError"
+            class="error hidden">
+
+            Data peserta atau password belum benar.
+            Silakan periksa kembali.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CONTAINER
+===================================================== -->
+
 <div class="container">
 
 
-<!-- ================= PASSWORD ================= -->
+<!-- =====================================================
+     QUIZ SECTION
+===================================================== -->
 
-<section id="passwordSection" class="card">
-
-<h2>🔐 Akses Kuis</h2>
-
-<p>
-Masukkan password untuk membuka Kuis Excel Modul 11.
-</p>
-
-<div class="info">
-<strong>Petunjuk:</strong>
-<p>
-Pastikan Anda telah mempelajari materi
-<strong>Macro & Otomasi Tingkat Lanjut</strong>
-sebelum mengerjakan kuis.
-</p>
-</div>
-
-<label>
-<strong>Password Kuis</strong>
-</label>
-
-<input
-type="password"
-id="passwordInput"
-placeholder="Masukkan password">
-
-<br><br>
-
-<button
-class="btn-primary"
-onclick="cekPassword()">
-🔓 Buka Kuis
-</button>
-
-<div id="passwordError" class="error hidden">
-Password salah. Silakan coba kembali.
-</div>
-
-</section>
+<section
+    id="quizSection"
+    class="hidden">
 
 
-<!-- ================= NAMA ================= -->
+    <!-- TIMER -->
 
-<section id="nameSection" class="card hidden">
+    <div
+        id="timerBox"
+        class="timer">
 
-<h2>👤 Data Peserta</h2>
+        ⏱️ Waktu tersisa:
+        <span id="timer">15:00</span>
 
-<p>
-Silakan masukkan nama lengkap Anda sebelum memulai kuis.
-</p>
-
-<label>
-<strong>Nama Peserta</strong>
-</label>
-
-<input
-type="text"
-id="namaPeserta"
-placeholder="Masukkan nama lengkap">
-
-<br><br>
-
-<button
-class="btn-primary"
-onclick="mulaiPersiapan()">
-➡️ Lanjut
-</button>
-
-<div id="nameError" class="error hidden">
-Nama peserta wajib diisi.
-</div>
-
-</section>
+    </div>
 
 
-<!-- ================= MULAI ================= -->
+    <!-- PARTICIPANT INFO -->
 
-<section id="startSection" class="card hidden">
+    <div class="card">
 
-<h2>🚀 Siap Memulai Kuis?</h2>
+        <div class="participant-info">
 
-<div class="info">
+            <div class="participant-item">
 
-<p><strong>Peserta:</strong>
-<span id="displayName"></span>
-</p>
+                <strong>Nama Peserta</strong>
 
-<p><strong>Materi:</strong>
-Macro & Otomasi Tingkat Lanjut
-</p>
+                <span id="displayName"></span>
 
-<p><strong>Jumlah soal:</strong>
-20 soal
-</p>
-
-<p><strong>Waktu:</strong>
-15 menit
-</p>
-
-<p><strong>Nilai minimum lulus:</strong>
-75
-</p>
-
-</div>
-
-<div class="warning">
-
-<strong>⚠️ Perhatian</strong>
-
-<ul>
-<li>Timer akan berjalan setelah kuis dimulai.</li>
-<li>Jangan menutup halaman selama mengerjakan.</li>
-<li>Jika waktu habis, jawaban akan otomatis dikumpulkan.</li>
-<li>Pastikan semua jawaban sudah diperiksa sebelum Submit.</li>
-</ul>
-
-</div>
-
-<button
-class="btn-primary"
-onclick="mulaiKuis()">
-▶️ Mulai Kuis
-</button>
-
-</section>
+            </div>
 
 
-<!-- ================= KUIS ================= -->
+            <div class="participant-item">
 
-<section id="quizSection" class="hidden">
+                <strong>Kelas</strong>
 
-<div id="timerBox" class="timer">
-⏱️ Waktu tersisa:
-<span id="timer">15:00</span>
-</div>
+                <span id="displayClass"></span>
 
-<div class="card">
-
-<div class="progress-box">
-
-<strong>
-Progress Jawaban:
-<span id="answeredCount">0</span>/20
-</strong>
-
-<div class="progress-bar">
-<div id="progressBar" class="progress"></div>
-</div>
-
-</div>
-
-<p>
-<strong>Peserta:</strong>
-<span id="quizName"></span>
-</p>
-
-</div>
+            </div>
 
 
-<form id="quizForm">
+            <div class="participant-item">
+
+                <strong>KKM</strong>
+
+                <span>75</span>
+
+            </div>
+
+        </div>
 
 
-<!-- 1 -->
+        <!-- PROGRESS -->
+
+        <div class="progress-wrap">
+
+            <div class="progress-text">
+
+                <span>Progress Soal</span>
+
+                <span id="progressText">
+                    0 dari 20 soal
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         QUESTIONS
+    ================================================= -->
+
+    <form id="quizForm">
+
+
+<!-- SOAL 1 -->
 
 <div class="question">
 
-<span class="question-number">Soal 1</span>
+<span class="question-number">
+Soal 1
+</span>
 
 <div class="question-text">
+
 Apa yang dimaksud dengan Macro pada Microsoft Excel?
+
 </div>
 
 <label class="option">
@@ -519,14 +967,18 @@ D. Jenis formula statistik
 </div>
 
 
-<!-- 2 -->
+<!-- SOAL 2 -->
 
 <div class="question">
 
-<span class="question-number">Soal 2</span>
+<span class="question-number">
+Soal 2
+</span>
 
 <div class="question-text">
+
 Bahasa pemrograman yang digunakan untuk membuat Macro pada Excel adalah...
+
 </div>
 
 <label class="option">
@@ -552,14 +1004,18 @@ D. SQL
 </div>
 
 
-<!-- 3 -->
+<!-- SOAL 3 -->
 
 <div class="question">
 
-<span class="question-number">Soal 3</span>
+<span class="question-number">
+Soal 3
+</span>
 
 <div class="question-text">
+
 Tab Excel yang digunakan untuk mengakses fitur Macro adalah...
+
 </div>
 
 <label class="option">
@@ -585,14 +1041,18 @@ D. Review
 </div>
 
 
-<!-- 4 -->
+<!-- SOAL 4 -->
 
 <div class="question">
 
-<span class="question-number">Soal 4</span>
+<span class="question-number">
+Soal 4
+</span>
 
 <div class="question-text">
+
 Shortcut untuk membuka Visual Basic Editor adalah...
+
 </div>
 
 <label class="option">
@@ -618,14 +1078,18 @@ D. Shift + F11
 </div>
 
 
-<!-- 5 -->
+<!-- SOAL 5 -->
 
 <div class="question">
 
-<span class="question-number">Soal 5</span>
+<span class="question-number">
+Soal 5
+</span>
 
 <div class="question-text">
+
 Format file Excel yang tepat untuk menyimpan Macro VBA adalah...
+
 </div>
 
 <label class="option">
@@ -651,14 +1115,18 @@ D. .csv
 </div>
 
 
-<!-- 6 -->
+<!-- SOAL 6 -->
 
 <div class="question">
 
-<span class="question-number">Soal 6</span>
+<span class="question-number">
+Soal 6
+</span>
 
 <div class="question-text">
+
 Fungsi Record Macro adalah...
+
 </div>
 
 <label class="option">
@@ -684,14 +1152,18 @@ D. Membuat PivotTable
 </div>
 
 
-<!-- 7 -->
+<!-- SOAL 7 -->
 
 <div class="question">
 
-<span class="question-number">Soal 7</span>
+<span class="question-number">
+Soal 7
+</span>
 
 <div class="question-text">
+
 Fitur "Use Relative References" pada Record Macro digunakan untuk...
+
 </div>
 
 <label class="option">
@@ -717,14 +1189,18 @@ D. Membuat grafik
 </div>
 
 
-<!-- 8 -->
+<!-- SOAL 8 -->
 
 <div class="question">
 
-<span class="question-number">Soal 8</span>
+<span class="question-number">
+Soal 8
+</span>
 
 <div class="question-text">
+
 Struktur dasar prosedur Macro VBA adalah...
+
 </div>
 
 <label class="option">
@@ -750,15 +1226,22 @@ D. BEGIN...END
 </div>
 
 
-<!-- 9 -->
+<!-- SOAL 9 -->
 
 <div class="question">
 
-<span class="question-number">Soal 9</span>
+<span class="question-number">
+Soal 9
+</span>
 
 <div class="question-text">
-Perintah VBA berikut digunakan untuk apa?<br>
+
+Perintah VBA berikut digunakan untuk apa?
+
+<br>
+
 <code>Range("A1").Value = "Excel"</code>
+
 </div>
 
 <label class="option">
@@ -784,14 +1267,18 @@ D. Mengunci A1
 </div>
 
 
-<!-- 10 -->
+<!-- SOAL 10 -->
 
 <div class="question">
 
-<span class="question-number">Soal 10</span>
+<span class="question-number">
+Soal 10
+</span>
 
 <div class="question-text">
+
 Dalam VBA, Range merupakan...
+
 </div>
 
 <label class="option">
@@ -817,14 +1304,18 @@ D. Jenis error
 </div>
 
 
-<!-- 11 -->
+<!-- SOAL 11 -->
 
 <div class="question">
 
-<span class="question-number">Soal 11</span>
+<span class="question-number">
+Soal 11
+</span>
 
 <div class="question-text">
+
 Apa fungsi <code>MsgBox</code> dalam VBA?
+
 </div>
 
 <label class="option">
@@ -850,14 +1341,18 @@ D. Mengurutkan data
 </div>
 
 
-<!-- 12 -->
+<!-- SOAL 12 -->
 
 <div class="question">
 
-<span class="question-number">Soal 12</span>
+<span class="question-number">
+Soal 12
+</span>
 
 <div class="question-text">
+
 Perintah VBA yang tepat untuk mengisi cell A1 menggunakan objek Cells adalah...
+
 </div>
 
 <label class="option">
@@ -883,14 +1378,18 @@ D. Cell(1,1) = "Nama"
 </div>
 
 
-<!-- 13 -->
+<!-- SOAL 13 -->
 
 <div class="question">
 
-<span class="question-number">Soal 13</span>
+<span class="question-number">
+Soal 13
+</span>
 
 <div class="question-text">
+
 Pernyataan VBA yang digunakan untuk membuat keputusan berdasarkan kondisi adalah...
+
 </div>
 
 <label class="option">
@@ -916,14 +1415,18 @@ D. RANGE...CELL
 </div>
 
 
-<!-- 14 -->
+<!-- SOAL 14 -->
 
 <div class="question">
 
-<span class="question-number">Soal 14</span>
+<span class="question-number">
+Soal 14
+</span>
 
 <div class="question-text">
+
 Perintah VBA yang digunakan untuk melakukan perulangan adalah...
+
 </div>
 
 <label class="option">
@@ -949,15 +1452,22 @@ D. MSG...BOX
 </div>
 
 
-<!-- 15 -->
+<!-- SOAL 15 -->
 
 <div class="question">
 
-<span class="question-number">Soal 15</span>
+<span class="question-number">
+Soal 15
+</span>
 
 <div class="question-text">
-Apa hasil dari kode berikut?<br>
+
+Apa hasil dari kode berikut?
+
+<br>
+
 <code>Range("A1").ClearContents</code>
+
 </div>
 
 <label class="option">
@@ -983,14 +1493,18 @@ D. Mengunci A1
 </div>
 
 
-<!-- 16 -->
+<!-- SOAL 16 -->
 
 <div class="question">
 
-<span class="question-number">Soal 16</span>
+<span class="question-number">
+Soal 16
+</span>
 
 <div class="question-text">
+
 Apa fungsi variabel dalam VBA?
+
 </div>
 
 <label class="option">
@@ -1016,14 +1530,18 @@ D. Menghapus Macro
 </div>
 
 
-<!-- 17 -->
+<!-- SOAL 17 -->
 
 <div class="question">
 
-<span class="question-number">Soal 17</span>
+<span class="question-number">
+Soal 17
+</span>
 
 <div class="question-text">
+
 Apa kegunaan tombol Form Control Button pada worksheet?
+
 </div>
 
 <label class="option">
@@ -1049,14 +1567,18 @@ D. Membuka internet
 </div>
 
 
-<!-- 18 -->
+<!-- SOAL 18 -->
 
 <div class="question">
 
-<span class="question-number">Soal 18</span>
+<span class="question-number">
+Soal 18
+</span>
 
 <div class="question-text">
+
 Apa tujuan utama penggunaan Macro dalam pekerjaan Excel?
+
 </div>
 
 <label class="option">
@@ -1082,14 +1604,19 @@ D. Menghapus semua formula
 </div>
 
 
-<!-- 19 -->
+<!-- SOAL 19 -->
 
 <div class="question">
 
-<span class="question-number">Soal 19</span>
+<span class="question-number">
+Soal 19
+</span>
 
 <div class="question-text">
-Perhatikan kode berikut:<br><br>
+
+Perhatikan kode berikut:
+
+<br><br>
 
 <code>
 For i = 1 To 10<br>
@@ -1100,6 +1627,7 @@ Next i
 <br><br>
 
 Apa hasil dari Macro tersebut?
+
 </div>
 
 <label class="option">
@@ -1125,14 +1653,20 @@ D. Mengisi semua cell dengan angka 10
 </div>
 
 
-<!-- 20 -->
+<!-- SOAL 20 -->
 
 <div class="question">
 
-<span class="question-number">Soal 20</span>
+<span class="question-number">
+Soal 20
+</span>
 
 <div class="question-text">
-Seorang petugas harus setiap hari memformat laporan, mengecek nilai peserta, menentukan status lulus, dan menyesuaikan lebar kolom. Solusi yang paling tepat adalah...
+
+Seorang petugas harus setiap hari memformat laporan,
+mengecek nilai peserta, menentukan status lulus,
+dan menyesuaikan lebar kolom. Solusi yang paling tepat adalah...
+
 </div>
 
 <label class="option">
@@ -1147,7 +1681,7 @@ B. Menggunakan Macro/VBA untuk mengotomatisasinya
 
 <label class="option">
 <input type="radio" name="q20" value="C">
-B. Menghapus workbook setiap hari
+C. Menghapus workbook setiap hari
 </label>
 
 <label class="option">
@@ -1158,14 +1692,19 @@ D. Mengubah file menjadi PDF terlebih dahulu
 </div>
 
 
-<div class="card">
+<!-- =================================================
+     SUBMIT
+================================================= -->
+
+<div class="card submit-area">
 
 <div class="warning">
 
 <strong>⚠️ Periksa kembali jawaban Anda.</strong>
 
 <p>
-Setelah menekan tombol Submit, jawaban tidak dapat diubah.
+Setelah menekan tombol selesai, jawaban
+tidak dapat diubah.
 </p>
 
 </div>
@@ -1173,24 +1712,33 @@ Setelah menekan tombol Submit, jawaban tidak dapat diubah.
 <button
 type="button"
 class="btn-primary"
-onclick="submitKuis()">
-📤 Submit Kuis
+onclick="finishQuiz(false)">
+
+✅ Selesai & Lihat Hasil
+
 </button>
 
 </div>
+
 
 </form>
 
 </section>
 
 
-<!-- ================= HASIL ================= -->
+<!-- =====================================================
+     RESULT
+===================================================== -->
 
-<section id="resultSection" class="card hidden">
+<section
+    id="resultSection"
+    class="card hidden">
+
 
 <div class="result">
 
 <h2>🎉 Hasil Kuis</h2>
+
 
 <p>
 <strong>Nama Peserta</strong>
@@ -1198,40 +1746,141 @@ onclick="submitKuis()">
 
 <h3 id="resultName"></h3>
 
-<p>Nilai Anda:</p>
 
-<div class="score" id="score"></div>
+<p>
+<strong>Kelas</strong>
+</p>
 
-<div id="status"></div>
+<h3 id="resultClass"></h3>
 
-<p id="resultDetail"></p>
+
+<p>
+Nilai Anda:
+</p>
+
+<div
+    class="score"
+    id="finalScore">
+
+0
 
 </div>
 
-<div id="reviewSection">
 
-<h2>📚 Pembahasan</h2>
-
-<div id="reviewContainer"></div>
+<div
+    id="status"
+    class="status">
 
 </div>
+
+
+<div class="result-detail">
+
+
+<div class="result-item">
+
+<strong id="correctCount">
+0
+</strong>
+
+Benar
+
+</div>
+
+
+<div class="result-item">
+
+<strong id="wrongCount">
+0
+</strong>
+
+Salah
+
+</div>
+
+
+<div class="result-item">
+
+<strong id="emptyCount">
+0
+</strong>
+
+Tidak Dijawab
+
+</div>
+
+
+<div class="result-item">
+
+<strong id="timeResult">
+00:00
+</strong>
+
+Waktu
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     REVIEW
+================================================= -->
+
+<div class="center">
+
+<button
+    class="btn-secondary"
+    onclick="showReview()">
+
+📖 Lihat Pembahasan
+
+</button>
+
+</div>
+
+
+<div
+    id="reviewContainer"
+    class="hidden">
+
+</div>
+
+
+<!-- =================================================
+     NAVIGATION
+================================================= -->
 
 <div class="navigation">
 
 <button
-class="btn-secondary"
-onclick="window.location.href='modul-excel-11.html'">
-📖 Kembali ke Modul 11
+    class="btn-secondary"
+    onclick="retryQuiz()">
+
+🔄 Ulangi Kuis
+
 </button>
+
+
+<a
+    href="modul-excel-12.html"
+    style="text-decoration:none;">
 
 <button
-id="nextModuleBtn"
-class="btn-primary"
-onclick="window.location.href='modul-excel-12.html'">
-➡️ Lanjut Modul 12
+    type="button"
+    class="btn-primary">
+
+➡️ Modul 12
+
 </button>
 
+</a>
+
 </div>
+
 
 </section>
 
@@ -1239,17 +1888,13 @@ onclick="window.location.href='modul-excel-12.html'">
 </div>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="footer">
 
-<strong>Pelatihan Microsoft Excel</strong>
-
-<p>
-Kuis Modul 11 — Macro & Otomasi Tingkat Lanjut
-</p>
-
-<p>
-UPTD BLK Kabupaten Subang
-</p>
+© 2026 TIK LEARNING — UPTD BLK Kabupaten Subang
 
 </footer>
 
@@ -1260,47 +1905,91 @@ UPTD BLK Kabupaten Subang
    PENGATURAN KUIS
 ===================================================== */
 
-const PASSWORD_KUIS = "BLKEXCEL11";
+const QUIZ_PASSWORD = "BLKEXCEL11";
 
-const DURASI_KUIS = 15 * 60;
+const TOTAL_QUESTIONS = 20;
 
-const NILAI_LULUS = 75;
+const POINT_PER_QUESTION = 5;
 
-let waktuTersisa = DURASI_KUIS;
+const PASSING_SCORE = 75;
+
+const QUIZ_DURATION = 15 * 60;
+
+
+/* =====================================================
+   GOOGLE SHEETS API
+===================================================== */
+
+const GOOGLE_SHEET_API_URL =
+"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+
+const QUIZ_MODULE_NAME =
+"Modul 11 - Macro & Otomasi Tingkat Lanjut";
+
+
+/* =====================================================
+   VARIABEL
+===================================================== */
+
+let participantName = "";
+
+let participantClass = "";
+
+let timeLeft = QUIZ_DURATION;
 
 let timerInterval = null;
 
-let namaPeserta = "";
+let quizStarted = false;
 
-let kuisSudahSubmit = false;
+let quizFinished = false;
 
 
 /* =====================================================
    KUNCI JAWABAN
 ===================================================== */
 
-const kunciJawaban = {
+const answers = {
 
-q1:"B",
-q2:"C",
-q3:"C",
-q4:"B",
-q5:"C",
-q6:"B",
-q7:"B",
-q8:"C",
-q9:"B",
-q10:"A",
-q11:"B",
-q12:"A",
-q13:"A",
-q14:"B",
-q15:"A",
-q16:"A",
-q17:"B",
-q18:"C",
-q19:"A",
-q20:"B"
+    q1:"B",
+
+    q2:"C",
+
+    q3:"C",
+
+    q4:"B",
+
+    q5:"C",
+
+    q6:"B",
+
+    q7:"B",
+
+    q8:"C",
+
+    q9:"B",
+
+    q10:"A",
+
+    q11:"B",
+
+    q12:"A",
+
+    q13:"A",
+
+    q14:"B",
+
+    q15:"A",
+
+    q16:"A",
+
+    q17:"B",
+
+    q18:"C",
+
+    q19:"A",
+
+    q20:"B"
 
 };
 
@@ -1309,228 +1998,316 @@ q20:"B"
    PEMBAHASAN
 ===================================================== */
 
-const pembahasan = {
+const explanations = {
 
-q1:"Macro adalah sekumpulan instruksi yang digunakan untuk mengotomatisasi pekerjaan berulang di Excel.",
+q1:
+"Macro adalah sekumpulan instruksi yang digunakan untuk mengotomatisasi pekerjaan berulang di Excel.",
 
-q2:"VBA atau Visual Basic for Applications adalah bahasa pemrograman yang digunakan untuk membuat dan mengembangkan Macro di Microsoft Excel.",
+q2:
+"VBA atau Visual Basic for Applications adalah bahasa pemrograman yang digunakan untuk membuat dan mengembangkan Macro di Microsoft Excel.",
 
-q3:"Tab Developer menyediakan berbagai fitur untuk Macro, VBA, Form Control, dan pengembangan otomatisasi.",
+q3:
+"Tab Developer menyediakan berbagai fitur untuk Macro, VBA, Form Control, dan pengembangan otomatisasi.",
 
-q4:"Shortcut Alt + F11 digunakan untuk membuka Visual Basic Editor.",
+q4:
+"Shortcut Alt + F11 digunakan untuk membuka Visual Basic Editor.",
 
-q5:"Format .xlsm adalah Excel Macro-Enabled Workbook yang dapat menyimpan kode VBA.",
+q5:
+"Format .xlsm adalah Excel Macro-Enabled Workbook yang dapat menyimpan kode VBA.",
 
-q6:"Record Macro merekam tindakan pengguna dan mengubahnya menjadi kode VBA.",
+q6:
+"Record Macro merekam tindakan pengguna dan mengubahnya menjadi kode VBA.",
 
-q7:"Use Relative References digunakan agar referensi yang direkam mengikuti posisi relatif terhadap cell aktif.",
+q7:
+"Use Relative References digunakan agar referensi yang direkam mengikuti posisi relatif terhadap cell aktif.",
 
-q8:"Prosedur Macro VBA menggunakan struktur Sub...End Sub.",
+q8:
+"Prosedur Macro VBA menggunakan struktur Sub...End Sub.",
 
-q9:"Range(\"A1\").Value = \"Excel\" akan mengisi cell A1 dengan teks Excel.",
+q9:
+'Range("A1").Value = "Excel" akan mengisi cell A1 dengan teks Excel.',
 
-q10:"Range merupakan objek VBA yang digunakan untuk mewakili satu atau beberapa cell.",
+q10:
+"Range merupakan objek VBA yang digunakan untuk mewakili satu atau beberapa cell.",
 
-q11:"MsgBox digunakan untuk menampilkan pesan kepada pengguna.",
+q11:
+"MsgBox digunakan untuk menampilkan pesan kepada pengguna.",
 
-q12:"Cells(1,1) menunjuk baris 1 kolom 1, yaitu cell A1.",
+q12:
+"Cells(1,1) menunjuk baris 1 kolom 1, yaitu cell A1.",
 
-q13:"IF...THEN digunakan untuk menjalankan perintah berdasarkan kondisi tertentu.",
+q13:
+"IF...THEN digunakan untuk menjalankan perintah berdasarkan kondisi tertentu.",
 
-q14:"For...Next digunakan untuk melakukan perulangan pada VBA.",
+q14:
+"For...Next digunakan untuk melakukan perulangan pada VBA.",
 
-q15:"ClearContents menghapus isi cell/range tetapi tidak menghapus format cell.",
+q15:
+"ClearContents menghapus isi cell/range tetapi tidak menghapus format cell.",
 
-q16:"Variabel digunakan untuk menyimpan nilai sementara yang digunakan selama Macro berjalan.",
+q16:
+"Variabel digunakan untuk menyimpan nilai sementara yang digunakan selama Macro berjalan.",
 
-q17:"Button Form Control dapat dihubungkan dengan Macro sehingga pengguna dapat menjalankan Macro melalui tombol.",
+q17:
+"Button Form Control dapat dihubungkan dengan Macro sehingga pengguna dapat menjalankan Macro melalui tombol.",
 
-q18:"Tujuan utama Macro adalah mengotomatisasi pekerjaan yang berulang sehingga pekerjaan menjadi lebih cepat dan efisien.",
+q18:
+"Tujuan utama Macro adalah mengotomatisasi pekerjaan yang berulang sehingga pekerjaan menjadi lebih cepat dan efisien.",
 
-q19:"Cells(i,1) berarti baris i dan kolom 1. Dengan i dari 1 sampai 10, angka 1–10 akan ditulis pada A1:A10.",
+q19:
+"Cells(i,1) berarti baris i dan kolom 1. Dengan i dari 1 sampai 10, angka 1–10 akan ditulis pada A1:A10.",
 
-q20:"Pekerjaan berulang seperti memformat laporan, mengecek nilai, menentukan status, dan mengatur kolom dapat diotomatisasi menggunakan Macro/VBA."
+q20:
+"Pekerjaan berulang seperti memformat laporan, mengecek nilai, menentukan status, dan mengatur kolom dapat diotomatisasi menggunakan Macro/VBA."
 
 };
-
-
-/* =====================================================
-   CEK PASSWORD
-===================================================== */
-
-function cekPassword(){
-
-    const password =
-        document.getElementById("passwordInput").value;
-
-    const error =
-        document.getElementById("passwordError");
-
-    if(password === PASSWORD_KUIS){
-
-        document
-        .getElementById("passwordSection")
-        .classList.add("hidden");
-
-        document
-        .getElementById("nameSection")
-        .classList.remove("hidden");
-
-        error.classList.add("hidden");
-
-    }else{
-
-        error.classList.remove("hidden");
-
-    }
-
-}
-
-
-/* =====================================================
-   ENTER PASSWORD
-===================================================== */
-
-document
-.getElementById("passwordInput")
-.addEventListener("keypress",function(e){
-
-    if(e.key === "Enter"){
-
-        cekPassword();
-
-    }
-
-});
-
-
-/* =====================================================
-   PERSIAPAN NAMA
-===================================================== */
-
-function mulaiPersiapan(){
-
-    const input =
-        document.getElementById("namaPeserta");
-
-    namaPeserta =
-        input.value.trim();
-
-    const error =
-        document.getElementById("nameError");
-
-    if(namaPeserta === ""){
-
-        error.classList.remove("hidden");
-
-        return;
-
-    }
-
-    error.classList.add("hidden");
-
-    document
-    .getElementById("nameSection")
-    .classList.add("hidden");
-
-    document
-    .getElementById("startSection")
-    .classList.remove("hidden");
-
-    document
-    .getElementById("displayName")
-    .textContent = namaPeserta;
-
-}
 
 
 /* =====================================================
    MULAI KUIS
 ===================================================== */
 
-function mulaiKuis(){
+function startQuiz(){
+
+    const name =
+        document
+        .getElementById("participantInput")
+        .value
+        .trim();
+
+    const kelas =
+        document
+        .getElementById("classInput")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("quizPassword")
+        .value;
+
+    const error =
+        document
+        .getElementById("passwordError");
+
+
+    if(name === ""){
+
+        error.textContent =
+        "Nama peserta wajib diisi.";
+
+        error.classList.remove("hidden");
+
+        document
+        .getElementById("participantInput")
+        .focus();
+
+        return;
+
+    }
+
+
+    if(kelas === ""){
+
+        error.textContent =
+        "Kelas wajib diisi.";
+
+        error.classList.remove("hidden");
+
+        document
+        .getElementById("classInput")
+        .focus();
+
+        return;
+
+    }
+
+
+    if(password !== QUIZ_PASSWORD){
+
+        error.textContent =
+        "Password kuis salah.";
+
+        error.classList.remove("hidden");
+
+        document
+        .getElementById("quizPassword")
+        .focus();
+
+        return;
+
+    }
+
+
+    participantName = name;
+
+    participantClass = kelas;
+
 
     document
-    .getElementById("startSection")
-    .classList.add("hidden");
+    .getElementById("displayName")
+    .textContent =
+    participantName;
+
+
+    document
+    .getElementById("displayClass")
+    .textContent =
+    participantClass;
+
+
+    document
+    .getElementById("passwordOverlay")
+    .style.display =
+    "none";
+
 
     document
     .getElementById("quizSection")
-    .classList.remove("hidden");
+    .style.display =
+    "block";
 
-    document
-    .getElementById("quizName")
-    .textContent = namaPeserta;
 
-    waktuTersisa = DURASI_KUIS;
+    quizStarted = true;
 
-    tampilkanTimer();
+    quizFinished = false;
 
-    timerInterval =
-        setInterval(hitungTimer,1000);
+    timeLeft = QUIZ_DURATION;
+
+
+    updateTimer();
 
     updateProgress();
 
+
+    timerInterval =
+        setInterval(function(){
+
+            timeLeft--;
+
+            updateTimer();
+
+            if(timeLeft <= 0){
+
+                finishQuiz(true);
+
+            }
+
+        },1000);
+
 }
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+document
+.getElementById("participantInput")
+.addEventListener(
+    "keypress",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            document
+            .getElementById("classInput")
+            .focus();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("classInput")
+.addEventListener(
+    "keypress",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            document
+            .getElementById("quizPassword")
+            .focus();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("quizPassword")
+.addEventListener(
+    "keypress",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            startQuiz();
+
+        }
+
+    }
+);
 
 
 /* =====================================================
    TIMER
 ===================================================== */
 
-function hitungTimer(){
+function updateTimer(){
 
-    waktuTersisa--;
-
-    tampilkanTimer();
-
-    if(waktuTersisa <= 60){
-
-        document
-        .getElementById("timerBox")
-        .classList.add("danger-time");
-
-    }else if(waktuTersisa <= 300){
-
-        document
-        .getElementById("timerBox")
-        .classList.add("warning-time");
-
-    }
-
-    if(waktuTersisa <= 0){
-
-        clearInterval(timerInterval);
-
-        alert(
-            "⏰ Waktu kuis telah habis. Jawaban akan otomatis dikumpulkan."
+    const minutes =
+        Math.floor(
+            timeLeft / 60
         );
 
-        submitKuis(true);
+    const seconds =
+        timeLeft % 60;
 
-    }
-
-}
-
-
-/* =====================================================
-   TAMPILKAN TIMER
-===================================================== */
-
-function tampilkanTimer(){
-
-    const menit =
-        Math.floor(waktuTersisa / 60);
-
-    const detik =
-        waktuTersisa % 60;
 
     document
     .getElementById("timer")
     .textContent =
-        String(menit).padStart(2,"0")
-        + ":" +
-        String(detik).padStart(2,"0");
+
+        String(minutes)
+        .padStart(2,"0")
+
+        + ":"
+
+        +
+
+        String(seconds)
+        .padStart(2,"0");
+
+
+    const timerBox =
+        document
+        .getElementById("timerBox");
+
+
+    timerBox.classList.remove(
+        "warning-time",
+        "danger-time"
+    );
+
+
+    if(timeLeft <= 60){
+
+        timerBox
+        .classList
+        .add("danger-time");
+
+    }else if(timeLeft <= 300){
+
+        timerBox
+        .classList
+        .add("warning-time");
+
+    }
 
 }
 
@@ -1541,89 +2318,88 @@ function tampilkanTimer(){
 
 function updateProgress(){
 
-    let jumlahTerjawab = 0;
+    let answered = 0;
 
-    for(let i=1;i<=20;i++){
 
-        const jawaban =
+    for(
+        let i=1;
+        i<=TOTAL_QUESTIONS;
+        i++
+    ){
+
+        const selected =
             document.querySelector(
                 'input[name="q'+i+'"]:checked'
             );
 
-        if(jawaban){
 
-            jumlahTerjawab++;
+        if(selected){
+
+            answered++;
 
         }
 
     }
 
-    document
-    .getElementById("answeredCount")
-    .textContent = jumlahTerjawab;
-
-    const persen =
-        (jumlahTerjawab / 20) * 100;
 
     document
-    .getElementById("progressBar")
-    .style.width = persen + "%";
+    .getElementById("progressText")
+    .textContent =
+
+        answered
+        + " dari "
+        + TOTAL_QUESTIONS
+        + " soal";
+
+
+    const percentage =
+        (answered / TOTAL_QUESTIONS) * 100;
+
+
+    document
+    .getElementById("progressFill")
+    .style.width =
+        percentage + "%";
 
 }
 
 
 /* =====================================================
-   UPDATE PROGRESS SETIAP JAWABAN
+   UPDATE SETIAP JAWABAN
 ===================================================== */
 
 document
 .getElementById("quizForm")
-.addEventListener("change",function(){
+.addEventListener(
+    "change",
+    function(){
 
-    updateProgress();
+        updateProgress();
 
-});
+    }
+);
 
 
 /* =====================================================
-   SUBMIT KUIS
+   SELESAI KUIS
 ===================================================== */
 
-function submitKuis(autoSubmit=false){
+function finishQuiz(timeUp=false){
 
-    if(kuisSudahSubmit){
+    if(quizFinished){
 
         return;
 
     }
 
-    let jumlahTerjawab = 0;
 
-    for(let i=1;i<=20;i++){
-
-        const jawaban =
-            document.querySelector(
-                'input[name="q'+i+'"]:checked'
-            );
-
-        if(jawaban){
-
-            jumlahTerjawab++;
-
-        }
-
-    }
-
-
-    if(!autoSubmit && jumlahTerjawab < 20){
+    if(!timeUp){
 
         const yakin =
             confirm(
-                "Anda baru menjawab "
-                + jumlahTerjawab
-                + " dari 20 soal.\n\n"
-                + "Apakah Anda yakin ingin mengirimkan kuis?"
+                "Apakah Anda yakin ingin mengakhiri kuis?"
             );
+
 
         if(!yakin){
 
@@ -1634,109 +2410,109 @@ function submitKuis(autoSubmit=false){
     }
 
 
-    kuisSudahSubmit = true;
+    quizFinished = true;
+
 
     clearInterval(timerInterval);
 
-    let benar = 0;
 
-    let kosong = 0;
+    let correct = 0;
 
-    const jawabanPeserta = {};
+    let wrong = 0;
+
+    let empty = 0;
 
 
-    for(let i=1;i<=20;i++){
+    for(
+        let i=1;
+        i<=TOTAL_QUESTIONS;
+        i++
+    ){
 
         const selected =
             document.querySelector(
                 'input[name="q'+i+'"]:checked'
             );
 
-        if(selected){
 
-            jawabanPeserta["q"+i] =
-                selected.value;
+        if(!selected){
 
-            if(
-                selected.value ===
-                kunciJawaban["q"+i]
-            ){
+            empty++;
 
-                benar++;
+        }else if(
+            selected.value ===
+            answers["q"+i]
+        ){
 
-            }
+            correct++;
 
         }else{
 
-            kosong++;
-
-            jawabanPeserta["q"+i] = "";
+            wrong++;
 
         }
 
     }
 
 
-    const salah =
-        20 - benar - kosong;
-
-    const nilai =
-        Math.round((benar / 20) * 100);
-
-    tampilkanHasil(
-        nilai,
-        benar,
-        salah,
-        kosong,
-        jawabanPeserta
-    );
-
-}
+    const score =
+        correct * POINT_PER_QUESTION;
 
 
-/* =====================================================
-   TAMPILKAN HASIL
-===================================================== */
+    const timeResult =
+        timeUp
+        ? "Waktu habis"
+        : formatTimeUsed();
 
-function tampilkanHasil(
-    nilai,
-    benar,
-    salah,
-    kosong,
-    jawabanPeserta
-){
-    // Simpan hasil kuis ke localStorage
-localStorage.setItem("kuisExcel11", JSON.stringify({
-    nama: namaPeserta,
-    nilai: nilai,
-    benar: benar,
-    salah: salah,
-    kosong: kosong,
-    selesai: true,
-    tanggal: new Date().toLocaleString("id-ID")
-}));
 
     document
-    .getElementById("quizSection")
-    .classList.add("hidden");
+    .getElementById("finalScore")
+    .textContent =
+        score;
 
-    document
-    .getElementById("resultSection")
-    .classList.remove("hidden");
 
     document
     .getElementById("resultName")
-    .textContent = namaPeserta;
+    .textContent =
+        participantName;
+
 
     document
-    .getElementById("score")
-    .textContent = nilai;
+    .getElementById("resultClass")
+    .textContent =
+        participantClass;
+
+
+    document
+    .getElementById("correctCount")
+    .textContent =
+        correct;
+
+
+    document
+    .getElementById("wrongCount")
+    .textContent =
+        wrong;
+
+
+    document
+    .getElementById("emptyCount")
+    .textContent =
+        empty;
+
+
+    document
+    .getElementById("timeResult")
+    .textContent =
+        timeResult;
 
 
     const status =
-        document.getElementById("status");
+        document
+        .getElementById("status");
 
-    if(nilai >= NILAI_LULUS){
+
+    if(score >= PASSING_SCORE){
 
         status.textContent =
             "✅ LULUS";
@@ -1750,25 +2526,118 @@ localStorage.setItem("kuisExcel11", JSON.stringify({
             "❌ BELUM LULUS";
 
         status.className =
-            "status belum";
+            "status tidak-lulus";
 
     }
 
 
+    buatPembahasan();
+
+
     document
-    .getElementById("resultDetail")
-    .innerHTML =
-        "Benar: <strong>"+benar+"</strong> soal | " +
-        "Salah: <strong>"+salah+"</strong> soal | " +
-        "Tidak dijawab: <strong>"+kosong+"</strong> soal";
+    .getElementById("quizSection")
+    .classList
+    .add("hidden");
 
 
-    buatPembahasan(jawabanPeserta);
+    document
+    .getElementById("resultSection")
+    .classList
+    .remove("hidden");
+
 
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
+
+
+    kirimHasilKuis(
+        correct,
+        score,
+        timeUp
+    );
+
+}
+
+
+/* =====================================================
+   FORMAT WAKTU
+===================================================== */
+
+function formatTimeUsed(){
+
+    const used =
+        QUIZ_DURATION - timeLeft;
+
+
+    const minutes =
+        Math.floor(
+            used / 60
+        );
+
+
+    const seconds =
+        used % 60;
+
+
+    return (
+
+        String(minutes)
+        .padStart(2,"0")
+
+        + ":"
+
+        +
+
+        String(seconds)
+        .padStart(2,"0")
+
+    );
+
+}
+
+
+/* =====================================================
+   GET OPTION TEXT
+===================================================== */
+
+function getOptionText(
+    questionNumber,
+    letter
+){
+
+    const radio =
+        document.querySelector(
+            'input[name="q'+
+            questionNumber+
+            '"][value="'+
+            letter+
+            '"]'
+        );
+
+
+    if(!radio){
+
+        return "";
+
+    }
+
+
+    const label =
+        radio.closest("label");
+
+
+    if(!label){
+
+        return "";
+
+    }
+
+
+    return label.textContent
+        .replace(/^[A-D]\.\s*/,"")
+        .trim();
 
 }
 
@@ -1777,80 +2646,304 @@ localStorage.setItem("kuisExcel11", JSON.stringify({
    PEMBAHASAN
 ===================================================== */
 
-function buatPembahasan(jawabanPeserta){
+function buatPembahasan(){
 
     const container =
-        document.getElementById("reviewContainer");
+        document
+        .getElementById("reviewContainer");
 
-    container.innerHTML = "";
 
-    for(let i=1;i<=20;i++){
+    let html = "";
 
-        const nomor = i;
 
-        const key = "q"+i;
+    for(
+        let i=1;
+        i<=TOTAL_QUESTIONS;
+        i++
+    ){
 
-        const jawaban =
-            jawabanPeserta[key];
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
 
-        const benar =
-            kunciJawaban[key];
+
+        const participantAnswer =
+            selected
+            ? selected.value
+            : "";
+
+
+        const correctAnswer =
+            answers["q"+i];
+
 
         let statusHTML = "";
 
-        if(jawaban === ""){
+
+        if(participantAnswer === ""){
 
             statusHTML =
-                '<div class="unanswered">⚠️ Tidak dijawab</div>';
 
-        }else if(jawaban === benar){
+                '<div class="unanswered">'+
+                '⚠️ Tidak dijawab'+
+                '</div>';
+
+        }else if(
+            participantAnswer ===
+            correctAnswer
+        ){
 
             statusHTML =
-                '<div class="correct">✅ Jawaban Anda benar</div>';
+
+                '<div class="correct">'+
+                '✅ Jawaban Anda benar'+
+                '</div>';
 
         }else{
 
             statusHTML =
-                '<div class="incorrect">❌ Jawaban Anda salah</div>';
+
+                '<div class="incorrect">'+
+                '❌ Jawaban Anda salah'+
+                '</div>';
 
         }
 
 
-        const div =
-            document.createElement("div");
+        const participantText =
+            participantAnswer
+            ? getOptionText(
+                i,
+                participantAnswer
+            )
+            : "-";
 
-        div.className = "review";
 
-        div.innerHTML = `
+        const correctText =
+            getOptionText(
+                i,
+                correctAnswer
+            );
 
-            <strong>Soal ${nomor}</strong>
+
+        html += `
+
+        <div class="review">
+
+            <strong>Soal ${i}</strong>
 
             ${statusHTML}
 
-            <p>
-            Jawaban Anda:
-            <strong>
-            ${jawaban || "-"}
-            </strong>
-            </p>
+            <div class="answer-box">
 
-            <p>
-            Jawaban benar:
-            <strong class="correct">
-            ${benar}
-            </strong>
-            </p>
+                <p>
+                <strong>Jawaban Anda:</strong>
+                ${participantAnswer || "-"}
+                ${participantAnswer
+                    ? " — " + participantText
+                    : ""}
+                </p>
 
-            <p>
-            <strong>📖 Pembahasan:</strong><br>
-            ${pembahasan[key]}
-            </p>
+                <p>
+                <strong>Jawaban benar:</strong>
+                ${correctAnswer}
+                — ${correctText}
+                </p>
+
+            </div>
+
+            <div class="explanation">
+
+                <strong>📖 Pembahasan:</strong>
+
+                <br>
+
+                ${explanations["q"+i]}
+
+            </div>
+
+        </div>
 
         `;
 
-        container.appendChild(div);
+    }
+
+
+    container.innerHTML = html;
+
+}
+
+
+/* =====================================================
+   LIHAT PEMBAHASAN
+===================================================== */
+
+function showReview(){
+
+    const review =
+        document
+        .getElementById("reviewContainer");
+
+
+    review.classList.remove(
+        "hidden"
+    );
+
+
+    review.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   ULANGI KUIS
+===================================================== */
+
+function retryQuiz(){
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    quizStarted = false;
+
+    quizFinished = false;
+
+    timeLeft = QUIZ_DURATION;
+
+
+    /* Hapus semua jawaban */
+
+    for(
+        let i=1;
+        i<=TOTAL_QUESTIONS;
+        i++
+    ){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+
+        if(selected){
+
+            selected.checked =
+                false;
+
+        }
 
     }
+
+
+    /* Reset timer */
+
+    updateTimer();
+
+
+    /* Reset progress */
+
+    updateProgress();
+
+
+    /* Sembunyikan hasil */
+
+    document
+    .getElementById("resultSection")
+    .classList
+    .add("hidden");
+
+
+    /* Tampilkan overlay */
+
+    document
+    .getElementById("passwordOverlay")
+    .style.display =
+        "flex";
+
+
+    /* Reset input */
+
+    document
+    .getElementById("quizPassword")
+    .value = "";
+
+
+    document
+    .getElementById("passwordError")
+    .classList
+    .add("hidden");
+
+
+    document
+    .getElementById("participantInput")
+    .focus();
+
+}
+
+
+/* =====================================================
+   KIRIM HASIL KE GOOGLE SHEETS
+===================================================== */
+
+function kirimHasilKuis(
+    correct,
+    score,
+    timeUp
+){
+
+    const payload = {
+
+        jenis:
+            "kuis",
+
+        nama:
+            participantName,
+
+        kelas:
+            participantClass,
+
+        modul:
+            QUIZ_MODULE_NAME,
+
+        jumlahSoal:
+            TOTAL_QUESTIONS,
+
+        benar:
+            correct,
+
+        nilai:
+            score,
+
+        waktu:
+            timeUp
+            ? "Waktu habis"
+            : formatTimeUsed()
+
+    };
+
+
+    fetch(
+        GOOGLE_SHEET_API_URL,
+        {
+            method:"POST",
+
+            mode:"no-cors",
+
+            headers:{
+                "Content-Type":
+                    "text/plain;charset=utf-8"
+            },
+
+            body:
+                JSON.stringify(payload)
+
+        }
+    );
 
 }
 
@@ -1859,25 +2952,25 @@ function buatPembahasan(jawabanPeserta){
    CEGAH REFRESH TIDAK DISENGAJA
 ===================================================== */
 
-window.addEventListener("beforeunload",function(e){
+window.addEventListener(
+    "beforeunload",
+    function(e){
 
-    if(
-        !kuisSudahSubmit &&
-        !document
-        .getElementById("quizSection")
-        .classList
-        .contains("hidden")
-    ){
+        if(
+            quizStarted &&
+            !quizFinished
+        ){
 
-        e.preventDefault();
+            e.preventDefault();
 
-        e.returnValue = "";
+            e.returnValue = "";
+
+        }
 
     }
-
-});
+);
 
 </script>
-<script src="progress-sync.js"></script>
+
 </body>
 </html>
