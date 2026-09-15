@@ -2316,40 +2316,12 @@ function formatTimeUsed(){
    KIRIM KE GOOGLE SHEET
 ===================================================== */
 
-function kirimHasilKuis(
-    correct,
-    score,
-    timeUp
-){
-
-    console.log("=== MODUL 4 KIRIM HASIL ===");
-    console.log("Nama:", participantName);
-    console.log("Kelas:", participantClass);
-    console.log("Modul:", QUIZ_MODULE_NAME);
-    console.log("Benar:", correct);
-    console.log("Nilai:", score);
-    console.log("Waktu:", timeUp ? "Waktu habis" : formatTimeUsed());
-
-        if(!GOOGLE_SHEET_API_URL){
-
-        console.warn(
-            "https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
-        );
-
-        return;
-
-    }
+function kirimHasilKuis(correct, score, timeUp){
 
     if(!GOOGLE_SHEET_API_URL){
-
-        console.warn(
-            "URL Google Sheet belum diatur."
-        );
-
+        console.warn("URL Google Sheet belum diatur.");
         return;
-
     }
-
 
     const payload = {
 
@@ -2367,36 +2339,34 @@ function kirimHasilKuis(
 
         nilai: score,
 
-        waktu:
-            timeUp
+        waktu: timeUp
             ? "Waktu habis"
             : formatTimeUsed()
 
     };
 
+    console.log("=== KIRIM HASIL KUIS MODUL 4 ===");
+    console.log("Data:", payload);
 
     fetch(
         GOOGLE_SHEET_API_URL,
         {
+            method: "POST",
 
-            method:"POST",
+            mode: "no-cors",
 
-            mode:"no-cors",
-
-            headers:{
+            headers: {
                 "Content-Type":
                     "text/plain;charset=utf-8"
             },
 
-            body:
-                JSON.stringify(payload)
-
+            body: JSON.stringify(payload)
         }
     )
     .then(function(){
 
         console.log(
-            "Hasil kuis berhasil dikirim."
+            "Hasil kuis berhasil dikirim ke Google Sheet."
         );
 
     })
@@ -2410,7 +2380,6 @@ function kirimHasilKuis(
     });
 
 }
-
 
 /* =====================================================
    REVIEW
