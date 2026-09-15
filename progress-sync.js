@@ -4,15 +4,16 @@
    PROGRESS SYNC
    SISTEM TIMER + PENYIMPANAN NILAI KUIS EXCEL
 
-   PERBAIKAN:
-   1. TIDAK membuat form nama peserta tambahan.
-   2. TIDAK mengganti / menimpa startQuiz() asli.
-   3. Mengambil nama dari #participantInput.
-   4. Mengambil kelas dari #classInput.
-   5. Timer 15 menit.
-   6. Menyimpan hasil kuis ke localStorage.
-   7. Menyimpan tanggal dan waktu selesai.
-   8. Menambahkan tombol "Lihat Perkembangan".
+   FUNGSI:
+   1. Tidak membuat input nama tambahan
+   2. Tidak menimpa startQuiz() asli
+   3. Mengambil nama dari #participantInput
+   4. Mengambil kelas dari #classInput
+   5. Timer 15 menit
+   6. Menyimpan hasil ke localStorage
+   7. Mengirim hasil ke Google Spreadsheet
+   8. Menyimpan tanggal dan waktu selesai
+   9. Menambahkan tombol Perkembangan
    ========================================================= */
 
 (function () {
@@ -26,38 +27,48 @@
 
     const NILAI_LULUS = 75;
 
-    // 15 menit
+    // Waktu kuis = 15 menit
     const WAKTU_KUIS = 15 * 60;
 
 
+    /*
+       URL GOOGLE APPS SCRIPT
+    */
+
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+
     /* =====================================================
-       MENENTUKAN NOMOR MODUL OTOMATIS
-       
-       Contoh:
-       kuis-excel-1.html  → Modul 1
-       kuis-excel-2.html  → Modul 2
-       ...
-       kuis-excel-11.html → Modul 11
+       MENENTUKAN NOMOR MODUL
        ===================================================== */
 
-    const namaFile = window.location.pathname;
+    const namaFile =
+        window.location.pathname;
+
 
     const hasilMatch =
-        namaFile.match(/kuis-excel-(\d+)/i);
+        namaFile.match(
+            /kuis-excel-(\d+)/i
+        );
 
 
     /*
-       Jika halaman bukan halaman kuis Excel,
+       Jika halaman bukan kuis Excel,
        hentikan script.
     */
 
     if (!hasilMatch) {
+
         return;
+
     }
 
 
     const nomorModul =
-        Number(hasilMatch[1]);
+        Number(
+            hasilMatch[1]
+        );
 
 
     const storageKey =
@@ -74,11 +85,17 @@
 
     let timerInterval = null;
 
-    let waktuTersisa = WAKTU_KUIS;
+    let waktuTersisa =
+        WAKTU_KUIS;
 
-    let timerSudahDimulai = false;
+    let timerSudahDimulai =
+        false;
 
-    let hasilSudahDisimpan = false;
+    let hasilSudahDisimpan =
+        false;
+
+    let hasilSudahDikirim =
+        false;
 
 
     /* =====================================================
@@ -88,8 +105,7 @@
     function ambilDataPeserta() {
 
         /*
-           Nama peserta diambil dari input
-           yang SUDAH ADA di HTML kuis.
+           Nama diambil dari form HTML asli.
         */
 
         const inputNama =
@@ -99,8 +115,7 @@
 
 
         /*
-           Kelas peserta diambil dari input
-           yang SUDAH ADA di HTML kuis.
+           Kelas diambil dari form HTML asli.
         */
 
         const inputKelas =
@@ -126,8 +141,9 @@
 
 
         /*
-           Jika tidak ditemukan,
-           coba ambil dari penyimpanan browser.
+           Jika input sudah tidak ada
+           karena overlay sudah ditutup,
+           ambil dari sessionStorage/localStorage.
         */
 
         if (!namaPeserta) {
@@ -159,8 +175,7 @@
 
 
         /*
-           Simpan kembali agar dapat digunakan
-           saat hasil kuis disimpan.
+           Simpan kembali.
         */
 
         if (namaPeserta) {
@@ -270,11 +285,6 @@
             );
 
 
-        /*
-           Jika ditemukan,
-           timer diletakkan di bagian paling atas.
-        */
-
         if (tempatTimer) {
 
             tempatTimer.insertBefore(
@@ -336,8 +346,7 @@
 
 
         /*
-           Jika waktu tinggal 1 menit
-           atau kurang, ubah menjadi merah.
+           Peringatan 1 menit terakhir.
         */
 
         const timerBox =
@@ -366,10 +375,6 @@
 
     function mulaiTimer() {
 
-        /*
-           Jangan mulai timer dua kali.
-        */
-
         if (timerSudahDimulai) {
 
             return;
@@ -377,33 +382,22 @@
         }
 
 
-        timerSudahDimulai = true;
+        timerSudahDimulai =
+            true;
 
 
         /*
-           Ambil data peserta.
+           Ambil data peserta
+           sebelum overlay hilang.
         */
 
         ambilDataPeserta();
 
 
-        /*
-           Buat timer.
-        */
-
         buatTimer();
-
-
-        /*
-           Tampilkan waktu awal.
-        */
 
         updateTimer();
 
-
-        /*
-           Jalankan hitungan mundur.
-        */
 
         timerInterval =
             setInterval(
@@ -416,7 +410,7 @@
 
 
                     /*
-                       Jika waktu habis.
+                       Waktu habis.
                     */
 
                     if (
@@ -426,7 +420,6 @@
                         clearInterval(
                             timerInterval
                         );
-
 
                         timerInterval =
                             null;
@@ -439,19 +432,13 @@
 
 
                         /*
-                           Jalankan fungsi finishQuiz
-                           milik halaman kuis.
+                           Jalankan finishQuiz asli.
                         */
 
                         if (
                             typeof window.finishQuiz ===
                             "function"
                         ) {
-
-                            /*
-                               Simpan referensi fungsi asli
-                               sebelum dipanggil.
-                            */
 
                             window.finishQuiz();
 
@@ -505,11 +492,6 @@
             const teks =
                 element.textContent || "";
 
-
-            /*
-               Hilangkan semua karakter
-               selain angka, titik dan minus.
-            */
 
             const angka =
                 Number(
@@ -657,16 +639,138 @@
 
 
     /* =====================================================
-       MENYIMPAN HASIL KUIS
+       MENGHITUNG JUMLAH SOAL
        ===================================================== */
 
-    function simpanHasil() {
+    function ambilJumlahSoal() {
 
         /*
-           Jangan menyimpan dua kali.
+           Untuk kuis Excel saat ini
+           jumlah soal = 20.
         */
 
-        if (hasilSudahDisimpan) {
+        const kemungkinanID = [
+
+            "totalQuestions",
+            "questionCount",
+            "jumlahSoal"
+
+        ];
+
+
+        for (
+            let i = 0;
+            i < kemungkinanID.length;
+            i++
+        ) {
+
+            const element =
+                document.getElementById(
+                    kemungkinanID[i]
+                );
+
+
+            if (!element) {
+
+                continue;
+
+            }
+
+
+            const angka =
+                Number(
+                    element.textContent
+                        .replace(
+                            /[^\d.-]/g,
+                            ""
+                        )
+                );
+
+
+            if (
+                !isNaN(angka) &&
+                angka > 0
+            ) {
+
+                return angka;
+
+            }
+
+        }
+
+
+        /*
+           Default Modul Excel = 20 soal.
+        */
+
+        return 20;
+
+    }
+
+
+    /* =====================================================
+       MENGAMBIL WAKTU PENGERJAAN
+       ===================================================== */
+
+    function ambilWaktu() {
+
+        /*
+           Waktu yang digunakan =
+           waktu awal - waktu tersisa.
+        */
+
+        const waktuDigunakan =
+            WAKTU_KUIS -
+            Math.max(
+                0,
+                waktuTersisa
+            );
+
+
+        const menit =
+            Math.floor(
+                waktuDigunakan / 60
+            );
+
+
+        const detik =
+            waktuDigunakan % 60;
+
+
+        return (
+
+            String(menit).padStart(
+                2,
+                "0"
+            )
+
+            +
+
+            ":"
+
+            +
+
+            String(detik).padStart(
+                2,
+                "0"
+            )
+
+        );
+
+    }
+
+
+    /* =====================================================
+       MENGIRIM HASIL KE GOOGLE SPREADSHEET
+       ===================================================== */
+
+    function kirimKeGoogleSheet() {
+
+        /*
+           Jangan kirim dua kali.
+        */
+
+        if (hasilSudahDikirim) {
 
             return;
 
@@ -679,11 +783,6 @@
 
         ambilDataPeserta();
 
-
-        /*
-           Jika nama kosong,
-           gunakan "Peserta".
-        */
 
         if (!namaPeserta) {
 
@@ -705,8 +804,12 @@
             ambilSalah();
 
 
+        const jumlahSoal =
+            ambilJumlahSoal();
+
+
         /*
-           Tentukan status kelulusan.
+           Status kelulusan.
         */
 
         const status =
@@ -730,8 +833,187 @@
 
 
         /*
-           Data yang disimpan.
+           Waktu pengerjaan.
         */
+
+        const waktu =
+            ambilWaktu();
+
+
+        /*
+           Data yang dikirim ke Apps Script.
+
+           Nama field dibuat sesuai
+           sistem Spreadsheet kuis:
+           
+           jenis
+           nama
+           kelas
+           modul
+           jumlahSoal
+           benar
+           nilai
+           waktu
+           tanggal
+           status
+        */
+
+        const data = {
+
+            jenis:
+                "kuis",
+
+            nama:
+                namaPeserta,
+
+            kelas:
+                kelasPeserta,
+
+            modul:
+                "Modul " +
+                nomorModul +
+                " - Formula Dasar Microsoft Excel",
+
+            jumlahSoal:
+                jumlahSoal,
+
+            benar:
+                benar,
+
+            nilai:
+                nilai,
+
+            waktu:
+                waktu,
+
+            tanggal:
+                tanggal,
+
+            status:
+                status
+
+        };
+
+
+        /*
+           Kirim menggunakan POST.
+        */
+
+        fetch(
+            GOOGLE_SCRIPT_URL,
+            {
+
+                method:
+                    "POST",
+
+                mode:
+                    "no-cors",
+
+                headers:
+                    {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                body:
+                    JSON.stringify(
+                        data
+                    )
+
+            }
+        )
+        .then(
+            function () {
+
+                hasilSudahDikirim =
+                    true;
+
+                console.log(
+                    "✓ Hasil kuis berhasil dikirim ke Google Spreadsheet."
+                );
+
+            }
+        )
+        .catch(
+            function (error) {
+
+                console.error(
+                    "✗ Gagal mengirim hasil kuis:",
+                    error
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MENYIMPAN HASIL SECARA LOKAL
+       ===================================================== */
+
+    function simpanHasil() {
+
+        /*
+           Jangan simpan dua kali.
+        */
+
+        if (hasilSudahDisimpan) {
+
+            /*
+               Walaupun sudah tersimpan lokal,
+               tetap pastikan pengiriman ke Google.
+            */
+
+            kirimKeGoogleSheet();
+
+            return;
+
+        }
+
+
+        /*
+           Ambil data peserta.
+        */
+
+        ambilDataPeserta();
+
+
+        if (!namaPeserta) {
+
+            namaPeserta =
+                "Peserta";
+
+        }
+
+
+        const nilai =
+            ambilNilai();
+
+
+        const benar =
+            ambilBenar();
+
+
+        const salah =
+            ambilSalah();
+
+
+        const status =
+
+            nilai >= NILAI_LULUS
+
+                ? "LULUS"
+
+                : "BELUM LULUS";
+
+
+        const tanggal =
+            new Date()
+                .toLocaleString(
+                    "id-ID"
+                );
+
 
         const dataKuis = {
 
@@ -766,12 +1048,7 @@
 
 
         /*
-           Simpan berdasarkan nomor modul.
-
-           Modul 1  → kuisExcel1
-           Modul 2  → kuisExcel2
-           Modul 3  → kuisExcel3
-           dst.
+           Simpan ke localStorage.
         */
 
         localStorage.setItem(
@@ -786,7 +1063,7 @@
 
 
         /*
-           Simpan nama dan kelas secara global.
+           Simpan nama dan kelas.
         */
 
         localStorage.setItem(
@@ -805,10 +1082,6 @@
         }
 
 
-        /*
-           Simpan juga ke sessionStorage.
-        */
-
         sessionStorage.setItem(
             "namaPeserta",
             namaPeserta
@@ -825,7 +1098,8 @@
         }
 
 
-        hasilSudahDisimpan = true;
+        hasilSudahDisimpan =
+            true;
 
 
         /*
@@ -845,6 +1119,13 @@
 
 
         /*
+           Kirim ke Google Spreadsheet.
+        */
+
+        kirimKeGoogleSheet();
+
+
+        /*
            Tambahkan tombol perkembangan.
         */
 
@@ -859,10 +1140,6 @@
 
     function tambahTombolPerkembangan() {
 
-        /*
-           Jangan dibuat dua kali.
-        */
-
         if (
             document.getElementById(
                 "progressLink"
@@ -873,10 +1150,6 @@
 
         }
 
-
-        /*
-           Cari bagian hasil.
-        */
 
         const hasil =
 
@@ -903,10 +1176,6 @@
 
         }
 
-
-        /*
-           Buat pembungkus tombol.
-        */
 
         const wrapper =
             document.createElement(
@@ -942,17 +1211,7 @@
 
 
     /* =====================================================
-       MENGAWASI START QUIZ ASLI
-       =====================================================
-
-       PENTING:
-
-       Kita TIDAK mengganti window.startQuiz.
-
-       startQuiz() tetap milik HTML kuis.
-
-       Kita hanya mendeteksi ketika overlay
-       password sudah ditutup dan kuis mulai.
+       MEMANTAU MULAI KUIS
        ===================================================== */
 
     function pantauMulaiKuis() {
@@ -971,8 +1230,8 @@
 
 
         /*
-           Observer akan mendeteksi perubahan
-           display pada overlay.
+           Observer memantau perubahan
+           overlay dari tampil menjadi tersembunyi.
         */
 
         const observer =
@@ -986,14 +1245,25 @@
 
 
                     /*
-                       Jika overlay sudah tidak terlihat,
+                       Jika overlay hilang,
                        berarti kuis sudah dimulai.
                     */
 
                     if (
-                        style.display === "none" ||
-                        style.visibility === "hidden" ||
-                        overlay.style.display === "none"
+
+                        style.display ===
+                        "none"
+
+                        ||
+
+                        style.visibility ===
+                        "hidden"
+
+                        ||
+
+                        overlay.style.display ===
+                        "none"
+
                     ) {
 
                         if (
@@ -1011,29 +1281,32 @@
 
 
         observer.observe(
+
             overlay,
+
             {
-                attributes: true,
-                attributeFilter: [
-                    "style",
-                    "class"
-                ]
+
+                attributes:
+                    true,
+
+                attributeFilter:
+                    [
+                        "style",
+                        "class"
+                    ]
+
             }
+
         );
 
     }
 
 
     /* =====================================================
-       MENGAWASI HASIL KUIS
+       MEMANTAU HASIL KUIS
        ===================================================== */
 
     function pantauHasil() {
-
-        /*
-           Cek setiap 500 ms apakah
-           bagian hasil sudah tampil.
-        */
 
         const intervalHasil =
             setInterval(
@@ -1060,16 +1333,30 @@
 
                     /*
                        Jika hasil sudah terlihat,
-                       simpan hasil.
+                       simpan dan kirim.
                     */
 
                     if (
-                        style.display !== "none" &&
-                        hasil.textContent.trim() !== ""
+
+                        style.display !==
+                        "none"
+
+                        &&
+
+                        hasil.textContent
+                            .trim() !==
+                            ""
+
                     ) {
 
                         simpanHasil();
 
+
+                        /*
+                           Setelah berhasil
+                           terdeteksi, tidak perlu
+                           mengecek terus.
+                        */
 
                         clearInterval(
                             intervalHasil
@@ -1085,13 +1372,15 @@
 
 
     /* =====================================================
-       DETEKSI KLIK TOMBOL SELESAI
+       MEMANTAU TOMBOL SELESAI
        ===================================================== */
 
     function pantauTombolSelesai() {
 
         document.addEventListener(
+
             "click",
+
             function (event) {
 
                 const target =
@@ -1104,11 +1393,6 @@
 
                 }
 
-
-                /*
-                   Cari apakah yang diklik
-                   adalah tombol finishQuiz.
-                */
 
                 const tombol =
                     target.closest(
@@ -1124,6 +1408,7 @@
 
 
                 const teks =
+
                     (
                         tombol.textContent ||
                         ""
@@ -1132,8 +1417,7 @@
 
 
                 /*
-                   Beberapa kemungkinan
-                   tulisan tombol selesai.
+                   Deteksi tombol selesai.
                 */
 
                 if (
@@ -1163,22 +1447,27 @@
                 ) {
 
                     /*
-                       Tunggu sebentar agar
-                       nilai selesai dihitung.
+                       Beri waktu kepada
+                       fungsi asli untuk
+                       menghitung nilai.
                     */
 
                     setTimeout(
+
                         function () {
 
                             simpanHasil();
 
                         },
-                        500
+
+                        700
+
                     );
 
                 }
 
             }
+
         );
 
     }
@@ -1310,19 +1599,25 @@
     function inisialisasi() {
 
         /*
-           Jangan membuat form nama.
+           PENTING:
 
-           Jangan mengganti startQuiz.
+           Tidak ada lagi:
 
-           Kita hanya memantau startQuiz
-           yang sudah ada di HTML.
+           buatFormNama()
+
+           dan tidak ada:
+
+           window.startQuiz = ...
+
+           sehingga form nama dari HTML
+           tidak akan dibuat dua kali.
         */
 
         pantauMulaiKuis();
 
 
         /*
-           Pantau hasil kuis.
+           Pantau bagian hasil.
         */
 
         pantauHasil();
@@ -1337,9 +1632,9 @@
     }
 
 
-    /*
-       Jalankan setelah halaman siap.
-    */
+    /* =====================================================
+       JALANKAN SCRIPT
+       ===================================================== */
 
     if (
         document.readyState ===
