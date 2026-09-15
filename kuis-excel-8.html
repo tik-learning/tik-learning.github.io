@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-   content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
 <title>Kuis Excel 8 - Fungsi Text</title>
 
@@ -29,7 +29,6 @@ body{
     color:#222;
     line-height:1.6;
 }
-
 
 /* =====================================================
    HEADER
@@ -53,7 +52,6 @@ header p{
     opacity:.95;
 }
 
-
 /* =====================================================
    CONTAINER
 ===================================================== */
@@ -64,9 +62,8 @@ header p{
     margin:25px auto 40px;
 }
 
-
 /* =====================================================
-   PASSWORD / IDENTITAS OVERLAY
+   PASSWORD OVERLAY
 ===================================================== */
 
 .password-overlay{
@@ -149,7 +146,6 @@ header p{
     min-height:20px;
 }
 
-
 /* =====================================================
    QUIZ AREA
 ===================================================== */
@@ -226,7 +222,6 @@ header p{
     transition:.3s;
 }
 
-
 /* =====================================================
    QUESTION
 ===================================================== */
@@ -270,7 +265,6 @@ header p{
     margin-right:10px;
 }
 
-
 /* =====================================================
    SUBMIT
 ===================================================== */
@@ -294,7 +288,6 @@ header p{
 .btn-submit:hover{
     background:#0b6333;
 }
-
 
 /* =====================================================
    RESULT
@@ -367,7 +360,6 @@ header p{
     color:#c62828;
 }
 
-
 /* =====================================================
    BUTTON RESULT
 ===================================================== */
@@ -406,7 +398,6 @@ header p{
     background:#0077b6;
     color:white;
 }
-
 
 /* =====================================================
    REVIEW
@@ -453,7 +444,6 @@ header p{
     margin-top:10px;
 }
 
-
 /* =====================================================
    FOOTER
 ===================================================== */
@@ -464,7 +454,6 @@ footer{
     color:#777;
     font-size:13px;
 }
-
 
 /* =====================================================
    MOBILE
@@ -506,7 +495,9 @@ footer{
 
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      PASSWORD / IDENTITAS
@@ -515,79 +506,79 @@ footer{
 <div id="passwordOverlay"
      class="password-overlay">
 
-```
-<div class="password-box">
+    <div class="password-box">
 
-    <h2>📝 Kuis Excel Modul 8</h2>
+        <h2>📝 Kuis Excel Modul 8</h2>
 
-    <p>
-        Silakan isi identitas peserta sebelum memulai kuis.
-    </p>
+        <p>
+            Silakan isi identitas peserta sebelum memulai kuis.
+        </p>
 
+        <div class="input-group">
 
-    <div class="input-group">
+            <label for="participantInput">
+                Nama Peserta
+            </label>
 
-        <label for="participantInput">
-            Nama Peserta
-        </label>
+            <input
+                type="text"
+                id="participantInput"
+                placeholder="Masukkan nama lengkap"
+                autocomplete="off">
 
-        <input
-            type="text"
-            id="participantInput"
-            placeholder="Masukkan nama lengkap"
-            autocomplete="off">
-
-    </div>
+        </div>
 
 
-    <div class="input-group">
+        <div class="input-group">
 
-        <label for="classInput">
-            Kelas
-        </label>
+            <label for="classInput">
+                Kelas
+            </label>
 
-        <input
-            type="text"
-            id="classInput"
-            placeholder="Masukkan kelas"
-            autocomplete="off">
+            <input
+                type="text"
+                id="classInput"
+                placeholder="Masukkan kelas"
+                autocomplete="off">
 
-    </div>
-
-
-    <div class="input-group">
-
-        <label for="quizPassword">
-            Password Kuis
-        </label>
-
-        <input
-            type="password"
-            id="quizPassword"
-            placeholder="Masukkan password"
-            autocomplete="off">
-
-    </div>
+        </div>
 
 
-    <button
-        class="btn-start"
-        onclick="startQuiz()">
+        <div class="input-group">
 
-        ▶ Mulai Kuis
+            <label for="quizPassword">
+                Password Kuis
+            </label>
 
-    </button>
+            <input
+                type="password"
+                id="quizPassword"
+                placeholder="Masukkan password"
+                autocomplete="off">
+
+        </div>
 
 
-    <div
-        id="passwordError"
-        class="error">
+        <button
+            class="btn-start"
+            onclick="startQuiz()">
+
+            ▶ Mulai Kuis
+
+        </button>
+
+
+        <div
+            id="passwordError"
+            class="error">
+
+        </div>
+
     </div>
 
 </div>
-```
 
-</div>
+
 
 <!-- =====================================================
      HEADER
@@ -595,15 +586,15 @@ footer{
 
 <header>
 
-```
-<h1>📝 Kuis Excel Modul 8</h1>
+    <h1>📝 Kuis Excel Modul 8</h1>
 
-<p>
-    Fungsi Text Microsoft Excel 2016
-</p>
-```
+    <p>
+        Fungsi Text Microsoft Excel 2016
+    </p>
 
 </header>
+
+
 
 <!-- =====================================================
      QUIZ
@@ -613,812 +604,860 @@ footer{
 
 <section id="quizSection">
 
-```
-<!-- INFO PESERTA -->
 
-<div class="top-card">
+    <!-- INFO PESERTA -->
 
-    <div class="participant">
+    <div class="top-card">
 
-        <div>
+        <div class="participant">
 
-            <strong>Nama Peserta</strong><br>
+            <div>
 
-            <span id="displayName">-</span>
+                <strong>Nama Peserta</strong><br>
+
+                <span id="displayName">-</span>
+
+            </div>
+
+
+            <div>
+
+                <strong>Kelas</strong><br>
+
+                <span id="displayClass">-</span>
+
+            </div>
+
+
+            <div>
+
+                <strong>KKM</strong><br>
+
+                75
+
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="timer-box">
 
-            <strong>Kelas</strong><br>
+            <div>⏱ Sisa Waktu</div>
 
-            <span id="displayClass">-</span>
+            <div id="timer">
+                15:00
+            </div>
+
+        </div>
+
+
+        <div class="progress-text">
+
+            Progress:
+
+            <span id="progressText">
+                0 dari 20 soal
+            </span>
 
         </div>
 
 
-        <div>
+        <div class="progress-bar">
 
-            <strong>KKM</strong><br>
-
-            75
+            <div id="progressFill"></div>
 
         </div>
 
     </div>
 
 
-    <div class="timer-box">
 
-        <div>⏱ Sisa Waktu</div>
+    <!-- =================================================
+         SOAL 1
+    ================================================= -->
 
-        <div id="timer">
-            15:00
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 1
         </div>
 
+        <div class="question-text">
+            Fungsi LEFT dalam Microsoft Excel digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q1" value="A">
+            A. Mengambil sejumlah karakter dari sebelah kiri teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="B">
+            B. Mengambil sejumlah karakter dari sebelah kanan teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="C">
+            C. Menghitung jumlah karakter dalam teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="D">
+            D. Mengubah teks menjadi huruf kapital
+        </label>
+
     </div>
 
 
-    <div class="progress-text">
 
-        Progress:
+    <!-- =================================================
+         SOAL 2
+    ================================================= -->
 
-        <span id="progressText">
-            0 dari 20 soal
-        </span>
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 2
+        </div>
+
+        <div class="question-text">
+            Jika cell A1 berisi teks "SUBANG2026", maka formula
+            =LEFT(A1,6) akan menghasilkan...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q2" value="A">
+            A. SUBANG
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="B">
+            B. 2026
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="C">
+            C. SUBANG2
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="D">
+            D. UBANG2
+        </label>
 
     </div>
 
 
-    <div class="progress-bar">
 
-        <div id="progressFill"></div>
+    <!-- =================================================
+         SOAL 3
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 3
+        </div>
+
+        <div class="question-text">
+            Fungsi RIGHT digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q3" value="A">
+            A. Mengambil karakter dari tengah teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="B">
+            B. Menghapus karakter dari teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="C">
+            C. Mengambil sejumlah karakter dari sebelah kanan teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="D">
+            D. Menggabungkan dua teks
+        </label>
 
     </div>
 
-</div>
 
 
+    <!-- =================================================
+         SOAL 4
+    ================================================= -->
 
-<!-- =================================================
-     SOAL 1
-================================================= -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 4
+        </div>
 
-    <div class="question-number">
-        Soal 1
+        <div class="question-text">
+            Jika A1 berisi "PVN20260025", maka formula
+            =RIGHT(A1,4) menghasilkan...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q4" value="A">
+            A. 2026
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q4" value="B">
+            B. 0025
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q4" value="C">
+            C. 025
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q4" value="D">
+            D. PVN2
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Fungsi LEFT digunakan untuk...
+
+
+    <!-- =================================================
+         SOAL 5
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 5
+        </div>
+
+        <div class="question-text">
+            Fungsi MID digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q5" value="A">
+            A. Mengambil sejumlah karakter dari posisi tertentu dalam teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q5" value="B">
+            B. Mengubah semua huruf menjadi kapital
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q5" value="C">
+            C. Menghitung jumlah angka
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q5" value="D">
+            D. Menghapus seluruh teks
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q1" value="A">
-        A. Mengambil karakter dari sebelah kiri teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q1" value="B">
-        B. Mengambil karakter dari sebelah kanan teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q1" value="C">
-        C. Menghapus karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q1" value="D">
-        D. Menggabungkan teks
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 6
+    ================================================= -->
 
-<!-- SOAL 2 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 6
+        </div>
 
-    <div class="question-number">
-        Soal 2
+        <div class="question-text">
+            Pada formula =MID(A2,7,4), angka 7 menunjukkan...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q6" value="A">
+            A. Jumlah karakter yang diambil
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q6" value="B">
+            B. Posisi awal karakter yang akan diambil
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q6" value="C">
+            C. Posisi akhir karakter
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q6" value="D">
+            D. Jumlah cell yang diproses
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Jika A2 berisi "SUBANG2026", apa hasil dari =LEFT(A2,6)?
+
+
+    <!-- =================================================
+         SOAL 7
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 7
+        </div>
+
+        <div class="question-text">
+            Fungsi LEN digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q7" value="A">
+            A. Mengambil karakter dari kiri
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q7" value="B">
+            B. Menghitung jumlah karakter dalam teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q7" value="C">
+            C. Menggabungkan teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q7" value="D">
+            D. Mengubah angka menjadi teks
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q2" value="A">
-        A. SUBANG
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q2" value="B">
-        B. 2026
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q2" value="C">
-        C. SUB
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q2" value="D">
-        D. BANG
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 8
+    ================================================= -->
 
-<!-- SOAL 3 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 8
+        </div>
 
-    <div class="question-number">
-        Soal 3
+        <div class="question-text">
+            Fungsi TRIM pada Microsoft Excel digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q8" value="A">
+            A. Menghapus spasi yang tidak diperlukan dalam teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q8" value="B">
+            B. Mengubah teks menjadi huruf kecil
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q8" value="C">
+            C. Mengambil karakter terakhir
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q8" value="D">
+            D. Menggabungkan beberapa cell
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Fungsi RIGHT digunakan untuk mengambil karakter dari...
+
+
+    <!-- =================================================
+         SOAL 9
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 9
+        </div>
+
+        <div class="question-text">
+            Jika A2 berisi "subang", formula yang digunakan untuk
+            mengubahnya menjadi "SUBANG" adalah...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q9" value="A">
+            A. =LOWER(A2)
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q9" value="B">
+            B. =PROPER(A2)
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q9" value="C">
+            C. =UPPER(A2)
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q9" value="D">
+            D. =CAPITAL(A2)
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q3" value="A">
-        A. Tengah teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q3" value="B">
-        B. Awal teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q3" value="C">
-        C. Sebelah kanan teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q3" value="D">
-        D. Cell sebelumnya
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 10
+    ================================================= -->
 
-<!-- SOAL 4 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 10
+        </div>
 
-    <div class="question-number">
-        Soal 4
+        <div class="question-text">
+            Fungsi PROPER digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q10" value="A">
+            A. Mengubah seluruh teks menjadi huruf kapital
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q10" value="B">
+            B. Mengubah seluruh teks menjadi huruf kecil
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q10" value="C">
+            C. Membuat huruf pertama setiap kata menjadi huruf kapital
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q10" value="D">
+            D. Menghapus spasi dalam teks
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Jika A2 berisi "PVN20260025", hasil =RIGHT(A2,4) adalah...
+
+
+    <!-- =================================================
+         SOAL 11
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 11
+        </div>
+
+        <div class="question-text">
+            Fungsi CONCATENATE digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q11" value="A">
+            A. Menggabungkan beberapa teks menjadi satu
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q11" value="B">
+            B. Menghapus karakter tertentu
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q11" value="C">
+            C. Menghitung jumlah karakter
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q11" value="D">
+            D. Mengubah teks menjadi angka
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q4" value="A">
-        A. PVN2
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q4" value="B">
-        B. 0025
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q4" value="C">
-        C. 2026
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q4" value="D">
-        D. 25
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 12
+    ================================================= -->
 
-<!-- SOAL 5 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 12
+        </div>
 
-    <div class="question-number">
-        Soal 5
+        <div class="question-text">
+            Jika A2 berisi "Dede" dan B2 berisi "Sukarna", formula
+            =CONCATENATE(A2," ",B2) akan menghasilkan...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q12" value="A">
+            A. DedeSukarna
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q12" value="B">
+            B. Dede Sukarna
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q12" value="C">
+            C. Dede-Sukarna
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q12" value="D">
+            D. Dede/Sukarna
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Fungsi MID digunakan untuk...
+
+
+    <!-- =================================================
+         SOAL 13
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 13
+        </div>
+
+        <div class="question-text">
+            Perbedaan utama fungsi FIND dan SEARCH adalah...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q13" value="A">
+            A. FIND bersifat case-sensitive sedangkan SEARCH tidak
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q13" value="B">
+            B. FIND hanya untuk angka
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q13" value="C">
+            C. SEARCH hanya untuk tanggal
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q13" value="D">
+            D. FIND digunakan untuk menghapus teks
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q5" value="A">
-        A. Mengambil karakter berdasarkan posisi tertentu
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q5" value="B">
-        B. Mengubah teks menjadi angka
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q5" value="C">
-        C. Menghapus spasi
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q5" value="D">
-        D. Menghitung angka
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 14
+    ================================================= -->
 
-<!-- SOAL 6 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 14
+        </div>
 
-    <div class="question-number">
-        Soal 6
+        <div class="question-text">
+            Fungsi REPLACE digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q14" value="A">
+            A. Mengganti sejumlah karakter berdasarkan posisi dan jumlah karakter
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q14" value="B">
+            B. Mengubah semua huruf menjadi kapital
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q14" value="C">
+            C. Menghitung panjang teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q14" value="D">
+            D. Mengambil teks dari kanan
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Pada formula =MID(A2,7,4), angka 7 menunjukkan...
+
+
+    <!-- =================================================
+         SOAL 15
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 15
+        </div>
+
+        <div class="question-text">
+            Fungsi SUBSTITUTE digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q15" value="A">
+            A. Mengganti teks tertentu dengan teks lain
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q15" value="B">
+            B. Mengambil karakter dari kiri
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q15" value="C">
+            C. Menghitung jumlah karakter
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q15" value="D">
+            D. Mengubah angka menjadi tanggal
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q6" value="A">
-        A. Jumlah karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q6" value="B">
-        B. Posisi awal karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q6" value="C">
-        C. Posisi akhir karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q6" value="D">
-        D. Jumlah cell
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 16
+    ================================================= -->
 
-<!-- SOAL 7 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 16
+        </div>
 
-    <div class="question-number">
-        Soal 7
+        <div class="question-text">
+            Fungsi TEXT pada Excel digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q16" value="A">
+            A. Memformat angka atau tanggal menjadi teks dengan format tertentu
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q16" value="B">
+            B. Menghapus angka dari cell
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q16" value="C">
+            C. Menggabungkan seluruh worksheet
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q16" value="D">
+            D. Mengubah teks menjadi huruf kapital
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Fungsi LEN digunakan untuk...
+
+
+    <!-- =================================================
+         SOAL 17
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 17
+        </div>
+
+        <div class="question-text">
+            Fungsi VALUE digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q17" value="A">
+            A. Mengubah angka menjadi teks
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q17" value="B">
+            B. Mengubah teks yang mewakili angka menjadi nilai numerik
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q17" value="C">
+            C. Menghapus spasi
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q17" value="D">
+            D. Menggabungkan teks
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q7" value="A">
-        A. Mengubah huruf
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q7" value="B">
-        B. Menghitung jumlah karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q7" value="C">
-        C. Menggabungkan teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q7" value="D">
-        D. Menghapus teks
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 18
+    ================================================= -->
 
-<!-- SOAL 8 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 18
+        </div>
 
-    <div class="question-number">
-        Soal 8
+        <div class="question-text">
+            Jika A1 berisi "UPTD BLK BARAT" dan kata "BARAT" ingin
+            diganti menjadi "TENGAH", fungsi yang tepat adalah...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q18" value="A">
+            A. =REPLACE(A1,"BARAT","TENGAH")
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q18" value="B">
+            B. =SUBSTITUTE(A1,"BARAT","TENGAH")
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q18" value="C">
+            C. =RIGHT(A1,"BARAT")
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q18" value="D">
+            D. =LEFT(A1,"TENGAH")
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Apa fungsi TRIM?
+
+
+    <!-- =================================================
+         SOAL 19
+    ================================================= -->
+
+    <div class="question-card">
+
+        <div class="question-number">
+            Soal 19
+        </div>
+
+        <div class="question-text">
+            Fungsi REPT digunakan untuk...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q19" value="A">
+            A. Mengambil karakter tertentu
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q19" value="B">
+            B. Mengulang teks sebanyak jumlah tertentu
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q19" value="C">
+            C. Mengubah teks menjadi angka
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q19" value="D">
+            D. Menghapus teks tertentu
+        </label>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q8" value="A">
-        A. Menghilangkan spasi berlebih
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q8" value="B">
-        B. Mengubah huruf menjadi kapital
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q8" value="C">
-        C. Menggabungkan teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q8" value="D">
-        D. Mengubah angka menjadi tanggal
-    </label>
-
-</div>
 
 
+    <!-- =================================================
+         SOAL 20
+    ================================================= -->
 
-<!-- SOAL 9 -->
+    <div class="question-card">
 
-<div class="question-card">
+        <div class="question-number">
+            Soal 20
+        </div>
 
-    <div class="question-number">
-        Soal 9
+        <div class="question-text">
+            Jika A1 berisi "PVN20260025", formula yang tepat untuk
+            mengambil teks "2026" adalah...
+        </div>
+
+        <label class="option">
+            <input type="radio" name="q20" value="A">
+            A. =LEFT(A1,4)
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q20" value="B">
+            B. =RIGHT(A1,4)
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q20" value="C">
+            C. =MID(A1,4,4)
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q20" value="D">
+            D. =LEN(A1,4)
+        </label>
+
     </div>
 
-    <div class="question-text">
-        Jika A2 berisi "ade suhendar", formula untuk mengubahnya menjadi "ADE SUHENDAR" adalah...
+
+
+    <!-- =================================================
+         SUBMIT
+    ================================================= -->
+
+    <div class="submit-area">
+
+        <button
+            class="btn-submit"
+            onclick="finishQuiz(false)">
+
+            ✅ Selesai & Lihat Hasil
+
+        </button>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="q9" value="A">
-        A. =LOWER(A2)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q9" value="B">
-        B. =PROPER(A2)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q9" value="C">
-        C. =UPPER(A2)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q9" value="D">
-        D. =TRIM(A2)
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 10 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 10
-    </div>
-
-    <div class="question-text">
-        Formula =PROPER(A2) digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q10" value="A">
-        A. Membuat semua huruf kapital
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q10" value="B">
-        B. Membuat semua huruf kecil
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q10" value="C">
-        C. Membuat huruf awal setiap kata menjadi kapital
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q10" value="D">
-        D. Menghapus teks
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 11 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 11
-    </div>
-
-    <div class="question-text">
-        Fungsi CONCATENATE digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q11" value="A">
-        A. Menggabungkan beberapa teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q11" value="B">
-        B. Menghapus karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q11" value="C">
-        C. Menghitung karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q11" value="D">
-        D. Mencari error
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 12 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 12
-    </div>
-
-    <div class="question-text">
-        Jika A2 = "Ade" dan B2 = "Suhendar", formula untuk menghasilkan "Ade Suhendar" adalah...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q12" value="A">
-        A. =CONCATENATE(A2,B2)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q12" value="B">
-        B. =CONCATENATE(A2," ",B2)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q12" value="C">
-        C. =LEFT(A2,B2)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q12" value="D">
-        D. =TRIM(A2,B2)
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 13 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 13
-    </div>
-
-    <div class="question-text">
-        Apa perbedaan utama FIND dan SEARCH?
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q13" value="A">
-        A. FIND membedakan huruf besar-kecil, SEARCH tidak
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q13" value="B">
-        B. SEARCH membedakan huruf besar-kecil, FIND tidak
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q13" value="C">
-        C. Keduanya hanya untuk angka
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q13" value="D">
-        D. FIND untuk angka dan SEARCH untuk tanggal
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 14 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 14
-    </div>
-
-    <div class="question-text">
-        Fungsi REPLACE digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q14" value="A">
-        A. Mengganti karakter berdasarkan posisi
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q14" value="B">
-        B. Menghitung karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q14" value="C">
-        C. Mengubah huruf menjadi kapital
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q14" value="D">
-        D. Menggabungkan angka
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 15 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 15
-    </div>
-
-    <div class="question-text">
-        Fungsi SUBSTITUTE digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q15" value="A">
-        A. Mengganti teks tertentu dengan teks lain
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q15" value="B">
-        B. Mengambil karakter dari kiri
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q15" value="C">
-        C. Menghitung jumlah kata
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q15" value="D">
-        D. Menghapus worksheet
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 16 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 16
-    </div>
-
-    <div class="question-text">
-        Fungsi TEXT digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q16" value="A">
-        A. Mengubah angka/tanggal ke tampilan teks dengan format tertentu
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q16" value="B">
-        B. Menghapus teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q16" value="C">
-        C. Menghitung karakter
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q16" value="D">
-        D. Mencari posisi teks
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 17 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 17
-    </div>
-
-    <div class="question-text">
-        Fungsi VALUE digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q17" value="A">
-        A. Mengubah angka menjadi huruf
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q17" value="B">
-        B. Mengubah teks yang merepresentasikan angka menjadi nilai numerik
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q17" value="C">
-        C. Menghapus angka
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q17" value="D">
-        D. Mencari angka terbesar
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 18 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 18
-    </div>
-
-    <div class="question-text">
-        Fungsi yang tepat untuk mengubah "SUBANG JAWA BARAT" menjadi "SUBANG JAWA TENGAH" adalah...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q18" value="A">
-        A. =REPLACE(A2,"BARAT","TENGAH")
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q18" value="B">
-        B. =SUBSTITUTE(A2,"BARAT","TENGAH")
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q18" value="C">
-        C. =RIGHT(A2,"TENGAH")
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q18" value="D">
-        D. =MID(A2,"BARAT","TENGAH")
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 19 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 19
-    </div>
-
-    <div class="question-text">
-        Fungsi REPT digunakan untuk...
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q19" value="A">
-        A. Mencari teks
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q19" value="B">
-        B. Mengulang teks beberapa kali
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q19" value="C">
-        C. Mengubah teks menjadi angka
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q19" value="D">
-        D. Menghapus spasi
-    </label>
-
-</div>
-
-
-
-<!-- SOAL 20 -->
-
-<div class="question-card">
-
-    <div class="question-number">
-        Soal 20
-    </div>
-
-    <div class="question-text">
-        Manakah formula yang tepat untuk mengambil tahun "2026" dari kode "PVN20260025"?
-    </div>
-
-    <label class="option">
-        <input type="radio" name="q20" value="A">
-        A. =LEFT(A2,4)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q20" value="B">
-        B. =RIGHT(A2,4)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q20" value="C">
-        C. =MID(A2,4,4)
-    </label>
-
-    <label class="option">
-        <input type="radio" name="q20" value="D">
-        D. =MID(A2,4,5)
-    </label>
-
-</div>
-
-
-
-<!-- SUBMIT -->
-
-<div class="submit-area">
-
-    <button
-        class="btn-submit"
-        onclick="finishQuiz(false)">
-
-        ✅ Selesai & Lihat Hasil
-
-    </button>
-
-</div>
-```
 
 </section>
+
+
 
 <!-- =====================================================
      RESULT
@@ -1426,133 +1465,127 @@ footer{
 
 <section id="resultSection">
 
-```
-<div class="result-card">
+    <div class="result-card">
 
-    <h2>🎉 Hasil Kuis</h2>
+        <h2>🎉 Hasil Kuis</h2>
 
+        <p>
+            Nama Peserta:
+            <strong id="resultName">-</strong>
+        </p>
 
-    <p>
-        Nama Peserta:
-        <strong id="resultName">-</strong>
-    </p>
-
-
-    <p>
-        Kelas:
-        <strong id="resultClass">-</strong>
-    </p>
+        <p>
+            Kelas:
+            <strong id="resultClass">-</strong>
+        </p>
 
 
-    <div class="score"
-         id="finalScore">
+        <div class="score"
+             id="finalScore">
 
-        0
-
-    </div>
-
-
-    <div id="status"
-         class="status">
-
-        -
-
-    </div>
-
-
-    <div class="result-info">
-
-
-        <div class="result-item">
-
-            <span>Jawaban Benar</span>
-
-            <strong id="correctCount">
-                0
-            </strong>
+            0
 
         </div>
 
 
-        <div class="result-item">
+        <div id="status"
+             class="status">
 
-            <span>Jawaban Salah</span>
-
-            <strong id="wrongCount">
-                0
-            </strong>
+            -
 
         </div>
 
 
-        <div class="result-item">
+        <div class="result-info">
 
-            <span>Tidak Dijawab</span>
+            <div class="result-item">
 
-            <strong id="emptyCount">
-                0
-            </strong>
+                <span>Jawaban Benar</span>
+
+                <strong id="correctCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span>Jawaban Salah</span>
+
+                <strong id="wrongCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span>Tidak Dijawab</span>
+
+                <strong id="emptyCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span>Waktu</span>
+
+                <strong id="timeResult">
+                    00:00
+                </strong>
+
+            </div>
 
         </div>
 
 
-        <div class="result-item">
+        <div class="result-buttons">
 
-            <span>Waktu</span>
+            <button
+                class="btn-review"
+                onclick="showReview()">
 
-            <strong id="timeResult">
-                00:00
-            </strong>
+                📖 Lihat Pembahasan
+
+            </button>
+
+
+            <button
+                class="btn-retry"
+                onclick="retryQuiz()">
+
+                🔄 Ulangi Kuis
+
+            </button>
+
+
+            <a
+                class="btn-next"
+                href="modul-excel-9.html">
+
+                ➡️ Modul 9
+
+            </a>
 
         </div>
-
 
     </div>
 
 
-    <div class="result-buttons">
+    <!-- REVIEW -->
 
-
-        <button
-            class="btn-review"
-            onclick="showReview()">
-
-            📖 Lihat Pembahasan
-
-        </button>
-
-
-        <button
-            class="btn-retry"
-            onclick="retryQuiz()">
-
-            🔄 Ulangi Kuis
-
-        </button>
-
-
-        <a
-            class="btn-next"
-            href="modul-excel-9.html">
-
-            ➡️ Modul 9
-
-        </a>
-
-
-    </div>
-
-</div>
-
-
-<!-- REVIEW -->
-
-<div id="reviewContainer"></div>
-```
+    <div id="reviewContainer"></div>
 
 </section>
 
 </div>
+
+
 
 <!-- =====================================================
      FOOTER
@@ -1560,13 +1593,12 @@ footer{
 
 <footer>
 
-```
-© 2026 TIK LEARNING —
-
-UPTD BLK Kabupaten Subang
-```
+    © 2026 TIK LEARNING —
+    UPTD BLK Kabupaten Subang
 
 </footer>
+
+
 
 <script>
 
@@ -1585,10 +1617,10 @@ const PASSING_SCORE = 75;
 const QUIZ_DURATION = 15 * 60;
 
 const GOOGLE_SHEET_API_URL =
-"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+    "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
 
 const QUIZ_MODULE_NAME =
-"Modul 8 - Fungsi Text Microsoft Excel";
+    "Modul 8 - Fungsi Text Microsoft Excel";
 
 
 /* =====================================================
@@ -1615,24 +1647,43 @@ let quizFinished = false;
 const answers = {
 
     q1:"A",
+
     q2:"A",
+
     q3:"C",
+
     q4:"B",
+
     q5:"A",
+
     q6:"B",
+
     q7:"B",
+
     q8:"A",
+
     q9:"C",
+
     q10:"C",
+
     q11:"A",
+
     q12:"B",
+
     q13:"A",
+
     q14:"A",
+
     q15:"A",
+
     q16:"A",
+
     q17:"B",
+
     q18:"B",
+
     q19:"B",
+
     q20:"C"
 
 };
@@ -1645,64 +1696,64 @@ const answers = {
 const explanations = {
 
     q1:
-    "LEFT digunakan untuk mengambil sejumlah karakter dari sebelah kiri teks.",
+    "Fungsi LEFT digunakan untuk mengambil sejumlah karakter dari sebelah kiri sebuah teks.",
 
     q2:
-    "SUBANG2026 memiliki kata SUBANG pada enam karakter pertama. Karena LEFT mengambil dari kiri, hasilnya adalah SUBANG.",
+    "Teks SUBANG2026 memiliki enam karakter pertama yaitu S-U-B-A-N-G, sehingga =LEFT(A1,6) menghasilkan SUBANG.",
 
     q3:
-    "RIGHT digunakan untuk mengambil sejumlah karakter dari sebelah kanan sebuah teks.",
+    "Fungsi RIGHT digunakan untuk mengambil sejumlah karakter dari sebelah kanan teks.",
 
     q4:
-    "Empat karakter paling kanan dari PVN20260025 adalah 0025.",
+    "Empat karakter terakhir dari PVN20260025 adalah 0025, sehingga =RIGHT(A1,4) menghasilkan 0025.",
 
     q5:
-    "MID digunakan untuk mengambil sejumlah karakter berdasarkan posisi awal dan jumlah karakter.",
+    "Fungsi MID mengambil sejumlah karakter dari teks berdasarkan posisi awal dan jumlah karakter yang ditentukan.",
 
     q6:
     "Pada =MID(A2,7,4), angka 7 merupakan posisi awal karakter yang akan diambil.",
 
     q7:
-    "LEN menghitung jumlah karakter dalam teks, termasuk spasi.",
+    "Fungsi LEN digunakan untuk menghitung jumlah karakter dalam sebuah teks, termasuk spasi.",
 
     q8:
-    "TRIM digunakan untuk menghilangkan spasi yang tidak diperlukan pada teks.",
+    "Fungsi TRIM digunakan untuk menghapus spasi yang tidak diperlukan atau spasi berlebih dalam teks.",
 
     q9:
-    "UPPER mengubah semua huruf menjadi kapital. Jadi formula yang tepat adalah =UPPER(A2).",
+    "Fungsi UPPER mengubah seluruh huruf dalam teks menjadi huruf kapital. Contohnya =UPPER(A2).",
 
     q10:
-    "PROPER membuat huruf pertama pada setiap kata menjadi kapital.",
+    "Fungsi PROPER membuat huruf pertama setiap kata menjadi huruf kapital.",
 
     q11:
-    "CONCATENATE digunakan untuk menggabungkan beberapa teks menjadi satu.",
+    "Fungsi CONCATENATE digunakan untuk menggabungkan beberapa teks menjadi satu teks.",
 
     q12:
-    "Spasi harus ditambahkan secara manual menggunakan \" \" agar hasilnya menjadi Ade Suhendar.",
+    "Pada =CONCATENATE(A2,\" \",B2), bagian \" \" merupakan satu spasi sehingga hasilnya menjadi Ade Suhendar.",
 
     q13:
-    "FIND bersifat case-sensitive, sedangkan SEARCH tidak membedakan huruf besar dan kecil.",
+    "FIND bersifat case-sensitive atau membedakan huruf besar dan kecil, sedangkan SEARCH tidak membedakannya.",
 
     q14:
-    "REPLACE mengganti sejumlah karakter berdasarkan posisi awal dan jumlah karakter.",
+    "REPLACE digunakan untuk mengganti sejumlah karakter berdasarkan posisi awal dan jumlah karakter yang akan diganti.",
 
     q15:
-    "SUBSTITUTE mengganti teks tertentu dengan teks lain yang ditentukan.",
+    "SUBSTITUTE digunakan untuk mengganti teks tertentu dengan teks lain yang ditentukan.",
 
     q16:
-    "TEXT digunakan untuk menampilkan angka atau tanggal sebagai teks dengan format tertentu.",
+    "TEXT digunakan untuk mengubah tampilan angka atau tanggal menjadi teks dengan format tertentu.",
 
     q17:
-    "VALUE mengubah teks yang merepresentasikan angka menjadi nilai numerik.",
+    "VALUE digunakan untuk mengubah teks yang mewakili angka menjadi nilai numerik yang dapat digunakan dalam perhitungan.",
 
     q18:
-    "SUBSTITUTE tepat digunakan karena yang ingin diganti adalah teks BARAT menjadi TENGAH.",
+    "SUBSTITUTE tepat digunakan untuk mengganti teks tertentu. Contohnya =SUBSTITUTE(A1,\"BARAT\",\"TENGAH\").",
 
     q19:
-    "REPT digunakan untuk mengulang sebuah teks sebanyak jumlah yang ditentukan.",
+    "REPT digunakan untuk mengulang suatu teks sebanyak jumlah yang ditentukan.",
 
     q20:
-    "Pada PVN20260025, karakter ke-4 sampai ke-7 adalah 2026 sehingga formula yang tepat adalah =MID(A2,4,4)."
+    "Pada PVN20260025, posisi karakter P=1, V=2, N=3, 2=4, 0=5, 2=6, 6=7. Jadi =MID(A1,4,4) menghasilkan 2026."
 
 };
 
@@ -1777,23 +1828,18 @@ function startQuiz(){
     participantClass = kelas;
 
 
-    document.getElementById("displayName")
-    .textContent =
+    document.getElementById("displayName").textContent =
         participantName;
 
-
-    document.getElementById("displayClass")
-    .textContent =
+    document.getElementById("displayClass").textContent =
         participantClass;
 
 
-    document.getElementById("passwordOverlay")
-    .style.display =
+    document.getElementById("passwordOverlay").style.display =
         "none";
 
 
-    document.getElementById("quizSection")
-    .style.display =
+    document.getElementById("quizSection").style.display =
         "block";
 
 
@@ -1809,12 +1855,6 @@ function startQuiz(){
     startTimer();
 
     updateProgress();
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
 
 }
 
@@ -1976,11 +2016,7 @@ function updateProgress(){
     let answered = 0;
 
 
-    for(
-        let i = 1;
-        i <= TOTAL_QUESTIONS;
-        i++
-    ){
+    for(let i = 1; i <= TOTAL_QUESTIONS; i++){
 
         const selected =
             document.querySelector(
@@ -1999,6 +2035,7 @@ function updateProgress(){
 
     document.getElementById("progressText")
     .textContent =
+
         answered +
         " dari " +
         TOTAL_QUESTIONS +
@@ -2011,6 +2048,7 @@ function updateProgress(){
 
     document.getElementById("progressFill")
     .style.width =
+
         percentage + "%";
 
 }
@@ -2061,11 +2099,7 @@ function finishQuiz(timeUp = false){
     let reviewHTML = "";
 
 
-    for(
-        let i = 1;
-        i <= TOTAL_QUESTIONS;
-        i++
-    ){
+    for(let i = 1; i <= TOTAL_QUESTIONS; i++){
 
         const selected =
             document.querySelector(
@@ -2113,13 +2147,13 @@ function finishQuiz(timeUp = false){
         }
 
 
-        const userText =
+        let userText =
             userAnswer
             ? getOptionText(i,userAnswer)
             : "Tidak dijawab";
 
 
-        const correctText =
+        let correctText =
             getOptionText(i,correctAnswer);
 
 
@@ -2128,8 +2162,11 @@ function finishQuiz(timeUp = false){
         <div class="review-card ${resultClass}">
 
             <div class="review-question">
+
                 Soal ${i}
+
             </div>
+
 
             <div class="review-answer">
 
@@ -2139,6 +2176,7 @@ function finishQuiz(timeUp = false){
 
             </div>
 
+
             <div class="review-answer">
 
                 <strong>Jawaban Benar:</strong>
@@ -2146,6 +2184,7 @@ function finishQuiz(timeUp = false){
                 ${correctText}
 
             </div>
+
 
             <div class="review-explanation">
 
@@ -2243,12 +2282,6 @@ function finishQuiz(timeUp = false){
         "block";
 
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-
     kirimHasilKuis(
         correct,
         score,
@@ -2332,11 +2365,7 @@ function formatTimeUsed(){
    KIRIM KE GOOGLE SHEET
 ===================================================== */
 
-function kirimHasilKuis(
-    correct,
-    score,
-    timeUp
-){
+function kirimHasilKuis(correct, score, timeUp){
 
     if(!GOOGLE_SHEET_API_URL){
 
@@ -2351,22 +2380,21 @@ function kirimHasilKuis(
 
     const payload = {
 
-        jenis:"kuis",
+        jenis: "kuis",
 
-        nama:participantName,
+        nama: participantName,
 
-        kelas:participantClass,
+        kelas: participantClass,
 
-        modul:QUIZ_MODULE_NAME,
+        modul: QUIZ_MODULE_NAME,
 
-        jumlahSoal:TOTAL_QUESTIONS,
+        jumlahSoal: TOTAL_QUESTIONS,
 
-        benar:correct,
+        benar: correct,
 
-        nilai:score,
+        nilai: score,
 
-        waktu:
-            timeUp
+        waktu: timeUp
             ? "Waktu habis"
             : formatTimeUsed()
 
@@ -2386,19 +2414,22 @@ function kirimHasilKuis(
     fetch(
         GOOGLE_SHEET_API_URL,
         {
-            method:"POST",
 
-            mode:"no-cors",
+            method: "POST",
 
-            headers:{
+            mode: "no-cors",
+
+            headers: {
+
                 "Content-Type":
-                "text/plain;charset=utf-8"
+                    "text/plain;charset=utf-8"
+
             },
 
-            body:
-                JSON.stringify(payload)
+            body: JSON.stringify(payload)
 
         }
+
     )
 
     .then(function(){
@@ -2429,7 +2460,9 @@ function showReview(){
 
     document.getElementById("resultSection")
     .scrollIntoView({
+
         behavior:"smooth"
+
     });
 
 
@@ -2515,7 +2548,6 @@ function retryQuiz(){
 
 </script>
 
-<script src="progress-sync.js"></script>
 
 </body>
 
