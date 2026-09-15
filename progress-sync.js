@@ -1,25 +1,11 @@
-```javascript
 /* =========================================================
    TIK LEARNING
-   PROGRESS SYNC
-   SISTEM TIMER + PENYIMPANAN NILAI KUIS EXCEL
-
-   FUNGSI:
-   1. Tidak membuat input nama tambahan
-   2. Tidak menimpa startQuiz() asli
-   3. Mengambil nama dari #participantInput
-   4. Mengambil kelas dari #classInput
-   5. Timer 15 menit
-   6. Menyimpan hasil ke localStorage
-   7. Mengirim hasil ke Google Spreadsheet
-   8. Menyimpan tanggal dan waktu selesai
-   9. Menambahkan tombol Perkembangan
+   SISTEM NAMA PESERTA + TIMER + PENYIMPANAN NILAI KUIS EXCEL
    ========================================================= */
 
 (function () {
 
     "use strict";
-
 
     /* =====================================================
        PENGATURAN
@@ -27,52 +13,31 @@
 
     const NILAI_LULUS = 75;
 
-    // Waktu kuis = 15 menit
+    // Timer 15 menit
     const WAKTU_KUIS = 15 * 60;
 
 
-    /*
-       URL GOOGLE APPS SCRIPT
-    */
-
-    const GOOGLE_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
-
-
     /* =====================================================
-       MENENTUKAN NOMOR MODUL
+       MENENTUKAN NOMOR MODUL SECARA OTOMATIS
+       
+       Contoh:
+       kuis-excel-1.html  → modul 1
+       kuis-excel-2.html  → modul 2
+       ...
+       kuis-excel-11.html → modul 11
        ===================================================== */
 
-    const namaFile =
-        window.location.pathname;
+    const namaFile = window.location.pathname;
 
-
-    const hasilMatch =
-        namaFile.match(
-            /kuis-excel-(\d+)/i
-        );
-
-
-    /*
-       Jika halaman bukan kuis Excel,
-       hentikan script.
-    */
+    const hasilMatch = namaFile.match(/kuis-excel-(\d+)/i);
 
     if (!hasilMatch) {
-
         return;
-
     }
 
+    const nomorModul = Number(hasilMatch[1]);
 
-    const nomorModul =
-        Number(
-            hasilMatch[1]
-        );
-
-
-    const storageKey =
-        "kuisExcel" + nomorModul;
+    const storageKey = "kuisExcel" + nomorModul;
 
 
     /* =====================================================
@@ -81,131 +46,185 @@
 
     let namaPeserta = "";
 
-    let kelasPeserta = "";
-
     let timerInterval = null;
 
-    let waktuTersisa =
-        WAKTU_KUIS;
+    let waktuTersisa = WAKTU_KUIS;
 
-    let timerSudahDimulai =
-        false;
-
-    let hasilSudahDisimpan =
-        false;
-
-    let hasilSudahDikirim =
-        false;
+    let timerSudahDimulai = false;
 
 
     /* =====================================================
-       MENGAMBIL DATA PESERTA
+       MEMBUAT FORM NAMA PESERTA
        ===================================================== */
 
-    function ambilDataPeserta() {
+    function buatFormNama() {
 
-        /*
-           Nama diambil dari form HTML asli.
-        */
+        // Jangan dibuat dua kali
+        if (document.getElementById("participantNameBox")) {
+            return;
+        }
 
-        const inputNama =
+        const box = document.createElement("div");
+
+        box.id = "participantNameBox";
+
+        box.innerHTML = `
+
+            <div class="ps-overlay">
+
+                <div class="ps-box">
+
+                    <div class="ps-icon">
+                        👤
+                    </div>
+
+                    <h2>
+                        Data Peserta
+                    </h2>
+
+                    <p>
+                        Masukkan nama lengkap peserta
+                        sebelum memulai kuis.
+                    </p>
+
+                    <input
+                        type="text"
+                        id="participantName"
+                        placeholder="Nama lengkap peserta"
+                        autocomplete="name"
+                    >
+
+                    <button
+                        type="button"
+                        id="participantNameBtn"
+                    >
+                        Lanjut ke Kuis →
+                    </button>
+
+                    <div
+                        id="participantNameError"
+                        class="ps-error"
+                    >
+                        Nama peserta wajib diisi.
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        document.body.appendChild(box);
+
+
+        /* Tombol lanjut */
+
+        document
+            .getElementById("participantNameBtn")
+            .addEventListener(
+                "click",
+                konfirmasiNama
+            );
+
+
+        /* Enter */
+
+        document
+            .getElementById("participantName")
+            .addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Enter") {
+
+                        konfirmasiNama();
+
+                    }
+
+                }
+            );
+
+
+        /* Jika nama sudah pernah disimpan */
+
+        const namaTersimpan =
+            localStorage.getItem("namaPeserta");
+
+        if (namaTersimpan) {
+
+            document
+                .getElementById("participantName")
+                .value = namaTersimpan;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       KONFIRMASI NAMA
+       ===================================================== */
+
+    function konfirmasiNama() {
+
+        const input =
             document.getElementById(
-                "participantInput"
+                "participantName"
             );
 
-
-        /*
-           Kelas diambil dari form HTML asli.
-        */
-
-        const inputKelas =
+        const error =
             document.getElementById(
-                "classInput"
+                "participantNameError"
             );
 
-
-        if (inputNama) {
-
-            namaPeserta =
-                inputNama.value.trim();
-
-        }
+        const nama =
+            input.value.trim();
 
 
-        if (inputKelas) {
+        if (!nama) {
 
-            kelasPeserta =
-                inputKelas.value.trim();
+            error.style.display = "block";
+
+            input.focus();
+
+            return;
 
         }
 
 
-        /*
-           Jika input sudah tidak ada
-           karena overlay sudah ditutup,
-           ambil dari sessionStorage/localStorage.
-        */
-
-        if (!namaPeserta) {
-
-            namaPeserta =
-                sessionStorage.getItem(
-                    "namaPeserta"
-                ) ||
-                localStorage.getItem(
-                    "namaPeserta"
-                ) ||
-                "";
-
-        }
+        namaPeserta = nama;
 
 
-        if (!kelasPeserta) {
+        /* Simpan nama peserta */
 
-            kelasPeserta =
-                sessionStorage.getItem(
-                    "kelasPeserta"
-                ) ||
-                localStorage.getItem(
-                    "kelasPeserta"
-                ) ||
-                "";
+        localStorage.setItem(
+            "namaPeserta",
+            namaPeserta
+        );
 
-        }
-
-
-        /*
-           Simpan kembali.
-        */
-
-        if (namaPeserta) {
-
-            sessionStorage.setItem(
-                "namaPeserta",
-                namaPeserta
-            );
-
-            localStorage.setItem(
-                "namaPeserta",
-                namaPeserta
-            );
-
-        }
+        sessionStorage.setItem(
+            "namaPeserta",
+            namaPeserta
+        );
 
 
-        if (kelasPeserta) {
+        /* Tutup form */
 
-            sessionStorage.setItem(
-                "kelasPeserta",
-                kelasPeserta
-            );
+        document
+            .getElementById(
+                "participantNameBox"
+            )
+            .remove();
 
-            localStorage.setItem(
-                "kelasPeserta",
-                kelasPeserta
-            );
 
-        }
+        /* Jalankan fungsi asli */
+
+        fungsiMulaiAsli();
+
+
+        /* Mulai timer */
+
+        mulaiTimer();
 
     }
 
@@ -216,29 +235,19 @@
 
     function buatTimer() {
 
-        /*
-           Jangan membuat timer dua kali.
-        */
-
         if (
             document.getElementById(
                 "quizTimer"
             )
         ) {
-
             return;
-
         }
 
 
         const timer =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
-
-        timer.id =
-            "quizTimer";
+        timer.id = "quizTimer";
 
 
         timer.innerHTML = `
@@ -257,32 +266,16 @@
 
 
         /*
-           Cari tempat timer.
+           Mencari elemen kuis.
+           Sistem mencoba beberapa ID agar
+           lebih fleksibel dengan kode kuis.
         */
 
         const tempatTimer =
-
-            document.getElementById(
-                "quizCard"
-            )
-
-            ||
-
-            document.getElementById(
-                "quizSection"
-            )
-
-            ||
-
-            document.querySelector(
-                ".quiz-container"
-            )
-
-            ||
-
-            document.querySelector(
-                ".quiz"
-            );
+            document.getElementById("quizCard") ||
+            document.getElementById("quizSection") ||
+            document.querySelector(".quiz-container") ||
+            document.querySelector(".quiz");
 
 
         if (tempatTimer) {
@@ -292,7 +285,83 @@
                 tempatTimer.firstChild
             );
 
+        } else {
+
+            document.body.insertBefore(
+                timer,
+                document.body.firstChild
+            );
+
         }
+
+    }
+
+
+    /* =====================================================
+       MULAI TIMER
+       ===================================================== */
+
+    function mulaiTimer() {
+
+        if (timerSudahDimulai) {
+            return;
+        }
+
+        timerSudahDimulai = true;
+
+
+        buatTimer();
+
+        updateTimer();
+
+
+        timerInterval =
+            setInterval(
+                function () {
+
+                    waktuTersisa--;
+
+                    updateTimer();
+
+
+                    /*
+                       Waktu habis
+                    */
+
+                    if (waktuTersisa <= 0) {
+
+                        clearInterval(
+                            timerInterval
+                        );
+
+
+                        alert(
+                            "⏰ Waktu kuis telah habis. " +
+                            "Jawaban akan dikumpulkan otomatis."
+                        );
+
+
+                        /*
+                           Jalankan submit asli
+                        */
+
+                        fungsiSelesaiAsli();
+
+
+                        /*
+                           Tunggu hasil dihitung
+                        */
+
+                        setTimeout(
+                            simpanHasil,
+                            300
+                        );
+
+                    }
+
+                },
+                1000
+            );
 
     }
 
@@ -310,9 +379,7 @@
 
 
         if (!timerText) {
-
             return;
-
         }
 
 
@@ -328,25 +395,15 @@
 
         timerText.textContent =
 
-            String(menit).padStart(
-                2,
-                "0"
-            )
-
+            String(menit).padStart(2, "0")
+            + ":"
             +
-
-            ":"
-
-            +
-
-            String(detik).padStart(
-                2,
-                "0"
-            );
+            String(detik).padStart(2, "0");
 
 
         /*
-           Peringatan 1 menit terakhir.
+           Peringatan ketika tersisa
+           kurang dari 1 menit
         */
 
         const timerBox =
@@ -370,91 +427,7 @@
 
 
     /* =====================================================
-       MULAI TIMER
-       ===================================================== */
-
-    function mulaiTimer() {
-
-        if (timerSudahDimulai) {
-
-            return;
-
-        }
-
-
-        timerSudahDimulai =
-            true;
-
-
-        /*
-           Ambil data peserta
-           sebelum overlay hilang.
-        */
-
-        ambilDataPeserta();
-
-
-        buatTimer();
-
-        updateTimer();
-
-
-        timerInterval =
-            setInterval(
-                function () {
-
-                    waktuTersisa--;
-
-
-                    updateTimer();
-
-
-                    /*
-                       Waktu habis.
-                    */
-
-                    if (
-                        waktuTersisa <= 0
-                    ) {
-
-                        clearInterval(
-                            timerInterval
-                        );
-
-                        timerInterval =
-                            null;
-
-
-                        alert(
-                            "⏰ Waktu kuis telah habis. " +
-                            "Jawaban akan dikumpulkan otomatis."
-                        );
-
-
-                        /*
-                           Jalankan finishQuiz asli.
-                        */
-
-                        if (
-                            typeof window.finishQuiz ===
-                            "function"
-                        ) {
-
-                            window.finishQuiz();
-
-                        }
-
-                    }
-
-                },
-                1000
-            );
-
-    }
-
-
-    /* =====================================================
-       MENCARI NILAI
+       MENCARI NILAI HASIL KUIS
        ===================================================== */
 
     function ambilNilai() {
@@ -482,29 +455,24 @@
                 );
 
 
-            if (!element) {
+            if (element) {
 
-                continue;
-
-            }
-
-
-            const teks =
-                element.textContent || "";
-
-
-            const angka =
-                Number(
-                    teks.replace(
-                        /[^\d.-]/g,
-                        ""
-                    )
-                );
+                const angka =
+                    Number(
+                        element
+                            .textContent
+                            .replace(
+                                /[^\d.-]/g,
+                                ""
+                            )
+                    );
 
 
-            if (!isNaN(angka)) {
+                if (!isNaN(angka)) {
 
-                return angka;
+                    return angka;
+
+                }
 
             }
 
@@ -543,29 +511,23 @@
                 );
 
 
-            if (!element) {
+            if (element) {
 
-                continue;
-
-            }
-
-
-            const teks =
-                element.textContent || "";
-
-
-            const angka =
-                Number(
-                    teks.replace(
-                        /[^\d.-]/g,
-                        ""
-                    )
-                );
+                const angka =
+                    Number(
+                        element.textContent
+                            .replace(
+                                /[^\d.-]/g,
+                                ""
+                            )
+                    );
 
 
-            if (!isNaN(angka)) {
+                if (!isNaN(angka)) {
 
-                return angka;
+                    return angka;
+
+                }
 
             }
 
@@ -604,29 +566,23 @@
                 );
 
 
-            if (!element) {
+            if (element) {
 
-                continue;
-
-            }
-
-
-            const teks =
-                element.textContent || "";
-
-
-            const angka =
-                Number(
-                    teks.replace(
-                        /[^\d.-]/g,
-                        ""
-                    )
-                );
+                const angka =
+                    Number(
+                        element.textContent
+                            .replace(
+                                /[^\d.-]/g,
+                                ""
+                            )
+                    );
 
 
-            if (!isNaN(angka)) {
+                if (!isNaN(angka)) {
 
-                return angka;
+                    return angka;
+
+                }
 
             }
 
@@ -639,354 +595,11 @@
 
 
     /* =====================================================
-       MENGHITUNG JUMLAH SOAL
-       ===================================================== */
-
-    function ambilJumlahSoal() {
-
-        /*
-           Untuk kuis Excel saat ini
-           jumlah soal = 20.
-        */
-
-        const kemungkinanID = [
-
-            "totalQuestions",
-            "questionCount",
-            "jumlahSoal"
-
-        ];
-
-
-        for (
-            let i = 0;
-            i < kemungkinanID.length;
-            i++
-        ) {
-
-            const element =
-                document.getElementById(
-                    kemungkinanID[i]
-                );
-
-
-            if (!element) {
-
-                continue;
-
-            }
-
-
-            const angka =
-                Number(
-                    element.textContent
-                        .replace(
-                            /[^\d.-]/g,
-                            ""
-                        )
-                );
-
-
-            if (
-                !isNaN(angka) &&
-                angka > 0
-            ) {
-
-                return angka;
-
-            }
-
-        }
-
-
-        /*
-           Default Modul Excel = 20 soal.
-        */
-
-        return 20;
-
-    }
-
-
-    /* =====================================================
-       MENGAMBIL WAKTU PENGERJAAN
-       ===================================================== */
-
-    function ambilWaktu() {
-
-        /*
-           Waktu yang digunakan =
-           waktu awal - waktu tersisa.
-        */
-
-        const waktuDigunakan =
-            WAKTU_KUIS -
-            Math.max(
-                0,
-                waktuTersisa
-            );
-
-
-        const menit =
-            Math.floor(
-                waktuDigunakan / 60
-            );
-
-
-        const detik =
-            waktuDigunakan % 60;
-
-
-        return (
-
-            String(menit).padStart(
-                2,
-                "0"
-            )
-
-            +
-
-            ":"
-
-            +
-
-            String(detik).padStart(
-                2,
-                "0"
-            )
-
-        );
-
-    }
-
-
-    /* =====================================================
-       MENGIRIM HASIL KE GOOGLE SPREADSHEET
-       ===================================================== */
-
-    function kirimKeGoogleSheet() {
-
-        /*
-           Jangan kirim dua kali.
-        */
-
-        if (hasilSudahDikirim) {
-
-            return;
-
-        }
-
-
-        /*
-           Ambil data peserta terbaru.
-        */
-
-        ambilDataPeserta();
-
-
-        if (!namaPeserta) {
-
-            namaPeserta =
-                "Peserta";
-
-        }
-
-
-        const nilai =
-            ambilNilai();
-
-
-        const benar =
-            ambilBenar();
-
-
-        const salah =
-            ambilSalah();
-
-
-        const jumlahSoal =
-            ambilJumlahSoal();
-
-
-        /*
-           Status kelulusan.
-        */
-
-        const status =
-
-            nilai >= NILAI_LULUS
-
-                ? "LULUS"
-
-                : "BELUM LULUS";
-
-
-        /*
-           Tanggal dan waktu selesai.
-        */
-
-        const tanggal =
-            new Date()
-                .toLocaleString(
-                    "id-ID"
-                );
-
-
-        /*
-           Waktu pengerjaan.
-        */
-
-        const waktu =
-            ambilWaktu();
-
-
-        /*
-           Data yang dikirim ke Apps Script.
-
-           Nama field dibuat sesuai
-           sistem Spreadsheet kuis:
-           
-           jenis
-           nama
-           kelas
-           modul
-           jumlahSoal
-           benar
-           nilai
-           waktu
-           tanggal
-           status
-        */
-
-        const data = {
-
-            jenis:
-                "kuis",
-
-            nama:
-                namaPeserta,
-
-            kelas:
-                kelasPeserta,
-
-            modul:
-                "Modul " +
-                nomorModul +
-                " - Formula Dasar Microsoft Excel",
-
-            jumlahSoal:
-                jumlahSoal,
-
-            benar:
-                benar,
-
-            nilai:
-                nilai,
-
-            waktu:
-                waktu,
-
-            tanggal:
-                tanggal,
-
-            status:
-                status
-
-        };
-
-
-        /*
-           Kirim menggunakan POST.
-        */
-
-        fetch(
-            GOOGLE_SCRIPT_URL,
-            {
-
-                method:
-                    "POST",
-
-                mode:
-                    "no-cors",
-
-                headers:
-                    {
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-                    },
-
-                body:
-                    JSON.stringify(
-                        data
-                    )
-
-            }
-        )
-        .then(
-            function () {
-
-                hasilSudahDikirim =
-                    true;
-
-                console.log(
-                    "✓ Hasil kuis berhasil dikirim ke Google Spreadsheet."
-                );
-
-            }
-        )
-        .catch(
-            function (error) {
-
-                console.error(
-                    "✗ Gagal mengirim hasil kuis:",
-                    error
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       MENYIMPAN HASIL SECARA LOKAL
+       MENYIMPAN HASIL KUIS
        ===================================================== */
 
     function simpanHasil() {
 
-        /*
-           Jangan simpan dua kali.
-        */
-
-        if (hasilSudahDisimpan) {
-
-            /*
-               Walaupun sudah tersimpan lokal,
-               tetap pastikan pengiriman ke Google.
-            */
-
-            kirimKeGoogleSheet();
-
-            return;
-
-        }
-
-
-        /*
-           Ambil data peserta.
-        */
-
-        ambilDataPeserta();
-
-
-        if (!namaPeserta) {
-
-            namaPeserta =
-                "Peserta";
-
-        }
-
-
         const nilai =
             ambilNilai();
 
@@ -999,56 +612,84 @@
             ambilSalah();
 
 
-        const status =
+        /*
+           Jika nama belum ditemukan,
+           ambil dari penyimpanan browser
+        */
 
+        if (!namaPeserta) {
+
+            namaPeserta =
+                localStorage.getItem(
+                    "namaPeserta"
+                ) ||
+                sessionStorage.getItem(
+                    "namaPeserta"
+                ) ||
+                "Peserta";
+
+        }
+
+
+        /*
+           Tentukan status
+        */
+
+        let status;
+
+
+        if (
             nilai >= NILAI_LULUS
+        ) {
 
-                ? "LULUS"
+            status = "LULUS";
 
-                : "BELUM LULUS";
+        } else {
+
+            status = "BELUM LULUS";
+
+        }
 
 
-        const tanggal =
-            new Date()
-                .toLocaleString(
-                    "id-ID"
-                );
-
+        /*
+           Data yang disimpan
+        */
 
         const dataKuis = {
 
-            modul:
-                nomorModul,
+            modul: nomorModul,
 
-            nama:
-                namaPeserta,
+            nama: namaPeserta,
 
-            kelas:
-                kelasPeserta,
+            nilai: nilai,
 
-            nilai:
-                nilai,
+            benar: benar,
 
-            benar:
-                benar,
+            salah: salah,
 
-            salah:
-                salah,
+            selesai: true,
 
-            selesai:
-                true,
-
-            status:
-                status,
+            status: status,
 
             tanggal:
-                tanggal
+                new Date()
+                    .toLocaleString(
+                        "id-ID"
+                    )
 
         };
 
 
         /*
-           Simpan ke localStorage.
+           Simpan berdasarkan nomor modul
+           
+           Modul 1:
+           kuisExcel1
+
+           Modul 2:
+           kuisExcel2
+
+           dst.
         */
 
         localStorage.setItem(
@@ -1063,7 +704,7 @@
 
 
         /*
-           Simpan nama dan kelas.
+           Simpan nama secara global
         */
 
         localStorage.setItem(
@@ -1072,38 +713,8 @@
         );
 
 
-        if (kelasPeserta) {
-
-            localStorage.setItem(
-                "kelasPeserta",
-                kelasPeserta
-            );
-
-        }
-
-
-        sessionStorage.setItem(
-            "namaPeserta",
-            namaPeserta
-        );
-
-
-        if (kelasPeserta) {
-
-            sessionStorage.setItem(
-                "kelasPeserta",
-                kelasPeserta
-            );
-
-        }
-
-
-        hasilSudahDisimpan =
-            true;
-
-
         /*
-           Hentikan timer.
+           Hentikan timer
         */
 
         if (timerInterval) {
@@ -1112,21 +723,12 @@
                 timerInterval
             );
 
-            timerInterval =
-                null;
-
         }
 
 
         /*
-           Kirim ke Google Spreadsheet.
-        */
-
-        kirimKeGoogleSheet();
-
-
-        /*
-           Tambahkan tombol perkembangan.
+           Tambahkan tombol
+           menuju perkembangan
         */
 
         tambahTombolPerkembangan();
@@ -1135,10 +737,14 @@
 
 
     /* =====================================================
-       TOMBOL PERKEMBANGAN
+       TOMBOL MENUJU PERKEMBANGAN
        ===================================================== */
 
     function tambahTombolPerkembangan() {
+
+        /*
+           Jangan dibuat dua kali
+        */
 
         if (
             document.getElementById(
@@ -1151,29 +757,24 @@
         }
 
 
-        const hasil =
+        /*
+           Cari bagian hasil
+        */
 
+        const hasil =
             document.getElementById(
                 "result"
-            )
-
-            ||
-
+            ) ||
             document.getElementById(
                 "resultSection"
-            )
-
-            ||
-
+            ) ||
             document.querySelector(
                 ".result"
             );
 
 
         if (!hasil) {
-
             return;
-
         }
 
 
@@ -1211,266 +812,57 @@
 
 
     /* =====================================================
-       MEMANTAU MULAI KUIS
+       AMBIL FUNGSI ASLI KUIS
        ===================================================== */
 
-    function pantauMulaiKuis() {
+    const fungsiMulaiAsli =
+        typeof window.startQuiz === "function"
 
-        const overlay =
-            document.getElementById(
-                "passwordOverlay"
-            );
+            ? window.startQuiz
 
-
-        if (!overlay) {
-
-            return;
-
-        }
+            : function () {};
 
 
-        /*
-           Observer memantau perubahan
-           overlay dari tampil menjadi tersembunyi.
-        */
+    const fungsiSelesaiAsli =
+        typeof window.finishQuiz === "function"
 
-        const observer =
-            new MutationObserver(
-                function () {
+            ? window.finishQuiz
 
-                    const style =
-                        window.getComputedStyle(
-                            overlay
-                        );
-
-
-                    /*
-                       Jika overlay hilang,
-                       berarti kuis sudah dimulai.
-                    */
-
-                    if (
-
-                        style.display ===
-                        "none"
-
-                        ||
-
-                        style.visibility ===
-                        "hidden"
-
-                        ||
-
-                        overlay.style.display ===
-                        "none"
-
-                    ) {
-
-                        if (
-                            !timerSudahDimulai
-                        ) {
-
-                            mulaiTimer();
-
-                        }
-
-                    }
-
-                }
-            );
-
-
-        observer.observe(
-
-            overlay,
-
-            {
-
-                attributes:
-                    true,
-
-                attributeFilter:
-                    [
-                        "style",
-                        "class"
-                    ]
-
-            }
-
-        );
-
-    }
+            : function () {};
 
 
     /* =====================================================
-       MEMANTAU HASIL KUIS
+       GANTI FUNGSI START QUIZ
        ===================================================== */
 
-    function pantauHasil() {
+    window.startQuiz =
+        function () {
 
-        const intervalHasil =
-            setInterval(
-                function () {
+            buatFormNama();
 
-                    const hasil =
-                        document.getElementById(
-                            "result"
-                        );
-
-
-                    if (!hasil) {
-
-                        return;
-
-                    }
-
-
-                    const style =
-                        window.getComputedStyle(
-                            hasil
-                        );
-
-
-                    /*
-                       Jika hasil sudah terlihat,
-                       simpan dan kirim.
-                    */
-
-                    if (
-
-                        style.display !==
-                        "none"
-
-                        &&
-
-                        hasil.textContent
-                            .trim() !==
-                            ""
-
-                    ) {
-
-                        simpanHasil();
-
-
-                        /*
-                           Setelah berhasil
-                           terdeteksi, tidak perlu
-                           mengecek terus.
-                        */
-
-                        clearInterval(
-                            intervalHasil
-                        );
-
-                    }
-
-                },
-                500
-            );
-
-    }
+        };
 
 
     /* =====================================================
-       MEMANTAU TOMBOL SELESAI
+       GANTI FUNGSI FINISH QUIZ
        ===================================================== */
 
-    function pantauTombolSelesai() {
+    window.finishQuiz =
+        function () {
 
-        document.addEventListener(
-
-            "click",
-
-            function (event) {
-
-                const target =
-                    event.target;
+            fungsiSelesaiAsli();
 
 
-                if (!target) {
+            /*
+               Tunggu hasil nilai tampil
+            */
 
-                    return;
+            setTimeout(
+                simpanHasil,
+                300
+            );
 
-                }
-
-
-                const tombol =
-                    target.closest(
-                        "button"
-                    );
-
-
-                if (!tombol) {
-
-                    return;
-
-                }
-
-
-                const teks =
-
-                    (
-                        tombol.textContent ||
-                        ""
-                    )
-                    .toLowerCase();
-
-
-                /*
-                   Deteksi tombol selesai.
-                */
-
-                if (
-
-                    teks.includes(
-                        "selesai"
-                    )
-
-                    ||
-
-                    teks.includes(
-                        "kumpulkan"
-                    )
-
-                    ||
-
-                    teks.includes(
-                        "submit"
-                    )
-
-                    ||
-
-                    teks.includes(
-                        "lihat hasil"
-                    )
-
-                ) {
-
-                    /*
-                       Beri waktu kepada
-                       fungsi asli untuk
-                       menghitung nilai.
-                    */
-
-                    setTimeout(
-
-                        function () {
-
-                            simpanHasil();
-
-                        },
-
-                        700
-
-                    );
-
-                }
-
-            }
-
-        );
-
-    }
+        };
 
 
     /* =====================================================
@@ -1484,6 +876,176 @@
 
 
     style.textContent = `
+
+        /* =========================
+           FORM NAMA PESERTA
+           ========================= */
+
+        .ps-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(
+                    16,
+                    124,
+                    65,
+                    0.96
+                );
+
+        }
+
+
+        .ps-box {
+
+            width: 100%;
+
+            max-width: 430px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            padding: 32px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
+
+        }
+
+
+        .ps-icon {
+
+            font-size: 48px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .ps-box h2 {
+
+            color: #107c41;
+
+            margin:
+                0 0 8px;
+
+        }
+
+
+        .ps-box p {
+
+            color: #607d8b;
+
+            line-height: 1.5;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .ps-box input {
+
+            width: 100%;
+
+            padding:
+                13px 15px;
+
+            border:
+                2px solid
+                #dfe5e8;
+
+            border-radius: 9px;
+
+            font-size: 16px;
+
+            outline: none;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .ps-box input:focus {
+
+            border-color:
+                #107c41;
+
+        }
+
+
+        .ps-box button {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            background:
+                #107c41;
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .ps-box button:hover {
+
+            background:
+                #0b5c30;
+
+        }
+
+
+        .ps-error {
+
+            display: none;
+
+            margin-top: 10px;
+
+            padding: 9px;
+
+            border-radius: 7px;
+
+            background:
+                #fff0f0;
+
+            color:
+                #d32f2f;
+
+            font-size: 13px;
+
+        }
+
 
         /* =========================
            TIMER
@@ -1550,7 +1112,7 @@
 
 
         /* =========================
-           TOMBOL PERKEMBANGAN
+           TOMBOL PROGRESS
            ========================= */
 
         .ps-progress-button {
@@ -1592,66 +1154,4 @@
     );
 
 
-    /* =====================================================
-       INISIALISASI
-       ===================================================== */
-
-    function inisialisasi() {
-
-        /*
-           PENTING:
-
-           Tidak ada lagi:
-
-           buatFormNama()
-
-           dan tidak ada:
-
-           window.startQuiz = ...
-
-           sehingga form nama dari HTML
-           tidak akan dibuat dua kali.
-        */
-
-        pantauMulaiKuis();
-
-
-        /*
-           Pantau bagian hasil.
-        */
-
-        pantauHasil();
-
-
-        /*
-           Pantau tombol selesai.
-        */
-
-        pantauTombolSelesai();
-
-    }
-
-
-    /* =====================================================
-       JALANKAN SCRIPT
-       ===================================================== */
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            inisialisasi
-        );
-
-    } else {
-
-        inisialisasi();
-
-    }
-
-
 })();
-```
