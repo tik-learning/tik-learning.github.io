@@ -2322,6 +2322,24 @@ function kirimHasilKuis(
     timeUp
 ){
 
+    console.log("=== MODUL 4 KIRIM HASIL ===");
+    console.log("Nama:", participantName);
+    console.log("Kelas:", participantClass);
+    console.log("Modul:", QUIZ_MODULE_NAME);
+    console.log("Benar:", correct);
+    console.log("Nilai:", score);
+    console.log("Waktu:", timeUp ? "Waktu habis" : formatTimeUsed());
+
+        if(!GOOGLE_SHEET_API_URL){
+
+        console.warn(
+            "https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+        );
+
+        return;
+
+    }
+
     if(!GOOGLE_SHEET_API_URL){
 
         console.warn(
