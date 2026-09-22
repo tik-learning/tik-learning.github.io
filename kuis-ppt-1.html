@@ -510,7 +510,7 @@ body.locked{
             🔓 MULAI KUIS
         </button>
 <div class="password-info">
-            Waktu pengerjaan: <strong>15 menit</strong><br/>
+            Waktu pengerjaan: <strong>10 menit</strong><br/>
             Nilai minimum: <strong>75</strong><br/>
             Nama dan kelas akan dicatat pada hasil kuis.
         </div>
@@ -523,7 +523,7 @@ body.locked{
 <div class="badge">KUIS • MODUL 1</div>
 <h1>Mengenal Microsoft PowerPoint 2016</h1>
 <p>
-        Berkenalan dengan Excel • Antarmuka • Format File •
+        Antarmuka • Format File • Desain Slide •
         Persiapan Awal • Region Setting
     </p>
 </header>
@@ -559,7 +559,7 @@ body.locked{
             </strong>
 </div>
 <div class="timer" id="timer">
-            15:00
+            10:00
         </div>
 </div>
 </section>
@@ -573,7 +573,7 @@ body.locked{
         </p>
 <br/>
 <p><strong>Jumlah soal:</strong> 20 soal</p>
-<p><strong>Waktu:</strong> 15 menit</p>
+<p><strong>Waktu:</strong> 10 menit</p>
 <p><strong>Nilai:</strong> 5 poin setiap jawaban benar</p>
 <p><strong>Nilai maksimal:</strong> 100</p>
 <p><strong>Batas lulus:</strong> 75</p>
@@ -1171,8 +1171,12 @@ function startTimer(){
 
         if(timeLeft <= 0){
 
+            timeLeft = 0;
+            updateTimerDisplay();
             clearInterval(timerInterval);
 
+            // Otomatis mengumpulkan jawaban yang sudah dipilih
+            // dan mengirim hasilnya ke Google Sheets.
             finishQuiz(true);
         }
 
