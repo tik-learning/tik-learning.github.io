@@ -3,278 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kuis Modul 4 - Mengatur Desain Presentasi</title>
+<title>Kuis Modul 4 - Mengatur Desain Presentasi | Template Modul 1</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--primary:#1f4e79;--secondary:#2f75b5;--accent:#f4b183;--light:#eef5fb;--dark:#17324d;--success:#2e7d32;--danger:#c62828}
-body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#eaf2f8,#f8fbff);color:#263238;line-height:1.6}
-.header{background:linear-gradient(135deg,var(--dark),var(--primary),var(--secondary));color:#fff;text-align:center;padding:30px 20px;box-shadow:0 5px 18px #17324d33}
-.header .icon{font-size:46px}.header h1{font-size:28px;margin:5px 0}.header p{font-size:15px}
-.container{max-width:850px;margin:28px auto;padding:0 15px}
-.card,.question,.timer-box{background:#fff;border-radius:14px;box-shadow:0 4px 18px #17324d14}
-.card{padding:26px;margin-bottom:20px}.card h2{color:var(--primary);margin-bottom:14px}
-#passwordOverlay{position:fixed;inset:0;background:#102a43cc;display:flex;align-items:center;justify-content:center;padding:20px;z-index:9999}
-.login-box{width:100%;max-width:500px;background:#fff;border-radius:16px;padding:30px;box-shadow:0 12px 40px #0005}
-.login-box h2{color:var(--primary);margin-bottom:10px}
-label{display:block;font-weight:bold;margin:14px 0 6px}
-input[type=text],input[type=password]{width:100%;padding:12px;border:1px solid #c7d2dc;border-radius:8px;font-size:16px}
-input:focus{outline:none;border-color:var(--secondary);box-shadow:0 0 0 3px #2f75b522}
-.btn{display:inline-block;width:100%;padding:13px 18px;margin-top:18px;border:0;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:bold;font-size:16px;cursor:pointer;text-align:center;text-decoration:none;transition:.2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 5px 12px #17324d33}
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f9;color:#263238;line-height:1.6}
+.header{background:linear-gradient(135deg,#0077b6,#00a8e8);color:#fff;text-align:center;padding:28px 15px;box-shadow:0 3px 10px rgba(0,0,0,.15)}
+.header .icon{font-size:48px}
+.header h1{font-size:28px;margin-top:5px}
+.header p{font-size:15px}
+.container{max-width:850px;margin:30px auto;padding:0 15px}
+.card,.question{background:#fff;padding:25px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:20px}
+.card h2{color:#0077b6;margin-bottom:15px}
+.login-box{max-width:550px;margin:35px auto;text-align:center}
+.input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;margin:8px 0 15px;font-size:16px}
+.btn{border:0;padding:13px 24px;border-radius:9px;background:linear-gradient(135deg,#0077b6,#00a8e8);color:#fff;font-size:16px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
 .btn-secondary{background:#455a64}
+.info{background:#eaf7ff;border-left:5px solid #00a8e8;padding:17px;border-radius:8px;margin:15px 0;text-align:left}
+.info ul{margin-left:20px}
+.timer-box{position:sticky;top:10px;z-index:100;background:#263238;color:#fff;padding:14px;text-align:center;border-radius:10px;margin-bottom:20px}
+.timer{font-size:28px;font-weight:bold;color:#ffca28}
+.timer.warning{color:#ff9800}
+.timer.danger{color:#ff5252}
+.question{border-left:4px solid #0077b6}
+.question-number{color:#0077b6;font-weight:bold;margin-bottom:8px}
+.question-text{font-size:17px;font-weight:bold;margin-bottom:15px}
+.option{display:block;padding:12px 15px;margin:8px 0;border:1px solid #ddd;border-radius:8px;cursor:pointer}
+.option:hover{background:#eaf7ff;border-color:#00a8e8}
+.option input{margin-right:10px}
+.submit-area{text-align:center;padding:20px}
+.result{display:none;text-align:center}
+.score{font-size:52px;font-weight:bold;color:#0077b6}
+.result-detail{background:#f5f5f5;padding:18px;border-radius:10px;margin:20px 0}
+.review{text-align:left;margin-top:25px}
+.review-item{border-radius:9px;padding:15px;margin:12px 0}
+.review-benar{background:#e8f5e9;border-left:5px solid #43a047}
+.review-salah{background:#ffebee;border-left:5px solid #e53935}
+.review-kosong{background:#fff8e1;border-left:5px solid #ffb300}
+.lulus{color:#2e7d32;font-weight:bold;font-size:22px}
+.tidak-lulus{color:#c62828;font-weight:bold;font-size:22px}
+.button-area{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+footer{background:#263238;color:#fff;text-align:center;padding:25px 15px;margin-top:40px}
 .hidden{display:none!important}
-.participant{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--light);border-left:5px solid var(--secondary);padding:13px 15px;border-radius:8px}
-.participant strong{color:var(--primary)}
-.timer-box{position:sticky;top:10px;z-index:10;text-align:center;padding:14px;margin-bottom:20px}
-.timer-title{font-size:14px;color:#607d8b}.timer{font-size:30px;font-weight:bold;color:var(--primary)}.timer.warning{color:#ef6c00}.timer.danger{color:#c62828}
-.progress-wrap{height:10px;background:#dce5ec;border-radius:20px;overflow:hidden;margin:10px 0}
-.progress{height:100%;width:0;background:linear-gradient(90deg,var(--secondary),var(--accent));transition:.3s}
-.progress-text{text-align:right;color:#607d8b;font-size:13px}
-.question{padding:20px;margin-bottom:17px;border:1px solid #e0e8ef}
-.question-number{font-weight:bold;color:var(--primary);margin-bottom:7px}.question-text{font-weight:bold;margin-bottom:12px}
-.option{display:block;padding:9px 11px;margin:7px 0;background:#f8fafc;border:1px solid #dce4eb;border-radius:8px;cursor:pointer;font-weight:normal}
-.option:hover{background:#eaf3fb;border-color:#90b8dc}.option input{margin-right:8px}
-.result{text-align:center}.result-icon{font-size:60px}.score{font-size:58px;font-weight:bold;color:var(--primary);margin:8px 0}
-.pass{color:var(--success)!important}.fail{color:var(--danger)!important}
-.result-info{background:#f6f9fc;border-radius:10px;padding:16px;margin:18px 0}.result-info p{margin:6px 0}
-.review{text-align:left;margin-top:24px}.review-item{padding:14px;border-left:5px solid;border-radius:8px;margin-bottom:10px}
-.review-correct{background:#e8f5e9;border-color:#43a047}.review-wrong{background:#ffebee;border-color:#e53935}
-.warning-box{background:#fff3cd;border-left:5px solid #ff9800;padding:14px;border-radius:8px;margin-bottom:18px;text-align:left}
-footer{background:#17324d;color:#fff;text-align:center;padding:24px 15px;margin-top:35px}
-@media(max-width:600px){.header h1{font-size:23px}.card{padding:20px}.participant{flex-direction:column;align-items:flex-start;gap:8px}.score{font-size:48px}}
+body.locked{overflow:hidden}
+body.locked #loginSection{position:fixed;inset:0;z-index:9999;max-width:none;margin:0;border-radius:0;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#b71c1c,#e53935);color:#263238}
+body.locked #loginSection h2,body.locked #loginSection p,body.locked #loginSection input,body.locked #loginSection .info,body.locked #loginSection button,body.locked #loginSection #loginError{max-width:550px;width:100%;margin-left:auto;margin-right:auto}
+body.locked #loginSection h2,body.locked #loginSection p{background:#fff}
+body.locked #loginSection h2{padding:25px 25px 0;border-radius:14px 14px 0 0;margin-bottom:0}
+body.locked #loginSection p{padding:0 25px 10px;margin-bottom:0}
+body.locked #loginSection input{background:#fff}
+@media(max-width:600px){.header h1{font-size:22px}.card,.question{padding:18px}.btn{width:100%}.button-area .btn{width:100%}}
 </style>
 </head>
-<body>
-<div id="passwordOverlay">
-  <div class="login-box">
-    <h2>🔐 Akses Kuis Modul 4</h2>
-    <p>Isi identitas peserta dan password untuk memulai kuis.</p>
-    <label for="participantInput">Nama Peserta</label>
-    <input id="participantInput" type="text" placeholder="Masukkan nama lengkap">
-    <label for="classInput">Kelas</label>
-    <input id="classInput" type="text" placeholder="Contoh: Kelas A">
-    <label for="quizPassword">Password</label>
-    <input id="quizPassword" type="password" placeholder="Masukkan password">
-    <p id="passwordError" style="display:none;color:#c62828;margin-top:10px"></p>
-    <button class="btn" type="button" onclick="startQuiz()">▶ MULAI KUIS</button>
-  </div>
-</div>
 
+<body class="locked">
 <header class="header">
-  <div class="icon">🎨</div>
-  <h1>KUIS MODUL 4</h1>
-  <p>Mengatur Desain Presentasi</p>
-  <p>Microsoft PowerPoint 2016</p>
+<div class="icon">🎨</div>
+<h1>Kuis Modul 4</h1>
+<p>Mengatur Desain Presentasi — Microsoft PowerPoint 2016</p>
 </header>
 
 <main class="container">
-  <section class="card">
-    <div class="participant">
-      <div><small>Peserta</small><div id="displayName">-</div></div>
-      <div><small>KKM</small><strong>75</strong></div>
-    </div>
-  </section>
 
-  <section id="quizSection">
-    <div class="timer-box">
-      <div class="timer-title">⏱️ Sisa Waktu</div>
-      <div id="timer" class="timer">10:00</div>
-    </div>
+<section id="loginSection" class="card login-box">
+<h2>🔐 Akses Kuis</h2>
+<p>Silakan masukkan nama, kelas, dan password sebelum memulai kuis.</p>
 
-    <div class="card">
-      <h2>📝 Kuis Modul 4</h2>
-      <p>Jawablah 15 soal berikut dengan memilih satu jawaban yang paling tepat.</p>
-      <div class="progress-text"><span id="progressText">0 / 15</span></div>
-      <div class="progress-wrap"><div id="progressBar" class="progress"></div></div>
-    </div>
+<input id="namaPeserta" class="input" placeholder="Nama lengkap peserta">
+<input id="kelasPeserta" class="input" placeholder="Kelas peserta">
+<input id="password" type="password" class="input" placeholder="Password kuis">
 
-    <form id="quizForm">
-      <div class="question"><div class="question-number">Soal 1</div><div class="question-text">Apa fungsi utama Themes pada PowerPoint 2016?</div>
-        <label class="option"><input type="radio" name="q1" value="A">A. Menghapus slide</label><label class="option"><input type="radio" name="q1" value="B">B. Mengatur tampilan desain presentasi secara keseluruhan</label><label class="option"><input type="radio" name="q1" value="C">C. Mengatur ukuran kertas</label><label class="option"><input type="radio" name="q1" value="D">D. Menambahkan suara</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 2</div><div class="question-text">Fitur yang digunakan untuk mengubah variasi dari sebuah Theme adalah...</div>
-        <label class="option"><input type="radio" name="q2" value="A">A. Variants</label><label class="option"><input type="radio" name="q2" value="B">B. Clipboard</label><label class="option"><input type="radio" name="q2" value="C">C. Arrange</label><label class="option"><input type="radio" name="q2" value="D">D. Review</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 3</div><div class="question-text">Apa fungsi Format Background?</div>
-        <label class="option"><input type="radio" name="q3" value="A">A. Mengatur animasi</label><label class="option"><input type="radio" name="q3" value="B">B. Mengatur latar belakang slide secara lebih detail</label><label class="option"><input type="radio" name="q3" value="C">C. Menghapus presentasi</label><label class="option"><input type="radio" name="q3" value="D">D. Membuat tabel</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 4</div><div class="question-text">Apa fungsi utama Slide Master?</div>
-        <label class="option"><input type="radio" name="q4" value="A">A. Membuat video</label><label class="option"><input type="radio" name="q4" value="B">B. Mengatur desain presentasi secara terpusat</label><label class="option"><input type="radio" name="q4" value="C">C. Menghapus gambar</label><label class="option"><input type="radio" name="q4" value="D">D. Membuat password</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 5</div><div class="question-text">Untuk mengatur kombinasi warna tema, menu yang digunakan adalah...</div>
-        <label class="option"><input type="radio" name="q5" value="A">A. Design → Variants → Colors</label><label class="option"><input type="radio" name="q5" value="B">B. Insert → Colors</label><label class="option"><input type="radio" name="q5" value="C">C. View → Colors</label><label class="option"><input type="radio" name="q5" value="D">D. Review → Colors</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 6</div><div class="question-text">Apa fungsi Crop pada gambar?</div>
-        <label class="option"><input type="radio" name="q6" value="A">A. Memotong bagian gambar yang tidak diperlukan</label><label class="option"><input type="radio" name="q6" value="B">B. Menghapus seluruh slide</label><label class="option"><input type="radio" name="q6" value="C">C. Mengubah font</label><label class="option"><input type="radio" name="q6" value="D">D. Menambahkan tabel</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 7</div><div class="question-text">Fitur untuk menghilangkan latar belakang sebuah gambar adalah...</div>
-        <label class="option"><input type="radio" name="q7" value="A">A. Crop</label><label class="option"><input type="radio" name="q7" value="B">B. Remove Background</label><label class="option"><input type="radio" name="q7" value="C">C. Compress Pictures</label><label class="option"><input type="radio" name="q7" value="D">D. Rotate</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 8</div><div class="question-text">Apa manfaat Compress Pictures?</div>
-        <label class="option"><input type="radio" name="q8" value="A">A. Menambah jumlah slide</label><label class="option"><input type="radio" name="q8" value="B">B. Mengurangi ukuran file gambar</label><label class="option"><input type="radio" name="q8" value="C">C. Membuat animasi</label><label class="option"><input type="radio" name="q8" value="D">D. Menghapus teks</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 9</div><div class="question-text">Fitur yang digunakan untuk memutar objek adalah...</div>
-        <label class="option"><input type="radio" name="q9" value="A">A. Align</label><label class="option"><input type="radio" name="q9" value="B">B. Rotate</label><label class="option"><input type="radio" name="q9" value="C">C. Group</label><label class="option"><input type="radio" name="q9" value="D">D. Crop</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 10</div><div class="question-text">Apa fungsi Align?</div>
-        <label class="option"><input type="radio" name="q10" value="A">A. Menghapus objek</label><label class="option"><input type="radio" name="q10" value="B">B. Merapikan dan mensejajarkan posisi objek</label><label class="option"><input type="radio" name="q10" value="C">C. Mengubah background</label><label class="option"><input type="radio" name="q10" value="D">D. Menambahkan audio</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 11</div><div class="question-text">Untuk menggabungkan beberapa objek menjadi satu kesatuan digunakan...</div>
-        <label class="option"><input type="radio" name="q11" value="A">A. Ungroup</label><label class="option"><input type="radio" name="q11" value="B">B. Group</label><label class="option"><input type="radio" name="q11" value="C">C. Crop</label><label class="option"><input type="radio" name="q11" value="D">D. Rotate</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 12</div><div class="question-text">Perintah untuk memisahkan objek yang sebelumnya telah di-group adalah...</div>
-        <label class="option"><input type="radio" name="q12" value="A">A. Group</label><label class="option"><input type="radio" name="q12" value="B">B. Align</label><label class="option"><input type="radio" name="q12" value="C">C. Ungroup</label><label class="option"><input type="radio" name="q12" value="D">D. Merge</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 13</div><div class="question-text">Jika ingin membawa sebuah objek ke posisi paling depan, perintah yang tepat adalah...</div>
-        <label class="option"><input type="radio" name="q13" value="A">A. Send to Back</label><label class="option"><input type="radio" name="q13" value="B">B. Send Backward</label><label class="option"><input type="radio" name="q13" value="C">C. Bring to Front</label><label class="option"><input type="radio" name="q13" value="D">D. Align Bottom</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 14</div><div class="question-text">Manakah yang termasuk pilihan Merge Shapes?</div>
-        <label class="option"><input type="radio" name="q14" value="A">A. Union</label><label class="option"><input type="radio" name="q14" value="B">B. Paragraph</label><label class="option"><input type="radio" name="q14" value="C">C. Transition</label><label class="option"><input type="radio" name="q14" value="D">D. Animation</label>
-      </div>
-      <div class="question"><div class="question-number">Soal 15</div><div class="question-text">Perintah Merge Shapes yang digunakan untuk memotong satu Shape menggunakan Shape lainnya adalah...</div>
-        <label class="option"><input type="radio" name="q15" value="A">A. Union</label><label class="option"><input type="radio" name="q15" value="B">B. Fragment</label><label class="option"><input type="radio" name="q15" value="C">C. Intersect</label><label class="option"><input type="radio" name="q15" value="D">D. Subtract</label>
-      </div>
-      <button class="btn" type="button" onclick="finishQuiz(false)">✅ Selesai & Lihat Nilai</button>
-    </form>
-  </section>
+<div class="info">
+<ul>
+<li>Jumlah soal: <strong>15 soal</strong></li>
+<li>Waktu pengerjaan: <strong>10 menit</strong></li>
+<li>Nilai minimum kelulusan: <strong>75</strong></li>
+<li>Jawaban otomatis dikumpulkan saat waktu habis.</li>
+</ul>
+</div>
 
-  <section id="result" class="card result" style="display:none">
-    <div id="resultIcon" class="result-icon">🎉</div>
-    <h2>Hasil Kuis Modul 4</h2>
-    <p>Peserta:</p><h3 id="resultName">-</h3>
-    <div id="score" class="score">0</div>
-    <div class="result-info">
-      <p><strong>Jumlah Soal:</strong> 15</p>
-      <p><strong>Jawaban Benar:</strong> <span id="correctCount">0</span></p>
-      <p><strong>Jawaban Salah:</strong> <span id="wrongCount">0</span></p>
-      <p><strong>Tidak Dijawab:</strong> <span id="emptyCount">0</span></p>
-      <p><strong>Status:</strong> <span id="status">-</span></p>
-    </div>
-    <div id="review" class="review"></div>
-    <button class="btn" onclick="retryQuiz()">🔄 Ulangi Kuis</button>
-    <a class="btn btn-secondary" href="modul-ppt-4.html">📖 Kembali ke Modul</a>
-    <a class="btn" href="kuis-ppt-5.html">Modul Berikutnya →</a>
-  </section>
+<button class="btn" onclick="mulaiKuis()">🚀 Mulai Kuis</button>
+<p id="loginError" style="color:#c62828;margin-top:15px;display:none;font-weight:bold"></p>
+</section>
+
+<section id="quizSection" class="hidden">
+<div class="card">
+<h2>📋 Petunjuk Kuis</h2>
+<p>Peserta: <strong id="namaTampil"></strong> | Kelas: <strong id="kelasTampil"></strong></p>
+</div>
+
+<div class="timer-box">
+⏱️ Sisa Waktu
+<div id="timer" class="timer">10:00</div>
+</div>
+
+<form id="quizForm">
+
+<div class="question">
+<div class="question-number">Soal 1 dari 15</div>
+<div class="question-text">Apa fungsi utama Themes pada PowerPoint 2016?</div>
+<label class="option"><input type="radio" name="q1" value="A"> A. Menghapus slide</label>
+<label class="option"><input type="radio" name="q1" value="B"> B. Mengatur tampilan desain presentasi secara keseluruhan</label>
+<label class="option"><input type="radio" name="q1" value="C"> C. Mengatur ukuran kertas</label>
+<label class="option"><input type="radio" name="q1" value="D"> D. Menambahkan suara</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 2 dari 15</div>
+<div class="question-text">Fitur yang digunakan untuk mengubah variasi dari sebuah Theme adalah...</div>
+<label class="option"><input type="radio" name="q2" value="A"> A. Variants</label>
+<label class="option"><input type="radio" name="q2" value="B"> B. Clipboard</label>
+<label class="option"><input type="radio" name="q2" value="C"> C. Arrange</label>
+<label class="option"><input type="radio" name="q2" value="D"> D. Review</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 3 dari 15</div>
+<div class="question-text">Apa fungsi Format Background?</div>
+<label class="option"><input type="radio" name="q3" value="A"> A. Mengatur animasi</label>
+<label class="option"><input type="radio" name="q3" value="B"> B. Mengatur latar belakang slide secara lebih detail</label>
+<label class="option"><input type="radio" name="q3" value="C"> C. Menghapus presentasi</label>
+<label class="option"><input type="radio" name="q3" value="D"> D. Membuat tabel</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 4 dari 15</div>
+<div class="question-text">Apa fungsi utama Slide Master?</div>
+<label class="option"><input type="radio" name="q4" value="A"> A. Membuat video</label>
+<label class="option"><input type="radio" name="q4" value="B"> B. Mengatur desain presentasi secara terpusat</label>
+<label class="option"><input type="radio" name="q4" value="C"> C. Menghapus gambar</label>
+<label class="option"><input type="radio" name="q4" value="D"> D. Membuat password</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 5 dari 15</div>
+<div class="question-text">Untuk mengatur kombinasi warna tema, menu yang digunakan adalah...</div>
+<label class="option"><input type="radio" name="q5" value="A"> A. Design → Variants → Colors</label>
+<label class="option"><input type="radio" name="q5" value="B"> B. Insert → Colors</label>
+<label class="option"><input type="radio" name="q5" value="C"> C. View → Colors</label>
+<label class="option"><input type="radio" name="q5" value="D"> D. Review → Colors</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 6 dari 15</div>
+<div class="question-text">Apa fungsi Crop pada gambar?</div>
+<label class="option"><input type="radio" name="q6" value="A"> A. Memotong bagian gambar yang tidak diperlukan</label>
+<label class="option"><input type="radio" name="q6" value="B"> B. Menghapus seluruh slide</label>
+<label class="option"><input type="radio" name="q6" value="C"> C. Mengubah font</label>
+<label class="option"><input type="radio" name="q6" value="D"> D. Menambahkan tabel</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 7 dari 15</div>
+<div class="question-text">Fitur untuk menghilangkan latar belakang sebuah gambar adalah...</div>
+<label class="option"><input type="radio" name="q7" value="A"> A. Crop</label>
+<label class="option"><input type="radio" name="q7" value="B"> B. Remove Background</label>
+<label class="option"><input type="radio" name="q7" value="C"> C. Compress Pictures</label>
+<label class="option"><input type="radio" name="q7" value="D"> D. Rotate</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 8 dari 15</div>
+<div class="question-text">Apa manfaat Compress Pictures?</div>
+<label class="option"><input type="radio" name="q8" value="A"> A. Menambah jumlah slide</label>
+<label class="option"><input type="radio" name="q8" value="B"> B. Mengurangi ukuran file gambar</label>
+<label class="option"><input type="radio" name="q8" value="C"> C. Membuat animasi</label>
+<label class="option"><input type="radio" name="q8" value="D"> D. Menghapus teks</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 9 dari 15</div>
+<div class="question-text">Fitur yang digunakan untuk memutar objek adalah...</div>
+<label class="option"><input type="radio" name="q9" value="A"> A. Align</label>
+<label class="option"><input type="radio" name="q9" value="B"> B. Rotate</label>
+<label class="option"><input type="radio" name="q9" value="C"> C. Group</label>
+<label class="option"><input type="radio" name="q9" value="D"> D. Crop</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 10 dari 15</div>
+<div class="question-text">Apa fungsi Align?</div>
+<label class="option"><input type="radio" name="q10" value="A"> A. Menghapus objek</label>
+<label class="option"><input type="radio" name="q10" value="B"> B. Merapikan dan mensejajarkan posisi objek</label>
+<label class="option"><input type="radio" name="q10" value="C"> C. Mengubah background</label>
+<label class="option"><input type="radio" name="q10" value="D"> D. Menambahkan audio</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 11 dari 15</div>
+<div class="question-text">Untuk menggabungkan beberapa objek menjadi satu kesatuan digunakan...</div>
+<label class="option"><input type="radio" name="q11" value="A"> A. Ungroup</label>
+<label class="option"><input type="radio" name="q11" value="B"> B. Group</label>
+<label class="option"><input type="radio" name="q11" value="C"> C. Crop</label>
+<label class="option"><input type="radio" name="q11" value="D"> D. Rotate</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 12 dari 15</div>
+<div class="question-text">Perintah untuk memisahkan objek yang sebelumnya telah di-group adalah...</div>
+<label class="option"><input type="radio" name="q12" value="A"> A. Group</label>
+<label class="option"><input type="radio" name="q12" value="B"> B. Align</label>
+<label class="option"><input type="radio" name="q12" value="C"> C. Ungroup</label>
+<label class="option"><input type="radio" name="q12" value="D"> D. Merge</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 13 dari 15</div>
+<div class="question-text">Jika ingin membawa sebuah objek ke posisi paling depan, perintah yang tepat adalah...</div>
+<label class="option"><input type="radio" name="q13" value="A"> A. Send to Back</label>
+<label class="option"><input type="radio" name="q13" value="B"> B. Send Backward</label>
+<label class="option"><input type="radio" name="q13" value="C"> C. Bring to Front</label>
+<label class="option"><input type="radio" name="q13" value="D"> D. Align Bottom</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 14 dari 15</div>
+<div class="question-text">Manakah yang termasuk pilihan Merge Shapes?</div>
+<label class="option"><input type="radio" name="q14" value="A"> A. Union</label>
+<label class="option"><input type="radio" name="q14" value="B"> B. Paragraph</label>
+<label class="option"><input type="radio" name="q14" value="C"> C. Transition</label>
+<label class="option"><input type="radio" name="q14" value="D"> D. Animation</label>
+</div>
+
+<div class="question">
+<div class="question-number">Soal 15 dari 15</div>
+<div class="question-text">Perintah Merge Shapes yang digunakan untuk memotong satu Shape menggunakan Shape lainnya adalah...</div>
+<label class="option"><input type="radio" name="q15" value="A"> A. Union</label>
+<label class="option"><input type="radio" name="q15" value="B"> B. Fragment</label>
+<label class="option"><input type="radio" name="q15" value="C"> C. Intersect</label>
+<label class="option"><input type="radio" name="q15" value="D"> D. Subtract</label>
+</div>
+
+<div class="submit-area">
+<button type="button" class="btn" onclick="selesaiKuis(false)">✅ Selesai & Lihat Nilai</button>
+</div>
+</form>
+</section>
+
+<section id="resultSection" class="card result">
+<h2>🏆 Hasil Kuis Modul 4</h2>
+<p>Nama: <strong id="hasilNama"></strong></p>
+<p>Kelas: <strong id="hasilKelas"></strong></p>
+
+<div class="score" id="nilai">0.00</div>
+
+<div class="result-detail">
+<p>Jawaban benar: <strong id="jumlahBenar">0</strong> / 15</p>
+<p>Jawaban salah: <strong id="jumlahSalah">0</strong></p>
+<p>Tidak dijawab: <strong id="jumlahKosong">0</strong></p>
+<p>Waktu digunakan: <strong id="waktuHasil">-</strong></p>
+</div>
+
+<div id="status"></div>
+<div class="review">
+<h2>📋 Pembahasan Jawaban</h2>
+<div id="reviewArea"></div>
+</div>
+
+<div class="button-area">
+<button class="btn btn-secondary" onclick="location.reload()">🔄 Ulangi Kuis</button>
+<a class="btn btn-secondary" href="modul-ppt-4.html">📖 Kembali ke Modul 4</a>
+<a class="btn" href="kuis-ppt-5.html">➡️ Lanjut Modul 5</a>
+</div>
+</section>
 </main>
 
 <footer>
-  <p><strong>Pelatihan Microsoft PowerPoint 2016</strong></p>
-  <p>Kuis Modul 4 — Mengatur Desain Presentasi</p>
-  <p>© 2026 UPTD BLK Kabupaten Subang</p>
+<p><strong>Pelatihan Microsoft PowerPoint 2016</strong></p>
+<p>Kuis Modul 4 — Mengatur Desain Presentasi</p>
+<p>© 2026 UPTD BLK Kabupaten Subang</p>
 </footer>
 
 <script>
-const QUIZ_PASSWORD="BLK2026";
-const TOTAL_QUESTIONS=15;
-const QUIZ_DURATION=10*60;
-const PASSING_SCORE=75;
-const QUIZ_MODULE_NAME="PowerPoint Modul 4 - Mengatur Desain Presentasi";
-const GOOGLE_SHEET_API_URL="https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+const PASSWORD_KUIS = "BLK2026";
+const TOTAL_QUESTIONS = 15;
+const POINT_PER_QUESTION = 5;
+const PASSING_SCORE = 75;
+const QUIZ_DURATION = 10 * 60;
 
-const answers={q1:"B",q2:"A",q3:"B",q4:"B",q5:"A",q6:"A",q7:"B",q8:"B",q9:"B",q10:"B",q11:"B",q12:"C",q13:"C",q14:"A",q15:"D"};
-const explanations={
-q1:"Themes mengatur tampilan desain presentasi secara keseluruhan.",
-q2:"Variants mengubah variasi Theme, seperti warna, font, efek, dan background style.",
-q3:"Format Background mengatur latar belakang slide secara lebih detail.",
-q4:"Slide Master mengatur desain presentasi secara terpusat.",
-q5:"Theme Colors dapat diatur melalui Design → Variants → Colors.",
-q6:"Crop memotong bagian gambar yang tidak diperlukan.",
-q7:"Remove Background menghapus latar belakang gambar.",
-q8:"Compress Pictures mengurangi ukuran file gambar.",
-q9:"Rotate digunakan untuk memutar objek.",
-q10:"Align merapikan dan mensejajarkan posisi objek.",
-q11:"Group menggabungkan beberapa objek menjadi satu kesatuan.",
-q12:"Ungroup memisahkan kembali objek yang telah di-group.",
-q13:"Bring to Front membawa objek ke posisi paling depan.",
-q14:"Union merupakan salah satu pilihan Merge Shapes.",
-q15:"Subtract memotong satu Shape menggunakan Shape lainnya."
+const GOOGLE_SHEET_API_URL =
+"https://script.google.com/macros/s/AKfcyby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+const QUIZ_MODULE_NAME =
+"PowerPoint Modul 4 - Mengatur Desain Presentasi";
+
+const jawabanBenar = {
+q1:"B",q2:"A",q3:"B",q4:"B",q5:"A",
+q6:"A",q7:"B",q8:"B",q9:"B",q10:"B",
+q11:"B",q12:"C",q13:"C",q14:"A",q15:"D"
 };
 
-let participantName="",participantClass="",timeLeft=QUIZ_DURATION,timerInterval=null,quizStarted=false,quizFinished=false,hasilSudahDikirim=false;
+const pembahasan = {
+q1:"Themes digunakan untuk mengatur tampilan desain presentasi secara keseluruhan.",
+q2:"Variants digunakan untuk mengubah variasi Theme, termasuk warna, font, efek, dan gaya latar belakang.",
+q3:"Format Background digunakan untuk mengatur latar belakang slide secara lebih detail.",
+q4:"Slide Master digunakan untuk mengatur desain presentasi secara terpusat.",
+q5:"Theme Colors dapat diatur melalui Design → Variants → Colors.",
+q6:"Crop digunakan untuk memotong bagian gambar yang tidak diperlukan.",
+q7:"Remove Background digunakan untuk menghapus latar belakang gambar.",
+q8:"Compress Pictures digunakan untuk mengurangi ukuran file gambar.",
+q9:"Rotate digunakan untuk memutar objek.",
+q10:"Align digunakan untuk merapikan dan mensejajarkan posisi objek.",
+q11:"Group digunakan untuk menggabungkan beberapa objek menjadi satu kesatuan.",
+q12:"Ungroup digunakan untuk memisahkan kembali objek yang sebelumnya telah di-group.",
+q13:"Bring to Front digunakan untuk membawa objek ke posisi paling depan.",
+q14:"Union merupakan salah satu pilihan pada Merge Shapes.",
+q15:"Subtract digunakan untuk memotong satu Shape menggunakan Shape lainnya."
+};
 
-function startQuiz(){
-  const name=document.getElementById("participantInput").value.trim();
-  const cls=document.getElementById("classInput").value.trim();
-  const password=document.getElementById("quizPassword").value.trim();
-  const error=document.getElementById("passwordError");
-  if(!name){showError("❌ Nama peserta wajib diisi.");document.getElementById("participantInput").focus();return}
-  if(!cls){showError("❌ Kelas peserta wajib diisi.");document.getElementById("classInput").focus();return}
-  if(password!==QUIZ_PASSWORD){showError("❌ Password salah. Silakan coba lagi.");document.getElementById("quizPassword").value="";document.getElementById("quizPassword").focus();return}
-  participantName=name;participantClass=cls;quizStarted=true;quizFinished=false;hasilSudahDikirim=false;timeLeft=QUIZ_DURATION;
-  document.getElementById("displayName").textContent=participantName;
-  document.getElementById("passwordOverlay").style.display="none";
-  startTimer();updateProgress();
-}
-function showError(message){const error=document.getElementById("passwordError");error.textContent=message;error.style.display="block"}
-function startTimer(){
-  clearInterval(timerInterval);updateTimerDisplay();
-  timerInterval=setInterval(()=>{
-    if(!quizStarted||quizFinished)return;
-    timeLeft--;updateTimerDisplay();
-    const timer=document.getElementById("timer");
-    timer.classList.toggle("warning",timeLeft<=60&&timeLeft>30);
-    timer.classList.toggle("danger",timeLeft<=30);
-    if(timeLeft<=0){clearInterval(timerInterval);finishQuiz(true)}
-  },1000);
-}
-function updateTimerDisplay(){document.getElementById("timer").textContent=String(Math.floor(timeLeft/60)).padStart(2,"0")+":"+String(timeLeft%60).padStart(2,"0")}
-function formatTimeUsed(){const used=QUIZ_DURATION-timeLeft;return String(Math.floor(used/60)).padStart(2,"0")+":"+String(used%60).padStart(2,"0")}
-function updateProgress(){
-  let answered=0;
-  for(let i=1;i<=TOTAL_QUESTIONS;i++)if(document.querySelector('input[name="q'+i+'"]:checked'))answered++;
-  document.getElementById("progressBar").style.width=(answered/TOTAL_QUESTIONS*100)+"%";
-  document.getElementById("progressText").textContent=answered+" / "+TOTAL_QUESTIONS;
-}
-document.addEventListener("change",e=>{if(e.target.matches('input[type="radio"]'))updateProgress()});
+let timeLeft = QUIZ_DURATION;
+let timerInterval = null;
+let quizFinished = false;
+let hasilSudahDikirim = false;
 
-function finishQuiz(timeUp){
-  if(quizFinished)return;
-  if(!timeUp){
-    const unanswered=[];
-    for(let i=1;i<=TOTAL_QUESTIONS;i++)if(!document.querySelector('input[name="q'+i+'"]:checked'))unanswered.push(i);
-    if(unanswered.length){alert("Masih ada "+unanswered.length+" soal yang belum dijawab.\n\nNomor soal: "+unanswered.join(", "));return}
-  }
-  quizFinished=true;clearInterval(timerInterval);
-  let correct=0,wrong=0,empty=0;const review=document.getElementById("review");review.innerHTML="";
-  for(let i=1;i<=TOTAL_QUESTIONS;i++){
-    const key="q"+i,selected=document.querySelector('input[name="'+key+'"]:checked'),selectedAnswer=selected?selected.value:"-";
-    const item=document.createElement("div");item.className="review-item";
-    if(selectedAnswer==="-"){empty++;item.classList.add("review-wrong");item.innerHTML="<strong>Soal "+i+" — TIDAK DIJAWAB ⚠️</strong><br>Jawaban benar: "+answers[key]+"<br>Pembahasan: "+explanations[key]}
-    else if(selectedAnswer===answers[key]){correct++;item.classList.add("review-correct");item.innerHTML="<strong>Soal "+i+" — BENAR ✅</strong><br>Jawaban Anda: "+selectedAnswer+"<br>Pembahasan: "+explanations[key]}
-    else{wrong++;item.classList.add("review-wrong");item.innerHTML="<strong>Soal "+i+" — SALAH ❌</strong><br>Jawaban Anda: "+selectedAnswer+"<br>Jawaban benar: "+answers[key]+"<br>Pembahasan: "+explanations[key]}
-    review.appendChild(item);
-  }
-  const score=Math.round(correct/TOTAL_QUESTIONS*100),passed=score>=PASSING_SCORE;
-  document.getElementById("quizSection").style.display="none";
-  document.getElementById("result").style.display="block";
-  document.getElementById("resultName").textContent=participantName;
-  document.getElementById("score").textContent=score;
-  document.getElementById("correctCount").textContent=correct;
-  document.getElementById("wrongCount").textContent=wrong;
-  document.getElementById("emptyCount").textContent=empty;
-  document.getElementById("status").textContent=passed?"LULUS ✅":"BELUM LULUS ❌";
-  document.getElementById("status").className=passed?"pass":"fail";
-  document.getElementById("score").className="score "+(passed?"pass":"fail");
-  document.getElementById("resultIcon").textContent=passed?"🎉":"📚";
-  if(timeUp){const notice=document.createElement("div");notice.className="warning-box";notice.innerHTML="<strong>⏰ Waktu Habis!</strong><br>Kuis dikumpulkan secara otomatis.";document.getElementById("result").insertBefore(notice,review)}
-  kirimHasilKuis(correct,score,timeUp);window.scrollTo({top:0,behavior:"smooth"});
+function mulaiKuis(){
+const nama = document.getElementById("namaPeserta").value.trim();
+const kelas = document.getElementById("kelasPeserta").value.trim();
+const password = document.getElementById("password").value.trim();
+const error = document.getElementById("loginError");
+
+if(!nama || !kelas){
+error.textContent = "Nama dan kelas wajib diisi.";
+error.style.display = "block";
+return;
 }
-function kirimHasilKuis(correct,score,timeUp){
-  if(hasilSudahDikirim)return;hasilSudahDikirim=true;
-  const payload={jenis:"kuis",nama:participantName,kelas:participantClass,modul:QUIZ_MODULE_NAME,jumlahSoal:TOTAL_QUESTIONS,benar:correct,nilai:score,waktu:timeUp?"Waktu habis":formatTimeUsed()};
-  fetch(GOOGLE_SHEET_API_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})
-  .then(()=>console.log("Hasil kuis berhasil dikirim.")).catch(error=>console.error("Gagal mengirim hasil:",error));
+
+if(password !== PASSWORD_KUIS){
+error.textContent = "Password kuis salah.";
+error.style.display = "block";
+return;
 }
-function retryQuiz(){
-  clearInterval(timerInterval);quizFinished=false;quizStarted=false;hasilSudahDikirim=false;timeLeft=QUIZ_DURATION;
-  document.getElementById("quizForm").reset();document.getElementById("result").style.display="none";document.getElementById("quizSection").style.display="block";
-  document.getElementById("passwordOverlay").style.display="flex";document.getElementById("passwordError").style.display="none";
-  document.getElementById("participantInput").value=participantName;document.getElementById("classInput").value=participantClass;document.getElementById("quizPassword").value="";
-  document.getElementById("timer").className="timer";updateTimerDisplay();updateProgress();document.getElementById("quizPassword").focus();window.scrollTo({top:0,behavior:"smooth"});
+
+error.style.display = "none";
+document.getElementById("loginSection").classList.add("hidden");
+document.getElementById("quizSection").classList.remove("hidden");
+document.body.classList.remove("locked");
+document.getElementById("namaTampil").textContent = nama;
+document.getElementById("kelasTampil").textContent = kelas;
+mulaiTimer();
 }
-document.getElementById("quizPassword").addEventListener("keydown",e=>{if(e.key==="Enter")startQuiz()});
-document.getElementById("participantInput").addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("classInput").focus()});
-document.getElementById("classInput").addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("quizPassword").focus()});
+
+function mulaiTimer(){
+tampilkanTimer();
+timerInterval = setInterval(function(){
+if(quizFinished) return;
+timeLeft--;
+tampilkanTimer();
+
+if(timeLeft <= 0){
+clearInterval(timerInterval);
+alert("⏰ Waktu habis! Jawaban akan otomatis dikumpulkan.");
+selesaiKuis(true);
+}
+},1000);
+}
+
+function tampilkanTimer(){
+const menit = String(Math.floor(timeLeft / 60)).padStart(2,"0");
+const detik = String(timeLeft % 60).padStart(2,"0");
+const timer = document.getElementById("timer");
+timer.textContent = menit + ":" + detik;
+
+if(timeLeft <= 60) timer.classList.add("warning");
+if(timeLeft <= 30){
+timer.classList.remove("warning");
+timer.classList.add("danger");
+}
+}
+
+function formatWaktuDigunakan(){
+const digunakan = QUIZ_DURATION - timeLeft;
+return Math.floor(digunakan / 60) + " menit " + (digunakan % 60) + " detik";
+}
+
+function selesaiKuis(timeUp = false){
+if(quizFinished) return;
+
+quizFinished = true;
+clearInterval(timerInterval);
+
+let benar = 0;
+let salah = 0;
+let kosong = 0;
+let review = "";
+
+for(let i = 1; i <= TOTAL_QUESTIONS; i++){
+const q = "q" + i;
+const pilihan = document.querySelector('input[name="' + q + '"]:checked');
+const jawaban = pilihan ? pilihan.value : "-";
+const kunci = jawabanBenar[q];
+
+if(jawaban === kunci) benar++;
+else if(jawaban === "-") kosong++;
+else salah++;
+
+const kelasReview =
+jawaban === kunci ? "review-benar" :
+jawaban === "-" ? "review-kosong" : "review-salah";
+
+review += `
+<div class="review-item ${kelasReview}">
+<strong>Soal ${i} — ${
+jawaban === kunci ? "✅ Benar" :
+jawaban === "-" ? "⚠️ Tidak dijawab" : "❌ Salah"
+}</strong><br>
+Jawaban Anda: <strong>${jawaban}</strong>
+${jawaban !== kunci ? "<br>Jawaban benar: <strong>" + kunci + "</strong>" : ""}
+<br>Pembahasan: ${pembahasan[q]}
+</div>`;
+}
+
+const nilai = Number((benar / TOTAL_QUESTIONS * 100).toFixed(2));
+const nama = document.getElementById("namaPeserta").value.trim();
+const kelas = document.getElementById("kelasPeserta").value.trim();
+
+document.getElementById("quizSection").classList.add("hidden");
+document.getElementById("resultSection").style.display = "block";
+document.getElementById("hasilNama").textContent = nama;
+document.getElementById("hasilKelas").textContent = kelas;
+document.getElementById("nilai").textContent = nilai.toFixed(2);
+document.getElementById("jumlahBenar").textContent = benar;
+document.getElementById("jumlahSalah").textContent = salah;
+document.getElementById("jumlahKosong").textContent = kosong;
+document.getElementById("waktuHasil").textContent =
+timeUp ? "Waktu habis" : formatWaktuDigunakan();
+
+document.getElementById("status").innerHTML =
+nilai >= PASSING_SCORE
+? '<div class="lulus">✅ LULUS</div>'
+: '<div class="tidak-lulus">❌ BELUM LULUS</div>';
+
+document.getElementById("reviewArea").innerHTML = review;
+
+kirimHasilKuis(benar,nilai,timeUp,nama,kelas);
+document.getElementById("resultSection").scrollIntoView({behavior:"smooth"});
+}
+
+function kirimHasilKuis(benar,nilai,timeUp,nama,kelas){
+if(hasilSudahDikirim) return;
+hasilSudahDikirim = true;
+
+const payload = {
+jenis:"kuis",
+nama:nama,
+kelas:kelas,
+modul:QUIZ_MODULE_NAME,
+jumlahSoal:TOTAL_QUESTIONS,
+benar:benar,
+nilai:Number(nilai.toFixed(2)),
+waktu:timeUp ? "Waktu habis" : formatWaktuDigunakan(),
+tanggal:new Date().toLocaleString("id-ID")
+};
+
+fetch(GOOGLE_SHEET_API_URL,{
+method:"POST",
+mode:"no-cors",
+headers:{"Content-Type":"text/plain;charset=utf-8"},
+body:JSON.stringify(payload)
+}).then(function(){
+console.log("Hasil kuis dikirim ke Google Sheets.");
+}).catch(function(error){
+console.error("Gagal mengirim hasil kuis:",error);
+});
+}
 </script>
 </body>
 </html>
