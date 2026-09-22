@@ -1,1226 +1,2075 @@
 <!DOCTYPE html>
+
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kuis Microsoft Excel - Modul 1</title>
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-    <title>Kuis Modul 1 - Microsoft PowerPoint 2016</title>
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f4f7fb;
+    color:#263238;
+    line-height:1.6;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+body.locked{
+    overflow:hidden;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f6f9;
-            color: #263238;
-            line-height: 1.6;
-        }
+/* =========================
+   HEADER
+========================= */
+.header{
+    background:linear-gradient(135deg,#107c41,#185c37);
+    color:white;
+    padding:45px 20px 60px;
+    text-align:center;
+}
 
-        /* HEADER */
-        .header {
-            background: linear-gradient(135deg, #b71c1c, #e53935);
-            color: white;
-            text-align: center;
-            padding: 28px 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        }
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.16);
+    padding:7px 20px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
 
-        .header .icon {
-            font-size: 48px;
-            margin-bottom: 8px;
-        }
+.header h1{
+    font-size:34px;
+    margin-bottom:8px;
+}
 
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
+.header p{
+    font-size:16px;
+    opacity:.9;
+}
 
-        .header p {
-            font-size: 15px;
-        }
+/* =========================
+   CONTAINER
+========================= */
+.container{
+    max-width:900px;
+    margin:-28px auto 50px;
+    padding:0 18px;
+}
 
-        /* CONTAINER */
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            padding: 0 18px;
-        }
+.card{
+    background:white;
+    border-radius:16px;
+    padding:28px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
 
-        /* CARD */
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 28px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-        }
+.card h2{
+    color:#107c41;
+    margin-bottom:15px;
+}
 
-        .card h2 {
-            color: #c62828;
-            margin-bottom: 18px;
-        }
+/* =========================
+   PASSWORD OVERLAY
+========================= */
+.password-overlay{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#107c41,#185c37);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+    padding:20px;
+}
 
-        /* FORM */
-        .form-group {
-            margin-bottom: 18px;
-        }
+.password-box{
+    background:white;
+    width:100%;
+    max-width:450px;
+    padding:35px 30px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+    text-align:center;
+}
 
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 7px;
-        }
+.password-icon{
+    font-size:55px;
+    margin-bottom:10px;
+}
 
-        .form-group input {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
+.password-box h2{
+    color:#107c41;
+    margin-bottom:8px;
+}
 
-        .form-group input:focus {
-            outline: none;
-            border-color: #e53935;
-        }
+.password-box p{
+    color:#607d8b;
+    margin-bottom:20px;
+}
 
-        /* BUTTON */
-        .btn {
-            border: none;
-            cursor: pointer;
-            padding: 13px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(135deg, #b71c1c, #e53935);
-            transition: 0.3s;
-        }
+.name-input,
+.password-input{
+    width:100%;
+    padding:14px 16px;
+    border:2px solid #dfe5e8;
+    border-radius:9px;
+    font-size:16px;
+    outline:none;
+    margin-bottom:12px;
+}
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0,0,0,0.18);
-        }
+.name-input:focus,
+.password-input:focus{
+    border-color:#107c41;
+}
 
-        .btn-secondary {
-            background: #455a64;
-        }
+.password-btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:9px;
+    background:#107c41;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
 
-        .btn-area {
-            text-align: center;
-            margin-top: 20px;
-        }
+.password-btn:hover{
+    background:#0b5c30;
+}
 
-        /* INFO */
-        .info {
-            background: #fff3f3;
-            border-left: 5px solid #e53935;
-            padding: 18px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+.password-error{
+    display:none;
+    color:#d32f2f;
+    background:#fff0f0;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:12px;
+    font-size:14px;
+}
 
-        .info ul {
-            margin-left: 20px;
-        }
+.password-info{
+    margin-top:18px;
+    font-size:13px;
+    color:#78909c;
+}
 
-        /* TIMER */
-        .timer {
-            position: sticky;
-            top: 10px;
-            z-index: 10;
-            background: #263238;
-            color: white;
-            text-align: center;
-            padding: 13px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            font-size: 21px;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
+/* =========================
+   PESERTA
+========================= */
+.participant{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
 
-        .timer.warning {
-            background: #e65100;
-        }
+.participant-name{
+    font-size:18px;
+    font-weight:600;
+    color:#107c41;
+}
 
-        .timer.danger {
-            background: #b71c1c;
-            animation: blink 1s infinite;
-        }
+/* =========================
+   TIMER
+========================= */
+.timer-card{
+    position:sticky;
+    top:10px;
+    z-index:100;
+}
 
-        @keyframes blink {
-            50% {
-                opacity: 0.6;
-            }
-        }
+.timer-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
 
-        /* QUESTION */
-        .question {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
+.timer-label{
+    font-size:14px;
+    color:#607d8b;
+}
 
-        .question h3 {
-            color: #263238;
-            font-size: 17px;
-            margin-bottom: 15px;
-        }
+.timer{
+    font-size:30px;
+    font-weight:bold;
+    color:#107c41;
+    background:#eaf7ef;
+    padding:8px 18px;
+    border-radius:10px;
+    min-width:120px;
+    text-align:center;
+}
 
-        .option {
-            display: block;
-            padding: 11px 13px;
-            margin: 8px 0;
-            background: #f7f7f7;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
+.timer.warning-time{
+    color:#d97706;
+    background:#fff7e6;
+}
 
-        .option:hover {
-            background: #ffebee;
-            border-color: #ef9a9a;
-        }
+.timer.danger-time{
+    color:#d32f2f;
+    background:#fff0f0;
+    animation:pulse 1s infinite;
+}
 
-        .option input {
-            margin-right: 8px;
-        }
+@keyframes pulse{
+    50%{
+        transform:scale(1.03);
+    }
+}
 
-        /* RESULT */
-        .result {
-            display: none;
-            text-align: center;
-        }
+/* =========================
+   INFO
+========================= */
+.info{
+    background:#eaf7ef;
+    border-left:5px solid #107c41;
+    padding:16px;
+    border-radius:9px;
+}
 
-        .result-icon {
-            font-size: 65px;
-            margin-bottom: 10px;
-        }
+.warning{
+    background:#fff7e6;
+    border-left:5px solid #f39c12;
+    padding:16px;
+    border-radius:9px;
+    margin-top:15px;
+}
 
-        .result h2 {
-            font-size: 27px;
-            color: #c62828;
-        }
+/* =========================
+   PROGRESS
+========================= */
+.progress-text{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-bottom:7px;
+}
 
-        .score {
-            font-size: 52px;
-            font-weight: bold;
-            color: #e53935;
-            margin: 15px 0;
-        }
+.progress{
+    width:100%;
+    height:10px;
+    background:#e0e0e0;
+    border-radius:20px;
+    overflow:hidden;
+}
 
-        .result-box {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-        }
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:#107c41;
+    transition:.3s;
+}
 
-        .result-box p {
-            margin: 8px 0;
-        }
+/* =========================
+   QUESTION
+========================= */
+.question{
+    margin-bottom:28px;
+    padding-bottom:25px;
+    border-bottom:1px solid #e5e5e5;
+}
 
-        .status {
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.question:last-child{
+    border-bottom:none;
+}
 
-        .lulus {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
+.question-number{
+    color:#107c41;
+    font-weight:bold;
+    margin-bottom:7px;
+}
 
-        .tidak-lulus {
-            background: #ffebee;
-            color: #c62828;
-        }
+.question-text{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:14px;
+}
 
-        /* HIDDEN */
-        #quizSection,
-        #resultSection {
-            display: none;
-        }
+.option{
+    display:block;
+    padding:12px 15px;
+    margin:9px 0;
+    border:1px solid #d9dfe3;
+    border-radius:9px;
+    cursor:pointer;
+    transition:.2s;
+}
 
-        /* RESPONSIVE */
-        @media (max-width: 600px) {
+.option:hover{
+    background:#f0faf4;
+    border-color:#107c41;
+}
 
-            .header h1 {
-                font-size: 22px;
-            }
+.option input{
+    margin-right:9px;
+}
 
-            .card {
-                padding: 20px;
-            }
+/* =========================
+   BUTTON
+========================= */
+.button-area{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
 
-            .question {
-                padding: 17px;
-            }
+.btn{
+    border:none;
+    padding:13px 25px;
+    border-radius:9px;
+    color:white;
+    background:#107c41;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    text-decoration:none;
+}
 
-            .question h3 {
-                font-size: 16px;
-            }
+.btn:hover{
+    background:#0b5c30;
+}
 
-            .timer {
-                font-size: 18px;
-            }
+.btn.secondary{
+    background:#607d8b;
+}
 
-            .btn {
-                width: 100%;
-                margin-bottom: 8px;
-            }
-        }
-    </style>
+.btn.blue{
+    background:#2878d4;
+}
+
+/* =========================
+   RESULT
+========================= */
+#result{
+    display:none;
+}
+
+.score{
+    text-align:center;
+    font-size:58px;
+    font-weight:bold;
+    color:#107c41;
+    margin:10px 0;
+}
+
+.result-message{
+    text-align:center;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.status{
+    text-align:center;
+    padding:14px;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.status.lulus{
+    color:#107c41;
+    background:#eaf7ef;
+}
+
+.status.tidak-lulus{
+    color:#d32f2f;
+    background:#fff0f0;
+}
+
+.result-detail{
+    background:#f7f9fa;
+    border-radius:10px;
+    padding:18px;
+}
+
+.result-detail div{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:8px 0;
+    border-bottom:1px solid #e4e4e4;
+}
+
+.result-detail div:last-child{
+    border-bottom:none;
+}
+
+/* =========================
+   REVIEW
+========================= */
+.review{
+    margin-top:25px;
+}
+
+.review-item{
+    padding:15px;
+    margin:10px 0;
+    border-radius:9px;
+    border-left:5px solid;
+}
+
+.correct{
+    background:#eaf7ef;
+    border-color:#107c41;
+}
+
+.wrong{
+    background:#fff0f0;
+    border-color:#d32f2f;
+}
+
+.unanswered{
+    background:#fff7e6;
+    border-color:#f39c12;
+}
+
+.answer{
+    font-weight:600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+    background:#17202a;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.footer strong{
+    color:#6fcf97;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:600px){
+
+    .header h1{
+        font-size:27px;
+    }
+
+    .card{
+        padding:21px 17px;
+    }
+
+    .timer-container{
+        flex-direction:column;
+        align-items:stretch;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .participant{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .score{
+        font-size:45px;
+    }
+
+}
+</style>
 </head>
-
-<body>
-
-    <!-- HEADER -->
-    <header class="header">
-
-        <div class="icon">📊</div>
-
-        <h1>Kuis Modul 1</h1>
-
-        <p>Mengenal Microsoft PowerPoint 2016</p>
-
-    </header>
-
-
-    <main class="container">
-
-
-        <!-- LOGIN -->
-        <section id="loginSection" class="card">
-
-            <h2>🔐 Persiapan Kuis</h2>
-
-            <div class="info">
-
-                <p><strong>Petunjuk:</strong></p>
-
-                <ul>
-                    <li>Masukkan password kuis.</li>
-                    <li>Masukkan nama lengkap peserta.</li>
-                    <li>Waktu pengerjaan adalah <strong>10 menit</strong>.</li>
-                    <li>Terdapat <strong>15 soal pilihan ganda</strong>.</li>
-                    <li>Setiap soal memiliki satu jawaban yang benar.</li>
-                    <li>Pastikan jawaban sudah diperiksa sebelum dikirim.</li>
-                </ul>
-
+<body class="locked">
+<!-- =========================
+     PASSWORD & NAMA PESERTA
+========================= -->
+<div class="password-overlay" id="passwordOverlay">
+<div class="password-box">
+<div class="password-icon">🔐</div>
+<h2>Kuis Excel Modul 1</h2>
+<p>
+            Masukkan nama peserta dan password
+            untuk memulai kuis.
+        </p>
+<input autocomplete="off" class="name-input" id="participantInput" placeholder="Nama lengkap peserta" type="text"/>
+<input autocomplete="off" class="name-input" id="classInput" placeholder="Kelas peserta" type="text"/>
+<input autocomplete="off" class="password-input" id="quizPassword" placeholder="Password kuis" type="password"/>
+<div class="password-error" id="passwordError">
+            ❌ Terjadi kesalahan.
+        </div>
+<button class="password-btn" onclick="startQuiz()" type="button">
+            🔓 MULAI KUIS
+        </button>
+<div class="password-info">
+            Waktu pengerjaan: <strong>15 menit</strong><br/>
+            Nilai minimum: <strong>75</strong><br/>
+            Nama dan kelas akan dicatat pada hasil kuis.
+        </div>
+</div>
+</div>
+<!-- =========================
+     HEADER
+========================= -->
+<header class="header">
+<div class="badge">KUIS • MODUL 1</div>
+<h1>Pengenalan Microsoft Excel</h1>
+<p>
+        Berkenalan dengan Excel • Antarmuka • Format File •
+        Persiapan Awal • Region Setting
+    </p>
+</header>
+<main class="container">
+<!-- DATA PESERTA -->
+<section class="card">
+<div class="participant">
+<div>
+<div style="font-size:13px;color:#78909c;">
+                Peserta
             </div>
-
-
-            <div class="form-group">
-
-                <label for="password">
-                    Password Kuis
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Masukkan password"
-                >
-
+<div class="participant-name" id="displayName">
+                -
             </div>
-
-
-            <div class="form-group">
-
-                <label for="namaPeserta">
-                    Nama Peserta
-                </label>
-
-                <input
-                    type="text"
-                    id="namaPeserta"
-                    placeholder="Masukkan nama lengkap"
-                >
-
+</div>
+<div>
+<div style="font-size:13px;color:#78909c;">
+                KKM
             </div>
-
-
-            <div id="loginError"
-                 style="display:none;color:#c62828;margin-bottom:15px;font-weight:bold;">
+<strong>75</strong>
+</div>
+</div>
+</section>
+<!-- TIMER -->
+<section class="card timer-card">
+<div class="timer-container">
+<div>
+<div class="timer-label">
+                ⏱️ WAKTU TERSISA
             </div>
-
-
-            <div class="btn-area">
-
-                <button class="btn" onclick="mulaiKuis()">
-                    ▶ Mulai Kuis
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- QUIZ -->
-        <section id="quizSection">
-
-            <div class="timer" id="timer">
-                ⏱️ Waktu: 10:00
-            </div>
-
-
-            <form id="quizForm">
-
-
-                <!-- SOAL 1 -->
-                <div class="question">
-
-                    <h3>
+<strong>
+                Selesaikan kuis sebelum waktu habis
+            </strong>
+</div>
+<div class="timer" id="timer">
+            15:00
+        </div>
+</div>
+</section>
+<!-- PETUNJUK -->
+<section class="card">
+<h2>📋 Petunjuk Kuis</h2>
+<div class="info">
+<p>
+            Jawablah pertanyaan berdasarkan materi
+            <strong>Modul 1 – Pengenalan Microsoft Excel</strong>.
+        </p>
+<br/>
+<p><strong>Jumlah soal:</strong> 20 soal</p>
+<p><strong>Waktu:</strong> 15 menit</p>
+<p><strong>Nilai:</strong> 5 poin setiap jawaban benar</p>
+<p><strong>Nilai maksimal:</strong> 100</p>
+<p><strong>Batas lulus:</strong> 75</p>
+</div>
+<div class="warning">
+        ⚠️ Jika waktu mencapai <strong>00:00</strong>,
+        kuis akan otomatis dikumpulkan.
+    </div>
+</section>
+<!-- PROGRESS -->
+<section class="card">
+<div class="progress-text">
+<span>Progress Jawaban</span>
+<span id="progressText">0 / 20</span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+</section>
+<!-- =========================
+     QUIZ FORM
+========================= -->
+<form id="quizForm">
+<section class="card">
+<!-- SOAL 1 -->
+<div class="question">
+<div class="question-number">Soal 1</div>
+<div class="question-text">
+        Microsoft Excel merupakan aplikasi yang terutama digunakan untuk...
+    </div>
+<label class="option">
+<input name="q1" type="radio" value="A"/>
+        A. Mengedit video
+    </label>
+<label class="option">
+<input name="q1" type="radio" value="B"/>
+        B. Mendesain bangunan
+    </label>
+<label class="option">
+<input name="q1" type="radio" value="C"/>
+        C. Mengolah angka dan data
+    </label>
+<label class="option">
+<input name="q1" type="radio" value="D"/>
+        D. Membuat sistem operasi
+    </label>
+</div>
+<!-- SOAL 2 -->
+<div class="question">
+<div class="question-number">Soal 2</div>
+<div class="question-text">
+        Microsoft Excel termasuk dalam paket aplikasi...
+    </div>
+<label class="option">
+<input name="q2" type="radio" value="A"/>
+        A. Microsoft Office
+    </label>
+<label class="option">
+<input name="q2" type="radio" value="B"/>
+        B. CorelDRAW
+    </label>
+<label class="option">
+<input name="q2" type="radio" value="C"/>
+        C. Adobe Photoshop
+    </label>
+<label class="option">
+<input name="q2" type="radio" value="D"/>
+        D. Windows Explorer
+    </label>
+</div>
+<!-- SOAL 3 -->
+<div class="question">
+<div class="question-number">Soal 3</div>
+<div class="question-text">
+        Salah satu cara membuka Microsoft Excel di Windows adalah melalui...
+    </div>
+<label class="option">
+<input name="q3" type="radio" value="A"/>
+        A. Menekan tombol Delete
+    </label>
+<label class="option">
+<input name="q3" type="radio" value="B"/>
+        B. Membuka Paint
+    </label>
+<label class="option">
+<input name="q3" type="radio" value="C"/>
+        C. Menekan tombol Esc
+    </label>
+<label class="option">
+<input name="q3" type="radio" value="D"/>
+        D. Start Menu lalu mencari Excel
+    </label>
+</div>
+<!-- SOAL 4 -->
+<div class="question">
+<div class="question-number">Soal 4</div>
+<div class="question-text">
+        Tampilan utama Microsoft Excel yang berisi kumpulan perintah disebut...
+    </div>
+<label class="option">
+<input name="q4" type="radio" value="A"/>
+        A. Cell
+    </label>
+<label class="option">
+<input name="q4" type="radio" value="B"/>
+        B. Ribbon
+    </label>
+<label class="option">
+<input name="q4" type="radio" value="C"/>
+        C. Worksheet
+    </label>
+<label class="option">
+<input name="q4" type="radio" value="D"/>
+        D. Status Bar
+    </label>
+</div>
+<!-- SOAL 5 -->
+<div class="question">
+<div class="question-number">Soal 5</div>
+<div class="question-text">
+        Kumpulan tombol atau menu seperti Home, Insert, dan Page Layout disebut...
+    </div>
+<label class="option">
+<input name="q5" type="radio" value="A"/>
+        A. Formula Bar
+    </label>
+<label class="option">
+<input name="q5" type="radio" value="B"/>
+        B. Cell
+    </label>
+<label class="option">
+<input name="q5" type="radio" value="C"/>
+        C. Tab
+    </label>
+<label class="option">
+<input name="q5" type="radio" value="D"/>
+        D. Row
+    </label>
+</div>
+<!-- SOAL 6 -->
+<div class="question">
+<div class="question-number">Soal 6</div>
+<div class="question-text">
+        Tempat untuk melihat dan mengedit isi atau rumus pada cell disebut...
+    </div>
+<label class="option">
+<input name="q6" type="radio" value="A"/>
+        A. Title Bar
+    </label>
+<label class="option">
+<input name="q6" type="radio" value="B"/>
+        B. Scroll Bar
+    </label>
+<label class="option">
+<input name="q6" type="radio" value="C"/>
+        C. Quick Access Toolbar
+    </label>
+<label class="option">
+<input name="q6" type="radio" value="D"/>
+        D. Formula Bar
+    </label>
+</div>
+<!-- SOAL 7 -->
+<div class="question">
+<div class="question-number">Soal 7</div>
+<div class="question-text">
+        Kotak yang terbentuk dari pertemuan kolom dan baris disebut...
+    </div>
+<label class="option">
+<input name="q7" type="radio" value="A"/>
+        A. Cell
+    </label>
+<label class="option">
+<input name="q7" type="radio" value="B"/>
+        B. Ribbon
+    </label>
+<label class="option">
+<input name="q7" type="radio" value="C"/>
+        C. Workbook
+    </label>
+<label class="option">
+<input name="q7" type="radio" value="D"/>
+        D. Tab
+    </label>
+</div>
+<!-- SOAL 8 -->
+<div class="question">
+<div class="question-number">Soal 8</div>
+<div class="question-text">
+        Kolom pada Microsoft Excel ditandai dengan...
+    </div>
+<label class="option">
+<input name="q8" type="radio" value="A"/>
+        A. Angka
+    </label>
+<label class="option">
+<input name="q8" type="radio" value="B"/>
+        B. Huruf
+    </label>
+<label class="option">
+<input name="q8" type="radio" value="C"/>
+        C. Simbol mata uang
+    </label>
+<label class="option">
+<input name="q8" type="radio" value="D"/>
+        D. Warna
+    </label>
+</div>
+<!-- SOAL 9 -->
+<div class="question">
+<div class="question-number">Soal 9</div>
+<div class="question-text">
+        Baris pada Microsoft Excel ditandai dengan...
+    </div>
+<label class="option">
+<input name="q9" type="radio" value="A"/>
+        A. Huruf
+    </label>
+<label class="option">
+<input name="q9" type="radio" value="B"/>
+        B. Simbol
+    </label>
+<label class="option">
+<input name="q9" type="radio" value="C"/>
+        C. Gambar
+    </label>
+<label class="option">
+<input name="q9" type="radio" value="D"/>
+        D. Angka
+    </label>
+</div>
+<!-- SOAL 10 -->
+<div class="question">
+<div class="question-number">Soal 10</div>
+<div class="question-text">
+        Sebuah file Microsoft Excel disebut...
+    </div>
+<label class="option">
+<input name="q10" type="radio" value="A"/>
+        A. Cell
+    </label>
+<label class="option">
+<input name="q10" type="radio" value="B"/>
+        B. Column
+    </label>
+<label class="option">
+<input name="q10" type="radio" value="C"/>
+        C. Workbook
+    </label>
+<label class="option">
+<input name="q10" type="radio" value="D"/>
+        D. Row
+    </label>
+</div>
+<!-- SOAL 11 -->
+<div class="question">
+<div class="question-number">Soal 11</div>
+<div class="question-text">
+        Format file standar Microsoft Excel modern adalah...
+    </div>
+<label class="option">
+<input name="q11" type="radio" value="A"/>
+        A. .xlsx
+    </label>
+<label class="option">
+<input name="q11" type="radio" value="B"/>
+        B. .docx
+    </label>
+<label class="option">
+<input name="q11" type="radio" value="C"/>
+        C. .pptx
+    </label>
+<label class="option">
+<input name="q11" type="radio" value="D"/>
+        D. .jpg
+    </label>
+</div>
+<!-- SOAL 12 -->
+<div class="question">
+<div class="question-number">Soal 12</div>
+<div class="question-text">
+        Format file Excel lama yang umum digunakan pada versi sebelum Excel 2007 adalah...
+    </div>
+<label class="option">
+<input name="q12" type="radio" value="A"/>
+        A. .pdf
+    </label>
+<label class="option">
+<input name="q12" type="radio" value="B"/>
+        B. .txt
+    </label>
+<label class="option">
+<input name="q12" type="radio" value="C"/>
+        C. .png
+    </label>
+<label class="option">
+<input name="q12" type="radio" value="D"/>
+        D. .xls
+    </label>
+</div>
+<!-- SOAL 13 -->
+<div class="question">
+<div class="question-number">Soal 13</div>
+<div class="question-text">
+        Format Excel yang dapat menyimpan Macro adalah...
+    </div>
+<label class="option">
+<input name="q13" type="radio" value="A"/>
+        A. .xlsx
+    </label>
+<label class="option">
+<input name="q13" type="radio" value="B"/>
+        B. .xlsm
+    </label>
+<label class="option">
+<input name="q13" type="radio" value="C"/>
+        C. .docx
+    </label>
+<label class="option">
+<input name="q13" type="radio" value="D"/>
+        D. .pptx
+    </label>
+</div>
+<!-- SOAL 14 -->
+<div class="question">
+<div class="question-number">Soal 14</div>
+<div class="question-text">
+        Sebelum mulai mengolah data di Excel, salah satu hal penting yang perlu diperhatikan adalah...
+    </div>
+<label class="option">
+<input name="q14" type="radio" value="A"/>
+        A. Menghapus seluruh worksheet
+    </label>
+<label class="option">
+<input name="q14" type="radio" value="B"/>
+        B. Mengganti semua warna cell
+    </label>
+<label class="option">
+<input name="q14" type="radio" value="C"/>
+        C. Memastikan tujuan dan jenis data yang akan diolah
+    </label>
+<label class="option">
+<input name="q14" type="radio" value="D"/>
+        D. Menutup aplikasi Excel
+    </label>
+</div>
+<!-- SOAL 15 -->
+<div class="question">
+<div class="question-number">Soal 15</div>
+<div class="question-text">
+        Pengaturan format tanggal, angka, mata uang, dan pemisah desimal dapat dipengaruhi oleh...
+    </div>
+<label class="option">
+<input name="q15" type="radio" value="A"/>
+        A. Region Setting
+    </label>
+<label class="option">
+<input name="q15" type="radio" value="B"/>
+        B. Mouse Setting
+    </label>
+<label class="option">
+<input name="q15" type="radio" value="C"/>
+        C. Wallpaper
+    </label>
+<label class="option">
+<input name="q15" type="radio" value="D"/>
+        D. Printer Setting
+    </label>
+</div>
+<!-- SOAL 16 -->
+<div class="question">
+<div class="question-number">Soal 16</div>
+<div class="question-text">
+        Salah satu fungsi Region Setting dalam penggunaan Excel adalah menentukan penggunaan...
+    </div>
+<label class="option">
+<input name="q16" type="radio" value="A"/>
+        A. Warna monitor
+    </label>
+<label class="option">
+<input name="q16" type="radio" value="B"/>
+        B. Koma atau titik sebagai pemisah angka desimal
+    </label>
+<label class="option">
+<input name="q16" type="radio" value="C"/>
+        C. Jenis keyboard fisik
+    </label>
+<label class="option">
+<input name="q16" type="radio" value="D"/>
+        D. Ukuran mouse
+    </label>
+</div>
+<!-- SOAL 17 -->
+<div class="question">
+<div class="question-number">Soal 17</div>
+<div class="question-text">
+        Perbedaan Region Setting dapat menyebabkan perbedaan dalam penulisan rumus Excel, terutama pada...
+    </div>
+<label class="option">
+<input name="q17" type="radio" value="A"/>
+        A. Nama workbook
+    </label>
+<label class="option">
+<input name="q17" type="radio" value="B"/>
+        B. Jumlah worksheet
+    </label>
+<label class="option">
+<input name="q17" type="radio" value="C"/>
+        C. Ukuran monitor
+    </label>
+<label class="option">
+<input name="q17" type="radio" value="D"/>
+        D. Pemisah argumen rumus
+    </label>
+</div>
+<!-- SOAL 18 -->
+<div class="question">
+<div class="question-number">Soal 18</div>
+<div class="question-text">
+        Bagian Excel yang menampilkan nama file atau workbook yang sedang aktif adalah...
+    </div>
+<label class="option">
+<input name="q18" type="radio" value="A"/>
+        A. Title Bar
+    </label>
+<label class="option">
+<input name="q18" type="radio" value="B"/>
+        B. Formula Bar
+    </label>
+<label class="option">
+<input name="q18" type="radio" value="C"/>
+        C. Name Box
+    </label>
+<label class="option">
+<input name="q18" type="radio" value="D"/>
+        D. Status Bar
+    </label>
+</div>
+<!-- SOAL 19 -->
+<div class="question">
+<div class="question-number">Soal 19</div>
+<div class="question-text">
+        Kumpulan worksheet dalam satu file Excel disebut...
+    </div>
+<label class="option">
+<input name="q19" type="radio" value="A"/>
+        A. Ribbon
+    </label>
+<label class="option">
+<input name="q19" type="radio" value="B"/>
+        B. Formula
+    </label>
+<label class="option">
+<input name="q19" type="radio" value="C"/>
+        C. Workbook
+    </label>
+<label class="option">
+<input name="q19" type="radio" value="D"/>
+        D. Cell
+    </label>
+</div>
+<!-- SOAL 20 -->
+<div class="question">
+<div class="question-number">Soal 20</div>
+<div class="question-text">
+        Mengapa Region Setting penting diperiksa sebelum mulai bekerja dengan data Excel?
+    </div>
+<label class="option">
+<input name="q20" type="radio" value="A"/>
+        A. Agar komputer menjadi lebih berat
+    </label>
+<label class="option">
+<input name="q20" type="radio" value="B"/>
+        B. Agar format angka, tanggal, dan rumus sesuai dengan kebutuhan
+    </label>
+<label class="option">
+<input name="q20" type="radio" value="C"/>
+        C. Agar Excel otomatis tertutup
+    </label>
+<label class="option">
+<input name="q20" type="radio" value="D"/>
+        D. Agar semua data berubah menjadi gambar
+    </label>
+</div>
+<!-- SUBMIT -->
+<div class="button-area">
+<button class="btn" onclick="finishQuiz(false)" type="button">
+        ✓ SELESAI &amp; LIHAT NILAI
+    </button>
+</div>
+</section>
+<div class="question">
+<h3>
                         1. Microsoft PowerPoint 2016 merupakan aplikasi yang digunakan untuk...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q1" value="A">
+<label class="option">
+<input name="q1" type="radio" value="A"/>
                         A. Mengolah angka
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q1" value="B">
+<label class="option">
+<input name="q1" type="radio" value="B"/>
                         B. Membuat dan menyajikan presentasi
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q1" value="C">
+<label class="option">
+<input name="q1" type="radio" value="C"/>
                         C. Mengolah database
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q1" value="D">
+<label class="option">
+<input name="q1" type="radio" value="D"/>
                         D. Mengedit sistem operasi
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 2 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         2. Salah satu fungsi utama PowerPoint adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q2" value="A">
+<label class="option">
+<input name="q2" type="radio" value="A"/>
                         A. Membuat presentasi
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q2" value="B">
+<label class="option">
+<input name="q2" type="radio" value="B"/>
                         B. Menghapus sistem Windows
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q2" value="C">
+<label class="option">
+<input name="q2" type="radio" value="C"/>
                         C. Membuat program antivirus
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q2" value="D">
+<label class="option">
+<input name="q2" type="radio" value="D"/>
                         D. Mengelola perangkat keras
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 3 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         3. Bagian PowerPoint yang berisi kumpulan perintah disebut...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q3" value="A">
+<label class="option">
+<input name="q3" type="radio" value="A"/>
                         A. Status Bar
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q3" value="B">
+<label class="option">
+<input name="q3" type="radio" value="B"/>
                         B. Ribbon
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q3" value="C">
+<label class="option">
+<input name="q3" type="radio" value="C"/>
                         C. Slide Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q3" value="D">
+<label class="option">
+<input name="q3" type="radio" value="D"/>
                         D. Notes Pane
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 4 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         4. Struktur dasar Ribbon adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q4" value="A">
+<label class="option">
+<input name="q4" type="radio" value="A"/>
                         A. Command → Tab → Group
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q4" value="B">
+<label class="option">
+<input name="q4" type="radio" value="B"/>
                         B. Group → Command → Tab
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q4" value="C">
+<label class="option">
+<input name="q4" type="radio" value="C"/>
                         C. Tab → Group → Command
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q4" value="D">
+<label class="option">
+<input name="q4" type="radio" value="D"/>
                         D. Tab → Command → Group
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 5 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         5. Tab yang digunakan untuk memasukkan gambar, tabel, dan grafik adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q5" value="A">
+<label class="option">
+<input name="q5" type="radio" value="A"/>
                         A. Home
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q5" value="B">
+<label class="option">
+<input name="q5" type="radio" value="B"/>
                         B. Insert
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q5" value="C">
+<label class="option">
+<input name="q5" type="radio" value="C"/>
                         C. Review
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q5" value="D">
+<label class="option">
+<input name="q5" type="radio" value="D"/>
                         D. View
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 6 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         6. Tab yang digunakan untuk mengatur tema dan ukuran slide adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q6" value="A">
+<label class="option">
+<input name="q6" type="radio" value="A"/>
                         A. Design
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q6" value="B">
+<label class="option">
+<input name="q6" type="radio" value="B"/>
                         B. Review
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q6" value="C">
+<label class="option">
+<input name="q6" type="radio" value="C"/>
                         C. Slide Show
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q6" value="D">
+<label class="option">
+<input name="q6" type="radio" value="D"/>
                         D. View
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 7 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         7. Bagian yang menampilkan daftar slide dalam bentuk gambar kecil adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q7" value="A">
+<label class="option">
+<input name="q7" type="radio" value="A"/>
                         A. Slide Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q7" value="B">
+<label class="option">
+<input name="q7" type="radio" value="B"/>
                         B. Notes Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q7" value="C">
+<label class="option">
+<input name="q7" type="radio" value="C"/>
                         C. Thumbnail Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q7" value="D">
+<label class="option">
+<input name="q7" type="radio" value="D"/>
                         D. Status Bar
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 8 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         8. Area utama untuk membuat dan mengedit slide disebut...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q8" value="A">
+<label class="option">
+<input name="q8" type="radio" value="A"/>
                         A. Slide Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q8" value="B">
+<label class="option">
+<input name="q8" type="radio" value="B"/>
                         B. Status Bar
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q8" value="C">
+<label class="option">
+<input name="q8" type="radio" value="C"/>
                         C. Thumbnail Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q8" value="D">
+<label class="option">
+<input name="q8" type="radio" value="D"/>
                         D. Title Bar
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 9 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         9. Notes Pane digunakan untuk...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q9" value="A">
+<label class="option">
+<input name="q9" type="radio" value="A"/>
                         A. Mengatur ukuran slide
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q9" value="B">
+<label class="option">
+<input name="q9" type="radio" value="B"/>
                         B. Membuat catatan presenter
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q9" value="C">
+<label class="option">
+<input name="q9" type="radio" value="C"/>
                         C. Menghapus slide
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q9" value="D">
+<label class="option">
+<input name="q9" type="radio" value="D"/>
                         D. Mengubah warna komputer
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 10 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         10. Ukuran slide yang memiliki perbandingan 16:9 disebut...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q10" value="A">
+<label class="option">
+<input name="q10" type="radio" value="A"/>
                         A. Standard
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q10" value="B">
+<label class="option">
+<input name="q10" type="radio" value="B"/>
                         B. Widescreen
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q10" value="C">
+<label class="option">
+<input name="q10" type="radio" value="C"/>
                         C. Portrait
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q10" value="D">
+<label class="option">
+<input name="q10" type="radio" value="D"/>
                         D. Custom
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 11 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         11. Ukuran Standard pada PowerPoint memiliki perbandingan...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q11" value="A">
+<label class="option">
+<input name="q11" type="radio" value="A"/>
                         A. 16:9
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q11" value="B">
+<label class="option">
+<input name="q11" type="radio" value="B"/>
                         B. 3:2
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q11" value="C">
+<label class="option">
+<input name="q11" type="radio" value="C"/>
                         C. 4:3
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q11" value="D">
+<label class="option">
+<input name="q11" type="radio" value="D"/>
                         D. 1:1
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 12 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         12. Untuk mengatur ukuran slide melalui menu PowerPoint digunakan...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q12" value="A">
+<label class="option">
+<input name="q12" type="radio" value="A"/>
                         A. Home → Font
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q12" value="B">
+<label class="option">
+<input name="q12" type="radio" value="B"/>
                         B. Insert → Picture
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q12" value="C">
+<label class="option">
+<input name="q12" type="radio" value="C"/>
                         C. Design → Slide Size
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q12" value="D">
+<label class="option">
+<input name="q12" type="radio" value="D"/>
                         D. Review → Language
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 13 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         13. Orientasi slide yang berbentuk horizontal disebut...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q13" value="A">
+<label class="option">
+<input name="q13" type="radio" value="A"/>
                         A. Portrait
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q13" value="B">
+<label class="option">
+<input name="q13" type="radio" value="B"/>
                         B. Landscape
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q13" value="C">
+<label class="option">
+<input name="q13" type="radio" value="C"/>
                         C. Square
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q13" value="D">
+<label class="option">
+<input name="q13" type="radio" value="D"/>
                         D. Standard
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 14 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         14. Fitur yang digunakan untuk memperbesar atau memperkecil tampilan slide adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q14" value="A">
+<label class="option">
+<input name="q14" type="radio" value="A"/>
                         A. Zoom Slider
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q14" value="B">
+<label class="option">
+<input name="q14" type="radio" value="B"/>
                         B. Status Bar
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q14" value="C">
+<label class="option">
+<input name="q14" type="radio" value="C"/>
                         C. Notes Pane
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q14" value="D">
+<label class="option">
+<input name="q14" type="radio" value="D"/>
                         D. Title Bar
                     </label>
-
-                </div>
-
-
-                <!-- SOAL 15 -->
-                <div class="question">
-
-                    <h3>
+</div><div class="question">
+<h3>
                         15. Tab yang digunakan untuk memberikan efek perpindahan antar-slide adalah...
                     </h3>
-
-                    <label class="option">
-                        <input type="radio" name="q15" value="A">
+<label class="option">
+<input name="q15" type="radio" value="A"/>
                         A. Animations
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q15" value="B">
+<label class="option">
+<input name="q15" type="radio" value="B"/>
                         B. Transitions
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q15" value="C">
+<label class="option">
+<input name="q15" type="radio" value="C"/>
                         C. Design
                     </label>
-
-                    <label class="option">
-                        <input type="radio" name="q15" value="D">
+<label class="option">
+<input name="q15" type="radio" value="D"/>
                         D. Review
                     </label>
+</div></form>
+<!-- =========================
+     HASIL
+========================= -->
+<section class="card" id="result">
+<h2>🏆 Hasil Kuis</h2>
+<div class="score" id="score">0</div>
+<div class="result-message" id="resultMessage"></div>
+<div class="status" id="status"></div>
+<div class="result-detail">
+<div>
+<span>Nama Peserta</span>
+<strong id="resultName">-</strong>
+</div>
+<div>
+<span>Jumlah Soal</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Jawaban Benar</span>
+<strong id="correctCount">0</strong>
+</div>
+<div>
+<span>Jawaban Salah</span>
+<strong id="wrongCount">0</strong>
+</div>
+<div>
+<span>Tidak Dijawab</span>
+<strong id="emptyCount">0</strong>
+</div>
+<div>
+<span>Nilai</span>
+<strong id="finalScore">0</strong>
+</div>
+<div>
+<span>Waktu Digunakan</span>
+<strong id="timeResult">-</strong>
+</div>
+</div>
+<!-- PEMBAHASAN -->
+<div class="review">
+<h2>📖 Pembahasan Jawaban</h2>
+<div id="reviewContainer"></div>
+</div>
+<div class="button-area">
+<button class="btn secondary" onclick="retryQuiz()" type="button">
+            ↻ Ulangi Kuis
+        </button>
+<a class="btn blue" href="modul-excel-2.html">
+            Modul Excel 2 →
+        </a>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+<p>
+<strong>Pelatihan Microsoft Excel</strong>
+</p>
+<p>
+        Kuis Modul 1 • Pengenalan Microsoft Excel
+    </p>
+<p style="margin-top:8px;font-size:13px;opacity:.7;">
+        © 2026 • Materi Pelatihan
+    </p>
+</footer>
+<script>
+
+/* =========================
+   PENGATURAN KUIS
+========================= */
+const QUIZ_PASSWORD = "PPT2016";
+const TOTAL_QUESTIONS = 15;
+const POINT_PER_QUESTION = 5;
+const PASSING_SCORE = 75;
+const QUIZ_DURATION = 10 * 60;
+
+/* =========================
+   GOOGLE SHEETS API
+   =========================
+   Ganti URL di bawah dengan URL Web App
+   Google Apps Script Anda yang berakhiran /exec.
+*/
+const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+const QUIZ_MODULE_NAME =
+    "Modul 1 - Mengenal Microsoft PowerPoint 2016";
+
+/* =========================
+   VARIABEL
+========================= */
+let participantName = "";
+let participantClass = "";
+let timeLeft = QUIZ_DURATION;
+let timerInterval = null;
+let quizStarted = false;
+let quizFinished = false;
+
+/* =========================
+   KUNCI JAWABAN
+========================= */
+const answers = {
+    q1: "B", q2: "A", q3: "B", q4: "C", q5: "B",
+    q6: "A", q7: "C", q8: "A", q9: "B", q10: "B",
+    q11: "C", q12: "C", q13: "B", q14: "A", q15: "B"
+};
 
-                </div>
+/* =========================
+   PEMBAHASAN
+========================= */
+const explanations = {
 
+    q1:"Microsoft Excel digunakan untuk mengolah data, terutama angka, tabel, perhitungan, dan berbagai jenis data.",
 
-                <div class="btn-area">
+    q2:"Microsoft Excel merupakan salah satu aplikasi dalam paket Microsoft Office.",
 
-                    <button type="button"
-                            class="btn"
-                            onclick="kirimKuis()">
-                        📤 Kirim Jawaban
-                    </button>
+    q3:"Excel dapat dibuka melalui Start Menu dengan mencari atau memilih aplikasi Microsoft Excel.",
 
-                </div>
+    q4:"Ribbon merupakan area yang berisi berbagai kelompok perintah dan fitur Microsoft Excel.",
 
-            </form>
+    q5:"Home, Insert, Page Layout, dan tab lainnya merupakan tab yang digunakan untuk mengelompokkan perintah pada Ribbon.",
 
-        </section>
+    q6:"Formula Bar digunakan untuk melihat, memasukkan, dan mengedit isi atau rumus dari cell yang aktif.",
 
+    q7:"Cell adalah kotak yang terbentuk dari pertemuan antara satu kolom dan satu baris.",
 
-        <!-- RESULT -->
-        <section id="resultSection" class="card result">
+    q8:"Kolom pada Excel diberi penanda berupa huruf, seperti A, B, C, dan seterusnya.",
 
-            <div class="result-icon">
-                🎉
-            </div>
+    q9:"Baris pada Excel diberi penanda berupa angka, seperti 1, 2, 3, dan seterusnya.",
 
-            <h2>Kuis Selesai!</h2>
+    q10:"File Excel disebut Workbook. Di dalam satu Workbook dapat terdapat beberapa Worksheet.",
 
-            <div class="result-box">
+    q11:"Format standar file Excel modern adalah .xlsx.",
 
-                <p>
-                    <strong>Nama Peserta</strong>
-                </p>
+    q12:"Format .xls merupakan format file Excel yang umum digunakan pada versi Excel sebelum Excel 2007.",
 
-                <p id="hasilNama"></p>
+    q13:"Format .xlsm digunakan untuk workbook Excel yang dapat menyimpan Macro.",
 
-                <div class="score" id="hasilNilai">
-                    0
-                </div>
+    q14:"Sebelum bekerja dengan Excel, penting memahami tujuan pekerjaan dan jenis data yang akan diolah.",
 
-                <p id="hasilBenar"></p>
+    q15:"Region Setting memengaruhi format lokal seperti tanggal, angka, mata uang, dan penggunaan pemisah tertentu.",
 
-                <div id="statusHasil"></div>
+    q16:"Region Setting dapat menentukan apakah koma atau titik digunakan sebagai pemisah angka desimal.",
 
-            </div>
+    q17:"Perbedaan Region Setting dapat memengaruhi pemisah argumen dalam rumus, misalnya koma atau titik koma.",
 
-            <div class="info">
+    q18:"Title Bar merupakan bagian yang menampilkan nama workbook atau file yang sedang aktif.",
 
-                <p>
-                    Terima kasih telah mengerjakan
-                    <strong>Kuis Modul 1 - Mengenal Microsoft PowerPoint 2016</strong>.
-                </p>
+    q19:"Workbook adalah file Excel yang dapat berisi satu atau lebih Worksheet.",
 
-            </div>
+    q20:"Region Setting perlu diperiksa agar format angka, tanggal, mata uang, dan penulisan rumus sesuai kebutuhan."
 
-            <div class="btn-area">
+};
 
-                <a href="modul-ppt-1.html"
-                   class="btn btn-secondary">
-                    ← Kembali ke Modul
-                </a>
+/* =========================
+   MULAI KUIS
+========================= */
+function startQuiz(){
 
-                <a href="kelas.html"
-                   class="btn">
-                    🏠 Kembali ke Kelas
-                </a>
+    const name = document
+        .getElementById("participantInput")
+        .value
+        .trim();
 
-            </div>
+    const participantClassInput = document
+        .getElementById("classInput")
+        .value
+        .trim();
 
-        </section>
+    const password = document
+        .getElementById("quizPassword")
+        .value
+        .trim();
 
-    </main>
+    const error = document
+        .getElementById("passwordError");
 
+    if(name === ""){
 
-    <footer style="
-        background:#263238;
-        color:white;
-        text-align:center;
-        padding:25px 15px;
-        margin-top:40px;
-    ">
+        error.style.display = "block";
+        error.innerHTML = "❌ Nama peserta wajib diisi.";
 
-        <p>
-            <strong>Pelatihan Microsoft PowerPoint 2016</strong>
-        </p>
+        document
+            .getElementById("participantInput")
+            .focus();
 
-        <p>
-            Kuis Modul 1 — Mengenal Microsoft PowerPoint 2016
-        </p>
+        return;
+    }
 
-        <p>
-            © 2026 UPTD BLK Kabupaten Subang
-        </p>
+    if(participantClassInput === ""){
 
-    </footer>
+        error.style.display = "block";
+        error.innerHTML = "❌ Kelas peserta wajib diisi.";
 
+        document
+            .getElementById("classInput")
+            .focus();
 
-    <script>
+        return;
+    }
 
-        /* ==========================================
-           PENGATURAN KUIS
-        ========================================== */
+    if(password !== QUIZ_PASSWORD){
 
-        const PASSWORD_KUIS = "PPT2016";
+        error.style.display = "block";
+        error.innerHTML = "❌ Password salah. Silakan coba lagi.";
 
-        const WAKTU_KUIS = 10 * 60;
+        document
+            .getElementById("quizPassword")
+            .value = "";
 
-        let waktu = WAKTU_KUIS;
+        document
+            .getElementById("quizPassword")
+            .focus();
 
-        let timerInterval;
+        return;
+    }
 
-        let namaPeserta = "";
+    participantName = name;
+    participantClass = participantClassInput;
 
+    document
+        .getElementById("displayName")
+        .textContent = participantName;
 
-        /* ==========================================
-           JAWABAN BENAR
-        ========================================== */
+    document
+        .getElementById("passwordOverlay")
+        .style.display = "none";
 
-        const jawabanBenar = {
+    document.body.classList.remove("locked");
 
-            q1: "B",
-            q2: "A",
-            q3: "B",
-            q4: "C",
-            q5: "B",
-            q6: "A",
-            q7: "C",
-            q8: "A",
-            q9: "B",
-            q10: "B",
-            q11: "C",
-            q12: "C",
-            q13: "B",
-            q14: "A",
-            q15: "B"
+    quizStarted = true;
 
-        };
+    startTimer();
+}
 
+/* ENTER UNTUK MULAI */
+document
+    .getElementById("quizPassword")
+    .addEventListener("keydown",function(event){
 
-        /* ==========================================
-           MULAI KUIS
-        ========================================== */
-
-        function mulaiKuis() {
-
-            const password =
-                document.getElementById("password").value.trim();
-
-            namaPeserta =
-                document.getElementById("namaPeserta").value.trim();
-
-            const error =
-                document.getElementById("loginError");
-
-
-            if (password === "") {
-
-                error.innerText =
-                    "Silakan masukkan password kuis.";
-
-                error.style.display = "block";
-
-                return;
-
-            }
-
-
-            if (password !== PASSWORD_KUIS) {
-
-                error.innerText =
-                    "Password kuis salah.";
-
-                error.style.display = "block";
-
-                return;
-
-            }
-
-
-            if (namaPeserta === "") {
-
-                error.innerText =
-                    "Silakan masukkan nama peserta.";
-
-                error.style.display = "block";
-
-                return;
-
-            }
-
-
-            error.style.display = "none";
-
-
-            document.getElementById("loginSection").style.display =
-                "none";
-
-            document.getElementById("quizSection").style.display =
-                "block";
-
-
-            mulaiTimer();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
+        if(event.key === "Enter"){
+            startQuiz();
         }
 
+    });
 
-        /* ==========================================
-           TIMER
-        ========================================== */
+/* =========================
+   TIMER
+========================= */
+function startTimer(){
 
-        function mulaiTimer() {
+    updateTimerDisplay();
 
-            tampilkanTimer();
+    timerInterval = setInterval(function(){
 
-
-            timerInterval = setInterval(function () {
-
-                waktu--;
-
-                tampilkanTimer();
-
-
-                if (waktu <= 0) {
-
-                    clearInterval(timerInterval);
-
-                    alert(
-                        "Waktu habis! Jawaban akan dikumpulkan otomatis."
-                    );
-
-                    kirimKuis();
-
-                }
-
-            }, 1000);
-
+        if(!quizStarted || quizFinished){
+            return;
         }
 
+        timeLeft--;
 
-        function tampilkanTimer() {
+        updateTimerDisplay();
 
-            const menit =
-                Math.floor(waktu / 60);
-
-            const detik =
-                waktu % 60;
-
-
-            const formatMenit =
-                String(menit).padStart(2, "0");
-
-            const formatDetik =
-                String(detik).padStart(2, "0");
-
-
-            const timer =
-                document.getElementById("timer");
-
-
-            timer.innerHTML =
-                "⏱️ Waktu: " +
-                formatMenit +
-                ":" +
-                formatDetik;
-
-
-            timer.classList.remove(
-                "warning",
-                "danger"
-            );
-
-
-            if (waktu <= 60) {
-
-                timer.classList.add("danger");
-
-            } else if (waktu <= 180) {
-
-                timer.classList.add("warning");
-
-            }
-
-        }
-
-
-        /* ==========================================
-           KIRIM KUIS
-        ========================================== */
-
-        function kirimKuis() {
+        if(timeLeft <= 0){
 
             clearInterval(timerInterval);
 
+            finishQuiz(true);
+        }
 
-            let benar = 0;
+    },1000);
+}
 
+/* =========================
+   UPDATE TIMER
+========================= */
+function updateTimerDisplay(){
 
-            for (let i = 1; i <= 15; i++) {
+    const timer =
+        document.getElementById("timer");
 
-                const jawaban =
-                    document.querySelector(
-                        'input[name="q' + i + '"]:checked'
-                    );
+    let minutes =
+        Math.floor(timeLeft / 60);
 
+    let seconds =
+        timeLeft % 60;
 
-                if (
-                    jawaban &&
-                    jawaban.value === jawabanBenar["q" + i]
-                ) {
+    minutes =
+        String(minutes).padStart(2,"0");
 
-                    benar++;
+    seconds =
+        String(seconds).padStart(2,"0");
 
-                }
+    timer.textContent =
+        minutes + ":" + seconds;
 
-            }
+    timer.classList.remove(
+        "warning-time",
+        "danger-time"
+    );
 
+    if(timeLeft <= 60){
 
-            const nilai =
-                Math.round((benar / 15) * 100);
+        timer.classList.add("danger-time");
 
+    }else if(timeLeft <= 300){
 
-            tampilkanHasil(
-                benar,
-                nilai
+        timer.classList.add("warning-time");
+    }
+}
+
+/* =========================
+   PROGRESS
+========================= */
+document
+    .querySelectorAll('input[type="radio"]')
+    .forEach(function(input){
+
+        input.addEventListener(
+            "change",
+            updateProgress
+        );
+
+    });
+
+function updateProgress(){
+
+    let answered = 0;
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
             );
 
+        if(selected){
+            answered++;
+        }
+    }
+
+    const percentage =
+        (answered / TOTAL_QUESTIONS) * 100;
+
+    document
+        .getElementById("progressText")
+        .textContent =
+        answered + " / " + TOTAL_QUESTIONS;
+
+    document
+        .getElementById("progressBar")
+        .style.width =
+        percentage + "%";
+}
+
+/* =========================
+   SELESAI KUIS
+========================= */
+function finishQuiz(timeUp){
+
+    if(quizFinished){
+        return;
+    }
+
+    let unanswered = [];
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(!selected){
+            unanswered.push(i);
+        }
+    }
+
+    if(!timeUp && unanswered.length > 0){
+
+        alert(
+            "Masih ada " +
+            unanswered.length +
+            " soal yang belum dijawab.\n\n" +
+            "Nomor soal: " +
+            unanswered.join(", ")
+        );
+
+        return;
+    }
+
+    quizFinished = true;
+    quizStarted = false;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let empty = unanswered.length;
+    let reviewHTML = "";
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        const correctAnswer =
+            answers["q"+i];
+
+        let userAnswer = "";
+
+        if(selected){
+            userAnswer = selected.value;
         }
 
+        let className = "";
 
-        /* ==========================================
-           TAMPILKAN HASIL
-        ========================================== */
+        if(!selected){
 
-        function tampilkanHasil(
-            benar,
-            nilai
-        ) {
+            className = "unanswered";
 
-            document.getElementById("quizSection")
-                .style.display = "none";
+        }else if(userAnswer === correctAnswer){
 
+            className = "correct";
+            correct++;
 
-            document.getElementById("resultSection")
-                .style.display = "block";
+        }else{
 
-
-            document.getElementById("hasilNama")
-                .innerText = namaPeserta;
-
-
-            document.getElementById("hasilNilai")
-                .innerText = nilai;
-
-
-            document.getElementById("hasilBenar")
-                .innerText =
-                "Jawaban benar: " +
-                benar +
-                " dari 15 soal";
-
-
-            const status =
-                document.getElementById("statusHasil");
-
-
-            if (nilai >= 75) {
-
-                status.innerHTML =
-                    '<span class="status lulus">' +
-                    '✅ LULUS' +
-                    '</span>';
-
-            } else {
-
-                status.innerHTML =
-                    '<span class="status tidak-lulus">' +
-                    '❌ BELUM LULUS' +
-                    '</span>';
-
-            }
-
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
+            className = "wrong";
+            wrong++;
         }
 
-    </script>
+        const answerText =
+            userAnswer === ""
+            ? "Tidak dijawab"
+            : userAnswer;
 
+        reviewHTML += `
+
+            <div class="review-item ${className}">
+
+                <strong>Soal ${i}</strong>
+
+                <p>
+                    Jawaban Anda:
+                    <span class="answer">
+                        ${answerText}
+                    </span>
+                </p>
+
+                <p>
+                    Jawaban Benar:
+                    <span class="answer">
+                        ${correctAnswer}
+                    </span>
+                </p>
+
+                <p style="margin-top:7px;">
+                    ${explanations["q"+i]}
+                </p>
+
+            </div>
+        `;
+    }
+
+    const score =
+        correct * POINT_PER_QUESTION;
+
+    // Kirim hasil ke Google Sheets
+    kirimHasilKuis(
+        correct,
+        score,
+        timeUp
+    );
+
+    let message = "";
+    let statusText = "";
+    let statusClass = "";
+
+    if(score >= PASSING_SCORE){
+
+        statusText = "✓ LULUS";
+        statusClass = "lulus";
+
+        if(score >= 90){
+
+            message =
+                "🎉 Sangat Baik! Anda telah menguasai materi dasar Pengenalan Microsoft Excel.";
+
+        }else{
+
+            message =
+                "👏 Selamat! Anda telah mencapai nilai minimum kelulusan.";
+        }
+
+    }else{
+
+        statusText = "✗ BELUM LULUS";
+        statusClass = "tidak-lulus";
+
+        message =
+            "📚 Nilai Anda belum mencapai batas kelulusan. Pelajari kembali Modul 1 dan lakukan latihan.";
+    }
+
+    if(timeUp){
+
+        message =
+            "⏰ Waktu telah habis. Jawaban yang sudah dikerjakan telah dikumpulkan.";
+    }
+
+    document
+        .getElementById("score")
+        .textContent = score;
+
+    document
+        .getElementById("resultMessage")
+        .textContent = message;
+
+    const status =
+        document.getElementById("status");
+
+    status.textContent = statusText;
+    status.className =
+        "status " + statusClass;
+
+    document
+        .getElementById("resultName")
+        .textContent = participantName;
+
+    document
+        .getElementById("correctCount")
+        .textContent = correct;
+
+    document
+        .getElementById("wrongCount")
+        .textContent = wrong;
+
+    document
+        .getElementById("emptyCount")
+        .textContent = empty;
+
+    document
+        .getElementById("finalScore")
+        .textContent = score;
+
+    document
+        .getElementById("timeResult")
+        .textContent =
+        timeUp
+        ? "Waktu habis"
+        : formatTimeUsed();
+
+    document
+        .getElementById("reviewContainer")
+        .innerHTML = reviewHTML;
+
+    document
+        .getElementById("result")
+        .style.display = "block";
+
+    document
+        .getElementById("quizForm")
+        .style.display = "none";
+
+    document
+        .getElementById("result")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+}
+
+/* =========================
+   KIRIM HASIL KE GOOGLE SHEETS
+========================= */
+function kirimHasilKuis(correct, score, timeUp){
+
+    if(
+        !GOOGLE_SHEET_API_URL ||
+        GOOGLE_SHEET_API_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA"
+    ){
+        console.warn(
+            "URL Google Apps Script belum diisi."
+        );
+        return;
+    }
+
+    const payload = {
+        jenis: "kuis",
+        nama: participantName,
+        kelas: participantClass,
+        modul: QUIZ_MODULE_NAME,
+        jumlahSoal: TOTAL_QUESTIONS,
+        benar: correct,
+        nilai: score,
+        waktu: timeUp
+            ? "Waktu habis"
+            : formatTimeUsed()
+    };
+
+    fetch(GOOGLE_SHEET_API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload)
+    })
+    .then(function(){
+        console.log(
+            "Hasil kuis berhasil dikirim ke Google Sheets."
+        );
+    })
+    .catch(function(error){
+        console.error(
+            "Gagal mengirim hasil kuis:",
+            error
+        );
+    });
+}
+
+/* =========================
+   FORMAT WAKTU
+========================= */
+function formatTimeUsed(){
+
+    const used =
+        QUIZ_DURATION - timeLeft;
+
+    const minutes =
+        Math.floor(used / 60);
+
+    const seconds =
+        used % 60;
+
+    return (
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(seconds).padStart(2,"0")
+    );
+}
+
+/* =========================
+   ULANGI KUIS
+========================= */
+function retryQuiz(){
+
+    clearInterval(timerInterval);
+
+    quizFinished = false;
+    quizStarted = false;
+    timeLeft = QUIZ_DURATION;
+
+    document
+        .getElementById("quizForm")
+        .reset();
+
+    document
+        .getElementById("result")
+        .style.display = "none";
+
+    document
+        .getElementById("quizForm")
+        .style.display = "block";
+
+    document
+        .getElementById("progressText")
+        .textContent = "0 / 20";
+
+    document
+        .getElementById("progressBar")
+        .style.width = "0%";
+
+    updateTimerDisplay();
+
+    document
+        .getElementById("passwordError")
+        .style.display = "none";
+
+    document
+        .getElementById("passwordOverlay")
+        .style.display = "flex";
+
+    document.body.classList.add("locked");
+
+    document
+        .getElementById("participantInput")
+        .value = participantName;
+
+    document
+        .getElementById("classInput")
+        .value = participantClass;
+
+    document
+        .getElementById("quizPassword")
+        .value = "";
+
+    document
+        .getElementById("quizPassword")
+        .focus();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+</script>
 </body>
-
 </html>
