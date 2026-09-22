@@ -142,6 +142,7 @@ const questions=[
 let timeLeft=QUIZ_DURATION;
 let timerInterval=null;
 let quizFinished=false;
+let hasilSudahDikirim=false;
 let startedAt=null;
 
 function mulaiKuis(){
@@ -250,21 +251,31 @@ function tampilkanHasil(answers,benar,score,timeUp){
  }).join("");
 }
 
+function formatTimeUsed(){
+ const used=QUIZ_DURATION-timeLeft;
+ const m=Math.floor(used/60).toString().padStart(2,"0");
+ const s=(used%60).toString().padStart(2,"0");
+ return `${m}:${s}`;
+}
+
 function kirimHasilKuis(benar,score,timeUp){
- const nama=document.getElementById("displayNama").textContent;
- const kelas=document.getElementById("displayKelas").textContent;
+ if(hasilSudahDikirim)return;
+ hasilSudahDikirim=true;
+ const participantName=document.getElementById("displayNama").textContent;
+ const participantClass=document.getElementById("displayKelas").textContent;
  const payload={
-  namaPeserta:nama,
-  kelas:kelas,
+  jenis:"kuis",
+  nama:participantName,
+  kelas:participantClass,
   modul:MODULE_NAME,
   jumlahSoal:questions.length,
-  jawabanBenar:benar,
+  benar:benar,
   nilai:score,
-  waktuTersisa:timeLeft,
-  waktuHabis:timeUp?"Ya":"Tidak",
-  tanggalWaktu:new Date().toLocaleString("id-ID")
+  waktu:timeUp?"Waktu habis":formatTimeUsed()
  };
- fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).catch(()=>{});
+ fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})
+ .then(()=>console.log("Hasil kuis berhasil dikirim."))
+ .catch(error=>console.error("Gagal mengirim hasil kuis:",error));
 }
 </script>
 </body>
