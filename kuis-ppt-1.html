@@ -252,7 +252,7 @@ function finishQuiz(timeUp){
 }
 
 function kirimHasilKuis(correct,score,timeUp){
-  if(!GOOGLE_SHEET_API_URL || GOOGLE_SHEET_API_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA") return;
+  if(!GOOGLE_SHEET_API_URL || GOOGLE_SHEET_API_URL === "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";) return;
   const payload = {
     jenis:"kuis",nama:participantName,kelas:participantClass,modul:QUIZ_MODULE_NAME,
     jumlahSoal:TOTAL_QUESTIONS,benar:correct,nilai:score,
