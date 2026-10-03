@@ -1,367 +1,5266 @@
 <!DOCTYPE html>
+
+
+
+
+
+
+
 <html lang="id">
+
+
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kuis Modul 5 - TIK Learning</title>
-<link rel="stylesheet" href="style.css">
+
+
+
+<meta charset="utf-8"/>
+
+
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+<title>Kuis Word Modul 5 - Chart dan SmartArt</title>
+
+
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f8fb;color:#26343d;font-family:Arial,sans-serif;line-height:1.6}
-header{background:#075d8e;color:#fff;text-align:center;padding:22px}header h1{margin:0}header p{margin:4px 0}
-nav{background:#064d74;display:flex;justify-content:center;flex-wrap:wrap}nav a{color:#fff;text-decoration:none;padding:12px 16px}
-.container{max-width:900px;margin:30px auto;padding:0 18px}
-.password-box,.nama-box,.quiz-start,.question-card,#hasilKuis{background:#fff;border-radius:14px;padding:30px;margin-bottom:22px;box-shadow:0 4px 15px #0001}
-.password-box,.nama-box,.quiz-start{text-align:center;max-width:650px;margin-left:auto;margin-right:auto}
-.password-icon,.nama-icon,.quiz-icon{font-size:55px}h2{color:#075d8e}
-input[type=text],input[type=password]{width:100%;padding:14px;border:1px solid #cbd8df;border-radius:8px;font-size:16px;margin:12px 0}
-button{cursor:pointer}.btn-password,.btn-nama,.btn-mulai,.btn-submit,.btn-reset{width:100%;padding:14px;border:0;border-radius:8px;background:#075d8e;color:#fff;font-weight:bold;font-size:16px}
-.password-error,.nama-error{display:none;background:#f8d7da;color:#842029;padding:12px;border-radius:8px}
-.quiz-rules,.peserta-info{background:#eef7fb;padding:18px;border-radius:9px;text-align:left;margin:18px 0}
-.timer-box{position:sticky;top:0;z-index:5;background:#075d8e;color:#fff;padding:14px;text-align:center;border-radius:9px;margin-bottom:18px;font-size:20px;font-weight:bold}
-.timer-warning{background:#d08a00}.timer-danger{background:#c62828}
-.peringatan{display:none;background:#fff3cd;color:#664d03;padding:14px;border-radius:8px;margin-bottom:15px}
-.question-number{color:#075d8e;font-weight:bold}.question-text{font-size:18px;font-weight:bold;margin:10px 0 15px}
-.option{display:block;border:1px solid #d8e3e8;padding:12px;margin:9px 0;border-radius:8px;cursor:pointer}.option:hover{background:#eef7fb}.option input{margin-right:8px}
-#hasilKuis{display:none;text-align:center}.nilai{font-size:60px;font-weight:bold;color:#075d8e}
-.hasil-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}.hasil-card{background:#f4f8fb;padding:16px;border-radius:9px}.hasil-card strong{display:block;font-size:28px}
-.status-lulus{color:#198754;font-size:24px;font-weight:bold}.status-gagal{color:#dc3545;font-size:24px;font-weight:bold}
-.status-kirim{margin:18px 0;padding:13px;border-radius:8px;background:#eef7fb}.status-kirim.berhasil{background:#d1e7dd;color:#0f5132}.status-kirim.gagal{background:#f8d7da;color:#842029}
-.btn-reset{width:auto;background:#6c757d;padding:12px 24px}footer{background:#075d8e;color:#fff;text-align:center;padding:25px}
-@media(max-width:700px){.hasil-detail{grid-template-columns:1fr}}
+
+
+
+*{
+
+
+
+    box-sizing:border-box;
+
+
+
+    margin:0;
+
+
+
+    padding:0;
+
+
+
+}
+
+
+
+
+
+
+
+body{
+
+
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+
+
+    background:#f4f6f9;
+
+
+
+    color:#263238;
+
+
+
+    line-height:1.6;
+
+
+
+}
+
+
+
+
+
+
+
+body.locked{
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   HEADER
+
+
+
+========================= */
+
+
+
+.header{
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    color:white;
+
+
+
+    padding:45px 20px 60px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.badge{
+
+
+
+    display:inline-block;
+
+
+
+    background:rgba(255,255,255,.16);
+
+
+
+    padding:7px 20px;
+
+
+
+    border-radius:30px;
+
+
+
+    font-size:13px;
+
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+
+
+.header h1{
+
+
+
+    font-size:34px;
+
+
+
+    margin-bottom:8px;
+
+
+
+}
+
+
+
+
+
+
+
+.header p{
+
+
+
+    font-size:16px;
+
+
+
+    opacity:.9;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   CONTAINER
+
+
+
+========================= */
+
+
+
+.container{
+
+
+
+    max-width:900px;
+
+
+
+    margin:-28px auto 50px;
+
+
+
+    padding:0 18px;
+
+
+
+}
+
+
+
+
+
+
+
+.card{
+
+
+
+    background:white;
+
+
+
+    border-radius:16px;
+
+
+
+    padding:28px;
+
+
+
+    margin-bottom:20px;
+
+
+
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+
+
+
+}
+
+
+
+
+
+
+
+.card h2{
+
+
+
+    color:#1976d2;
+
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PASSWORD OVERLAY
+
+
+
+========================= */
+
+
+
+.password-overlay{
+
+
+
+    position:fixed;
+
+
+
+    inset:0;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
+    z-index:99999;
+
+
+
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box{
+
+
+
+    background:white;
+
+
+
+    width:100%;
+
+
+
+    max-width:450px;
+
+
+
+    padding:35px 30px;
+
+
+
+    border-radius:18px;
+
+
+
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.password-icon{
+
+
+
+    font-size:55px;
+
+
+
+    margin-bottom:10px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box h2{
+
+
+
+    color:#1976d2;
+
+
+
+    margin-bottom:8px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box p{
+
+
+
+    color:#607d8b;
+
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.name-input,
+
+
+
+.password-input{
+
+
+
+    width:100%;
+
+
+
+    padding:14px 16px;
+
+
+
+    border:2px solid #dfe5e8;
+
+
+
+    border-radius:9px;
+
+
+
+    font-size:16px;
+
+
+
+    outline:none;
+
+
+
+    margin-bottom:12px;
+
+
+
+}
+
+
+
+
+
+
+
+.name-input:focus,
+
+
+
+.password-input:focus{
+
+
+
+    border-color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+.password-btn{
+
+
+
+    width:100%;
+
+
+
+    border:none;
+
+
+
+    padding:14px;
+
+
+
+    border-radius:9px;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    color:white;
+
+
+
+    font-size:16px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+}
+
+
+
+
+
+
+
+.password-btn:hover{
+
+
+
+    background:#1565c0;
+
+
+
+}
+
+
+
+
+
+
+
+.password-error{
+
+
+
+    display:none;
+
+
+
+    color:#1565c0;
+
+
+
+    background:#fff0f0;
+
+
+
+    padding:10px;
+
+
+
+    border-radius:8px;
+
+
+
+    margin-bottom:12px;
+
+
+
+    font-size:14px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-info{
+
+
+
+    margin-top:18px;
+
+
+
+    font-size:13px;
+
+
+
+    color:#78909c;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PESERTA
+
+
+
+========================= */
+
+
+
+.participant{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    align-items:center;
+
+
+
+    gap:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.participant-name{
+
+
+
+    font-size:18px;
+
+
+
+    font-weight:600;
+
+
+
+    color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TIMER
+
+
+
+========================= */
+
+
+
+.timer-card{
+
+
+
+    position:sticky;
+
+
+
+    top:10px;
+
+
+
+    z-index:100;
+
+
+
+}
+
+
+
+
+
+
+
+.timer-container{
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:space-between;
+
+
+
+    gap:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.timer-label{
+
+
+
+    font-size:14px;
+
+
+
+    color:#607d8b;
+
+
+
+}
+
+
+
+
+
+
+
+.timer{
+
+
+
+    font-size:30px;
+
+
+
+    font-weight:bold;
+
+
+
+    color:#1976d2;
+
+
+
+    background:#eaf7ef;
+
+
+
+    padding:8px 18px;
+
+
+
+    border-radius:10px;
+
+
+
+    min-width:120px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.timer.warning-time{
+
+
+
+    color:#d97706;
+
+
+
+    background:#fff7e6;
+
+
+
+}
+
+
+
+
+
+
+
+.timer.danger-time{
+
+
+
+    color:#1565c0;
+
+
+
+    background:#fff0f0;
+
+
+
+    animation:pulse 1s infinite;
+
+
+
+}
+
+
+
+
+
+
+
+@keyframes pulse{
+
+
+
+    50%{
+
+
+
+        transform:scale(1.03);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   INFO
+
+
+
+========================= */
+
+
+
+.info{
+
+
+
+    background:#eaf7ef;
+
+
+
+    border-left:5px solid #107c41;
+
+
+
+    padding:16px;
+
+
+
+    border-radius:9px;
+
+
+
+}
+
+
+
+
+
+
+
+.warning{
+
+
+
+    background:#fff7e6;
+
+
+
+    border-left:5px solid #f39c12;
+
+
+
+    padding:16px;
+
+
+
+    border-radius:9px;
+
+
+
+    margin-top:15px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PROGRESS
+
+
+
+========================= */
+
+
+
+.progress-text{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    font-size:14px;
+
+
+
+    margin-bottom:7px;
+
+
+
+}
+
+
+
+
+
+
+
+.progress{
+
+
+
+    width:100%;
+
+
+
+    height:10px;
+
+
+
+    background:#e0e0e0;
+
+
+
+    border-radius:20px;
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+
+
+.progress-bar{
+
+
+
+    width:0%;
+
+
+
+    height:100%;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   QUESTION
+
+
+
+========================= */
+
+
+
+.question-number{color:#1976d2;font-weight:700;margin-bottom:8px;}
+
+.question-text{font-weight:700;margin-bottom:13px;}
+
+.question{
+
+
+
+    margin-bottom:28px;
+
+
+
+    padding-bottom:25px;
+
+
+
+    border-bottom:1px solid #e5e5e5;
+
+
+
+}
+
+
+
+
+
+
+
+.question:last-child{
+
+
+
+    border-bottom:none;
+
+
+
+}
+
+
+
+
+
+
+
+.question-number{
+
+
+
+    color:#1976d2;
+
+
+
+    font-weight:bold;
+
+
+
+    margin-bottom:7px;
+
+
+
+}
+
+
+
+
+
+
+
+.question-text{
+
+
+
+    font-size:17px;
+
+
+
+    font-weight:600;
+
+
+
+    margin-bottom:14px;
+
+
+
+}
+
+
+
+
+
+
+
+.option{
+
+
+
+    display:block;
+
+
+
+    padding:12px 15px;
+
+
+
+    margin:9px 0;
+
+
+
+    border:1px solid #d9dfe3;
+
+
+
+    border-radius:9px;
+
+
+
+    cursor:pointer;
+
+
+
+    transition:.2s;
+
+
+
+}
+
+
+
+
+
+
+
+.option:hover{
+
+
+
+    background:#f0faf4;
+
+
+
+    border-color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+.option input{
+
+
+
+    margin-right:9px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   BUTTON
+
+
+
+========================= */
+
+
+
+.button-area{
+
+
+
+    display:flex;
+
+
+
+    justify-content:center;
+
+
+
+    gap:12px;
+
+
+
+    flex-wrap:wrap;
+
+
+
+    margin-top:25px;
+
+
+
+}
+
+
+
+
+
+
+
+.btn{
+
+
+
+    border:none;
+
+
+
+    padding:13px 25px;
+
+
+
+    border-radius:9px;
+
+
+
+    color:white;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    font-size:15px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+    text-decoration:none;
+
+
+
+}
+
+
+
+
+
+
+
+.btn:hover{
+
+
+
+    background:#1565c0;
+
+
+
+}
+
+
+
+
+
+
+
+.btn.secondary{
+
+
+
+    background:#607d8b;
+
+
+
+}
+
+
+
+
+
+
+
+.btn.blue{
+
+
+
+    background:#2878d4;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TOMBOL SELESAI KUIS
+
+
+
+========================= */
+
+.btn-submit{
+    display:block;
+    width:100%;
+    max-width:420px;
+    margin:25px auto 5px;
+    padding:15px 28px;
+    border:none;
+    border-radius:9px;
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+    color:#fff;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    transition:.2s;
+}
+
+.btn-submit:hover{
+    background:linear-gradient(135deg,#9f1717,#1976d2);
+    transform:translateY(-1px);
+}
+
+@media(max-width:600px){
+    .btn-submit{
+        max-width:none;
+        padding:14px 18px;
+        font-size:16px;
+    }
+}
+
+
+/* =========================
+
+
+
+   RESULT
+
+
+
+========================= */
+
+
+
+#result{
+
+
+
+    display:none;
+
+
+
+}
+
+
+
+
+
+
+
+.score{
+
+
+
+    text-align:center;
+
+
+
+    font-size:58px;
+
+
+
+    font-weight:bold;
+
+
+
+    color:#1976d2;
+
+
+
+    margin:10px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.result-message{
+
+
+
+    text-align:center;
+
+
+
+    font-size:18px;
+
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.status{
+
+
+
+    text-align:center;
+
+
+
+    padding:14px;
+
+
+
+    border-radius:10px;
+
+
+
+    font-size:20px;
+
+
+
+    font-weight:bold;
+
+
+
+    margin:20px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.status.lulus{
+
+
+
+    color:#1976d2;
+
+
+
+    background:#eaf7ef;
+
+
+
+}
+
+
+
+
+
+
+
+.status.tidak-lulus{
+
+
+
+    color:#1565c0;
+
+
+
+    background:#fff0f0;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail{
+
+
+
+    background:#f7f9fa;
+
+
+
+    border-radius:10px;
+
+
+
+    padding:18px;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail div{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    gap:15px;
+
+
+
+    padding:8px 0;
+
+
+
+    border-bottom:1px solid #e4e4e4;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail div:last-child{
+
+
+
+    border-bottom:none;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   REVIEW
+
+
+
+========================= */
+
+
+
+.review{
+
+
+
+    margin-top:25px;
+
+
+
+}
+
+
+
+
+
+
+
+.review-item{
+
+
+
+    padding:15px;
+
+
+
+    margin:10px 0;
+
+
+
+    border-radius:9px;
+
+
+
+    border-left:5px solid;
+
+
+
+}
+
+
+
+
+
+
+
+.correct{
+
+
+
+    background:#eaf7ef;
+
+
+
+    border-color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+.wrong{
+
+
+
+    background:#fff0f0;
+
+
+
+    border-color:#1565c0;
+
+
+
+}
+
+
+
+
+
+
+
+.unanswered{
+
+
+
+    background:#fff7e6;
+
+
+
+    border-color:#f39c12;
+
+
+
+}
+
+
+
+
+
+
+
+.answer{
+
+
+
+    font-weight:600;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   FOOTER
+
+
+
+========================= */
+
+
+
+.footer{
+
+
+
+    background:#17202a;
+
+
+
+    color:white;
+
+
+
+    text-align:center;
+
+
+
+    padding:30px 20px;
+
+
+
+}
+
+
+
+
+
+
+
+.footer strong{
+
+
+
+    color:#6fcf97;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   RESPONSIVE
+
+
+
+========================= */
+
+
+
+@media(max-width:600px){
+
+
+
+
+
+
+
+    .header h1{
+
+
+
+        font-size:27px;
+
+
+
+    }
+
+
+
+
+
+
+
+    .card{
+
+
+
+        padding:21px 17px;
+
+
+
+    }
+
+
+
+
+
+
+
+    .timer-container{
+
+
+
+        flex-direction:column;
+
+
+
+        align-items:stretch;
+
+
+
+        text-align:center;
+
+
+
+    }
+
+
+
+
+
+
+
+    .timer{
+
+
+
+        width:100%;
+
+
+
+    }
+
+
+
+
+
+
+
+    .participant{
+
+
+
+        flex-direction:column;
+
+
+
+        align-items:flex-start;
+
+
+
+    }
+
+
+
+
+
+
+
+    .score{
+
+
+
+        font-size:45px;
+
+
+
+    }
+
+
+
+
+
+
+
+}
+
+
+
 </style>
 
-<style id="revisi-tampilan-kuis5">
-*{box-sizing:border-box}
-body{
- margin:0;
- background:#f4f8fb;
- color:#16324f;
- font-family:Arial,Helvetica,sans-serif;
- line-height:1.6
-}
-header{
- background:#10833f;
- color:#fff;
- text-align:center;
- padding:28px 20px 26px
-}
-header h1{
- margin:0;
- font-size:31px;
- font-weight:700
-}
-header p{
- margin:5px 0 0;
- font-size:16px
-}
-nav{
- background:#fff;
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- border-bottom:1px solid #e4e9ed;
- box-shadow:0 2px 6px rgba(0,0,0,.06)
-}
-nav a{
- color:#087d3c;
- text-decoration:none;
- padding:15px 25px;
- font-weight:600
-}
-nav a:hover{
- background:#f0f8f3
-}
-.container{
- max-width:1000px;
- margin:30px auto;
- padding:0 18px
-}
-.password-box,.nama-box,.quiz-start,.question-card,#hasilKuis{
- background:#fff;
- border-radius:14px;
- padding:30px;
- margin-bottom:22px;
- box-shadow:0 4px 15px rgba(0,0,0,.08)
-}
-.password-box,.nama-box{
- text-align:center;
- max-width:650px;
- margin-left:auto;
- margin-right:auto
-}
-.password-icon,.nama-icon,.quiz-icon{
- display:none
-}
-.quiz-start{
- text-align:center;
- max-width:770px;
- margin:30px auto
-}
-.quiz-start h2{
- color:#075d8e;
- font-size:26px;
- margin:0 0 14px
-}
-.quiz-start>p{
- font-size:17px;
- font-weight:600
-}
-.peserta-info{
- background:transparent;
- padding:0;
- margin:13px 0;
- text-align:left;
- font-size:16px
-}
-.quiz-rules{
- background:#eef7fb;
- padding:20px;
- border-radius:10px;
- text-align:left;
- margin:22px 0
-}
-.quiz-rules h3{
- margin-top:0;
- color:#075d8e
-}
-.quiz-summary{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:15px;
- margin:25px 0
-}
-.summary-card{
- background:#eef6fb;
- border-radius:9px;
- padding:16px 10px;
- text-align:center
-}
-.summary-card strong{
- display:block;
- font-size:24px;
- color:#102f4d
-}
-.summary-card span{
- font-size:15px
-}
-h2{color:#075d8e}
-input[type=text],input[type=password]{
- width:100%;
- padding:14px;
- border:1px solid #cbd8df;
- border-radius:8px;
- font-size:16px;
- margin:12px 0
-}
-button{cursor:pointer}
-.btn-password,.btn-nama,.btn-mulai,.btn-submit,.btn-reset{
- width:100%;
- padding:14px;
- border:0;
- border-radius:8px;
- background:#087d3c;
- color:#fff;
- font-weight:bold;
- font-size:16px
-}
-.btn-password:hover,.btn-nama:hover,.btn-mulai:hover,.btn-submit:hover{
- background:#066b33
-}
-.password-error,.nama-error{
- display:none;
- background:#f8d7da;
- color:#842029;
- padding:12px;
- border-radius:8px
-}
-.timer-box{
- position:sticky;
- top:0;
- z-index:5;
- background:#eaf7ef;
- color:#10833f;
- border:2px solid #10833f;
- padding:13px 22px;
- text-align:center;
- border-radius:10px;
- margin-bottom:18px;
- font-size:22px;
- font-weight:bold;
- box-shadow:0 3px 10px rgba(0,0,0,.08)
-}
-.timer-warning{background:#fff3cd;color:#a15c00;border-color:#d08a00}
-.timer-danger{background:#fde8e8;color:#b42318;border-color:#c62828}
-.peringatan{
- display:none;
- background:#fff3cd;
- color:#664d03;
- padding:14px;
- border-radius:8px;
- margin-bottom:15px
-}
-.question-card{
- padding:25px 28px
-}
-.question-number{
- color:#075d8e;
- font-weight:bold;
- margin-bottom:8px
-}
-.question-text{
- font-size:18px;
- font-weight:bold;
- margin:8px 0 15px
-}
-.option{
- display:block;
- border:1px solid #d8e3e8;
- padding:12px;
- margin:9px 0;
- border-radius:8px;
- cursor:pointer;
- background:#fff
-}
-.option:hover{background:#eef7fb}
-.option input{margin-right:8px}
-.quiz-button-area{margin:25px 0}
-#hasilKuis{
- display:none;
- text-align:center
-}
-.nilai{
- font-size:60px;
- font-weight:bold;
- color:#10833f
-}
-.hasil-detail{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
- margin:22px 0
-}
-.hasil-card{
- background:#eef6fb;
- padding:16px;
- border-radius:9px
-}
-.hasil-card strong{
- display:block;
- font-size:28px
-}
-.status-lulus{
- color:#198754;
- font-size:24px;
- font-weight:bold
-}
-.status-gagal{
- color:#dc3545;
- font-size:24px;
- font-weight:bold
-}
-.status-kirim{
- margin:18px 0;
- padding:13px;
- border-radius:8px;
- background:#eef7fb
-}
-.status-kirim.berhasil{
- background:#d1e7dd;
- color:#0f5132
-}
-.status-kirim.gagal{
- background:#f8d7da;
- color:#842029
-}
-.btn-reset{
- width:auto;
- background:#6c757d;
- padding:12px 24px
-}
-footer{
- background:#10833f;
- color:#fff;
- text-align:center;
- padding:25px;
- margin-top:35px
-}
-@media(max-width:700px){
- .quiz-summary,.hasil-detail{grid-template-columns:1fr}
- nav a{padding:12px 10px}
- .container{padding:0 12px}
-}
-</style>
+
 
 </head>
-<body>
-<header><h1>TIK LEARNING</h1><p>UPTD BLK Kabupaten Subang</p></header>
-<nav><a href="index.html">Beranda</a><a href="autobiografi.html">Autobiografi</a><a href="materi.html">Materi</a><a href="tugas.html">Tugas</a><a href="kelas.html">Kelas Saya</a><a href="ruang-bertanya.html">Ruang Bertanya</a></nav>
+
+
+
+<body class="locked">
+
+
+
+<!-- =========================
+
+
+
+     PASSWORD & NAMA PESERTA
+
+
+
+========================= -->
+
+
+
+<div class="password-overlay" id="passwordOverlay">
+
+
+
+<div class="password-box">
+
+
+
+<div class="password-icon">🔐</div>
+
+
+
+<h2>Kuis Modul 5 Word</h2>
+
+
+
+<p>
+
+
+
+            Masukkan nama peserta, kelas, dan password
+
+
+
+            untuk memulai kuis.
+
+
+
+        </p>
+
+
+
+<input autocomplete="off" class="name-input" id="participantInput" placeholder="Nama lengkap peserta" type="text"/>
+
+
+
+<input autocomplete="off" class="name-input" id="classInput" placeholder="Kelas peserta" type="text"/>
+
+
+
+<input autocomplete="off" class="password-input" id="quizPassword" placeholder="Password kuis" type="password"/>
+
+
+
+<div class="password-error" id="passwordError">
+
+
+
+            ❌ Terjadi kesalahan.
+
+
+
+        </div>
+
+
+
+<button class="password-btn" onclick="startQuiz()" type="button">
+
+
+
+            🔓 MULAI KUIS
+
+
+
+        </button>
+
+
+
+<div class="password-info">
+
+
+
+            Waktu pengerjaan: <strong>10 menit</strong><br/>
+
+
+
+            Nilai minimum: <strong>75</strong><br/>
+
+
+
+            Nama dan kelas akan dicatat pada hasil kuis.
+
+
+
+        </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- =========================
+
+
+
+     HEADER
+
+
+
+========================= -->
+
+
+
+<header class="header">
+
+
+
+<div class="badge">KUIS • MODUL 5 WORD</div>
+
+
+
+<h1>Microsoft Word 2016 — Chart dan SmartArt</h1>
+
+
+
+<p>
+
+
+
+       Microsoft Word 2016 • Chart dan SmartArt
+
+
+
+    </p>
+
+
+
+</header>
+
+
+
 <main class="container">
 
-<section id="passwordSection" class="password-box">
-<div class="password-icon">🔐</div><h2>Akses Kuis Modul 5</h2>
-<p>Masukkan password yang diberikan oleh instruktur untuk mengikuti Kuis Modul 5.</p>
-<div id="passwordError" class="password-error">❌ Password salah. Silakan periksa kembali password Anda.</div>
-<input type="password" id="passwordInput" placeholder="Masukkan password" autocomplete="off">
-<button class="btn-password" onclick="cekPassword()">🔓 Masuk</button>
-</section>
 
-<section id="namaSection" class="nama-box" style="display:none">
-<div class="nama-icon">👤</div><h2>Identitas Peserta</h2><p>Silakan masukkan nama lengkap Anda sebelum memulai kuis.</p>
-<div id="namaError" class="nama-error">⚠️ Nama peserta wajib diisi.</div>
-<input type="text" id="namaInput" placeholder="Masukkan nama lengkap" autocomplete="off">
-<button class="btn-nama" onclick="simpanNama()">➡️ Lanjut</button>
-</section>
 
-<section id="halamanMulai" class="quiz-start" style="display:none">
-<div class="quiz-icon">📝</div><h2>Kuis Modul 5</h2>
-<p><strong>Microsoft Word 2016 — Chart dan SmartArt</strong></p>
-<div class="peserta-info">👤 <strong>Nama Peserta:</strong> <span id="namaPesertaMulai">-</span></div><div class="quiz-summary">
-<div class="summary-card"><strong>15</strong><span>Soal</span></div>
-<div class="summary-card"><strong>100</strong><span>Nilai Maksimal</span></div>
-<div class="summary-card"><strong>75</strong><span>Batas Kelulusan</span></div>
+<!-- DATA PESERTA -->
+
+
+
+<section class="card">
+
+
+
+<div class="participant">
+
+
+
+<div>
+
+
+
+<div style="font-size:13px;color:#78909c;">
+
+
+
+                Peserta
+
+
+
+            </div>
+
+
+
+<div class="participant-name" id="displayName">
+
+
+
+                -
+
+
+
+            </div>
+
+
+
 </div>
-<div class="quiz-rules"><h3>📌 Ketentuan Kuis</h3><ul>
-<li>Jumlah soal: <strong>15 soal</strong></li><li>Waktu pengerjaan: <strong>10 menit</strong></li>
-<li>Timer mulai setelah tombol <strong>Mulai Kuis</strong> ditekan.</li><li>Timer tidak dapat dijeda.</li>
-<li>Jika waktu habis, jawaban dikumpulkan otomatis.</li><li>Batas kelulusan: <strong>75</strong></li>
-</ul></div>
-<button class="btn-mulai" onclick="mulaiKuis()">▶️ Mulai Kuis</button>
+
+
+
+<div>
+
+
+
+<div style="font-size:13px;color:#78909c;">
+
+
+
+                KKM
+
+
+
+            </div>
+
+
+
+<strong>75</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
 </section>
 
-<section id="hasilKuis">
-<h2>🎉 Hasil Kuis</h2><div class="peserta-info">👤 <strong>Nama Peserta:</strong> <span id="namaPesertaHasil">-</span></div>
-<p>Nilai Anda</p><div id="nilai" class="nilai">0</div><div id="status"></div>
-<div class="hasil-detail"><div class="hasil-card"><strong id="jumlahBenar">0</strong>Jawaban Benar</div><div class="hasil-card"><strong id="jumlahSalah">0</strong>Jawaban Salah</div><div class="hasil-card"><strong id="persentase">0%</strong>Persentase</div></div>
-<p id="pesanHasil"></p><div id="statusKirim" class="status-kirim">⏳ Menyiapkan penyimpanan hasil...</div>
-<button class="btn-reset" onclick="ulangKuis()">🔄 Ulangi Kuis</button>
+
+
+<!-- TIMER -->
+
+
+
+<section class="card timer-card">
+
+
+
+<div class="timer-container">
+
+
+
+<div>
+
+
+
+<div class="timer-label">
+
+
+
+                ⏱️ WAKTU TERSISA
+
+
+
+            </div>
+
+
+
+<strong>
+
+
+
+                Selesaikan kuis sebelum waktu habis
+
+
+
+            </strong>
+
+
+
+</div>
+
+
+
+<div class="timer" id="timer">
+
+
+
+            10:00
+
+
+
+        </div>
+
+
+
+</div>
+
+
+
 </section>
 
-<section id="areaKuis" style="display:none">
-<div id="timerBox" class="timer-box">⏱️ Sisa Waktu: <span id="timer">10:00</span></div>
-<div id="peringatan" class="peringatan"></div><form id="quizForm">
-<div class="question-card"><div class="question-number">Soal 1 dari 15</div><div class="question-text">Chart digunakan terutama untuk...</div><label class="option"><input type="radio" name="q1" value="A"> A. Membuat struktur organisasi</label><label class="option"><input type="radio" name="q1" value="B"> B. Menyajikan data secara visual</label><label class="option"><input type="radio" name="q1" value="C"> C. Membuat daftar isi otomatis</label><label class="option"><input type="radio" name="q1" value="D"> D. Mengatur margin halaman</label></div><div class="question-card"><div class="question-number">Soal 2 dari 15</div><div class="question-text">Jenis Chart yang paling tepat untuk membandingkan jumlah peserta pada beberapa program pelatihan adalah...</div><label class="option"><input type="radio" name="q2" value="A"> A. Pie</label><label class="option"><input type="radio" name="q2" value="B"> B. Column</label><label class="option"><input type="radio" name="q2" value="C"> C. Line</label><label class="option"><input type="radio" name="q2" value="D"> D. Scatter</label></div><div class="question-card"><div class="question-number">Soal 3 dari 15</div><div class="question-text">Jika data menunjukkan perkembangan jumlah peserta dari Januari sampai Juni, jenis Chart yang paling sesuai adalah...</div><label class="option"><input type="radio" name="q3" value="A"> A. Line</label><label class="option"><input type="radio" name="q3" value="B"> B. Pie</label><label class="option"><input type="radio" name="q3" value="C"> C. Bar</label><label class="option"><input type="radio" name="q3" value="D"> D. Pyramid</label></div><div class="question-card"><div class="question-number">Soal 4 dari 15</div><div class="question-text">Pie Chart paling tepat digunakan untuk menunjukkan...</div><label class="option"><input type="radio" name="q4" value="A"> A. Tren waktu</label><label class="option"><input type="radio" name="q4" value="B"> B. Hubungan dua variabel</label><label class="option"><input type="radio" name="q4" value="C"> C. Bagian terhadap keseluruhan</label><label class="option"><input type="radio" name="q4" value="D"> D. Struktur organisasi</label></div><div class="question-card"><div class="question-number">Soal 5 dari 15</div><div class="question-text">Untuk membuat Chart pada Word 2016, perintah yang digunakan adalah...</div><label class="option"><input type="radio" name="q5" value="A"> A. Home → Chart</label><label class="option"><input type="radio" name="q5" value="B"> B. Insert → Chart</label><label class="option"><input type="radio" name="q5" value="C"> C. Layout → Chart</label><label class="option"><input type="radio" name="q5" value="D"> D. Review → Chart</label></div><div class="question-card"><div class="question-number">Soal 6 dari 15</div><div class="question-text">Pada lembar data Chart, nama program seperti TIK, Las, dan Listrik berfungsi sebagai...</div><label class="option"><input type="radio" name="q6" value="A"> A. Kategori</label><label class="option"><input type="radio" name="q6" value="B"> B. Legend</label><label class="option"><input type="radio" name="q6" value="C"> C. Gridlines</label><label class="option"><input type="radio" name="q6" value="D"> D. Axis Title</label></div><div class="question-card"><div class="question-number">Soal 7 dari 15</div><div class="question-text">Bagian Chart yang menampilkan kumpulan nilai sebagai satu kelompok data disebut...</div><label class="option"><input type="radio" name="q7" value="A"> A. Chart Area</label><label class="option"><input type="radio" name="q7" value="B"> B. Data Series</label><label class="option"><input type="radio" name="q7" value="C"> C. Plot Area</label><label class="option"><input type="radio" name="q7" value="D"> D. Axis Title</label></div><div class="question-card"><div class="question-number">Soal 8 dari 15</div><div class="question-text">Fungsi Data Labels adalah...</div><label class="option"><input type="radio" name="q8" value="A"> A. Menampilkan nilai langsung pada elemen Chart</label><label class="option"><input type="radio" name="q8" value="B"> B. Mengubah Chart menjadi SmartArt</label><label class="option"><input type="radio" name="q8" value="C"> C. Menghapus sumbu Chart</label><label class="option"><input type="radio" name="q8" value="D"> D. Menyembunyikan data</label></div><div class="question-card"><div class="question-number">Soal 9 dari 15</div><div class="question-text">Jika peserta ingin setiap batang pada Column Chart menampilkan angka nilainya, fitur yang sebaiknya digunakan adalah...</div><label class="option"><input type="radio" name="q9" value="A"> A. Legend</label><label class="option"><input type="radio" name="q9" value="B"> B. Data Labels</label><label class="option"><input type="radio" name="q9" value="C"> C. Gridlines</label><label class="option"><input type="radio" name="q9" value="D"> D. Chart Area</label></div><div class="question-card"><div class="question-number">Soal 10 dari 15</div><div class="question-text">Untuk menjelaskan arti sumbu X dan sumbu Y, fitur yang digunakan adalah...</div><label class="option"><input type="radio" name="q10" value="A"> A. Axis Titles</label><label class="option"><input type="radio" name="q10" value="B"> B. Chart Styles</label><label class="option"><input type="radio" name="q10" value="C"> C. Data Labels</label><label class="option"><input type="radio" name="q10" value="D"> D. Change Colors</label></div><div class="question-card"><div class="question-number">Soal 11 dari 15</div><div class="question-text">Legend pada Chart berfungsi untuk...</div><label class="option"><input type="radio" name="q11" value="A"> A. Menunjukkan nama Data Series</label><label class="option"><input type="radio" name="q11" value="B"> B. Menampilkan nilai setiap batang</label><label class="option"><input type="radio" name="q11" value="C"> C. Mengubah ukuran halaman</label><label class="option"><input type="radio" name="q11" value="D"> D. Mengatur margin</label></div><div class="question-card"><div class="question-number">Soal 12 dari 15</div><div class="question-text">Jika jenis Chart ternyata tidak sesuai dengan tujuan penyajian data, perintah yang dapat digunakan adalah...</div><label class="option"><input type="radio" name="q12" value="A"> A. Change Chart Type</label><label class="option"><input type="radio" name="q12" value="B"> B. Convert to Shapes</label><label class="option"><input type="radio" name="q12" value="C"> C. Add Shape</label><label class="option"><input type="radio" name="q12" value="D"> D. Promote</label></div><div class="question-card"><div class="question-number">Soal 13 dari 15</div><div class="question-text">SmartArt paling tepat digunakan untuk...</div><label class="option"><input type="radio" name="q13" value="A"> A. Menghitung nilai angka</label><label class="option"><input type="radio" name="q13" value="B"> B. Menyajikan struktur atau hubungan informasi</label><label class="option"><input type="radio" name="q13" value="C"> C. Membuat rumus</label><label class="option"><input type="radio" name="q13" value="D"> D. Menyimpan database</label></div><div class="question-card"><div class="question-number">Soal 14 dari 15</div><div class="question-text">Untuk menggambarkan tahapan pendaftaran sampai sertifikasi secara berurutan, kategori SmartArt yang paling sesuai adalah...</div><label class="option"><input type="radio" name="q14" value="A"> A. Process</label><label class="option"><input type="radio" name="q14" value="B"> B. Pie</label><label class="option"><input type="radio" name="q14" value="C"> C. Matrix</label><label class="option"><input type="radio" name="q14" value="D"> D. Scatter</label></div><div class="question-card"><div class="question-number">Soal 15 dari 15</div><div class="question-text">Untuk menggambarkan struktur organisasi bertingkat, kategori SmartArt yang paling sesuai adalah...</div><label class="option"><input type="radio" name="q15" value="A"> A. Cycle</label><label class="option"><input type="radio" name="q15" value="B"> B. Hierarchy</label><label class="option"><input type="radio" name="q15" value="C"> C. List</label><label class="option"><input type="radio" name="q15" value="D"> D. Picture</label></div>
-<div class="quiz-button-area"><button type="button" id="btnSubmit" class="btn-submit" onclick="periksaJawaban(false)">✅ Kirim Jawaban</button></div>
-</form></section></main>
-<footer><p>© 2026 TIK Learning - UPTD BLK Kabupaten Subang</p></footer>
+
+
+<!-- PETUNJUK -->
+
+
+
+<section class="card">
+
+
+
+<h2>📋 Petunjuk Kuis</h2>
+
+
+
+<div class="info">
+
+
+
+<p>
+
+
+
+            Jawablah pertanyaan berdasarkan materi
+
+
+
+            <strong>Modul 5 Microsoft Word 2016 – Chart dan SmartArt</strong>.
+
+
+
+        </p>
+
+
+
+<br/>
+
+
+
+<p><strong>Jumlah soal:</strong> 15 soal</p>
+
+
+
+<p><strong>Waktu:</strong> 10 menit</p>
+
+
+
+<p><strong>Nilai:</strong> dihitung berdasarkan jumlah jawaban benar</p>
+
+
+
+<p><strong>Nilai maksimal:</strong> 100</p>
+
+
+
+<p><strong>Batas lulus:</strong> 75</p>
+
+
+
+</div>
+
+
+
+<div class="warning">
+
+
+
+        ⚠️ Jika waktu mencapai <strong>00:00</strong>,
+
+
+
+        kuis akan otomatis dikumpulkan.
+
+
+
+    </div>
+
+
+
+</section>
+
+
+
+<!-- PROGRESS -->
+
+
+
+<section class="card">
+
+
+
+<div class="progress-text">
+
+
+
+<span>Progress Jawaban</span>
+
+
+
+<span id="progressText">0 / <span id="progressTotalQuestions">15</span></span>
+
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+
+<div class="progress-bar" id="progressBar"></div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================
+
+
+
+     QUIZ FORM
+
+
+
+========================= -->
+
+
+
+<form id="quizForm">
+<div class="question">
+    <h3>1. Chart digunakan terutama untuk...</h3>
+    <label class="option"><input name="q1" type="radio" value="A"> A. Membuat struktur organisasi</label>
+<label class="option"><input name="q1" type="radio" value="B"> B. Menyajikan data secara visual</label>
+<label class="option"><input name="q1" type="radio" value="C"> C. Membuat daftar isi otomatis</label>
+<label class="option"><input name="q1" type="radio" value="D"> D. Mengatur margin halaman</label>
+</div>
+
+<div class="question">
+    <h3>2. Jenis Chart yang paling tepat untuk membandingkan jumlah peserta pada beberapa program pelatihan adalah...</h3>
+    <label class="option"><input name="q2" type="radio" value="A"> A. Pie</label>
+<label class="option"><input name="q2" type="radio" value="B"> B. Column</label>
+<label class="option"><input name="q2" type="radio" value="C"> C. Line</label>
+<label class="option"><input name="q2" type="radio" value="D"> D. Scatter</label>
+</div>
+
+<div class="question">
+    <h3>3. Jika data menunjukkan perkembangan jumlah peserta dari Januari sampai Juni, jenis Chart yang paling sesuai adalah...</h3>
+    <label class="option"><input name="q3" type="radio" value="A"> A. Line</label>
+<label class="option"><input name="q3" type="radio" value="B"> B. Pie</label>
+<label class="option"><input name="q3" type="radio" value="C"> C. Bar</label>
+<label class="option"><input name="q3" type="radio" value="D"> D. Pyramid</label>
+</div>
+
+<div class="question">
+    <h3>4. Pie Chart paling tepat digunakan untuk menunjukkan...</h3>
+    <label class="option"><input name="q4" type="radio" value="A"> A. Tren waktu</label>
+<label class="option"><input name="q4" type="radio" value="B"> B. Hubungan dua variabel</label>
+<label class="option"><input name="q4" type="radio" value="C"> C. Bagian terhadap keseluruhan</label>
+<label class="option"><input name="q4" type="radio" value="D"> D. Struktur organisasi</label>
+</div>
+
+<div class="question">
+    <h3>5. Untuk membuat Chart pada Word 2016, perintah yang digunakan adalah...</h3>
+    <label class="option"><input name="q5" type="radio" value="A"> A. Home → Chart</label>
+<label class="option"><input name="q5" type="radio" value="B"> B. Insert → Chart</label>
+<label class="option"><input name="q5" type="radio" value="C"> C. Layout → Chart</label>
+<label class="option"><input name="q5" type="radio" value="D"> D. Review → Chart</label>
+</div>
+
+<div class="question">
+    <h3>6. Pada lembar data Chart, nama program seperti TIK, Las, dan Listrik berfungsi sebagai...</h3>
+    <label class="option"><input name="q6" type="radio" value="A"> A. Kategori</label>
+<label class="option"><input name="q6" type="radio" value="B"> B. Legend</label>
+<label class="option"><input name="q6" type="radio" value="C"> C. Gridlines</label>
+<label class="option"><input name="q6" type="radio" value="D"> D. Axis Title</label>
+</div>
+
+<div class="question">
+    <h3>7. Bagian Chart yang menampilkan kumpulan nilai sebagai satu kelompok data disebut...</h3>
+    <label class="option"><input name="q7" type="radio" value="A"> A. Chart Area</label>
+<label class="option"><input name="q7" type="radio" value="B"> B. Data Series</label>
+<label class="option"><input name="q7" type="radio" value="C"> C. Plot Area</label>
+<label class="option"><input name="q7" type="radio" value="D"> D. Axis Title</label>
+</div>
+
+<div class="question">
+    <h3>8. Fungsi Data Labels adalah...</h3>
+    <label class="option"><input name="q8" type="radio" value="A"> A. Menampilkan nilai langsung pada elemen Chart</label>
+<label class="option"><input name="q8" type="radio" value="B"> B. Mengubah Chart menjadi SmartArt</label>
+<label class="option"><input name="q8" type="radio" value="C"> C. Menghapus sumbu Chart</label>
+<label class="option"><input name="q8" type="radio" value="D"> D. Menyembunyikan data</label>
+</div>
+
+<div class="question">
+    <h3>9. Jika peserta ingin setiap batang pada Column Chart menampilkan angka nilainya, fitur yang sebaiknya digunakan adalah...</h3>
+    <label class="option"><input name="q9" type="radio" value="A"> A. Legend</label>
+<label class="option"><input name="q9" type="radio" value="B"> B. Data Labels</label>
+<label class="option"><input name="q9" type="radio" value="C"> C. Gridlines</label>
+<label class="option"><input name="q9" type="radio" value="D"> D. Chart Area</label>
+</div>
+
+<div class="question">
+    <h3>10. Untuk menjelaskan arti sumbu X dan sumbu Y, fitur yang digunakan adalah...</h3>
+    <label class="option"><input name="q10" type="radio" value="A"> A. Axis Titles</label>
+<label class="option"><input name="q10" type="radio" value="B"> B. Chart Styles</label>
+<label class="option"><input name="q10" type="radio" value="C"> C. Data Labels</label>
+<label class="option"><input name="q10" type="radio" value="D"> D. Change Colors</label>
+</div>
+
+<div class="question">
+    <h3>11. Legend pada Chart berfungsi untuk...</h3>
+    <label class="option"><input name="q11" type="radio" value="A"> A. Menunjukkan nama Data Series</label>
+<label class="option"><input name="q11" type="radio" value="B"> B. Menampilkan nilai setiap batang</label>
+<label class="option"><input name="q11" type="radio" value="C"> C. Mengubah ukuran halaman</label>
+<label class="option"><input name="q11" type="radio" value="D"> D. Mengatur margin</label>
+</div>
+
+<div class="question">
+    <h3>12. Jika jenis Chart ternyata tidak sesuai dengan tujuan penyajian data, perintah yang dapat digunakan adalah...</h3>
+    <label class="option"><input name="q12" type="radio" value="A"> A. Change Chart Type</label>
+<label class="option"><input name="q12" type="radio" value="B"> B. Convert to Shapes</label>
+<label class="option"><input name="q12" type="radio" value="C"> C. Add Shape</label>
+<label class="option"><input name="q12" type="radio" value="D"> D. Promote</label>
+</div>
+
+<div class="question">
+    <h3>13. SmartArt paling tepat digunakan untuk...</h3>
+    <label class="option"><input name="q13" type="radio" value="A"> A. Menghitung nilai angka</label>
+<label class="option"><input name="q13" type="radio" value="B"> B. Menyajikan struktur atau hubungan informasi</label>
+<label class="option"><input name="q13" type="radio" value="C"> C. Membuat rumus</label>
+<label class="option"><input name="q13" type="radio" value="D"> D. Menyimpan database</label>
+</div>
+
+<div class="question">
+    <h3>14. Untuk menggambarkan tahapan pendaftaran sampai sertifikasi secara berurutan, kategori SmartArt yang paling sesuai adalah...</h3>
+    <label class="option"><input name="q14" type="radio" value="A"> A. Process</label>
+<label class="option"><input name="q14" type="radio" value="B"> B. Pie</label>
+<label class="option"><input name="q14" type="radio" value="C"> C. Matrix</label>
+<label class="option"><input name="q14" type="radio" value="D"> D. Scatter</label>
+</div>
+
+<div class="question">
+    <h3>15. Untuk menggambarkan struktur organisasi bertingkat, kategori SmartArt yang paling sesuai adalah...</h3>
+    <label class="option"><input name="q15" type="radio" value="A"> A. Cycle</label>
+<label class="option"><input name="q15" type="radio" value="B"> B. Hierarchy</label>
+<label class="option"><input name="q15" type="radio" value="C"> C. List</label>
+<label class="option"><input name="q15" type="radio" value="D"> D. Picture</label>
+</div>
+
+<div class="button-area">
+<button class="btn" onclick="kirimKuis()" type="button">✓ Selesai &amp; Lihat Nilai</button>
+</div>
+
+
+
+
+<!-- =========================
+
+
+
+     HASIL
+
+
+
+========================= -->
+
+
+
+<section class="card" id="result">
+
+
+
+<h2>🏆 Hasil Kuis</h2>
+
+
+
+<div class="score" id="score">0</div>
+
+
+
+<div class="result-message" id="resultMessage"></div>
+
+
+
+<div class="status" id="status"></div>
+
+
+
+<div class="result-detail">
+
+
+
+<div>
+
+
+
+<span>Nama Peserta</span>
+
+
+
+<strong id="resultName">-</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Jumlah Soal</span>
+
+
+
+<strong id="resultTotalQuestions">15</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Jawaban Benar</span>
+
+
+
+<strong id="correctCount">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Jawaban Salah</span>
+
+
+
+<strong id="wrongCount">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Tidak Dijawab</span>
+
+
+
+<strong id="emptyCount">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Nilai</span>
+
+
+
+<strong id="finalScore">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Waktu Digunakan</span>
+
+
+
+<strong id="timeResult">-</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- PEMBAHASAN -->
+
+
+
+<div class="review">
+
+
+
+<h2>📖 Pembahasan Jawaban</h2>
+
+
+
+<div id="reviewContainer"></div>
+
+
+
+</div>
+
+
+
+<div class="button-area">
+
+
+
+<button class="btn secondary" onclick="retryQuiz()" type="button">
+
+
+
+            ↻ Ulangi Kuis
+
+
+
+        </button>
+
+
+
+<a class="btn blue" href="modul-word-5.html">
+
+
+
+            Kembali ke Materi Modul 4 →
+
+
+
+        </a>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+
+
+<footer class="footer">
+
+
+
+<p>
+
+
+
+<strong>Pelatihan Teknologi Informasi dan Komunikasi</strong>
+
+
+
+</p>
+
+
+
+<p>
+
+
+
+        Kuis Modul 5 • Microsoft Word 2016 — Chart dan SmartArt
+
+
+
+    </p>
+
+
+
+<p style="margin-top:8px;font-size:13px;opacity:.7;">
+
+
+
+        © 2026 • Materi Pelatihan
+
+
+
+    </p>
+
+
+
+</footer>
+
+
+
 <script>
-const PASSWORD_KUIS="TIK2026",DURASI_KUIS=10*60,BATAS_LULUS=75,TOTAL_SOAL=15;
-const API_URL="https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
-const KELAS_KUIS="Microsoft Word 2016",MODUL_KUIS="Modul 5 - Chart dan SmartArt";
-const kunciJawaban={q1:"B",q2:"B",q3:"A",q4:"C",q5:"B",q6:"A",q7:"B",q8:"A",q9:"B",q10:"A",q11:"A",q12:"A",q13:"B",q14:"A",q15:"B"};
-let waktu=DURASI_KUIS,timerInterval=null,kuisDimulai=false,kuisSelesai=false,namaPeserta="",hasilSudahDikirim=false;
 
-function cekPassword(){const i=document.getElementById("passwordInput"),e=document.getElementById("passwordError");if(i.value.trim()===PASSWORD_KUIS){e.style.display="none";document.getElementById("passwordSection").style.display="none";document.getElementById("namaSection").style.display="block";document.getElementById("namaInput").focus()}else{e.style.display="block";i.value="";i.focus()}}
-document.getElementById("passwordInput").addEventListener("keydown",e=>{if(e.key==="Enter")cekPassword()});
-function simpanNama(){const i=document.getElementById("namaInput"),e=document.getElementById("namaError");if(!i.value.trim()){e.style.display="block";i.focus();return}namaPeserta=i.value.trim();e.style.display="none";document.getElementById("namaSection").style.display="none";document.getElementById("halamanMulai").style.display="block";document.getElementById("namaPesertaMulai").textContent=namaPeserta}
-document.getElementById("namaInput").addEventListener("keydown",e=>{if(e.key==="Enter")simpanNama()});
-function mulaiKuis(){if(kuisDimulai)return;kuisDimulai=true;document.getElementById("halamanMulai").style.display="none";document.getElementById("areaKuis").style.display="block";updateTimerDisplay();timerInterval=setInterval(()=>{waktu--;updateTimerDisplay();if(waktu<=60&&waktu>0)document.getElementById("timerBox").classList.add("timer-warning");if(waktu<=30&&waktu>0){document.getElementById("timerBox").classList.remove("timer-warning");document.getElementById("timerBox").classList.add("timer-danger")}if(waktu<=0){clearInterval(timerInterval);periksaJawaban(true)}},1000)}
-function updateTimerDisplay(){document.getElementById("timer").textContent=String(Math.floor(waktu/60)).padStart(2,"0")+":"+String(waktu%60).padStart(2,"0")}
-function periksaJawaban(autoSubmit){if(kuisSelesai)return;if(!autoSubmit){let u=[];for(let i=1;i<=TOTAL_SOAL;i++)if(!document.querySelector('input[name="q'+i+'"]:checked'))u.push(i);if(u.length){const p=document.getElementById("peringatan");p.style.display="block";p.innerHTML="⚠️ Masih ada soal yang belum dijawab: <strong>"+u.join(", ")+"</strong>.";p.scrollIntoView({behavior:"smooth",block:"center"});return}}
-kuisSelesai=true;clearInterval(timerInterval);document.getElementById("btnSubmit").disabled=true;let benar=0;for(let i=1;i<=TOTAL_SOAL;i++){const j=document.querySelector('input[name="q'+i+'"]:checked');if(j&&j.value===kunciJawaban["q"+i])benar++}let salah=TOTAL_SOAL-benar,nilai=Math.round(benar/TOTAL_SOAL*100),st=nilai>=BATAS_LULUS?"Lulus":"Belum Lulus";
-document.getElementById("namaPesertaHasil").textContent=namaPeserta;document.getElementById("nilai").textContent=nilai;document.getElementById("jumlahBenar").textContent=benar;document.getElementById("jumlahSalah").textContent=salah;document.getElementById("persentase").textContent=nilai+"%";
-if(nilai>=BATAS_LULUS){document.getElementById("status").innerHTML='<div class="status-lulus">🎉 LULUS</div>';document.getElementById("pesanHasil").textContent="Selamat! Anda telah mencapai batas kelulusan Modul 5."}else{document.getElementById("status").innerHTML='<div class="status-gagal">❌ BELUM LULUS</div>';document.getElementById("pesanHasil").textContent="Silakan pelajari kembali materi Chart dan SmartArt kemudian ulangi kuis."}
-document.getElementById("areaKuis").style.display="none";document.getElementById("hasilKuis").style.display="block";kirimHasilKeServer(benar,nilai,waktu,st)}
-async function kirimHasilKeServer(benar,nilai,sisa,statusHasil){if(hasilSudahDikirim)return;hasilSudahDikirim=true;const sk=document.getElementById("statusKirim");sk.className="status-kirim";sk.innerHTML="⏳ Menyimpan hasil kuis ke server...";const digunakan=DURASI_KUIS-sisa,menit=Math.floor(digunakan/60),detik=digunakan%60,wf=String(menit).padStart(2,"0")+":"+String(detik).padStart(2,"0");const data={jenis:"kuis",nama:namaPeserta,kelas:KELAS_KUIS,modul:MODUL_KUIS,jumlahSoal:TOTAL_SOAL,benar:benar,nilai:nilai,waktu:wf};try{const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)}),h=await r.json();if(h.status==="success"){sk.className="status-kirim berhasil";sk.innerHTML="✅ Hasil kuis berhasil disimpan ke database."}else{hasilSudahDikirim=false;sk.className="status-kirim gagal";sk.innerHTML="❌ Hasil belum berhasil disimpan. "+(h.message||"Terjadi kesalahan pada server.")}}catch(e){hasilSudahDikirim=false;sk.className="status-kirim gagal";sk.innerHTML="❌ Tidak dapat terhubung ke server. Periksa koneksi internet atau Apps Script."}}
-function ulangKuis(){if(!confirm("Apakah Anda yakin ingin mengulang kuis?"))return;document.getElementById("hasilKuis").style.display="none";document.getElementById("areaKuis").style.display="none";document.getElementById("halamanMulai").style.display="block";document.getElementById("quizForm").reset();clearInterval(timerInterval);waktu=DURASI_KUIS;kuisDimulai=false;kuisSelesai=false;hasilSudahDikirim=false;updateTimerDisplay();document.getElementById("timerBox").classList.remove("timer-warning","timer-danger");document.getElementById("peringatan").style.display="none";document.getElementById("statusKirim").className="status-kirim";document.getElementById("statusKirim").innerHTML="⏳ Menyiapkan penyimpanan hasil..."}
+
+
+
+
+
+
+/* =========================
+
+
+
+   PENGATURAN KUIS
+
+
+
+========================= */
+
+
+
+const QUIZ_PASSWORD = "TIK2026";
+
+
+
+const TOTAL_QUESTIONS = 15;
+
+
+
+const POINT_PER_QUESTION = 100 / TOTAL_QUESTIONS;
+
+
+
+const PASSING_SCORE = 75;
+
+
+
+const QUIZ_DURATION = 10 * 60;
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   GOOGLE SHEETS API
+
+
+
+   =========================
+
+
+
+   Ganti URL di bawah dengan URL Web App
+
+
+
+   Google Apps Script Anda yang berakhiran /exec.
+
+
+
+*/
+
+
+
+const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+
+
+
+
+
+
+const QUIZ_MODULE_NAME =
+
+
+
+    "Modul 5 - Chart dan SmartArt";
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   VARIABEL
+
+
+
+========================= */
+
+
+
+let participantName = "";
+
+
+
+let participantClass = "";
+
+
+
+let timeLeft = QUIZ_DURATION;
+
+
+
+let timerInterval = null;
+
+
+
+let quizStarted = false;
+
+
+
+let quizFinished = false;
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   KUNCI JAWABAN
+
+
+
+========================= */
+
+
+
+const answers = {
+    q1:"B", q2:"B", q3:"A", q4:"C", q5:"B", q6:"A", q7:"B", q8:"A", q9:"B", q10:"A", q11:"A", q12:"A", q13:"B", q14:"A", q15:"B"
+};
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PEMBAHASAN
+
+
+
+========================= */
+
+
+
+const explanations = Object.fromEntries(Array.from({length: TOTAL_QUESTIONS}, (_, i) => ["q" + (i + 1), "Pembahasan tidak tercantum pada file sumber Modul 5."]));
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   MULAI KUIS
+
+
+
+========================= */
+
+
+
+function startQuiz(){
+
+    updateTotalQuestionDisplays();
+
+
+
+
+
+
+
+    const name = document
+
+
+
+        .getElementById("participantInput")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const participantClassInput = document
+
+
+
+        .getElementById("classInput")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const password = document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const error = document
+
+
+
+        .getElementById("passwordError");
+
+
+
+
+
+
+
+    if(name === ""){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Nama peserta wajib diisi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("participantInput")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    if(participantClassInput === ""){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Kelas peserta wajib diisi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("classInput")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    if(password !== QUIZ_PASSWORD){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Password salah. Silakan coba lagi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("quizPassword")
+
+
+
+            .value = "";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("quizPassword")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    participantName = name;
+
+
+
+    participantClass = participantClassInput;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("displayName")
+
+
+
+        .textContent = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordOverlay")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document.body.classList.remove("locked");
+
+
+
+
+
+
+
+    quizStarted = true;
+
+
+
+
+
+
+
+    startTimer();
+
+
+
+}
+
+
+
+
+
+
+
+/* ENTER UNTUK MULAI */
+
+
+
+document
+
+
+
+    .getElementById("quizPassword")
+
+
+
+    .addEventListener("keydown",function(event){
+
+
+
+
+
+
+
+        if(event.key === "Enter"){
+
+
+
+            startQuiz();
+
+
+
+        }
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TIMER
+
+
+
+========================= */
+
+
+
+function startTimer(){
+
+
+
+
+
+
+
+    updateTimerDisplay();
+
+
+
+
+
+
+
+    timerInterval = setInterval(function(){
+
+
+
+
+
+
+
+        if(!quizStarted || quizFinished){
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+
+
+        timeLeft--;
+
+
+
+
+
+
+
+        updateTimerDisplay();
+
+
+
+
+
+
+
+        if(timeLeft <= 0){
+
+
+
+
+
+
+
+            timeLeft = 0;
+
+
+
+            updateTimerDisplay();
+
+
+
+            clearInterval(timerInterval);
+
+
+
+
+
+
+
+            // Otomatis mengumpulkan jawaban yang sudah dipilih
+
+
+
+            // dan mengirim hasilnya ke Google Sheets.
+
+
+
+            finishQuiz(true);
+
+
+
+        }
+
+
+
+
+
+
+
+    },1000);
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   UPDATE TIMER
+
+
+
+========================= */
+
+
+
+function updateTimerDisplay(){
+
+
+
+
+
+
+
+    const timer =
+
+
+
+        document.getElementById("timer");
+
+
+
+
+
+
+
+    let minutes =
+
+
+
+        Math.floor(timeLeft / 60);
+
+
+
+
+
+
+
+    let seconds =
+
+
+
+        timeLeft % 60;
+
+
+
+
+
+
+
+    minutes =
+
+
+
+        String(minutes).padStart(2,"0");
+
+
+
+
+
+
+
+    seconds =
+
+
+
+        String(seconds).padStart(2,"0");
+
+
+
+
+
+
+
+    timer.textContent =
+
+
+
+        minutes + ":" + seconds;
+
+
+
+
+
+
+
+    timer.classList.remove(
+
+
+
+        "warning-time",
+
+
+
+        "danger-time"
+
+
+
+    );
+
+
+
+
+
+
+
+    if(timeLeft <= 60){
+
+
+
+
+
+
+
+        timer.classList.add("danger-time");
+
+
+
+
+
+
+
+    }else if(timeLeft <= 300){
+
+
+
+
+
+
+
+        timer.classList.add("warning-time");
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PROGRESS
+
+
+
+========================= */
+
+
+
+document
+
+
+
+    .querySelectorAll('input[type="radio"]')
+
+
+
+    .forEach(function(input){
+
+
+
+
+
+
+
+        input.addEventListener(
+
+
+
+            "change",
+
+
+
+            updateProgress
+
+
+
+        );
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+function updateProgress(){
+
+
+
+
+
+
+
+    let answered = 0;
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        if(selected){
+
+
+
+            answered++;
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    const percentage =
+
+
+
+        (answered / TOTAL_QUESTIONS) * 100;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressText")
+
+
+
+        .textContent =
+
+
+
+        answered + " / " + TOTAL_QUESTIONS;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressBar")
+
+
+
+        .style.width =
+
+
+
+        percentage + "%";
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TOMBOL KIRIM JAWABAN
+
+
+
+========================= */
+
+
+
+function kirimKuis(){
+
+
+
+    finishQuiz(false);
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   SELESAI KUIS
+
+
+
+========================= */
+
+
+
+function updateTotalQuestionDisplays(){
+
+    const total = document.getElementById("totalQuestionsInfo");
+
+    const resultTotal = document.getElementById("resultTotalQuestions");
+
+    if(total) total.textContent = TOTAL_QUESTIONS;
+
+    if(resultTotal) resultTotal.textContent = TOTAL_QUESTIONS;
+
+}
+
+
+
+function finishQuiz(timeUp){
+
+
+
+
+
+
+
+    if(quizFinished){
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    let unanswered = [];
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        if(!selected){
+
+
+
+            unanswered.push(i);
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    if(!timeUp && unanswered.length > 0){
+
+
+
+
+
+
+
+        alert(
+
+
+
+            "Masih ada " +
+
+
+
+            unanswered.length +
+
+
+
+            " soal yang belum dijawab.nn" +
+
+
+
+            "Nomor soal: " +
+
+
+
+            unanswered.join(", ")
+
+
+
+        );
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    quizFinished = true;
+
+
+
+    quizStarted = false;
+
+
+
+
+
+
+
+    clearInterval(timerInterval);
+
+
+
+
+
+
+
+    let correct = 0;
+
+
+
+    let wrong = 0;
+
+
+
+    let empty = unanswered.length;
+
+
+
+    let reviewHTML = "";
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        const correctAnswer =
+
+
+
+            answers["q"+i];
+
+
+
+
+
+
+
+        let userAnswer = "";
+
+
+
+
+
+
+
+        if(selected){
+
+
+
+            userAnswer = selected.value;
+
+
+
+        }
+
+
+
+
+
+
+
+        let className = "";
+
+
+
+
+
+
+
+        if(!selected){
+
+
+
+
+
+
+
+            className = "unanswered";
+
+
+
+
+
+
+
+        }else if(userAnswer === correctAnswer){
+
+
+
+
+
+
+
+            className = "correct";
+
+
+
+            correct++;
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+
+            className = "wrong";
+
+
+
+            wrong++;
+
+
+
+        }
+
+
+
+
+
+
+
+        const answerText =
+
+
+
+            userAnswer === ""
+
+
+
+            ? "Tidak dijawab"
+
+
+
+            : userAnswer;
+
+
+
+
+
+
+
+        reviewHTML += `
+
+
+
+
+
+
+
+            <div class="review-item ${className}">
+
+
+
+
+
+
+
+                <strong>Soal ${i}</strong>
+
+
+
+
+
+
+
+                <p>
+
+
+
+                    Jawaban Anda:
+
+
+
+                    <span class="answer">
+
+
+
+                        ${answerText}
+
+
+
+                    </span>
+
+
+
+                </p>
+
+
+
+
+
+
+
+                <p>
+
+
+
+                    Jawaban Benar:
+
+
+
+                    <span class="answer">
+
+
+
+                        ${correctAnswer}
+
+
+
+                    </span>
+
+
+
+                </p>
+
+
+
+
+
+
+
+                <p style="margin-top:7px;">
+
+
+
+                    ${explanations["q"+i]}
+
+
+
+                </p>
+
+
+
+
+
+
+
+            </div>
+
+
+
+        `;
+
+
+
+    }
+
+
+
+
+
+
+
+    const score =
+
+
+
+        Number((correct * POINT_PER_QUESTION).toFixed(2));
+
+
+
+
+
+
+
+    // Kirim hasil ke Google Sheets
+
+
+
+    kirimHasilKuis(
+
+
+
+        correct,
+
+
+
+        score,
+
+
+
+        timeUp
+
+
+
+    );
+
+
+
+
+
+
+
+    let message = "";
+
+
+
+    let statusText = "";
+
+
+
+    let statusClass = "";
+
+
+
+
+
+
+
+    if(score >= PASSING_SCORE){
+
+
+
+
+
+
+
+        statusText = "✓ LULUS";
+
+
+
+        statusClass = "lulus";
+
+
+
+
+
+
+
+        if(score >= 90){
+
+
+
+
+
+
+
+            message =
+
+
+
+                "🎉 Sangat Baik! Anda telah menguasai materi Modul 5 Microsoft Word 2016 – Chart dan SmartArt.";
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+
+            message =
+
+
+
+                "👏 Selamat! Anda telah mencapai nilai minimum kelulusan.";
+
+
+
+        }
+
+
+
+
+
+
+
+    }else{
+
+
+
+
+
+
+
+        statusText = "✗ BELUM LULUS";
+
+
+
+        statusClass = "tidak-lulus";
+
+
+
+
+
+
+
+        message =
+
+
+
+            "📚 Nilai Anda belum mencapai batas kelulusan. Pelajari kembali Modul 5 Word dan lakukan latihan.";
+
+
+
+    }
+
+
+
+
+
+
+
+    if(timeUp){
+
+
+
+
+
+
+
+        message =
+
+
+
+            "⏰ Waktu telah habis. Jawaban yang sudah dikerjakan telah dikumpulkan.";
+
+
+
+    }
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("score")
+
+
+
+        .textContent = score;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("resultMessage")
+
+
+
+        .textContent = message;
+
+
+
+
+
+
+
+    const status =
+
+
+
+        document.getElementById("status");
+
+
+
+
+
+
+
+    status.textContent = statusText;
+
+
+
+    status.className =
+
+
+
+        "status " + statusClass;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("resultName")
+
+
+
+        .textContent = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("correctCount")
+
+
+
+        .textContent = correct;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("wrongCount")
+
+
+
+        .textContent = wrong;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("emptyCount")
+
+
+
+        .textContent = empty;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("finalScore")
+
+
+
+        .textContent = score;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("timeResult")
+
+
+
+        .textContent =
+
+
+
+        timeUp
+
+
+
+        ? "Waktu habis"
+
+
+
+        : formatTimeUsed();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("reviewContainer")
+
+
+
+        .innerHTML = reviewHTML;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .style.display = "block";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .scrollIntoView({
+
+
+
+            behavior:"smooth"
+
+
+
+        });
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   KIRIM HASIL KE GOOGLE SHEETS
+
+
+
+========================= */
+
+
+
+function kirimHasilKuis(correct, score, timeUp){
+
+
+
+
+
+
+
+    if(
+
+
+
+        !GOOGLE_SHEET_API_URL ||
+
+
+
+        GOOGLE_SHEET_API_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA"
+
+
+
+    ){
+
+
+
+        console.warn(
+
+
+
+            "URL Google Apps Script belum diisi."
+
+
+
+        );
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    const payload = {
+
+
+
+        jenis: "kuis",
+
+
+
+        nama: participantName,
+
+
+
+        kelas: participantClass,
+
+
+
+        modul: QUIZ_MODULE_NAME,
+
+
+
+        jumlahSoal: TOTAL_QUESTIONS,
+
+
+
+        benar: correct,
+
+
+
+        nilai: score,
+
+
+
+        waktu: timeUp
+
+
+
+            ? "Waktu habis"
+
+
+
+            : formatTimeUsed()
+
+
+
+    };
+
+
+
+
+
+
+
+    fetch(GOOGLE_SHEET_API_URL, {
+
+
+
+        method: "POST",
+
+
+
+        mode: "no-cors",
+
+
+
+        body: JSON.stringify(payload)
+
+
+
+    })
+
+
+
+    .then(function(){
+
+
+
+        console.log(
+
+
+
+            "Hasil kuis berhasil dikirim ke Google Sheets."
+
+
+
+        );
+
+
+
+    })
+
+
+
+    .catch(function(error){
+
+
+
+        console.error(
+
+
+
+            "Gagal mengirim hasil kuis:",
+
+
+
+            error
+
+
+
+        );
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   FORMAT WAKTU
+
+
+
+========================= */
+
+
+
+function formatTimeUsed(){
+
+
+
+
+
+
+
+    const used =
+
+
+
+        QUIZ_DURATION - timeLeft;
+
+
+
+
+
+
+
+    const minutes =
+
+
+
+        Math.floor(used / 60);
+
+
+
+
+
+
+
+    const seconds =
+
+
+
+        used % 60;
+
+
+
+
+
+
+
+    return (
+
+
+
+        String(minutes).padStart(2,"0")
+
+
+
+        + ":" +
+
+
+
+        String(seconds).padStart(2,"0")
+
+
+
+    );
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   ULANGI KUIS
+
+
+
+========================= */
+
+
+
+function retryQuiz(){
+
+    updateTotalQuestionDisplays();
+
+
+
+
+
+
+
+    clearInterval(timerInterval);
+
+
+
+
+
+
+
+    quizFinished = false;
+
+
+
+    quizStarted = false;
+
+
+
+    timeLeft = QUIZ_DURATION;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .reset();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .style.display = "block";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressText")
+
+
+
+        .textContent = "0 / " + TOTAL_QUESTIONS;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressBar")
+
+
+
+        .style.width = "0%";
+
+
+
+
+
+
+
+    updateTimerDisplay();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordError")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordOverlay")
+
+
+
+        .style.display = "flex";
+
+
+
+
+
+
+
+    document.body.classList.add("locked");
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("participantInput")
+
+
+
+        .value = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("classInput")
+
+
+
+        .value = participantClass;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .value = "";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .focus();
+
+
+
+
+
+
+
+    window.scrollTo({
+
+
+
+        top:0,
+
+
+
+        behavior:"smooth"
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
 </script>
-</body></html>
+
+
+
+</body>
+
+
+
+</html>
