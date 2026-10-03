@@ -780,6 +780,33 @@ footer p{
 .btn-next{background:#2e7d32;color:#fff;}
 
 #quizSection,#resultSection{display:none;}
+
+.result-detail{
+    margin:18px 0;
+    padding:14px;
+    background:#f7f7f7;
+    border-radius:8px;
+    text-align:left;
+}
+.result-detail div{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px solid #ddd;
+}
+.result-detail div:last-child{border-bottom:0;}
+.review-item{
+    text-align:left;
+    padding:14px;
+    margin:10px 0;
+    border-radius:8px;
+    border-left:5px solid #999;
+    background:#fafafa;
+}
+.review-item.correct{border-color:#2e7d32;background:#f1f8f3;}
+.review-item.wrong{border-color:#c62828;background:#fff4f4;}
+.review-item.unanswered{border-color:#ef6c00;background:#fff8ed;}
+
 </style>
 
 
@@ -940,100 +967,6 @@ footer p{
      IDENTITAS PESERTA
 
 \========================= -->
-
-
-
-<div
-
-    id="nameSection"
-
-    class="card hidden"
-
->
-
-
-
-    <h2>
-
-        👤 Data Peserta
-
-    </h2>
-
-
-
-    <div class="info">
-
-
-
-        <strong>
-
-            Sebelum memulai:
-
-        </strong>
-
-
-
-        <p>
-
-            Silakan masukkan nama lengkap Anda.
-
-            Nama akan ditampilkan pada hasil kuis.
-
-        </p>
-
-
-
-    </div>
-
-
-
-    <div class="form-group">
-
-
-
-        <label for="namaPeserta">
-
-            Nama Peserta
-
-        </label>
-
-
-
-        <input
-
-            type="text"
-
-            id="namaPeserta"
-
-            placeholder="Masukkan nama lengkap"
-
-        >
-
-
-
-    </div>
-
-
-
-    <button
-
-        type="button"
-
-        class="btn-start"
-
-        onclick="mulaiKuis()"
-
-    >
-
-        🚀 Mulai Kuis
-
-    </button>
-
-
-
-</div>
-
-
 
 
 
@@ -2205,138 +2138,42 @@ footer p{
 
 
 
-<div
 
-    id="resultSection"
-
-    class="card result"
-
->
-
-
-
-    <div class="result-icon">
-
-        🏆
-
-    </div>
-
-
-
-    <h2>
-
-        Kuis Selesai
-
-    </h2>
-
-
+<div id="resultSection" class="card result">
+    <div class="result-icon">🏆</div>
+    <h2>Kuis Selesai</h2>
 
     <div class="result-box">
+        <p><strong>Nama Peserta</strong></p>
+        <p id="hasilNama">-</p>
 
+        <p><strong>Kelas</strong></p>
+        <p id="hasilKelas">-</p>
 
+        <div class="score" id="hasilNilai">0</div>
+        <p>Nilai Akhir</p>
 
-        <p>
-
-            <strong>Nama Peserta</strong>
-
-        </p>
-
-
-
-        <p id="hasilNama">
-
-            -
-
-        </p>
-
-
-
-        <div class="score" id="hasilNilai">
-
-            0
-
-        </div>
-
-
-
-        <p>
-
-            Nilai Akhir
-
-        </p>
-
-
-
-        <div
-
-            class="status"
-
-            id="hasilStatus"
-
-        >
-
-            -
-
-        </div>
-
-
-
+        <div class="status" id="hasilStatus">-</div>
     </div>
 
-
-
-    <div class="info">
-
-
-
-        <p>
-
-            Jumlah soal:
-
-            <strong>15</strong>
-
-        </p>
-
-
-
-        <p>
-
-            Nilai dihitung berdasarkan jumlah
-
-            jawaban benar.
-
-        </p>
-
-
-
+    <div class="result-detail">
+        <div><span>Jumlah Soal</span><strong id="resultTotalQuestions">15</strong></div>
+        <div><span>Jawaban Benar</span><strong id="correctCount">0</strong></div>
+        <div><span>Jawaban Salah</span><strong id="wrongCount">0</strong></div>
+        <div><span>Tidak Dijawab</span><strong id="emptyCount">0</strong></div>
+        <div><span>Nilai</span><strong id="finalScore">0</strong></div>
+        <div><span>Waktu Digunakan</span><strong id="timeResult">00:00</strong></div>
     </div>
 
+    <div class="review">
+        <h2>📖 Kunci Jawaban & Pembahasan</h2>
+        <div id="reviewContainer"></div>
+    </div>
 
-
-    <button
-
-        type="button"
-
-        onclick="location.reload()"
-
-    >
-
+    <button type="button" onclick="retryQuiz()">
         🔄 Ulangi Kuis
-
     </button>
-
-
-
 </div>
-
-
-
-
-
-</div>
-
-
-
 
 
 <!-- =========================
@@ -2386,7 +2223,11 @@ footer p{
 
 
 
+
 <script>
+/* =========================
+   KONFIGURASI STANDAR KUIS
+========================= */
 const PASSWORD_KUIS = "ppt6";
 const TOTAL_QUESTIONS = 15;
 const POINT_PER_QUESTION = 100 / TOTAL_QUESTIONS;
@@ -2394,15 +2235,46 @@ const PASSING_SCORE = 75;
 const DURASI_KUIS = 10 * 60;
 
 const GOOGLE_SHEET_API_URL =
-    "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+"https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
 
-const NAMA_MODUL =
-    "Kuis PPT Modul 6 - Audio, Video dan Animasi";
+const NAMA_MODUL = "Kuis PPT Modul 6 - Audio, Video, dan Efek Animasi";
 
+/* KUNCI JAWABAN ASLI DARI FILE SUMBER */
 const jawabanBenar = {
-    q1:"B", q2:"B", q3:"C", q4:"A", q5:"C",
-    q6:"C", q7:"B", q8:"C", q9:"A", q10:"B",
-    q11:"A", q12:"A", q13:"B", q14:"C", q15:"B"
+    q1: "B",
+    q2: "B",
+    q3: "C",
+    q4: "A",
+    q5: "C",
+    q6: "C",
+    q7: "B",
+    q8: "C",
+    q9: "A",
+    q10: "B",
+    q11: "A",
+    q12: "A",
+    q13: "B",
+    q14: "C",
+    q15: "B"
+};
+
+/* PEMBAHASAN */
+const pembahasan = {
+    q1: "Audio dari komputer dimasukkan melalui tab Insert, kemudian Audio, lalu Audio on My PC.",
+    q2: "Trim Audio digunakan untuk memotong bagian awal atau akhir audio.",
+    q3: "Automatically membuat audio mulai berjalan otomatis ketika slide ditampilkan.",
+    q4: "Video dari komputer dimasukkan melalui Insert, Video, lalu Video on My PC.",
+    q5: "Trim Video digunakan untuk memotong bagian video yang tidak diperlukan.",
+    q6: "Entrance adalah kelompok efek yang digunakan ketika objek masuk atau muncul pada slide.",
+    q7: "Emphasis digunakan untuk memberikan penekanan pada objek yang sudah berada di slide.",
+    q8: "Exit adalah kelompok efek yang membuat objek keluar atau menghilang dari slide.",
+    q9: "Motion Path membuat objek bergerak mengikuti jalur tertentu.",
+    q10: "Animation Pane digunakan untuk melihat dan mengatur urutan animasi pada slide.",
+    q11: "Effect Options digunakan untuk mengatur karakteristik atau arah efek animasi.",
+    q12: "Trigger digunakan untuk memulai animasi berdasarkan tindakan atau objek tertentu.",
+    q13: "With Previous membuat animasi berjalan bersamaan dengan animasi sebelumnya.",
+    q14: "Duration menentukan berapa lama efek animasi berlangsung.",
+    q15: "Delay menentukan jeda waktu sebelum animasi dimulai."
 };
 
 let participantName = "";
@@ -2411,7 +2283,10 @@ let waktu = DURASI_KUIS;
 let intervalTimer = null;
 let quizFinished = false;
 
-function startQuiz(){
+/* =========================
+   MULAI KUIS
+========================= */
+function startQuiz() {
     const nama = document.getElementById("participantInput").value.trim();
     const kelas = document.getElementById("classInput").value.trim();
     const password = document.getElementById("quizPassword").value.trim();
@@ -2419,17 +2294,17 @@ function startQuiz(){
 
     error.style.display = "none";
 
-    if(!nama){
+    if (!nama) {
         error.textContent = "❌ Nama peserta harus diisi.";
         error.style.display = "block";
         return;
     }
-    if(!kelas){
+    if (!kelas) {
         error.textContent = "❌ Kelas harus diisi.";
         error.style.display = "block";
         return;
     }
-    if(password !== PASSWORD_KUIS){
+    if (password !== PASSWORD_KUIS) {
         error.textContent = "❌ Password salah.";
         error.style.display = "block";
         return;
@@ -2437,78 +2312,83 @@ function startQuiz(){
 
     participantName = nama;
     participantClass = kelas;
-    quizFinished = false;
     waktu = DURASI_KUIS;
-
-    document.getElementById("displayName").textContent = participantName;
-    document.getElementById("displayClass").textContent = participantClass;
+    quizFinished = false;
 
     document.getElementById("passwordOverlay").style.display = "none";
     document.getElementById("quizSection").style.display = "block";
     document.getElementById("resultSection").style.display = "none";
-    document.getElementById("resultSection").style.display = "none";
+
+    const displayName = document.getElementById("displayName");
+    const displayClass = document.getElementById("displayClass");
+    if (displayName) displayName.textContent = participantName;
+    if (displayClass) displayClass.textContent = participantClass;
 
     updateProgress();
     tampilkanTimer();
     mulaiTimer();
 
-    window.scrollTo({top:0,behavior:"smooth"});
+    window.scrollTo({top:0, behavior:"smooth"});
 }
 
-function mulaiTimer(){
+/* =========================
+   TIMER
+========================= */
+function mulaiTimer() {
     clearInterval(intervalTimer);
-    intervalTimer = setInterval(function(){
+    intervalTimer = setInterval(function() {
         waktu--;
         tampilkanTimer();
 
-        if(waktu <= 0){
+        if (waktu <= 0) {
             clearInterval(intervalTimer);
-            alert("Waktu kuis telah habis. Jawaban akan dikumpulkan otomatis.");
+            alert("⏰ Waktu kuis telah habis. Jawaban akan dikumpulkan otomatis.");
             selesaiKuis(true);
         }
-    },1000);
+    }, 1000);
 }
 
-function tampilkanTimer(){
-    let menit = Math.floor(waktu / 60);
-    let detik = waktu % 60;
+function tampilkanTimer() {
+    const menit = Math.floor(waktu / 60);
+    const detik = waktu % 60;
+    const timer = document.getElementById("timer");
 
-    document.getElementById("timer").textContent =
-        String(menit).padStart(2,"0") + ":" +
-        String(detik).padStart(2,"0");
-
-    const timerBox = document.getElementById("timerBox");
-    if(timerBox){
-        timerBox.classList.toggle("timer-warning", waktu <= 60);
+    if (timer) {
+        timer.textContent =
+            String(menit).padStart(2,"0") + ":" +
+            String(detik).padStart(2,"0");
     }
 }
 
-function updateProgress(){
+/* =========================
+   PROGRESS
+========================= */
+function updateProgress() {
     let answered = 0;
 
-    for(let i=1;i<=TOTAL_QUESTIONS;i++){
-        if(document.querySelector('input[name="q'+i+'"]:checked')){
+    for (let i=1; i<=TOTAL_QUESTIONS; i++) {
+        if (document.querySelector('input[name="q' + i + '"]:checked')) {
             answered++;
         }
     }
 
-    const percent = (answered / TOTAL_QUESTIONS) * 100;
     const bar = document.getElementById("progressBar");
-    if(bar) bar.style.width = percent + "%";
-
     const text = document.getElementById("progressText");
-    if(text) text.textContent =
-        answered + " / " + TOTAL_QUESTIONS + " soal dijawab";
+
+    if (bar) bar.style.width = ((answered / TOTAL_QUESTIONS) * 100) + "%";
+    if (text) text.textContent = answered + " / " + TOTAL_QUESTIONS + " soal dijawab";
 }
 
-document.addEventListener("change",function(e){
-    if(e.target.matches('input[type="radio"]')){
-        updateProgress();
-    }
+document.addEventListener("change", function(e) {
+    if (e.target.matches('input[type="radio"]')) updateProgress();
 });
 
-function selesaiKuis(otomatis){
-    if(quizFinished) return;
+/* =========================
+   SELESAI & NILAI
+========================= */
+function selesaiKuis(otomatis=false) {
+    if (quizFinished) return;
+
     quizFinished = true;
     clearInterval(intervalTimer);
 
@@ -2517,38 +2397,40 @@ function selesaiKuis(otomatis){
     let tidakDijawab = 0;
     let reviewHTML = "";
 
-    for(let i=1;i<=TOTAL_QUESTIONS;i++){
-        const selected =
-            document.querySelector('input[name="q'+i+'"]:checked');
+    for (let i=1; i<=TOTAL_QUESTIONS; i++) {
+        const pilihan = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
 
-        const userAnswer = selected ? selected.value : "";
-        const correctAnswer = jawabanBenar["q"+i];
+        const jawaban = pilihan ? pilihan.value : "";
+        const kunci = jawabanBenar["q" + i];
 
-        let state = "unanswered";
+        let statusClass = "unanswered";
+        let statusText = "Tidak dijawab";
 
-        if(!selected){
+        if (!pilihan) {
             tidakDijawab++;
-        }else if(userAnswer === correctAnswer){
+        } else if (jawaban === kunci) {
             benar++;
-            state = "correct";
-        }else{
+            statusClass = "correct";
+            statusText = "Benar";
+        } else {
             salah++;
-            state = "wrong";
+            statusClass = "wrong";
+            statusText = "Salah";
         }
 
         reviewHTML += `
-            <div class="review-item ${state}">
-                <strong>Soal ${i}</strong>
-                <p>Jawaban Anda:
-                    <strong>${userAnswer || "Tidak dijawab"}</strong>
-                </p>
-                <p>Jawaban benar:
-                    <strong>${correctAnswer}</strong>
-                </p>
+            <div class="review-item ${statusClass}">
+                <strong>Soal ${i} — ${statusText}</strong>
+                <p>Jawaban Anda: <strong>${jawaban || "Tidak dijawab"}</strong></p>
+                <p>Kunci Jawaban: <strong>${kunci}</strong></p>
+                <p><strong>Pembahasan:</strong> ${pembahasan["q"+i]}</p>
             </div>
         `;
     }
 
+    /* NILAI DINAMIS BERDASARKAN JUMLAH SOAL AKTUAL */
     const nilai = Math.round((benar / TOTAL_QUESTIONS) * 100);
     const waktuDigunakan = DURASI_KUIS - waktu;
 
@@ -2565,67 +2447,74 @@ function selesaiKuis(otomatis){
     document.getElementById("resultTotalQuestions").textContent = TOTAL_QUESTIONS;
     document.getElementById("reviewContainer").innerHTML = reviewHTML;
 
-    const m = Math.floor(waktuDigunakan/60);
-    const d = waktuDigunakan%60;
+    const menit = Math.floor(waktuDigunakan / 60);
+    const detik = waktuDigunakan % 60;
     document.getElementById("timeResult").textContent =
-        String(m).padStart(2,"0") + ":" + String(d).padStart(2,"0");
+        String(menit).padStart(2,"0") + ":" +
+        String(detik).padStart(2,"0");
 
     const status = document.getElementById("hasilStatus");
-    if(nilai >= PASSING_SCORE){
+
+    if (nilai >= PASSING_SCORE) {
         status.textContent = "LULUS";
         status.className = "status lulus";
-    }else{
+    } else {
         status.textContent = "BELUM LULUS";
         status.className = "status tidak-lulus";
     }
 
-    if(otomatis){
-        const info = document.createElement("p");
-        info.style.marginTop = "10px";
-        info.textContent = "⏰ Waktu habis. Jawaban dikumpulkan otomatis.";
-        document.getElementById("hasilStatus").after(info);
-    }
+    kirimKeGoogleSheet(
+        benar, salah, tidakDijawab, nilai,
+        waktuDigunakan, otomatis
+    );
 
-    kirimHasil(benar,salah,tidakDijawab,nilai,waktuDigunakan,otomatis);
-    window.scrollTo({top:0,behavior:"smooth"});
+    window.scrollTo({top:0, behavior:"smooth"});
 }
 
-function kirimHasil(benar,salah,tidakDijawab,nilai,waktuDigunakan,otomatis){
-    if(!GOOGLE_SHEET_API_URL) return;
-
-    const menit = Math.floor(waktuDigunakan/60);
-    const detik = waktuDigunakan%60;
+/* =========================
+   GOOGLE SHEETS
+========================= */
+function kirimKeGoogleSheet(
+    benar, salah, tidakDijawab, nilai,
+    waktuDigunakan, otomatis
+) {
+    const menit = Math.floor(waktuDigunakan / 60);
+    const detik = waktuDigunakan % 60;
 
     const payload = {
-        jenis:"kuis",
-        nama:participantName,
-        kelas:participantClass,
-        modul:NAMA_MODUL,
-        jumlahSoal:TOTAL_QUESTIONS,
-        benar:benar,
-        salah:salah,
-        tidakDijawab:tidakDijawab,
-        nilai:nilai,
-        kkm:PASSING_SCORE,
-        waktu:String(menit).padStart(2,"0")+":"+String(detik).padStart(2,"0"),
-        status:nilai >= PASSING_SCORE ? "LULUS" : "BELUM LULUS",
-        otomatis:otomatis,
-        tanggal:new Date().toLocaleString("id-ID")
+        jenis: "kuis",
+        nama: participantName,
+        kelas: participantClass,
+        modul: NAMA_MODUL,
+        jumlahSoal: TOTAL_QUESTIONS,
+        benar: benar,
+        salah: salah,
+        tidakDijawab: tidakDijawab,
+        nilai: nilai,
+        kkm: PASSING_SCORE,
+        status: nilai >= PASSING_SCORE ? "LULUS" : "BELUM LULUS",
+        waktu: String(menit).padStart(2,"0") + ":" + String(detik).padStart(2,"0"),
+        selesaiOtomatis: otomatis ? "Ya" : "Tidak",
+        tanggal: new Date().toLocaleString("id-ID")
     };
 
-    fetch(GOOGLE_SHEET_API_URL,{
-        method:"POST",
-        mode:"no-cors",
-        body:JSON.stringify(payload)
-    }).catch(function(err){
-        console.error("Gagal mengirim hasil:",err);
-    });
+    fetch(GOOGLE_SHEET_API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload)
+    })
+    .then(() => console.log("Hasil kuis dikirim ke Google Sheets."))
+    .catch(err => console.error("Gagal mengirim ke Google Sheets:", err));
 }
 
-function retryQuiz(){
+/* =========================
+   ULANGI
+========================= */
+function retryQuiz() {
     clearInterval(intervalTimer);
 
-    document.getElementById("quizForm").reset();
+    const form = document.getElementById("quizForm");
+    if (form) form.reset();
 
     quizFinished = false;
     waktu = DURASI_KUIS;
@@ -2641,9 +2530,10 @@ function retryQuiz(){
 
     updateProgress();
     tampilkanTimer();
-    window.scrollTo({top:0,behavior:"smooth"});
+    window.scrollTo({top:0, behavior:"smooth"});
 }
 </script>
+
 
 
 
