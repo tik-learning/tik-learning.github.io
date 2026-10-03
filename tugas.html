@@ -39,10 +39,10 @@
 
         header p {
             margin: 5px 0 0;
-            opacity: 0.9;
+            opacity: .9;
         }
 
-        /* ================= NAVIGASI ================= */
+        /* ================= NAV ================= */
 
         nav {
             background: white;
@@ -89,7 +89,6 @@
         .welcome h2 {
             margin-top: 0;
             color: #0069a6;
-            font-size: 25px;
         }
 
         .welcome p {
@@ -97,20 +96,145 @@
             line-height: 1.7;
         }
 
-        /* ================= CLASSROOM CARD ================= */
+        /* ================= PASSWORD ================= */
 
-        .classroom-card {
+        .access-card {
+            max-width: 600px;
+            margin: auto;
+
             background: white;
             border-radius: 18px;
             padding: 35px;
+
             text-align: center;
+
             box-shadow: 0 6px 20px #00000014;
             border: 1px solid #e4edf3;
+        }
+
+        .lock-icon {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eaf5fb;
+            border-radius: 50%;
+
+            font-size: 38px;
+        }
+
+        .access-card h2 {
+            margin: 0 0 10px;
+            color: #17324d;
+        }
+
+        .access-card p {
+            color: #607d8b;
+            line-height: 1.6;
+        }
+
+        .password-box {
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .password-box label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: 600;
+            color: #17324d;
+        }
+
+        .password-input {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .password-input:focus {
+            border-color: #0788c9;
+            box-shadow: 0 0 0 3px #0788c922;
+        }
+
+        .button {
+            border: none;
+            cursor: pointer;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            transition: .2s;
+        }
+
+        .btn-login {
+            width: 100%;
+
+            margin-top: 15px;
+
+            background: #0788c9;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: #0069a6;
+        }
+
+        .error {
+            display: none;
+
+            margin-top: 12px;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+            background: #ffebee;
+            color: #c62828;
+
+            font-size: 13px;
+        }
+
+        /* ================= CLASSROOM ================= */
+
+        #classroomContent {
+            display: none;
+        }
+
+        .classroom-card {
+            max-width: 700px;
+            margin: auto;
+
+            background: white;
+            border-radius: 18px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            box-shadow: 0 6px 20px #00000014;
         }
 
         .classroom-icon {
             width: 80px;
             height: 80px;
+
             margin: 0 auto 20px;
 
             display: flex;
@@ -125,25 +249,24 @@
 
         .classroom-card h2 {
             margin: 0 0 12px;
-            color: #17324d;
         }
 
         .classroom-card p {
-            max-width: 650px;
-            margin: 0 auto 15px;
-            line-height: 1.7;
             color: #607d8b;
+            line-height: 1.7;
         }
 
-        /* ================= INFO ================= */
-
         .info-box {
-            max-width: 600px;
             margin: 25px auto;
 
+            max-width: 550px;
+
             background: #f8fbfd;
+
             border: 1px solid #dceaf2;
+
             border-radius: 12px;
+
             padding: 18px;
 
             text-align: left;
@@ -152,9 +275,11 @@
         .info-row {
             display: flex;
             justify-content: space-between;
+
             gap: 15px;
 
-            padding: 8px 0;
+            padding: 9px 0;
+
             border-bottom: 1px solid #e8eef2;
 
             font-size: 14px;
@@ -170,10 +295,7 @@
 
         .info-value {
             font-weight: 700;
-            color: #17324d;
         }
-
-        /* ================= BUTTON ================= */
 
         .classroom-button {
             display: inline-block;
@@ -188,37 +310,25 @@
             border-radius: 8px;
 
             font-weight: 700;
-            font-size: 15px;
 
             margin-top: 10px;
-
-            transition: 0.2s;
         }
 
         .classroom-button:hover {
             background: #1557b0;
-            transform: translateY(-1px);
         }
 
-        .classroom-button span {
-            margin-right: 6px;
-        }
+        .success {
+            margin-top: 20px;
 
-        /* ================= NOTE ================= */
+            background: #e8f5e9;
+            color: #2e7d32;
 
-        .note {
-            margin-top: 25px;
-
-            background: #fff8e1;
-            border-left: 5px solid #f9ab00;
-
-            padding: 15px 18px;
+            padding: 12px;
 
             border-radius: 8px;
 
-            color: #6d4c00;
             font-size: 13px;
-            line-height: 1.6;
         }
 
         /* ================= FOOTER ================= */
@@ -234,8 +344,6 @@
             font-size: 13px;
         }
 
-        /* ================= RESPONSIVE ================= */
-
         @media (max-width: 700px) {
 
             .nav-container {
@@ -244,22 +352,17 @@
 
             nav a {
                 padding: 13px 0;
-                font-size: 13px;
             }
 
+            .access-card,
             .classroom-card {
                 padding: 25px 18px;
-            }
-
-            .welcome {
-                padding: 23px;
             }
 
             .info-row {
                 flex-direction: column;
                 gap: 3px;
             }
-
         }
     </style>
 </head>
@@ -269,6 +372,7 @@
 <!-- ================= HEADER ================= -->
 
 <header>
+
     <div class="container">
 
         <h1>TIK LEARNING</h1>
@@ -278,6 +382,7 @@
         </p>
 
     </div>
+
 </header>
 
 
@@ -287,37 +392,21 @@
 
     <div class="nav-container">
 
-        <a href="index.html">
-            Beranda
-        </a>
+        <a href="index.html">Beranda</a>
 
-        <a href="autobiografi.html">
-            Autobiografi
-        </a>
+        <a href="autobiografi.html">Autobiografi</a>
 
-        <a href="materi.html">
-            Materi
-        </a>
+        <a href="materi.html">Materi</a>
 
-        <a href="tugas.html">
-            Tugas
-        </a>
+        <a href="tugas.html">Tugas</a>
 
-        <a href="kelas.html">
-            Kelas Saya
-        </a>
+        <a href="kelas.html">Kelas Saya</a>
 
-        <a href="galeri.html">
-            Galeri
-        </a>
+        <a href="galeri.html">Galeri</a>
 
-        <a href="perpustakaan.html">
-            Perpustakaan
-        </a>
+        <a href="perpustakaan.html">Perpustakaan</a>
 
-        <a href="ruang-bertanya.html">
-            Ruang Bertanya
-        </a>
+        <a href="ruang-bertanya.html">Ruang Bertanya</a>
 
     </div>
 
@@ -331,7 +420,7 @@
     <div class="container">
 
 
-        <!-- WELCOME -->
+        <!-- DESKRIPSI -->
 
         <section class="welcome">
 
@@ -354,30 +443,79 @@
         </section>
 
 
-        <!-- GOOGLE CLASSROOM -->
+        <!-- ================= PASSWORD ================= -->
 
-        <section class="classroom-card">
+        <section class="access-card" id="passwordContent">
 
+            <div class="lock-icon">
+                🔐
+            </div>
+
+            <h2>
+                Akses Tugas
+            </h2>
+
+            <p>
+                Masukkan password yang diberikan oleh instruktur
+                untuk mengakses Google Classroom.
+            </p>
+
+
+            <div class="password-box">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    class="password-input"
+                    placeholder="Masukkan password"
+                    autocomplete="off"
+                    onkeydown="if(event.key==='Enter') cekPassword()"
+                >
+
+                <button
+                    class="button btn-login"
+                    onclick="cekPassword()"
+                >
+                    🔓 Masuk ke Tugas
+                </button>
+
+                <div
+                    id="errorMessage"
+                    class="error"
+                >
+                    ❌ Password salah. Silakan coba kembali.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CLASSROOM ================= -->
+
+        <section
+            class="classroom-card"
+            id="classroomContent"
+        >
 
             <div class="classroom-icon">
                 📚
             </div>
 
-
             <h2>
                 Google Classroom
             </h2>
 
-
             <p>
-                Tugas harian pembelajaran TIK tersedia di
-                Google Classroom. Silakan klik tombol di bawah
-                untuk masuk ke kelas dan melihat tugas yang
-                diberikan oleh instruktur.
+                Akses berhasil. Silakan klik tombol di bawah
+                untuk membuka Google Classroom dan melihat
+                tugas harian Anda.
             </p>
 
-
-            <!-- INFO -->
 
             <div class="info-box">
 
@@ -410,19 +548,6 @@
                 <div class="info-row">
 
                     <span class="info-label">
-                        Kode Kelas
-                    </span>
-
-                    <span class="info-value">
-                        xlpz4hbm
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span class="info-label">
                         Jenis Tugas
                     </span>
 
@@ -435,36 +560,25 @@
             </div>
 
 
-            <!-- BUTTON -->
-
             <a
                 href="https://classroom.google.com/c/ODczNzQ4Mjg4NTUx?cjc=xlpz4hbm"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="classroom-button"
             >
-
-                <span>🚀</span>
-                Buka Google Classroom
-
+                🚀 Buka Google Classroom
             </a>
 
 
-            <!-- NOTE -->
+            <div class="success">
 
-            <div class="note">
-
-                <strong>💡 Informasi:</strong><br>
-
-                Pastikan Anda sudah login menggunakan akun Google
-                yang terdaftar pada kelas sebelum membuka Google
-                Classroom.
+                ✅ Akses berhasil.
+                Pastikan Anda masuk menggunakan akun Google
+                yang telah terdaftar sebagai peserta.
 
             </div>
 
-
         </section>
-
 
     </div>
 
@@ -481,6 +595,67 @@
 
 </footer>
 
+
+<script>
+
+/* =====================================================
+   PASSWORD AKSES GOOGLE CLASSROOM
+   ===================================================== */
+
+const PASSWORD_TUGAS = "BLKSUBANG2026";
+
+
+function cekPassword() {
+
+    const input = document
+        .getElementById("password")
+        .value;
+
+    const error = document
+        .getElementById("errorMessage");
+
+
+    if (input === PASSWORD_TUGAS) {
+
+        /*
+        Password benar
+        */
+
+        document
+            .getElementById("passwordContent")
+            .style.display = "none";
+
+
+        document
+            .getElementById("classroomContent")
+            .style.display = "block";
+
+
+        error.style.display = "none";
+
+    }
+
+    else {
+
+        /*
+        Password salah
+        */
+
+        error.style.display = "block";
+
+        document
+            .getElementById("password")
+            .value = "";
+
+        document
+            .getElementById("password")
+            .focus();
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
