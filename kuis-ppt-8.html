@@ -1,310 +1,5353 @@
 <!DOCTYPE html>
+
+
+
+
+
+
+
 <html lang="id">
+
+
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kuis PowerPoint Modul 8 - Mencetak dan Export Presentasi</title>
+
+
+
+<meta charset="utf-8"/>
+
+
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+<title>Kuis PPT Modul 8 - Mencetak dan Export Presentasi</title>
+
+
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f9;color:#263238;line-height:1.6}
-.header{background:linear-gradient(135deg,#b71c1c,#e53935);color:white;text-align:center;padding:30px 20px;box-shadow:0 4px 15px rgba(0,0,0,.15)}
-.header .badge{display:inline-block;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:10px}
-.header h1{font-size:27px;margin-bottom:5px} .header p{font-size:15px}
-.container{max-width:850px;margin:30px auto;padding:0 18px}
-.card{background:white;border-radius:15px;padding:28px;margin-bottom:25px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
-.card h2{color:#b71c1c;margin-bottom:15px}
-.participant{display:flex;justify-content:space-between;gap:20px;align-items:center}
-.participant-name{font-size:20px;font-weight:bold;margin-top:4px}
-.form-group{margin-bottom:18px} .form-group label{display:block;font-weight:bold;margin-bottom:7px}
-.form-group input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;font-size:16px;outline:none}
-.form-group input:focus{border-color:#e53935}
-button,.btn{border:none;cursor:pointer;border-radius:8px;padding:13px 22px;font-size:16px;font-weight:bold;background:#e53935;color:white;transition:.2s;text-decoration:none;display:inline-block}
-button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 5px 12px rgba(0,0,0,.15)}
-.btn-start,.btn-submit{width:100%} .btn-submit{background:#2e7d32;margin-top:20px}
-.info{background:#ffebee;border-left:5px solid #e53935;padding:15px;border-radius:8px;margin-bottom:20px}
-.timer-card{padding:18px;position:sticky;top:10px;z-index:100;background:#263238;color:white}
-.timer-container{display:flex;justify-content:space-between;align-items:center;gap:15px}
-.timer-label{font-size:13px} .timer{font-size:30px;font-weight:bold}
-.timer-warning{background:#b71c1c}
-.progress-text{display:flex;justify-content:space-between;font-weight:bold;margin-bottom:8px}
-.progress{height:12px;background:#e0e0e0;border-radius:10px;overflow:hidden}
-.progress-bar{height:100%;width:0;background:#e53935;transition:.2s}
-.question{border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:18px;background:#fff}
-.question h3{font-size:17px;margin-bottom:13px}
-.option{display:block;padding:10px 12px;margin:7px 0;border:1px solid #e0e0e0;border-radius:7px;cursor:pointer;transition:.2s}
-.option:hover{background:#ffebee} .option input{margin-right:8px}
-.result{display:none;text-align:center} .result-icon{font-size:60px;margin-bottom:10px}
-.result h2{color:#2e7d32} .score{font-size:50px;font-weight:bold;color:#b71c1c;margin:15px 0}
-.result-box{background:#f5f5f5;border-radius:10px;padding:20px;margin:20px 0}
-.status{font-size:20px;font-weight:bold;margin-top:10px} .lulus{color:#2e7d32} .tidak-lulus{color:#c62828}
-.result-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.result-detail div{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:14px}
-.result-detail span{display:block;font-size:13px;color:#607d8b} .result-detail strong{display:block;font-size:20px;margin-top:4px}
-.review{text-align:left;margin-top:25px} .review-item{border:1px solid #e0e0e0;border-radius:10px;padding:15px;margin-bottom:12px;background:#fff}
-.review-item.correct{border-left:5px solid #2e7d32} .review-item.wrong{border-left:5px solid #c62828}
-.review-item h4{margin-bottom:8px} .review-item p{margin:5px 0}
-.button-area{margin-top:20px;text-align:center}
-.footer{background:#263238;color:white;text-align:center;padding:25px 15px;margin-top:40px}
-.hidden{display:none!important}
-@media(max-width:600px){.header h1{font-size:23px}.card{padding:20px}.timer-container{flex-direction:column;align-items:center;text-align:center}.result-detail{grid-template-columns:1fr 1fr}}
+
+
+
+*{
+
+
+
+    box-sizing:border-box;
+
+
+
+    margin:0;
+
+
+
+    padding:0;
+
+
+
+}
+
+
+
+
+
+
+
+body{
+
+
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+
+
+    background:#f4f6f9;
+
+
+
+    color:#263238;
+
+
+
+    line-height:1.6;
+
+
+
+}
+
+
+
+
+
+
+
+body.locked{
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   HEADER
+
+
+
+========================= */
+
+
+
+.header{
+
+
+
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+
+
+
+    color:white;
+
+
+
+    padding:45px 20px 60px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.badge{
+
+
+
+    display:inline-block;
+
+
+
+    background:rgba(255,255,255,.16);
+
+
+
+    padding:7px 20px;
+
+
+
+    border-radius:30px;
+
+
+
+    font-size:13px;
+
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+
+
+.header h1{
+
+
+
+    font-size:34px;
+
+
+
+    margin-bottom:8px;
+
+
+
+}
+
+
+
+
+
+
+
+.header p{
+
+
+
+    font-size:16px;
+
+
+
+    opacity:.9;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   CONTAINER
+
+
+
+========================= */
+
+
+
+.container{
+
+
+
+    max-width:900px;
+
+
+
+    margin:-28px auto 50px;
+
+
+
+    padding:0 18px;
+
+
+
+}
+
+
+
+
+
+
+
+.card{
+
+
+
+    background:white;
+
+
+
+    border-radius:16px;
+
+
+
+    padding:28px;
+
+
+
+    margin-bottom:20px;
+
+
+
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+
+
+
+}
+
+
+
+
+
+
+
+.card h2{
+
+
+
+    color:#c62828;
+
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PASSWORD OVERLAY
+
+
+
+========================= */
+
+
+
+.password-overlay{
+
+
+
+    position:fixed;
+
+
+
+    inset:0;
+
+
+
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
+    z-index:99999;
+
+
+
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box{
+
+
+
+    background:white;
+
+
+
+    width:100%;
+
+
+
+    max-width:450px;
+
+
+
+    padding:35px 30px;
+
+
+
+    border-radius:18px;
+
+
+
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.password-icon{
+
+
+
+    font-size:55px;
+
+
+
+    margin-bottom:10px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box h2{
+
+
+
+    color:#c62828;
+
+
+
+    margin-bottom:8px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box p{
+
+
+
+    color:#607d8b;
+
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.name-input,
+
+
+
+.password-input{
+
+
+
+    width:100%;
+
+
+
+    padding:14px 16px;
+
+
+
+    border:2px solid #dfe5e8;
+
+
+
+    border-radius:9px;
+
+
+
+    font-size:16px;
+
+
+
+    outline:none;
+
+
+
+    margin-bottom:12px;
+
+
+
+}
+
+
+
+
+
+
+
+.name-input:focus,
+
+
+
+.password-input:focus{
+
+
+
+    border-color:#c62828;
+
+
+
+}
+
+
+
+
+
+
+
+.password-btn{
+
+
+
+    width:100%;
+
+
+
+    border:none;
+
+
+
+    padding:14px;
+
+
+
+    border-radius:9px;
+
+
+
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+
+
+
+    color:white;
+
+
+
+    font-size:16px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+}
+
+
+
+
+
+
+
+.password-btn:hover{
+
+
+
+    background:#b71c1c;
+
+
+
+}
+
+
+
+
+
+
+
+.password-error{
+
+
+
+    display:none;
+
+
+
+    color:#d32f2f;
+
+
+
+    background:#fff0f0;
+
+
+
+    padding:10px;
+
+
+
+    border-radius:8px;
+
+
+
+    margin-bottom:12px;
+
+
+
+    font-size:14px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-info{
+
+
+
+    margin-top:18px;
+
+
+
+    font-size:13px;
+
+
+
+    color:#78909c;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PESERTA
+
+
+
+========================= */
+
+
+
+.participant{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    align-items:center;
+
+
+
+    gap:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.participant-name{
+
+
+
+    font-size:18px;
+
+
+
+    font-weight:600;
+
+
+
+    color:#c62828;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TIMER
+
+
+
+========================= */
+
+
+
+.timer-card{
+
+
+
+    position:sticky;
+
+
+
+    top:10px;
+
+
+
+    z-index:100;
+
+
+
+}
+
+
+
+
+
+
+
+.timer-container{
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:space-between;
+
+
+
+    gap:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.timer-label{
+
+
+
+    font-size:14px;
+
+
+
+    color:#607d8b;
+
+
+
+}
+
+
+
+
+
+
+
+.timer{
+
+
+
+    font-size:30px;
+
+
+
+    font-weight:bold;
+
+
+
+    color:#c62828;
+
+
+
+    background:#eaf7ef;
+
+
+
+    padding:8px 18px;
+
+
+
+    border-radius:10px;
+
+
+
+    min-width:120px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.timer.warning-time{
+
+
+
+    color:#d97706;
+
+
+
+    background:#fff7e6;
+
+
+
+}
+
+
+
+
+
+
+
+.timer.danger-time{
+
+
+
+    color:#d32f2f;
+
+
+
+    background:#fff0f0;
+
+
+
+    animation:pulse 1s infinite;
+
+
+
+}
+
+
+
+
+
+
+
+@keyframes pulse{
+
+
+
+    50%{
+
+
+
+        transform:scale(1.03);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   INFO
+
+
+
+========================= */
+
+
+
+.info{
+
+
+
+    background:#eaf7ef;
+
+
+
+    border-left:5px solid #107c41;
+
+
+
+    padding:16px;
+
+
+
+    border-radius:9px;
+
+
+
+}
+
+
+
+
+
+
+
+.warning{
+
+
+
+    background:#fff7e6;
+
+
+
+    border-left:5px solid #f39c12;
+
+
+
+    padding:16px;
+
+
+
+    border-radius:9px;
+
+
+
+    margin-top:15px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PROGRESS
+
+
+
+========================= */
+
+
+
+.progress-text{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    font-size:14px;
+
+
+
+    margin-bottom:7px;
+
+
+
+}
+
+
+
+
+
+
+
+.progress{
+
+
+
+    width:100%;
+
+
+
+    height:10px;
+
+
+
+    background:#e0e0e0;
+
+
+
+    border-radius:20px;
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+
+
+.progress-bar{
+
+
+
+    width:0%;
+
+
+
+    height:100%;
+
+
+
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   QUESTION
+
+
+
+========================= */
+
+
+
+.question-number{color:#c62828;font-weight:700;margin-bottom:8px;}
+
+.question-text{font-weight:700;margin-bottom:13px;}
+
+.question{
+
+
+
+    margin-bottom:28px;
+
+
+
+    padding-bottom:25px;
+
+
+
+    border-bottom:1px solid #e5e5e5;
+
+
+
+}
+
+
+
+
+
+
+
+.question:last-child{
+
+
+
+    border-bottom:none;
+
+
+
+}
+
+
+
+
+
+
+
+.question-number{
+
+
+
+    color:#c62828;
+
+
+
+    font-weight:bold;
+
+
+
+    margin-bottom:7px;
+
+
+
+}
+
+
+
+
+
+
+
+.question-text{
+
+
+
+    font-size:17px;
+
+
+
+    font-weight:600;
+
+
+
+    margin-bottom:14px;
+
+
+
+}
+
+
+
+
+
+
+
+.option{
+
+
+
+    display:block;
+
+
+
+    padding:12px 15px;
+
+
+
+    margin:9px 0;
+
+
+
+    border:1px solid #d9dfe3;
+
+
+
+    border-radius:9px;
+
+
+
+    cursor:pointer;
+
+
+
+    transition:.2s;
+
+
+
+}
+
+
+
+
+
+
+
+.option:hover{
+
+
+
+    background:#f0faf4;
+
+
+
+    border-color:#c62828;
+
+
+
+}
+
+
+
+
+
+
+
+.option input{
+
+
+
+    margin-right:9px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   BUTTON
+
+
+
+========================= */
+
+
+
+.button-area{
+
+
+
+    display:flex;
+
+
+
+    justify-content:center;
+
+
+
+    gap:12px;
+
+
+
+    flex-wrap:wrap;
+
+
+
+    margin-top:25px;
+
+
+
+}
+
+
+
+
+
+
+
+.btn{
+
+
+
+    border:none;
+
+
+
+    padding:13px 25px;
+
+
+
+    border-radius:9px;
+
+
+
+    color:white;
+
+
+
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+
+
+
+    font-size:15px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+    text-decoration:none;
+
+
+
+}
+
+
+
+
+
+
+
+.btn:hover{
+
+
+
+    background:#b71c1c;
+
+
+
+}
+
+
+
+
+
+
+
+.btn.secondary{
+
+
+
+    background:#607d8b;
+
+
+
+}
+
+
+
+
+
+
+
+.btn.blue{
+
+
+
+    background:#2878d4;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   RESULT
+
+
+
+========================= */
+
+
+
+#result{
+
+
+
+    display:none;
+
+
+
+}
+
+
+
+
+
+
+
+.score{
+
+
+
+    text-align:center;
+
+
+
+    font-size:58px;
+
+
+
+    font-weight:bold;
+
+
+
+    color:#c62828;
+
+
+
+    margin:10px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.result-message{
+
+
+
+    text-align:center;
+
+
+
+    font-size:18px;
+
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.status{
+
+
+
+    text-align:center;
+
+
+
+    padding:14px;
+
+
+
+    border-radius:10px;
+
+
+
+    font-size:20px;
+
+
+
+    font-weight:bold;
+
+
+
+    margin:20px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.status.lulus{
+
+
+
+    color:#c62828;
+
+
+
+    background:#eaf7ef;
+
+
+
+}
+
+
+
+
+
+
+
+.status.tidak-lulus{
+
+
+
+    color:#d32f2f;
+
+
+
+    background:#fff0f0;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail{
+
+
+
+    background:#f7f9fa;
+
+
+
+    border-radius:10px;
+
+
+
+    padding:18px;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail div{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    gap:15px;
+
+
+
+    padding:8px 0;
+
+
+
+    border-bottom:1px solid #e4e4e4;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail div:last-child{
+
+
+
+    border-bottom:none;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   REVIEW
+
+
+
+========================= */
+
+
+
+.review{
+
+
+
+    margin-top:25px;
+
+
+
+}
+
+
+
+
+
+
+
+.review-item{
+
+
+
+    padding:15px;
+
+
+
+    margin:10px 0;
+
+
+
+    border-radius:9px;
+
+
+
+    border-left:5px solid;
+
+
+
+}
+
+
+
+
+
+
+
+.correct{
+
+
+
+    background:#eaf7ef;
+
+
+
+    border-color:#c62828;
+
+
+
+}
+
+
+
+
+
+
+
+.wrong{
+
+
+
+    background:#fff0f0;
+
+
+
+    border-color:#d32f2f;
+
+
+
+}
+
+
+
+
+
+
+
+.unanswered{
+
+
+
+    background:#fff7e6;
+
+
+
+    border-color:#f39c12;
+
+
+
+}
+
+
+
+
+
+
+
+.answer{
+
+
+
+    font-weight:600;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   FOOTER
+
+
+
+========================= */
+
+
+
+.footer{
+
+
+
+    background:#17202a;
+
+
+
+    color:white;
+
+
+
+    text-align:center;
+
+
+
+    padding:30px 20px;
+
+
+
+}
+
+
+
+
+
+
+
+.footer strong{
+
+
+
+    color:#6fcf97;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   RESPONSIVE
+
+
+
+========================= */
+
+
+
+@media(max-width:600px){
+
+
+
+
+
+
+
+    .header h1{
+
+
+
+        font-size:27px;
+
+
+
+    }
+
+
+
+
+
+
+
+    .card{
+
+
+
+        padding:21px 17px;
+
+
+
+    }
+
+
+
+
+
+
+
+    .timer-container{
+
+
+
+        flex-direction:column;
+
+
+
+        align-items:stretch;
+
+
+
+        text-align:center;
+
+
+
+    }
+
+
+
+
+
+
+
+    .timer{
+
+
+
+        width:100%;
+
+
+
+    }
+
+
+
+
+
+
+
+    .participant{
+
+
+
+        flex-direction:column;
+
+
+
+        align-items:flex-start;
+
+
+
+    }
+
+
+
+
+
+
+
+    .score{
+
+
+
+        font-size:45px;
+
+
+
+    }
+
+
+
+
+
+
+
+}
+
+
+
 </style>
+
+
+
 </head>
-<body>
+
+
+
+<body class="locked">
+
+
+
+<!-- =========================
+
+
+
+     PASSWORD & NAMA PESERTA
+
+
+
+========================= -->
+
+
+
+<div class="password-overlay" id="passwordOverlay">
+
+
+
+<div class="password-box">
+
+
+
+<div class="password-icon">🔐</div>
+
+
+
+<h2>Kuis PowerPoint Modul 8</h2>
+
+
+
+<p>
+
+
+
+            Masukkan nama peserta dan password
+
+
+
+            untuk memulai kuis.
+
+
+
+        </p>
+
+
+
+<input autocomplete="off" class="name-input" id="participantInput" placeholder="Nama lengkap peserta" type="text"/>
+
+
+
+<input autocomplete="off" class="name-input" id="classInput" placeholder="Kelas peserta" type="text"/>
+
+
+
+<input autocomplete="off" class="password-input" id="quizPassword" placeholder="Password kuis" type="password"/>
+
+
+
+<div class="password-error" id="passwordError">
+
+
+
+            ❌ Terjadi kesalahan.
+
+
+
+        </div>
+
+
+
+<button class="password-btn" onclick="startQuiz()" type="button">
+
+
+
+            🔓 MULAI KUIS
+
+
+
+        </button>
+
+
+
+<div class="password-info">
+
+
+
+            Waktu pengerjaan: <strong>10 menit</strong><br/>
+
+
+
+            Nilai minimum: <strong>75</strong><br/>
+
+
+
+            Nama dan kelas akan dicatat pada hasil kuis.
+
+
+
+        </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- =========================
+
+
+
+     HEADER
+
+
+
+========================= -->
+
+
+
 <header class="header">
+
+
+
 <div class="badge">KUIS • MODUL 8</div>
+
+
+
 <h1>Mencetak dan Export Presentasi</h1>
-<p>Microsoft PowerPoint 2016</p>
+
+
+
+<p>
+
+
+
+       Efek Mencetak dan Export Presentasi
+
+
+
+    </p>
+
+
+
 </header>
 
+
+
 <main class="container">
-<section class="card" id="loginSection">
-<h2>🔐 Akses Kuis</h2>
-<div class="info"><strong>Petunjuk:</strong><p>Masukkan nama peserta, kelas, dan password untuk mengakses kuis.</p></div>
-<div class="form-group"><label for="namaPeserta">Nama Peserta</label><input type="text" id="namaPeserta" placeholder="Masukkan nama lengkap" autocomplete="name"></div>
-<div class="form-group"><label for="kelasPeserta">Kelas</label><input type="text" id="kelasPeserta" placeholder="Masukkan kelas"></div>
-<div class="form-group"><label for="password">Password</label><input type="password" id="password" placeholder="Masukkan password" autocomplete="off"></div>
-<button class="btn-start" type="button" onclick="startQuiz()">🚀 MULAI KUIS</button>
-<p id="loginError" style="color:#c62828;font-weight:bold;margin-top:12px;"></p>
-<div class="info" style="margin-top:15px;margin-bottom:0;">Waktu pengerjaan: <strong>10 menit</strong><br>Nilai minimum: <strong>75</strong><br>Jumlah soal: <strong>15 soal</strong></div>
-</section>
 
-<section class="card hidden" id="quizIntro">
-<div class="participant"><div><div style="font-size:13px;color:#78909c;">Peserta</div><div class="participant-name" id="displayName">-</div></div><div><div style="font-size:13px;color:#78909c;">KKM</div><strong>75</strong></div></div>
-</section>
 
-<section class="card timer-card hidden" id="timerCard">
-<div class="timer-container"><div><div class="timer-label">⏱️ WAKTU TERSISA</div><strong>Selesaikan kuis sebelum waktu habis</strong></div><div class="timer" id="timer">10:00</div></div>
-</section>
 
-<section class="card hidden" id="progressCard">
-<div class="progress-text"><span>Progress Jawaban</span><span id="progressText">0 / 15</span></div>
-<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-</section>
+<!-- DATA PESERTA -->
 
-<section class="card hidden" id="quizCard">
-<div class="info"><strong>Petunjuk:</strong><p>Jawablah seluruh soal. Kuis akan otomatis dikumpulkan apabila waktu mencapai 00:00.</p></div>
-<form id="quizForm">
-<div class="question"><h3>1. Menu yang digunakan untuk mencetak presentasi pada Microsoft PowerPoint 2016 adalah ...</h3>
-<label class="option"><input name="q1" type="radio" value="A"> A. File → Print</label>
-<label class="option"><input name="q1" type="radio" value="B"> B. Home → Print</label>
-<label class="option"><input name="q1" type="radio" value="C"> C. Insert → Print</label>
-<label class="option"><input name="q1" type="radio" value="D"> D. Review → Print</label>
+
+
+<section class="card">
+
+
+
+<div class="participant">
+
+
+
+<div>
+
+
+
+<div style="font-size:13px;color:#78909c;">
+
+
+
+                Peserta
+
+
+
+            </div>
+
+
+
+<div class="participant-name" id="displayName">
+
+
+
+                -
+
+
+
+            </div>
+
+
+
 </div>
+
+
+
+<div>
+
+
+
+<div style="font-size:13px;color:#78909c;">
+
+
+
+                KKM
+
+
+
+            </div>
+
+
+
+<strong>75</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- TIMER -->
+
+
+
+<section class="card timer-card">
+
+
+
+<div class="timer-container">
+
+
+
+<div>
+
+
+
+<div class="timer-label">
+
+
+
+                ⏱️ WAKTU TERSISA
+
+
+
+            </div>
+
+
+
+<strong>
+
+
+
+                Selesaikan kuis sebelum waktu habis
+
+
+
+            </strong>
+
+
+
+</div>
+
+
+
+<div class="timer" id="timer">
+
+
+
+            10:00
+
+
+
+        </div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- PETUNJUK -->
+
+
+
+<section class="card">
+
+
+
+<h2>📋 Petunjuk Kuis</h2>
+
+
+
+<div class="info">
+
+
+
+<p>
+
+
+
+            Jawablah pertanyaan berdasarkan materi
+
+
+
+            <strong>Modul 8 – Mencetak dan Export Presentasi</strong>.
+
+
+
+        </p>
+
+
+
+<br/>
+
+
+
+<p><strong>Jumlah soal:</strong> 15 soal</p>
+
+
+
+<p><strong>Waktu:</strong> 10 menit</p>
+
+
+
+<p><strong>Nilai:</strong> 5 poin setiap jawaban benar</p>
+
+
+
+<p><strong>Nilai maksimal:</strong> 100</p>
+
+
+
+<p><strong>Batas lulus:</strong> 75</p>
+
+
+
+</div>
+
+
+
+<div class="warning">
+
+
+
+        ⚠️ Jika waktu mencapai <strong>00:00</strong>,
+
+
+
+        kuis akan otomatis dikumpulkan.
+
+
+
+    </div>
+
+
+
+</section>
+
+
+
+<!-- PROGRESS -->
+
+
+
+<section class="card">
+
+
+
+<div class="progress-text">
+
+
+
+<span>Progress Jawaban</span>
+
+
+
+<span id="progressText">0 / <span id="progressTotalQuestions">15</span></span>
+
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+
+<div class="progress-bar" id="progressBar"></div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================
+
+
+
+     QUIZ FORM
+
+
+
+========================= -->
+
+
+
+<form id="quizForm">
+
+<div class="question"><h3>1. Menu yang digunakan untuk mencetak presentasi pada Microsoft PowerPoint 2016 adalah ...</h3>
+
+<label class="option"><input name="q1" type="radio" value="A"> A. File → Print</label>
+
+<label class="option"><input name="q1" type="radio" value="B"> B. Home → Print</label>
+
+<label class="option"><input name="q1" type="radio" value="C"> C. Insert → Print</label>
+
+<label class="option"><input name="q1" type="radio" value="D"> D. Review → Print</label>
+
+</div>
+
+
 
 <div class="question"><h3>2. Fungsi Print All Slides adalah ...</h3>
+
 <label class="option"><input name="q2" type="radio" value="A"> A. Mencetak slide yang sedang aktif</label>
+
 <label class="option"><input name="q2" type="radio" value="B"> B. Mencetak seluruh slide</label>
+
 <label class="option"><input name="q2" type="radio" value="C"> C. Mencetak satu halaman saja</label>
+
 <label class="option"><input name="q2" type="radio" value="D"> D. Mencetak catatan saja</label>
+
 </div>
+
+
 
 <div class="question"><h3>3. Jika hanya ingin mencetak slide yang sedang aktif, pilihan yang digunakan adalah ...</h3>
+
 <label class="option"><input name="q3" type="radio" value="A"> A. Print All Slides</label>
+
 <label class="option"><input name="q3" type="radio" value="B"> B. Print Current Slide</label>
+
 <label class="option"><input name="q3" type="radio" value="C"> C. Print Selection</label>
+
 <label class="option"><input name="q3" type="radio" value="D"> D. Print Outline</label>
+
 </div>
+
+
 
 <div class="question"><h3>4. Layout yang digunakan untuk mencetak beberapa slide dalam satu halaman disebut ...</h3>
+
 <label class="option"><input name="q4" type="radio" value="A"> A. Notes</label>
+
 <label class="option"><input name="q4" type="radio" value="B"> B. Outline</label>
+
 <label class="option"><input name="q4" type="radio" value="C"> C. Handouts</label>
+
 <label class="option"><input name="q4" type="radio" value="D"> D. Full Page</label>
+
 </div>
+
+
 
 <div class="question"><h3>5. Pilihan Handout yang menyediakan tiga slide sekaligus ruang untuk catatan adalah ...</h3>
+
 <label class="option"><input name="q5" type="radio" value="A"> A. 2 Slides</label>
+
 <label class="option"><input name="q5" type="radio" value="B"> B. 3 Slides</label>
+
 <label class="option"><input name="q5" type="radio" value="C"> C. 6 Slides</label>
+
 <label class="option"><input name="q5" type="radio" value="D"> D. 9 Slides</label>
+
 </div>
+
+
 
 <div class="question"><h3>6. Pengaturan Color, Grayscale, dan Pure Black and White terdapat pada pengaturan ...</h3>
+
 <label class="option"><input name="q6" type="radio" value="A"> A. Warna cetakan</label>
+
 <label class="option"><input name="q6" type="radio" value="B"> B. Ukuran font</label>
+
 <label class="option"><input name="q6" type="radio" value="C"> C. Ukuran slide</label>
+
 <label class="option"><input name="q6" type="radio" value="D"> D. Animasi</label>
+
 </div>
+
+
 
 <div class="question"><h3>7. Format standar untuk menyimpan presentasi PowerPoint 2016 adalah ...</h3>
+
 <label class="option"><input name="q7" type="radio" value="A"> A. .docx</label>
+
 <label class="option"><input name="q7" type="radio" value="B"> B. .xlsx</label>
+
 <label class="option"><input name="q7" type="radio" value="C"> C. .pptx</label>
+
 <label class="option"><input name="q7" type="radio" value="D"> D. .txt</label>
+
 </div>
+
+
 
 <div class="question"><h3>8. Format yang cocok digunakan agar presentasi mudah dibagikan dan dicetak adalah ...</h3>
+
 <label class="option"><input name="q8" type="radio" value="A"> A. .pptx</label>
+
 <label class="option"><input name="q8" type="radio" value="B"> B. .pdf</label>
+
 <label class="option"><input name="q8" type="radio" value="C"> C. .exe</label>
+
 <label class="option"><input name="q8" type="radio" value="D"> D. .html</label>
+
 </div>
+
+
 
 <div class="question"><h3>9. Menu untuk melakukan export presentasi adalah ...</h3>
+
 <label class="option"><input name="q9" type="radio" value="A"> A. File → Export</label>
+
 <label class="option"><input name="q9" type="radio" value="B"> B. Home → Export</label>
+
 <label class="option"><input name="q9" type="radio" value="C"> C. Insert → Export</label>
+
 <label class="option"><input name="q9" type="radio" value="D"> D. Review → Export</label>
+
 </div>
+
+
 
 <div class="question"><h3>10. Untuk membuat file PDF dari presentasi, pilihan yang digunakan adalah ...</h3>
+
 <label class="option"><input name="q10" type="radio" value="A"> A. Create a Video</label>
+
 <label class="option"><input name="q10" type="radio" value="B"> B. Create PDF/XPS</label>
+
 <label class="option"><input name="q10" type="radio" value="C"> C. Package Presentation</label>
+
 <label class="option"><input name="q10" type="radio" value="D"> D. Create Handouts</label>
+
 </div>
+
+
 
 <div class="question"><h3>11. Tombol yang digunakan untuk menghasilkan file PDF setelah menentukan lokasi dan nama file adalah ...</h3>
+
 <label class="option"><input name="q11" type="radio" value="A"> A. Save</label>
+
 <label class="option"><input name="q11" type="radio" value="B"> B. Export</label>
+
 <label class="option"><input name="q11" type="radio" value="C"> C. Publish</label>
+
 <label class="option"><input name="q11" type="radio" value="D"> D. Print</label>
+
 </div>
+
+
 
 <div class="question"><h3>12. Fitur yang digunakan untuk membuat presentasi menjadi video adalah ...</h3>
+
 <label class="option"><input name="q12" type="radio" value="A"> A. Create a Video</label>
+
 <label class="option"><input name="q12" type="radio" value="B"> B. Create PDF</label>
+
 <label class="option"><input name="q12" type="radio" value="C"> C. Create Handouts</label>
+
 <label class="option"><input name="q12" type="radio" value="D"> D. Package CD</label>
+
 </div>
+
+
 
 <div class="question"><h3>13. Format yang digunakan untuk menyimpan slide sebagai gambar adalah ...</h3>
+
 <label class="option"><input name="q13" type="radio" value="A"> A. JPG atau PNG</label>
+
 <label class="option"><input name="q13" type="radio" value="B"> B. DOCX</label>
+
 <label class="option"><input name="q13" type="radio" value="C"> C. XLSX</label>
+
 <label class="option"><input name="q13" type="radio" value="D"> D. TXT</label>
+
 </div>
+
+
 
 <div class="question"><h3>14. Jika hanya ingin menyimpan slide yang sedang dipilih sebagai gambar, pilih ...</h3>
+
 <label class="option"><input name="q14" type="radio" value="A"> A. Every Slide</label>
+
 <label class="option"><input name="q14" type="radio" value="B"> B. Current Slide Only</label>
+
 <label class="option"><input name="q14" type="radio" value="C"> C. All Slides</label>
+
 <label class="option"><input name="q14" type="radio" value="D"> D. Full Presentation</label>
+
 </div>
+
+
 
 <div class="question"><h3>15. Format yang paling tepat jika presentasi masih akan diedit kembali di PowerPoint adalah ...</h3>
+
 <label class="option"><input name="q15" type="radio" value="A"> A. .pdf</label>
+
 <label class="option"><input name="q15" type="radio" value="B"> B. .jpg</label>
+
 <label class="option"><input name="q15" type="radio" value="C"> C. .pptx</label>
+
 <label class="option"><input name="q15" type="radio" value="D"> D. .png</label>
+
 </div>
-<button type="button" class="btn-submit" onclick="finishQuiz(false)">✅ Selesai & Lihat Nilai</button>
+
+
+
+<button class="btn-submit" onclick="finishQuiz(false)" type="button">
+
+    ✅ Selesai & Lihat Nilai
+
+</button>
+
 </form>
+
+
+
+<!-- =========================
+
+
+
+     HASIL
+
+
+
+========================= -->
+
+
+
+<section class="card" id="result">
+
+
+
+<h2>🏆 Hasil Kuis</h2>
+
+
+
+<div class="score" id="score">0</div>
+
+
+
+<div class="result-message" id="resultMessage"></div>
+
+
+
+<div class="status" id="status"></div>
+
+
+
+<div class="result-detail">
+
+
+
+<div>
+
+
+
+<span>Nama Peserta</span>
+
+
+
+<strong id="resultName">-</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Jumlah Soal</span>
+
+
+
+<strong id="resultTotalQuestions">15</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Jawaban Benar</span>
+
+
+
+<strong id="correctCount">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Jawaban Salah</span>
+
+
+
+<strong id="wrongCount">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Tidak Dijawab</span>
+
+
+
+<strong id="emptyCount">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Nilai</span>
+
+
+
+<strong id="finalScore">0</strong>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<span>Waktu Digunakan</span>
+
+
+
+<strong id="timeResult">-</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- PEMBAHASAN -->
+
+
+
+<div class="review">
+
+
+
+<h2>📖 Pembahasan Jawaban</h2>
+
+
+
+<div id="reviewContainer"></div>
+
+
+
+</div>
+
+
+
+<div class="button-area">
+
+
+
+<button class="btn secondary" onclick="retryQuiz()" type="button">
+
+
+
+            ↻ Ulangi Kuis
+
+
+
+        </button>
+
+
+
+<a class="btn blue" href="modul-ppt-9.html">
+
+
+
+            Modul ppt 9 →
+
+
+
+        </a>
+
+
+
+</div>
+
+
+
 </section>
 
-<section class="card result" id="resultSection">
-<div class="result-icon">🏆</div><h2>Kuis Selesai</h2>
-<div class="result-box"><p><strong>Nama Peserta</strong></p><p id="hasilNama">-</p><p><strong>Kelas</strong></p><p id="hasilKelas">-</p><div class="score" id="hasilNilai">0</div><p>Nilai Akhir</p><div class="status" id="hasilStatus">-</div></div>
-<div class="result-detail">
-<div><span>Jumlah Soal</span><strong id="resultTotalQuestions">15</strong></div>
-<div><span>Jawaban Benar</span><strong id="correctCount">0</strong></div>
-<div><span>Jawaban Salah</span><strong id="wrongCount">0</strong></div>
-<div><span>Tidak Dijawab</span><strong id="emptyCount">0</strong></div>
-<div><span>Nilai</span><strong id="finalScore">0</strong></div>
-<div><span>Waktu Digunakan</span><strong id="timeResult">00:00</strong></div>
-</div>
-<div class="review"><h2>📖 Kunci Jawaban & Pembahasan</h2><div id="reviewContainer"></div></div>
-<div class="button-area"><button type="button" onclick="retryQuiz()">🔄 Ulangi Kuis</button></div>
-</section>
+
+
 </main>
 
+
+
+<!-- FOOTER -->
+
+
+
 <footer class="footer">
-<p><strong>Pelatihan Microsoft PowerPoint 2016</strong></p>
-<p>Kuis Modul 8 — Mencetak dan Export Presentasi</p>
-<p>© 2026 UPTD BLK Kabupaten Subang</p>
+
+
+
+<p>
+
+
+
+<strong>Pelatihan Microsoft PowerPoint</strong>
+
+
+
+</p>
+
+
+
+<p>
+
+
+
+        Kuis Modul 8 • Mencetak dan Export Presentasi
+
+
+
+    </p>
+
+
+
+<p style="margin-top:8px;font-size:13px;opacity:.7;">
+
+
+
+        © 2026 • Materi Pelatihan
+
+
+
+    </p>
+
+
+
 </footer>
 
+
+
 <script>
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PENGATURAN KUIS
+
+
+
+========================= */
+
+
+
 const QUIZ_PASSWORD = "ppt8";
+
+
+
 const TOTAL_QUESTIONS = 15;
+
+
+
 const POINT_PER_QUESTION = 100 / TOTAL_QUESTIONS;
+
+
+
 const PASSING_SCORE = 75;
+
+
+
 const QUIZ_DURATION = 10 * 60;
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   GOOGLE SHEETS API
+
+
+
+   =========================
+
+
+
+   Ganti URL di bawah dengan URL Web App
+
+
+
+   Google Apps Script Anda yang berakhiran /exec.
+
+
+
+*/
+
+
+
 const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
-const QUIZ_MODULE_NAME = "Modul 8 - Mencetak dan Export Presentasi";
-const answers = {"q1": "A", "q2": "B", "q3": "B", "q4": "C", "q5": "B", "q6": "A", "q7": "C", "q8": "B", "q9": "A", "q10": "B", "q11": "C", "q12": "A", "q13": "A", "q14": "B", "q15": "C"};
+
+
+
+
+
+
+
+const QUIZ_MODULE_NAME =
+
+
+
+    "Modul 8 - Mencetak dan Export Presentasi";
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   VARIABEL
+
+
+
+========================= */
+
+
 
 let participantName = "";
+
+
+
 let participantClass = "";
+
+
+
 let timeLeft = QUIZ_DURATION;
+
+
+
 let timerInterval = null;
+
+
+
+let quizStarted = false;
+
+
+
 let quizFinished = false;
 
+
+
+
+
+
+
+/* =========================
+
+
+
+   KUNCI JAWABAN
+
+
+
+========================= */
+
+
+
+const answers = {
+
+    q1: "A", q2: "B", q3: "B", q4: "C", q5: "B", q6: "A", q7: "C", q8: "B", q9: "A", q10: "B", q11: "C", q12: "A", q13: "A", q14: "B", q15: "C"
+
+};
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PEMBAHASAN
+
+
+
+========================= */
+
+
+
+const explanations = {
+
+    q1: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q2: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q3: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q4: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q5: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q6: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q7: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q8: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q9: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q10: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q11: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q12: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q13: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q14: "Pembahasan tidak tercantum pada file sumber Modul 8.",
+
+    q15: "Pembahasan tidak tercantum pada file sumber Modul 8."
+
+};
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   MULAI KUIS
+
+
+
+========================= */
+
+
+
 function startQuiz(){
- const name=document.getElementById("namaPeserta").value.trim();
- const cls=document.getElementById("kelasPeserta").value.trim();
- const password=document.getElementById("password").value.trim();
- const error=document.getElementById("loginError");
- if(!name||!cls||!password){error.textContent="Nama peserta, kelas, dan password wajib diisi.";return;}
- if(password!==QUIZ_PASSWORD){error.textContent="Password salah. Silakan coba lagi.";document.getElementById("password").value="";return;}
- participantName=name;participantClass=cls;
- document.getElementById("displayName").textContent=name;
- ["loginSection"].forEach(id=>document.getElementById(id).classList.add("hidden"));
- ["quizIntro","timerCard","progressCard","quizCard"].forEach(id=>document.getElementById(id).classList.remove("hidden"));
- startTimer();updateProgress();window.scrollTo({top:0,behavior:"smooth"});
+
+    updateTotalQuestionDisplays();
+
+
+
+
+
+
+
+    const name = document
+
+
+
+        .getElementById("participantInput")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const participantClassInput = document
+
+
+
+        .getElementById("classInput")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const password = document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const error = document
+
+
+
+        .getElementById("passwordError");
+
+
+
+
+
+
+
+    if(name === ""){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Nama peserta wajib diisi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("participantInput")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    if(participantClassInput === ""){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Kelas peserta wajib diisi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("classInput")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    if(password !== QUIZ_PASSWORD){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Password salah. Silakan coba lagi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("quizPassword")
+
+
+
+            .value = "";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("quizPassword")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    participantName = name;
+
+
+
+    participantClass = participantClassInput;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("displayName")
+
+
+
+        .textContent = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordOverlay")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document.body.classList.remove("locked");
+
+
+
+
+
+
+
+    quizStarted = true;
+
+
+
+
+
+
+
+    startTimer();
+
+
+
 }
+
+
+
+
+
+
+
+/* ENTER UNTUK MULAI */
+
+
+
+document
+
+
+
+    .getElementById("quizPassword")
+
+
+
+    .addEventListener("keydown",function(event){
+
+
+
+
+
+
+
+        if(event.key === "Enter"){
+
+
+
+            startQuiz();
+
+
+
+        }
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TIMER
+
+
+
+========================= */
+
+
+
 function startTimer(){
- timeLeft=QUIZ_DURATION;showTimer();
- timerInterval=setInterval(()=>{timeLeft--;showTimer();if(timeLeft<=0){clearInterval(timerInterval);finishQuiz(true);}},1000);
+
+
+
+
+
+
+
+    updateTimerDisplay();
+
+
+
+
+
+
+
+    timerInterval = setInterval(function(){
+
+
+
+
+
+
+
+        if(!quizStarted || quizFinished){
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+
+
+        timeLeft--;
+
+
+
+
+
+
+
+        updateTimerDisplay();
+
+
+
+
+
+
+
+        if(timeLeft <= 0){
+
+
+
+
+
+
+
+            timeLeft = 0;
+
+
+
+            updateTimerDisplay();
+
+
+
+            clearInterval(timerInterval);
+
+
+
+
+
+
+
+            // Otomatis mengumpulkan jawaban yang sudah dipilih
+
+
+
+            // dan mengirim hasilnya ke Google Sheets.
+
+
+
+            finishQuiz(true);
+
+
+
+        }
+
+
+
+
+
+
+
+    },1000);
+
+
+
 }
-function showTimer(){
- const m=String(Math.floor(timeLeft/60)).padStart(2,"0"),s=String(timeLeft%60).padStart(2,"0");
- document.getElementById("timer").textContent=m+":"+s;
- if(timeLeft<=60)document.getElementById("timerCard").classList.add("timer-warning");
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   UPDATE TIMER
+
+
+
+========================= */
+
+
+
+function updateTimerDisplay(){
+
+
+
+
+
+
+
+    const timer =
+
+
+
+        document.getElementById("timer");
+
+
+
+
+
+
+
+    let minutes =
+
+
+
+        Math.floor(timeLeft / 60);
+
+
+
+
+
+
+
+    let seconds =
+
+
+
+        timeLeft % 60;
+
+
+
+
+
+
+
+    minutes =
+
+
+
+        String(minutes).padStart(2,"0");
+
+
+
+
+
+
+
+    seconds =
+
+
+
+        String(seconds).padStart(2,"0");
+
+
+
+
+
+
+
+    timer.textContent =
+
+
+
+        minutes + ":" + seconds;
+
+
+
+
+
+
+
+    timer.classList.remove(
+
+
+
+        "warning-time",
+
+
+
+        "danger-time"
+
+
+
+    );
+
+
+
+
+
+
+
+    if(timeLeft <= 60){
+
+
+
+
+
+
+
+        timer.classList.add("danger-time");
+
+
+
+
+
+
+
+    }else if(timeLeft <= 300){
+
+
+
+
+
+
+
+        timer.classList.add("warning-time");
+
+
+
+    }
+
+
+
 }
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PROGRESS
+
+
+
+========================= */
+
+
+
+document
+
+
+
+    .querySelectorAll('input[type="radio"]')
+
+
+
+    .forEach(function(input){
+
+
+
+
+
+
+
+        input.addEventListener(
+
+
+
+            "change",
+
+
+
+            updateProgress
+
+
+
+        );
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
 function updateProgress(){
- let answered=0;
- for(let i=1;i<=TOTAL_QUESTIONS;i++)if(document.querySelector('input[name="q'+i+'"]:checked'))answered++;
- document.getElementById("progressText").textContent=answered+" / "+TOTAL_QUESTIONS;
- document.getElementById("progressBar").style.width=((answered/TOTAL_QUESTIONS)*100)+"%";
+
+
+
+
+
+
+
+    let answered = 0;
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        if(selected){
+
+
+
+            answered++;
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    const percentage =
+
+
+
+        (answered / TOTAL_QUESTIONS) * 100;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressText")
+
+
+
+        .textContent =
+
+
+
+        answered + " / " + TOTAL_QUESTIONS;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressBar")
+
+
+
+        .style.width =
+
+
+
+        percentage + "%";
+
+
+
 }
-document.addEventListener("change",e=>{if(e.target.matches('#quizForm input[type="radio"]'))updateProgress();});
-function finishQuiz(automatic){
- if(quizFinished)return;quizFinished=true;clearInterval(timerInterval);
- let correct=0,answered=0,reviewHTML="";
- for(let i=1;i<=TOTAL_QUESTIONS;i++){
-   const selected=document.querySelector('input[name="q'+i+'"]:checked');
-   const userAnswer=selected?selected.value:"";
-   if(userAnswer)answered++;
-   const correctAnswer=answers["q"+i];
-   if(userAnswer===correctAnswer)correct++;
-   const cls=userAnswer===correctAnswer?"correct":"wrong";
-   reviewHTML+='<div class="review-item '+cls+'"><h4>Soal '+i+'</h4><p><strong>Jawaban Anda:</strong> '+(userAnswer||"Tidak dijawab")+'</p><p><strong>Jawaban Benar:</strong> '+correctAnswer+'</p><p><strong>Pembahasan:</strong> Pembahasan tidak tercantum pada file sumber Modul 8.</p></div>';
- }
- const wrong=answered-correct,unanswered=TOTAL_QUESTIONS-answered;
- const score=Math.round((correct/TOTAL_QUESTIONS)*100);
- const usedSeconds=QUIZ_DURATION-Math.max(timeLeft,0);
- const usedMin=String(Math.floor(usedSeconds/60)).padStart(2,"0"),usedSec=String(usedSeconds%60).padStart(2,"0");
- ["quizIntro","timerCard","progressCard","quizCard"].forEach(id=>document.getElementById(id).classList.add("hidden"));
- document.getElementById("resultSection").style.display="block";
- document.getElementById("hasilNama").textContent=participantName;
- document.getElementById("hasilKelas").textContent=participantClass;
- document.getElementById("hasilNilai").textContent=score;
- document.getElementById("correctCount").textContent=correct;
- document.getElementById("wrongCount").textContent=wrong;
- document.getElementById("emptyCount").textContent=unanswered;
- document.getElementById("finalScore").textContent=score;
- document.getElementById("timeResult").textContent=usedMin+":"+usedSec;
- document.getElementById("resultTotalQuestions").textContent=TOTAL_QUESTIONS;
- document.getElementById("reviewContainer").innerHTML=reviewHTML;
- const status=document.getElementById("hasilStatus");
- if(score>=PASSING_SCORE){status.textContent="LULUS";status.className="status lulus";}
- else{status.textContent="BELUM LULUS";status.className="status tidak-lulus";}
- const payload={nama:participantName,kelas:participantClass,modul:QUIZ_MODULE_NAME,jumlahSoal:String(TOTAL_QUESTIONS),jawabanBenar:String(correct),nilai:String(score),waktu:usedMin+":"+usedSec,waktuPenyelesaian:new Date().toLocaleString("id-ID")};
- // Kirim sebagai form-urlencoded agar kompatibel dengan e.parameter pada Google Apps Script.
- const formData=new URLSearchParams(payload);
- try{
-   fetch(GOOGLE_SHEET_API_URL,{
-     method:"POST",
-     mode:"no-cors",
-     headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
-     body:formData.toString(),
-     keepalive:true
-   });
- }catch(e){console.error("Gagal mengirim hasil kuis:",e);}
- window.scrollTo({top:0,behavior:"smooth"});
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TOMBOL KIRIM JAWABAN
+
+
+
+========================= */
+
+
+
+function kirimKuis(){
+
+
+
+    finishQuiz(false);
+
+
+
 }
-function retryQuiz(){location.reload();}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   SELESAI KUIS
+
+
+
+========================= */
+
+
+
+function updateTotalQuestionDisplays(){
+
+    const total = document.getElementById("totalQuestionsInfo");
+
+    const resultTotal = document.getElementById("resultTotalQuestions");
+
+    if(total) total.textContent = TOTAL_QUESTIONS;
+
+    if(resultTotal) resultTotal.textContent = TOTAL_QUESTIONS;
+
+}
+
+
+
+function finishQuiz(timeUp){
+
+
+
+
+
+
+
+    if(quizFinished){
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    let unanswered = [];
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        if(!selected){
+
+
+
+            unanswered.push(i);
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    if(!timeUp && unanswered.length > 0){
+
+
+
+
+
+
+
+        alert(
+
+
+
+            "Masih ada " +
+
+
+
+            unanswered.length +
+
+
+
+            " soal yang belum dijawab.nn" +
+
+
+
+            "Nomor soal: " +
+
+
+
+            unanswered.join(", ")
+
+
+
+        );
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    quizFinished = true;
+
+
+
+    quizStarted = false;
+
+
+
+
+
+
+
+    clearInterval(timerInterval);
+
+
+
+
+
+
+
+    let correct = 0;
+
+
+
+    let wrong = 0;
+
+
+
+    let empty = unanswered.length;
+
+
+
+    let reviewHTML = "";
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        const correctAnswer =
+
+
+
+            answers["q"+i];
+
+
+
+
+
+
+
+        let userAnswer = "";
+
+
+
+
+
+
+
+        if(selected){
+
+
+
+            userAnswer = selected.value;
+
+
+
+        }
+
+
+
+
+
+
+
+        let className = "";
+
+
+
+
+
+
+
+        if(!selected){
+
+
+
+
+
+
+
+            className = "unanswered";
+
+
+
+
+
+
+
+        }else if(userAnswer === correctAnswer){
+
+
+
+
+
+
+
+            className = "correct";
+
+
+
+            correct++;
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+
+            className = "wrong";
+
+
+
+            wrong++;
+
+
+
+        }
+
+
+
+
+
+
+
+        const answerText =
+
+
+
+            userAnswer === ""
+
+
+
+            ? "Tidak dijawab"
+
+
+
+            : userAnswer;
+
+
+
+
+
+
+
+        reviewHTML += `
+
+
+
+
+
+
+
+            <div class="review-item ${className}">
+
+
+
+
+
+
+
+                <strong>Soal ${i}</strong>
+
+
+
+
+
+
+
+                <p>
+
+
+
+                    Jawaban Anda:
+
+
+
+                    <span class="answer">
+
+
+
+                        ${answerText}
+
+
+
+                    </span>
+
+
+
+                </p>
+
+
+
+
+
+
+
+                <p>
+
+
+
+                    Jawaban Benar:
+
+
+
+                    <span class="answer">
+
+
+
+                        ${correctAnswer}
+
+
+
+                    </span>
+
+
+
+                </p>
+
+
+
+
+
+
+
+                <p style="margin-top:7px;">
+
+
+
+                    ${explanations["q"+i]}
+
+
+
+                </p>
+
+
+
+
+
+
+
+            </div>
+
+
+
+        `;
+
+
+
+    }
+
+
+
+
+
+
+
+    const score =
+
+
+
+        correct * POINT_PER_QUESTION;
+
+
+
+
+
+
+
+    // Kirim hasil ke Google Sheets
+
+
+
+    kirimHasilKuis(
+
+
+
+        correct,
+
+
+
+        score,
+
+
+
+        timeUp
+
+
+
+    );
+
+
+
+
+
+
+
+    let message = "";
+
+
+
+    let statusText = "";
+
+
+
+    let statusClass = "";
+
+
+
+
+
+
+
+    if(score >= PASSING_SCORE){
+
+
+
+
+
+
+
+        statusText = "✓ LULUS";
+
+
+
+        statusClass = "lulus";
+
+
+
+
+
+
+
+        if(score >= 90){
+
+
+
+
+
+
+
+            message =
+
+
+
+                "🎉 Sangat Baik! Anda telah menguasai materi Modul 8 – Mencetak dan Export Presentasi.";
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+
+            message =
+
+
+
+                "👏 Selamat! Anda telah mencapai nilai minimum kelulusan.";
+
+
+
+        }
+
+
+
+
+
+
+
+    }else{
+
+
+
+
+
+
+
+        statusText = "✗ BELUM LULUS";
+
+
+
+        statusClass = "tidak-lulus";
+
+
+
+
+
+
+
+        message =
+
+
+
+            "📚 Nilai Anda belum mencapai batas kelulusan. Pelajari kembali Modul 8 dan lakukan latihan.";
+
+
+
+    }
+
+
+
+
+
+
+
+    if(timeUp){
+
+
+
+
+
+
+
+        message =
+
+
+
+            "⏰ Waktu telah habis. Jawaban yang sudah dikerjakan telah dikumpulkan.";
+
+
+
+    }
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("score")
+
+
+
+        .textContent = score;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("resultMessage")
+
+
+
+        .textContent = message;
+
+
+
+
+
+
+
+    const status =
+
+
+
+        document.getElementById("status");
+
+
+
+
+
+
+
+    status.textContent = statusText;
+
+
+
+    status.className =
+
+
+
+        "status " + statusClass;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("resultName")
+
+
+
+        .textContent = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("correctCount")
+
+
+
+        .textContent = correct;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("wrongCount")
+
+
+
+        .textContent = wrong;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("emptyCount")
+
+
+
+        .textContent = empty;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("finalScore")
+
+
+
+        .textContent = score;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("timeResult")
+
+
+
+        .textContent =
+
+
+
+        timeUp
+
+
+
+        ? "Waktu habis"
+
+
+
+        : formatTimeUsed();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("reviewContainer")
+
+
+
+        .innerHTML = reviewHTML;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .style.display = "block";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .scrollIntoView({
+
+
+
+            behavior:"smooth"
+
+
+
+        });
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   KIRIM HASIL KE GOOGLE SHEETS
+
+
+
+========================= */
+
+
+
+function kirimHasilKuis(correct, score, timeUp){
+
+
+
+
+
+
+
+    if(
+
+
+
+        !GOOGLE_SHEET_API_URL ||
+
+
+
+        GOOGLE_SHEET_API_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA"
+
+
+
+    ){
+
+
+
+        console.warn(
+
+
+
+            "URL Google Apps Script belum diisi."
+
+
+
+        );
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    const payload = {
+
+
+
+        jenis: "kuis",
+
+
+
+        nama: participantName,
+
+
+
+        kelas: participantClass,
+
+
+
+        modul: QUIZ_MODULE_NAME,
+
+
+
+        jumlahSoal: TOTAL_QUESTIONS,
+
+
+
+        benar: correct,
+
+
+
+        nilai: score,
+
+
+
+        waktu: timeUp
+
+
+
+            ? "Waktu habis"
+
+
+
+            : formatTimeUsed()
+
+
+
+    };
+
+
+
+
+
+
+
+    fetch(GOOGLE_SHEET_API_URL, {
+
+
+
+        method: "POST",
+
+
+
+        mode: "no-cors",
+
+
+
+        body: JSON.stringify(payload)
+
+
+
+    })
+
+
+
+    .then(function(){
+
+
+
+        console.log(
+
+
+
+            "Hasil kuis berhasil dikirim ke Google Sheets."
+
+
+
+        );
+
+
+
+    })
+
+
+
+    .catch(function(error){
+
+
+
+        console.error(
+
+
+
+            "Gagal mengirim hasil kuis:",
+
+
+
+            error
+
+
+
+        );
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   FORMAT WAKTU
+
+
+
+========================= */
+
+
+
+function formatTimeUsed(){
+
+
+
+
+
+
+
+    const used =
+
+
+
+        QUIZ_DURATION - timeLeft;
+
+
+
+
+
+
+
+    const minutes =
+
+
+
+        Math.floor(used / 60);
+
+
+
+
+
+
+
+    const seconds =
+
+
+
+        used % 60;
+
+
+
+
+
+
+
+    return (
+
+
+
+        String(minutes).padStart(2,"0")
+
+
+
+        + ":" +
+
+
+
+        String(seconds).padStart(2,"0")
+
+
+
+    );
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   ULANGI KUIS
+
+
+
+========================= */
+
+
+
+function retryQuiz(){
+
+    updateTotalQuestionDisplays();
+
+
+
+
+
+
+
+    clearInterval(timerInterval);
+
+
+
+
+
+
+
+    quizFinished = false;
+
+
+
+    quizStarted = false;
+
+
+
+    timeLeft = QUIZ_DURATION;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .reset();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .style.display = "block";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressText")
+
+
+
+        .textContent = "0 / " + TOTAL_QUESTIONS;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressBar")
+
+
+
+        .style.width = "0%";
+
+
+
+
+
+
+
+    updateTimerDisplay();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordError")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordOverlay")
+
+
+
+        .style.display = "flex";
+
+
+
+
+
+
+
+    document.body.classList.add("locked");
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("participantInput")
+
+
+
+        .value = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("classInput")
+
+
+
+        .value = participantClass;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .value = "";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .focus();
+
+
+
+
+
+
+
+    window.scrollTo({
+
+
+
+        top:0,
+
+
+
+        behavior:"smooth"
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
 </script>
+
+
+
 </body>
+
+
+
 </html>
