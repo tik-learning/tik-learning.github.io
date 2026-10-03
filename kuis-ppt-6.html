@@ -928,89 +928,7 @@ footer p{
 
 
 
-<div id="passwordSection" class="card">
 
-
-
-    <h2>
-
-        🔐 Akses Kuis
-
-    </h2>
-
-
-
-    <div class="info">
-
-
-
-        <strong>
-
-            Petunjuk:
-
-        </strong>
-
-
-
-        <p>
-
-            Masukkan password yang diberikan oleh
-
-            instruktur untuk mengakses kuis.
-
-        </p>
-
-
-
-    </div>
-
-
-
-    <div class="form-group">
-
-
-
-        <label for="password">
-
-            Password
-
-        </label>
-
-
-
-        <input
-
-            type="password"
-
-            id="password"
-
-            placeholder="Masukkan password"
-
-        >
-
-
-
-    </div>
-
-
-
-    <button
-
-        type="button"
-
-        class="btn-start"
-
-        onclick="cekPassword()"
-
-    >
-
-        Masuk ke Kuis
-
-    </button>
-
-
-
-</div>
 
 
 
@@ -2528,6 +2446,7 @@ function startQuiz(){
 
     document.getElementById("passwordOverlay").style.display = "none";
     document.getElementById("quizSection").style.display = "block";
+    document.getElementById("resultSection").style.display = "none";
     document.getElementById("resultSection").style.display = "none";
 
     updateProgress();
