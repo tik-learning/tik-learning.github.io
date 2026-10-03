@@ -3,89 +3,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kelas Microsoft PowerPoint 2016</title>
+<title>Kelas Microsoft PowerPoint 2016 - TIK Learning</title>
+<link rel="stylesheet" href="style.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Segoe UI",Arial,sans-serif;background:#f4f6f9;color:#263238;line-height:1.6}
-.header{background:linear-gradient(135deg,#b71c1c,#e53935);color:#fff;text-align:center;padding:55px 20px 75px;box-shadow:0 5px 20px rgba(0,0,0,.15)}
-.header .icon{font-size:58px;margin-bottom:10px}
-.header h1{font-size:34px;margin-bottom:8px}
-.header p{font-size:16px;opacity:.92}
-.container{max-width:1000px;margin:-35px auto 50px;padding:0 18px}
-.card{background:#fff;border-radius:18px;padding:28px;margin-bottom:22px;box-shadow:0 5px 20px rgba(0,0,0,.07)}
-.intro{text-align:center}.intro h2{color:#c62828;margin-bottom:8px}.intro p{color:#607d8b}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}
-.info-box{background:#fff5f5;border-left:5px solid #c62828;padding:18px;border-radius:10px}
-.info-box strong{display:block;color:#c62828;font-size:20px;margin-bottom:4px}
-.section-title{color:#c62828;margin-bottom:18px}
-.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.module{border:1px solid #e0e0e0;border-radius:13px;padding:20px;transition:.2s;background:#fff}
-.module:hover{transform:translateY(-3px);box-shadow:0 7px 18px rgba(0,0,0,.08);border-color:#e53935}
-.module-number{display:inline-block;background:#e53935;color:white;padding:5px 10px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:10px}
-.module h3{color:#263238;margin-bottom:6px;font-size:18px}
-.module p{color:#78909c;font-size:14px;margin-bottom:15px}
-.button-row{display:flex;gap:9px;flex-wrap:wrap}
-.btn{display:inline-block;text-decoration:none;border:none;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
-.btn-primary{background:linear-gradient(135deg,#b71c1c,#e53935);color:white}
-.btn-secondary{background:#eceff1;color:#455a64}
-.btn-primary:hover{background:#b71c1c}.btn-secondary:hover{background:#cfd8dc}
-.note{background:#fff7e6;border-left:5px solid #f39c12;padding:16px;border-radius:9px}
-.footer{background:#17202a;color:white;text-align:center;padding:30px 20px}
-.footer strong{color:#ef5350}
-@media(max-width:700px){.header h1{font-size:27px}.info-grid,.module-grid{grid-template-columns:1fr}.card{padding:21px 17px}}
+/* =========================
+   HEADER KELAS
+========================= */
+.kelas-header{
+    background:white;
+    padding:30px;
+    border-radius:14px;
+    margin-bottom:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+.kelas-header h2{
+    color:#c62828;
+    margin-top:0;
+    margin-bottom:15px;
+}
+.kelas-header p{
+    line-height:1.7;
+    color:#444;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+.progress-card{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+.progress-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+.progress-title h2{
+    margin:0;
+    color:#c62828;
+    font-size:20px;
+}
+.progress-percent{
+    font-size:20px;
+    font-weight:bold;
+    color:#c62828;
+}
+.progress-bar{
+    width:100%;
+    height:16px;
+    background:#e9ecef;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:12px;
+}
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#c62828;
+    border-radius:20px;
+    transition:width 0.4s ease;
+}
+.progress-info{
+    margin:0;
+    color:#555;
+    font-size:14px;
+}
+
+/* =========================
+   JUDUL DAFTAR MODUL
+========================= */
+.judul-modul{
+    color:#c62828;
+    margin:25px 0 15px;
+}
+
+/* =========================
+   GRID MODUL
+========================= */
+.modul-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:30px;
+}
+
+/* =========================
+   CARD MODUL
+========================= */
+.modul-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    transition:transform 0.2s,box-shadow 0.2s;
+    display:flex;
+    flex-direction:column;
+    min-height:210px;
+}
+.modul-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   NOMOR MODUL
+========================= */
+.nomor-modul{
+    font-size:12px;
+    font-weight:bold;
+    color:#c62828;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+/* =========================
+   JUDUL MODUL
+========================= */
+.modul-card h3{
+    margin:0 0 10px;
+    font-size:16px;
+    line-height:1.4;
+    color:#222;
+}
+
+/* =========================
+   DESKRIPSI
+========================= */
+.modul-card p{
+    font-size:13px;
+    line-height:1.5;
+    color:#666;
+    margin:0 0 15px;
+}
+
+/* =========================
+   TOMBOL
+========================= */
+.btn-modul{
+    display:inline-block;
+    margin-top:auto;
+    width:fit-content;
+    padding:9px 16px;
+    background:#c62828;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:bold;
+    transition:0.2s;
+}
+.btn-modul:hover{
+    background:#9e1f1f;
+}
+
+/* =========================
+   STATUS
+========================= */
+.status-belum{
+    font-size:12px;
+    color:#777;
+    margin-bottom:12px;
+}
+.status-selesai{
+    font-size:12px;
+    color:#198754;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width:900px){
+    .modul-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+@media (max-width:600px){
+    .modul-grid{
+        grid-template-columns:1fr;
+    }
+    .kelas-header{
+        padding:22px;
+    }
+    .progress-card{
+        padding:20px;
+    }
+}
 </style>
 </head>
+
 <body>
-<header class="header">
-<div class="icon">📊</div>
-<h1>Kelas Microsoft PowerPoint 2016</h1>
-<p>Media Pembelajaran TIK Learning • UPTD BLK Subang</p>
+
+<!-- =========================
+     HEADER WEBSITE
+========================= -->
+<header>
+    <h1>TIK LEARNING</h1>
+    <p>UPTD BLK Kabupaten Subang</p>
 </header>
 
+<!-- =========================
+     NAVIGASI
+========================= -->
+<nav>
+    <a href="index.html">Beranda</a>
+    <a href="autobiografi.html">Autobiografi</a>
+    <a href="materi.html">Materi</a>
+    <a href="tugas.html">Tugas</a>
+    <a href="kelas.html">Kelas Saya</a>
+    <a href="ruang-bertanya.html">Ruang Bertanya</a>
+</nav>
+
+<!-- =========================
+     KONTEN UTAMA
+========================= -->
 <main class="container">
-<section class="card intro">
-<h2>🎓 Selamat Datang di Kelas PowerPoint</h2>
-<p>Pelajari Microsoft PowerPoint 2016 secara bertahap melalui materi, latihan, dan kuis setiap modul.</p>
-<div class="info-grid">
-<div class="info-box"><strong>8 Modul</strong>Materi pembelajaran</div>
-<div class="info-box"><strong>8 Kuis</strong>Evaluasi setiap modul</div>
-<div class="info-box"><strong>PowerPoint 2016</strong>Aplikasi yang dipelajari</div>
-</div>
-</section>
 
-<section class="card">
-<h2 class="section-title">📚 Daftar Modul Pembelajaran</h2>
-<div class="module-grid">
+    <!-- INFORMASI KELAS -->
+    <section class="kelas-header">
+        <h2>📊 Kelas Microsoft PowerPoint 2016</h2>
+        <p><strong>Kejuruan Teknologi Informasi dan Komunikasi</strong></p>
+        <p>Kelas TIK — UPTD BLK Kabupaten Subang</p>
+        <p>
+            Program pembelajaran berbasis kompetensi Microsoft PowerPoint 2016
+            dari pengenalan, pengelolaan slide, desain, multimedia, hingga
+            mencetak dan export presentasi.
+        </p>
+    </section>
 
-<div class="module"><span class="module-number">MODUL 1</span><h3>Pengenalan Microsoft PowerPoint</h3><p>Dasar-dasar PowerPoint dan pengenalan lingkungan kerja.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-1.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-1.html">📝 Kuis</a></div></div>
+    <!-- PROGRESS PEMBELAJARAN -->
+    <section class="progress-card">
+        <div class="progress-title">
+            <h2>📊 Progress Pembelajaran</h2>
+            <span id="progressPercent" class="progress-percent">0%</span>
+        </div>
 
-<div class="module"><span class="module-number">MODUL 2</span><h3>Mengelola Slide dan Konten</h3><p>Membuat, mengatur, dan mengelola slide presentasi.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-2.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-2.html">📝 Kuis</a></div></div>
+        <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+        </div>
 
-<div class="module"><span class="module-number">MODUL 3</span><h3>Objek dan Desain Presentasi</h3><p>Mengatur objek serta tampilan presentasi.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-3.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-3.html">📝 Kuis</a></div></div>
+        <p id="progressInfo" class="progress-info">
+            Anda sudah menyelesaikan 0 dari 8 modul.
+        </p>
+    </section>
 
-<div class="module"><span class="module-number">MODUL 4</span><h3>Desain dan Format Presentasi</h3><p>Menerapkan tema, layout, dan format slide.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-4.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-4.html">📝 Kuis</a></div></div>
+    <!-- DAFTAR MODUL -->
+    <h2 class="judul-modul">📚 Daftar Modul Microsoft PowerPoint 2016</h2>
 
-<div class="module"><span class="module-number">MODUL 5</span><h3>SmartArt dan Grafik</h3><p>Menyajikan informasi menggunakan SmartArt dan grafik.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-5.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-5.html">📝 Kuis</a></div></div>
+    <section class="modul-grid">
 
-<div class="module"><span class="module-number">MODUL 6</span><h3>Audio, Video dan Multimedia</h3><p>Menambahkan elemen multimedia ke dalam presentasi.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-6.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-6.html">📝 Kuis</a></div></div>
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 1</div>
+            <h3>Pengenalan Microsoft PowerPoint</h3>
+            <p>Mengenal PowerPoint 2016, interface, ribbon, slide, layout, dan dasar membuat presentasi.</p>
+            <div id="status1" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-1.html" class="btn-modul">Buka Materi</a>
+        </article>
 
-<div class="module"><span class="module-number">MODUL 7</span><h3>Transisi, Slide Show dan Review</h3><p>Mengatur transisi, menjalankan slide show, dan meninjau presentasi.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-7.html">📖 Materi</a><a class="btn btn-primary" href="Kuis-ppt-7.html">📝 Kuis</a></div></div>
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 2</div>
+            <h3>Mengelola Slide dan Konten</h3>
+            <p>Membuat, menambah, menghapus, menyalin, memindahkan, dan mengatur slide serta kontennya.</p>
+            <div id="status2" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-2.html" class="btn-modul">Buka Materi</a>
+        </article>
 
-<div class="module"><span class="module-number">MODUL 8</span><h3>Mencetak dan Export Presentasi</h3><p>Mencetak presentasi serta melakukan export ke berbagai format.</p><div class="button-row"><a class="btn btn-secondary" href="modul-ppt-8.html">📖 Materi</a><a class="btn btn-primary" href="kuis-ppt-8.html">📝 Kuis</a></div></div>
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 3</div>
+            <h3>Menyisipkan dan Mengelola Objek</h3>
+            <p>Menyisipkan teks, gambar, shape, tabel, dan berbagai objek ke dalam presentasi.</p>
+            <div id="status3" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-3.html" class="btn-modul">Buka Materi</a>
+        </article>
 
-</div>
-</section>
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 4</div>
+            <h3>Design dan Format Presentasi</h3>
+            <p>Menggunakan theme, variant, layout, format objek, serta menerapkan prinsip tampilan presentasi.</p>
+            <div id="status4" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-4.html" class="btn-modul">Buka Materi</a>
+        </article>
 
-<section class="card">
-<h2 class="section-title">📌 Petunjuk</h2>
-<div class="note"><strong>Perhatian:</strong> Nama file di GitHub Pages bersifat <strong>case-sensitive</strong>. Pastikan nama file yang dipanggil pada tombol sama persis dengan nama file di repository.</div>
-</section>
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 5</div>
+            <h3>SmartArt dan Grafik</h3>
+            <p>Membuat dan mengatur SmartArt serta grafik untuk menyajikan informasi secara visual.</p>
+            <div id="status5" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-5.html" class="btn-modul">Buka Materi</a>
+        </article>
+
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 6</div>
+            <h3>Audio, Video dan Multimedia</h3>
+            <p>Menambahkan, mengatur, dan menggunakan audio serta video sebagai elemen multimedia presentasi.</p>
+            <div id="status6" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-6.html" class="btn-modul">Buka Materi</a>
+        </article>
+
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 7</div>
+            <h3>Efek Transisi, Slide Show dan Review Presentasi</h3>
+            <p>Mengatur transisi, menjalankan slide show, dan melakukan review terhadap presentasi.</p>
+            <div id="status7" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-7.html" class="btn-modul">Buka Materi</a>
+        </article>
+
+        <article class="modul-card">
+            <div class="nomor-modul">Modul 8</div>
+            <h3>Mencetak dan Export Presentasi</h3>
+            <p>Mengatur pencetakan dan melakukan export presentasi ke format yang dibutuhkan.</p>
+            <div id="status8" class="status-belum">⏳ Belum dipelajari</div>
+            <a href="modul-ppt-8.html" class="btn-modul">Buka Materi</a>
+        </article>
+
+    </section>
+
 </main>
 
-<footer class="footer">
-<p><strong>TIK Learning</strong></p>
-<p>Kelas Microsoft PowerPoint 2016 • UPTD BLK Subang</p>
-<p style="margin-top:8px;font-size:13px;opacity:.7">© 2026 • Media Pembelajaran TIK</p>
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+    <p>© 2026 TIK Learning - UPTD BLK Kabupaten Subang</p>
 </footer>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+<script>
+/* =====================================================
+   JUMLAH MODUL
+===================================================== */
+const totalModul = 8;
+
+/* =====================================================
+   CEK MODUL YANG SUDAH SELESAI
+
+   Status disimpan menggunakan localStorage.
+
+   Format:
+   ppt_modul_1
+   ppt_modul_2
+   ...
+   ppt_modul_8
+===================================================== */
+function cekProgress(){
+
+    let selesai = 0;
+
+    for(let i = 1; i <= totalModul; i++){
+
+        const sudahSelesai =
+            localStorage.getItem("ppt_modul_" + i);
+
+        const status =
+            document.getElementById("status" + i);
+
+        if(sudahSelesai === "selesai"){
+
+            selesai++;
+
+            if(status){
+                status.innerHTML = "✅ Sudah dipelajari";
+                status.className = "status-selesai";
+            }
+
+        }else{
+
+            if(status){
+                status.innerHTML = "⏳ Belum dipelajari";
+                status.className = "status-belum";
+            }
+        }
+    }
+
+    /* =========================
+       HITUNG PERSENTASE
+    ========================= */
+    const persen =
+        Math.round((selesai / totalModul) * 100);
+
+    document.getElementById("progressPercent").textContent =
+        persen + "%";
+
+    document.getElementById("progressFill").style.width =
+        persen + "%";
+
+    document.getElementById("progressInfo").textContent =
+        "Anda sudah menyelesaikan " +
+        selesai +
+        " dari " +
+        totalModul +
+        " modul.";
+}
+
+/* =====================================================
+   JALANKAN SAAT HALAMAN DIBUKA
+===================================================== */
+cekProgress();
+
+/* =====================================================
+   UPDATE SAAT KEMBALI KE TAB
+===================================================== */
+window.addEventListener("focus", cekProgress);
+
+/* =====================================================
+   UPDATE SAAT STORAGE BERUBAH
+===================================================== */
+window.addEventListener("storage", cekProgress);
+</script>
+
 </body>
 </html>
