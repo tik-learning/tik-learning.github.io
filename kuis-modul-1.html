@@ -1,0 +1,4745 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kuis Word Modul 1 - Pengenalan Microsoft Word 2016</title>
+<style>
+
+
+
+*{
+
+
+
+    box-sizing:border-box;
+
+
+
+    margin:0;
+
+
+
+    padding:0;
+
+
+
+}
+
+
+
+
+
+
+
+body{
+
+
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+
+
+    background:#f4f6f9;
+
+
+
+    color:#263238;
+
+
+
+    line-height:1.6;
+
+
+
+}
+
+
+
+
+
+
+
+body.locked{
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   HEADER
+
+
+
+========================= */
+
+
+
+.header{
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    color:white;
+
+
+
+    padding:45px 20px 60px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.badge{
+
+
+
+    display:inline-block;
+
+
+
+    background:rgba(255,255,255,.16);
+
+
+
+    padding:7px 20px;
+
+
+
+    border-radius:30px;
+
+
+
+    font-size:13px;
+
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+
+
+.header h1{
+
+
+
+    font-size:34px;
+
+
+
+    margin-bottom:8px;
+
+
+
+}
+
+
+
+
+
+
+
+.header p{
+
+
+
+    font-size:16px;
+
+
+
+    opacity:.9;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   CONTAINER
+
+
+
+========================= */
+
+
+
+.container{
+
+
+
+    max-width:900px;
+
+
+
+    margin:-28px auto 50px;
+
+
+
+    padding:0 18px;
+
+
+
+}
+
+
+
+
+
+
+
+.card{
+
+
+
+    background:white;
+
+
+
+    border-radius:16px;
+
+
+
+    padding:28px;
+
+
+
+    margin-bottom:20px;
+
+
+
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+
+
+
+}
+
+
+
+
+
+
+
+.card h2{
+
+
+
+    color:#1976d2;
+
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PASSWORD OVERLAY
+
+
+
+========================= */
+
+
+
+.password-overlay{
+
+
+
+    position:fixed;
+
+
+
+    inset:0;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
+    z-index:99999;
+
+
+
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box{
+
+
+
+    background:white;
+
+
+
+    width:100%;
+
+
+
+    max-width:450px;
+
+
+
+    padding:35px 30px;
+
+
+
+    border-radius:18px;
+
+
+
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.password-icon{
+
+
+
+    font-size:55px;
+
+
+
+    margin-bottom:10px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box h2{
+
+
+
+    color:#1976d2;
+
+
+
+    margin-bottom:8px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-box p{
+
+
+
+    color:#607d8b;
+
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.name-input,
+
+
+
+.password-input{
+
+
+
+    width:100%;
+
+
+
+    padding:14px 16px;
+
+
+
+    border:2px solid #dfe5e8;
+
+
+
+    border-radius:9px;
+
+
+
+    font-size:16px;
+
+
+
+    outline:none;
+
+
+
+    margin-bottom:12px;
+
+
+
+}
+
+
+
+
+
+
+
+.name-input:focus,
+
+
+
+.password-input:focus{
+
+
+
+    border-color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+.password-btn{
+
+
+
+    width:100%;
+
+
+
+    border:none;
+
+
+
+    padding:14px;
+
+
+
+    border-radius:9px;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    color:white;
+
+
+
+    font-size:16px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+}
+
+
+
+
+
+
+
+.password-btn:hover{
+
+
+
+    background:#1565c0;
+
+
+
+}
+
+
+
+
+
+
+
+.password-error{
+
+
+
+    display:none;
+
+
+
+    color:#1565c0;
+
+
+
+    background:#fff0f0;
+
+
+
+    padding:10px;
+
+
+
+    border-radius:8px;
+
+
+
+    margin-bottom:12px;
+
+
+
+    font-size:14px;
+
+
+
+}
+
+
+
+
+
+
+
+.password-info{
+
+
+
+    margin-top:18px;
+
+
+
+    font-size:13px;
+
+
+
+    color:#78909c;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PESERTA
+
+
+
+========================= */
+
+
+
+.participant{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    align-items:center;
+
+
+
+    gap:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.participant-name{
+
+
+
+    font-size:18px;
+
+
+
+    font-weight:600;
+
+
+
+    color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TIMER
+
+
+
+========================= */
+
+
+
+.timer-card{
+
+
+
+    position:sticky;
+
+
+
+    top:10px;
+
+
+
+    z-index:100;
+
+
+
+}
+
+
+
+
+
+
+
+.timer-container{
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:space-between;
+
+
+
+    gap:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.timer-label{
+
+
+
+    font-size:14px;
+
+
+
+    color:#607d8b;
+
+
+
+}
+
+
+
+
+
+
+
+.timer{
+
+
+
+    font-size:30px;
+
+
+
+    font-weight:bold;
+
+
+
+    color:#1976d2;
+
+
+
+    background:#eaf7ef;
+
+
+
+    padding:8px 18px;
+
+
+
+    border-radius:10px;
+
+
+
+    min-width:120px;
+
+
+
+    text-align:center;
+
+
+
+}
+
+
+
+
+
+
+
+.timer.warning-time{
+
+
+
+    color:#d97706;
+
+
+
+    background:#fff7e6;
+
+
+
+}
+
+
+
+
+
+
+
+.timer.danger-time{
+
+
+
+    color:#1565c0;
+
+
+
+    background:#fff0f0;
+
+
+
+    animation:pulse 1s infinite;
+
+
+
+}
+
+
+
+
+
+
+
+@keyframes pulse{
+
+
+
+    50%{
+
+
+
+        transform:scale(1.03);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   INFO
+
+
+
+========================= */
+
+
+
+.info{
+
+
+
+    background:#eaf7ef;
+
+
+
+    border-left:5px solid #107c41;
+
+
+
+    padding:16px;
+
+
+
+    border-radius:9px;
+
+
+
+}
+
+
+
+
+
+
+
+.warning{
+
+
+
+    background:#fff7e6;
+
+
+
+    border-left:5px solid #f39c12;
+
+
+
+    padding:16px;
+
+
+
+    border-radius:9px;
+
+
+
+    margin-top:15px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PROGRESS
+
+
+
+========================= */
+
+
+
+.progress-text{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    font-size:14px;
+
+
+
+    margin-bottom:7px;
+
+
+
+}
+
+
+
+
+
+
+
+.progress{
+
+
+
+    width:100%;
+
+
+
+    height:10px;
+
+
+
+    background:#e0e0e0;
+
+
+
+    border-radius:20px;
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+
+
+.progress-bar{
+
+
+
+    width:0%;
+
+
+
+    height:100%;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    transition:.3s;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   QUESTION
+
+
+
+========================= */
+
+
+
+.question-number{color:#1976d2;font-weight:700;margin-bottom:8px;}
+
+.question-text{font-weight:700;margin-bottom:13px;}
+
+.question{
+
+
+
+    margin-bottom:28px;
+
+
+
+    padding-bottom:25px;
+
+
+
+    border-bottom:1px solid #e5e5e5;
+
+
+
+}
+
+
+
+
+
+
+
+.question:last-child{
+
+
+
+    border-bottom:none;
+
+
+
+}
+
+
+
+
+
+
+
+.question-number{
+
+
+
+    color:#1976d2;
+
+
+
+    font-weight:bold;
+
+
+
+    margin-bottom:7px;
+
+
+
+}
+
+
+
+
+
+
+
+.question-text{
+
+
+
+    font-size:17px;
+
+
+
+    font-weight:600;
+
+
+
+    margin-bottom:14px;
+
+
+
+}
+
+
+
+
+
+
+
+.option{
+
+
+
+    display:block;
+
+
+
+    padding:12px 15px;
+
+
+
+    margin:9px 0;
+
+
+
+    border:1px solid #d9dfe3;
+
+
+
+    border-radius:9px;
+
+
+
+    cursor:pointer;
+
+
+
+    transition:.2s;
+
+
+
+}
+
+
+
+
+
+
+
+.option:hover{
+
+
+
+    background:#f0faf4;
+
+
+
+    border-color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+.option input{
+
+
+
+    margin-right:9px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   BUTTON
+
+
+
+========================= */
+
+
+
+.button-area{
+
+
+
+    display:flex;
+
+
+
+    justify-content:center;
+
+
+
+    gap:12px;
+
+
+
+    flex-wrap:wrap;
+
+
+
+    margin-top:25px;
+
+
+
+}
+
+
+
+
+
+
+
+.btn{
+
+
+
+    border:none;
+
+
+
+    padding:13px 25px;
+
+
+
+    border-radius:9px;
+
+
+
+    color:white;
+
+
+
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+
+
+
+    font-size:15px;
+
+
+
+    font-weight:600;
+
+
+
+    cursor:pointer;
+
+
+
+    text-decoration:none;
+
+
+
+}
+
+
+
+
+
+
+
+.btn:hover{
+
+
+
+    background:#1565c0;
+
+
+
+}
+
+
+
+
+
+
+
+.btn.secondary{
+
+
+
+    background:#607d8b;
+
+
+
+}
+
+
+
+
+
+
+
+.btn.blue{
+
+
+
+    background:#2878d4;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TOMBOL SELESAI KUIS
+
+
+
+========================= */
+
+.btn-submit{
+    display:block;
+    width:100%;
+    max-width:420px;
+    margin:25px auto 5px;
+    padding:15px 28px;
+    border:none;
+    border-radius:9px;
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+    color:#fff;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    transition:.2s;
+}
+
+.btn-submit:hover{
+    background:linear-gradient(135deg,#9f1717,#1976d2);
+    transform:translateY(-1px);
+}
+
+@media(max-width:600px){
+    .btn-submit{
+        max-width:none;
+        padding:14px 18px;
+        font-size:16px;
+    }
+}
+
+
+/* =========================
+
+
+
+   RESULT
+
+
+
+========================= */
+
+
+
+#result{
+
+
+
+    display:none;
+
+
+
+}
+
+
+
+
+
+
+
+.score{
+
+
+
+    text-align:center;
+
+
+
+    font-size:58px;
+
+
+
+    font-weight:bold;
+
+
+
+    color:#1976d2;
+
+
+
+    margin:10px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.result-message{
+
+
+
+    text-align:center;
+
+
+
+    font-size:18px;
+
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+
+
+.status{
+
+
+
+    text-align:center;
+
+
+
+    padding:14px;
+
+
+
+    border-radius:10px;
+
+
+
+    font-size:20px;
+
+
+
+    font-weight:bold;
+
+
+
+    margin:20px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.status.lulus{
+
+
+
+    color:#1976d2;
+
+
+
+    background:#eaf7ef;
+
+
+
+}
+
+
+
+
+
+
+
+.status.tidak-lulus{
+
+
+
+    color:#1565c0;
+
+
+
+    background:#fff0f0;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail{
+
+
+
+    background:#f7f9fa;
+
+
+
+    border-radius:10px;
+
+
+
+    padding:18px;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail div{
+
+
+
+    display:flex;
+
+
+
+    justify-content:space-between;
+
+
+
+    gap:15px;
+
+
+
+    padding:8px 0;
+
+
+
+    border-bottom:1px solid #e4e4e4;
+
+
+
+}
+
+
+
+
+
+
+
+.result-detail div:last-child{
+
+
+
+    border-bottom:none;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   REVIEW
+
+
+
+========================= */
+
+
+
+.review{
+
+
+
+    margin-top:25px;
+
+
+
+}
+
+
+
+
+
+
+
+.review-item{
+
+
+
+    padding:15px;
+
+
+
+    margin:10px 0;
+
+
+
+    border-radius:9px;
+
+
+
+    border-left:5px solid;
+
+
+
+}
+
+
+
+
+
+
+
+.correct{
+
+
+
+    background:#eaf7ef;
+
+
+
+    border-color:#1976d2;
+
+
+
+}
+
+
+
+
+
+
+
+.wrong{
+
+
+
+    background:#fff0f0;
+
+
+
+    border-color:#1565c0;
+
+
+
+}
+
+
+
+
+
+
+
+.unanswered{
+
+
+
+    background:#fff7e6;
+
+
+
+    border-color:#f39c12;
+
+
+
+}
+
+
+
+
+
+
+
+.answer{
+
+
+
+    font-weight:600;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   FOOTER
+
+
+
+========================= */
+
+
+
+.footer{
+
+
+
+    background:#17202a;
+
+
+
+    color:white;
+
+
+
+    text-align:center;
+
+
+
+    padding:30px 20px;
+
+
+
+}
+
+
+
+
+
+
+
+.footer strong{
+
+
+
+    color:#6fcf97;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   RESPONSIVE
+
+
+
+========================= */
+
+
+
+@media(max-width:600px){
+
+
+
+
+
+
+
+    .header h1{
+
+
+
+        font-size:27px;
+
+
+
+    }
+
+
+
+
+
+
+
+    .card{
+
+
+
+        padding:21px 17px;
+
+
+
+    }
+
+
+
+
+
+
+
+    .timer-container{
+
+
+
+        flex-direction:column;
+
+
+
+        align-items:stretch;
+
+
+
+        text-align:center;
+
+
+
+    }
+
+
+
+
+
+
+
+    .timer{
+
+
+
+        width:100%;
+
+
+
+    }
+
+
+
+
+
+
+
+    .participant{
+
+
+
+        flex-direction:column;
+
+
+
+        align-items:flex-start;
+
+
+
+    }
+
+
+
+
+
+
+
+    .score{
+
+
+
+        font-size:45px;
+
+
+
+    }
+
+
+
+
+
+
+
+}
+
+
+
+</style>
+</head>
+<body class="locked">
+<!-- =========================
+
+
+
+     PASSWORD & NAMA PESERTA
+
+
+
+========================= -->
+<div class="password-overlay" id="passwordOverlay">
+<div class="password-box">
+<div class="password-icon">🔐</div>
+<h2>Kuis Modul 1 Word</h2>
+<p>
+
+
+
+            Masukkan nama peserta, kelas, dan password
+
+
+
+            untuk memulai kuis.
+
+
+
+        </p>
+<input autocomplete="off" class="name-input" id="participantInput" placeholder="Nama lengkap peserta" type="text"/>
+<input autocomplete="off" class="name-input" id="classInput" placeholder="Kelas peserta" type="text"/>
+<input autocomplete="off" class="password-input" id="quizPassword" placeholder="Password kuis" type="password"/>
+<div class="password-error" id="passwordError">
+
+
+
+            ❌ Terjadi kesalahan.
+
+
+
+        </div>
+<button class="password-btn" onclick="startQuiz()" type="button">
+
+
+
+            🔓 MULAI KUIS
+
+
+
+        </button>
+<div class="password-info">
+
+
+
+            Waktu pengerjaan: <strong>10 menit</strong><br/>
+
+
+
+            Nilai minimum: <strong>75</strong><br/>
+
+
+
+            Nama dan kelas akan dicatat pada hasil kuis.
+
+
+
+        </div>
+</div>
+</div>
+<!-- =========================
+
+
+
+     HEADER
+
+
+
+========================= -->
+<header class="header">
+<div class="badge">KUIS • MODUL 1 WORD</div>
+<h1>Microsoft Word 2016 — Pengenalan Microsoft Word 2016</h1>
+<p>
+
+
+
+       Microsoft Word 2016 • Pengenalan Microsoft Word 2016
+
+
+
+    </p>
+</header>
+<main class="container">
+<!-- DATA PESERTA -->
+<section class="card">
+<div class="participant">
+<div>
+<div style="font-size:13px;color:#78909c;">
+
+
+
+                Peserta
+
+
+
+            </div>
+<div class="participant-name" id="displayName">
+
+
+
+                -
+
+
+
+            </div>
+</div>
+<div>
+<div style="font-size:13px;color:#78909c;">
+
+
+
+                KKM
+
+
+
+            </div>
+<strong>75</strong>
+</div>
+</div>
+</section>
+<!-- TIMER -->
+<section class="card timer-card">
+<div class="timer-container">
+<div>
+<div class="timer-label">
+
+
+
+                ⏱️ WAKTU TERSISA
+
+
+
+            </div>
+<strong>
+
+
+
+                Selesaikan kuis sebelum waktu habis
+
+
+
+            </strong>
+</div>
+<div class="timer" id="timer">
+
+
+
+            10:00
+
+
+
+        </div>
+</div>
+</section>
+<!-- PETUNJUK -->
+<section class="card">
+<h2>📋 Petunjuk Kuis</h2>
+<div class="info">
+<p>
+
+
+
+            Jawablah pertanyaan berdasarkan materi
+
+
+
+            <strong>Modul 1 Microsoft Word 2016 – Pengenalan Microsoft Word 2016</strong>.
+
+
+
+        </p>
+<br/>
+<p><strong>Jumlah soal:</strong> 15 soal</p>
+<p><strong>Waktu:</strong> 10 menit</p>
+<p><strong>Nilai:</strong> dihitung berdasarkan jumlah jawaban benar</p>
+<p><strong>Nilai maksimal:</strong> 100</p>
+<p><strong>Batas lulus:</strong> 75</p>
+</div>
+<div class="warning">
+
+
+
+        ⚠️ Jika waktu mencapai <strong>00:00</strong>,
+
+
+
+        kuis akan otomatis dikumpulkan.
+
+
+
+    </div>
+</section>
+<!-- PROGRESS -->
+<section class="card">
+<div class="progress-text">
+<span>Progress Jawaban</span>
+<span id="progressText">0 / <span id="progressTotalQuestions">15</span></span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+</section>
+<!-- =========================
+
+
+
+     QUIZ FORM
+
+
+
+========================= -->
+<form id="quizForm"><div class="question"><h3>1. Apa fungsi utama Microsoft Word 2016 berdasarkan materi Modul 1?</h3><label class="option"><input name="q1" type="radio" value="A"/> A. Mengolah angka dan membuat perhitungan statistik</label><label class="option"><input name="q1" type="radio" value="B"/> B. Membuat presentasi berbasis slide</label><label class="option"><input name="q1" type="radio" value="C"/> C. Membuat dan mengolah berbagai dokumen seperti surat dan resume</label><label class="option"><input name="q1" type="radio" value="D"/> D. Mengelola database relasional</label></div><div class="question"><h3>2. Fitur yang termasuk fitur penting untuk membantu navigasi antarmuka Word 2016 adalah...</h3><label class="option"><input name="q2" type="radio" value="A"/> A. Ribbon, Quick Access Toolbar, dan tampilan Backstage</label><label class="option"><input name="q2" type="radio" value="B"/> B. PivotTable, Formula Bar, dan Name Box</label><label class="option"><input name="q2" type="radio" value="C"/> C. Slide Pane, Notes Pane, dan Slide Master</label><label class="option"><input name="q2" type="radio" value="D"/> D. Timeline, Slicer, dan PivotChart</label></div><div class="question"><h3>3. Ketika Word 2016 pertama kali dibuka, layar yang muncul sebelum masuk ke antarmuka dokumen adalah...</h3><label class="option"><input name="q3" type="radio" value="A"/> A. Status Bar</label><label class="option"><input name="q3" type="radio" value="B"/> B. Start Screen</label><label class="option"><input name="q3" type="radio" value="C"/> C. Document Area</label><label class="option"><input name="q3" type="radio" value="D"/> D. Ruler</label></div><div class="question"><h3>4. Dari Start Screen, pilihan yang digunakan untuk mengakses antarmuka Word dan mulai bekerja pada dokumen kosong adalah...</h3><label class="option"><input name="q4" type="radio" value="A"/> A. Blank document</label><label class="option"><input name="q4" type="radio" value="B"/> B. Web Layout</label><label class="option"><input name="q4" type="radio" value="C"/> C. Read Mode</label><label class="option"><input name="q4" type="radio" value="D"/> D. Zoom Control</label></div><div class="question"><h3>5. Apa fungsi Quick Access Toolbar pada Word 2016?</h3><label class="option"><input name="q5" type="radio" value="A"/> A. Menampilkan jumlah halaman dan kata dalam dokumen</label><label class="option"><input name="q5" type="radio" value="B"/> B. Mengakses perintah-perintah umum tanpa bergantung pada tab yang sedang dipilih</label><label class="option"><input name="q5" type="radio" value="C"/> C. Menampilkan dokumen seperti halaman web</label><label class="option"><input name="q5" type="radio" value="D"/> D. Mengatur pembesaran tampilan dokumen</label></div><div class="question"><h3>6. Perintah yang disebut termasuk dalam Quick Access Toolbar secara default pada materi adalah...</h3><label class="option"><input name="q6" type="radio" value="A"/> A. Save, Undo, dan Repeat</label><label class="option"><input name="q6" type="radio" value="B"/> B. Print, Mail Merge, dan Caption</label><label class="option"><input name="q6" type="radio" value="C"/> C. Table of Contents, Citation, dan Bibliography</label><label class="option"><input name="q6" type="radio" value="D"/> D. Header, Footer, dan Page Number</label></div><div class="question"><h3>7. Apa yang dimaksud dengan Ribbon pada Microsoft Word 2016?</h3><label class="option"><input name="q7" type="radio" value="A"/> A. Area untuk mengetik dan mengedit teks</label><label class="option"><input name="q7" type="radio" value="B"/> B. Area yang berisi perintah-perintah yang diperlukan untuk tugas umum di Word</label><label class="option"><input name="q7" type="radio" value="C"/> C. Penggaris untuk mengatur jarak dokumen</label><label class="option"><input name="q7" type="radio" value="D"/> D. Bilah untuk menggulir halaman dokumen</label></div><div class="question"><h3>8. Dalam Ribbon, beberapa perintah dikelompokkan ke dalam...</h3><label class="option"><input name="q8" type="radio" value="A"/> A. Folder</label><label class="option"><input name="q8" type="radio" value="B"/> B. Workbook</label><label class="option"><input name="q8" type="radio" value="C"/> C. Group atau kelompok perintah</label><label class="option"><input name="q8" type="radio" value="D"/> D. Worksheet</label></div><div class="question"><h3>9. Bagian Word yang menjadi tempat untuk mengetik dan mengedit teks dalam dokumen adalah...</h3><label class="option"><input name="q9" type="radio" value="A"/> A. Panel Dokumen</label><label class="option"><input name="q9" type="radio" value="B"/> B. Ribbon</label><label class="option"><input name="q9" type="radio" value="C"/> C. Scroll Bar</label><label class="option"><input name="q9" type="radio" value="D"/> D. Microsoft Account</label></div><div class="question"><h3>10. Apa fungsi Ruller pada antarmuka Word menurut materi?</h3><label class="option"><input name="q10" type="radio" value="A"/> A. Menampilkan jumlah kata dan halaman</label><label class="option"><input name="q10" type="radio" value="B"/> B. Membantu menyelaraskan dan menyesuaikan jarak</label><label class="option"><input name="q10" type="radio" value="C"/> C. Mencari perintah yang tidak diketahui lokasinya</label><label class="option"><input name="q10" type="radio" value="D"/> D. Berpindah ke atas dan ke bawah halaman</label></div><div class="question"><h3>11. Jika pengguna lupa di mana letak suatu perintah di Word, fitur yang dapat digunakan untuk mencarinya adalah...</h3><label class="option"><input name="q11" type="radio" value="A"/> A. Tell Me</label><label class="option"><input name="q11" type="radio" value="B"/> B. Status Bar</label><label class="option"><input name="q11" type="radio" value="C"/> C. Page Count</label><label class="option"><input name="q11" type="radio" value="D"/> D. Print Layout</label></div><div class="question"><h3>12. Bagian yang memungkinkan pengguna melihat informasi akun Microsoft, profil, dan beralih akun adalah...</h3><label class="option"><input name="q12" type="radio" value="A"/> A. Zoom Control</label><label class="option"><input name="q12" type="radio" value="B"/> B. Microsoft Account</label><label class="option"><input name="q12" type="radio" value="C"/> C. Document Views</label><label class="option"><input name="q12" type="radio" value="D"/> D. Ruller</label></div><div class="question"><h3>13. Manakah pasangan Document Views yang benar sesuai materi Modul 1?</h3><label class="option"><input name="q13" type="radio" value="A"/> A. Read Mode, Print Layout, dan Web Layout</label><label class="option"><input name="q13" type="radio" value="B"/> B. Draft, Outline, dan Slide Sorter</label><label class="option"><input name="q13" type="radio" value="C"/> C. Normal, Notes Page, dan Reading View</label><label class="option"><input name="q13" type="radio" value="D"/> D. Page Break, Section Break, dan Print Preview</label></div><div class="question"><h3>14. Pada Document Views, tampilan yang dipilih secara default dan menampilkan dokumen seperti halaman yang akan dicetak adalah...</h3><label class="option"><input name="q14" type="radio" value="A"/> A. Read Mode</label><label class="option"><input name="q14" type="radio" value="B"/> B. Print Layout</label><label class="option"><input name="q14" type="radio" value="C"/> C. Web Layout</label><label class="option"><input name="q14" type="radio" value="D"/> D. Zoom Control</label></div><div class="question"><h3>15. Apa fungsi Zoom Control pada Word 2016?</h3><label class="option"><input name="q15" type="radio" value="A"/> A. Mengubah isi dokumen menjadi halaman web</label><label class="option"><input name="q15" type="radio" value="B"/> B. Mengatur pembesaran tampilan dokumen melalui slider</label><label class="option"><input name="q15" type="radio" value="C"/> C. Mencari perintah pada Ribbon</label><label class="option"><input name="q15" type="radio" value="D"/> D. Menghitung jumlah kata dalam dokumen</label></div><div class="button-area">
+<button class="btn primary" onclick="kirimKuis()" type="button">✓ Selesai &amp; Lihat Nilai</button>
+</div></form>
+<!-- =========================
+
+
+
+     HASIL
+
+
+
+========================= -->
+<section class="card" id="result">
+<h2>🏆 Hasil Kuis</h2>
+<div class="score" id="score">0</div>
+<div class="result-message" id="resultMessage"></div>
+<div class="status" id="status"></div>
+<div class="result-detail">
+<div>
+<span>Nama Peserta</span>
+<strong id="resultName">-</strong>
+</div>
+<div>
+<span>Jumlah Soal</span>
+<strong id="resultTotalQuestions">15</strong>
+</div>
+<div>
+<span>Jawaban Benar</span>
+<strong id="correctCount">0</strong>
+</div>
+<div>
+<span>Jawaban Salah</span>
+<strong id="wrongCount">0</strong>
+</div>
+<div>
+<span>Tidak Dijawab</span>
+<strong id="emptyCount">0</strong>
+</div>
+<div>
+<span>Nilai</span>
+<strong id="finalScore">0</strong>
+</div>
+<div>
+<span>Waktu Digunakan</span>
+<strong id="timeResult">-</strong>
+</div>
+</div>
+<!-- PEMBAHASAN -->
+<div class="review">
+<h2>📖 Pembahasan Jawaban</h2>
+<div id="reviewContainer"></div>
+</div>
+<div class="button-area">
+<button class="btn secondary" onclick="retryQuiz()" type="button">
+
+
+
+            ↻ Ulangi Kuis
+
+
+
+        </button>
+<a class="btn blue" href="modul-word-1.html">
+
+
+
+            Kembali ke Materi Modul 1 →
+
+
+
+        </a>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+<p>
+<strong>Pelatihan Teknologi Informasi dan Komunikasi</strong>
+</p>
+<p>
+
+
+
+        Kuis Modul 1 • Microsoft Word 2016 — Pengenalan Microsoft Word 2016
+
+
+
+    </p>
+<p style="margin-top:8px;font-size:13px;opacity:.7;">
+
+
+
+        © 2026 • Materi Pelatihan
+
+
+
+    </p>
+</footer>
+<script>
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PENGATURAN KUIS
+
+
+
+========================= */
+
+
+
+const QUIZ_PASSWORD = "123";
+
+
+
+const TOTAL_QUESTIONS = 15;
+
+
+
+const POINT_PER_QUESTION = 100 / TOTAL_QUESTIONS;
+
+
+
+const PASSING_SCORE = 75;
+
+
+
+const QUIZ_DURATION = 10 * 60;
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   GOOGLE SHEETS API
+
+
+
+   =========================
+
+
+
+   Ganti URL di bawah dengan URL Web App
+
+
+
+   Google Apps Script Anda yang berakhiran /exec.
+
+
+
+*/
+
+
+
+const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby2QLtU-w0rhDuJFxlrNbEHSWDHeVP8JVD0s4sGPNDKNMDRMvn_uHsd4bzlUndjtb9G/exec";
+
+
+
+
+
+
+
+const QUIZ_MODULE_NAME =
+
+
+
+    "Modul 1 - Pengenalan Microsoft Word 2016";
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   VARIABEL
+
+
+
+========================= */
+
+
+
+let participantName = "";
+
+
+
+let participantClass = "";
+
+
+
+let timeLeft = QUIZ_DURATION;
+
+
+
+let timerInterval = null;
+
+
+
+let quizStarted = false;
+
+
+
+let quizFinished = false;
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   KUNCI JAWABAN
+
+
+
+========================= */
+
+
+
+const answers = {
+    q1:"C",     q2:"A",     q3:"B",     q4:"A",     q5:"B",     q6:"A",     q7:"B",     q8:"C",     q9:"A",     q10:"B",     q11:"A",     q12:"B",     q13:"A",     q14:"B",     q15:"B"
+};
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PEMBAHASAN
+
+
+
+========================= */
+
+
+
+const explanations = {
+    q1:"Microsoft Word 2016 merupakan aplikasi pengolah kata yang digunakan untuk membuat berbagai dokumen, termasuk surat dan resume.",
+    q2:"Materi memperkenalkan Ribbon, Quick Access Toolbar, dan tampilan Backstage sebagai beberapa fitur penting pada Word 2016.",
+    q3:"Materi menyebutkan bahwa ketika Word pertama kali dibuka, Start Screen akan muncul.",
+    q4:"Materi menjelaskan bahwa dari Start Screen pengguna dapat memilih dokumen Blank untuk mengakses antarmuka Word.",
+    q5:"Quick Access Toolbar memungkinkan pengguna mengakses perintah umum tanpa bergantung pada tab yang sedang dipilih.",
+    q6:"Materi menyebutkan bahwa Quick Access Toolbar secara default berisi Save, Undo, dan perintah Repeat.",
+    q7:"Ribbon berisi perintah yang diperlukan untuk melakukan tugas umum di Word dan terdiri atas banyak tab dengan kelompok perintah.",
+    q8:"Setiap group berisi serangkaian perintah yang berbeda. Beberapa group juga memiliki panah untuk melihat perintah lebih lanjut.",
+    q9:"Panel Dokumen merupakan tempat pengguna mengetik dan mengedit teks dalam dokumen.",
+    q10:"Ruller terletak di bagian atas dan sebelah kiri dokumen serta membantu menyelaraskan dan menyesuaikan jarak.",
+    q11:"Tell Me memungkinkan pengguna mencari sebuah perintah ketika tidak ingat di mana perintah tersebut berada.",
+    q12:"Bagian Microsoft Account digunakan untuk mengakses informasi akun Microsoft, melihat profil, dan beralih akun.",
+    q13:"Materi menjelaskan tiga cara melihat dokumen, yaitu Read Mode, Print Layout, dan Web Layout.",
+    q14:"Print Layout dipilih secara default dan menampilkan dokumen sama seperti halaman yang dicetak.",
+    q15:"Zoom Control digunakan dengan slider untuk mengatur persentase pembesaran tampilan dokumen."
+};
+
+
+
+/* =========================
+
+
+
+   MULAI KUIS
+
+
+
+========================= */
+
+
+
+function startQuiz(){
+
+    updateTotalQuestionDisplays();
+
+
+
+
+
+
+
+    const name = document
+
+
+
+        .getElementById("participantInput")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const participantClassInput = document
+
+
+
+        .getElementById("classInput")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const password = document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .value
+
+
+
+        .trim();
+
+
+
+
+
+
+
+    const error = document
+
+
+
+        .getElementById("passwordError");
+
+
+
+
+
+
+
+    if(name === ""){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Nama peserta wajib diisi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("participantInput")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    if(participantClassInput === ""){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Kelas peserta wajib diisi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("classInput")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    if(password !== QUIZ_PASSWORD){
+
+
+
+
+
+
+
+        error.style.display = "block";
+
+
+
+        error.innerHTML = "❌ Password salah. Silakan coba lagi.";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("quizPassword")
+
+
+
+            .value = "";
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById("quizPassword")
+
+
+
+            .focus();
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    participantName = name;
+
+
+
+    participantClass = participantClassInput;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("displayName")
+
+
+
+        .textContent = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordOverlay")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document.body.classList.remove("locked");
+
+
+
+
+
+
+
+    quizStarted = true;
+
+
+
+
+
+
+
+    startTimer();
+
+
+
+}
+
+
+
+
+
+
+
+/* ENTER UNTUK MULAI */
+
+
+
+document
+
+
+
+    .getElementById("quizPassword")
+
+
+
+    .addEventListener("keydown",function(event){
+
+
+
+
+
+
+
+        if(event.key === "Enter"){
+
+
+
+            startQuiz();
+
+
+
+        }
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TIMER
+
+
+
+========================= */
+
+
+
+function startTimer(){
+
+
+
+
+
+
+
+    updateTimerDisplay();
+
+
+
+
+
+
+
+    timerInterval = setInterval(function(){
+
+
+
+
+
+
+
+        if(!quizStarted || quizFinished){
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+
+
+        timeLeft--;
+
+
+
+
+
+
+
+        updateTimerDisplay();
+
+
+
+
+
+
+
+        if(timeLeft <= 0){
+
+
+
+
+
+
+
+            timeLeft = 0;
+
+
+
+            updateTimerDisplay();
+
+
+
+            clearInterval(timerInterval);
+
+
+
+
+
+
+
+            // Otomatis mengumpulkan jawaban yang sudah dipilih
+
+
+
+            // dan mengirim hasilnya ke Google Sheets.
+
+
+
+            finishQuiz(true);
+
+
+
+        }
+
+
+
+
+
+
+
+    },1000);
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   UPDATE TIMER
+
+
+
+========================= */
+
+
+
+function updateTimerDisplay(){
+
+
+
+
+
+
+
+    const timer =
+
+
+
+        document.getElementById("timer");
+
+
+
+
+
+
+
+    let minutes =
+
+
+
+        Math.floor(timeLeft / 60);
+
+
+
+
+
+
+
+    let seconds =
+
+
+
+        timeLeft % 60;
+
+
+
+
+
+
+
+    minutes =
+
+
+
+        String(minutes).padStart(2,"0");
+
+
+
+
+
+
+
+    seconds =
+
+
+
+        String(seconds).padStart(2,"0");
+
+
+
+
+
+
+
+    timer.textContent =
+
+
+
+        minutes + ":" + seconds;
+
+
+
+
+
+
+
+    timer.classList.remove(
+
+
+
+        "warning-time",
+
+
+
+        "danger-time"
+
+
+
+    );
+
+
+
+
+
+
+
+    if(timeLeft <= 60){
+
+
+
+
+
+
+
+        timer.classList.add("danger-time");
+
+
+
+
+
+
+
+    }else if(timeLeft <= 300){
+
+
+
+
+
+
+
+        timer.classList.add("warning-time");
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   PROGRESS
+
+
+
+========================= */
+
+
+
+document
+
+
+
+    .querySelectorAll('input[type="radio"]')
+
+
+
+    .forEach(function(input){
+
+
+
+
+
+
+
+        input.addEventListener(
+
+
+
+            "change",
+
+
+
+            updateProgress
+
+
+
+        );
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+function updateProgress(){
+
+
+
+
+
+
+
+    let answered = 0;
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        if(selected){
+
+
+
+            answered++;
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    const percentage =
+
+
+
+        (answered / TOTAL_QUESTIONS) * 100;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressText")
+
+
+
+        .textContent =
+
+
+
+        answered + " / " + TOTAL_QUESTIONS;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressBar")
+
+
+
+        .style.width =
+
+
+
+        percentage + "%";
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   TOMBOL KIRIM JAWABAN
+
+
+
+========================= */
+
+
+
+function kirimKuis(){
+
+
+
+    finishQuiz(false);
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   SELESAI KUIS
+
+
+
+========================= */
+
+
+
+function updateTotalQuestionDisplays(){
+
+    const total = document.getElementById("totalQuestionsInfo");
+
+    const resultTotal = document.getElementById("resultTotalQuestions");
+
+    if(total) total.textContent = TOTAL_QUESTIONS;
+
+    if(resultTotal) resultTotal.textContent = TOTAL_QUESTIONS;
+
+}
+
+
+
+function finishQuiz(timeUp){
+
+
+
+
+
+
+
+    if(quizFinished){
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    let unanswered = [];
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        if(!selected){
+
+
+
+            unanswered.push(i);
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    if(!timeUp && unanswered.length > 0){
+
+
+
+
+
+
+
+        alert(
+
+
+
+            "Masih ada " +
+
+
+
+            unanswered.length +
+
+
+
+            " soal yang belum dijawab.nn" +
+
+
+
+            "Nomor soal: " +
+
+
+
+            unanswered.join(", ")
+
+
+
+        );
+
+
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    quizFinished = true;
+
+
+
+    quizStarted = false;
+
+
+
+
+
+
+
+    clearInterval(timerInterval);
+
+
+
+
+
+
+
+    let correct = 0;
+
+
+
+    let wrong = 0;
+
+
+
+    let empty = unanswered.length;
+
+
+
+    let reviewHTML = "";
+
+
+
+
+
+
+
+    for(let i=1;i<=TOTAL_QUESTIONS;i++){
+
+
+
+
+
+
+
+        const selected =
+
+
+
+            document.querySelector(
+
+
+
+                'input[name="q'+i+'"]:checked'
+
+
+
+            );
+
+
+
+
+
+
+
+        const correctAnswer =
+
+
+
+            answers["q"+i];
+
+
+
+
+
+
+
+        let userAnswer = "";
+
+
+
+
+
+
+
+        if(selected){
+
+
+
+            userAnswer = selected.value;
+
+
+
+        }
+
+
+
+
+
+
+
+        let className = "";
+
+
+
+
+
+
+
+        if(!selected){
+
+
+
+
+
+
+
+            className = "unanswered";
+
+
+
+
+
+
+
+        }else if(userAnswer === correctAnswer){
+
+
+
+
+
+
+
+            className = "correct";
+
+
+
+            correct++;
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+
+            className = "wrong";
+
+
+
+            wrong++;
+
+
+
+        }
+
+
+
+
+
+
+
+        const answerText =
+
+
+
+            userAnswer === ""
+
+
+
+            ? "Tidak dijawab"
+
+
+
+            : userAnswer;
+
+
+
+
+
+
+
+        reviewHTML += `
+
+
+
+
+
+
+
+            <div class="review-item ${className}">
+
+
+
+
+
+
+
+                <strong>Soal ${i}</strong>
+
+
+
+
+
+
+
+                <p>
+
+
+
+                    Jawaban Anda:
+
+
+
+                    <span class="answer">
+
+
+
+                        ${answerText}
+
+
+
+                    </span>
+
+
+
+                </p>
+
+
+
+
+
+
+
+                <p>
+
+
+
+                    Jawaban Benar:
+
+
+
+                    <span class="answer">
+
+
+
+                        ${correctAnswer}
+
+
+
+                    </span>
+
+
+
+                </p>
+
+
+
+
+
+
+
+                <p style="margin-top:7px;">
+
+
+
+                    ${explanations["q"+i]}
+
+
+
+                </p>
+
+
+
+
+
+
+
+            </div>
+
+
+
+        `;
+
+
+
+    }
+
+
+
+
+
+
+
+    const score =
+
+
+
+        Number((correct * POINT_PER_QUESTION).toFixed(2));
+
+
+
+
+
+
+
+    // Kirim hasil ke Google Sheets
+
+
+
+    kirimHasilKuis(
+
+
+
+        correct,
+
+
+
+        score,
+
+
+
+        timeUp
+
+
+
+    );
+
+
+
+
+
+
+
+    let message = "";
+
+
+
+    let statusText = "";
+
+
+
+    let statusClass = "";
+
+
+
+
+
+
+
+    if(score >= PASSING_SCORE){
+
+
+
+
+
+
+
+        statusText = "✓ LULUS";
+
+
+
+        statusClass = "lulus";
+
+
+
+
+
+
+
+        if(score >= 90){
+
+
+
+
+
+
+
+            message =
+
+
+
+                "🎉 Sangat Baik! Anda telah menguasai materi Modul 1 Microsoft Word 2016 – Pengenalan Microsoft Word 2016.";
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+
+            message =
+
+
+
+                "👏 Selamat! Anda telah mencapai nilai minimum kelulusan.";
+
+
+
+        }
+
+
+
+
+
+
+
+    }else{
+
+
+
+
+
+
+
+        statusText = "✗ BELUM LULUS";
+
+
+
+        statusClass = "tidak-lulus";
+
+
+
+
+
+
+
+        message =
+
+
+
+            "📚 Nilai Anda belum mencapai batas kelulusan. Pelajari kembali Modul 1 Word dan lakukan latihan.";
+
+
+
+    }
+
+
+
+
+
+
+
+    if(timeUp){
+
+
+
+
+
+
+
+        message =
+
+
+
+            "⏰ Waktu telah habis. Jawaban yang sudah dikerjakan telah dikumpulkan.";
+
+
+
+    }
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("score")
+
+
+
+        .textContent = score;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("resultMessage")
+
+
+
+        .textContent = message;
+
+
+
+
+
+
+
+    const status =
+
+
+
+        document.getElementById("status");
+
+
+
+
+
+
+
+    status.textContent = statusText;
+
+
+
+    status.className =
+
+
+
+        "status " + statusClass;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("resultName")
+
+
+
+        .textContent = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("correctCount")
+
+
+
+        .textContent = correct;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("wrongCount")
+
+
+
+        .textContent = wrong;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("emptyCount")
+
+
+
+        .textContent = empty;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("finalScore")
+
+
+
+        .textContent = score;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("timeResult")
+
+
+
+        .textContent =
+
+
+
+        timeUp
+
+
+
+        ? "Waktu habis"
+
+
+
+        : formatTimeUsed();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("reviewContainer")
+
+
+
+        .innerHTML = reviewHTML;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .style.display = "block";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .scrollIntoView({
+
+
+
+            behavior:"smooth"
+
+
+
+        });
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   KIRIM HASIL KE GOOGLE SHEETS
+
+
+
+========================= */
+
+
+
+function kirimHasilKuis(correct, score, timeUp){
+
+
+
+
+
+
+
+    if(
+
+
+
+        !GOOGLE_SHEET_API_URL ||
+
+
+
+        GOOGLE_SHEET_API_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA"
+
+
+
+    ){
+
+
+
+        console.warn(
+
+
+
+            "URL Google Apps Script belum diisi."
+
+
+
+        );
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
+
+    const payload = {
+
+
+
+        jenis: "kuis",
+
+
+
+        nama: participantName,
+
+
+
+        kelas: participantClass,
+
+
+
+        modul: QUIZ_MODULE_NAME,
+
+
+
+        jumlahSoal: TOTAL_QUESTIONS,
+
+
+
+        benar: correct,
+
+
+
+        nilai: score,
+
+
+
+        waktu: timeUp
+
+
+
+            ? "Waktu habis"
+
+
+
+            : formatTimeUsed()
+
+
+
+    };
+
+
+
+
+
+
+
+    fetch(GOOGLE_SHEET_API_URL, {
+
+
+
+        method: "POST",
+
+
+
+        mode: "no-cors",
+
+
+
+        body: JSON.stringify(payload)
+
+
+
+    })
+
+
+
+    .then(function(){
+
+
+
+        console.log(
+
+
+
+            "Hasil kuis berhasil dikirim ke Google Sheets."
+
+
+
+        );
+
+
+
+    })
+
+
+
+    .catch(function(error){
+
+
+
+        console.error(
+
+
+
+            "Gagal mengirim hasil kuis:",
+
+
+
+            error
+
+
+
+        );
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   FORMAT WAKTU
+
+
+
+========================= */
+
+
+
+function formatTimeUsed(){
+
+
+
+
+
+
+
+    const used =
+
+
+
+        QUIZ_DURATION - timeLeft;
+
+
+
+
+
+
+
+    const minutes =
+
+
+
+        Math.floor(used / 60);
+
+
+
+
+
+
+
+    const seconds =
+
+
+
+        used % 60;
+
+
+
+
+
+
+
+    return (
+
+
+
+        String(minutes).padStart(2,"0")
+
+
+
+        + ":" +
+
+
+
+        String(seconds).padStart(2,"0")
+
+
+
+    );
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+
+
+
+   ULANGI KUIS
+
+
+
+========================= */
+
+
+
+function retryQuiz(){
+
+    updateTotalQuestionDisplays();
+
+
+
+
+
+
+
+    clearInterval(timerInterval);
+
+
+
+
+
+
+
+    quizFinished = false;
+
+
+
+    quizStarted = false;
+
+
+
+    timeLeft = QUIZ_DURATION;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .reset();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("result")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizForm")
+
+
+
+        .style.display = "block";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressText")
+
+
+
+        .textContent = "0 / " + TOTAL_QUESTIONS;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("progressBar")
+
+
+
+        .style.width = "0%";
+
+
+
+
+
+
+
+    updateTimerDisplay();
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordError")
+
+
+
+        .style.display = "none";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("passwordOverlay")
+
+
+
+        .style.display = "flex";
+
+
+
+
+
+
+
+    document.body.classList.add("locked");
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("participantInput")
+
+
+
+        .value = participantName;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("classInput")
+
+
+
+        .value = participantClass;
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .value = "";
+
+
+
+
+
+
+
+    document
+
+
+
+        .getElementById("quizPassword")
+
+
+
+        .focus();
+
+
+
+
+
+
+
+    window.scrollTo({
+
+
+
+        top:0,
+
+
+
+        behavior:"smooth"
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
