@@ -3035,7 +3035,23 @@ const answers = {
 
 
 
-const explanations = Object.fromEntries(Array.from({length: TOTAL_QUESTIONS}, (_, i) => ["q" + (i + 1), "Pembahasan tidak tercantum pada file sumber Modul 8."]));
+const explanations = {
+    q1: "Fitur formulir interaktif digunakan untuk membuat bagian tertentu dalam dokumen yang dapat diisi oleh pengguna. Contohnya adalah formulir pendaftaran, biodata, atau lembar isian yang memiliki kolom Nama, NIK, alamat, dan data lainnya. Karena itu, jawaban A paling tepat.",
+    q2: "Content Control merupakan fitur pada Microsoft Word yang berada di tab Developer. Tab ini menyediakan berbagai kontrol formulir seperti Plain Text, Rich Text, Check Box, Drop-Down List, dan Date Picker. Oleh karena itu, jawaban C benar.",
+    q3: "Jika tab Developer belum terlihat, tab tersebut harus diaktifkan melalui pengaturan Ribbon. Caranya adalah File → Options → Customize Ribbon, kemudian beri tanda centang pada Developer dan klik OK. Setelah itu tab Developer akan muncul pada Ribbon. Jadi jawaban A benar.",
+    q4: "Plain Text Content Control digunakan untuk menerima masukan teks sederhana dari pengguna, misalnya Nama Lengkap, NIK, nomor telepon, atau alamat. Kontrol ini sesuai untuk data yang tidak memerlukan pilihan daftar atau kalender. Karena itu, jawaban A benar.",
+    q5: "Check Box digunakan untuk memberikan pilihan yang dapat dicentang atau tidak dicentang oleh pengguna. Kontrol ini cocok untuk pilihan seperti Ya/Tidak, menyatakan persetujuan, atau memilih beberapa keterampilan yang dimiliki. Jadi jawaban B benar.",
+    q6: "Drop-Down List digunakan ketika pengguna harus memilih satu nilai dari daftar pilihan yang sudah disediakan pembuat formulir. Dengan cara ini, data yang masuk menjadi lebih seragam dan mengurangi kesalahan pengetikan. Oleh karena itu, jawaban B benar.",
+    q7: "Date Picker Content Control menyediakan kontrol tanggal yang dapat dipilih melalui kalender. Fitur ini memudahkan pengguna memasukkan tanggal dengan format yang lebih konsisten, misalnya tanggal lahir atau tanggal pendaftaran. Jadi jawaban C benar.",
+    q8: "Properties pada Content Control digunakan untuk mengatur karakteristik kontrol, seperti Title, Tag, pilihan pada Drop-Down List, serta pengaturan tampilan dan perilaku kontrol. Pengaturan ini membantu pembuat formulir menyesuaikan kontrol dengan kebutuhan dokumen. Karena itu, jawaban A benar.",
+    q9: "Protect Document digunakan untuk memberikan perlindungan terhadap dokumen sehingga perubahan yang dilakukan pengguna dapat dibatasi sesuai kebutuhan. Pada formulir, perlindungan ini membantu menjaga struktur, teks, dan kontrol agar tidak diubah sembarangan. Jadi jawaban A benar.",
+    q10: "Restrict Editing adalah fitur Microsoft Word untuk membatasi jenis pengeditan yang dapat dilakukan pada dokumen. Pembuat dokumen dapat menentukan bagian atau jenis perubahan yang diperbolehkan sehingga isi dan struktur formulir tetap terjaga. Oleh karena itu, jawaban B benar.",
+    q11: "Password pada perlindungan dokumen berfungsi sebagai pengaman agar hanya pihak yang memiliki kata sandi yang dapat menghentikan atau mengubah pengaturan proteksi tertentu. Password bukan digunakan untuk menambah halaman atau mengubah tampilan dokumen. Jadi jawaban A benar.",
+    q12: "Jika dokumen dilindungi dan pemilik ingin melakukan perubahan yang dibatasi, proteksi perlu dihentikan terlebih dahulu. Apabila perlindungan menggunakan password, pengguna harus memasukkan password yang benar ketika diminta. Setelah proteksi dihentikan, dokumen dapat diedit sesuai kebutuhan. Jadi jawaban B benar.",
+    q13: "Pada formulir yang dilindungi, tujuan utama proteksi adalah menjaga struktur dan bagian-bagian penting formulir agar tidak berubah secara tidak sengaja. Pengguna tetap dapat mengisi bagian yang memang disediakan untuk isian tanpa merusak desain atau struktur utama dokumen. Karena itu, jawaban A benar.",
+    q14: "Sebelum formulir digital dibagikan, semua Content Control perlu diuji untuk memastikan dapat diisi dan berfungsi sesuai rancangan. Pengaturan proteksi juga harus diperiksa agar pengguna dapat mengisi bagian yang diperlukan tetapi tidak dapat mengubah bagian yang seharusnya dilindungi. Jadi jawaban B benar.",
+    q15: "Formulir pendaftaran yang membutuhkan Nama dan NIK memerlukan Plain Text Content Control; pilihan yang dapat dicentang dapat menggunakan Check Box; pilihan program atau keterampilan dapat menggunakan Drop-Down List; sedangkan tanggal pendaftaran menggunakan Date Picker. Kombinasi tersebut sesuai dengan jenis data yang harus dimasukkan. Oleh karena itu, jawaban A paling tepat."
+};
 
 
 
